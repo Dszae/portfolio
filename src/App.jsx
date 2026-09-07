@@ -69,10 +69,30 @@ const GALLERY_IMAGES = [
 ];
 
 const CERTIFICATES = [
-  { id: 1, title: "Software Fellowship", org: "LOCUS 2026", img: "/cert-placeholder.png" },
-  { id: 2, title: "Advanced Circuit Analysis", org: "IOE", img: "/cert-placeholder.png" },
-  { id: 3, title: "Motion Graphics in After Effects", org: "Udemy", img: "/cert-placeholder.png" },
-  { id: 4, title: "Hardware Troubleshooting", org: "Tech Institute", img: "/cert-placeholder.png" },
+  { 
+    id: 1, 
+    title: "Graphic Design Masterclass", 
+    org: "Udemy", 
+    img: "/graphic-design.png" 
+  },
+  { 
+    id: 2, 
+    title: "Motion Design with Figma", 
+    org: "Udemy", 
+    img: "/motion-design.png" 
+  },
+  { 
+    id: 3, 
+    title: "After Effects Course", 
+    org: "EDUCBA", 
+    img: "/after-effects.png" 
+  },
+  { 
+    id: 4, 
+    title: "DaVinci Resolve 16: Color Correction", 
+    org: "Blackmagicdesign", 
+    img: "/davinci-resolve.png" 
+  },
 ];
 
 
