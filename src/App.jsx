@@ -96,53 +96,53 @@ const GALLERY_IMAGES = [
 ];
 
 const CERTIFICATES = [
-  { 
-    id: 1, 
-    title: "Graphic Design Masterclass", 
-    org: "Udemy", 
-    img: "/graphic-design.png" 
+  {
+    id: 1,
+    title: "Graphic Design Masterclass",
+    org: "Udemy",
+    img: "/graphic-design.png"
   },
-  { 
-    id: 2, 
-    title: "Motion Design with Figma", 
-    org: "Udemy", 
-    img: "/motion-design.png" 
+  {
+    id: 2,
+    title: "Motion Design with Figma",
+    org: "Udemy",
+    img: "/motion-design.png"
   },
-  { 
-    id: 3, 
-    title: "After Effects Course", 
-    org: "EDUCBA", 
-    img: "/after-effects.png" 
+  {
+    id: 3,
+    title: "After Effects Course",
+    org: "EDUCBA",
+    img: "/after-effects.png"
   },
-  { 
-    id: 4, 
-    title: "DaVinci Resolve 16: Color Correction", 
-    org: "Blackmagicdesign", 
-    img: "/davinci-resolve.png" 
+  {
+    id: 4,
+    title: "DaVinci Resolve 16: Color Correction",
+    org: "Blackmagicdesign",
+    img: "/davinci-resolve.png"
   },
-  { 
-    id: 5, 
-    title: "Adobe Premiere Pro CC Masterclass", 
-    org: "Udemy", 
-    img: "/premiere-pro.png" 
+  {
+    id: 5,
+    title: "Adobe Premiere Pro CC Masterclass",
+    org: "Udemy",
+    img: "/premiere-pro.png"
   },
-  { 
-    id: 6, 
-    title: "Web Development Masterclass", 
-    org: "Udemy", 
-    img: "/web-development.png" 
+  {
+    id: 6,
+    title: "Web Development Masterclass",
+    org: "Udemy",
+    img: "/web-development.png"
   },
-  { 
-    id: 7, 
-    title: "Google Adwords Crash Course 2021", 
-    org: "Udemy", 
-    img: "/google-adwords.png" 
+  {
+    id: 7,
+    title: "Google Adwords Crash Course 2021",
+    org: "Udemy",
+    img: "/google-adwords.png"
   },
-  { 
-    id: 8, 
-    title: "Design Principles, Typography & Color Theory", 
-    org: "Udemy", 
-    img: "/design-principles.jpg" 
+  {
+    id: 8,
+    title: "Design Principles, Typography & Color Theory",
+    org: "Udemy",
+    img: "/design-principles.jpg"
   }
 ];
 
@@ -153,7 +153,7 @@ function App() {
   const [isDark, setIsDark] = useState(false);
   const [formStatus, setFormStatus] = useState("");
   const canvasRef = useRef(null);
-  
+
   // Typewriter states
   const [text, setText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
@@ -381,6 +381,8 @@ function App() {
         {/* Hero Section */}
         <section id="home" className="pt-32 pb-20 px-6 min-h-[95vh] flex items-center max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center w-full">
+            
+            {/* Text Side */}
             <div className="order-2 md:order-1">
               <div className="inline-block px-4 py-1.5 rounded-full border border-blue-500/50 bg-blue-500/10 text-blue-500 font-mono text-sm font-bold mb-6 backdrop-blur-sm shadow-[0_0_15px_rgba(3,177,252,0.5)]">
                 <svg className="w-4 h-4 inline-block mr-2 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
@@ -412,9 +414,11 @@ function App() {
                 </a>
               </div>
 
+              {/* Download CV Buttons */}
               <div className="mt-10 flex flex-wrap gap-4">
-                <a href="#resume" className="px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-500 transition-all shadow-[0_0_20px_rgba(3,177,252,0.4)] hover:shadow-[0_0_30px_rgba(3,177,252,0.6)] hover:-translate-y-1">
-                  View Resume
+                <a href="/my_cv.pdf" download="Dipesh_Sapkota_CV.pdf" className="px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-500 transition-all shadow-[0_0_20px_rgba(3,177,252,0.4)] hover:shadow-[0_0_30px_rgba(3,177,252,0.6)] hover:-translate-y-1 flex items-center gap-2">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                  Download CV
                 </a>
                 <a href="#contact" className={`px-8 py-4 border font-bold rounded-xl transition-all hover:-translate-y-1 ${isDark ? 'border-slate-600 hover:bg-slate-800 hover:border-slate-500 bg-slate-900/50' : 'border-slate-300 hover:bg-white bg-white/50'}`}>
                   Get In Touch
@@ -431,6 +435,7 @@ function App() {
                 className={`relative z-10 w-full max-w-[280px] lg:max-w-[380px] rounded-full shadow-[0_0_40px_rgba(3,177,252,0.4)] border-2 transition-transform duration-500 hover:scale-105 cursor-pointer ${isDark ? 'border-blue-500' : 'border-blue-400'}`}
               />
             </div>
+            
           </div>
         </section>
 
