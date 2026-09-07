@@ -45,10 +45,10 @@ const EXPERIENCE = [
 ];
 
 const EDUCATION = [
-  { 
-    year: "2026 - Present", 
-    degree: "Bachelor in Computer Engineering", 
-    school: "Institute of Engineering (IOE), Thapathali Campus", 
+  {
+    year: "2026 - Present",
+    degree: "Bachelor in Computer Engineering",
+    school: "Institute of Engineering (IOE), Thapathali Campus",
     desc: "Currently pursuing my 2nd semester."
   },
   { year: "2022 - 2024", degree: "School Leaving Certificate (SLC)", school: "Shree Janak Model Secondary School", desc: "GPA: 3.88 / 4.00" },
@@ -63,52 +63,52 @@ const PROJECTS = [
 ];
 
 const GALLERY_IMAGES = [
-  { 
-    id: 1, 
-    title: "Participating in college cricket tournament", 
-    img: "/cricket.jpeg" 
+  {
+    id: 1,
+    title: "Participating in college cricket tournament",
+    img: "/cricket.jpeg"
   },
-  { 
-    id: 2, 
-    title: "Successfully conducted Yathartha", 
-    img: "/yathartha.jpg" 
+  {
+    id: 2,
+    title: "Successfully conducted Yathartha",
+    img: "/yathartha.jpg"
   },
-  { 
-    id: 3, 
-    title: "Celebrating incredible results of Clamphook with the team", 
-    img: "/clamphook.jpeg" 
+  {
+    id: 3,
+    title: "Celebrating incredible results of Clamphook with the team",
+    img: "/clamphook.jpeg"
   },
-  { 
-    id: 4, 
-    title: "Attending boring lectures", 
-    img: "/lecture.jpg" 
+  {
+    id: 4,
+    title: "Attending boring lectures",
+    img: "/lecture.jpg"
   }
 ];
 
 const CERTIFICATES = [
-  { 
-    id: 1, 
-    title: "Graphic Design Masterclass", 
-    org: "Udemy", 
-    img: "/graphic-design.png" 
+  {
+    id: 1,
+    title: "Graphic Design Masterclass",
+    org: "Udemy",
+    img: "/graphic-design.png"
   },
-  { 
-    id: 2, 
-    title: "Motion Design with Figma", 
-    org: "Udemy", 
-    img: "/motion-design.png" 
+  {
+    id: 2,
+    title: "Motion Design with Figma",
+    org: "Udemy",
+    img: "/motion-design.png"
   },
-  { 
-    id: 3, 
-    title: "After Effects Course", 
-    org: "EDUCBA", 
-    img: "/after-effects.png" 
+  {
+    id: 3,
+    title: "After Effects Course",
+    org: "EDUCBA",
+    img: "/after-effects.png"
   },
-  { 
-    id: 4, 
-    title: "DaVinci Resolve 16: Color Correction", 
-    org: "Blackmagicdesign", 
-    img: "/davinci-resolve.png" 
+  {
+    id: 4,
+    title: "DaVinci Resolve 16: Color Correction",
+    org: "Blackmagicdesign",
+    img: "/davinci-resolve.png"
   },
 ];
 
@@ -117,17 +117,17 @@ export default function App() {
   const [isDark, setIsDark] = useState(false);
   const [formStatus, setFormStatus] = useState("");
   const canvasRef = useRef(null);
-  
+
   // Typewriter Effect State
   const [text, setText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
   const typingSpeed = 100;
   const roles = [
-    "Programmer", 
-    "Video Editor", 
-    "Graphics Designer", 
-    "Motion Designer", 
+    "Programmer",
+    "Video Editor",
+    "Graphics Designer",
+    "Motion Designer",
     "Content Creator"
   ];
 
@@ -135,9 +135,9 @@ export default function App() {
   const handleContactSubmit = async (event) => {
     event.preventDefault();
     setFormStatus("Transmitting payload...");
-    
+
     const formData = new FormData(event.target);
-    formData.append("access_key", "e6fd2e32-2b5c-4a3f-81d9-aa02f4dfcc76"); 
+    formData.append("access_key", "e6fd2e32-2b5c-4a3f-81d9-aa02f4dfcc76");
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -147,7 +147,7 @@ export default function App() {
       const data = await response.json();
       if (data.success) {
         setFormStatus("Message transmitted successfully!");
-        event.target.reset(); 
+        event.target.reset();
       } else {
         setFormStatus("Error: Transmission failed.");
       }
@@ -230,9 +230,9 @@ export default function App() {
     function connect() {
       for (let a = 0; a < particlesArray.length; a++) {
         for (let b = a; b < particlesArray.length; b++) {
-          let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) 
-                       + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
-          
+          let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
+            + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+
           if (distance < (canvas.width / 7) * (canvas.height / 7)) {
             let opacityValue = 1 - (distance / 20000);
             ctx.strokeStyle = isDark ? `rgba(3, 177, 252, ${opacityValue * 0.15})` : `rgba(3, 177, 252, ${opacityValue * 0.25})`;
@@ -243,11 +243,11 @@ export default function App() {
             ctx.stroke();
           }
         }
-        
+
         if (mouse.x != null && mouse.y != null) {
-          let distanceToMouse = ((particlesArray[a].x - mouse.x) * (particlesArray[a].x - mouse.x)) 
-                              + ((particlesArray[a].y - mouse.y) * (particlesArray[a].y - mouse.y));
-          
+          let distanceToMouse = ((particlesArray[a].x - mouse.x) * (particlesArray[a].x - mouse.x))
+            + ((particlesArray[a].y - mouse.y) * (particlesArray[a].y - mouse.y));
+
           if (distanceToMouse < mouse.radius * mouse.radius) {
             let opacityValue = 1 - (distanceToMouse / (mouse.radius * mouse.radius));
             ctx.strokeStyle = `rgba(3, 177, 252, ${opacityValue * 0.8})`;
@@ -279,13 +279,13 @@ export default function App() {
       window.removeEventListener('mouseout', handleMouseOut);
       window.removeEventListener('resize', handleResize);
     };
-  }, [isDark]); 
+  }, [isDark]);
 
   // --- TYPEWRITER LOGIC ---
   useEffect(() => {
     let timer;
     const currentRole = roles[loopNum % roles.length];
-    
+
     if (isDeleting) {
       timer = setTimeout(() => setText(currentRole.substring(0, text.length - 1)), typingSpeed / 2);
     } else {
@@ -314,10 +314,10 @@ export default function App() {
 
   return (
     <div className={`min-h-screen font-sans transition-colors duration-500 ${theme.bg} ${theme.text} relative selection:bg-blue-500/30`}>
-      
+
       {/* ACTUAL INTERACTIVE PARTICLE CANVAS */}
-      <canvas 
-        ref={canvasRef} 
+      <canvas
+        ref={canvasRef}
         className="fixed inset-0 w-full h-full pointer-events-none z-0"
       />
 
@@ -336,7 +336,7 @@ export default function App() {
             <a href="#certificates" className="hover:text-blue-500 transition-colors">Certificates</a>
             <a href="#contact" className="hover:text-blue-500 transition-colors">Contact</a>
           </div>
-          <button 
+          <button
             onClick={() => setIsDark(!isDark)}
             className="w-10 h-10 rounded-full flex items-center justify-center border border-slate-500/30 hover:bg-slate-500/10 transition-colors shadow-sm"
           >
@@ -347,13 +347,13 @@ export default function App() {
 
       {/* Main Content Wrapper */}
       <div className="relative z-10">
-        
+
         {/* Hero Section */}
         <section id="home" className="pt-32 pb-20 px-6 min-h-[95vh] flex items-center max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center w-full">
             <div className="order-2 md:order-1">
               <div className="inline-block px-4 py-1.5 rounded-full border border-blue-500/50 bg-blue-500/10 text-blue-500 font-mono text-sm font-bold mb-6 backdrop-blur-sm shadow-[0_0_15px_rgba(3,177,252,0.5)]">
-                <svg className="w-4 h-4 inline-block mr-2 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg> 
+                <svg className="w-4 h-4 inline-block mr-2 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                 System Online
               </div>
               <h1 className="text-5xl lg:text-7xl font-black tracking-tight mb-6 leading-tight">
@@ -365,19 +365,19 @@ export default function App() {
               <p className={`mt-6 max-w-xl text-lg leading-relaxed ${theme.muted}`}>
                 Computer Engineering student blending logical problem-solving with high-end creative execution. Exploring the intersection of code, circuits, and visual media.
               </p>
-              
+
               {/* Social Media Links (Native SVGs) */}
               <div className="flex gap-5 mt-8 items-center flex-wrap">
                 <a href="https://github.com/dsz.ae" target="_blank" rel="noreferrer" className={`flex items-center gap-2 ${theme.muted} hover:text-blue-500 transition-colors font-mono font-semibold`}>
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.332-5.467-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.332-5.467-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
                   <span>dsz.ae</span>
                 </a>
                 <a href="https://linkedin.com/in/dsz.ae" target="_blank" rel="noreferrer" className={`flex items-center gap-2 ${theme.muted} hover:text-blue-500 transition-colors font-mono font-semibold`}>
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
                   <span>dsz.ae</span>
                 </a>
                 <a href="https://instagram.com/dsz.ae" target="_blank" rel="noreferrer" className={`flex items-center gap-2 ${theme.muted} hover:text-blue-500 transition-colors font-mono font-semibold`}>
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" /></svg>
                   <span>dsz.ae</span>
                 </a>
               </div>
@@ -395,9 +395,9 @@ export default function App() {
             {/* Logo/Avatar Side */}
             <div className="order-1 md:order-2 flex justify-center items-center relative pt-10 md:pt-0">
               <div className={`absolute w-[320px] h-[320px] lg:w-[420px] lg:h-[420px] rounded-full border border-dashed animate-[spin_20s_linear_infinite] ${isDark ? 'border-blue-500/30' : 'border-blue-500/20'}`}></div>
-              <img 
-                src="/ChatGPT Image Sep 7, 2026, 09_05_40 PM.png" 
-                alt="Dipesh Sapkota Logo" 
+              <img
+                src="/ChatGPT Image Sep 7, 2026, 09_05_40 PM.png"
+                alt="Dipesh Sapkota Logo"
                 className={`relative z-10 w-full max-w-[280px] lg:max-w-[380px] rounded-full shadow-[0_0_40px_rgba(3,177,252,0.4)] border-2 transition-transform duration-500 hover:scale-105 cursor-pointer ${isDark ? 'border-blue-500' : 'border-blue-400'}`}
               />
             </div>
@@ -409,7 +409,7 @@ export default function App() {
           <h2 className="text-4xl font-black mb-12 flex items-center gap-4">
             <span className="text-blue-500">/</span> Technical Proficiency
           </h2>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             {SKILL_CATEGORIES.map((category, idx) => (
               <div key={idx} className={`p-8 rounded-3xl border backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 ${theme.card}`}>
@@ -417,7 +417,7 @@ export default function App() {
                   {category.icon}
                 </div>
                 <h3 className="text-2xl font-bold mb-8">{category.title}</h3>
-                
+
                 <div className="space-y-8">
                   {category.skills.map((skill, sIdx) => (
                     <div key={sIdx}>
@@ -429,8 +429,8 @@ export default function App() {
                         <span className="font-mono text-xs font-bold">{skill.percent}%</span>
                       </div>
                       <div className={`w-full h-2 rounded-full overflow-hidden ${isDark ? 'bg-slate-800' : 'bg-slate-200'}`}>
-                        <div 
-                          className={`h-full rounded-full ${skill.color} shadow-[0_0_8px_currentColor]`} 
+                        <div
+                          className={`h-full rounded-full ${skill.color} shadow-[0_0_8px_currentColor]`}
                           style={{ width: `${skill.percent}%` }}
                         ></div>
                       </div>
@@ -448,11 +448,11 @@ export default function App() {
             <span className="text-blue-500">/</span> My Journey
           </h2>
           <div className="grid lg:grid-cols-2 gap-8">
-            
+
             {/* Experience Column */}
             <div className={`p-8 md:p-12 rounded-3xl border backdrop-blur-xl transition-colors duration-300 ${theme.card}`}>
               <h3 className="text-2xl font-bold mb-10 flex items-center gap-3">
-                <svg className="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg> 
+                <svg className="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                 Experience
               </h3>
               <div className="space-y-10">
@@ -470,7 +470,7 @@ export default function App() {
             {/* Education Column */}
             <div className={`p-8 md:p-12 rounded-3xl border backdrop-blur-xl transition-colors duration-300 ${theme.card}`}>
               <h3 className="text-2xl font-bold mb-10 flex items-center gap-3">
-                <svg className="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/></svg>
+                <svg className="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z" /><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" /></svg>
                 Education
               </h3>
               <div className="space-y-10">
@@ -527,10 +527,24 @@ export default function App() {
           <p className={`mb-12 text-lg ${theme.muted}`}>A curated space for current media projects, photography, and future uploads.</p>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {GALLERY_IMAGES.map((item) => (
-              <div key={item.id} className={`aspect-square rounded-2xl border flex items-center justify-center overflow-hidden relative group cursor-pointer backdrop-blur-xl ${theme.card}`}>
-                <img src={item.src} alt={item.alt} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onError={(e) => { e.target.src = 'https://via.placeholder.com/400x400?text=Image+Slot' }} />
-                <div className="absolute inset-0 bg-blue-600/80 translate-y-full group-hover:translate-y-0 transition-transform duration-300 flex items-center justify-center backdrop-blur-sm">
-                  <span className="text-white font-bold tracking-widest text-lg">VIEW ITEM</span>
+              <div key={item.id} className="group relative w-full aspect-video rounded-xl overflow-hidden border border-gray-200/20 bg-gray-800 shadow-lg cursor-default">
+
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+
+                {/* 
+        bg-gradient-to-t from-white via-white/80 to-transparent: Creates the fading background
+        flex flex-col justify-end: Pushes the text to the bottom
+    */}
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
+
+                  {/* translate-y-4 group-hover:translate-y-0 makes the text slide up slightly when hovering */}
+                  <p className="text-slate-900 text-sm md:text-base font-bold text-center translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                    {item.title}
+                  </p>
                 </div>
               </div>
             ))}
@@ -562,7 +576,7 @@ export default function App() {
               <div>
                 <h2 className="text-4xl md:text-5xl font-black mb-6">Let's Connect</h2>
                 <p className={`mb-10 text-lg ${theme.muted}`}>Open for freelance projects, collaborations, and technical discussions.</p>
-                
+
                 <div className="space-y-6">
                   {/* Native SVG Icons for Location, Phone, Email */}
                   <div className="flex items-center gap-4">
@@ -594,39 +608,39 @@ export default function App() {
                   </div>
                 </div>
               </div>
-              
+
               <form className="space-y-6" onSubmit={handleContactSubmit}>
                 <div className="grid md:grid-cols-2 gap-6">
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     name="name"
-                    placeholder="Your Name" 
-                    className={`w-full px-6 py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all ${theme.input}`} 
-                    required 
+                    placeholder="Your Name"
+                    className={`w-full px-6 py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all ${theme.input}`}
+                    required
                   />
-                  <input 
-                    type="email" 
+                  <input
+                    type="email"
                     name="email"
-                    placeholder="Your Email" 
-                    className={`w-full px-6 py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all ${theme.input}`} 
-                    required 
+                    placeholder="Your Email"
+                    className={`w-full px-6 py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all ${theme.input}`}
+                    required
                   />
                 </div>
-                <textarea 
+                <textarea
                   name="message"
-                  placeholder="Your Message..." 
-                  rows="5" 
-                  className={`w-full px-6 py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all resize-none ${theme.input}`} 
+                  placeholder="Your Message..."
+                  rows="5"
+                  className={`w-full px-6 py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all resize-none ${theme.input}`}
                   required
                 ></textarea>
-                
-                <button 
-                  type="submit" 
+
+                <button
+                  type="submit"
                   className="px-10 py-5 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-500 transition-colors w-full shadow-lg shadow-blue-600/30"
                 >
                   Transmit Message
                 </button>
-                
+
                 {formStatus && (
                   <p className={`font-mono text-sm text-center font-bold mt-4 ${formStatus.includes("Error") ? "text-red-500" : "text-emerald-500"}`}>
                     {formStatus}
@@ -642,23 +656,23 @@ export default function App() {
           {/* Explicit Native SVG Social Handles in Footer */}
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-8">
             <a href="https://github.com/dsz.ae" target="_blank" rel="noreferrer" className={`flex items-center gap-2 hover:text-blue-500 transition-colors font-bold`}>
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.332-5.467-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.332-5.467-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
               dsz.ae
             </a>
             <a href="https://linkedin.com/in/dsz.ae" target="_blank" rel="noreferrer" className={`flex items-center gap-2 hover:text-blue-500 transition-colors font-bold`}>
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
               dsz.ae
             </a>
             <a href="https://instagram.com/dsz.ae" target="_blank" rel="noreferrer" className={`flex items-center gap-2 hover:text-blue-500 transition-colors font-bold`}>
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" /></svg>
               @dsz.ae
             </a>
             <a href="https://facebook.com/dsz.ae" target="_blank" rel="noreferrer" className={`flex items-center gap-2 hover:text-blue-500 transition-colors font-bold`}>
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" /></svg>
               @dsz.ae
             </a>
             <a href="https://tiktok.com/@dsz.ae" target="_blank" rel="noreferrer" className={`flex items-center gap-2 hover:text-blue-500 transition-colors font-bold`}>
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.12-3.44-3.37-3.43-5.68.02-1.3.39-2.58 1.05-3.71 1.4-2.28 3.96-3.66 6.64-3.64v4.01c-1.14-.02-2.31.25-3.28.94-.85.64-1.36 1.7-1.31 2.8.04 1.15.65 2.21 1.63 2.79.9.54 2.01.7 3.03.49 1.15-.22 2.11-.97 2.53-2.06.19-.51.27-1.07.28-1.61.03-4.75.01-9.5.02-14.25z"/></svg>
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.12-3.44-3.37-3.43-5.68.02-1.3.39-2.58 1.05-3.71 1.4-2.28 3.96-3.66 6.64-3.64v4.01c-1.14-.02-2.31.25-3.28.94-.85.64-1.36 1.7-1.31 2.8.04 1.15.65 2.21 1.63 2.79.9.54 2.01.7 3.03.49 1.15-.22 2.11-.97 2.53-2.06.19-.51.27-1.07.28-1.61.03-4.75.01-9.5.02-14.25z" /></svg>
               @dsz.ae
             </a>
           </div>
