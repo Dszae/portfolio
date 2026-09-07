@@ -86,50 +86,70 @@ const GALLERY_IMAGES = [
 ];
 
 const CERTIFICATES = [
-  {
-    id: 1,
-    title: "Graphic Design Masterclass",
-    org: "Udemy",
-    img: "/graphic-design.png"
+  { 
+    id: 1, 
+    title: "Graphic Design Masterclass", 
+    org: "Udemy", 
+    img: "/graphic-design.png" 
   },
-  {
-    id: 2,
-    title: "Motion Design with Figma",
-    org: "Udemy",
-    img: "/motion-design.png"
+  { 
+    id: 2, 
+    title: "Motion Design with Figma", 
+    org: "Udemy", 
+    img: "/motion-design.png" 
   },
-  {
-    id: 3,
-    title: "After Effects Course",
-    org: "EDUCBA",
-    img: "/after-effects.png"
+  { 
+    id: 3, 
+    title: "After Effects Course", 
+    org: "EDUCBA", 
+    img: "/after-effects.png" 
   },
-  {
-    id: 4,
-    title: "DaVinci Resolve 16: Color Correction",
-    org: "Blackmagicdesign",
-    img: "/davinci-resolve.png"
+  { 
+    id: 4, 
+    title: "DaVinci Resolve 16: Color Correction", 
+    org: "Blackmagicdesign", 
+    img: "/davinci-resolve.png" 
   },
+  { 
+    id: 5, 
+    title: "Adobe Premiere Pro CC Masterclass", 
+    org: "Udemy", 
+    img: "/premiere-pro.png" 
+  },
+  { 
+    id: 6, 
+    title: "Web Development Masterclass", 
+    org: "Udemy", 
+    img: "/web-development.png" 
+  },
+  { 
+    id: 7, 
+    title: "Google Adwords Crash Course 2021", 
+    org: "Udemy", 
+    img: "/google-adwords.png" 
+  },
+  { 
+    id: 8, 
+    title: "Design Principles, Typography & Color Theory", 
+    org: "Udemy", 
+    img: "/design-principles.jpg" 
+  }
 ];
 
 
-export default function App() {
+// --- MAIN COMPONENT STARTS HERE ---
+function App() {
+  // --- STATE VARIABLES ---
   const [isDark, setIsDark] = useState(false);
   const [formStatus, setFormStatus] = useState("");
   const canvasRef = useRef(null);
-
-  // Typewriter Effect State
+  
+  // Typewriter states
   const [text, setText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
   const typingSpeed = 100;
-  const roles = [
-    "Programmer",
-    "Video Editor",
-    "Graphics Designer",
-    "Motion Designer",
-    "Content Creator"
-  ];
+  const roles = ["Video Editor", "Graphics Designer", "Computer Engineer"];
 
   // --- FORM SUBMISSION LOGIC ---
   const handleContactSubmit = async (event) => {
@@ -683,3 +703,5 @@ export default function App() {
     </div>
   );
 }
+
+export default App;
