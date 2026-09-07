@@ -63,9 +63,26 @@ const PROJECTS = [
 ];
 
 const GALLERY_IMAGES = [
-  { id: 1, src: "/gallery-placeholder.jpg", alt: "Gallery Image 1" },
-  { id: 2, src: "/gallery-placeholder.jpg", alt: "Gallery Image 2" },
-  { id: 3, src: "/gallery-placeholder.jpg", alt: "Gallery Image 3" },
+  { 
+    id: 1, 
+    title: "Participating in college cricket tournament", 
+    img: "/cricket.jpeg" 
+  },
+  { 
+    id: 2, 
+    title: "Successfully conducted Yathartha", 
+    img: "/yathartha.jpg" 
+  },
+  { 
+    id: 3, 
+    title: "Celebrating incredible results of Clamphook with the team", 
+    img: "/clamphook.jpeg" 
+  },
+  { 
+    id: 4, 
+    title: "Attending boring lectures", 
+    img: "/lecture.jpg" 
+  }
 ];
 
 const CERTIFICATES = [
