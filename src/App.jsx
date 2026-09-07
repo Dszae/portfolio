@@ -82,6 +82,16 @@ const GALLERY_IMAGES = [
     id: 4,
     title: "Attending boring lectures",
     img: "/lecture.jpg"
+  },
+  {
+    id: 5,
+    title: "Deep in focus and exploring concepts",
+    img: "/exploring.png"
+  },
+  {
+    id: 6,
+    title: "Nagdhunga Surung Marga",
+    img: "/nagdhunga surung marga.png"
   }
 ];
 
