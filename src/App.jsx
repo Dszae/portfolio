@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 
 // --- DATA ARRAYS ---
 const SKILL_CATEGORIES = [
@@ -804,6 +805,7 @@ function App() {
         </div>
       )}
 
+      <Analytics />
     </div>
   );
 }
