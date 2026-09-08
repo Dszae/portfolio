@@ -63,109 +63,52 @@ const PROJECTS = [
 ];
 
 const GALLERY_IMAGES = [
-  {
-    id: 1,
-    title: "Participating in college cricket tournament",
-    img: "/cricket.jpeg"
-  },
-  {
-    id: 2,
-    title: "Successfully conducted Yathartha",
-    img: "/yathartha.jpg"
-  },
-  {
-    id: 3,
-    title: "Celebrating incredible results of Clamphook with the team",
-    img: "/clamphook.jpeg"
-  },
-  {
-    id: 4,
-    title: "Attending boring lectures",
-    img: "/lecture.jpg"
-  },
-  {
-    id: 5,
-    title: "Deep in focus and exploring concepts",
-    img: "/exploring.png"
-  },
-  {
-    id: 6,
-    title: "Nagdhunga Surung Marga",
-    img: "/nagdhunga surung marga.png"
-  }
+  { id: 1, title: "Participating in college cricket tournament", img: "/cricket.jpeg" },
+  { id: 2, title: "Successfully conducted Yathartha", img: "/yathartha.jpg" },
+  { id: 3, title: "Celebrating incredible results of Clamphook with the team", img: "/clamphook.jpeg" },
+  { id: 4, title: "Attending boring lectures", img: "/lecture.jpg" },
+  { id: 5, title: "Deep in focus and exploring concepts", img: "/exploring.png" },
+  { id: 6, title: "Nagdhunga Surung Marga", img: "/nagdhunga surung marga.png" }
 ];
 
 const CERTIFICATES = [
-  {
-    id: 1,
-    title: "Graphic Design Masterclass",
-    org: "Udemy",
-    img: "/graphic-design.png"
-  },
-  {
-    id: 2,
-    title: "Motion Design with Figma",
-    org: "Udemy",
-    img: "/motion-design.png"
-  },
-  {
-    id: 3,
-    title: "After Effects Course",
-    org: "EDUCBA",
-    img: "/after-effects.png"
-  },
-  {
-    id: 4,
-    title: "DaVinci Resolve 16: Color Correction",
-    org: "Blackmagicdesign",
-    img: "/davinci-resolve.png"
-  },
-  {
-    id: 5,
-    title: "Adobe Premiere Pro CC Masterclass",
-    org: "Udemy",
-    img: "/premiere-pro.png"
-  },
-  {
-    id: 6,
-    title: "Web Development Masterclass",
-    org: "Udemy",
-    img: "/web-development.png"
-  },
-  {
-    id: 7,
-    title: "Google Adwords Crash Course 2021",
-    org: "Udemy",
-    img: "/google-adwords.png"
-  },
-  {
-    id: 8,
-    title: "Design Principles, Typography & Color Theory",
-    org: "Udemy",
-    img: "/design-principles.jpg"
-  }
+  { id: 1, title: "Graphic Design Masterclass", org: "Udemy", img: "/graphic-design.png" },
+  { id: 2, title: "Motion Design with Figma", org: "Udemy", img: "/motion-design.png" },
+  { id: 3, title: "After Effects Course", org: "EDUCBA", img: "/after-effects.png" },
+  { id: 4, title: "DaVinci Resolve 16: Color Correction", org: "Blackmagicdesign", img: "/davinci-resolve.png" },
+  { id: 5, title: "Adobe Premiere Pro CC Masterclass", org: "Udemy", img: "/premiere-pro.png" },
+  { id: 6, title: "Web Development Masterclass", org: "Udemy", img: "/web-development.png" },
+  { id: 7, title: "Google Adwords Crash Course 2021", org: "Udemy", img: "/google-adwords.png" },
+  { id: 8, title: "Design Principles, Typography & Color Theory", org: "Udemy", img: "/design-principles.jpg" }
 ];
-
 
 // --- MAIN COMPONENT STARTS HERE ---
 function App() {
-  // --- STATE VARIABLES ---
   const [isDark, setIsDark] = useState(false);
   const [formStatus, setFormStatus] = useState("");
   const canvasRef = useRef(null);
+  
+  // --- MODAL STATE ---
+  const [selectedImage, setSelectedImage] = useState(null);
 
-  // Typewriter states
   const [text, setText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
   const typingSpeed = 100;
   const roles = ["Video Editor", "Graphics Designer", "Computer Engineer"];
 
-  // --- FORM SUBMISSION LOGIC ---
+  // Lock scrolling when modal is open
+  useEffect(() => {
+    if (selectedImage) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [selectedImage]);
+
   const handleContactSubmit = async (event) => {
     event.preventDefault();
     setFormStatus("Transmitting payload...");
-
     const formData = new FormData(event.target);
     formData.append("access_key", "e6fd2e32-2b5c-4a3f-81d9-aa02f4dfcc76");
 
@@ -186,7 +129,7 @@ function App() {
     }
   };
 
-  // --- CANVAS PARTICLE NETWORK ---
+  // --- CANVAS PARTICLE NETWORK (FADED WITH CURSOR GLOW) ---
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -245,14 +188,14 @@ function App() {
 
     function init() {
       particlesArray = [];
-      let numberOfParticles = (canvas.height * canvas.width) / 10000;
+      let numberOfParticles = (canvas.height * canvas.width) / 12000;
       for (let i = 0; i < numberOfParticles; i++) {
         let size = (Math.random() * 2) + 1;
         let x = (Math.random() * ((canvas.width - size * 2) - (size * 2)) + size * 2);
         let y = (Math.random() * ((canvas.height - size * 2) - (size * 2)) + size * 2);
         let directionX = (Math.random() * 1) - 0.5;
         let directionY = (Math.random() * 1) - 0.5;
-        let color = isDark ? 'rgba(3, 177, 252, 0.8)' : 'rgba(3, 177, 252, 0.5)';
+        let color = isDark ? 'rgba(3, 177, 252, 0.15)' : 'rgba(3, 177, 252, 0.1)';
         particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
       }
     }
@@ -265,7 +208,7 @@ function App() {
 
           if (distance < (canvas.width / 7) * (canvas.height / 7)) {
             let opacityValue = 1 - (distance / 20000);
-            ctx.strokeStyle = isDark ? `rgba(3, 177, 252, ${opacityValue * 0.15})` : `rgba(3, 177, 252, ${opacityValue * 0.25})`;
+            ctx.strokeStyle = isDark ? `rgba(3, 177, 252, ${opacityValue * 0.05})` : `rgba(3, 177, 252, ${opacityValue * 0.08})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
@@ -280,8 +223,8 @@ function App() {
 
           if (distanceToMouse < mouse.radius * mouse.radius) {
             let opacityValue = 1 - (distanceToMouse / (mouse.radius * mouse.radius));
-            ctx.strokeStyle = `rgba(3, 177, 252, ${opacityValue * 0.8})`;
-            ctx.lineWidth = 1.5;
+            ctx.strokeStyle = `rgba(3, 177, 252, ${opacityValue * 0.6})`;
+            ctx.lineWidth = 1.2;
             ctx.beginPath();
             ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
             ctx.lineTo(mouse.x, mouse.y);
@@ -294,6 +237,20 @@ function App() {
     function animate() {
       animationFrameId = requestAnimationFrame(animate);
       ctx.clearRect(0, 0, innerWidth, innerHeight);
+      
+      if (mouse.x != null && mouse.y != null) {
+        const glowRadius = 300;
+        const gradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, glowRadius);
+        
+        gradient.addColorStop(0, isDark ? 'rgba(3, 177, 252, 0.15)' : 'rgba(3, 177, 252, 0.1)');
+        gradient.addColorStop(1, 'rgba(3, 177, 252, 0)');
+        
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(mouse.x, mouse.y, glowRadius, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
       for (let i = 0; i < particlesArray.length; i++) {
         particlesArray[i].update();
       }
@@ -311,7 +268,6 @@ function App() {
     };
   }, [isDark]);
 
-  // --- TYPEWRITER LOGIC ---
   useEffect(() => {
     let timer;
     const currentRole = roles[loopNum % roles.length];
@@ -331,7 +287,6 @@ function App() {
     return () => clearTimeout(timer);
   }, [text, isDeleting, loopNum]);
 
-  // --- THEME CLASSES ---
   const theme = {
     bg: isDark ? 'bg-slate-950' : 'bg-slate-50',
     text: isDark ? 'text-slate-100' : 'text-slate-900',
@@ -345,13 +300,11 @@ function App() {
   return (
     <div className={`min-h-screen font-sans transition-colors duration-500 ${theme.bg} ${theme.text} relative selection:bg-blue-500/30`}>
 
-      {/* ACTUAL INTERACTIVE PARTICLE CANVAS */}
       <canvas
         ref={canvasRef}
         className="fixed inset-0 w-full h-full pointer-events-none z-0"
       />
 
-      {/* Top Navigation */}
       <nav className={`fixed top-0 w-full backdrop-blur-md border-b z-50 transition-colors duration-300 ${theme.nav}`}>
         <div className="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center relative z-10">
           <a href="#home" className="text-2xl font-black tracking-tighter">
@@ -359,11 +312,11 @@ function App() {
           </a>
           <div className="hidden md:flex gap-4 lg:gap-8 font-mono text-sm font-semibold uppercase tracking-wider">
             <a href="#home" className="hover:text-blue-500 transition-colors">Home</a>
+            <a href="#about" className="hover:text-blue-500 transition-colors">About</a>
             <a href="#skills" className="hover:text-blue-500 transition-colors">Skills</a>
             <a href="#resume" className="hover:text-blue-500 transition-colors">Resume</a>
             <a href="#projects" className="hover:text-blue-500 transition-colors">Projects</a>
             <a href="#gallery" className="hover:text-blue-500 transition-colors">Gallery</a>
-            <a href="#certificates" className="hover:text-blue-500 transition-colors">Certificates</a>
             <a href="#contact" className="hover:text-blue-500 transition-colors">Contact</a>
           </div>
           <button
@@ -375,14 +328,11 @@ function App() {
         </div>
       </nav>
 
-      {/* Main Content Wrapper */}
       <div className="relative z-10">
 
-        {/* Hero Section */}
         <section id="home" className="pt-32 pb-20 px-6 min-h-[95vh] flex items-center max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center w-full">
             
-            {/* Text Side */}
             <div className="order-2 md:order-1">
               <div className="inline-block px-4 py-1.5 rounded-full border border-blue-500/50 bg-blue-500/10 text-blue-500 font-mono text-sm font-bold mb-6 backdrop-blur-sm shadow-[0_0_15px_rgba(3,177,252,0.5)]">
                 <svg className="w-4 h-4 inline-block mr-2 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
@@ -398,7 +348,6 @@ function App() {
                 Computer Engineering student blending logical problem-solving with high-end creative execution. Exploring the intersection of code, circuits, and visual media.
               </p>
 
-              {/* Social Media Links (Native SVGs) */}
               <div className="flex gap-5 mt-8 items-center flex-wrap">
                 <a href="https://github.com/dszae" target="_blank" rel="noreferrer" className={`flex items-center gap-2 ${theme.muted} hover:text-blue-500 transition-colors font-mono font-semibold`}>
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.332-5.467-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
@@ -414,7 +363,6 @@ function App() {
                 </a>
               </div>
 
-              {/* Download CV Buttons */}
               <div className="mt-10 flex flex-wrap gap-4">
                 <a href="/my_cv.pdf" download="Dipesh_Sapkota_CV.pdf" className="px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-500 transition-all shadow-[0_0_20px_rgba(3,177,252,0.4)] hover:shadow-[0_0_30px_rgba(3,177,252,0.6)] hover:-translate-y-1 flex items-center gap-2">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
@@ -426,7 +374,6 @@ function App() {
               </div>
             </div>
 
-            {/* Logo/Avatar Side */}
             <div className="order-1 md:order-2 flex justify-center items-center relative pt-10 md:pt-0">
               <div className={`absolute w-[320px] h-[320px] lg:w-[420px] lg:h-[420px] rounded-full border border-dashed animate-[spin_20s_linear_infinite] ${isDark ? 'border-blue-500/30' : 'border-blue-500/20'}`}></div>
               <img
@@ -436,6 +383,67 @@ function App() {
               />
             </div>
             
+          </div>
+        </section>
+
+        {/* About Me Section */}
+        <section id="about" className="py-24 px-6 max-w-7xl mx-auto">
+          <h2 className="text-4xl font-black mb-12 flex items-center gap-4">
+            <span className="text-blue-500">/</span> About Me
+          </h2>
+          <div className="grid md:grid-cols-12 gap-8 items-center">
+            
+            {/* Text Content */}
+            <div className={`md:col-span-7 p-8 md:p-12 rounded-[2.5rem] border backdrop-blur-xl ${theme.card}`}>
+              <h3 className="text-2xl md:text-3xl font-bold mb-6 leading-tight">Bridging Logic and Visual Execution</h3>
+              <p className={`text-lg leading-relaxed mb-6 ${theme.muted}`}>
+                Hello! I am a multi-disciplinary creator based in Kathmandu, Nepal. As a Computer Engineering student at Thapathali Campus, I thrive on solving complex logical problems, analyzing circuits, and building robust systems.
+              </p>
+              <p className={`text-lg leading-relaxed ${theme.muted}`}>
+                However, my passion extends far beyond code. With over 4 years of professional experience as a freelance Video Editor and Motion Graphics Designer, I have collaborated globally to craft compelling visual stories. I believe the most impactful products live precisely at the intersection of technical engineering and high-end artistic design.
+              </p>
+            </div>
+            
+            {/* Stat Cards with professional SVG icons */}
+            <div className="md:col-span-5 flex flex-col gap-6">
+              
+              <div className={`p-6 md:p-8 rounded-3xl border backdrop-blur-xl flex items-center gap-6 transition-all duration-300 hover:-translate-y-1 ${theme.card}`}>
+                <div className="w-16 h-16 rounded-full bg-blue-500/10 flex items-center justify-center shadow-[0_0_15px_rgba(3,177,252,0.2)] border border-blue-500/20">
+                  <svg className="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="text-3xl font-black mb-1">4+</h4>
+                  <p className={`font-mono text-sm uppercase font-bold tracking-wider ${theme.muted}`}>Years Experience</p>
+                </div>
+              </div>
+              
+              <div className={`p-6 md:p-8 rounded-3xl border backdrop-blur-xl flex items-center gap-6 transition-all duration-300 hover:-translate-y-1 ${theme.card}`}>
+                <div className="w-16 h-16 rounded-full bg-blue-500/10 flex items-center justify-center shadow-[0_0_15px_rgba(3,177,252,0.2)] border border-blue-500/20">
+                  <svg className="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="text-3xl font-black mb-1">50+</h4>
+                  <p className={`font-mono text-sm uppercase font-bold tracking-wider ${theme.muted}`}>Global Clients</p>
+                </div>
+              </div>
+
+              <div className={`p-6 md:p-8 rounded-3xl border backdrop-blur-xl flex items-center gap-6 transition-all duration-300 hover:-translate-y-1 ${theme.card}`}>
+                <div className="w-16 h-16 rounded-full bg-blue-500/10 flex items-center justify-center shadow-[0_0_15px_rgba(3,177,252,0.2)] border border-blue-500/20">
+                  <svg className="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="text-3xl font-black mb-1">Creative</h4>
+                  <p className={`font-mono text-sm uppercase font-bold tracking-wider ${theme.muted}`}>Design Focus</p>
+                </div>
+              </div>
+            </div>
+
           </div>
         </section>
 
@@ -562,7 +570,11 @@ function App() {
           <p className={`mb-12 text-lg ${theme.muted}`}>A curated space for current media projects, photography, and future uploads.</p>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {GALLERY_IMAGES.map((item) => (
-              <div key={item.id} className="group relative w-full aspect-video rounded-xl overflow-hidden border border-gray-200/20 bg-gray-800 shadow-lg cursor-default">
+              <div 
+                key={item.id} 
+                className="group relative w-full aspect-video rounded-xl overflow-hidden border border-gray-200/20 bg-gray-800 shadow-lg cursor-pointer"
+                onClick={() => setSelectedImage({ src: item.img, title: item.title, desc: 'Visual Archive' })}
+              >
 
                 <img
                   src={item.img}
@@ -570,13 +582,7 @@ function App() {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
 
-                {/* 
-        bg-gradient-to-t from-white via-white/80 to-transparent: Creates the fading background
-        flex flex-col justify-end: Pushes the text to the bottom
-    */}
                 <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
-
-                  {/* translate-y-4 group-hover:translate-y-0 makes the text slide up slightly when hovering */}
                   <p className="text-slate-900 text-sm md:text-base font-bold text-center translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                     {item.title}
                   </p>
@@ -593,7 +599,11 @@ function App() {
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {CERTIFICATES.map((cert) => (
-              <div key={cert.id} className={`p-6 rounded-2xl border backdrop-blur-xl transition-all duration-300 group hover:-translate-y-2 ${theme.card}`}>
+              <div 
+                key={cert.id} 
+                className={`p-6 rounded-2xl border backdrop-blur-xl transition-all duration-300 group hover:-translate-y-2 cursor-pointer ${theme.card}`}
+                onClick={() => setSelectedImage({ src: cert.img, title: cert.title, desc: `Issued by ${cert.org}` })}
+              >
                 <div className={`aspect-[4/3] overflow-hidden rounded-xl border-2 border-dashed flex items-center justify-center mb-6 transition-colors ${isDark ? 'border-slate-700 bg-slate-800/50 group-hover:border-blue-500/50' : 'border-slate-300 bg-slate-100/50 group-hover:border-blue-400'}`}>
                   <img src={cert.img} alt={cert.title} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" onError={(e) => { e.target.src = 'https://via.placeholder.com/400x300?text=Certificate' }} />
                 </div>
@@ -688,7 +698,6 @@ function App() {
 
         {/* Footer */}
         <footer className={`py-10 text-center font-mono text-sm border-t ${isDark ? 'border-slate-800' : 'border-slate-200'} ${theme.muted}`}>
-          {/* Explicit Native SVG Social Handles in Footer */}
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-8">
             <a href="https://github.com/dszae" target="_blank" rel="noreferrer" className={`flex items-center gap-2 hover:text-blue-500 transition-colors font-bold`}>
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.332-5.467-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
@@ -715,6 +724,31 @@ function App() {
         </footer>
 
       </div>
+
+      {/* FULL-SCREEN LIGHTBOX MODAL */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/90 backdrop-blur-sm p-4 md:p-8 opacity-100 transition-opacity duration-300"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div 
+            className="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img 
+              src={selectedImage.src} 
+              alt={selectedImage.title} 
+              className="max-w-full max-h-[75vh] object-contain rounded-xl shadow-2xl" 
+            />
+            
+            <div className="mt-6 text-center">
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-2">{selectedImage.title}</h3>
+              <p className="text-blue-400 font-mono text-sm tracking-wide uppercase">{selectedImage.desc}</p>
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }
