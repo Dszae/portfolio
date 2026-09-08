@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import FadeUp from './FadeUp';
 
 // --- DATA ARRAYS ---
 const SKILL_CATEGORIES = [
@@ -82,6 +83,18 @@ const CERTIFICATES = [
   { id: 8, title: "Design Principles, Typography & Color Theory", org: "Udemy", img: "/design-principles.jpg" }
 ];
 
+// Array to power the navigation links dynamically
+const NAV_LINKS = [
+  { id: 'home', label: 'Home' },
+  { id: 'about', label: 'About' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'resume', label: 'Resume' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'gallery', label: 'Gallery' },
+  { id: 'certificates', label: 'Certificates' },
+  { id: 'contact', label: 'Contact' }
+];
+
 // --- MAIN COMPONENT STARTS HERE ---
 function App() {
   const [isDark, setIsDark] = useState(false);
@@ -91,6 +104,9 @@ function App() {
   // --- MODAL & MOBILE MENU STATE ---
   const [selectedImage, setSelectedImage] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  // --- SCROLL SPY STATE ---
+  const [activeSection, setActiveSection] = useState('home');
 
   const [text, setText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
@@ -106,6 +122,37 @@ function App() {
       document.body.style.overflow = 'auto';
     }
   }, [selectedImage, isMenuOpen]);
+
+  // --- SCROLL SPY LISTENER ---
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = document.querySelectorAll('section[id]');
+      let current = 'home';
+
+      sections.forEach((section) => {
+        // getBoundingClientRect measures exactly where the section is on your screen
+        // ignoring any wrappers created by Framer Motion
+        const sectionTop = section.getBoundingClientRect().top;
+        
+        // If the section scrolls into the top 300px of your view, make it active
+        if (sectionTop <= 300) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      // Force 'home' if we are scrolled all the way to the top
+      if (window.scrollY < 50) {
+        current = 'home';
+      }
+
+      setActiveSection(current);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Call once on mount to set initial state
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleContactSubmit = async (event) => {
     event.preventDefault();
@@ -339,13 +386,15 @@ function App() {
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex gap-4 lg:gap-8 font-mono text-sm font-semibold uppercase tracking-wider">
-            <a href="#home" className="hover:text-blue-500 transition-colors">Home</a>
-            <a href="#about" className="hover:text-blue-500 transition-colors">About</a>
-            <a href="#skills" className="hover:text-blue-500 transition-colors">Skills</a>
-            <a href="#resume" className="hover:text-blue-500 transition-colors">Resume</a>
-            <a href="#projects" className="hover:text-blue-500 transition-colors">Projects</a>
-            <a href="#gallery" className="hover:text-blue-500 transition-colors">Gallery</a>
-            <a href="#contact" className="hover:text-blue-500 transition-colors">Contact</a>
+            {NAV_LINKS.map((link) => (
+              <a 
+                key={link.id} 
+                href={`#${link.id}`} 
+                className={`${activeSection === link.id ? 'text-blue-500' : ''} hover:text-blue-500 transition-colors`}
+              >
+                {link.label}
+              </a>
+            ))}
           </div>
 
           <div className="flex items-center gap-3 sm:gap-4">
@@ -377,13 +426,16 @@ function App() {
           className={`md:hidden absolute top-20 left-0 w-full z-50 backdrop-blur-xl border-b transition-all duration-300 shadow-xl overflow-hidden ${isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} ${theme.nav}`}
         >
           <div className="flex flex-col px-6 py-4 font-mono text-sm font-bold uppercase tracking-wider space-y-6 text-center relative z-20">
-            <a href="#home" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-500 transition-colors">Home</a>
-            <a href="#about" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-500 transition-colors">About</a>
-            <a href="#skills" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-500 transition-colors">Skills</a>
-            <a href="#resume" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-500 transition-colors">Resume</a>
-            <a href="#projects" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-500 transition-colors">Projects</a>
-            <a href="#gallery" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-500 transition-colors">Gallery</a>
-            <a href="#contact" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-500 transition-colors">Contact</a>
+            {NAV_LINKS.map((link) => (
+              <a 
+                key={link.id} 
+                href={`#${link.id}`} 
+                onClick={() => setIsMenuOpen(false)} 
+                className={`${activeSection === link.id ? 'text-blue-500' : ''} hover:text-blue-500 transition-colors`}
+              >
+                {link.label}
+              </a>
+            ))}
           </div>
         </div>
       </nav>
@@ -447,309 +499,323 @@ function App() {
         </section>
 
         {/* About Me Section */}
-        <section id="about" className="py-24 px-6 max-w-7xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-black mb-12 flex items-center gap-4">
-            <span className="text-blue-500">/</span> About Me
-          </h2>
-          <div className="grid md:grid-cols-12 gap-8 items-center">
-            
-            <div className={`md:col-span-7 p-6 sm:p-8 md:p-12 rounded-[2.5rem] border backdrop-blur-md ${theme.card}`}>
-              <h3 className="text-2xl md:text-3xl font-bold mb-6 leading-tight">Bridging Logic and Visual Execution</h3>
-              <p className={`text-base sm:text-lg leading-relaxed mb-6 ${theme.muted}`}>
-                Hello! I am a multi-disciplinary creator based in Kathmandu, Nepal. As a Computer Engineering student at Thapathali Campus, I thrive on solving complex logical problems, analyzing circuits, and building robust systems.
-              </p>
-              <p className={`text-base sm:text-lg leading-relaxed ${theme.muted}`}>
-                However, my passion extends far beyond code. With over 4 years of professional experience as a freelance Video Editor and Motion Graphics Designer, I have collaborated globally to craft compelling visual stories. I believe the most impactful products live precisely at the intersection of technical engineering and high-end artistic design.
-              </p>
-            </div>
-            
-            <div className="md:col-span-5 flex flex-col gap-4 sm:gap-6">
+        <FadeUp>
+          <section id="about" className="py-24 px-6 max-w-7xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-black mb-12 flex items-center gap-4">
+              <span className="text-blue-500">/</span> About Me
+            </h2>
+            <div className="grid md:grid-cols-12 gap-8 items-center">
               
-              <div className={`p-5 sm:p-6 md:p-8 rounded-3xl border backdrop-blur-md flex items-center gap-4 sm:gap-6 transition-all duration-300 hover:-translate-y-1 ${theme.card}`}>
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0 shadow-[0_0_15px_rgba(3,177,252,0.2)] border border-blue-500/20">
-                  <svg className="w-7 h-7 sm:w-8 sm:h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
-                  </svg>
-                </div>
-                <div>
-                  <h4 className="text-2xl sm:text-3xl font-black mb-1">4+</h4>
-                  <p className={`font-mono text-xs sm:text-sm uppercase font-bold tracking-wider ${theme.muted}`}>Years Experience</p>
-                </div>
+              <div className={`md:col-span-7 p-6 sm:p-8 md:p-12 rounded-[2.5rem] border backdrop-blur-md ${theme.card}`}>
+                <h3 className="text-2xl md:text-3xl font-bold mb-6 leading-tight">Bridging Logic and Visual Execution</h3>
+                <p className={`text-base sm:text-lg leading-relaxed mb-6 ${theme.muted}`}>
+                  Hello! I am a multi-disciplinary creator based in Kathmandu, Nepal. As a Computer Engineering student at Thapathali Campus, I thrive on solving complex logical problems, analyzing circuits, and building robust systems.
+                </p>
+                <p className={`text-base sm:text-lg leading-relaxed ${theme.muted}`}>
+                  However, my passion extends far beyond code. With over 4 years of professional experience as a freelance Video Editor and Motion Graphics Designer, I have collaborated globally to craft compelling visual stories. I believe the most impactful products live precisely at the intersection of technical engineering and high-end artistic design.
+                </p>
               </div>
               
-              <div className={`p-5 sm:p-6 md:p-8 rounded-3xl border backdrop-blur-md flex items-center gap-4 sm:gap-6 transition-all duration-300 hover:-translate-y-1 ${theme.card}`}>
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0 shadow-[0_0_15px_rgba(3,177,252,0.2)] border border-blue-500/20">
-                  <svg className="w-7 h-7 sm:w-8 sm:h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
+              <div className="md:col-span-5 flex flex-col gap-4 sm:gap-6">
+                
+                <div className={`p-5 sm:p-6 md:p-8 rounded-3xl border backdrop-blur-md flex items-center gap-4 sm:gap-6 transition-all duration-300 hover:-translate-y-1 ${theme.card}`}>
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0 shadow-[0_0_15px_rgba(3,177,252,0.2)] border border-blue-500/20">
+                    <svg className="w-7 h-7 sm:w-8 sm:h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-2xl sm:text-3xl font-black mb-1">4+</h4>
+                    <p className={`font-mono text-xs sm:text-sm uppercase font-bold tracking-wider ${theme.muted}`}>Years Experience</p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="text-2xl sm:text-3xl font-black mb-1">50+</h4>
-                  <p className={`font-mono text-xs sm:text-sm uppercase font-bold tracking-wider ${theme.muted}`}>Global Clients</p>
+                
+                <div className={`p-5 sm:p-6 md:p-8 rounded-3xl border backdrop-blur-md flex items-center gap-4 sm:gap-6 transition-all duration-300 hover:-translate-y-1 ${theme.card}`}>
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0 shadow-[0_0_15px_rgba(3,177,252,0.2)] border border-blue-500/20">
+                    <svg className="w-7 h-7 sm:w-8 sm:h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-2xl sm:text-3xl font-black mb-1">50+</h4>
+                    <p className={`font-mono text-xs sm:text-sm uppercase font-bold tracking-wider ${theme.muted}`}>Global Clients</p>
+                  </div>
+                </div>
+
+                <div className={`p-5 sm:p-6 md:p-8 rounded-3xl border backdrop-blur-md flex items-center gap-4 sm:gap-6 transition-all duration-300 hover:-translate-y-1 ${theme.card}`}>
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0 shadow-[0_0_15px_rgba(3,177,252,0.2)] border border-blue-500/20">
+                    <svg className="w-7 h-7 sm:w-8 sm:h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-2xl sm:text-3xl font-black mb-1">Creative</h4>
+                    <p className={`font-mono text-xs sm:text-sm uppercase font-bold tracking-wider ${theme.muted}`}>Design Focus</p>
+                  </div>
                 </div>
               </div>
 
-              <div className={`p-5 sm:p-6 md:p-8 rounded-3xl border backdrop-blur-md flex items-center gap-4 sm:gap-6 transition-all duration-300 hover:-translate-y-1 ${theme.card}`}>
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0 shadow-[0_0_15px_rgba(3,177,252,0.2)] border border-blue-500/20">
-                  <svg className="w-7 h-7 sm:w-8 sm:h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                  </svg>
-                </div>
-                <div>
-                  <h4 className="text-2xl sm:text-3xl font-black mb-1">Creative</h4>
-                  <p className={`font-mono text-xs sm:text-sm uppercase font-bold tracking-wider ${theme.muted}`}>Design Focus</p>
-                </div>
-              </div>
             </div>
-
-          </div>
-        </section>
+          </section>
+        </FadeUp>
 
         {/* Skills Section */}
-        <section id="skills" className="py-24 px-6 max-w-7xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-black mb-12 flex items-center gap-4">
-            <span className="text-blue-500">/</span> Technical Proficiency
-          </h2>
+        <FadeUp>
+          <section id="skills" className="py-24 px-6 max-w-7xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-black mb-12 flex items-center gap-4">
+              <span className="text-blue-500">/</span> Technical Proficiency
+            </h2>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {SKILL_CATEGORIES.map((category, idx) => (
-              <div key={idx} className={`p-6 sm:p-8 rounded-3xl border backdrop-blur-md transition-all duration-300 hover:-translate-y-2 ${theme.card}`}>
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-blue-500/10 flex items-center justify-center text-3xl mb-6 shadow-[0_0_15px_rgba(3,177,252,0.2)] border border-blue-500/20">
-                  {category.icon}
-                </div>
-                <h3 className="text-xl sm:text-2xl font-bold mb-8">{category.title}</h3>
+            <div className="grid md:grid-cols-3 gap-8">
+              {SKILL_CATEGORIES.map((category, idx) => (
+                <div key={idx} className={`p-6 sm:p-8 rounded-3xl border backdrop-blur-md transition-all duration-300 hover:-translate-y-2 ${theme.card}`}>
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-blue-500/10 flex items-center justify-center text-3xl mb-6 shadow-[0_0_15px_rgba(3,177,252,0.2)] border border-blue-500/20">
+                    {category.icon}
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-bold mb-8">{category.title}</h3>
 
-                <div className="space-y-8">
-                  {category.skills.map((skill, sIdx) => (
-                    <div key={sIdx}>
-                      <div className="flex justify-between items-end mb-2">
-                        <div>
-                          <h4 className="font-bold text-sm">{skill.name}</h4>
-                          <p className={`font-mono text-[10px] sm:text-xs ${theme.muted}`}>{skill.exp} • {skill.level}</p>
+                  <div className="space-y-8">
+                    {category.skills.map((skill, sIdx) => (
+                      <div key={sIdx}>
+                        <div className="flex justify-between items-end mb-2">
+                          <div>
+                            <h4 className="font-bold text-sm">{skill.name}</h4>
+                            <p className={`font-mono text-[10px] sm:text-xs ${theme.muted}`}>{skill.exp} • {skill.level}</p>
+                          </div>
+                          <span className="font-mono text-xs font-bold">{skill.percent}%</span>
                         </div>
-                        <span className="font-mono text-xs font-bold">{skill.percent}%</span>
+                        <div className={`w-full h-2 rounded-full overflow-hidden ${isDark ? 'bg-slate-800' : 'bg-slate-200'}`}>
+                          <div
+                            className={`h-full rounded-full ${skill.color} shadow-[0_0_8px_currentColor]`}
+                            style={{ width: `${skill.percent}%` }}
+                          ></div>
+                        </div>
                       </div>
-                      <div className={`w-full h-2 rounded-full overflow-hidden ${isDark ? 'bg-slate-800' : 'bg-slate-200'}`}>
-                        <div
-                          className={`h-full rounded-full ${skill.color} shadow-[0_0_8px_currentColor]`}
-                          style={{ width: `${skill.percent}%` }}
-                        ></div>
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </section>
+              ))}
+            </div>
+          </section>
+        </FadeUp>
 
         {/* Resume Section */}
-        <section id="resume" className="py-24 px-6 max-w-7xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-black mb-12 flex items-center gap-4">
-            <span className="text-blue-500">/</span> My Journey
-          </h2>
-          <div className="grid lg:grid-cols-2 gap-8">
+        <FadeUp>
+          <section id="resume" className="py-24 px-6 max-w-7xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-black mb-12 flex items-center gap-4">
+              <span className="text-blue-500">/</span> My Journey
+            </h2>
+            <div className="grid lg:grid-cols-2 gap-8">
 
-            {/* Experience Column */}
-            <div className={`p-6 sm:p-8 md:p-12 rounded-3xl border backdrop-blur-md transition-colors duration-300 ${theme.card}`}>
-              <h3 className="text-xl sm:text-2xl font-bold mb-10 flex items-center gap-3">
-                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                Experience
-              </h3>
-              <div className="space-y-10">
-                {EXPERIENCE.map((exp, index) => (
-                  <div key={index} className={`relative pl-8 before:absolute before:left-0 before:top-2 before:w-3 before:h-3 before:bg-blue-500 before:rounded-full after:absolute after:left-1.5 after:top-5 after:bottom-[-2.5rem] after:w-0.5 ${isDark ? 'after:bg-slate-700' : 'after:bg-slate-200'} last:after:hidden`}>
-                    <span className="inline-block px-3 py-1 bg-blue-500/10 text-blue-500 text-xs font-bold rounded-full mb-3">{exp.year}</span>
-                    <h4 className="text-lg sm:text-xl font-bold">{exp.role}</h4>
-                    <p className={`font-mono text-xs sm:text-sm mb-3 ${isDark ? 'text-blue-300' : 'text-blue-600'}`}>{exp.company}</p>
-                    <p className={`text-sm sm:text-base ${theme.muted}`}>{exp.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Education Column */}
-            <div className={`p-6 sm:p-8 md:p-12 rounded-3xl border backdrop-blur-md transition-colors duration-300 ${theme.card}`}>
-              <h3 className="text-xl sm:text-2xl font-bold mb-10 flex items-center gap-3">
-                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z" /><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" /></svg>
-                Education
-              </h3>
-              <div className="space-y-10">
-                {EDUCATION.map((edu, index) => (
-                  <div key={index} className={`relative pl-8 before:absolute before:left-0 before:top-2 before:w-3 before:h-3 before:bg-blue-500 before:rounded-full after:absolute after:left-1.5 after:top-5 after:bottom-[-2.5rem] after:w-0.5 ${isDark ? 'after:bg-slate-700' : 'after:bg-slate-200'} last:after:hidden`}>
-                    <span className="inline-block px-3 py-1 bg-blue-500/10 text-blue-500 text-xs font-bold rounded-full mb-3">{edu.year}</span>
-                    <div className="flex items-start gap-4 mb-2">
-                      <div>
-                        <h4 className="text-base sm:text-lg font-bold leading-tight">{edu.degree}</h4>
-                        <p className={`font-mono text-xs sm:text-sm mt-1 ${isDark ? 'text-blue-300' : 'text-blue-600'}`}>{edu.school}</p>
-                      </div>
+              {/* Experience Column */}
+              <div className={`p-6 sm:p-8 md:p-12 rounded-3xl border backdrop-blur-md transition-colors duration-300 ${theme.card}`}>
+                <h3 className="text-xl sm:text-2xl font-bold mb-10 flex items-center gap-3">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                  Experience
+                </h3>
+                <div className="space-y-10">
+                  {EXPERIENCE.map((exp, index) => (
+                    <div key={index} className={`relative pl-8 before:absolute before:left-0 before:top-2 before:w-3 before:h-3 before:bg-blue-500 before:rounded-full after:absolute after:left-1.5 after:top-5 after:bottom-[-2.5rem] after:w-0.5 ${isDark ? 'after:bg-slate-700' : 'after:bg-slate-200'} last:after:hidden`}>
+                      <span className="inline-block px-3 py-1 bg-blue-500/10 text-blue-500 text-xs font-bold rounded-full mb-3">{exp.year}</span>
+                      <h4 className="text-lg sm:text-xl font-bold">{exp.role}</h4>
+                      <p className={`font-mono text-xs sm:text-sm mb-3 ${isDark ? 'text-blue-300' : 'text-blue-600'}`}>{exp.company}</p>
+                      <p className={`text-sm sm:text-base ${theme.muted}`}>{exp.desc}</p>
                     </div>
-                    <p className={`text-sm sm:text-base ${theme.muted}`}>{edu.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-          </div>
-        </section>
-
-        {/* Projects Archive */}
-        <section id="projects" className="py-24 px-6 max-w-7xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-black mb-12 flex items-center gap-4">
-            <span className="text-blue-500">/</span> Projects Archive
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {PROJECTS.map((proj) => (
-              <div key={proj.id} className={`p-6 sm:p-8 rounded-2xl border backdrop-blur-md transition-all duration-300 group ${theme.card} flex flex-col`}>
-                <div className="flex justify-between items-start mb-6">
-                  <span className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 bg-blue-500/10 text-blue-500 text-[10px] sm:text-xs font-bold rounded-full uppercase tracking-wider border border-blue-500/20">
-                    {proj.category}
-                  </span>
-                </div>
-                <h3 className="text-xl sm:text-2xl font-bold mb-4 group-hover:text-blue-400 transition-colors">{proj.title}</h3>
-                <p className={`mb-8 line-clamp-3 text-sm sm:text-base leading-relaxed ${theme.muted}`}>{proj.description}</p>
-                <div className="flex flex-wrap gap-2 mt-auto">
-                  {proj.tech.map((t) => (
-                    <span key={t} className={`px-2 py-1 sm:px-3 sm:py-1.5 text-[10px] sm:text-xs font-mono rounded-lg ${theme.tag}`}>
-                      {t}
-                    </span>
                   ))}
                 </div>
               </div>
-            ))}
-          </div>
-        </section>
+
+              {/* Education Column */}
+              <div className={`p-6 sm:p-8 md:p-12 rounded-3xl border backdrop-blur-md transition-colors duration-300 ${theme.card}`}>
+                <h3 className="text-xl sm:text-2xl font-bold mb-10 flex items-center gap-3">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z" /><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" /></svg>
+                  Education
+                </h3>
+                <div className="space-y-10">
+                  {EDUCATION.map((edu, index) => (
+                    <div key={index} className={`relative pl-8 before:absolute before:left-0 before:top-2 before:w-3 before:h-3 before:bg-blue-500 before:rounded-full after:absolute after:left-1.5 after:top-5 after:bottom-[-2.5rem] after:w-0.5 ${isDark ? 'after:bg-slate-700' : 'after:bg-slate-200'} last:after:hidden`}>
+                      <span className="inline-block px-3 py-1 bg-blue-500/10 text-blue-500 text-xs font-bold rounded-full mb-3">{edu.year}</span>
+                      <div className="flex items-start gap-4 mb-2">
+                        <div>
+                          <h4 className="text-base sm:text-lg font-bold leading-tight">{edu.degree}</h4>
+                          <p className={`font-mono text-xs sm:text-sm mt-1 ${isDark ? 'text-blue-300' : 'text-blue-600'}`}>{edu.school}</p>
+                        </div>
+                      </div>
+                      <p className={`text-sm sm:text-base ${theme.muted}`}>{edu.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+          </section>
+        </FadeUp>
+
+        {/* Projects Archive */}
+        <FadeUp>
+          <section id="projects" className="py-24 px-6 max-w-7xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-black mb-12 flex items-center gap-4">
+              <span className="text-blue-500">/</span> Projects Archive
+            </h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              {PROJECTS.map((proj) => (
+                <div key={proj.id} className={`p-6 sm:p-8 rounded-2xl border backdrop-blur-md transition-all duration-300 group ${theme.card} flex flex-col`}>
+                  <div className="flex justify-between items-start mb-6">
+                    <span className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 bg-blue-500/10 text-blue-500 text-[10px] sm:text-xs font-bold rounded-full uppercase tracking-wider border border-blue-500/20">
+                      {proj.category}
+                    </span>
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-bold mb-4 group-hover:text-blue-400 transition-colors">{proj.title}</h3>
+                  <p className={`mb-8 line-clamp-3 text-sm sm:text-base leading-relaxed ${theme.muted}`}>{proj.description}</p>
+                  <div className="flex flex-wrap gap-2 mt-auto">
+                    {proj.tech.map((t) => (
+                      <span key={t} className={`px-2 py-1 sm:px-3 sm:py-1.5 text-[10px] sm:text-xs font-mono rounded-lg ${theme.tag}`}>
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        </FadeUp>
 
         {/* Image Gallery Section */}
-        <section id="gallery" className="py-24 px-6 max-w-7xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-black mb-6 flex items-center gap-4">
-            <span className="text-blue-500">/</span> Visual Archive
-          </h2>
-          <p className={`mb-12 text-base sm:text-lg ${theme.muted}`}>A curated space for current media projects, photography, and future uploads.</p>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-            {GALLERY_IMAGES.map((item) => (
-              <div 
-                key={item.id} 
-                className="group relative w-full aspect-video rounded-lg sm:rounded-xl overflow-hidden border border-gray-200/20 bg-gray-800 shadow-lg cursor-pointer"
-                onClick={() => setSelectedImage({ src: item.img, title: item.title, desc: 'Visual Archive' })}
-              >
-                <img
-                  src={item.img}
-                  alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-4 sm:p-6">
-                  <p className="text-slate-900 text-xs sm:text-sm md:text-base font-bold text-center translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    {item.title}
-                  </p>
+        <FadeUp>
+          <section id="gallery" className="py-24 px-6 max-w-7xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-black mb-6 flex items-center gap-4">
+              <span className="text-blue-500">/</span> Visual Archive
+            </h2>
+            <p className={`mb-12 text-base sm:text-lg ${theme.muted}`}>A curated space for current media projects, photography, and future uploads.</p>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+              {GALLERY_IMAGES.map((item) => (
+                <div 
+                  key={item.id} 
+                  className="group relative w-full aspect-video rounded-lg sm:rounded-xl overflow-hidden border border-gray-200/20 bg-gray-800 shadow-lg cursor-pointer"
+                  onClick={() => setSelectedImage({ src: item.img, title: item.title, desc: 'Visual Archive' })}
+                >
+                  <img
+                    src={item.img}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-4 sm:p-6">
+                    <p className="text-slate-900 text-xs sm:text-sm md:text-base font-bold text-center translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                      {item.title}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </section>
+              ))}
+            </div>
+          </section>
+        </FadeUp>
 
         {/* Certificates Section */}
-        <section id="certificates" className="py-24 px-6 max-w-7xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-black mb-12 flex items-center gap-4">
-            <span className="text-blue-500">/</span> Certifications
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {CERTIFICATES.map((cert) => (
-              <div 
-                key={cert.id} 
-                className={`p-5 sm:p-6 rounded-2xl border backdrop-blur-md transition-all duration-300 group hover:-translate-y-2 cursor-pointer ${theme.card}`}
-                onClick={() => setSelectedImage({ src: cert.img, title: cert.title, desc: `Issued by ${cert.org}` })}
-              >
-                <div className={`aspect-[4/3] overflow-hidden rounded-xl border-2 border-dashed flex items-center justify-center mb-6 transition-colors ${isDark ? 'border-slate-700 bg-slate-800/50 group-hover:border-blue-500/50' : 'border-slate-300 bg-slate-100/50 group-hover:border-blue-400'}`}>
-                  <img src={cert.img} alt={cert.title} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" onError={(e) => { e.target.src = 'https://via.placeholder.com/400x300?text=Certificate' }} />
+        <FadeUp>
+          <section id="certificates" className="py-24 px-6 max-w-7xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-black mb-12 flex items-center gap-4">
+              <span className="text-blue-500">/</span> Certifications
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {CERTIFICATES.map((cert) => (
+                <div 
+                  key={cert.id} 
+                  className={`p-5 sm:p-6 rounded-2xl border backdrop-blur-md transition-all duration-300 group hover:-translate-y-2 cursor-pointer ${theme.card}`}
+                  onClick={() => setSelectedImage({ src: cert.img, title: cert.title, desc: `Issued by ${cert.org}` })}
+                >
+                  <div className={`aspect-[4/3] overflow-hidden rounded-xl border-2 border-dashed flex items-center justify-center mb-6 transition-colors ${isDark ? 'border-slate-700 bg-slate-800/50 group-hover:border-blue-500/50' : 'border-slate-300 bg-slate-100/50 group-hover:border-blue-400'}`}>
+                    <img src={cert.img} alt={cert.title} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" onError={(e) => { e.target.src = 'https://via.placeholder.com/400x300?text=Certificate' }} />
+                  </div>
+                  <h4 className="font-bold text-sm sm:text-base mb-2 group-hover:text-blue-400 transition-colors">{cert.title}</h4>
+                  <p className={`font-mono text-[10px] sm:text-xs ${theme.muted}`}>{cert.org}</p>
                 </div>
-                <h4 className="font-bold text-sm sm:text-base mb-2 group-hover:text-blue-400 transition-colors">{cert.title}</h4>
-                <p className={`font-mono text-[10px] sm:text-xs ${theme.muted}`}>{cert.org}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+              ))}
+            </div>
+          </section>
+        </FadeUp>
 
         {/* Contact Section with Web3Forms */}
-        <section id="contact" className="py-24 px-6 max-w-7xl mx-auto">
-          <div className={`p-6 sm:p-8 md:p-14 rounded-[2rem] sm:rounded-[2.5rem] border backdrop-blur-md ${theme.card}`}>
-            <div className="grid lg:grid-cols-2 gap-12">
-              <div>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6">Let's Connect</h2>
-                <p className={`mb-10 text-base sm:text-lg ${theme.muted}`}>Open for freelance projects, collaborations, and technical discussions.</p>
+        <FadeUp>
+          <section id="contact" className="py-24 px-6 max-w-7xl mx-auto">
+            <div className={`p-6 sm:p-8 md:p-14 rounded-[2rem] sm:rounded-[2.5rem] border backdrop-blur-md ${theme.card}`}>
+              <div className="grid lg:grid-cols-2 gap-12">
+                <div>
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6">Let's Connect</h2>
+                  <p className={`mb-10 text-base sm:text-lg ${theme.muted}`}>Open for freelance projects, collaborations, and technical discussions.</p>
 
-                <div className="space-y-6">
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500 text-lg sm:text-xl shadow-[0_0_10px_rgba(3,177,252,0.2)] flex-shrink-0">
-                      <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                  <div className="space-y-6">
+                    <div className="flex items-center gap-4">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500 text-lg sm:text-xl shadow-[0_0_10px_rgba(3,177,252,0.2)] flex-shrink-0">
+                        <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                      </div>
+                      <div>
+                        <h4 className={`font-mono text-[10px] sm:text-xs uppercase font-bold ${theme.muted}`}>Location</h4>
+                        <p className="font-bold text-sm sm:text-lg">Kathmandu, Nepal</p>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className={`font-mono text-[10px] sm:text-xs uppercase font-bold ${theme.muted}`}>Location</h4>
-                      <p className="font-bold text-sm sm:text-lg">Kathmandu, Nepal</p>
+                    <div className="flex items-center gap-4">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500 text-lg sm:text-xl shadow-[0_0_10px_rgba(3,177,252,0.2)] flex-shrink-0">
+                        <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                      </div>
+                      <div>
+                        <h4 className={`font-mono text-[10px] sm:text-xs uppercase font-bold ${theme.muted}`}>Phone</h4>
+                        <p className="font-bold text-sm sm:text-lg">9764685307</p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500 text-lg sm:text-xl shadow-[0_0_10px_rgba(3,177,252,0.2)] flex-shrink-0">
-                      <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                    </div>
-                    <div>
-                      <h4 className={`font-mono text-[10px] sm:text-xs uppercase font-bold ${theme.muted}`}>Phone</h4>
-                      <p className="font-bold text-sm sm:text-lg">9764685307</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500 text-lg sm:text-xl shadow-[0_0_10px_rgba(3,177,252,0.2)] flex-shrink-0">
-                      <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                    </div>
-                    <div>
-                      <h4 className={`font-mono text-[10px] sm:text-xs uppercase font-bold ${theme.muted}`}>Email</h4>
-                      <p className="font-bold text-sm sm:text-lg">dsz.ae18@gmail.com</p>
+                    <div className="flex items-center gap-4">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500 text-lg sm:text-xl shadow-[0_0_10px_rgba(3,177,252,0.2)] flex-shrink-0">
+                        <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                      </div>
+                      <div>
+                        <h4 className={`font-mono text-[10px] sm:text-xs uppercase font-bold ${theme.muted}`}>Email</h4>
+                        <p className="font-bold text-sm sm:text-lg">dsz.ae18@gmail.com</p>
+                      </div>
                     </div>
                   </div>
                 </div>
+
+                <form className="space-y-4 sm:space-y-6" onSubmit={handleContactSubmit}>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Your Name"
+                      className={`w-full px-4 py-3 sm:px-6 sm:py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all ${theme.input}`}
+                      required
+                    />
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Your Email"
+                      className={`w-full px-4 py-3 sm:px-6 sm:py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all ${theme.input}`}
+                      required
+                    />
+                  </div>
+                  <textarea
+                    name="message"
+                    placeholder="Your Message..."
+                    rows="5"
+                    className={`w-full px-4 py-3 sm:px-6 sm:py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all resize-none ${theme.input}`}
+                    required
+                  ></textarea>
+
+                  <button
+                    type="submit"
+                    className="px-6 py-4 sm:px-10 sm:py-5 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-500 transition-colors w-full shadow-lg shadow-blue-600/30"
+                  >
+                    Send Message
+                  </button>
+
+                  {formStatus && (
+                    <p className={`text-sm text-center font-semibold mt-4 ${formStatus.includes("wrong") || formStatus.includes("error") ? "text-red-500" : "text-emerald-500"}`}>
+                      {formStatus}
+                    </p>
+                  )}
+                </form>
               </div>
-
-              <form className="space-y-4 sm:space-y-6" onSubmit={handleContactSubmit}>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Your Name"
-                    className={`w-full px-4 py-3 sm:px-6 sm:py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all ${theme.input}`}
-                    required
-                  />
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Your Email"
-                    className={`w-full px-4 py-3 sm:px-6 sm:py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all ${theme.input}`}
-                    required
-                  />
-                </div>
-                <textarea
-                  name="message"
-                  placeholder="Your Message..."
-                  rows="5"
-                  className={`w-full px-4 py-3 sm:px-6 sm:py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all resize-none ${theme.input}`}
-                  required
-                ></textarea>
-
-                <button
-                  type="submit"
-                  className="px-6 py-4 sm:px-10 sm:py-5 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-500 transition-colors w-full shadow-lg shadow-blue-600/30"
-                >
-                  Send Message
-                </button>
-
-                {formStatus && (
-                  <p className={`text-sm text-center font-semibold mt-4 ${formStatus.includes("wrong") || formStatus.includes("error") ? "text-red-500" : "text-emerald-500"}`}>
-                    {formStatus}
-                  </p>
-                )}
-              </form>
             </div>
-          </div>
-        </section>
+          </section>
+        </FadeUp>
 
         {/* Footer */}
         <footer className={`py-8 sm:py-10 text-center font-mono text-[10px] sm:text-sm border-t ${isDark ? 'border-slate-800' : 'border-slate-200'} ${theme.muted}`}>
