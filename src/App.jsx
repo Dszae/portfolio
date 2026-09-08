@@ -109,7 +109,8 @@ function App() {
 
   const handleContactSubmit = async (event) => {
     event.preventDefault();
-    setFormStatus("Transmitting payload...");
+    setFormStatus("Sending message...");
+
     const formData = new FormData(event.target);
     formData.append("access_key", "e6fd2e32-2b5c-4a3f-81d9-aa02f4dfcc76");
 
@@ -120,13 +121,13 @@ function App() {
       });
       const data = await response.json();
       if (data.success) {
-        setFormStatus("Message transmitted successfully!");
+        setFormStatus("Thank you! Your message has been sent.");
         event.target.reset();
       } else {
-        setFormStatus("Error: Transmission failed.");
+        setFormStatus("Something went wrong. Please try again.");
       }
     } catch (error) {
-      setFormStatus("Error: Could not connect to server.");
+      setFormStatus("Network error. Please try again later.");
     }
   };
 
@@ -321,10 +322,12 @@ function App() {
         className="fixed inset-0 w-full h-full pointer-events-none z-0"
       />
 
-      {/* GLOBAL MOBILE MENU OVERLAY - Extracted outside nav for perfect click interception */}
       <div 
         className={`md:hidden fixed inset-0 z-40 bg-slate-950/80 backdrop-blur-sm transition-opacity duration-300 cursor-pointer ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
-        onClick={() => setIsMenuOpen(false)}
+        onClick={(e) => {
+          e.stopPropagation();
+          setIsMenuOpen(false);
+        }}
         onTouchStart={() => setIsMenuOpen(false)}
       />
 
@@ -353,7 +356,6 @@ function App() {
               {isDark ? '☀️' : '🌙'}
             </button>
             
-            {/* Mobile Hamburger Button */}
             <button 
               className="md:hidden w-10 h-10 rounded-lg flex items-center justify-center border border-slate-500/30 hover:bg-slate-500/10 transition-colors relative z-50"
               onClick={(e) => {
@@ -372,9 +374,9 @@ function App() {
 
         {/* The mobile menu dropdown */}
         <div 
-          className={`md:hidden absolute top-20 left-0 w-full backdrop-blur-xl border-b transition-all duration-300 shadow-xl overflow-hidden ${isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} ${theme.nav}`}
+          className={`md:hidden absolute top-20 left-0 w-full z-50 backdrop-blur-xl border-b transition-all duration-300 shadow-xl overflow-hidden ${isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} ${theme.nav}`}
         >
-          <div className="flex flex-col px-6 py-4 font-mono text-sm font-bold uppercase tracking-wider space-y-6 text-center">
+          <div className="flex flex-col px-6 py-4 font-mono text-sm font-bold uppercase tracking-wider space-y-6 text-center relative z-20">
             <a href="#home" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-500 transition-colors">Home</a>
             <a href="#about" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-500 transition-colors">About</a>
             <a href="#skills" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-500 transition-colors">Skills</a>
@@ -736,11 +738,11 @@ function App() {
                   type="submit"
                   className="px-6 py-4 sm:px-10 sm:py-5 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-500 transition-colors w-full shadow-lg shadow-blue-600/30"
                 >
-                  Transmit Message
+                  Send Message
                 </button>
 
                 {formStatus && (
-                  <p className={`font-mono text-[10px] sm:text-sm text-center font-bold mt-4 ${formStatus.includes("Error") ? "text-red-500" : "text-emerald-500"}`}>
+                  <p className={`text-sm text-center font-semibold mt-4 ${formStatus.includes("wrong") || formStatus.includes("error") ? "text-red-500" : "text-emerald-500"}`}>
                     {formStatus}
                   </p>
                 )}
