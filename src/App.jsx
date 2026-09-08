@@ -89,8 +89,9 @@ function App() {
   const [formStatus, setFormStatus] = useState("");
   const canvasRef = useRef(null);
   
-  // --- MODAL STATE ---
+  // --- MODAL & MOBILE MENU STATE ---
   const [selectedImage, setSelectedImage] = useState(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const [text, setText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
@@ -98,14 +99,14 @@ function App() {
   const typingSpeed = 100;
   const roles = ["Video Editor", "Graphics Designer", "Computer Engineer"];
 
-  // Lock scrolling when modal is open
+  // Lock scrolling when modal OR mobile menu is open
   useEffect(() => {
-    if (selectedImage) {
+    if (selectedImage || isMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
     }
-  }, [selectedImage]);
+  }, [selectedImage, isMenuOpen]);
 
   const handleContactSubmit = async (event) => {
     event.preventDefault();
@@ -148,7 +149,6 @@ function App() {
       mouse.y = event.clientY;
     };
 
-    // On touch devices, disable mouse tracking to prevent weird sticky glow effects
     const handleTouchStart = () => {
       mouse.x = null;
       mouse.y = null;
@@ -162,8 +162,6 @@ function App() {
     let currentWidth = window.innerWidth;
 
     const handleResize = () => {
-      // OPTIMIZATION: Only resize and re-init canvas if the WIDTH changes.
-      // This prevents the address bar on mobile from destroying the canvas during scroll.
       if (window.innerWidth !== currentWidth) {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -204,7 +202,6 @@ function App() {
     function init() {
       particlesArray = [];
       const isMobile = window.innerWidth < 768;
-      // Drastically reduce particles on mobile to preserve battery and frame rate
       const densityDivider = isMobile ? 25000 : 12000; 
       
       let numberOfParticles = (canvas.height * canvas.width) / densityDivider;
@@ -307,7 +304,6 @@ function App() {
     return () => clearTimeout(timer);
   }, [text, isDeleting, loopNum]);
 
-  // OPTIMIZATION: Reduced blur values (e.g. backdrop-blur-md) on cards to drastically improve mobile GPU performance
   const theme = {
     bg: isDark ? 'bg-slate-950' : 'bg-slate-50',
     text: isDark ? 'text-slate-100' : 'text-slate-900',
@@ -319,7 +315,6 @@ function App() {
   };
 
   return (
-    // OPTIMIZATION: Added overflow-x-hidden to completely stop side-scrolling on mobile
     <div className={`min-h-screen font-sans transition-colors duration-500 overflow-x-hidden ${theme.bg} ${theme.text} relative selection:bg-blue-500/30`}>
 
       <canvas
@@ -332,6 +327,8 @@ function App() {
           <a href="#home" className="text-2xl font-black tracking-tighter">
             D<span className="text-blue-500">.</span>S
           </a>
+          
+          {/* Desktop Navigation */}
           <div className="hidden md:flex gap-4 lg:gap-8 font-mono text-sm font-semibold uppercase tracking-wider">
             <a href="#home" className="hover:text-blue-500 transition-colors">Home</a>
             <a href="#about" className="hover:text-blue-500 transition-colors">About</a>
@@ -341,12 +338,50 @@ function App() {
             <a href="#gallery" className="hover:text-blue-500 transition-colors">Gallery</a>
             <a href="#contact" className="hover:text-blue-500 transition-colors">Contact</a>
           </div>
-          <button
-            onClick={() => setIsDark(!isDark)}
-            className="w-10 h-10 rounded-full flex items-center justify-center border border-slate-500/30 hover:bg-slate-500/10 transition-colors shadow-sm"
-          >
-            {isDark ? '☀️' : '🌙'}
-          </button>
+
+          <div className="flex items-center gap-3 sm:gap-4">
+            <button
+              onClick={() => setIsDark(!isDark)}
+              className="w-10 h-10 rounded-full flex items-center justify-center border border-slate-500/30 hover:bg-slate-500/10 transition-colors shadow-sm"
+            >
+              {isDark ? '☀️' : '🌙'}
+            </button>
+            
+            <button 
+              className="md:hidden w-10 h-10 rounded-lg flex items-center justify-center border border-slate-500/30 hover:bg-slate-500/10 transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? (
+                <svg className="w-6 h-6 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+              ) : (
+                <svg className="w-6 h-6 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+              )}
+            </button>
+          </div>
+        </div>
+
+        {/* CLICKABLE OVERLAY - Now with strict z-indexing and pointer-events to intercept taps */}
+        <div 
+          className={`md:hidden fixed inset-0 top-20 z-40 transition-opacity duration-300 bg-slate-900/60 backdrop-blur-sm cursor-pointer ${isMenuOpen ? 'opacity-100 visible pointer-events-auto' : 'opacity-0 invisible pointer-events-none'}`}
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsMenuOpen(false);
+          }}
+        ></div>
+
+        {/* The mobile menu dropdown */}
+        <div 
+          className={`md:hidden absolute top-20 left-0 w-full z-50 backdrop-blur-xl border-b transition-all duration-300 shadow-xl overflow-hidden ${isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} ${theme.nav}`}
+        >
+          <div className="flex flex-col px-6 py-4 font-mono text-sm font-bold uppercase tracking-wider space-y-6 text-center">
+            <a href="#home" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-500 transition-colors">Home</a>
+            <a href="#about" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-500 transition-colors">About</a>
+            <a href="#skills" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-500 transition-colors">Skills</a>
+            <a href="#resume" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-500 transition-colors">Resume</a>
+            <a href="#projects" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-500 transition-colors">Projects</a>
+            <a href="#gallery" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-500 transition-colors">Gallery</a>
+            <a href="#contact" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-500 transition-colors">Contact</a>
+          </div>
         </div>
       </nav>
 
@@ -396,7 +431,6 @@ function App() {
               </div>
             </div>
 
-            {/* OPTIMIZATION: Fixed circle widths to prevent mobile horizontal scroll issues */}
             <div className="order-1 md:order-2 flex justify-center items-center relative pt-10 md:pt-0">
               <div className={`absolute w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] lg:w-[420px] lg:h-[420px] rounded-full border border-dashed animate-[spin_20s_linear_infinite] ${isDark ? 'border-blue-500/30' : 'border-blue-500/20'}`}></div>
               <img
@@ -427,6 +461,7 @@ function App() {
             </div>
             
             <div className="md:col-span-5 flex flex-col gap-4 sm:gap-6">
+              
               <div className={`p-5 sm:p-6 md:p-8 rounded-3xl border backdrop-blur-md flex items-center gap-4 sm:gap-6 transition-all duration-300 hover:-translate-y-1 ${theme.card}`}>
                 <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0 shadow-[0_0_15px_rgba(3,177,252,0.2)] border border-blue-500/20">
                   <svg className="w-7 h-7 sm:w-8 sm:h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
