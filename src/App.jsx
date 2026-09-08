@@ -82,7 +82,6 @@ const CERTIFICATES = [
   { id: 8, title: "Design Principles, Typography & Color Theory", org: "Udemy", img: "/design-principles.jpg" }
 ];
 
-
 // --- MAIN COMPONENT STARTS HERE ---
 function App() {
   const [isDark, setIsDark] = useState(false);
@@ -322,9 +321,16 @@ function App() {
         className="fixed inset-0 w-full h-full pointer-events-none z-0"
       />
 
+      {/* GLOBAL MOBILE MENU OVERLAY - Extracted outside nav for perfect click interception */}
+      <div 
+        className={`md:hidden fixed inset-0 z-40 bg-slate-950/80 backdrop-blur-sm transition-opacity duration-300 cursor-pointer ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        onClick={() => setIsMenuOpen(false)}
+        onTouchStart={() => setIsMenuOpen(false)}
+      />
+
       <nav className={`fixed top-0 w-full backdrop-blur-md border-b z-50 transition-colors duration-300 ${theme.nav}`}>
         <div className="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center relative z-10">
-          <a href="#home" className="text-2xl font-black tracking-tighter">
+          <a href="#home" className="text-2xl font-black tracking-tighter" onClick={() => setIsMenuOpen(false)}>
             D<span className="text-blue-500">.</span>S
           </a>
           
@@ -347,9 +353,13 @@ function App() {
               {isDark ? '☀️' : '🌙'}
             </button>
             
+            {/* Mobile Hamburger Button */}
             <button 
-              className="md:hidden w-10 h-10 rounded-lg flex items-center justify-center border border-slate-500/30 hover:bg-slate-500/10 transition-colors"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden w-10 h-10 rounded-lg flex items-center justify-center border border-slate-500/30 hover:bg-slate-500/10 transition-colors relative z-50"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsMenuOpen(!isMenuOpen);
+              }}
             >
               {isMenuOpen ? (
                 <svg className="w-6 h-6 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -360,18 +370,9 @@ function App() {
           </div>
         </div>
 
-        {/* CLICKABLE OVERLAY - Now with strict z-indexing and pointer-events to intercept taps */}
-        <div 
-          className={`md:hidden fixed inset-0 top-20 z-40 transition-opacity duration-300 bg-slate-900/60 backdrop-blur-sm cursor-pointer ${isMenuOpen ? 'opacity-100 visible pointer-events-auto' : 'opacity-0 invisible pointer-events-none'}`}
-          onClick={(e) => {
-            e.stopPropagation();
-            setIsMenuOpen(false);
-          }}
-        ></div>
-
         {/* The mobile menu dropdown */}
         <div 
-          className={`md:hidden absolute top-20 left-0 w-full z-50 backdrop-blur-xl border-b transition-all duration-300 shadow-xl overflow-hidden ${isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} ${theme.nav}`}
+          className={`md:hidden absolute top-20 left-0 w-full backdrop-blur-xl border-b transition-all duration-300 shadow-xl overflow-hidden ${isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} ${theme.nav}`}
         >
           <div className="flex flex-col px-6 py-4 font-mono text-sm font-bold uppercase tracking-wider space-y-6 text-center">
             <a href="#home" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-500 transition-colors">Home</a>
@@ -676,7 +677,6 @@ function App() {
                 <p className={`mb-10 text-base sm:text-lg ${theme.muted}`}>Open for freelance projects, collaborations, and technical discussions.</p>
 
                 <div className="space-y-6">
-                  {/* Native SVG Icons for Location, Phone, Email */}
                   <div className="flex items-center gap-4">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500 text-lg sm:text-xl shadow-[0_0_10px_rgba(3,177,252,0.2)] flex-shrink-0">
                       <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
