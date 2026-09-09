@@ -643,32 +643,32 @@ function App() {
                 <span className="inline-block px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-cyan-500 bg-cyan-500/10 border border-cyan-500/20 rounded-full mb-4">
                   Featured Web App
                 </span>
-                <h3 className="text-3xl sm:text-4xl font-black mb-4 tracking-tight">IOE Rank Predictor</h3>
+                <h3 className="text-3xl sm:text-4xl font-black mb-4 tracking-tight">IOE Admission Guide</h3>
                 <p className={`text-sm sm:text-base mb-6 leading-relaxed ${theme.muted}`}>
-                  A standalone probability engine for engineering students to calculate their admission chances across Tribhuvan University's constituent campuses based on historical cutoff data.
+                  A comprehensive admission ecosystem for Tribhuvan University engineering applicants. Beyond predicting ranks, it provides step-by-step procedural counseling guides, automated priority form generation, and detailed cutoff analytics.
                 </p>
                 
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center gap-3 text-sm font-semibold">
-                    <svg className="w-5 h-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    Supports all 4 IOE Campuses & 12 Programs
+                    <svg className="w-5 h-5 text-cyan-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    Step-by-Step IOE Counseling & Document Guides
                   </li>
                   <li className="flex items-center gap-3 text-sm font-semibold">
-                    <svg className="w-5 h-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    Cross-Campus Probability Analysis Mode
+                    <svg className="w-5 h-5 text-cyan-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    Statistical Rank Predictor & Priority Form Generator
                   </li>
                   <li className="flex items-center gap-3 text-sm font-semibold">
-                    <svg className="w-5 h-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    Calculates Open, Janajati & Female Quotas
+                    <svg className="w-5 h-5 text-cyan-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    CBT Score Estimator & 4-Year Financial Analytics
                   </li>
                 </ul>
 
                 <div className="flex flex-wrap gap-4">
                   <a href="https://ioe-admission-guide.vercel.app/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-bold rounded-xl shadow-[0_0_15px_rgba(8,145,178,0.4)] transition-all flex items-center gap-2">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                    Try the App
+                    Explore Guide
                   </a>
-                  <a href="https://ioe-admission-guide.vercel.app/" target="_blank" rel="noreferrer" className={`px-6 py-3 text-sm font-bold rounded-xl transition-all flex items-center gap-2 border ${isDark ? 'bg-slate-800 hover:bg-slate-700 border-slate-700 text-white' : 'bg-slate-100 hover:bg-slate-200 border-slate-300 text-slate-800'}`}>
+                  <a href="https://github.com/dszae/ioe-admission-guide" target="_blank" rel="noreferrer" className={`px-6 py-3 text-sm font-bold rounded-xl transition-all flex items-center gap-2 border ${isDark ? 'bg-slate-800 hover:bg-slate-700 border-slate-700 text-white' : 'bg-slate-100 hover:bg-slate-200 border-slate-300 text-slate-800'}`}>
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.332-5.467-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
                     Source Code
                   </a>
@@ -685,14 +685,14 @@ function App() {
                       <div className="w-3 h-3 rounded-full bg-emerald-500/90"></div>
                     </div>
                     <div className={`mx-auto text-[10px] px-6 py-1 rounded-md font-mono tracking-wider ${isDark ? 'bg-slate-900 text-slate-500' : 'bg-white text-slate-500'}`}>
-                      ioe-predictor.vercel.app
+                      ioe-admission-guide.vercel.app
                     </div>
                   </div>
 
                   <div className="h-[450px] w-full relative overflow-hidden">
                     <iframe 
-                      src="https://ioe-predictor.vercel.app" 
-                      title="IOE Predictor Sandbox"
+                      src="https://ioe-admission-guide.vercel.app/" 
+                      title="IOE Admission Guide Sandbox"
                       className="w-full h-full border-0 absolute top-0 left-0 scale-[0.95] origin-top"
                       style={{ pointerEvents: 'auto' }}
                     ></iframe>
