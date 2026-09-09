@@ -1,16 +1,14 @@
-# React + Vite
+# Personal Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+The source code for my personal website and portfolio. It serves as a central hub for my computer engineering projects, freelance video editing work, and technical resume. 
 
-Currently, two official plugins are available:
+Live URL: [dipesh.com](https://dipesh.com)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Overview
+This is a single-page React application designed with a focus on dark-mode aesthetics, custom interactions, and fast load times. It includes a dedicated showcase section that embeds other standalone projects (like the IOE Predictor) via interactive iframes.
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Key Features
+* **Custom Canvas Network**: A lightweight, mobile-optimized interactive particle background built directly with the HTML5 Canvas API.
+* **Scroll Spy Navigation**: Dynamic top navigation that tracks the user's viewport to highlight the active section.
+* **Web3Forms Integration**: Fully functional contact form that routes directly to email without requiring a backend server.
+* **Lightbox Gallery**: Custom image modal for viewing certificates and visual media archives.
