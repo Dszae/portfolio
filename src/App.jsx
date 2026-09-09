@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import FadeUp from './FadeUp';
 
-// --- DATA ARRAYS ---
 const SKILL_CATEGORIES = [
   {
     title: "Programming",
@@ -83,7 +82,6 @@ const CERTIFICATES = [
   { id: 8, title: "Design Principles, Typography & Color Theory", org: "Udemy", img: "/design-principles.jpg" }
 ];
 
-// Array to power the navigation links dynamically
 const NAV_LINKS = [
   { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
@@ -95,17 +93,14 @@ const NAV_LINKS = [
   { id: 'contact', label: 'Contact' }
 ];
 
-// --- MAIN COMPONENT STARTS HERE ---
 function App() {
   const [isDark, setIsDark] = useState(false);
   const [formStatus, setFormStatus] = useState("");
   const canvasRef = useRef(null);
   
-  // --- MODAL & MOBILE MENU STATE ---
   const [selectedImage, setSelectedImage] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
-  // --- SCROLL SPY STATE ---
   const [activeSection, setActiveSection] = useState('home');
 
   const [text, setText] = useState('');
@@ -114,7 +109,6 @@ function App() {
   const typingSpeed = 100;
   const roles = ["Video Editor", "Graphics Designer", "Computer Engineer"];
 
-  // Lock scrolling when modal OR mobile menu is open
   useEffect(() => {
     if (selectedImage || isMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -123,7 +117,6 @@ function App() {
     }
   }, [selectedImage, isMenuOpen]);
 
-  // --- SCROLL SPY LISTENER ---
   useEffect(() => {
     const handleScroll = () => {
       const sections = document.querySelectorAll('section[id]');
@@ -173,7 +166,6 @@ function App() {
     }
   };
 
-  // --- CANVAS PARTICLE NETWORK (MOBILE OPTIMIZED) ---
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -379,7 +371,6 @@ function App() {
             D<span className="text-blue-500">.</span>S
           </a>
           
-          {/* Desktop Navigation */}
           <div className="hidden md:flex gap-4 lg:gap-8 font-mono text-sm font-semibold uppercase tracking-wider">
             {NAV_LINKS.map((link) => (
               <a 
@@ -416,7 +407,6 @@ function App() {
           </div>
         </div>
 
-        {/* The mobile menu dropdown */}
         <div 
           className={`md:hidden absolute top-20 left-0 w-full z-50 backdrop-blur-xl border-b transition-all duration-300 shadow-xl overflow-hidden ${isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} ${theme.nav}`}
         >
@@ -493,7 +483,6 @@ function App() {
           </div>
         </section>
 
-        {/* About Me Section */}
         <FadeUp>
           <section id="about" className="py-24 px-6 max-w-7xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-black mb-12 flex items-center gap-4">
@@ -554,7 +543,6 @@ function App() {
           </section>
         </FadeUp>
 
-        {/* Skills Section */}
         <FadeUp>
           <section id="skills" className="py-24 px-6 max-w-7xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-black mb-12 flex items-center gap-4">
@@ -594,7 +582,6 @@ function App() {
           </section>
         </FadeUp>
 
-        {/* Resume Section */}
         <FadeUp>
           <section id="resume" className="py-24 px-6 max-w-7xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-black mb-12 flex items-center gap-4">
@@ -602,7 +589,6 @@ function App() {
             </h2>
             <div className="grid lg:grid-cols-2 gap-8">
 
-              {/* Experience Column */}
               <div className={`p-6 sm:p-8 md:p-12 rounded-3xl border backdrop-blur-md transition-colors duration-300 ${theme.card}`}>
                 <h3 className="text-xl sm:text-2xl font-bold mb-10 flex items-center gap-3">
                   <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
@@ -620,7 +606,6 @@ function App() {
                 </div>
               </div>
 
-              {/* Education Column */}
               <div className={`p-6 sm:p-8 md:p-12 rounded-3xl border backdrop-blur-md transition-colors duration-300 ${theme.card}`}>
                 <h3 className="text-xl sm:text-2xl font-bold mb-10 flex items-center gap-3">
                   <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z" /><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" /></svg>
@@ -646,17 +631,14 @@ function App() {
           </section>
         </FadeUp>
 
-        {/* Projects Archive */}
         <FadeUp>
           <section id="projects" className="py-24 px-6 max-w-7xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-black mb-12 flex items-center gap-4">
               <span className="text-blue-500">/</span> Projects Archive
             </h2>
 
-            {/* --- IOE PREDICTOR FEATURED SHOWCASE --- */}
             <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-2xl ${isDark ? 'bg-slate-900/60 border-slate-700' : 'bg-white/80 border-slate-200'}`}>
               
-              {/* Left Side: App Info & Features */}
               <div className="w-full lg:w-1/2">
                 <span className="inline-block px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-cyan-500 bg-cyan-500/10 border border-cyan-500/20 rounded-full mb-4">
                   Featured Web App
@@ -666,7 +648,6 @@ function App() {
                   A standalone probability engine for engineering students to calculate their admission chances across Tribhuvan University's constituent campuses based on historical cutoff data.
                 </p>
                 
-                {/* Feature Bullets */}
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center gap-3 text-sm font-semibold">
                     <svg className="w-5 h-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -682,9 +663,8 @@ function App() {
                   </li>
                 </ul>
 
-                {/* Call to Action Buttons */}
                 <div className="flex flex-wrap gap-4">
-                  <a href="https://ioe-predictor.vercel.app/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-bold rounded-xl shadow-[0_0_15px_rgba(8,145,178,0.4)] transition-all flex items-center gap-2">
+                  <a href="http://localhost:5174" target="_blank" rel="noreferrer" className="px-6 py-3 bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-bold rounded-xl shadow-[0_0_15px_rgba(8,145,178,0.4)] transition-all flex items-center gap-2">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                     Try the App
                   </a>
@@ -695,11 +675,9 @@ function App() {
                 </div>
               </div>
 
-              {/* Right Side: Mock Browser with Iframe */}
               <div className="w-full lg:w-1/2">
                 <div className={`rounded-xl overflow-hidden border shadow-2xl ${isDark ? 'border-slate-700 bg-[#0a0a0c]' : 'border-slate-300 bg-slate-50'}`}>
                   
-                  {/* Fake Browser Toolbar */}
                   <div className={`h-10 flex items-center px-4 gap-2 border-b ${isDark ? 'bg-slate-800 border-slate-700' : 'bg-slate-200 border-slate-300'}`}>
                     <div className="flex gap-1.5">
                       <div className="w-3 h-3 rounded-full bg-red-500/90"></div>
@@ -711,10 +689,9 @@ function App() {
                     </div>
                   </div>
 
-                  {/* Live Iframe Viewport */}
                   <div className="h-[450px] w-full relative overflow-hidden">
                     <iframe 
-                      src="https://ioe-predictor.vercel.app/" 
+                      src="http://localhost:5174" 
                       title="IOE Predictor Sandbox"
                       className="w-full h-full border-0 absolute top-0 left-0 scale-[0.95] origin-top"
                       style={{ pointerEvents: 'auto' }}
@@ -747,7 +724,6 @@ function App() {
           </section>
         </FadeUp>
 
-        {/* Image Gallery Section */}
         <FadeUp>
           <section id="gallery" className="py-24 px-6 max-w-7xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-black mb-6 flex items-center gap-4">
@@ -777,7 +753,6 @@ function App() {
           </section>
         </FadeUp>
 
-        {/* Certificates Section */}
         <FadeUp>
           <section id="certificates" className="py-24 px-6 max-w-7xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-black mb-12 flex items-center gap-4">
@@ -801,7 +776,6 @@ function App() {
           </section>
         </FadeUp>
 
-        {/* Contact Section with Web3Forms */}
         <FadeUp>
           <section id="contact" className="py-24 px-6 max-w-7xl mx-auto">
             <div className={`p-6 sm:p-8 md:p-14 rounded-[2rem] sm:rounded-[2.5rem] border backdrop-blur-md ${theme.card}`}>
@@ -884,7 +858,6 @@ function App() {
           </section>
         </FadeUp>
 
-        {/* Footer */}
         <footer className={`py-8 sm:py-10 text-center font-mono text-[10px] sm:text-sm border-t ${isDark ? 'border-slate-800' : 'border-slate-200'} ${theme.muted}`}>
           <div className="flex flex-wrap justify-center gap-x-6 sm:gap-x-8 gap-y-4 mb-6 sm:mb-8">
             <a href="https://github.com/dszae" target="_blank" rel="noreferrer" className={`flex items-center gap-1 sm:gap-2 hover:text-blue-500 transition-colors font-bold`}>
@@ -913,7 +886,6 @@ function App() {
 
       </div>
 
-      {/* FULL-SCREEN LIGHTBOX MODAL */}
       {selectedImage && (
         <div 
           className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/90 backdrop-blur-sm p-4 md:p-8 opacity-100 transition-opacity duration-300"
