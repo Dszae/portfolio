@@ -751,13 +751,13 @@ function App() {
                       <div className="w-3 h-3 rounded-full bg-emerald-500/90"></div>
                     </div>
                     <div className={`mx-auto text-[10px] px-6 py-1 rounded-md font-mono tracking-wider ${isDark ? 'bg-slate-900 text-slate-500' : 'bg-white text-slate-500'}`}>
-                      git-visualize.vercel.app
+                      git-visualizer.dipeshsapkota7.com.np
                     </div>
                   </div>
 
                   <div className="h-[450px] w-full relative overflow-hidden">
                     <iframe 
-                      src="https://git-visualize.vercel.app/" 
+                      src="https://git-visualizer.dipeshsapkota7.com.np/" 
                       title="Git Visualizer Sandbox"
                       className="w-full h-full border-0 absolute top-0 left-0 scale-[0.95] origin-top"
                       style={{ pointerEvents: 'auto' }}
