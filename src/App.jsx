@@ -637,6 +637,7 @@ function App() {
               <span className="text-blue-500">/</span> Projects Archive
             </h2>
 
+            {/* IOE Admission Guide Embed */}
             <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-2xl ${isDark ? 'bg-slate-900/60 border-slate-700' : 'bg-white/80 border-slate-200'}`}>
               
               <div className="w-full lg:w-1/2">
@@ -693,6 +694,71 @@ function App() {
                     <iframe 
                       src="https://ioe-admission-guide.vercel.app/" 
                       title="IOE Admission Guide Sandbox"
+                      className="w-full h-full border-0 absolute top-0 left-0 scale-[0.95] origin-top"
+                      style={{ pointerEvents: 'auto' }}
+                    ></iframe>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Git Visualizer Embed */}
+            <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-2xl ${isDark ? 'bg-slate-900/60 border-slate-700' : 'bg-white/80 border-slate-200'}`}>
+              
+              <div className="w-full lg:w-1/2">
+                <span className="inline-block px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-orange-500 bg-orange-500/10 border border-orange-500/20 rounded-full mb-4">
+                  Featured Web App
+                </span>
+                <h3 className="text-3xl sm:text-4xl font-black mb-4 tracking-tight">Git Visualizer</h3>
+                <p className={`text-sm sm:text-base mb-6 leading-relaxed ${theme.muted}`}>
+                  An interactive, visually driven learning tool designed to demystify Git version control. Features a dynamic data-flow architecture and an interactive canvas for mapping standard Git commands.
+                </p>
+                
+                <ul className="space-y-3 mb-8">
+                  <li className="flex items-center gap-3 text-sm font-semibold">
+                    <svg className="w-5 h-5 text-orange-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    Interactive Hover-Driven UI
+                  </li>
+                  <li className="flex items-center gap-3 text-sm font-semibold">
+                    <svg className="w-5 h-5 text-orange-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    Live Diagramming of Git Operations
+                  </li>
+                  <li className="flex items-center gap-3 text-sm font-semibold">
+                    <svg className="w-5 h-5 text-orange-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    Seamless Concept Mapping for Beginners
+                  </li>
+                </ul>
+
+                <div className="flex flex-wrap gap-4">
+                  <a href="https://git-visualize.vercel.app/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-orange-600 hover:bg-orange-500 text-white text-sm font-bold rounded-xl shadow-[0_0_15px_rgba(249,115,22,0.4)] transition-all flex items-center gap-2">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    Explore Visualizer
+                  </a>
+                  <a href="https://github.com/dszae/git-visualizer" target="_blank" rel="noreferrer" className={`px-6 py-3 text-sm font-bold rounded-xl transition-all flex items-center gap-2 border ${isDark ? 'bg-slate-800 hover:bg-slate-700 border-slate-700 text-white' : 'bg-slate-100 hover:bg-slate-200 border-slate-300 text-slate-800'}`}>
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.332-5.467-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
+                    Source Code
+                  </a>
+                </div>
+              </div>
+
+              <div className="w-full lg:w-1/2">
+                <div className={`rounded-xl overflow-hidden border shadow-2xl ${isDark ? 'border-slate-700 bg-[#0a0a0c]' : 'border-slate-300 bg-slate-50'}`}>
+                  
+                  <div className={`h-10 flex items-center px-4 gap-2 border-b ${isDark ? 'bg-slate-800 border-slate-700' : 'bg-slate-200 border-slate-300'}`}>
+                    <div className="flex gap-1.5">
+                      <div className="w-3 h-3 rounded-full bg-red-500/90"></div>
+                      <div className="w-3 h-3 rounded-full bg-amber-500/90"></div>
+                      <div className="w-3 h-3 rounded-full bg-emerald-500/90"></div>
+                    </div>
+                    <div className={`mx-auto text-[10px] px-6 py-1 rounded-md font-mono tracking-wider ${isDark ? 'bg-slate-900 text-slate-500' : 'bg-white text-slate-500'}`}>
+                      git-visualize.vercel.app
+                    </div>
+                  </div>
+
+                  <div className="h-[450px] w-full relative overflow-hidden">
+                    <iframe 
+                      src="https://git-visualize.vercel.app/" 
+                      title="Git Visualizer Sandbox"
                       className="w-full h-full border-0 absolute top-0 left-0 scale-[0.95] origin-top"
                       style={{ pointerEvents: 'auto' }}
                     ></iframe>
