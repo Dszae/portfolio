@@ -730,7 +730,7 @@ function App() {
                 </ul>
 
                 <div className="flex flex-wrap gap-4">
-                  <a href="https://git-visualize.vercel.app/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-orange-600 hover:bg-orange-500 text-white text-sm font-bold rounded-xl shadow-[0_0_15px_rgba(249,115,22,0.4)] transition-all flex items-center gap-2">
+                  <a href="https://git-visualizer.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-orange-600 hover:bg-orange-500 text-white text-sm font-bold rounded-xl shadow-[0_0_15px_rgba(249,115,22,0.4)] transition-all flex items-center gap-2">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                     Explore Visualizer
                   </a>
