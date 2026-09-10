@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://portfolio-three-jet-cvw8kwei11.vercel.app/sitemap.xml
+Sitemap: https://www.dipeshsapkota7.com.np/sitemap.xml
