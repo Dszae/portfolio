@@ -637,7 +637,7 @@ function App() {
               <span className="text-blue-500">/</span> Projects Archive
             </h2>
 
-            {/* IOE Admission Guide Embed */}
+            {/* IOE Admission Guide */}
             <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-2xl ${isDark ? 'bg-slate-900/60 border-slate-700' : 'bg-white/80 border-slate-200'}`}>
               
               <div className="w-full lg:w-1/2">
@@ -690,19 +690,20 @@ function App() {
                     </div>
                   </div>
 
-                  <div className="h-[450px] w-full relative overflow-hidden">
-                    <iframe 
-                      src="https://ioe-admission.dipeshsapkota7.com.np/" 
-                      title="IOE Admission Guide Sandbox"
-                      className="w-full h-full border-0 absolute top-0 left-0 scale-[0.95] origin-top"
-                      style={{ pointerEvents: 'auto' }}
-                    ></iframe>
+                  <div className="h-[450px] w-full relative overflow-hidden group">
+                    <img 
+                      src="/ioe-preview.jpg" 
+                      alt="IOE Admission Hub Preview" 
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 cursor-pointer"
+                      onClick={() => window.open("https://ioe-admission.dipeshsapkota7.com.np/", "_blank")}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Git Visualizer Embed */}
+            {/* Git Visualizer */}
             <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-2xl ${isDark ? 'bg-slate-900/60 border-slate-700' : 'bg-white/80 border-slate-200'}`}>
               
               <div className="w-full lg:w-1/2">
@@ -755,13 +756,14 @@ function App() {
                     </div>
                   </div>
 
-                  <div className="h-[450px] w-full relative overflow-hidden">
-                    <iframe 
-                      src="https://git-visualizer.dipeshsapkota7.com.np/" 
-                      title="Git Visualizer Sandbox"
-                      className="w-full h-full border-0 absolute top-0 left-0 scale-[0.95] origin-top"
-                      style={{ pointerEvents: 'auto' }}
-                    ></iframe>
+                  <div className="h-[450px] w-full relative overflow-hidden group">
+                    <img 
+                      src="/git-preview.jpg" 
+                      alt="Git Visualizer Preview" 
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 cursor-pointer"
+                      onClick={() => window.open("https://git-visualizer.dipeshsapkota7.com.np/", "_blank")}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                   </div>
                 </div>
               </div>
