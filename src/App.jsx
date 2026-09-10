@@ -474,7 +474,7 @@ function App() {
             <div className="order-1 md:order-2 flex justify-center items-center relative pt-10 md:pt-0">
               <div className={`absolute w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] lg:w-[420px] lg:h-[420px] rounded-full border border-dashed animate-[spin_20s_linear_infinite] ${isDark ? 'border-blue-500/30' : 'border-blue-500/20'}`}></div>
               <img
-                src="/ChatGPT Image Sep 7, 2026, 09_05_40 PM.png"
+                src="/og-image.png"
                 alt="Dipesh Sapkota Logo"
                 className={`relative z-10 w-full max-w-[220px] sm:max-w-[280px] lg:max-w-[380px] rounded-full shadow-[0_0_40px_rgba(3,177,252,0.4)] border-2 transition-transform duration-500 hover:scale-105 cursor-pointer ${isDark ? 'border-blue-500' : 'border-blue-400'}`}
               />
