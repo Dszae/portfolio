@@ -97,19 +97,22 @@ function VisitorCounter() {
   const [visits, setVisits] = useState(null);
 
   useEffect(() => {
-    let localVisits = localStorage.getItem('site_visits');
-    if (!localVisits) {
-      localVisits = 1420;
-    } else {
-      localVisits = parseInt(localVisits, 10) + 1;
-    }
-    localStorage.setItem('site_visits', localVisits);
-    setVisits(localVisits);
+    fetch('https://api.counterapi.dev/v1/dipeshsapkota7/portfolio-visits/up')
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.count !== undefined) {
+          setVisits(data.count);
+        }
+      })
+      .catch(err => {
+        console.error('Error fetching live counter:', err);
+        setVisits('Live');
+      });
   }, []);
 
   return (
     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-500 font-mono text-xs shadow-[0_0_10px_rgba(3,177,252,0.1)]">
-      <span>Total Visits: {visits !== null ? visits.toLocaleString() : '1,420'}</span>
+      <span>Total Visits: {visits !== null ? (typeof visits === 'number' ? visits.toLocaleString() : visits) : 'Loading...'}</span>
     </div>
   );
 }
