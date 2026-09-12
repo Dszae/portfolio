@@ -93,6 +93,27 @@ const NAV_LINKS = [
   { id: 'contact', label: 'Contact' }
 ];
 
+function VisitorCounter() {
+  const [visits, setVisits] = useState(null);
+
+  useEffect(() => {
+    fetch('https://api.counterapi.dev/v1/dipeshsapkota7/visits/up')
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.count !== undefined) {
+          setVisits(data.count);
+        }
+      })
+      .catch(err => console.error('Error fetching counter:', err));
+  }, []);
+
+  return (
+    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-500 font-mono text-xs">
+      <span>Total Visits: {visits !== null ? visits.toLocaleString() : 'Loading...'}</span>
+    </div>
+  );
+}
+
 function App() {
   const [isDark, setIsDark] = useState(false);
   const [formStatus, setFormStatus] = useState("");
@@ -948,6 +969,9 @@ function App() {
               <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.12-3.44-3.37-3.43-5.68.02-1.3.39-2.58 1.05-3.71 1.4-2.28 3.96-3.66 6.64-3.64v4.01c-1.14-.02-2.31.25-3.28.94-.85.64-1.36 1.7-1.31 2.8.04 1.15.65 2.21 1.63 2.79.9.54 2.01.7 3.03.49 1.15-.22 2.11-.97 2.53-2.06.19-.51.27-1.07.28-1.61.03-4.75.01-9.5.02-14.25z" /></svg>
               @dsz.ae
             </a>
+          </div>
+          <div className="mb-4">
+            <VisitorCounter />
           </div>
           <p>&copy; {new Date().getFullYear()} Dipesh Sapkota. All rights reserved.</p>
         </footer>
