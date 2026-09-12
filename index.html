@@ -41,47 +41,73 @@
       gtag('config', 'G-49P9YBE6PD');
     </script>
 
-    <!-- JSON-LD Structured Data with Project Linking -->
+    <!-- JSON-LD Structured Data with Project Linking & Breadcrumbs -->
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "@id": "https://www.dipeshsapkota7.com.np/#person",
-        "name": "Dipesh Sapkota",
-        "alternateName": ["dsz.ae", "Dipesh"],
-        "url": "https://www.dipeshsapkota7.com.np/",
-        "image": "https://www.dipeshsapkota7.com.np/og-image.png",
-        "jobTitle": ["Computer Engineering Student", "Video Editor", "Motion Graphics Designer"],
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Gaindakot",
-          "addressRegion": "Gandaki Province",
-          "addressCountry": "Nepal"
-        },
-        "alumniOf": {
-          "@type": "CollegeOrUniversity",
-          "name": "Institute of Engineering (IOE), Thapathali Campus"
-        },
-        "sameAs": [
-          "https://github.com/dszae",
-          "https://linkedin.com/in/dszae",
-          "https://instagram.com/dsz.ae",
-          "https://facebook.com/dsz.ae",
-          "https://tiktok.com/@dsz.ae"
-        ],
-        "hasPart": [
-          {
-            "@type": "WebSite",
-            "name": "IOE Entrance Preparation Portal",
-            "url": "https://ioe-admission.dipeshsapkota7.com.np/"
+      [
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "@id": "https://www.dipeshsapkota7.com.np/#person",
+          "name": "Dipesh Sapkota",
+          "alternateName": ["dsz.ae", "Dipesh"],
+          "url": "https://www.dipeshsapkota7.com.np/",
+          "image": "https://www.dipeshsapkota7.com.np/og-image.png",
+          "jobTitle": ["Computer Engineering Student", "Video Editor", "Motion Graphics Designer"],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Gaindakot",
+            "addressRegion": "Gandaki Province",
+            "addressCountry": "Nepal"
           },
-          {
-            "@type": "WebApplication",
-            "name": "Git Visualizer",
-            "url": "https://git-visualizer.dipeshsapkota7.com.np/"
-          }
-        ]
-      }
+          "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "Institute of Engineering (IOE), Thapathali Campus"
+          },
+          "sameAs": [
+            "https://github.com/dszae",
+            "https://linkedin.com/in/dszae",
+            "https://instagram.com/dsz.ae",
+            "https://facebook.com/dsz.ae",
+            "https://tiktok.com/@dsz.ae"
+          ],
+          "hasPart": [
+            {
+              "@type": "WebSite",
+              "name": "IOE Entrance Preparation Portal",
+              "url": "https://ioe-admission.dipeshsapkota7.com.np/"
+            },
+            {
+              "@type": "WebApplication",
+              "name": "Git Visualizer",
+              "url": "https://git-visualizer.dipeshsapkota7.com.np/"
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.dipeshsapkota7.com.np/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "IOE Entrance Preparation Portal",
+              "item": "https://ioe-admission.dipeshsapkota7.com.np/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Git Visualizer",
+              "item": "https://git-visualizer.dipeshsapkota7.com.np/"
+            }
+          ]
+        }
+      ]
     </script>
   </head>
   <body>
