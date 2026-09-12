@@ -1,8 +1,8 @@
 # Dipesh Sapkota — Digital Portfolio
 
 [![Live Demo](https://img.shields.io/badge/Demo-Live_Site-0891B2?style=for-the-badge&logo=vercel)](https://www.dipeshsapkota7.com.np/)
-[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)]()
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)]()
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
 The central hub for my digital identity. This portfolio explores the intersection of code, circuits, and visual media, showcasing my work as a Computer Engineering student, Video Editor, and Motion Graphics Designer. 
 
