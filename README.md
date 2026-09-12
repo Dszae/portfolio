@@ -1,14 +1,26 @@
-# Personal Portfolio
+# Dipesh Sapkota — Digital Portfolio
 
-The source code for my personal website and portfolio. It serves as a central hub for my computer engineering projects, freelance video editing work, and technical resume. 
+[![Live Demo](https://img.shields.io/badge/Demo-Live_Site-0891B2?style=for-the-badge&logo=vercel)](https://www.dipeshsapkota7.com.np/)
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
-Live URL: [dipesh.com](https://dipesh.com)
+The central hub for my digital identity. This portfolio explores the intersection of code, circuits, and visual media, showcasing my work as a Computer Engineering student, Video Editor, and Motion Graphics Designer. 
 
-## Overview
-This is a single-page React application designed with a focus on dark-mode aesthetics, custom interactions, and fast load times. It includes a dedicated showcase section that embeds other standalone projects (like the IOE Predictor) via interactive iframes.
+**Live Website:** [https://www.dipeshsapkota7.com.np/](https://www.dipeshsapkota7.com.np/)
 
-## Key Features
-* **Custom Canvas Network**: A lightweight, mobile-optimized interactive particle background built directly with the HTML5 Canvas API.
-* **Scroll Spy Navigation**: Dynamic top navigation that tracks the user's viewport to highlight the active section.
-* **Web3Forms Integration**: Fully functional contact form that routes directly to email without requiring a backend server.
-* **Lightbox Gallery**: Custom image modal for viewing certificates and visual media archives.
+## ✨ Key Features
+
+* **Interactive Canvas Engine:** A custom-built, responsive particle network background that reacts to cursor proximity and touch events.
+* **Dual Theme Architecture:** Seamless light and dark mode toggling using Tailwind's state management.
+* **Performance Optimized:** Achieves near-instant load times through native image lazy-loading, WebP asset delivery, and strict React component rendering.
+* **Technical SEO Integration:** Fully indexed architecture equipped with JSON-LD schema loops connecting all subdomains and social entities to establish a dominant search presence.
+* **Responsive Layout:** Fluid UI design ensuring flawless presentation across mobile, tablet, and desktop viewports.
+
+## 💻 Tech Stack
+
+* **Core Framework:** React.js
+* **Build Tool:** Vite
+* **Styling:** Tailwind CSS
+* **Hosting & CI/CD:** Vercel
+* **Contact Form API:** Web3Forms
+
