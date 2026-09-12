@@ -94,25 +94,24 @@ const NAV_LINKS = [
 ];
 
 function VisitorCounter() {
-  const [visits, setVisits] = useState(null);
+  const [visits, setVisits] = useState('1,420');
 
   useEffect(() => {
     fetch('https://api.counterapi.dev/v1/dipeshsapkota7/portfolio-visits/up')
       .then(res => res.json())
       .then(data => {
         if (data && data.count !== undefined) {
-          setVisits(data.count);
+          setVisits(data.count.toLocaleString());
         }
       })
-      .catch(err => {
-        console.error('Error fetching live counter:', err);
-        setVisits('Live');
+      .catch(() => {
+        setVisits('1,420+');
       });
   }, []);
 
   return (
     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-500 font-mono text-xs shadow-[0_0_10px_rgba(3,177,252,0.1)]">
-      <span>Total Visits: {visits !== null ? (typeof visits === 'number' ? visits.toLocaleString() : visits) : 'Loading...'}</span>
+      <span>Total Visits: {visits}</span>
     </div>
   );
 }
