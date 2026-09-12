@@ -693,7 +693,7 @@ function App() {
                   <div className="h-[450px] w-full relative overflow-hidden group">
                     <img 
                       src="/ioe-preview.jpg" 
-                      alt="IOE Admission Hub Preview" 
+                      alt="Dipesh Sapkota - IOE Admission Hub Preview" 
                       className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 cursor-pointer"
                       onClick={() => window.open("https://ioe-admission.dipeshsapkota7.com.np/", "_blank")}
                     />
@@ -759,7 +759,7 @@ function App() {
                   <div className="h-[450px] w-full relative overflow-hidden group">
                     <img 
                       src="/git-preview.jpg" 
-                      alt="Git Visualizer Preview" 
+                      alt="Dipesh Sapkota - Git Visualizer Preview" 
                       className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 cursor-pointer"
                       onClick={() => window.open("https://git-visualizer.dipeshsapkota7.com.np/", "_blank")}
                     />
