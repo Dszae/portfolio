@@ -97,17 +97,31 @@ function VisitorCounter() {
   const [visits, setVisits] = useState('1,420');
 
   useEffect(() => {
+    // Attempts real serverless increment, with immediate fallback incrementing
     fetch('https://api.countapi.xyz/hit/dipeshsapkota7-portfolio/visits')
       .then(res => res.json())
       .then(data => {
         if (data && data.value !== undefined) {
           const totalCount = 1420 + data.value;
           setVisits(totalCount.toLocaleString());
+        } else {
+          incrementLocalFallback();
         }
       })
       .catch(() => {
-        setVisits('1,421');
+        incrementLocalFallback();
       });
+
+    function incrementLocalFallback() {
+      let current = localStorage.getItem('portfolio_view_count');
+      if (!current) {
+        current = '1425';
+      } else {
+        current = (parseInt(current, 10) + 1).toString();
+      }
+      localStorage.setItem('portfolio_view_count', current);
+      setVisits(parseInt(current, 10).toLocaleString());
+    }
   }, []);
 
   return (
