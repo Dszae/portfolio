@@ -97,15 +97,16 @@ function VisitorCounter() {
   const [visits, setVisits] = useState('1,420');
 
   useEffect(() => {
-    fetch('https://api.counterapi.dev/v1/dipeshsapkota7/portfolio-visits/up')
+    fetch('https://api.countapi.xyz/hit/dipeshsapkota7-portfolio/visits')
       .then(res => res.json())
       .then(data => {
-        if (data && data.count !== undefined) {
-          setVisits(data.count.toLocaleString());
+        if (data && data.value !== undefined) {
+          const totalCount = 1420 + data.value;
+          setVisits(totalCount.toLocaleString());
         }
       })
       .catch(() => {
-        setVisits('1,420+');
+        setVisits('1,421');
       });
   }, []);
 
