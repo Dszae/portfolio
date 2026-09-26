@@ -685,7 +685,7 @@ function App() {
               </span>
               <h3 className="text-3xl sm:text-4xl font-black mb-4 tracking-tight">Sportivo</h3>
               <p className={`text-sm sm:text-base mb-6 leading-relaxed ${theme.muted}`}>
-                A high-performance live sports streaming platform featuring real-time match schedule scraping, multi-server stream switching, live team logo thumbnails, and direct shareable match links
+                A high-performance live sports streaming platform featuring real-time match schedule scraping, multi-server stream switching, live team logo thumbnails, and direct shareable match links.
               </p>
               
               <ul className="space-y-3 mb-8">
@@ -699,7 +699,7 @@ function App() {
                 </li>
                 <li className="flex items-center gap-3 text-sm font-semibold">
                   <svg className="w-5 h-5 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                  Optimized for #1 Search Engine Ranking
+                  Multi-Server Switching & Direct Share Links
                 </li>
               </ul>
 
