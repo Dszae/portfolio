@@ -67,10 +67,23 @@ const EDUCATION = [
     year: "2026 - Present",
     degree: "Bachelor in Computer Engineering",
     school: "Institute of Engineering (IOE), Thapathali Campus",
-    desc: "Currently pursuing my 2nd semester."
+    desc: "Currently pursuing my 2nd semester.",
+    logo: "/thapathali.jpg"
   },
-  { year: "2022 - 2024", degree: "School Leaving Certificate (SLC)", school: "Shree Janak Model Secondary School", desc: "GPA: 3.88 / 4.00" },
-  { year: "2022", degree: "Secondary Education Examination (SEE)", school: "Shree Mahendra Adarsha Secondary School", desc: "GPA: 3.88 / 4.00" }
+  { 
+    year: "2022 - 2024", 
+    degree: "School Leaving Certificate (SLC)", 
+    school: "Shree Janak Model Secondary School", 
+    desc: "GPA: 3.88 / 4.00",
+    logo: "/janak.jpg"
+  },
+  { 
+    year: "2022", 
+    degree: "Secondary Education Examination (SEE)", 
+    school: "Shree Mahendra Adarsha Secondary School", 
+    desc: "GPA: 3.88 / 4.00",
+    logo: "/mahendra.png"
+  }
 ];
 
 const PROJECTS = [
@@ -170,6 +183,16 @@ function App() {
   const [skillsInView, setSkillsInView] = useState(false);
   const skillsRef = useRef(null);
 
+  const [cursorPos, setCursorPos] = useState({ x: -1000, y: -1000 });
+
+  useEffect(() => {
+    const handleGlobalMouseMove = (e) => {
+      setCursorPos({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleGlobalMouseMove);
+    return () => window.removeEventListener('mousemove', handleGlobalMouseMove);
+  }, []);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -249,14 +272,18 @@ function App() {
     let particlesArray = [];
     let animationFrameId;
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    const heroSection = document.getElementById('home');
+    if (!heroSection) return;
+
+    canvas.width = heroSection.offsetWidth;
+    canvas.height = heroSection.offsetHeight;
 
     let mouse = { x: null, y: null, radius: 180 };
 
     const handleMouseMove = (event) => {
-      mouse.x = event.clientX;
-      mouse.y = event.clientY;
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = event.clientX - rect.left;
+      mouse.y = event.clientY - rect.top;
     };
 
     const handleTouchStart = () => {
@@ -269,20 +296,21 @@ function App() {
       mouse.y = null;
     };
 
-    let currentWidth = window.innerWidth;
+    let currentWidth = heroSection.offsetWidth;
 
     const handleResize = () => {
-      if (window.innerWidth !== currentWidth) {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        currentWidth = window.innerWidth;
+      if (heroSection && heroSection.offsetWidth !== currentWidth) {
+        canvas.width = heroSection.offsetWidth;
+        canvas.height = heroSection.offsetHeight;
+        currentWidth = heroSection.offsetWidth;
         init();
       }
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('touchstart', handleTouchStart);
-    window.addEventListener('mouseout', handleMouseOut);
+    const heroEl = heroSection;
+    heroEl.addEventListener('mousemove', handleMouseMove);
+    heroEl.addEventListener('touchstart', handleTouchStart);
+    heroEl.addEventListener('mouseout', handleMouseOut);
     window.addEventListener('resize', handleResize);
 
     class Particle {
@@ -362,7 +390,7 @@ function App() {
 
     function animate() {
       animationFrameId = requestAnimationFrame(animate);
-      ctx.clearRect(0, 0, innerWidth, innerHeight);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       
       if (mouse.x != null && mouse.y != null) {
         const glowRadius = 300;
@@ -388,9 +416,9 @@ function App() {
 
     return () => {
       cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('touchstart', handleTouchStart);
-      window.removeEventListener('mouseout', handleMouseOut);
+      heroEl.removeEventListener('mousemove', handleMouseMove);
+      heroEl.removeEventListener('touchstart', handleTouchStart);
+      heroEl.removeEventListener('mouseout', handleMouseOut);
       window.removeEventListener('resize', handleResize);
     };
   }, [isDark]);
@@ -427,9 +455,28 @@ function App() {
   return (
     <div className={`min-h-screen font-sans transition-colors duration-500 overflow-x-hidden ${theme.bg} ${theme.text} relative selection:bg-blue-500/30`}>
 
-      <canvas
-        ref={canvasRef}
-        className="fixed inset-0 w-full h-full pointer-events-none z-0"
+      <style>{`
+        @keyframes slideFromLeft {
+          0% { opacity: 0; transform: translateX(-60px); }
+          100% { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideFromRight {
+          0% { opacity: 0; transform: translateX(60px); }
+          100% { opacity: 1; transform: translateX(0); }
+        }
+        .animate-slide-left {
+          animation: slideFromLeft 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .animate-slide-right {
+          animation: slideFromRight 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+      `}</style>
+
+      <div 
+        className="pointer-events-none fixed inset-0 z-50 transition-opacity duration-300"
+        style={{
+          background: `radial-gradient(600px circle at ${cursorPos.x}px ${cursorPos.y}px, ${isDark ? 'rgba(59, 130, 246, 0.12)' : 'rgba(59, 130, 246, 0.06)'}, transparent 40%)`
+        }}
       />
 
       <div 
@@ -462,9 +509,13 @@ function App() {
           <div className="flex items-center gap-3 sm:gap-4">
             <button
               onClick={() => setIsDark(!isDark)}
-              className="w-10 h-10 rounded-full flex items-center justify-center border border-slate-500/30 hover:bg-slate-500/10 transition-colors shadow-sm"
+              className={`w-10 h-10 rounded-full flex items-center justify-center border transition-colors shadow-sm ${isDark ? 'border-blue-500/50 text-blue-400 hover:bg-blue-500/10' : 'border-slate-800/50 text-slate-800 hover:bg-slate-800/10'}`}
             >
-              {isDark ? '☀️' : '🌙'}
+              {isDark ? (
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+              ) : (
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+              )}
             </button>
             
             <button 
@@ -503,10 +554,14 @@ function App() {
 
       <div className="relative z-10">
 
-        <section id="home" className="pt-32 pb-20 px-6 min-h-[95vh] flex items-center max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center w-full">
+        <section id="home" className="pt-32 pb-20 px-6 min-h-[95vh] flex items-center w-full relative overflow-hidden">
+          <canvas
+            ref={canvasRef}
+            className="absolute inset-0 w-full h-full pointer-events-none z-0"
+          />
+          <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center w-full relative z-10">
             
-            <div className="order-2 md:order-1 transition-all duration-1000 transform translate-x-0 opacity-100 animate-[slideLeft_1s_ease-out]">
+            <div className="order-2 md:order-1 opacity-0 animate-slide-left">
               <div className="inline-block px-4 py-1.5 rounded-full border border-blue-500/50 bg-blue-500/10 text-blue-500 font-mono text-sm font-bold mb-6 backdrop-blur-sm shadow-[0_0_15px_rgba(3,177,252,0.5)]">
                 <svg className="w-4 h-4 inline-block mr-2 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                 System Online
@@ -531,7 +586,7 @@ function App() {
                   <span className="text-sm sm:text-base">dsz.ae</span>
                 </a>
                 <a href="https://instagram.com/dsz.ae" target="_blank" rel="noreferrer" className={`flex items-center gap-2 ${theme.muted} hover:text-blue-500 transition-colors font-mono font-semibold`}>
-                  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4-4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" /></svg>
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" /></svg>
                   <span className="text-sm sm:text-base">dsz.ae</span>
                 </a>
               </div>
@@ -547,7 +602,7 @@ function App() {
               </div>
             </div>
 
-            <div className="order-1 md:order-2 flex justify-center items-center relative pt-10 md:pt-0 animate-[slideRight_1s_ease-out]">
+            <div className="order-1 md:order-2 flex justify-center items-center relative pt-10 md:pt-0 opacity-0 animate-slide-right">
               <div className={`absolute w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] lg:w-[420px] lg:h-[420px] rounded-full border border-dashed animate-[spin_20s_linear_infinite] ${isDark ? 'border-blue-500/30' : 'border-blue-500/20'}`}></div>
               <img
                 src="/og-image.jpg"
@@ -660,59 +715,88 @@ function App() {
 
         <FadeUp>
           <section id="resume" className="py-24 px-6 max-w-7xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-black mb-12 flex items-center gap-4">
+            <h2 className="text-3xl sm:text-4xl font-black mb-16 flex items-center gap-4">
               <span className="text-blue-500">/</span> My Journey
             </h2>
-            <div className="grid lg:grid-cols-2 gap-8">
+            <div className="grid lg:grid-cols-2 gap-16">
 
-              <div className={`p-6 sm:p-8 md:p-12 rounded-3xl border backdrop-blur-md transition-colors duration-300 ${theme.card}`}>
-                <h3 className="text-xl sm:text-2xl font-bold mb-10 flex items-center gap-3">
-                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+              <div>
+                <h3 className="text-2xl sm:text-3xl font-bold mb-10 flex items-center gap-3">
+                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                   Experience
                 </h3>
-                <div className="space-y-10 border-l-2 border-blue-500/30 pl-6 ml-3">
+                <div className={`space-y-12 relative before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-0.5 ${isDark ? 'before:bg-slate-800' : 'before:bg-slate-200'}`}>
                   {EXPERIENCE.map((exp, index) => (
-                    <div key={index} className="relative pl-2 transition-transform duration-300 hover:translate-x-3">
-                      <div className="absolute -left-[35px] top-2 w-3.5 h-3.5 bg-blue-500 rounded-full border-4 border-slate-900 shadow-md"></div>
-                      <span className="inline-block px-3 py-1 bg-blue-500/10 text-blue-500 text-xs font-bold rounded-full mb-3">{exp.year}</span>
+                    <div 
+                      key={index} 
+                      className="relative pl-10 sm:pl-14 transition-transform duration-300 hover:translate-x-2 group cursor-default"
+                    >
+                      <div className={`absolute left-[5px] top-1/2 -translate-y-1/2 w-3.5 h-3.5 bg-blue-500 rounded-full ring-4 ${isDark ? 'ring-slate-950' : 'ring-slate-50'} z-10 transition-transform duration-300 group-hover:scale-125`}></div>
                       
-                      <div className="flex items-start gap-4">
-                        {exp.logo && (
-                          <img 
-                            src={exp.logo} 
-                            alt={exp.company} 
-                            className="w-10 h-10 rounded-lg object-cover bg-slate-800 border border-slate-700 flex-shrink-0 mt-1 shadow-md" 
-                            onError={(e) => { e.target.style.display = 'none'; }}
-                          />
-                        )}
-                        <div>
-                          <h4 className="text-lg sm:text-xl font-bold">{exp.role}</h4>
-                          <p className={`font-mono text-xs sm:text-sm mb-3 ${isDark ? 'text-blue-300' : 'text-blue-600'}`}>{exp.company}</p>
-                          <p className={`text-sm sm:text-base ${theme.muted}`}>{exp.desc}</p>
+                      <div className={`p-6 rounded-2xl transition-all duration-300 shadow-sm group-hover:shadow-lg ${isDark ? 'bg-slate-900/40 hover:bg-slate-800' : 'bg-white hover:bg-slate-50'}`}>
+                        <div className="flex items-center gap-5 sm:gap-6">
+                          {exp.logo && (
+                            <div className="flex-shrink-0">
+                              <img 
+                                src={exp.logo} 
+                                alt={exp.company} 
+                                className="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover shadow-sm bg-white" 
+                                onError={(e) => { e.target.style.display = 'none'; }}
+                              />
+                            </div>
+                          )}
+                          <div className="flex-1">
+                            <span className={`inline-block px-3 py-1 text-[10px] sm:text-xs font-bold rounded-md mb-2 ${isDark ? 'bg-slate-800 text-blue-400' : 'bg-slate-100 text-slate-600'}`}>
+                              {exp.year}
+                            </span>
+                            <h4 className="text-lg sm:text-xl font-bold mb-1">{exp.role}</h4>
+                            <p className={`font-mono text-xs sm:text-sm mb-2 ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>{exp.company}</p>
+                            <p className={`text-sm leading-relaxed ${theme.muted}`}>{exp.desc}</p>
+                          </div>
                         </div>
+                        <div className="absolute bottom-0 left-10 sm:left-14 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-[calc(100%-2.5rem)] sm:group-hover:w-[calc(100%-3.5rem)] rounded-b-2xl"></div>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className={`p-6 sm:p-8 md:p-12 rounded-3xl border backdrop-blur-md transition-colors duration-300 ${theme.card}`}>
-                <h3 className="text-xl sm:text-2xl font-bold mb-10 flex items-center gap-3">
-                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z" /><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" /></svg>
+              <div>
+                <h3 className="text-2xl sm:text-3xl font-bold mb-10 flex items-center gap-3">
+                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z" /><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" /></svg>
                   Education
                 </h3>
-                <div className="space-y-10 border-l-2 border-blue-500/30 pl-6 ml-3">
+                <div className={`space-y-12 relative before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-0.5 ${isDark ? 'before:bg-slate-800' : 'before:bg-slate-200'}`}>
                   {EDUCATION.map((edu, index) => (
-                    <div key={index} className="relative pl-2 transition-transform duration-300 hover:translate-x-3">
-                      <div className="absolute -left-[35px] top-2 w-3.5 h-3.5 bg-blue-500 rounded-full border-4 border-slate-900 shadow-md"></div>
-                      <span className="inline-block px-3 py-1 bg-blue-500/10 text-blue-500 text-xs font-bold rounded-full mb-3">{edu.year}</span>
-                      <div className="flex items-start gap-4 mb-2">
-                        <div>
-                          <h4 className="text-base sm:text-lg font-bold leading-tight">{edu.degree}</h4>
-                          <p className={`font-mono text-xs sm:text-sm mt-1 ${isDark ? 'text-blue-300' : 'text-blue-600'}`}>{edu.school}</p>
+                    <div 
+                      key={index} 
+                      className="relative pl-10 sm:pl-14 transition-transform duration-300 hover:translate-x-2 group cursor-default"
+                    >
+                      <div className={`absolute left-[5px] top-1/2 -translate-y-1/2 w-3.5 h-3.5 bg-blue-500 rounded-full ring-4 ${isDark ? 'ring-slate-950' : 'ring-slate-50'} z-10 transition-transform duration-300 group-hover:scale-125`}></div>
+                      
+                      <div className={`p-6 rounded-2xl transition-all duration-300 shadow-sm group-hover:shadow-lg ${isDark ? 'bg-slate-900/40 hover:bg-slate-800' : 'bg-white hover:bg-slate-50'}`}>
+                        <div className="flex items-center gap-5 sm:gap-6">
+                          {edu.logo && (
+                            <div className="flex-shrink-0">
+                              <img 
+                                src={edu.logo} 
+                                alt={edu.school} 
+                                className="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover shadow-sm bg-white" 
+                                onError={(e) => { e.target.style.display = 'none'; }}
+                              />
+                            </div>
+                          )}
+                          <div className="flex-1">
+                            <span className={`inline-block px-3 py-1 text-[10px] sm:text-xs font-bold rounded-md mb-2 ${isDark ? 'bg-slate-800 text-blue-400' : 'bg-slate-100 text-slate-600'}`}>
+                              {edu.year}
+                            </span>
+                            <h4 className="text-lg sm:text-xl font-bold mb-1">{edu.degree}</h4>
+                            <p className={`font-mono text-xs sm:text-sm mb-2 ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>{edu.school}</p>
+                            <p className={`text-sm leading-relaxed ${theme.muted}`}>{edu.desc}</p>
+                          </div>
                         </div>
+                        <div className="absolute bottom-0 left-10 sm:left-14 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-[calc(100%-2.5rem)] sm:group-hover:w-[calc(100%-3.5rem)] rounded-b-2xl"></div>
                       </div>
-                      <p className={`text-sm sm:text-base ${theme.muted}`}>{edu.desc}</p>
                     </div>
                   ))}
                 </div>
@@ -727,7 +811,7 @@ function App() {
             <span className="text-blue-500">/</span> Projects Archive
           </h2>
 
-          <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-2xl ${isDark ? 'bg-slate-900/60 border-slate-700' : 'bg-white/80 border-slate-200'}`}>
+          <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:border-blue-500 hover:shadow-blue-500/20 ${isDark ? 'bg-slate-900/60 border-slate-700' : 'bg-white/80 border-slate-200'}`}>
             
             <div className="w-full lg:w-1/2">
               <span className="inline-block px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-blue-500 bg-blue-500/10 border border-blue-500/20 rounded-full mb-4">
@@ -785,16 +869,14 @@ function App() {
                     alt="Dipesh Sapkota - Sportivo Live Stream Preview" 
                     className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 cursor-pointer"
                     onClick={() => window.open("https://sportivo.dipeshsapkota7.com.np/", "_blank")}
-                    onError={(e) => { e.target.src = 'https://via.placeholder.com/800x450?text=Sportivo+Preview' }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                 </div>
               </div>
             </div>
-
           </div>
 
-          <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-2xl ${isDark ? 'bg-slate-900/60 border-slate-700' : 'bg-white/80 border-slate-200'}`}>
+          <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:border-cyan-500 hover:shadow-cyan-500/20 ${isDark ? 'bg-slate-900/60 border-slate-700' : 'bg-white/80 border-slate-200'}`}>
             <div className="w-full lg:w-1/2">
               <span className="inline-block px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-cyan-500 bg-cyan-500/10 border border-cyan-500/20 rounded-full mb-4">
                 Featured Web App
@@ -858,7 +940,7 @@ function App() {
             </div>
           </div>
 
-          <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-2xl ${isDark ? 'bg-slate-900/60 border-slate-700' : 'bg-white/80 border-slate-200'}`}>
+          <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:border-orange-500 hover:shadow-orange-500/20 ${isDark ? 'bg-slate-900/60 border-slate-700' : 'bg-white/80 border-slate-200'}`}>
             
             <div className="w-full lg:w-1/2">
               <span className="inline-block px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-orange-500 bg-orange-500/10 border border-orange-500/20 rounded-full mb-4">
