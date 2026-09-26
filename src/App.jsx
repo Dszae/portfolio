@@ -39,9 +39,27 @@ const SKILL_CATEGORIES = [
 ];
 
 const EXPERIENCE = [
-  { year: "2026 - Present", role: "Video Editor & Graphics Designer", company: "Clamphook Academy", desc: "Producing and editing promotional videos and designing graphic materials for secondary-level and entrance examination crash courses." },
-  { year: "2026 - Present", role: "Video Editor", company: "College Programs", desc: "Managing post-production and digital layout execution for university events and academic programs." },
-  { year: "2023 - Present", role: "Freelancer", company: "Independent", desc: "Delivering custom digital content, graphic layouts, and promotional assets for various clients." }
+  { 
+    year: "2026 - Present", 
+    role: "Video Editor & Graphics Designer", 
+    company: "Clamphook Academy", 
+    desc: "Producing and editing promotional videos and designing graphic materials for secondary-level and entrance examination crash courses.",
+    logo: "/clamphook_.jpg" 
+  },
+  { 
+    year: "2026 - Present", 
+    role: "Video Editor", 
+    company: "College Programs", 
+    desc: "Managing post-production and digital layout execution for university events and academic programs.",
+    logo: "/campus.jpg" 
+  },
+  { 
+    year: "2023 - Present", 
+    role: "Freelancer", 
+    company: "Independent", 
+    desc: "Delivering custom digital content, graphic layouts, and promotional assets for various clients.",
+    logo: "/freelance.png" 
+  }
 ];
 
 const EDUCATION = [
@@ -148,6 +166,24 @@ function App() {
   const [loopNum, setLoopNum] = useState(0);
   const typingSpeed = 100;
   const roles = ["Video Editor", "Graphics Designer", "Computer Engineer"];
+
+  const [skillsInView, setSkillsInView] = useState(false);
+  const skillsRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setSkillsInView(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+    if (skillsRef.current) {
+      observer.observe(skillsRef.current);
+    }
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (selectedImage || isMenuOpen) {
@@ -470,7 +506,7 @@ function App() {
         <section id="home" className="pt-32 pb-20 px-6 min-h-[95vh] flex items-center max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center w-full">
             
-            <div className="order-2 md:order-1">
+            <div className="order-2 md:order-1 transition-all duration-1000 transform translate-x-0 opacity-100 animate-[slideLeft_1s_ease-out]">
               <div className="inline-block px-4 py-1.5 rounded-full border border-blue-500/50 bg-blue-500/10 text-blue-500 font-mono text-sm font-bold mb-6 backdrop-blur-sm shadow-[0_0_15px_rgba(3,177,252,0.5)]">
                 <svg className="w-4 h-4 inline-block mr-2 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                 System Online
@@ -495,7 +531,7 @@ function App() {
                   <span className="text-sm sm:text-base">dsz.ae</span>
                 </a>
                 <a href="https://instagram.com/dsz.ae" target="_blank" rel="noreferrer" className={`flex items-center gap-2 ${theme.muted} hover:text-blue-500 transition-colors font-mono font-semibold`}>
-                  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" /></svg>
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4-4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" /></svg>
                   <span className="text-sm sm:text-base">dsz.ae</span>
                 </a>
               </div>
@@ -511,10 +547,10 @@ function App() {
               </div>
             </div>
 
-            <div className="order-1 md:order-2 flex justify-center items-center relative pt-10 md:pt-0">
+            <div className="order-1 md:order-2 flex justify-center items-center relative pt-10 md:pt-0 animate-[slideRight_1s_ease-out]">
               <div className={`absolute w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] lg:w-[420px] lg:h-[420px] rounded-full border border-dashed animate-[spin_20s_linear_infinite] ${isDark ? 'border-blue-500/30' : 'border-blue-500/20'}`}></div>
               <img
-                src="/og-image.png"
+                src="/og-image.jpg"
                 alt="Dipesh Sapkota Logo"
                 className={`relative z-10 w-full max-w-[220px] sm:max-w-[280px] lg:max-w-[380px] rounded-full shadow-[0_0_40px_rgba(3,177,252,0.4)] border-2 transition-transform duration-500 hover:scale-105 cursor-pointer ${isDark ? 'border-blue-500' : 'border-blue-400'}`}
               />
@@ -584,7 +620,7 @@ function App() {
         </FadeUp>
 
         <FadeUp>
-          <section id="skills" className="py-24 px-6 max-w-7xl mx-auto">
+          <section id="skills" ref={skillsRef} className="py-24 px-6 max-w-7xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-black mb-12 flex items-center gap-4">
               <span className="text-blue-500">/</span> Technical Proficiency
             </h2>
@@ -609,8 +645,8 @@ function App() {
                         </div>
                         <div className={`w-full h-2 rounded-full overflow-hidden ${isDark ? 'bg-slate-800' : 'bg-slate-200'}`}>
                           <div
-                            className={`h-full rounded-full ${skill.color} shadow-[0_0_8px_currentColor]`}
-                            style={{ width: `${skill.percent}%` }}
+                            className={`h-full rounded-full ${skill.color} shadow-[0_0_8px_currentColor] transition-all duration-1000 ease-out`}
+                            style={{ width: skillsInView ? `${skill.percent}%` : '0%' }}
                           ></div>
                         </div>
                       </div>
@@ -634,13 +670,27 @@ function App() {
                   <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                   Experience
                 </h3>
-                <div className="space-y-10">
+                <div className="space-y-10 border-l-2 border-blue-500/30 pl-6 ml-3">
                   {EXPERIENCE.map((exp, index) => (
-                    <div key={index} className={`relative pl-8 before:absolute before:left-0 before:top-2 before:w-3 before:h-3 before:bg-blue-500 before:rounded-full after:absolute after:left-1.5 after:top-5 after:bottom-[-2.5rem] after:w-0.5 ${isDark ? 'after:bg-slate-700' : 'after:bg-slate-200'} last:after:hidden`}>
+                    <div key={index} className="relative pl-2 transition-transform duration-300 hover:translate-x-3">
+                      <div className="absolute -left-[35px] top-2 w-3.5 h-3.5 bg-blue-500 rounded-full border-4 border-slate-900 shadow-md"></div>
                       <span className="inline-block px-3 py-1 bg-blue-500/10 text-blue-500 text-xs font-bold rounded-full mb-3">{exp.year}</span>
-                      <h4 className="text-lg sm:text-xl font-bold">{exp.role}</h4>
-                      <p className={`font-mono text-xs sm:text-sm mb-3 ${isDark ? 'text-blue-300' : 'text-blue-600'}`}>{exp.company}</p>
-                      <p className={`text-sm sm:text-base ${theme.muted}`}>{exp.desc}</p>
+                      
+                      <div className="flex items-start gap-4">
+                        {exp.logo && (
+                          <img 
+                            src={exp.logo} 
+                            alt={exp.company} 
+                            className="w-10 h-10 rounded-lg object-cover bg-slate-800 border border-slate-700 flex-shrink-0 mt-1 shadow-md" 
+                            onError={(e) => { e.target.style.display = 'none'; }}
+                          />
+                        )}
+                        <div>
+                          <h4 className="text-lg sm:text-xl font-bold">{exp.role}</h4>
+                          <p className={`font-mono text-xs sm:text-sm mb-3 ${isDark ? 'text-blue-300' : 'text-blue-600'}`}>{exp.company}</p>
+                          <p className={`text-sm sm:text-base ${theme.muted}`}>{exp.desc}</p>
+                        </div>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -651,9 +701,10 @@ function App() {
                   <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z" /><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" /></svg>
                   Education
                 </h3>
-                <div className="space-y-10">
+                <div className="space-y-10 border-l-2 border-blue-500/30 pl-6 ml-3">
                   {EDUCATION.map((edu, index) => (
-                    <div key={index} className={`relative pl-8 before:absolute before:left-0 before:top-2 before:w-3 before:h-3 before:bg-blue-500 before:rounded-full after:absolute after:left-1.5 after:top-5 after:bottom-[-2.5rem] after:w-0.5 ${isDark ? 'after:bg-slate-700' : 'after:bg-slate-200'} last:after:hidden`}>
+                    <div key={index} className="relative pl-2 transition-transform duration-300 hover:translate-x-3">
+                      <div className="absolute -left-[35px] top-2 w-3.5 h-3.5 bg-blue-500 rounded-full border-4 border-slate-900 shadow-md"></div>
                       <span className="inline-block px-3 py-1 bg-blue-500/10 text-blue-500 text-xs font-bold rounded-full mb-3">{edu.year}</span>
                       <div className="flex items-start gap-4 mb-2">
                         <div>
@@ -676,7 +727,6 @@ function App() {
             <span className="text-blue-500">/</span> Projects Archive
           </h2>
 
-          {/* Sportivo Live Streaming Platform */}
           <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-2xl ${isDark ? 'bg-slate-900/60 border-slate-700' : 'bg-white/80 border-slate-200'}`}>
             
             <div className="w-full lg:w-1/2">
@@ -744,7 +794,6 @@ function App() {
 
           </div>
 
-          {/* IOE Admission Guide */}
           <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-2xl ${isDark ? 'bg-slate-900/60 border-slate-700' : 'bg-white/80 border-slate-200'}`}>
             <div className="w-full lg:w-1/2">
               <span className="inline-block px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-cyan-500 bg-cyan-500/10 border border-cyan-500/20 rounded-full mb-4">
@@ -809,7 +858,6 @@ function App() {
             </div>
           </div>
 
-          {/* Git Visualizer */}
           <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-2xl ${isDark ? 'bg-slate-900/60 border-slate-700' : 'bg-white/80 border-slate-200'}`}>
             
             <div className="w-full lg:w-1/2">
@@ -915,7 +963,10 @@ function App() {
                     alt={item.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-4 sm:p-6">
+                  <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-between p-4 sm:p-6">
+                    <div className="self-end w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-md transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
+                    </div>
                     <p className="text-slate-900 text-xs sm:text-sm md:text-base font-bold text-center translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                       {item.title}
                     </p>
@@ -935,11 +986,21 @@ function App() {
               {CERTIFICATES.map((cert) => (
                 <div 
                   key={cert.id} 
-                  className={`p-5 sm:p-6 rounded-2xl border backdrop-blur-md transition-all duration-300 group hover:-translate-y-2 cursor-pointer ${theme.card}`}
+                  className={`p-5 sm:p-6 rounded-2xl border backdrop-blur-md transition-all duration-300 group hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10 cursor-pointer ${theme.card}`}
                   onClick={() => setSelectedImage({ src: cert.img, title: cert.title, desc: `Issued by ${cert.org}` })}
                 >
-                  <div className={`aspect-[4/3] overflow-hidden rounded-xl border-2 border-dashed flex items-center justify-center mb-6 transition-colors ${isDark ? 'border-slate-700 bg-slate-800/50 group-hover:border-blue-500/50' : 'border-slate-300 bg-slate-100/50 group-hover:border-blue-400'}`}>
-                    <img src={cert.img} alt={cert.title} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" onError={(e) => { e.target.src = 'https://via.placeholder.com/400x300?text=Certificate' }} />
+                  <div className={`aspect-[4/3] overflow-hidden rounded-xl border flex items-center justify-center mb-6 transition-colors relative ${isDark ? 'border-slate-700 bg-slate-800/50 group-hover:border-blue-500/50' : 'border-slate-300 bg-slate-100/50 group-hover:border-blue-400'}`}>
+                    <img 
+                      src={cert.img} 
+                      alt={cert.title} 
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                      onError={(e) => { e.target.src = 'https://via.placeholder.com/400x300?text=Certificate' }} 
+                    />
+                    <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-full bg-blue-600/90 text-white flex items-center justify-center shadow-lg transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
+                      </div>
+                    </div>
                   </div>
                   <h4 className="font-bold text-sm sm:text-base mb-2 group-hover:text-blue-400 transition-colors">{cert.title}</h4>
                   <p className={`font-mono text-[10px] sm:text-xs ${theme.muted}`}>{cert.org}</p>
