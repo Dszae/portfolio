@@ -863,7 +863,7 @@ function App() {
 
                 <div className="h-[300px] sm:h-[450px] w-full relative overflow-hidden group">
                   <img 
-                    src="/sportivo-preview.webp" 
+                    src="/sportivo-preview.jpg" 
                     alt="Dipesh Sapkota - Sportivo Live Stream Preview" 
                     width="993"
                     height="450"
@@ -932,7 +932,7 @@ function App() {
 
                 <div className="h-[300px] sm:h-[450px] w-full relative overflow-hidden group">
                   <img 
-                    src="/ioe-preview.webp" 
+                    src="/ioe-preview.jpg" 
                     alt="Dipesh Sapkota - IOE Admission Hub Preview" 
                     width="993"
                     height="450"
@@ -1001,7 +1001,7 @@ function App() {
 
                 <div className="h-[300px] sm:h-[450px] w-full relative overflow-hidden group">
                   <img 
-                    src="/git-preview.webp" 
+                    src="/git-preview.jpg" 
                     alt="Dipesh Sapkota - Git Visualizer Preview" 
                     width="993"
                     height="450"
