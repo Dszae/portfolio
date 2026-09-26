@@ -615,7 +615,6 @@ function App() {
                   Hello! I am a multi-disciplinary creator based in Kathmandu, Nepal. As a Computer Engineering student at Thapathali Campus, I thrive on solving complex logical problems, analyzing circuits, and building robust systems.
                 </p>
                 <p className={`text-base sm:text-lg leading-relaxed ${theme.muted}`}>
-                  However, my passion extends far beyond code. With over 4 years of professional experience as a freelance Video Editor and Motion Graphics Designer, I have collaborated globally to craft compelling visual stories. I believe the most impactful products live precisely at the intersection of technical engineering and high-end artistic design.
                 </p>
               </div>
               
