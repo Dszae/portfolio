@@ -44,21 +44,21 @@ const EXPERIENCE = [
     role: "Video Editor & Graphics Designer", 
     company: "Clamphook Academy", 
     desc: "Producing and editing promotional videos and designing graphic materials for secondary-level and entrance examination crash courses.",
-    logo: "/clamphook_.jpg" 
+    logo: "/clamphook_.webp" 
   },
   { 
     year: "2026 - Present", 
     role: "Video Editor", 
     company: "College Programs", 
     desc: "Managing post-production and digital layout execution for university events and academic programs.",
-    logo: "/campus.jpg" 
+    logo: "/campus.webp" 
   },
   { 
     year: "2023 - Present", 
     role: "Freelancer", 
     company: "Independent", 
     desc: "Delivering custom digital content, graphic layouts, and promotional assets for various clients.",
-    logo: "/freelance.png" 
+    logo: "/freelance.webp" 
   }
 ];
 
@@ -68,21 +68,21 @@ const EDUCATION = [
     degree: "Bachelor in Computer Engineering",
     school: "Institute of Engineering (IOE), Thapathali Campus",
     desc: "Currently pursuing my 2nd semester.",
-    logo: "/thapathali.jpg"
+    logo: "/thapathali.webp"
   },
   { 
     year: "2022 - 2024", 
     degree: "School Leaving Certificate (SLC)", 
     school: "Shree Janak Model Secondary School", 
     desc: "GPA: 3.88 / 4.00",
-    logo: "/janak.jpg"
+    logo: "/janak.webp"
   },
   { 
     year: "2022", 
     degree: "Secondary Education Examination (SEE)", 
     school: "Shree Mahendra Adarsha Secondary School", 
     desc: "GPA: 3.88 / 4.00",
-    logo: "/mahendra.png"
+    logo: "/mahendra.webp"
   }
 ];
 
@@ -94,23 +94,23 @@ const PROJECTS = [
 ];
 
 const GALLERY_IMAGES = [
-  { id: 1, title: "Participating in college cricket tournament", img: "/cricket.jpeg" },
-  { id: 2, title: "Successfully conducted Yathartha", img: "/yathartha.jpg" },
-  { id: 3, title: "Celebrating incredible results of Clamphook with the team", img: "/clamphook.jpeg" },
-  { id: 4, title: "Attending boring lectures", img: "/lecture.jpg" },
-  { id: 5, title: "Deep in focus and exploring concepts", img: "/exploring.png" },
-  { id: 6, title: "Nagdhunga Surung Marga", img: "/nagdhunga surung marga.png" }
+  { id: 1, title: "Participating in college cricket tournament", img: "/cricket.webp" },
+  { id: 2, title: "Successfully conducted Yathartha", img: "/yathartha.webp" },
+  { id: 3, title: "Celebrating incredible results of Clamphook with the team", img: "/clamphook.webp" },
+  { id: 4, title: "Attending boring lectures", img: "/lecture.webp" },
+  { id: 5, title: "Deep in focus and exploring concepts", img: "/exploring.webp" },
+  { id: 6, title: "Nagdhunga Surung Marga", img: "/nagdhunga surung marga.webp" }
 ];
 
 const CERTIFICATES = [
-  { id: 1, title: "Graphic Design Masterclass", org: "Udemy", img: "/graphic-design.png" },
-  { id: 2, title: "Motion Design with Figma", org: "Udemy", img: "/motion-design.png" },
-  { id: 3, title: "After Effects Course", org: "EDUCBA", img: "/after-effects.png" },
-  { id: 4, title: "DaVinci Resolve 16: Color Correction", org: "Blackmagicdesign", img: "/davinci-resolve.png" },
-  { id: 5, title: "Adobe Premiere Pro CC Masterclass", org: "Udemy", img: "/premiere-pro.png" },
-  { id: 6, title: "Web Development Masterclass", org: "Udemy", img: "/web-development.png" },
-  { id: 7, title: "Google Adwords Crash Course 2021", org: "Udemy", img: "/google-adwords.png" },
-  { id: 8, title: "Design Principles, Typography & Color Theory", org: "Udemy", img: "/design-principles.jpg" }
+  { id: 1, title: "Graphic Design Masterclass", org: "Udemy", img: "/graphic-design.webp" },
+  { id: 2, title: "Motion Design with Figma", org: "Udemy", img: "/motion-design.webp" },
+  { id: 3, title: "After Effects Course", org: "EDUCBA", img: "/after-effects.webp" },
+  { id: 4, title: "DaVinci Resolve 16: Color Correction", org: "Blackmagicdesign", img: "/davinci-resolve.webp" },
+  { id: 5, title: "Adobe Premiere Pro CC Masterclass", org: "Udemy", img: "/premiere-pro.webp" },
+  { id: 6, title: "Web Development Masterclass", org: "Udemy", img: "/web-development.webp" },
+  { id: 7, title: "Google Adwords Crash Course 2021", org: "Udemy", img: "/google-adwords.webp" },
+  { id: 8, title: "Design Principles, Typography & Color Theory", org: "Udemy", img: "/design-principles.webp" }
 ];
 
 const NAV_LINKS = [
@@ -330,7 +330,7 @@ function App() {
     function init() {
       particlesArray = [];
       const isMobile = window.innerWidth < 768;
-      if (isMobile) return; // Skip heavy canvas animation loop on mobile to maximize TBT/INP performance score
+      if (isMobile) return;
       
       const densityDivider = 15000;
       let numberOfParticles = (canvas.height * canvas.width) / densityDivider;
@@ -589,8 +589,10 @@ function App() {
             <div className="order-1 md:order-2 flex justify-center items-center relative pt-10 md:pt-0 opacity-0 animate-slide-right">
               <div className={`absolute w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] lg:w-[420px] lg:h-[420px] rounded-full border border-dashed animate-[spin_20s_linear_infinite] ${isDark ? 'border-blue-500/30' : 'border-blue-500/20'}`}></div>
               <img
-                src="/og-image.jpg"
+                src="/og-image.webp"
                 alt="Dipesh Sapkota Logo"
+                width="380"
+                height="380"
                 loading="eager"
                 fetchPriority="high"
                 className={`relative z-10 w-full max-w-[220px] sm:max-w-[280px] lg:max-w-[380px] rounded-full shadow-lg border-2 transition-transform duration-500 hover:scale-105 cursor-pointer ${isDark ? 'border-blue-500' : 'border-blue-400'}`}
@@ -727,6 +729,8 @@ function App() {
                               <img 
                                 src={exp.logo} 
                                 alt={exp.company} 
+                                width="48"
+                                height="48"
                                 loading="lazy"
                                 decoding="async"
                                 className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover bg-white" 
@@ -771,6 +775,8 @@ function App() {
                               <img 
                                 src={edu.logo} 
                                 alt={edu.school} 
+                                width="48"
+                                height="48"
                                 loading="lazy"
                                 decoding="async"
                                 className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover bg-white" 
@@ -857,8 +863,10 @@ function App() {
 
                 <div className="h-[300px] sm:h-[450px] w-full relative overflow-hidden group">
                   <img 
-                    src="/sportivo-preview.jpg" 
+                    src="/sportivo-preview.webp" 
                     alt="Dipesh Sapkota - Sportivo Live Stream Preview" 
+                    width="993"
+                    height="450"
                     loading="lazy"
                     decoding="async"
                     className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 cursor-pointer"
@@ -924,8 +932,10 @@ function App() {
 
                 <div className="h-[300px] sm:h-[450px] w-full relative overflow-hidden group">
                   <img 
-                    src="/ioe-preview.jpg" 
+                    src="/ioe-preview.webp" 
                     alt="Dipesh Sapkota - IOE Admission Hub Preview" 
+                    width="993"
+                    height="450"
                     loading="lazy"
                     decoding="async"
                     className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 cursor-pointer"
@@ -991,8 +1001,10 @@ function App() {
 
                 <div className="h-[300px] sm:h-[450px] w-full relative overflow-hidden group">
                   <img 
-                    src="/git-preview.jpg" 
+                    src="/git-preview.webp" 
                     alt="Dipesh Sapkota - Git Visualizer Preview" 
+                    width="993"
+                    height="450"
                     loading="lazy"
                     decoding="async"
                     className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 cursor-pointer"
@@ -1042,6 +1054,8 @@ function App() {
                   <img
                     src={item.img}
                     alt={item.title}
+                    width="640"
+                    height="360"
                     loading="lazy"
                     decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -1076,6 +1090,8 @@ function App() {
                     <img 
                       src={cert.img} 
                       alt={cert.title} 
+                      width="400"
+                      height="300"
                       loading="lazy"
                       decoding="async"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
