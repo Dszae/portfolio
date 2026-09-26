@@ -82,7 +82,7 @@ const EDUCATION = [
     degree: "Secondary Education Examination (SEE)", 
     school: "Shree Mahendra Adarsha Secondary School", 
     desc: "GPA: 3.88 / 4.00",
-    logo: "/mahendra.jpg"
+    logo: "/mahendra.png"
   }
 ];
 
@@ -182,6 +182,16 @@ function App() {
 
   const [skillsInView, setSkillsInView] = useState(false);
   const skillsRef = useRef(null);
+
+  const [cursorPos, setCursorPos] = useState({ x: -1000, y: -1000 });
+
+  useEffect(() => {
+    const handleGlobalMouseMove = (e) => {
+      setCursorPos({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleGlobalMouseMove);
+    return () => window.removeEventListener('mousemove', handleGlobalMouseMove);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -462,6 +472,14 @@ function App() {
         }
       `}</style>
 
+      {/* Global Cursor Glow */}
+      <div 
+        className="pointer-events-none fixed inset-0 z-50 transition-opacity duration-300"
+        style={{
+          background: `radial-gradient(600px circle at ${cursorPos.x}px ${cursorPos.y}px, ${isDark ? 'rgba(59, 130, 246, 0.12)' : 'rgba(59, 130, 246, 0.06)'}, transparent 40%)`
+        }}
+      />
+
       <div 
         className={`md:hidden fixed inset-0 z-40 bg-slate-950/80 backdrop-blur-sm transition-opacity duration-300 cursor-pointer ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
         onClick={(e) => {
@@ -492,10 +510,14 @@ function App() {
           <div className="flex items-center gap-3 sm:gap-4">
             <button
               onClick={() => setIsDark(!isDark)}
-              className="w-10 h-10 rounded-full flex items-center justify-center border border-blue-500/30 bg-blue-500/10 text-blue-500 hover:bg-blue-500/20 transition-colors shadow-sm cursor-pointer"
+              className={`w-10 h-10 rounded-full flex items-center justify-center border transition-colors shadow-sm ${isDark ? 'border-blue-500/50 text-blue-400 hover:bg-blue-500/10' : 'border-slate-800/50 text-slate-800 hover:bg-slate-800/10'}`}
               aria-label="Toggle Theme"
             >
-              {isDark ? '☀️' : '🌙'}
+              {isDark ? (
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+              ) : (
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+              )}
             </button>
             
             <button 
@@ -542,7 +564,7 @@ function App() {
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center w-full relative z-10">
             
             <div className="order-2 md:order-1 opacity-0 animate-slide-left">
-              <div className="inline-block px-4 py-1.5 rounded-full border border-blue-500/50 bg-blue-500/10 text-blue-500 font-mono text-sm font-bold mb-6 backdrop-blur-sm shadow-[0_0_15px_rgba(3,177,252,0.5)]">
+              <div className="inline-block px-4 py-1.5 rounded-full border border-blue-500/50 bg-blue-500/10 text-blue-500 font-mono text-sm font-bold mb-6 backdrop-blur-sm">
                 <svg className="w-4 h-4 inline-block mr-2 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                 System Online
               </div>
@@ -572,7 +594,7 @@ function App() {
               </div>
 
               <div className="mt-8 sm:mt-10 flex flex-wrap gap-4">
-                <a href="/my_cv.pdf" download="Dipesh_Sapkota_CV.pdf" className="px-6 py-3 sm:px-8 sm:py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-500 transition-all shadow-[0_0_20px_rgba(3,177,252,0.4)] hover:-translate-y-1 flex items-center gap-2">
+                <a href="/my_cv.pdf" download="Dipesh_Sapkota_CV.pdf" className="px-6 py-3 sm:px-8 sm:py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-500 transition-all hover:-translate-y-1 flex items-center gap-2 shadow-md">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                   Download CV
                 </a>
@@ -587,7 +609,7 @@ function App() {
               <img
                 src="/og-image.jpg"
                 alt="Dipesh Sapkota Logo"
-                className={`relative z-10 w-full max-w-[220px] sm:max-w-[280px] lg:max-w-[380px] rounded-full shadow-[0_0_40px_rgba(3,177,252,0.4)] border-2 transition-transform duration-500 hover:scale-105 cursor-pointer ${isDark ? 'border-blue-500' : 'border-blue-400'}`}
+                className={`relative z-10 w-full max-w-[220px] sm:max-w-[280px] lg:max-w-[380px] rounded-full shadow-2xl border-2 transition-transform duration-500 hover:scale-105 cursor-pointer ${isDark ? 'border-blue-500' : 'border-blue-400'}`}
               />
             </div>
             
@@ -614,7 +636,7 @@ function App() {
               <div className="md:col-span-5 flex flex-col gap-4 sm:gap-6">
                 
                 <div className={`p-5 sm:p-6 md:p-8 rounded-3xl border backdrop-blur-md flex items-center gap-4 sm:gap-6 transition-all duration-300 hover:-translate-y-1 ${theme.card}`}>
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0 shadow-[0_0_15px_rgba(3,177,252,0.2)] border border-blue-500/20">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0 border border-blue-500/20">
                     <svg className="w-7 h-7 sm:w-8 sm:h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
                     </svg>
@@ -626,7 +648,7 @@ function App() {
                 </div>
                 
                 <div className={`p-5 sm:p-6 md:p-8 rounded-3xl border backdrop-blur-md flex items-center gap-4 sm:gap-6 transition-all duration-300 hover:-translate-y-1 ${theme.card}`}>
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0 shadow-[0_0_15px_rgba(3,177,252,0.2)] border border-blue-500/20">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0 border border-blue-500/20">
                     <svg className="w-7 h-7 sm:w-8 sm:h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
@@ -638,7 +660,7 @@ function App() {
                 </div>
 
                 <div className={`p-5 sm:p-6 md:p-8 rounded-3xl border backdrop-blur-md flex items-center gap-4 sm:gap-6 transition-all duration-300 hover:-translate-y-1 ${theme.card}`}>
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0 shadow-[0_0_15px_rgba(3,177,252,0.2)] border border-blue-500/20">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0 border border-blue-500/20">
                     <svg className="w-7 h-7 sm:w-8 sm:h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                     </svg>
@@ -663,7 +685,7 @@ function App() {
             <div className="grid md:grid-cols-3 gap-8">
               {SKILL_CATEGORIES.map((category, idx) => (
                 <div key={idx} className={`p-6 sm:p-8 rounded-3xl border backdrop-blur-md transition-all duration-300 hover:-translate-y-2 ${theme.card}`}>
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-blue-500/10 flex items-center justify-center text-3xl mb-6 shadow-[0_0_15px_rgba(3,177,252,0.2)] border border-blue-500/20">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-blue-500/10 flex items-center justify-center text-3xl mb-6 border border-blue-500/20">
                     {category.icon}
                   </div>
                   <h3 className="text-xl sm:text-2xl font-bold mb-8">{category.title}</h3>
@@ -680,7 +702,7 @@ function App() {
                         </div>
                         <div className={`w-full h-2 rounded-full overflow-hidden ${isDark ? 'bg-slate-800' : 'bg-slate-200'}`}>
                           <div
-                            className={`h-full rounded-full ${skill.color} shadow-[0_0_8px_currentColor] transition-all duration-1000 ease-out`}
+                            className={`h-full rounded-full ${skill.color} transition-all duration-1000 ease-out`}
                             style={{ width: skillsInView ? `${skill.percent}%` : '0%' }}
                           ></div>
                         </div>
@@ -712,16 +734,16 @@ function App() {
                       key={index} 
                       className="relative pb-4 transition-transform duration-300 hover:translate-x-3 group cursor-default"
                     >
-                      <div className="absolute -left-[35px] top-1/2 -translate-y-1/2 w-3.5 h-3.5 bg-blue-500 rounded-full border-4 border-slate-900 shadow-md"></div>
+                      <div className="absolute -left-[35px] top-4 w-3.5 h-3.5 bg-blue-500 rounded-full border-4 border-slate-900"></div>
                       
-                      <div className={`p-5 rounded-2xl transition-all duration-300 shadow-sm group-hover:shadow-lg ${isDark ? 'bg-slate-900/40 hover:bg-slate-800' : 'bg-white hover:bg-slate-50'}`}>
+                      <div className={`p-6 rounded-2xl transition-all duration-300 group-hover:shadow-md ${isDark ? 'bg-slate-900/40 hover:bg-slate-800' : 'bg-white hover:bg-slate-50'}`}>
                         <div className="flex items-center gap-4">
                           {exp.logo && (
                             <div className="flex-shrink-0 flex items-center justify-center">
                               <img 
                                 src={exp.logo} 
                                 alt={exp.company} 
-                                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full object-cover shadow-sm bg-white" 
+                                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover bg-white" 
                                 onError={(e) => { e.target.style.display = 'none'; }}
                               />
                             </div>
@@ -735,7 +757,7 @@ function App() {
                             <p className={`text-sm leading-relaxed ${theme.muted}`}>{exp.desc}</p>
                           </div>
                         </div>
-                        <div className="absolute bottom-0 left-5 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-[calc(100%-2.5rem)] rounded-b-2xl"></div>
+                        <div className="absolute bottom-0 left-6 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-[calc(100%-3rem)] rounded-b-2xl"></div>
                       </div>
                     </div>
                   ))}
@@ -754,16 +776,16 @@ function App() {
                       key={index} 
                       className="relative pb-4 transition-transform duration-300 hover:translate-x-3 group cursor-default"
                     >
-                      <div className="absolute -left-[35px] top-1/2 -translate-y-1/2 w-3.5 h-3.5 bg-blue-500 rounded-full border-4 border-slate-900 shadow-md"></div>
+                      <div className="absolute -left-[35px] top-4 w-3.5 h-3.5 bg-blue-500 rounded-full border-4 border-slate-900"></div>
                       
-                      <div className={`p-5 rounded-2xl transition-all duration-300 shadow-sm group-hover:shadow-lg ${isDark ? 'bg-slate-900/40 hover:bg-slate-800' : 'bg-white hover:bg-slate-50'}`}>
+                      <div className={`p-6 rounded-2xl transition-all duration-300 group-hover:shadow-md ${isDark ? 'bg-slate-900/40 hover:bg-slate-800' : 'bg-white hover:bg-slate-50'}`}>
                         <div className="flex items-center gap-4">
                           {edu.logo && (
                             <div className="flex-shrink-0 flex items-center justify-center">
                               <img 
                                 src={edu.logo} 
                                 alt={edu.school} 
-                                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full object-cover shadow-sm bg-white" 
+                                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover bg-white" 
                                 onError={(e) => { e.target.style.display = 'none'; }}
                               />
                             </div>
@@ -777,7 +799,7 @@ function App() {
                             <p className={`text-sm leading-relaxed ${theme.muted}`}>{edu.desc}</p>
                           </div>
                         </div>
-                        <div className="absolute bottom-0 left-5 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-[calc(100%-2.5rem)] rounded-b-2xl"></div>
+                        <div className="absolute bottom-0 left-6 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-[calc(100%-3rem)] rounded-b-2xl"></div>
                       </div>
                     </div>
                   ))}
@@ -793,7 +815,7 @@ function App() {
             <span className="text-blue-500">/</span> Projects Archive
           </h2>
 
-          <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:border-blue-500 hover:shadow-blue-500/20 ${isDark ? 'bg-slate-900/60 border-slate-700' : 'bg-white/80 border-slate-200'}`}>
+          <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:border-blue-500 ${isDark ? 'bg-slate-900/60 border-slate-700' : 'bg-white/80 border-slate-200'}`}>
             
             <div className="w-full lg:w-1/2">
               <span className="inline-block px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-blue-500 bg-blue-500/10 border border-blue-500/20 rounded-full mb-4">
@@ -820,7 +842,7 @@ function App() {
               </ul>
 
               <div className="flex flex-wrap gap-4">
-                <a href="https://sportivo.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-xl shadow-[0_0_15px_rgba(3,177,252,0.4)] transition-all flex items-center gap-2">
+                <a href="https://sportivo.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-xl transition-all flex items-center gap-2 shadow-md">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                   Launch Sportivo ↗
                 </a>
@@ -859,7 +881,7 @@ function App() {
 
           </div>
 
-          <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:border-cyan-500 hover:shadow-cyan-500/20 ${isDark ? 'bg-slate-900/60 border-slate-700' : 'bg-white/80 border-slate-200'}`}>
+          <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:border-cyan-500 ${isDark ? 'bg-slate-900/60 border-slate-700' : 'bg-white/80 border-slate-200'}`}>
             <div className="w-full lg:w-1/2">
               <span className="inline-block px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-cyan-500 bg-cyan-500/10 border border-cyan-500/20 rounded-full mb-4">
                 Featured Web App
@@ -885,7 +907,7 @@ function App() {
               </ul>
 
               <div className="flex flex-wrap gap-4">
-                <a href="https://ioe-admission.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-bold rounded-xl shadow-[0_0_15px_rgba(8,145,178,0.4)] transition-all flex items-center gap-2">
+                <a href="https://ioe-admission.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-bold rounded-xl transition-all flex items-center gap-2 shadow-md">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                   Explore Guide
                 </a>
@@ -923,7 +945,7 @@ function App() {
             </div>
           </div>
 
-          <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:border-orange-500 hover:shadow-orange-500/20 ${isDark ? 'bg-slate-900/60 border-slate-700' : 'bg-white/80 border-slate-200'}`}>
+          <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:border-orange-500 ${isDark ? 'bg-slate-900/60 border-slate-700' : 'bg-white/80 border-slate-200'}`}>
             
             <div className="w-full lg:w-1/2">
               <span className="inline-block px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-orange-500 bg-orange-500/10 border border-orange-500/20 rounded-full mb-4">
@@ -950,7 +972,7 @@ function App() {
               </ul>
 
               <div className="flex flex-wrap gap-4">
-                <a href="https://git-visualizer.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-orange-600 hover:bg-orange-500 text-white text-sm font-bold rounded-xl shadow-[0_0_15px_rgba(249,115,22,0.4)] transition-all flex items-center gap-2">
+                <a href="https://git-visualizer.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-orange-600 hover:bg-orange-500 text-white text-sm font-bold rounded-xl transition-all flex items-center gap-2 shadow-md">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                   Explore Visualizer
                 </a>
@@ -1020,7 +1042,7 @@ function App() {
               {GALLERY_IMAGES.map((item) => (
                 <div 
                   key={item.id} 
-                  className="group relative w-full aspect-video rounded-lg sm:rounded-xl overflow-hidden border border-gray-200/20 bg-gray-800 shadow-lg cursor-pointer"
+                  className="group relative w-full aspect-video rounded-lg sm:rounded-xl overflow-hidden border border-gray-200/20 bg-gray-800 shadow-md cursor-pointer"
                   onClick={() => setSelectedImage({ src: item.img, title: item.title, desc: 'Visual Archive' })}
                 >
                   <img
@@ -1051,7 +1073,7 @@ function App() {
               {CERTIFICATES.map((cert) => (
                 <div 
                   key={cert.id} 
-                  className={`p-5 sm:p-6 rounded-2xl border backdrop-blur-md transition-all duration-300 group hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10 cursor-pointer ${theme.card}`}
+                  className={`p-5 sm:p-6 rounded-2xl border backdrop-blur-md transition-all duration-300 group hover:-translate-y-2 hover:shadow-md cursor-pointer ${theme.card}`}
                   onClick={() => setSelectedImage({ src: cert.img, title: cert.title, desc: `Issued by ${cert.org}` })}
                 >
                   <div className={`aspect-[4/3] overflow-hidden rounded-xl border flex items-center justify-center mb-6 transition-colors relative ${isDark ? 'border-slate-700 bg-slate-800/50 group-hover:border-blue-500/50' : 'border-slate-300 bg-slate-100/50 group-hover:border-blue-400'}`}>
@@ -1062,7 +1084,7 @@ function App() {
                       onError={(e) => { e.target.src = 'https://via.placeholder.com/400x300?text=Certificate' }} 
                     />
                     <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <div className="w-10 h-10 rounded-full bg-blue-600/90 text-white flex items-center justify-center shadow-lg transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                      <div className="w-10 h-10 rounded-full bg-blue-600/90 text-white flex items-center justify-center shadow-md transform scale-75 group-hover:scale-100 transition-transform duration-300">
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
                       </div>
                     </div>
@@ -1085,7 +1107,7 @@ function App() {
 
                   <div className="space-y-6">
                     <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500 text-lg sm:text-xl shadow-[0_0_10px_rgba(3,177,252,0.2)] flex-shrink-0">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500 text-lg sm:text-xl border border-blue-500/20 flex-shrink-0">
                         <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                       </div>
                       <div>
@@ -1094,7 +1116,7 @@ function App() {
                       </div>
                     </div>
                     <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500 text-lg sm:text-xl shadow-[0_0_10px_rgba(3,177,252,0.2)] flex-shrink-0">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500 text-lg sm:text-xl border border-blue-500/20 flex-shrink-0">
                         <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
                       </div>
                       <div>
@@ -1103,7 +1125,7 @@ function App() {
                       </div>
                     </div>
                     <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500 text-lg sm:text-xl shadow-[0_0_10px_rgba(3,177,252,0.2)] flex-shrink-0">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500 text-lg sm:text-xl border border-blue-500/20 flex-shrink-0">
                         <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                       </div>
                       <div>
@@ -1141,7 +1163,7 @@ function App() {
 
                   <button
                     type="submit"
-                    className="px-6 py-4 sm:px-10 sm:py-5 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-500 transition-colors w-full shadow-lg shadow-blue-600/30"
+                    className="px-6 py-4 sm:px-10 sm:py-5 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-500 transition-colors w-full shadow-md"
                   >
                     Send Message
                   </button>
