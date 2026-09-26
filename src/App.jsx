@@ -685,7 +685,7 @@ function App() {
               </span>
               <h3 className="text-3xl sm:text-4xl font-black mb-4 tracking-tight">Sportivo</h3>
               <p className={`text-sm sm:text-base mb-6 leading-relaxed ${theme.muted}`}>
-                A custom live sports streaming platform featuring real-time match schedule scraping, multi-server stream switching, live team logo thumbnails, and aggressive SEO optimization.
+                A high-performance live sports streaming platform featuring real-time match schedule scraping, multi-server stream switching, live team logo thumbnails, and direct shareable match links
               </p>
               
               <ul className="space-y-3 mb-8">
