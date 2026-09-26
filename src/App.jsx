@@ -183,16 +183,6 @@ function App() {
   const [skillsInView, setSkillsInView] = useState(false);
   const skillsRef = useRef(null);
 
-  const [cursorPos, setCursorPos] = useState({ x: -1000, y: -1000 });
-
-  useEffect(() => {
-    const handleGlobalMouseMove = (e) => {
-      setCursorPos({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener('mousemove', handleGlobalMouseMove);
-    return () => window.removeEventListener('mousemove', handleGlobalMouseMove);
-  }, []);
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -340,15 +330,16 @@ function App() {
     function init() {
       particlesArray = [];
       const isMobile = window.innerWidth < 768;
-      const densityDivider = isMobile ? 25000 : 12000; 
+      if (isMobile) return; // Skip heavy canvas animation loop on mobile to maximize TBT/INP performance score
       
+      const densityDivider = 15000;
       let numberOfParticles = (canvas.height * canvas.width) / densityDivider;
       for (let i = 0; i < numberOfParticles; i++) {
         let size = (Math.random() * 2) + 1;
         let x = (Math.random() * ((canvas.width - size * 2) - (size * 2)) + size * 2);
         let y = (Math.random() * ((canvas.height - size * 2) - (size * 2)) + size * 2);
-        let directionX = (Math.random() * 1) - 0.5;
-        let directionY = (Math.random() * 1) - 0.5;
+        let directionX = (Math.random() * 0.8) - 0.4;
+        let directionY = (Math.random() * 0.8) - 0.4;
         let color = isDark ? 'rgba(3, 177, 252, 0.15)' : 'rgba(3, 177, 252, 0.1)';
         particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
       }
@@ -412,7 +403,9 @@ function App() {
     }
 
     init();
-    animate();
+    if (window.innerWidth >= 768) {
+      animate();
+    }
 
     return () => {
       cancelAnimationFrame(animationFrameId);
@@ -571,13 +564,13 @@ function App() {
               </p>
 
               <div className="flex gap-4 sm:gap-5 mt-8 items-center flex-wrap">
-                <a href="https://github.com/dszae" target="_blank" rel="noreferrer" className={`text-slate-400 hover:text-blue-500 transition-colors`}>
+                <a href="https://github.com/dszae" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-blue-500 transition-colors">
                   <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.332-5.467-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
                 </a>
-                <a href="https://linkedin.com/in/dszae" target="_blank" rel="noreferrer" className={`text-slate-400 hover:text-blue-500 transition-colors`}>
+                <a href="https://linkedin.com/in/dszae" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-blue-500 transition-colors">
                   <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
                 </a>
-                <a href="https://instagram.com/dsz.ae" target="_blank" rel="noreferrer" className={`text-slate-400 hover:text-blue-500 transition-colors`}>
+                <a href="https://instagram.com/dsz.ae" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-blue-500 transition-colors">
                   <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" /></svg>
                 </a>
               </div>
@@ -598,6 +591,8 @@ function App() {
               <img
                 src="/og-image.jpg"
                 alt="Dipesh Sapkota Logo"
+                loading="eager"
+                fetchPriority="high"
                 className={`relative z-10 w-full max-w-[220px] sm:max-w-[280px] lg:max-w-[380px] rounded-full shadow-lg border-2 transition-transform duration-500 hover:scale-105 cursor-pointer ${isDark ? 'border-blue-500' : 'border-blue-400'}`}
               />
             </div>
@@ -732,6 +727,8 @@ function App() {
                               <img 
                                 src={exp.logo} 
                                 alt={exp.company} 
+                                loading="lazy"
+                                decoding="async"
                                 className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover bg-white" 
                                 onError={(e) => { e.target.style.display = 'none'; }}
                               />
@@ -774,6 +771,8 @@ function App() {
                               <img 
                                 src={edu.logo} 
                                 alt={edu.school} 
+                                loading="lazy"
+                                decoding="async"
                                 className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover bg-white" 
                                 onError={(e) => { e.target.style.display = 'none'; }}
                               />
@@ -860,6 +859,8 @@ function App() {
                   <img 
                     src="/sportivo-preview.jpg" 
                     alt="Dipesh Sapkota - Sportivo Live Stream Preview" 
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 cursor-pointer"
                     onClick={() => window.open("https://sportivo.dipeshsapkota7.com.np/", "_blank")}
                   />
@@ -867,6 +868,7 @@ function App() {
                 </div>
               </div>
             </div>
+
           </div>
 
           <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-lg transition-all duration-500 hover:-translate-y-2 hover:border-cyan-500 ${isDark ? 'bg-slate-900/60 border-slate-700' : 'bg-white/80 border-slate-200'}`}>
@@ -924,6 +926,8 @@ function App() {
                   <img 
                     src="/ioe-preview.jpg" 
                     alt="Dipesh Sapkota - IOE Admission Hub Preview" 
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 cursor-pointer"
                     onClick={() => window.open("https://ioe-admission.dipeshsapkota7.com.np/", "_blank")}
                   />
@@ -989,6 +993,8 @@ function App() {
                   <img 
                     src="/git-preview.jpg" 
                     alt="Dipesh Sapkota - Git Visualizer Preview" 
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 cursor-pointer"
                     onClick={() => window.open("https://git-visualizer.dipeshsapkota7.com.np/", "_blank")}
                   />
@@ -1036,6 +1042,8 @@ function App() {
                   <img
                     src={item.img}
                     alt={item.title}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-between p-4 sm:p-6">
@@ -1068,6 +1076,8 @@ function App() {
                     <img 
                       src={cert.img} 
                       alt={cert.title} 
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
                       onError={(e) => { e.target.src = 'https://via.placeholder.com/400x300?text=Certificate' }} 
                     />
@@ -1169,19 +1179,19 @@ function App() {
 
         <footer className={`py-8 sm:py-10 text-center font-mono text-[10px] sm:text-sm border-t ${isDark ? 'border-slate-800' : 'border-slate-200'} ${theme.muted}`}>
           <div className="flex flex-wrap justify-center gap-x-6 sm:gap-x-8 gap-y-4 mb-6 sm:mb-8">
-            <a href="https://github.com/dszae" target="_blank" rel="noreferrer" className={`hover:text-blue-500 transition-colors`}>
+            <a href="https://github.com/dszae" target="_blank" rel="noreferrer" className="hover:text-blue-500 transition-colors">
               <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.332-5.467-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
             </a>
-            <a href="https://linkedin.com/in/dszae" target="_blank" rel="noreferrer" className={`hover:text-blue-500 transition-colors`}>
+            <a href="https://linkedin.com/in/dszae" target="_blank" rel="noreferrer" className="hover:text-blue-500 transition-colors">
               <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
             </a>
-            <a href="https://instagram.com/dsz.ae" target="_blank" rel="noreferrer" className={`hover:text-blue-500 transition-colors`}>
+            <a href="https://instagram.com/dsz.ae" target="_blank" rel="noreferrer" className="hover:text-blue-500 transition-colors">
               <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" /></svg>
             </a>
-            <a href="https://facebook.com/dsz.ae" target="_blank" rel="noreferrer" className={`hover:text-blue-500 transition-colors`}>
+            <a href="https://facebook.com/dsz.ae" target="_blank" rel="noreferrer" className="hover:text-blue-500 transition-colors">
               <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" /></svg>
             </a>
-            <a href="https://tiktok.com/@dsz.ae" target="_blank" rel="noreferrer" className={`hover:text-blue-500 transition-colors`}>
+            <a href="https://tiktok.com/@dsz.ae" target="_blank" rel="noreferrer" className="hover:text-blue-500 transition-colors">
               <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.12-3.44-3.37-3.43-5.68.02-1.3.39-2.58 1.05-3.71 1.4-2.28 3.96-3.66 6.64-3.64v4.01c-1.14-.02-2.31.25-3.28.94-.85.64-1.36 1.7-1.31 2.8.04 1.15.65 2.21 1.63 2.79.9.54 2.01.7 3.03.49 1.15-.22 2.11-.97 2.53-2.06.19-.51.27-1.07.28-1.61.03-4.75.01-9.5.02-14.25z" /></svg>
             </a>
           </div>
