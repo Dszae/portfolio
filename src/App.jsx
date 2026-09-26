@@ -82,7 +82,7 @@ const EDUCATION = [
     degree: "Secondary Education Examination (SEE)", 
     school: "Shree Mahendra Adarsha Secondary School", 
     desc: "GPA: 3.88 / 4.00",
-    logo: "/mahendra.png"
+    logo: "/mahendra.jpg"
   }
 ];
 
