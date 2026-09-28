@@ -1,19 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
-  <!-- Crisp white background -->
-  <rect width="512" height="512" rx="120" fill="#ffffff"/>
+  <circle cx="256" cy="256" r="256" fill="#0ea5e9"/>
   
-  <!-- "D.S" text in rich black -->
   <text 
     x="50%" 
     y="54%" 
     dominant-baseline="middle" 
     text-anchor="middle" 
     font-family="system-ui, -apple-system, sans-serif" 
-    font-size="260" 
+    font-size="240" 
     font-weight="900" 
-    letter-spacing="-15"
-    fill="#0f172a"
-  >
-    D<tspan fill="#3b82f6">.</tspan>S
-  </text>
+    fill="#ffffff"
+  >DS</text>
 </svg>
