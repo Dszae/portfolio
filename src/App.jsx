@@ -630,7 +630,7 @@ function App() {
               <div className={`md:col-span-7 p-6 sm:p-8 md:p-12 rounded-[2.5rem] border backdrop-blur-md ${theme.card}`}>
                 <h3 className="text-2xl md:text-3xl font-bold mb-6 leading-tight">Bridging Logic and Visual Execution</h3>
                 <p className={`text-base sm:text-lg leading-relaxed mb-6 ${theme.muted}`}>
-                  Hello! I am a multi-disciplinary creator based in Kathmandu, Nepal. As a Computer Engineering student at Thapathali Campus, I thrive on solving complex logical problems, analyzing circuits, and building robust systems.
+                  Hello! I am <strong>Dipesh Sapkota</strong>, a multi-disciplinary creator based in Kathmandu, Nepal. As a Computer Engineering student at Thapathali Campus (IOE), I thrive on solving complex logical problems, analyzing circuits, and building robust systems.
                 </p>
                 <p className={`text-base sm:text-lg leading-relaxed ${theme.muted}`}>
                   However, my passion extends far beyond code. With over 4 years of professional experience as a freelance Video Editor and Motion Graphics Designer, I have collaborated globally to craft compelling visual stories. I believe the most impactful products live precisely at the intersection of technical engineering and high-end artistic design.
