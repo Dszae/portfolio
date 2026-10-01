@@ -5,8 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/ping-search-engines.js",
-    "lint": "oxlint",
+"build": "vite build"    "lint": "oxlint",
     "preview": "vite preview"
   },
   "dependencies": {
