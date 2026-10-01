@@ -578,7 +578,7 @@ function App() {
                 I'm a <span className="ml-2 sm:ml-3 text-inherit">{text}</span><span className="animate-pulse">|</span>
               </div>
               <p className={`mt-6 max-w-xl text-base sm:text-lg leading-relaxed ${theme.muted}`}>
-                Computer Engineering student and AI/ML enthusiast blending logical problem-solving with high-end creative execution. Explore my code repositories on <a href="https://github.com/dszae" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">GitHub</a> or connect with me on <a href="https://linkedin.com/in/dszae" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">LinkedIn</a>. Also explore my projects like <a href="https://sportivo.dipeshsapkota7.com.np/" className="text-blue-500 underline">Sportivo</a> and the <a href="https://git-visualizer.dipeshsapkota7.com.np/" className="text-blue-500 underline">Git Visualizer</a>.
+                Computer Engineering student and AI/ML enthusiast blending logical problem-solving with high-end creative execution. Explore my code repositories on <a href="https://github.com/dszae" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">GitHub</a> or connect with me on <a href="https://linkedin.com/in/dszae" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">LinkedIn</a>.
               </p>
 
               <div className="flex gap-4 sm:gap-5 mt-8 items-center flex-wrap">
@@ -630,7 +630,7 @@ function App() {
               <div className={`md:col-span-7 p-6 sm:p-8 md:p-12 rounded-[2.5rem] border backdrop-blur-md ${theme.card}`}>
                 <h3 className="text-2xl md:text-3xl font-bold mb-6 leading-tight">Bridging Logic and Visual Execution</h3>
                 <p className={`text-base sm:text-lg leading-relaxed mb-6 ${theme.muted}`}>
-                  Hello! I am <strong>Dipesh Sapkota</strong>, a Computer Engineering student at <a href="https://thapathali.edu.np/" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">Thapathali Campus (IOE)</a> in Kathmandu, Nepal, and an AI/ML enthusiast. I thrive on solving complex computational problems, analyzing circuits, and exploring intelligent systems. You can verify my academic credentials, view my code repositories on <a href="https://github.com/dszae" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">GitHub</a>, and connect with me professionally on <a href="https://linkedin.com/in/dszae" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">LinkedIn</a>.
+                  Hello! I am <strong>Dipesh Sapkota</strong>, a Computer Engineering student at <a href="https://thapathali.edu.np/" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">Thapathali Campus (IOE)</a> in Kathmandu, Nepal, and an AI/ML enthusiast. I thrive on solving complex computational problems, analyzing circuits, and exploring intelligent systems.
                 </p>
                 <p className={`text-base sm:text-lg leading-relaxed ${theme.muted}`}>
                   Beyond engineering, I bring over 4 years of professional experience as a freelance Video Editor and Motion Graphics Designer. I combine technical architecture with high-end creative execution across projects like <a href="https://sportivo.dipeshsapkota7.com.np/" className="text-blue-500 underline">Sportivo</a>, the <a href="https://ioe-admission.dipeshsapkota7.com.np/" className="text-blue-500 underline">IOE Admission Guide</a>, and the <a href="https://git-visualizer.dipeshsapkota7.com.np/" className="text-blue-500 underline">Git Visualizer</a>.
@@ -825,8 +825,8 @@ function App() {
             <span className="text-blue-500">/</span> Projects Archive
           </h2>
 
+          {/* 1. SPORTIVO */}
           <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-lg transition-all duration-500 hover:-translate-y-2 hover:border-blue-500 ${isDark ? 'bg-slate-900/60 border-slate-700' : 'bg-white/80 border-slate-200'}`}>
-            
             <div className="w-full lg:w-1/2">
               <span className="inline-block px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-blue-500 bg-blue-500/10 border border-blue-500/20 rounded-full mb-4">
                 Featured Web App
@@ -845,42 +845,33 @@ function App() {
                   <svg className="w-5 h-5 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                   Instant Live Match Search & Filter
                 </li>
-                <li className="flex items-center gap-3 text-sm font-semibold">
-                  <svg className="w-5 h-5 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                  Multi-Server Switching & Direct Share Links
-                </li>
               </ul>
 
               <div className="flex flex-wrap gap-4">
                 <a href="https://sportivo.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-xl transition-all flex items-center gap-2 shadow-sm">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                   Launch Sportivo ↗
                 </a>
                 <a href="https://github.com/dszae/sportivo" target="_blank" rel="noreferrer" className={`px-6 py-3 text-sm font-bold rounded-xl transition-all flex items-center gap-2 border ${isDark ? 'bg-slate-800 hover:bg-slate-700 border-slate-700 text-white' : 'bg-slate-100 hover:bg-slate-200 border-slate-300 text-slate-800'}`}>
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.332-5.467-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
                   Source Code
+                </a>
+                <a href="https://how-i-built-an-interactive-git-visualizer.hashnode.dev/building-sportivo-live-sports-streaming" target="_blank" rel="noreferrer" className="px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white text-sm font-bold rounded-xl transition-all flex items-center gap-2 shadow-sm">
+                  Read Article ↗
                 </a>
               </div>
             </div>
 
             <div className="w-full lg:w-1/2">
               <div className={`rounded-xl overflow-hidden border shadow-lg ${isDark ? 'border-slate-700 bg-[#0a0a0c]' : 'border-slate-300 bg-slate-50'}`}>
-                
                 <div className={`h-10 flex items-center px-4 gap-2 border-b ${isDark ? 'bg-slate-800 border-slate-700' : 'bg-slate-200 border-slate-300'}`}>
-                  <div className="flex gap-1.5">
-                    <div className="w-3 h-3 rounded-full bg-red-500/90"></div>
-                    <div className="w-3 h-3 rounded-full bg-amber-500/90"></div>
-                    <div className="w-3 h-3 rounded-full bg-emerald-500/90"></div>
-                  </div>
+                  <div className="flex gap-1.5"><div className="w-3 h-3 rounded-full bg-red-500/90"></div><div className="w-3 h-3 rounded-full bg-amber-500/90"></div><div className="w-3 h-3 rounded-full bg-emerald-500/90"></div></div>
                   <div className={`mx-auto text-[10px] px-6 py-1 rounded-md font-mono tracking-wider ${isDark ? 'bg-slate-900 text-slate-500' : 'bg-white text-slate-500'}`}>
                     sportivo.dipeshsapkota7.com.np
                   </div>
                 </div>
-
                 <div className="h-[300px] sm:h-[450px] w-full relative overflow-hidden group">
                   <img 
                     src="/sportivo-preview.jpg" 
-                    alt="Dipesh Sapkota - Sportivo Live Stream Preview" 
+                    alt="Sportivo Preview" 
                     width="993"
                     height="450"
                     loading="lazy"
@@ -888,13 +879,12 @@ function App() {
                     className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 cursor-pointer"
                     onClick={() => window.open("https://sportivo.dipeshsapkota7.com.np/", "_blank")}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                 </div>
               </div>
             </div>
-
           </div>
 
+          {/* 2. IOE ADMISSION GUIDE */}
           <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-lg transition-all duration-500 hover:-translate-y-2 hover:border-cyan-500 ${isDark ? 'bg-slate-900/60 border-slate-700' : 'bg-white/80 border-slate-200'}`}>
             <div className="w-full lg:w-1/2">
               <span className="inline-block px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-cyan-500 bg-cyan-500/10 border border-cyan-500/20 rounded-full mb-4">
@@ -914,19 +904,13 @@ function App() {
                   <svg className="w-5 h-5 text-cyan-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                   Statistical Rank Predictor & Priority Form Generator
                 </li>
-                <li className="flex items-center gap-3 text-sm font-semibold">
-                  <svg className="w-5 h-5 text-cyan-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                  CBT Score Estimator & 4-Year Financial Analytics
-                </li>
               </ul>
 
               <div className="flex flex-wrap gap-4">
                 <a href="https://ioe-admission.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-bold rounded-xl transition-all flex items-center gap-2 shadow-sm">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                  Explore Guide
+                  Explore Guide ↗
                 </a>
                 <a href="https://github.com/dszae/ioe-admission-guide" target="_blank" rel="noreferrer" className={`px-6 py-3 text-sm font-bold rounded-xl transition-all flex items-center gap-2 border ${isDark ? 'bg-slate-800 hover:bg-slate-700 border-slate-700 text-white' : 'bg-slate-100 hover:bg-slate-200 border-slate-300 text-slate-800'}`}>
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.332-5.467-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
                   Source Code
                 </a>
               </div>
@@ -934,22 +918,16 @@ function App() {
 
             <div className="w-full lg:w-1/2">
               <div className={`rounded-xl overflow-hidden border shadow-lg ${isDark ? 'border-slate-700 bg-[#0a0a0c]' : 'border-slate-300 bg-slate-50'}`}>
-                
                 <div className={`h-10 flex items-center px-4 gap-2 border-b ${isDark ? 'bg-slate-800 border-slate-700' : 'bg-slate-200 border-slate-300'}`}>
-                  <div className="flex gap-1.5">
-                    <div className="w-3 h-3 rounded-full bg-red-500/90"></div>
-                    <div className="w-3 h-3 rounded-full bg-amber-500/90"></div>
-                    <div className="w-3 h-3 rounded-full bg-emerald-500/90"></div>
-                  </div>
+                  <div className="flex gap-1.5"><div className="w-3 h-3 rounded-full bg-red-500/90"></div><div className="w-3 h-3 rounded-full bg-amber-500/90"></div><div className="w-3 h-3 rounded-full bg-emerald-500/90"></div></div>
                   <div className={`mx-auto text-[10px] px-6 py-1 rounded-md font-mono tracking-wider ${isDark ? 'bg-slate-900 text-slate-500' : 'bg-white text-slate-500'}`}>
                     ioe-admission.dipeshsapkota7.com.np
                   </div>
                 </div>
-
                 <div className="h-[300px] sm:h-[450px] w-full relative overflow-hidden group">
                   <img 
                     src="/ioe-preview.jpg" 
-                    alt="Dipesh Sapkota - IOE Admission Hub Preview" 
+                    alt="IOE Admission Preview" 
                     width="993"
                     height="450"
                     loading="lazy"
@@ -957,14 +935,13 @@ function App() {
                     className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 cursor-pointer"
                     onClick={() => window.open("https://ioe-admission.dipeshsapkota7.com.np/", "_blank")}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                 </div>
               </div>
             </div>
           </div>
 
+          {/* 3. GIT VISUALIZER */}
           <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-lg transition-all duration-500 hover:-translate-y-2 hover:border-orange-500 ${isDark ? 'bg-slate-900/60 border-slate-700' : 'bg-white/80 border-slate-200'}`}>
-            
             <div className="w-full lg:w-1/2">
               <span className="inline-block px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-orange-500 bg-orange-500/10 border border-orange-500/20 rounded-full mb-4">
                 Featured Web App
@@ -983,42 +960,33 @@ function App() {
                   <svg className="w-5 h-5 text-orange-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                   Live Diagramming of Git Operations
                 </li>
-                <li className="flex items-center gap-3 text-sm font-semibold">
-                  <svg className="w-5 h-5 text-orange-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                  Seamless Concept Mapping for Beginners
-                </li>
               </ul>
 
               <div className="flex flex-wrap gap-4">
                 <a href="https://git-visualizer.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-orange-600 hover:bg-orange-500 text-white text-sm font-bold rounded-xl transition-all flex items-center gap-2 shadow-sm">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                  Explore Visualizer
+                  Explore Visualizer ↗
                 </a>
                 <a href="https://github.com/dszae/git-visualizer" target="_blank" rel="noreferrer" className={`px-6 py-3 text-sm font-bold rounded-xl transition-all flex items-center gap-2 border ${isDark ? 'bg-slate-800 hover:bg-slate-700 border-slate-700 text-white' : 'bg-slate-100 hover:bg-slate-200 border-slate-300 text-slate-800'}`}>
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.332-5.467-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
                   Source Code
+                </a>
+                <a href="https://how-i-built-an-interactive-git-visualizer.hashnode.dev/how-i-built-an-interactive-git-visualizer-to-master-version-control" target="_blank" rel="noreferrer" className="px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white text-sm font-bold rounded-xl transition-all flex items-center gap-2 shadow-sm">
+                  Read Article ↗
                 </a>
               </div>
             </div>
 
             <div className="w-full lg:w-1/2">
               <div className={`rounded-xl overflow-hidden border shadow-lg ${isDark ? 'border-slate-700 bg-[#0a0a0c]' : 'border-slate-300 bg-slate-50'}`}>
-                
                 <div className={`h-10 flex items-center px-4 gap-2 border-b ${isDark ? 'bg-slate-800 border-slate-700' : 'bg-slate-200 border-slate-300'}`}>
-                  <div className="flex gap-1.5">
-                    <div className="w-3 h-3 rounded-full bg-red-500/90"></div>
-                    <div className="w-3 h-3 rounded-full bg-amber-500/90"></div>
-                    <div className="w-3 h-3 rounded-full bg-emerald-500/90"></div>
-                  </div>
+                  <div className="flex gap-1.5"><div className="w-3 h-3 rounded-full bg-red-500/90"></div><div className="w-3 h-3 rounded-full bg-amber-500/90"></div><div className="w-3 h-3 rounded-full bg-emerald-500/90"></div></div>
                   <div className={`mx-auto text-[10px] px-6 py-1 rounded-md font-mono tracking-wider ${isDark ? 'bg-slate-900 text-slate-500' : 'bg-white text-slate-500'}`}>
                     git-visualizer.dipeshsapkota7.com.np
                   </div>
                 </div>
-
                 <div className="h-[300px] sm:h-[450px] w-full relative overflow-hidden group">
                   <img 
                     src="/git-preview.jpg" 
-                    alt="Dipesh Sapkota - Git Visualizer Preview" 
+                    alt="Git Visualizer Preview" 
                     width="993"
                     height="450"
                     loading="lazy"
@@ -1026,7 +994,6 @@ function App() {
                     className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 cursor-pointer"
                     onClick={() => window.open("https://git-visualizer.dipeshsapkota7.com.np/", "_blank")}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                 </div>
               </div>
             </div>
