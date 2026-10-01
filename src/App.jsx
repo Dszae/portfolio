@@ -578,7 +578,7 @@ function App() {
                 I'm a <span className="ml-2 sm:ml-3 text-inherit">{text}</span><span className="animate-pulse">|</span>
               </div>
               <p className={`mt-6 max-w-xl text-base sm:text-lg leading-relaxed ${theme.muted}`}>
-                Computer Engineering student and AI/ML enthusiast blending logical problem-solving with high-end creative execution. Explore my code repositories on <a href="https://github.com/dszae" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">GitHub</a> or connect with me on <a href="https://linkedin.com/in/dszae" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">LinkedIn</a>.
+                Computer Engineering student and AI/ML enthusiast blending analytical problem-solving with high-end creative execution in digital media.
               </p>
 
               <div className="flex gap-4 sm:gap-5 mt-8 items-center flex-wrap">
@@ -630,10 +630,10 @@ function App() {
               <div className={`md:col-span-7 p-6 sm:p-8 md:p-12 rounded-[2.5rem] border backdrop-blur-md ${theme.card}`}>
                 <h3 className="text-2xl md:text-3xl font-bold mb-6 leading-tight">Bridging Logic and Visual Execution</h3>
                 <p className={`text-base sm:text-lg leading-relaxed mb-6 ${theme.muted}`}>
-                  Hello! I am <strong>Dipesh Sapkota</strong>, a Computer Engineering student at <a href="https://thapathali.edu.np/" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">Thapathali Campus (IOE)</a> in Kathmandu, Nepal, and an AI/ML enthusiast. I thrive on solving complex computational problems, analyzing circuits, and exploring intelligent systems.
+                  Hello! I am <strong>Dipesh Sapkota</strong>, a dedicated Computer Engineering student at IOE Thapathali in Kathmandu, Nepal. As an AI and ML enthusiast, I am deeply invested in exploring intelligent systems, analyzing algorithms, and architecting embedded hardware solutions. My technical foundation is built on rigorous academic training and a continuous drive to solve complex computational challenges.
                 </p>
                 <p className={`text-base sm:text-lg leading-relaxed ${theme.muted}`}>
-                  Beyond engineering, I bring over 4 years of professional experience as a freelance Video Editor and Motion Graphics Designer. I combine technical architecture with high-end creative execution across projects like <a href="https://sportivo.dipeshsapkota7.com.np/" className="text-blue-500 underline">Sportivo</a>, the <a href="https://ioe-admission.dipeshsapkota7.com.np/" className="text-blue-500 underline">IOE Admission Guide</a>, and the <a href="https://git-visualizer.dipeshsapkota7.com.np/" className="text-blue-500 underline">Git Visualizer</a>.
+                  Complementing my engineering background, I possess over 4 years of professional experience as a freelance Video Editor and Motion Graphics Designer. This unique convergence of analytical problem-solving and high-end creative design empowers me to bridge the gap between logical architecture and visually engaging digital execution.
                 </p>
               </div>
               
@@ -854,7 +854,7 @@ function App() {
                 <a href="https://github.com/dszae/sportivo" target="_blank" rel="noreferrer" className={`px-6 py-3 text-sm font-bold rounded-xl transition-all flex items-center gap-2 border ${isDark ? 'bg-slate-800 hover:bg-slate-700 border-slate-700 text-white' : 'bg-slate-100 hover:bg-slate-200 border-slate-300 text-slate-800'}`}>
                   Source Code
                 </a>
-                <a href="https://how-i-built-an-interactive-git-visualizer.hashnode.dev/building-sportivo-live-sports-streaming" target="_blank" rel="noreferrer" className="px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white text-sm font-bold rounded-xl transition-all flex items-center gap-2 shadow-sm">
+                <a href="https://building-sportivo-live-sports-streaming.hashnode.dev/building-sportivo-how-i-engineered-a-real-time-live-sports-streaming-web-app" target="_blank" rel="noreferrer" className="px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white text-sm font-bold rounded-xl transition-all flex items-center gap-2 shadow-sm">
                   Read Article ↗
                 </a>
               </div>
@@ -863,7 +863,11 @@ function App() {
             <div className="w-full lg:w-1/2">
               <div className={`rounded-xl overflow-hidden border shadow-lg ${isDark ? 'border-slate-700 bg-[#0a0a0c]' : 'border-slate-300 bg-slate-50'}`}>
                 <div className={`h-10 flex items-center px-4 gap-2 border-b ${isDark ? 'bg-slate-800 border-slate-700' : 'bg-slate-200 border-slate-300'}`}>
-                  <div className="flex gap-1.5"><div className="w-3 h-3 rounded-full bg-red-500/90"></div><div className="w-3 h-3 rounded-full bg-amber-500/90"></div><div className="w-3 h-3 rounded-full bg-emerald-500/90"></div></div>
+                  <div className="flex gap-1.5">
+                    <div className="w-3 h-3 rounded-full bg-red-500/90"></div>
+                    <div className="w-3 h-3 rounded-full bg-amber-500/90"></div>
+                    <div className="w-3 h-3 rounded-full bg-emerald-500/90"></div>
+                  </div>
                   <div className={`mx-auto text-[10px] px-6 py-1 rounded-md font-mono tracking-wider ${isDark ? 'bg-slate-900 text-slate-500' : 'bg-white text-slate-500'}`}>
                     sportivo.dipeshsapkota7.com.np
                   </div>
