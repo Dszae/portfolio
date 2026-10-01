@@ -493,7 +493,7 @@ function App() {
 
       <nav className={`fixed top-0 w-full backdrop-blur-md border-b z-50 transition-colors duration-300 ${theme.nav}`}>
         <div className="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center relative z-10">
-          <a href="#home" className="text-2xl font-black tracking-tighter" onClick={() => setIsMenuOpen(false)}>
+          <a href="https://www.dipeshsapkota7.com.np/" className="text-2xl font-black tracking-tighter" onClick={() => setIsMenuOpen(false)}>
             D<span className="text-blue-500">.</span>S
           </a>
           
@@ -578,7 +578,7 @@ function App() {
                 I'm a <span className="ml-2 sm:ml-3 text-inherit">{text}</span><span className="animate-pulse">|</span>
               </div>
               <p className={`mt-6 max-w-xl text-base sm:text-lg leading-relaxed ${theme.muted}`}>
-                Computer Engineering student blending logical problem-solving with high-end creative execution. Exploring the intersection of code, circuits, and visual media.
+                Computer Engineering student blending logical problem-solving with high-end creative execution. Exploring the intersection of code, circuits, and visual media. Explore my projects and academic background across platforms like <a href="https://github.com/dszae" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">GitHub</a> and <a href="https://linkedin.com/in/dszae" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">LinkedIn</a>.
               </p>
 
               <div className="flex gap-4 sm:gap-5 mt-8 items-center flex-wrap">
@@ -630,7 +630,7 @@ function App() {
               <div className={`md:col-span-7 p-6 sm:p-8 md:p-12 rounded-[2.5rem] border backdrop-blur-md ${theme.card}`}>
                 <h3 className="text-2xl md:text-3xl font-bold mb-6 leading-tight">Bridging Logic and Visual Execution</h3>
                 <p className={`text-base sm:text-lg leading-relaxed mb-6 ${theme.muted}`}>
-                  Hello! I am <strong>Dipesh Sapkota</strong>, a multi-disciplinary creator based in Kathmandu, Nepal. As a Computer Engineering student at Thapathali Campus (IOE), I thrive on solving complex logical problems, analyzing circuits, and building robust systems.
+                  Hello! I am <strong>Dipesh Sapkota</strong>, a multi-disciplinary creator based in Kathmandu, Nepal. As a Computer Engineering student at Thapathali Campus (IOE), I thrive on solving complex logical problems, analyzing circuits, and building robust systems. You can follow my academic progress and projects across platforms like <a href="https://github.com/dszae" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">GitHub</a> and connect professionally on <a href="https://linkedin.com/in/dszae" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">LinkedIn</a>.
                 </p>
                 <p className={`text-base sm:text-lg leading-relaxed ${theme.muted}`}>
                   However, my passion extends far beyond code. With over 4 years of professional experience as a freelance Video Editor and Motion Graphics Designer, I have collaborated globally to craft compelling visual stories. I believe the most impactful products live precisely at the intersection of technical engineering and high-end artistic design.
@@ -726,7 +726,6 @@ function App() {
             </h2>
             <div className="grid lg:grid-cols-2 gap-16">
 
-              {/* Experience Section */}
               <div>
                 <h3 className="text-xl sm:text-2xl font-bold mb-10 flex items-center gap-3">
                   <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
@@ -772,7 +771,6 @@ function App() {
                 </div>
               </div>
 
-              {/* Education Section */}
               <div>
                 <h3 className="text-xl sm:text-2xl font-bold mb-10 flex items-center gap-3">
                   <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z" /><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" /></svg>
@@ -1230,7 +1228,9 @@ function App() {
             <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.12-3.44-3.37-3.43-5.68.02-1.3.39-2.58 1.05-3.71 1.4-2.28 3.96-3.66 6.64-3.64v4.01c-1.14-.02-2.31.25-3.28.94-.85.64-1.36 1.7-1.31 2.8.04 1.15.65 2.21 1.63 2.79.9.54 2.01.7 3.03.49 1.15-.22 2.11-.97 2.53-2.06.19-.51.27-1.07.28-1.61.03-4.75.01-9.5.02-14.25z" /></svg>
           </a>
         </div>
-        <p>&copy; {new Date().getFullYear()} Dipesh Sapkota. All rights reserved.</p>
+        <p>
+          &copy; {new Date().getFullYear()} <a href="https://www.dipeshsapkota7.com.np/" className="hover:text-blue-500 underline transition-colors">Dipesh Sapkota</a>. All rights reserved.
+        </p>
       </footer>
 
       <ScrollToTopButton />
