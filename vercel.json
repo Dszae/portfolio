@@ -1,7 +1,47 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "cleanUrls": true,
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/index.html" }
+  "redirects": [
+    {
+      "source": "https://dipeshsapkota7.com.np/:path*",
+      "destination": "https://www.dipeshsapkota7.com.np/:path*",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/robots.txt",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/xml; charset=utf-8"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/((?!robots\\.txt|sitemap\\.xml).*)",
+      "destination": "/index.html"
+    }
   ]
 }
