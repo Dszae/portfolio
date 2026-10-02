@@ -29,6 +29,10 @@ export const metadata = {
   authors: [{ name: 'Dipesh Sapkota' }],
   creator: 'Dipesh Sapkota',
   publisher: 'Dipesh Sapkota',
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+  },
   robots: {
     index: true,
     follow: true,
