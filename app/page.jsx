@@ -7,35 +7,35 @@ const SKILL_CATEGORIES = [
   {
     title: "Programming",
     icon: (
-      <svg className="w-6 h-6 text-sky-500 dark:text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+      <svg className="w-6 h-6 text-sky-600 dark:text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
     ),
     skills: [
-      { name: "C / C++", exp: "1+ Years", level: "Intermediate", percent: 70, color: "bg-sky-500 dark:bg-sky-400" },
-      { name: "Python", exp: "1+ Years", level: "Intermediate", percent: 70, color: "bg-sky-500 dark:bg-sky-400" },
-      { name: "React.js", exp: "<1 Year", level: "Learning", percent: 40, color: "bg-sky-500 dark:bg-sky-400" },
-      { name: "PHP", exp: "<1 Year", level: "Learning", percent: 40, color: "bg-sky-500 dark:bg-sky-400" }
+      { name: "C / C++", exp: "1+ Years", level: "Intermediate", percent: 70, color: "bg-sky-600 dark:bg-sky-500" },
+      { name: "Python", exp: "1+ Years", level: "Intermediate", percent: 70, color: "bg-sky-600 dark:bg-sky-500" },
+      { name: "React.js", exp: "<1 Year", level: "Learning", percent: 40, color: "bg-sky-600 dark:bg-sky-500" },
+      { name: "PHP", exp: "<1 Year", level: "Learning", percent: 40, color: "bg-sky-600 dark:bg-sky-500" }
     ]
   },
   {
     title: "Creative & Media",
     icon: (
-      <svg className="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"></path></svg>
+      <svg className="w-6 h-6 text-purple-700 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"></path></svg>
     ),
     skills: [
-      { name: "Video Editing", exp: "5+ Years", level: "High Proficiency", percent: 90, color: "bg-purple-600 dark:bg-purple-400" },
-      { name: "Graphic Design", exp: "3+ Years", level: "Advanced", percent: 85, color: "bg-pink-600 dark:bg-pink-400" },
-      { name: "Motion Graphics", exp: "2+ Years", level: "Intermediate", percent: 70, color: "bg-purple-500 dark:bg-purple-300" }
+      { name: "Video Editing", exp: "5+ Years", level: "High Proficiency", percent: 90, color: "bg-purple-700 dark:bg-purple-400" },
+      { name: "Graphic Design", exp: "3+ Years", level: "Advanced", percent: 85, color: "bg-pink-700 dark:bg-pink-400" },
+      { name: "Motion Graphics", exp: "2+ Years", level: "Intermediate", percent: 70, color: "bg-purple-600 dark:bg-purple-300" }
     ]
   },
   {
     title: "Engineering",
     icon: (
-      <svg className="w-6 h-6 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+      <svg className="w-6 h-6 text-emerald-700 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
     ),
     skills: [
-      { name: "Proteus Suite", exp: "1+ Years", level: "Intermediate", percent: 75, color: "bg-emerald-600 dark:bg-emerald-400" },
-      { name: "Circuit Analysis", exp: "1+ Years", level: "Intermediate", percent: 70, color: "bg-emerald-500 dark:bg-emerald-300" },
-      { name: "Breadboarding", exp: "1+ Years", level: "Intermediate", percent: 75, color: "bg-emerald-600 dark:bg-emerald-400" }
+      { name: "Proteus Suite", exp: "1+ Years", level: "Intermediate", percent: 75, color: "bg-emerald-700 dark:bg-emerald-400" },
+      { name: "Circuit Analysis", exp: "1+ Years", level: "Intermediate", percent: 70, color: "bg-emerald-600 dark:bg-emerald-300" },
+      { name: "Breadboarding", exp: "1+ Years", level: "Intermediate", percent: 75, color: "bg-emerald-700 dark:bg-emerald-400" }
     ]
   }
 ];
@@ -157,7 +157,7 @@ function ScrollToTopButton() {
     <button
       onClick={scrollToTop}
       aria-label="Scroll to top of page"
-      className="fixed bottom-6 right-6 z-50 p-3.5 bg-sky-600 dark:bg-sky-500 hover:bg-sky-500 dark:hover:bg-sky-400 text-white rounded-xl shadow-lg transition-all duration-300 hover:-translate-y-1 flex items-center justify-center cursor-pointer border border-sky-400/40 backdrop-blur-md"
+      className="fixed bottom-6 right-6 z-50 p-3.5 bg-sky-700 dark:bg-sky-600 hover:bg-sky-600 dark:hover:bg-sky-500 text-white rounded-xl shadow-lg transition-all duration-300 hover:-translate-y-1 flex items-center justify-center cursor-pointer border border-sky-600/40 backdrop-blur-md"
     >
       <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
@@ -167,7 +167,7 @@ function ScrollToTopButton() {
 }
 
 export default function Home() {
-  const [isDark, setIsDark] = useState(false); // Default mode set to false (Light/White)
+  const [isDark, setIsDark] = useState(false);
   const [formStatus, setFormStatus] = useState("");
   const canvasRef = useRef(null);
   
@@ -352,7 +352,7 @@ export default function Home() {
         let y = (Math.random() * ((canvas.height - size * 2) - (size * 2)) + size * 2);
         let directionX = (Math.random() * 0.8) - 0.4;
         let directionY = (Math.random() * 0.8) - 0.4;
-        let color = isDark ? 'rgba(56, 189, 248, 0.18)' : 'rgba(14, 165, 233, 0.15)';
+        let color = isDark ? 'rgba(14, 116, 144, 0.25)' : 'rgba(2, 132, 199, 0.2)';
         particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
       }
     }
@@ -365,7 +365,7 @@ export default function Home() {
 
           if (distance < (canvas.width / 7) * (canvas.height / 7)) {
             let opacityValue = 1 - (distance / 20000);
-            ctx.strokeStyle = isDark ? `rgba(56, 189, 248, ${opacityValue * 0.07})` : `rgba(14, 165, 233, ${opacityValue * 0.1})`;
+            ctx.strokeStyle = isDark ? `rgba(14, 116, 144, ${opacityValue * 0.1})` : `rgba(2, 132, 199, ${opacityValue * 0.15})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
@@ -380,7 +380,7 @@ export default function Home() {
 
           if (distanceToMouse < mouse.radius * mouse.radius) {
             let opacityValue = 1 - (distanceToMouse / (mouse.radius * mouse.radius));
-            ctx.strokeStyle = isDark ? `rgba(56, 189, 248, ${opacityValue * 0.6})` : `rgba(14, 165, 233, ${opacityValue * 0.6})`;
+            ctx.strokeStyle = isDark ? `rgba(14, 116, 144, ${opacityValue * 0.7})` : `rgba(2, 132, 199, ${opacityValue * 0.6})`;
             ctx.lineWidth = 1.2;
             ctx.beginPath();
             ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
@@ -398,8 +398,8 @@ export default function Home() {
       if (mouse.x != null && mouse.y != null) {
         const glowRadius = 300;
         const gradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, glowRadius);
-        gradient.addColorStop(0, isDark ? 'rgba(56, 189, 248, 0.15)' : 'rgba(14, 165, 233, 0.12)');
-        gradient.addColorStop(1, 'rgba(56, 189, 248, 0)');
+        gradient.addColorStop(0, isDark ? 'rgba(14, 116, 144, 0.2)' : 'rgba(2, 132, 199, 0.15)');
+        gradient.addColorStop(1, 'rgba(14, 116, 144, 0)');
         
         ctx.fillStyle = gradient;
         ctx.beginPath();
@@ -447,16 +447,16 @@ export default function Home() {
   }, [text, isDeleting, loopNum]);
 
   const theme = {
-    bg: isDark ? 'bg-[#030712] text-slate-100' : 'bg-slate-50 text-slate-900',
-    nav: isDark ? 'bg-[#030712]/95 border-slate-800 text-slate-100' : 'bg-white/90 border-slate-200 text-slate-900',
-    card: isDark ? 'bg-[#0b1329]/85 backdrop-blur-md border-slate-800 hover:border-sky-500 text-slate-100 shadow-xl' : 'bg-white/90 backdrop-blur-md border-slate-200/90 hover:border-sky-500 text-slate-900 shadow-lg',
+    bg: isDark ? 'bg-[#020617] text-slate-100' : 'bg-slate-50 text-slate-900', // Darker blue base
+    nav: isDark ? 'bg-[#020617]/95 border-slate-800 text-slate-100' : 'bg-white/90 border-slate-200 text-slate-900',
+    card: isDark ? 'bg-[#090d1f]/85 backdrop-blur-md border-slate-800 hover:border-sky-600 text-slate-100 shadow-xl' : 'bg-white/90 backdrop-blur-md border-slate-200/90 hover:border-sky-500 text-slate-900 shadow-lg',
     muted: isDark ? 'text-slate-300 font-normal' : 'text-slate-700 font-normal',
-    tag: isDark ? 'bg-slate-900 text-sky-300 border border-slate-700 font-medium' : 'bg-sky-50 text-sky-700 border border-sky-200 font-medium',
-    input: isDark ? 'bg-[#0b1329] border-slate-700 text-white placeholder-slate-400 focus:border-sky-400 font-normal' : 'bg-white border-slate-300 text-slate-900 placeholder-slate-500 focus:border-sky-500 font-normal'
+    tag: isDark ? 'bg-slate-900 text-sky-400 border border-slate-800 font-medium' : 'bg-sky-50 text-sky-700 border border-sky-200 font-medium',
+    input: isDark ? 'bg-[#090d1f] border-slate-800 text-white placeholder-slate-400 focus:border-sky-500 font-normal' : 'bg-white border-slate-300 text-slate-900 placeholder-slate-500 focus:border-sky-500 font-normal'
   };
 
   return (
-    <div className={`min-h-screen font-sans transition-colors duration-500 overflow-x-hidden ${theme.bg} relative selection:bg-sky-500/30 w-full m-0 p-0`}>
+    <div className={`min-h-screen font-sans transition-colors duration-500 overflow-x-hidden ${theme.bg} relative selection:bg-sky-600/30 w-full m-0 p-0`}>
 
       {/* SEO Optimized Structured Metadata Landmark for AI & Search Crawlers */}
       <header className="sr-only">
@@ -467,7 +467,7 @@ export default function Home() {
       <div 
         className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 hidden md:block"
         style={{
-          background: `radial-gradient(600px at ${cursorPos.x}px ${cursorPos.y}px, ${isDark ? 'rgba(56, 189, 248, 0.08)' : 'rgba(14, 165, 233, 0.06)'}, transparent 80%)`
+          background: `radial-gradient(600px at ${cursorPos.x}px ${cursorPos.y}px, ${isDark ? 'rgba(14, 116, 144, 0.1)' : 'rgba(2, 132, 199, 0.08)'}, transparent 80%)`
         }}
       />
 
@@ -500,7 +500,7 @@ export default function Home() {
       <nav aria-label="Main Navigation" className={`fixed top-0 left-0 w-full backdrop-blur-md border-b z-50 transition-colors duration-300 ${theme.nav}`}>
         <div className="w-full px-6 sm:px-12 h-20 flex justify-between items-center relative z-10">
           <a href="https://www.dipeshsapkota7.com.np/" className="text-2xl font-bold tracking-tight" onClick={() => setIsMenuOpen(false)}>
-            Dipesh Sapkota<span className="text-sky-500 dark:text-sky-400">.</span>
+            Dipesh Sapkota<span className="text-sky-600 dark:text-sky-400">.</span>
           </a>
           
           <div className="hidden md:flex gap-4 lg:gap-8 font-mono text-sm font-medium uppercase tracking-wider">
@@ -508,7 +508,7 @@ export default function Home() {
               <a 
                 key={link.id} 
                 href={`#${link.id}`} 
-                className={`${activeSection === link.id ? 'text-sky-600 dark:text-sky-400 font-bold' : 'opacity-80 hover:opacity-100'} hover:text-sky-500 transition-colors`}
+                className={`${activeSection === link.id ? 'text-sky-700 dark:text-sky-400 font-bold' : 'opacity-80 hover:opacity-100'} hover:text-sky-600 transition-colors`}
               >
                 {link.label}
               </a>
@@ -518,7 +518,7 @@ export default function Home() {
           <div className="flex items-center gap-3 sm:gap-4">
             <button
               onClick={() => setIsDark(!isDark)}
-              className={`w-10 h-10 rounded-full flex items-center justify-center border transition-colors shadow-sm cursor-pointer ${isDark ? 'border-sky-500/60 text-sky-300 hover:bg-sky-500/20' : 'border-slate-300 text-slate-800 hover:bg-slate-200'}`}
+              className={`w-10 h-10 rounded-full flex items-center justify-center border transition-colors shadow-sm cursor-pointer ${isDark ? 'border-sky-600/60 text-sky-400 hover:bg-sky-600/20' : 'border-slate-300 text-slate-800 hover:bg-slate-200'}`}
               aria-label="Toggle Theme Mode"
             >
               {isDark ? (
@@ -554,7 +554,7 @@ export default function Home() {
                 key={link.id} 
                 href={`#${link.id}`} 
                 onClick={() => setIsMenuOpen(false)} 
-                className={`${activeSection === link.id ? 'text-sky-600 dark:text-sky-400 font-bold' : ''} hover:text-sky-500 transition-colors`}
+                className={`${activeSection === link.id ? 'text-sky-700 dark:text-sky-400 font-bold' : ''} hover:text-sky-600 transition-colors`}
               >
                 {link.label}
               </a>
@@ -573,14 +573,14 @@ export default function Home() {
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center w-full relative z-10">
             
             <div className="order-2 md:order-1 opacity-0 animate-slide-left">
-              <div className="inline-block px-4 py-1.5 rounded-full border border-sky-500/50 bg-sky-500/10 text-sky-600 dark:text-sky-400 font-mono text-sm font-semibold mb-6 backdrop-blur-sm">
+              <div className="inline-block px-4 py-1.5 rounded-full border border-sky-600/50 bg-sky-600/10 text-sky-700 dark:text-sky-400 font-mono text-sm font-semibold mb-6 backdrop-blur-sm">
                 <svg className="w-4 h-4 inline-block mr-2 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                 System Online
               </div>
               <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight">
                 Dipesh Sapkota
               </h2>
-              <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-sky-600 dark:text-sky-400 h-12 flex items-center">
+              <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-sky-700 dark:text-sky-400 h-12 flex items-center">
                 I'm a <span className="ml-2 sm:ml-3 text-inherit">{text}</span><span className="animate-pulse">|</span>
               </div>
               <p className={`mt-6 max-w-xl text-base sm:text-lg leading-relaxed ${theme.muted}`}>
@@ -588,33 +588,33 @@ export default function Home() {
               </p>
 
               <div className="flex gap-4 sm:gap-5 mt-8 items-center flex-wrap">
-                <a href="https://github.com/dszae" target="_blank" rel="noreferrer" aria-label="GitHub Profile" className="text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 transition-colors">
+                <a href="https://github.com/dszae" target="_blank" rel="noreferrer" aria-label="GitHub Profile" className="text-slate-600 dark:text-slate-300 hover:text-sky-700 dark:hover:text-sky-400 transition-colors">
                   <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.332-5.467-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
                 </a>
-                <a href="https://linkedin.com/in/dszae" target="_blank" rel="noreferrer" aria-label="LinkedIn Profile" className="text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 transition-colors">
+                <a href="https://linkedin.com/in/dszae" target="_blank" rel="noreferrer" aria-label="LinkedIn Profile" className="text-slate-600 dark:text-slate-300 hover:text-sky-700 dark:hover:text-sky-400 transition-colors">
                   <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
                 </a>
-                <a href="https://instagram.com/dsz.ae" target="_blank" rel="noreferrer" aria-label="Instagram Profile" className="text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 transition-colors">
+                <a href="https://instagram.com/dsz.ae" target="_blank" rel="noreferrer" aria-label="Instagram Profile" className="text-slate-600 dark:text-slate-300 hover:text-sky-700 dark:hover:text-sky-400 transition-colors">
                   <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" /></svg>
                 </a>
-                <a href="https://facebook.com/dsz.ae" target="_blank" rel="noreferrer" aria-label="Facebook Profile" className="text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 transition-colors">
+                <a href="https://facebook.com/dsz.ae" target="_blank" rel="noreferrer" aria-label="Facebook Profile" className="text-slate-600 dark:text-slate-300 hover:text-sky-700 dark:hover:text-sky-400 transition-colors">
                   <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
                 </a>
               </div>
 
               <div className="mt-8 sm:mt-10 flex flex-wrap gap-4">
-                <a href="/my_cv.pdf" download="Dipesh_Sapkota_CV.pdf" className="px-6 py-3 sm:px-8 sm:py-4 bg-sky-600 dark:bg-sky-500 text-white font-semibold rounded-xl hover:bg-sky-500 dark:hover:bg-sky-400 transition-all hover:-translate-y-1 flex items-center gap-2 shadow-md">
+                <a href="/my_cv.pdf" download="Dipesh_Sapkota_CV.pdf" className="px-6 py-3 sm:px-8 sm:py-4 bg-sky-700 dark:bg-sky-600 text-white font-semibold rounded-xl hover:bg-sky-600 dark:hover:bg-sky-500 transition-all hover:-translate-y-1 flex items-center gap-2 shadow-md">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                   Download CV
                 </a>
-                <a href="#contact" className={`px-6 py-3 sm:px-8 sm:py-4 border font-semibold rounded-xl transition-all hover:-translate-y-1 ${isDark ? 'border-slate-600 hover:bg-slate-800 bg-slate-900/50 text-white' : 'border-slate-300 hover:bg-white bg-white/50 text-slate-900'}`}>
+                <a href="#contact" className={`px-6 py-3 sm:px-8 sm:py-4 border font-semibold rounded-xl transition-all hover:-translate-y-1 ${isDark ? 'border-slate-700 hover:bg-slate-800 bg-[#090d1f]/50 text-white' : 'border-slate-300 hover:bg-white bg-white/50 text-slate-900'}`}>
                   Get In Touch
                 </a>
               </div>
             </div>
 
             <div className="order-1 md:order-2 flex justify-center items-center relative pt-10 md:pt-0 opacity-0 animate-slide-right">
-              <div className={`absolute w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] lg:w-[420px] lg:h-[420px] rounded-full border border-dashed animate-[spin_20s_linear_infinite] ${isDark ? 'border-sky-500/40' : 'border-sky-500/30'}`}></div>
+              <div className={`absolute w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] lg:w-[420px] lg:h-[420px] rounded-full border border-dashed animate-[spin_20s_linear_infinite] ${isDark ? 'border-sky-600/40' : 'border-sky-500/30'}`}></div>
               <img
                 src="/og-image.webp"
                 alt="Dipesh Sapkota - Computer Engineer and Video Editor Profile"
@@ -622,7 +622,7 @@ export default function Home() {
                 height="380"
                 loading="eager"
                 fetchPriority="high"
-                className={`relative z-10 w-full max-w-[220px] sm:max-w-[280px] lg:max-w-[380px] rounded-full shadow-lg border-2 transition-transform duration-500 hover:scale-105 cursor-pointer ${isDark ? 'border-sky-500' : 'border-sky-400'}`}
+                className={`relative z-10 w-full max-w-[220px] sm:max-w-[280px] lg:max-w-[380px] rounded-full shadow-lg border-2 transition-transform duration-500 hover:scale-105 cursor-pointer ${isDark ? 'border-sky-600' : 'border-sky-400'}`}
               />
             </div>
             
@@ -633,14 +633,14 @@ export default function Home() {
           <section id="about" className={`py-24 px-6 sm:px-12 w-full ${theme.bg}`}>
             <div className="max-w-7xl mx-auto w-full">
               <h2 className="text-3xl sm:text-4xl font-bold mb-12 flex items-center gap-4">
-                <span className="text-sky-600 dark:text-sky-400">/</span> About Me
+                <span className="text-sky-700 dark:text-sky-400">/</span> About Me
               </h2>
               <div className="grid md:grid-cols-12 gap-8 items-center">
                 
                 <div className={`md:col-span-7 p-6 sm:p-8 md:p-12 rounded-[2.5rem] border backdrop-blur-md ${theme.card}`}>
                   <h3 className="text-2xl md:text-3xl font-semibold mb-6 leading-tight">Bridging Logic and Visual Execution</h3>
                   <p className={`text-base sm:text-lg leading-relaxed mb-6 ${theme.muted}`}>
-                    Hello! I am <strong>Dipesh Sapkota</strong>, a dedicated Computer Engineering student at <span className="font-light text-sky-600 dark:text-sky-400">IOE Thapathali Campus</span> in Kathmandu, Nepal. As an AI and ML enthusiast, I am deeply invested in exploring intelligent systems, analyzing algorithms, and architecting embedded hardware solutions. My technical foundation is built on rigorous academic training and a continuous drive to solve complex computational challenges.
+                    Hello! I am <strong>Dipesh Sapkota</strong>, a dedicated Computer Engineering student at <span className="font-light text-sky-700 dark:text-sky-400">IOE Thapathali Campus</span> in Kathmandu, Nepal. As an AI and ML enthusiast, I am deeply invested in exploring intelligent systems, analyzing algorithms, and architecting embedded hardware solutions. My technical foundation is built on rigorous academic training and a continuous drive to solve complex computational challenges.
                   </p>
                   <p className={`text-base sm:text-lg leading-relaxed ${theme.muted}`}>
                     Complementing my engineering background, I possess over 4 years of professional experience as a freelance Video Editor and Motion Graphics Designer. This unique convergence of analytical problem-solving and high-end creative design empowers me to bridge the gap between logical architecture and visually engaging digital execution.
@@ -650,8 +650,8 @@ export default function Home() {
                 <div className="md:col-span-5 flex flex-col gap-4 sm:gap-6">
                   
                   <div className={`p-5 sm:p-6 md:p-8 rounded-3xl border backdrop-blur-md flex items-center gap-4 sm:gap-6 transition-all duration-300 hover:-translate-y-1 ${theme.card}`}>
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-sky-500/10 flex items-center justify-center flex-shrink-0 border border-sky-500/30">
-                      <svg className="w-7 h-7 sm:w-8 sm:h-8 text-sky-600 dark:text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-sky-600/10 flex items-center justify-center flex-shrink-0 border border-sky-600/30">
+                      <svg className="w-7 h-7 sm:w-8 sm:h-8 text-sky-700 dark:text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
                       </svg>
                     </div>
@@ -662,8 +662,8 @@ export default function Home() {
                   </div>
                   
                   <div className={`p-5 sm:p-6 md:p-8 rounded-3xl border backdrop-blur-md flex items-center gap-4 sm:gap-6 transition-all duration-300 hover:-translate-y-1 ${theme.card}`}>
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-sky-500/10 flex items-center justify-center flex-shrink-0 border border-sky-500/30">
-                      <svg className="w-7 h-7 sm:w-8 sm:h-8 text-sky-600 dark:text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-sky-600/10 flex items-center justify-center flex-shrink-0 border border-sky-600/30">
+                      <svg className="w-7 h-7 sm:w-8 sm:h-8 text-sky-700 dark:text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                       </svg>
                     </div>
@@ -674,8 +674,8 @@ export default function Home() {
                   </div>
 
                   <div className={`p-5 sm:p-6 md:p-8 rounded-3xl border backdrop-blur-md flex items-center gap-4 sm:gap-6 transition-all duration-300 hover:-translate-y-1 ${theme.card}`}>
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-sky-500/10 flex items-center justify-center flex-shrink-0 border border-sky-500/30">
-                      <svg className="w-7 h-7 sm:w-8 sm:h-8 text-sky-600 dark:text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-sky-600/10 flex items-center justify-center flex-shrink-0 border border-sky-600/30">
+                      <svg className="w-7 h-7 sm:w-8 sm:h-8 text-sky-700 dark:text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                       </svg>
                     </div>
@@ -695,7 +695,7 @@ export default function Home() {
           <section id="skills" ref={skillsRef} className={`py-16 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
             <div className="max-w-[100rem] mx-auto w-full">
               <h2 className="text-3xl sm:text-4xl font-bold mb-10 flex items-center gap-4">
-                <span className="text-sky-600 dark:text-sky-400">/</span> Technical Proficiency
+                <span className="text-sky-700 dark:text-sky-400">/</span> Technical Proficiency
               </h2>
 
               <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
@@ -703,7 +703,7 @@ export default function Home() {
                   <div key={idx} className={`p-6 sm:p-8 rounded-3xl border backdrop-blur-md transition-all duration-300 hover:-translate-y-2 w-full ${theme.card} flex flex-col justify-between`}>
                     <div>
                       <div className="flex items-center gap-4 mb-6">
-                        <div className="w-12 h-12 rounded-xl bg-sky-500/10 flex items-center justify-center text-2xl border border-sky-500/30 flex-shrink-0">
+                        <div className="w-12 h-12 rounded-xl bg-sky-600/10 flex items-center justify-center text-2xl border border-sky-600/30 flex-shrink-0">
                           {category.icon}
                         </div>
                         <h3 className="text-xl sm:text-2xl font-semibold">{category.title}</h3>
@@ -711,7 +711,7 @@ export default function Home() {
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
                         {category.skills.map((skill, sIdx) => (
-                          <div key={sIdx} className={`p-3.5 rounded-xl border ${isDark ? 'bg-slate-800/60 border-slate-700' : 'bg-slate-100/80 border-slate-200'}`}>
+                          <div key={sIdx} className={`p-3.5 rounded-xl border ${isDark ? 'bg-[#090d1f] border-slate-800' : 'bg-slate-100/80 border-slate-200'}`}>
                             <div className="flex justify-between items-end mb-1.5">
                               <div>
                                 <h4 className="font-semibold text-xs sm:text-sm">{skill.name}</h4>
@@ -719,7 +719,7 @@ export default function Home() {
                               </div>
                               <span className="font-mono text-[11px] font-semibold">{skill.percent}%</span>
                             </div>
-                            <div className={`w-full h-2 rounded-full overflow-hidden ${isDark ? 'bg-slate-700' : 'bg-slate-200'}`}>
+                            <div className={`w-full h-2 rounded-full overflow-hidden ${isDark ? 'bg-slate-800' : 'bg-slate-200'}`}>
                               <div
                                 className={`h-full rounded-full ${skill.color} transition-all duration-1000 ease-out`}
                                 style={{ width: skillsInView ? `${skill.percent}%` : '0%' }}
@@ -740,24 +740,24 @@ export default function Home() {
           <section id="resume" className={`py-24 px-6 sm:px-12 w-full ${theme.bg}`}>
             <div className="max-w-7xl mx-auto w-full">
               <h2 className="text-3xl sm:text-4xl font-bold mb-16 flex items-center gap-4">
-                <span className="text-sky-600 dark:text-sky-400">/</span> My Journey
+                <span className="text-sky-700 dark:text-sky-400">/</span> My Journey
               </h2>
               <div className="grid lg:grid-cols-2 gap-16">
 
                 <div>
                   <h3 className="text-xl sm:text-2xl font-semibold mb-10 flex items-center gap-3">
-                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-sky-600 dark:text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-sky-700 dark:text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                     Experience
                   </h3>
-                  <div className="space-y-8 relative border-l-2 border-sky-500/40 pl-6 ml-3">
+                  <div className="space-y-8 relative border-l-2 border-sky-600/40 pl-6 ml-3">
                     {EXPERIENCE.map((exp, index) => (
                       <div 
                         key={index} 
                         className="relative pb-4 transition-transform duration-300 hover:translate-x-3 group cursor-default"
                       >
-                        <div className="absolute -left-[35px] top-4 w-3.5 h-3.5 bg-sky-600 dark:bg-sky-400 rounded-full border-4 border-slate-900"></div>
+                        <div className="absolute -left-[35px] top-4 w-3.5 h-3.5 bg-sky-700 dark:bg-sky-500 rounded-full border-4 border-slate-950"></div>
                         
-                        <div className={`p-6 rounded-2xl transition-all duration-300 group-hover:shadow-md ${isDark ? 'bg-slate-900/60 hover:bg-slate-900 border border-slate-800' : 'bg-white hover:bg-slate-50 border border-slate-200'}`}>
+                        <div className={`p-6 rounded-2xl transition-all duration-300 group-hover:shadow-md ${isDark ? 'bg-[#090d1f]/60 hover:bg-[#090d1f] border border-slate-800' : 'bg-white hover:bg-slate-50 border border-slate-200'}`}>
                           <div className="flex items-center gap-4">
                             {exp.logo && (
                               <div className="flex-shrink-0 flex items-center justify-center">
@@ -774,15 +774,15 @@ export default function Home() {
                               </div>
                             )}
                             <div className="flex-1">
-                              <span className={`inline-block px-3 py-1 text-[11px] sm:text-xs font-semibold rounded-md mb-2 ${isDark ? 'bg-slate-800 text-sky-400 border border-slate-700' : 'bg-sky-50 text-sky-800 border border-sky-200'}`}>
+                              <span className={`inline-block px-3 py-1 text-[11px] sm:text-xs font-semibold rounded-md mb-2 ${isDark ? 'bg-[#090d1f] text-sky-400 border border-slate-800' : 'bg-sky-50 text-sky-800 border border-sky-200'}`}>
                                 {exp.year}
                               </span>
                               <h4 className="text-lg sm:text-xl font-semibold mb-1">{exp.role}</h4>
-                              <p className="font-mono text-xs sm:text-sm mb-2 font-light text-sky-600 dark:text-sky-400">{exp.company}</p>
+                              <p className="font-mono text-xs sm:text-sm mb-2 font-light text-sky-700 dark:text-sky-400">{exp.company}</p>
                               <p className={`text-sm leading-relaxed ${theme.muted}`}>{exp.desc}</p>
                             </div>
                           </div>
-                          <div className="absolute bottom-0 left-6 w-0 h-1 bg-sky-600 dark:bg-sky-400 transition-all duration-300 group-hover:w-[calc(100%-3rem)] rounded-b-2xl"></div>
+                          <div className="absolute bottom-0 left-6 w-0 h-1 bg-sky-700 dark:bg-sky-500 transition-all duration-300 group-hover:w-[calc(100%-3rem)] rounded-b-2xl"></div>
                         </div>
                       </div>
                     ))}
@@ -791,18 +791,18 @@ export default function Home() {
 
                 <div>
                   <h3 className="text-xl sm:text-2xl font-semibold mb-10 flex items-center gap-3">
-                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-sky-600 dark:text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z" /><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" /></svg>
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-sky-700 dark:text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z" /><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" /></svg>
                     Education
                   </h3>
-                  <div className="space-y-8 relative border-l-2 border-sky-500/40 pl-6 ml-3">
+                  <div className="space-y-8 relative border-l-2 border-sky-600/40 pl-6 ml-3">
                     {EDUCATION.map((edu, index) => (
                       <div 
                         key={index} 
                         className="relative pb-4 transition-transform duration-300 hover:translate-x-3 group cursor-default"
                       >
-                        <div className="absolute -left-[35px] top-4 w-3.5 h-3.5 bg-sky-600 dark:bg-sky-400 rounded-full border-4 border-slate-900"></div>
+                        <div className="absolute -left-[35px] top-4 w-3.5 h-3.5 bg-sky-700 dark:bg-sky-500 rounded-full border-4 border-slate-950"></div>
                         
-                        <div className={`p-6 rounded-2xl transition-all duration-300 group-hover:shadow-md ${isDark ? 'bg-slate-900/60 hover:bg-slate-900 border border-slate-800' : 'bg-white hover:bg-slate-50 border border-slate-200'}`}>
+                        <div className={`p-6 rounded-2xl transition-all duration-300 group-hover:shadow-md ${isDark ? 'bg-[#090d1f]/60 hover:bg-[#090d1f] border border-slate-800' : 'bg-white hover:bg-slate-50 border border-slate-200'}`}>
                           <div className="flex items-center gap-4">
                             {edu.logo && (
                               <div className="flex-shrink-0 flex items-center justify-center">
@@ -819,15 +819,15 @@ export default function Home() {
                               </div>
                             )}
                             <div className="flex-1">
-                              <span className={`inline-block px-3 py-1 text-[11px] sm:text-xs font-semibold rounded-md mb-2 ${isDark ? 'bg-slate-800 text-sky-400 border border-slate-700' : 'bg-sky-50 text-sky-800 border border-sky-200'}`}>
+                              <span className={`inline-block px-3 py-1 text-[11px] sm:text-xs font-semibold rounded-md mb-2 ${isDark ? 'bg-[#090d1f] text-sky-400 border border-slate-800' : 'bg-sky-50 text-sky-800 border border-sky-200'}`}>
                                 {edu.year}
                               </span>
                               <h4 className="text-base sm:text-lg font-semibold leading-tight mb-1">{edu.degree}</h4>
-                              <p className="font-mono text-xs sm:text-sm mb-2 font-light text-sky-600 dark:text-sky-400">{edu.school}</p>
+                              <p className="font-mono text-xs sm:text-sm mb-2 font-light text-sky-700 dark:text-sky-400">{edu.school}</p>
                               <p className={`text-sm leading-relaxed ${theme.muted}`}>{edu.desc}</p>
                             </div>
                           </div>
-                          <div className="absolute bottom-0 left-6 w-0 h-1 bg-sky-600 dark:bg-sky-400 transition-all duration-300 group-hover:w-[calc(100%-3rem)] rounded-b-2xl"></div>
+                          <div className="absolute bottom-0 left-6 w-0 h-1 bg-sky-700 dark:bg-sky-500 transition-all duration-300 group-hover:w-[calc(100%-3rem)] rounded-b-2xl"></div>
                         </div>
                       </div>
                     ))}
@@ -842,12 +842,12 @@ export default function Home() {
         <section id="projects" className={`py-24 px-6 sm:px-12 w-full ${theme.bg}`}>
           <div className="max-w-7xl mx-auto w-full">
             <h2 className="text-3xl sm:text-4xl font-bold mb-12 flex items-center gap-4">
-              <span className="text-sky-600 dark:text-sky-400">/</span> Projects Archive
+              <span className="text-sky-700 dark:text-sky-400">/</span> Projects Archive
             </h2>
 
-            <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-lg transition-all duration-500 hover:-translate-y-2 hover:border-sky-500 ${theme.card}`}>
+            <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-lg transition-all duration-500 hover:-translate-y-2 hover:border-sky-600 ${theme.card}`}>
               <div className="w-full lg:w-1/2">
-                <span className="inline-block px-3.5 py-1 text-xs font-semibold uppercase tracking-widest text-sky-700 dark:text-sky-300 bg-sky-500/10 border border-sky-500/30 rounded-full mb-4">
+                <span className="inline-block px-3.5 py-1 text-xs font-semibold uppercase tracking-widest text-sky-700 dark:text-sky-300 bg-sky-600/10 border border-sky-600/30 rounded-full mb-4">
                   Featured Web App
                 </span>
                 <h3 className="text-3xl sm:text-4xl font-bold mb-4 tracking-tight">Sportivo</h3>
@@ -857,20 +857,20 @@ export default function Home() {
                 
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center gap-3 text-sm font-medium">
-                    <svg className="w-5 h-5 text-sky-600 dark:text-sky-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <svg className="w-5 h-5 text-sky-700 dark:text-sky-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     Real-time Football, Cricket & Basketball Streams
                   </li>
                   <li className="flex items-center gap-3 text-sm font-medium">
-                    <svg className="w-5 h-5 text-sky-600 dark:text-sky-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <svg className="w-5 h-5 text-sky-700 dark:text-sky-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     Instant Live Match Search & Filter
                   </li>
                 </ul>
 
                 <div className="flex flex-wrap gap-4">
-                  <a href="https://sportivo.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-sky-600 dark:bg-sky-500 hover:bg-sky-500 dark:hover:bg-sky-400 text-white text-sm font-semibold rounded-xl transition-all flex items-center gap-2 shadow-sm">
+                  <a href="https://sportivo.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-sky-700 dark:bg-sky-600 hover:bg-sky-600 dark:hover:bg-sky-500 text-white text-sm font-semibold rounded-xl transition-all flex items-center gap-2 shadow-sm">
                     Launch Sportivo
                   </a>
-                  <a href="https://github.com/dszae/sportivo" target="_blank" rel="noreferrer" className={`px-6 py-3 text-sm font-semibold rounded-xl transition-all flex items-center gap-2 border ${isDark ? 'bg-slate-800 hover:bg-slate-700 border-slate-700 text-white' : 'bg-slate-100 hover:bg-slate-200 border-slate-300 text-slate-900'}`}>
+                  <a href="https://github.com/dszae/sportivo" target="_blank" rel="noreferrer" className={`px-6 py-3 text-sm font-semibold rounded-xl transition-all flex items-center gap-2 border ${isDark ? 'bg-[#090d1f] hover:bg-slate-800 border-slate-800 text-white' : 'bg-slate-100 hover:bg-slate-200 border-slate-300 text-slate-900'}`}>
                     Source Code
                   </a>
                   <a href="https://building-sportivo-live-sports-streaming.hashnode.dev/building-sportivo-how-i-engineered-a-real-time-live-sports-streaming-web-app" target="_blank" rel="noreferrer" className="px-6 py-3 bg-purple-700 hover:bg-purple-600 text-white text-sm font-semibold rounded-xl transition-all flex items-center gap-2 shadow-sm">
@@ -880,14 +880,14 @@ export default function Home() {
               </div>
 
               <div className="w-full lg:w-1/2">
-                <div className={`rounded-xl overflow-hidden border shadow-lg ${isDark ? 'border-slate-700 bg-[#0a0a0c]' : 'border-slate-300 bg-slate-50'}`}>
-                  <div className={`h-10 flex items-center px-4 gap-2 border-b ${isDark ? 'bg-slate-800 border-slate-700' : 'bg-slate-200 border-slate-300'}`}>
+                <div className={`rounded-xl overflow-hidden border shadow-lg ${isDark ? 'border-slate-800 bg-[#060913]' : 'border-slate-300 bg-slate-50'}`}>
+                  <div className={`h-10 flex items-center px-4 gap-2 border-b ${isDark ? 'bg-[#090d1f] border-slate-800' : 'bg-slate-200 border-slate-300'}`}>
                     <div className="flex gap-1.5">
                       <div className="w-3 h-3 rounded-full bg-red-500/90"></div>
                       <div className="w-3 h-3 rounded-full bg-amber-500/90"></div>
                       <div className="w-3 h-3 rounded-full bg-emerald-500/90"></div>
                     </div>
-                    <div className={`mx-auto text-[10px] px-6 py-1 rounded-md font-mono tracking-wider ${isDark ? 'bg-slate-900 text-slate-400' : 'bg-white text-slate-600 font-semibold'}`}>
+                    <div className={`mx-auto text-[10px] px-6 py-1 rounded-md font-mono tracking-wider ${isDark ? 'bg-[#020617] text-slate-400' : 'bg-white text-slate-600 font-semibold'}`}>
                       sportivo.dipeshsapkota7.com.np
                     </div>
                   </div>
@@ -907,9 +907,9 @@ export default function Home() {
               </div>
             </div>
 
-            <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-lg transition-all duration-500 hover:-translate-y-2 hover:border-cyan-500 ${theme.card}`}>
+            <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-lg transition-all duration-500 hover:-translate-y-2 hover:border-cyan-600 ${theme.card}`}>
               <div className="w-full lg:w-1/2">
-                <span className="inline-block px-3.5 py-1 text-xs font-semibold uppercase tracking-widest text-cyan-700 dark:text-cyan-300 bg-cyan-500/10 border border-cyan-500/30 rounded-full mb-4">
+                <span className="inline-block px-3.5 py-1 text-xs font-semibold uppercase tracking-widest text-cyan-700 dark:text-cyan-400 bg-cyan-600/10 border border-cyan-600/30 rounded-full mb-4">
                   Featured Web App
                 </span>
                 <h3 className="text-3xl sm:text-4xl font-bold mb-4 tracking-tight">IOE Admission Guide</h3>
@@ -919,30 +919,30 @@ export default function Home() {
                 
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center gap-3 text-sm font-medium">
-                    <svg className="w-5 h-5 text-cyan-600 dark:text-cyan-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <svg className="w-5 h-5 text-cyan-700 dark:text-cyan-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     Step-by-Step IOE Counseling & Document Guides
                   </li>
                   <li className="flex items-center gap-3 text-sm font-medium">
-                    <svg className="w-5 h-5 text-cyan-600 dark:text-cyan-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <svg className="w-5 h-5 text-cyan-700 dark:text-cyan-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     Statistical Rank Predictor & Priority Form Generator
                   </li>
                 </ul>
 
                 <div className="flex flex-wrap gap-4">
-                  <a href="https://ioe-admission.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-semibold rounded-xl transition-all flex items-center gap-2 shadow-sm">
+                  <a href="https://ioe-admission.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-cyan-700 hover:bg-cyan-600 text-white text-sm font-semibold rounded-xl transition-all flex items-center gap-2 shadow-sm">
                     Explore Guide
                   </a>
-                  <a href="https://github.com/dszae/ioe-admission-guide" target="_blank" rel="noreferrer" className={`px-6 py-3 text-sm font-semibold rounded-xl transition-all flex items-center gap-2 border ${isDark ? 'bg-slate-800 hover:bg-slate-700 border-slate-700 text-white' : 'bg-slate-100 hover:bg-slate-200 border-slate-300 text-slate-900'}`}>
+                  <a href="https://github.com/dszae/ioe-admission-guide" target="_blank" rel="noreferrer" className={`px-6 py-3 text-sm font-semibold rounded-xl transition-all flex items-center gap-2 border ${isDark ? 'bg-[#090d1f] hover:bg-slate-800 border-slate-800 text-white' : 'bg-slate-100 hover:bg-slate-200 border-slate-300 text-slate-900'}`}>
                     Source Code
                   </a>
                 </div>
               </div>
 
               <div className="w-full lg:w-1/2">
-                <div className={`rounded-xl overflow-hidden border shadow-lg ${isDark ? 'border-slate-700 bg-[#0a0a0c]' : 'border-slate-300 bg-slate-50'}`}>
-                  <div className={`h-10 flex items-center px-4 gap-2 border-b ${isDark ? 'bg-slate-800 border-slate-700' : 'bg-slate-200 border-slate-300'}`}>
+                <div className={`rounded-xl overflow-hidden border shadow-lg ${isDark ? 'border-slate-800 bg-[#060913]' : 'border-slate-300 bg-slate-50'}`}>
+                  <div className={`h-10 flex items-center px-4 gap-2 border-b ${isDark ? 'bg-[#090d1f] border-slate-800' : 'bg-slate-200 border-slate-300'}`}>
                     <div className="flex gap-1.5"><div className="w-3 h-3 rounded-full bg-red-500/90"></div><div className="w-3 h-3 rounded-full bg-amber-500/90"></div><div className="w-3 h-3 rounded-full bg-emerald-500/90"></div></div>
-                    <div className={`mx-auto text-[10px] px-6 py-1 rounded-md font-mono tracking-wider ${isDark ? 'bg-slate-900 text-slate-400' : 'bg-white text-slate-600 font-semibold'}`}>
+                    <div className={`mx-auto text-[10px] px-6 py-1 rounded-md font-mono tracking-wider ${isDark ? 'bg-[#020617] text-slate-400' : 'bg-white text-slate-600 font-semibold'}`}>
                       ioe-admission.dipeshsapkota7.com.np
                     </div>
                   </div>
@@ -962,9 +962,9 @@ export default function Home() {
               </div>
             </div>
 
-            <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-lg transition-all duration-500 hover:-translate-y-2 hover:border-amber-500 ${theme.card}`}>
+            <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-lg transition-all duration-500 hover:-translate-y-2 hover:border-amber-600 ${theme.card}`}>
               <div className="w-full lg:w-1/2">
-                <span className="inline-block px-3.5 py-1 text-xs font-semibold uppercase tracking-widest text-amber-700 dark:text-amber-300 bg-amber-500/10 border border-amber-500/30 rounded-full mb-4">
+                <span className="inline-block px-3.5 py-1 text-xs font-semibold uppercase tracking-widest text-amber-700 dark:text-amber-400 bg-amber-600/10 border border-amber-600/30 rounded-full mb-4">
                   Featured Web App
                 </span>
                 <h3 className="text-3xl sm:text-4xl font-bold mb-4 tracking-tight">Git Visualizer</h3>
@@ -974,20 +974,20 @@ export default function Home() {
                 
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center gap-3 text-sm font-medium">
-                    <svg className="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <svg className="w-5 h-5 text-amber-700 dark:text-amber-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     Interactive Hover-Driven UI
                   </li>
                   <li className="flex items-center gap-3 text-sm font-medium">
-                    <svg className="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <svg className="w-5 h-5 text-amber-700 dark:text-amber-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     Live Diagramming of Git Operations
                   </li>
                 </ul>
 
                 <div className="flex flex-wrap gap-4">
-                  <a href="https://git-visualizer.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-amber-600 hover:bg-amber-500 text-white text-sm font-semibold rounded-xl transition-all flex items-center gap-2 shadow-sm">
+                  <a href="https://git-visualizer.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-amber-700 hover:bg-amber-600 text-white text-sm font-semibold rounded-xl transition-all flex items-center gap-2 shadow-sm">
                     Explore Visualizer
                   </a>
-                  <a href="https://github.com/dszae/git-visualizer" target="_blank" rel="noreferrer" className={`px-6 py-3 text-sm font-semibold rounded-xl transition-all flex items-center gap-2 border ${isDark ? 'bg-slate-800 hover:bg-slate-700 border-slate-700 text-white' : 'bg-slate-100 hover:bg-slate-200 border-slate-300 text-slate-900'}`}>
+                  <a href="https://github.com/dszae/git-visualizer" target="_blank" rel="noreferrer" className={`px-6 py-3 text-sm font-semibold rounded-xl transition-all flex items-center gap-2 border ${isDark ? 'bg-[#090d1f] hover:bg-slate-800 border-slate-800 text-white' : 'bg-slate-100 hover:bg-slate-200 border-slate-300 text-slate-900'}`}>
                     Source Code
                   </a>
                   <a href="https://how-i-built-an-interactive-git-visualizer.hashnode.dev/how-i-built-an-interactive-git-visualizer-to-master-version-control" target="_blank" rel="noreferrer" className="px-6 py-3 bg-purple-700 hover:bg-purple-600 text-white text-sm font-semibold rounded-xl transition-all flex items-center gap-2 shadow-sm">
@@ -997,10 +997,10 @@ export default function Home() {
               </div>
 
               <div className="w-full lg:w-1/2">
-                <div className={`rounded-xl overflow-hidden border shadow-lg ${isDark ? 'border-slate-700 bg-[#0a0a0c]' : 'border-slate-300 bg-slate-50'}`}>
-                  <div className={`h-10 flex items-center px-4 gap-2 border-b ${isDark ? 'bg-slate-800 border-slate-700' : 'bg-slate-200 border-slate-300'}`}>
+                <div className={`rounded-xl overflow-hidden border shadow-lg ${isDark ? 'border-slate-800 bg-[#060913]' : 'border-slate-300 bg-slate-50'}`}>
+                  <div className={`h-10 flex items-center px-4 gap-2 border-b ${isDark ? 'bg-[#090d1f] border-slate-800' : 'bg-slate-200 border-slate-300'}`}>
                     <div className="flex gap-1.5"><div className="w-3 h-3 rounded-full bg-red-500/90"></div><div className="w-3 h-3 rounded-full bg-amber-500/90"></div><div className="w-3 h-3 rounded-full bg-emerald-500/90"></div></div>
-                    <div className={`mx-auto text-[10px] px-6 py-1 rounded-md font-mono tracking-wider ${isDark ? 'bg-slate-900 text-slate-400' : 'bg-white text-slate-600 font-semibold'}`}>
+                    <div className={`mx-auto text-[10px] px-6 py-1 rounded-md font-mono tracking-wider ${isDark ? 'bg-[#020617] text-slate-400' : 'bg-white text-slate-600 font-semibold'}`}>
                       git-visualizer.dipeshsapkota7.com.np
                     </div>
                   </div>
@@ -1024,11 +1024,11 @@ export default function Home() {
               {PROJECTS.map((proj) => (
                 <div key={proj.id} className={`p-6 sm:p-8 rounded-2xl border backdrop-blur-md transition-all duration-300 group ${theme.card} flex flex-col`}>
                   <div className="flex justify-between items-start mb-6">
-                    <span className="inline-block px-3.5 py-1 bg-sky-500/10 text-sky-700 dark:text-sky-300 text-xs font-semibold rounded-full uppercase tracking-wider border border-sky-500/30">
+                    <span className="inline-block px-3.5 py-1 bg-sky-600/10 text-sky-700 dark:text-sky-300 text-xs font-semibold rounded-full uppercase tracking-wider border border-sky-600/30">
                       {proj.category}
                     </span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-semibold mb-4 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">{proj.title}</h3>
+                  <h3 className="text-xl sm:text-2xl font-semibold mb-4 group-hover:text-sky-700 dark:group-hover:text-sky-400 transition-colors">{proj.title}</h3>
                   <p className={`mb-8 line-clamp-3 text-sm sm:text-base leading-relaxed ${theme.muted}`}>{proj.description}</p>
                   <div className="flex flex-wrap gap-2 mt-auto">
                     {proj.tech.map((t) => (
@@ -1047,7 +1047,7 @@ export default function Home() {
           <section id="gallery" className={`py-24 px-6 sm:px-12 w-full ${theme.bg}`}>
             <div className="max-w-7xl mx-auto w-full">
               <h2 className="text-3xl sm:text-4xl font-bold mb-6 flex items-center gap-4">
-                <span className="text-sky-600 dark:text-sky-400">/</span> Visual Archive
+                <span className="text-sky-700 dark:text-sky-400">/</span> Visual Archive
               </h2>
               <p className={`mb-12 text-base sm:text-lg ${theme.muted}`}>A curated space for current media projects, photography, and future uploads.</p>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
@@ -1067,7 +1067,7 @@ export default function Home() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-between p-4 sm:p-6">
-                      <div className="self-end w-8 h-8 rounded-full bg-sky-600 text-white flex items-center justify-center shadow-md transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                      <div className="self-end w-8 h-8 rounded-full bg-sky-700 text-white flex items-center justify-center shadow-md transform scale-75 group-hover:scale-100 transition-transform duration-300">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
                       </div>
                       <p className="text-white text-xs sm:text-sm md:text-base font-semibold text-center translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
@@ -1085,7 +1085,7 @@ export default function Home() {
           <section id="certificates" className={`py-24 px-6 sm:px-12 w-full ${theme.bg}`}>
             <div className="max-w-7xl mx-auto w-full">
               <h2 className="text-3xl sm:text-4xl font-bold mb-12 flex items-center gap-4">
-                <span className="text-sky-600 dark:text-sky-400">/</span> Certifications
+                <span className="text-sky-700 dark:text-sky-400">/</span> Certifications
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {CERTIFICATES.map((cert) => (
@@ -1094,7 +1094,7 @@ export default function Home() {
                     className={`p-5 sm:p-6 rounded-2xl border backdrop-blur-md transition-all duration-300 group hover:-translate-y-2 hover:shadow-md cursor-pointer ${theme.card}`}
                     onClick={() => setSelectedImage({ src: cert.img, title: cert.title, desc: `Issued by ${cert.org}` })}
                   >
-                    <div className={`aspect-[4/3] overflow-hidden rounded-xl border flex items-center justify-center mb-6 transition-colors relative ${isDark ? 'border-slate-700 bg-slate-800/50 group-hover:border-sky-400' : 'border-slate-300 bg-slate-100 group-hover:border-sky-500'}`}>
+                    <div className={`aspect-[4/3] overflow-hidden rounded-xl border flex items-center justify-center mb-6 transition-colors relative ${isDark ? 'border-slate-800 bg-[#090d1f]/50 group-hover:border-sky-500' : 'border-slate-300 bg-slate-100 group-hover:border-sky-500'}`}>
                       <img 
                         src={cert.img} 
                         alt={`Certificate for ${cert.title} issued by ${cert.org}`} 
@@ -1106,12 +1106,12 @@ export default function Home() {
                         onError={(e) => { e.target.src = 'https://via.placeholder.com/400x300?text=Certificate' }} 
                       />
                       <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <div className="w-10 h-10 rounded-full bg-sky-600 text-white flex items-center justify-center shadow-md transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                        <div className="w-10 h-10 rounded-full bg-sky-700 text-white flex items-center justify-center shadow-md transform scale-75 group-hover:scale-100 transition-transform duration-300">
                           <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
                         </div>
                       </div>
                     </div>
-                    <h3 className="font-semibold text-sm sm:text-base mb-2 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">{cert.title}</h3>
+                    <h3 className="font-semibold text-sm sm:text-base mb-2 group-hover:text-sky-700 dark:group-hover:text-sky-400 transition-colors">{cert.title}</h3>
                     <p className={`font-mono text-xs ${theme.muted}`}>{cert.org}</p>
                   </div>
                 ))}
@@ -1131,7 +1131,7 @@ export default function Home() {
 
                     <div className="space-y-6">
                       <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-sky-500/10 flex items-center justify-center text-sky-600 dark:text-sky-400 text-lg sm:text-xl border border-sky-500/30 flex-shrink-0">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-sky-600/10 flex items-center justify-center text-sky-700 dark:text-sky-400 text-lg sm:text-xl border border-sky-600/30 flex-shrink-0">
                           <svg className="w-5 h-5 sm:w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                         </div>
                         <div>
@@ -1140,21 +1140,21 @@ export default function Home() {
                         </div>
                       </div>
                       <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-sky-500/10 flex items-center justify-center text-sky-600 dark:text-sky-400 text-lg sm:text-xl border border-sky-500/30 flex-shrink-0">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-sky-600/10 flex items-center justify-center text-sky-700 dark:text-sky-400 text-lg sm:text-xl border border-sky-600/30 flex-shrink-0">
                           <svg className="w-5 h-5 sm:w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
                         </div>
                         <div>
                           <h4 className={`font-mono text-[11px] sm:text-xs uppercase font-semibold ${theme.muted}`}>Phone</h4>
-                          <a href="tel:+9779764685307" className="font-semibold text-sm sm:text-lg hover:text-sky-600 dark:hover:text-sky-400 transition-colors block">9764685307</a>
+                          <a href="tel:+9779764685307" className="font-semibold text-sm sm:text-lg hover:text-sky-700 dark:hover:text-sky-400 transition-colors block">9764685307</a>
                         </div>
                       </div>
                       <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-sky-500/10 flex items-center justify-center text-sky-600 dark:text-sky-400 text-lg sm:text-xl border border-sky-500/30 flex-shrink-0">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-sky-600/10 flex items-center justify-center text-sky-700 dark:text-sky-400 text-lg sm:text-xl border border-sky-600/30 flex-shrink-0">
                           <svg className="w-5 h-5 sm:w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                         </div>
                         <div>
                           <h4 className={`font-mono text-[11px] sm:text-xs uppercase font-semibold ${theme.muted}`}>Email</h4>
-                          <a href="mailto:dsz.ae18@gmail.com" className="font-semibold text-sm sm:text-lg hover:text-sky-600 dark:hover:text-sky-400 transition-colors block">dsz.ae18@gmail.com</a>
+                          <a href="mailto:dsz.ae18@gmail.com" className="font-semibold text-sm sm:text-lg hover:text-sky-700 dark:hover:text-sky-400 transition-colors block">dsz.ae18@gmail.com</a>
                         </div>
                       </div>
                     </div>
@@ -1167,7 +1167,7 @@ export default function Home() {
                         name="name"
                         placeholder="Your Name"
                         aria-label="Your Name"
-                        className={`w-full px-4 py-3 sm:px-6 sm:py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-sky-500/50 transition-all ${theme.input}`}
+                        className={`w-full px-4 py-3 sm:px-6 sm:py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-sky-600/50 transition-all ${theme.input}`}
                         required
                       />
                       <input
@@ -1175,7 +1175,7 @@ export default function Home() {
                         name="email"
                         placeholder="Your Email"
                         aria-label="Your Email"
-                        className={`w-full px-4 py-3 sm:px-6 sm:py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-sky-500/50 transition-all ${theme.input}`}
+                        className={`w-full px-4 py-3 sm:px-6 sm:py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-sky-600/50 transition-all ${theme.input}`}
                         required
                       />
                     </div>
@@ -1184,13 +1184,13 @@ export default function Home() {
                       placeholder="Your Message..."
                       aria-label="Your Message"
                       rows="5"
-                      className={`w-full px-4 py-3 sm:px-6 sm:py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-sky-500/50 transition-all resize-none ${theme.input}`}
+                      className={`w-full px-4 py-3 sm:px-6 sm:py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-sky-600/50 transition-all resize-none ${theme.input}`}
                       required
                     ></textarea>
 
                     <button
                       type="submit"
-                      className="px-6 py-4 sm:px-10 sm:py-5 bg-sky-600 dark:bg-sky-500 text-white font-semibold rounded-xl hover:bg-sky-500 dark:hover:bg-sky-400 transition-colors w-full shadow-md cursor-pointer"
+                      className="px-6 py-4 sm:px-10 sm:py-5 bg-sky-700 dark:bg-sky-600 text-white font-semibold rounded-xl hover:bg-sky-600 dark:hover:bg-sky-500 transition-colors w-full shadow-md cursor-pointer"
                     >
                       Send Message
                     </button>
@@ -1208,24 +1208,24 @@ export default function Home() {
         </FadeUp>
       </main>
 
-      <footer className={`py-8 sm:py-10 text-center font-mono text-[11px] sm:text-sm border-t w-full ${isDark ? 'border-slate-800 bg-slate-950 text-slate-300' : 'border-slate-200 bg-slate-100 text-slate-700'}`}>
+      <footer className={`py-8 sm:py-10 text-center font-mono text-[11px] sm:text-sm border-t w-full ${isDark ? 'border-slate-800 bg-[#020617] text-slate-300' : 'border-slate-200 bg-slate-100 text-slate-700'}`}>
         <div className="w-full max-w-7xl mx-auto px-6 sm:px-12">
           <div className="flex flex-wrap justify-center gap-x-6 sm:gap-x-8 gap-y-4 mb-6 sm:mb-8">
-            <a href="https://github.com/dszae" target="_blank" rel="noreferrer" aria-label="GitHub Profile" className="hover:text-sky-600 dark:hover:text-sky-400 font-semibold transition-colors">
+            <a href="https://github.com/dszae" target="_blank" rel="noreferrer" aria-label="GitHub Profile" className="hover:text-sky-700 dark:hover:text-sky-400 font-semibold transition-colors">
               <svg className="w-5 h-5 sm:w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.332-5.467-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
             </a>
-            <a href="https://linkedin.com/in/dszae" target="_blank" rel="noreferrer" aria-label="LinkedIn Profile" className="hover:text-sky-600 dark:hover:text-sky-400 font-semibold transition-colors">
+            <a href="https://linkedin.com/in/dszae" target="_blank" rel="noreferrer" aria-label="LinkedIn Profile" className="hover:text-sky-700 dark:hover:text-sky-400 font-semibold transition-colors">
               <svg className="w-5 h-5 sm:w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
             </a>
-            <a href="https://instagram.com/dsz.ae" target="_blank" rel="noreferrer" aria-label="Instagram Profile" className="hover:text-sky-600 dark:hover:text-sky-400 font-semibold transition-colors">
+            <a href="https://instagram.com/dsz.ae" target="_blank" rel="noreferrer" aria-label="Instagram Profile" className="hover:text-sky-700 dark:hover:text-sky-400 font-semibold transition-colors">
               <svg className="w-5 h-5 sm:w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" /></svg>
             </a>
-            <a href="https://facebook.com/dsz.ae" target="_blank" rel="noreferrer" aria-label="Facebook Profile" className="hover:text-sky-600 dark:hover:text-sky-400 font-semibold transition-colors">
+            <a href="https://facebook.com/dsz.ae" target="_blank" rel="noreferrer" aria-label="Facebook Profile" className="hover:text-sky-700 dark:hover:text-sky-400 font-semibold transition-colors">
               <svg className="w-5 h-5 sm:w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
             </a>
           </div>
           <p className="font-semibold">
-            &copy; {new Date().getFullYear()} <a href="https://www.dipeshsapkota7.com.np/" className="hover:text-sky-600 dark:hover:text-sky-400 underline transition-colors">Dipesh Sapkota</a>. All rights reserved.
+            &copy; {new Date().getFullYear()} <a href="https://www.dipeshsapkota7.com.np/" className="hover:text-sky-700 dark:hover:text-sky-400 underline transition-colors">Dipesh Sapkota</a>. All rights reserved.
           </p>
         </div>
       </footer>
