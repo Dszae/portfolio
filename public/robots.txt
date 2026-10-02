@@ -1,3 +1,21 @@
 User-agent: *
 Allow: /
+
+# Explicitly allow major AI crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Sitemap location
 Sitemap: https://www.dipeshsapkota7.com.np/sitemap.xml
