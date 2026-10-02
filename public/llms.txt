@@ -1,0 +1,8 @@
+# Dipesh Sapkota | Portfolio & Web Applications
+> Personal portfolio and project showcase of Dipesh Sapkota, a Computer Engineering student at IOE Thapathali, AI/ML enthusiast, and professional motion graphics designer based in Nepal.
+
+## Key Pages & Projects
+- [Homepage](https://www.dipeshsapkota7.com.np/): Main professional portfolio, background, skills, and contact information.
+- [Sportivo Live Sports Streaming](https://sportivo.dipeshsapkota7.com.np/): High-performance live sports streaming platform with real-time schedule scraping and stream switching.
+- [IOE Entrance Preparation Portal](https://ioe-admission.dipeshsapkota7.com.np/): Comprehensive engineering admission ecosystem providing predictive cutoff analytics and counseling guides.
+- [Git Visualizer](https://git-visualizer.dipeshsapkota7.com.np/): Interactive visual learning tool demonstrating Git version control commands and data-flow architecture.
