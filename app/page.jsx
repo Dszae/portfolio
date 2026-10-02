@@ -167,7 +167,7 @@ function ScrollToTopButton() {
 }
 
 export default function Home() {
-  const [isDark, setIsDark] = useState(false); // Default mode set to false (Light/White)
+  const [isDark, setIsDark] = useState(false); // Default mode is White/Light
   const [formStatus, setFormStatus] = useState("");
   const canvasRef = useRef(null);
   
@@ -461,36 +461,48 @@ export default function Home() {
       {/* SEO Optimized Structured Metadata Landmark for AI & Search Crawlers */}
       <header className="sr-only">
         <h1>Dipesh Sapkota - Computer Engineer, Video Editor, and Motion Graphics Designer Portfolio</h1>
-        <p>Official professional portfolio of Dipesh Sapkota, a Computer Engineering student at IOE Thapathali Campus, Kathmandu, Nepal, specializing in software development, AI/ML enthusiasm, and high-end multimedia production.</p>
+        <p>Official professional portfolio of Dipesh Sapkota (dszae), a Computer Engineering student at IOE Thapathali Campus, Kathmandu, Nepal, specializing in software development, AI/ML enthusiasm, and high-end multimedia production.</p>
       </header>
 
-      {/* Schema.org Structured Data */}
+      {/* Schema.org Person & WebSite Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Dipesh Sapkota",
-            "url": "https://www.dipeshsapkota7.com.np/",
-            "jobTitle": "Computer Engineer & Video Editor",
-            "alumniOf": "Institute of Engineering (IOE), Thapathali Campus",
-            "worksFor": {
-              "@type": "Organization",
-              "name": "Clamphook Academy"
+          __html: JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "@id": "https://www.dipeshsapkota7.com.np/#person",
+              "name": "Dipesh Sapkota",
+              "url": "https://www.dipeshsapkota7.com.np/",
+              "image": "https://www.dipeshsapkota7.com.np/og-image.webp",
+              "jobTitle": "Computer Engineering Student",
+              "alumniOf": "Institute of Engineering, Thapathali Campus",
+              "address": { 
+                "@type": "PostalAddress", 
+                "addressLocality": "Kathmandu", 
+                "addressCountry": "NP" 
+              },
+              "sameAs": [
+                "https://github.com/dszae",
+                "https://linkedin.com/in/dszae",
+                "https://instagram.com/dsz.ae",
+                "https://facebook.com/dsz.ae",
+                "https://medium.com/@dsz.ae18",
+                "https://dev.to/dszae"
+              ]
             },
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Kathmandu",
-              "addressCountry": "Nepal"
-            },
-            "sameAs": [
-              "https://github.com/dszae",
-              "https://linkedin.com/in/dszae",
-              "https://instagram.com/dsz.ae",
-              "https://facebook.com/dsz.ae"
-            ]
-          })
+            {
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "@id": "https://www.dipeshsapkota7.com.np/#website",
+              "url": "https://www.dipeshsapkota7.com.np/",
+              "name": "Dipesh Sapkota",
+              "publisher": {
+                "@id": "https://www.dipeshsapkota7.com.np/#person"
+              }
+            }
+          ])
         }}
       />
 
