@@ -1,20 +1,42 @@
-import react from '@vitejs/plugin-react'
-import { defineConfig } from 'vite'
-
-export default defineConfig({
-  plugins: [react()],
-  build: {
-    target: 'esnext',
-    minify: 'esbuild',
-    cssCodeSplit: true,
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            return 'vendor';
-          }
+```json
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "headers": [
+    {
+      "source": "/robots.txt",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
         }
-      }
+      ]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/xml; charset=utf-8"
+        }
+      ]
     }
-  }
-})
+  ],
+  "rewrites": [
+    {
+      "source": "/((?!robots\\.txt$|sitemap\\.xml$).*)",
+      "destination": "/index.html"
+    }
+  ]
+}
+```
