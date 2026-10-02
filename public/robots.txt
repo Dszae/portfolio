@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.dipeshsapkota7.com.np/sitemap.xml
