@@ -3,45 +3,18 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "cleanUrls": true,
-  "redirects": [
-    {
-      "source": "https://dipeshsapkota7.com.np/:path*",
-      "destination": "https://www.dipeshsapkota7.com.np/:path*",
-      "permanent": true
-    }
-  ],
   "headers": [
     {
       "source": "/robots.txt",
       "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        },
-        {
-          "key": "Content-Type",
-          "value": "text/plain; charset=utf-8"
-        }
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
       ]
     },
     {
       "source": "/sitemap.xml",
       "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        },
-        {
-          "key": "Content-Type",
-          "value": "application/xml; charset=utf-8"
-        }
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
       ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/((?!robots\\.txt|sitemap\\.xml).*)",
-      "destination": "/index.html"
     }
   ]
 }
