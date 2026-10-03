@@ -31,8 +31,8 @@ export const metadata = {
   creator: 'Dipesh Sapkota',
   publisher: 'Dipesh Sapkota',
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
   },
   robots: {
     index: true,
