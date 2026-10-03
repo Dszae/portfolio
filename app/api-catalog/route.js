@@ -1,27 +1,29 @@
 export async function GET() {
-  const apiCatalog = {
-    linkset: [
+  const catalog = {
+    specVersion: "1.0.0",
+    host: {
+      domain: "www.dipeshsapkota7.com.np",
+      name: "Dipesh Sapkota Portfolio"
+    },
+    entries: [
       {
-        anchor: "https://www.dipeshsapkota7.com.np/api/markdown",
-        "service-desc": [
-          {
-            href: "https://www.dipeshsapkota7.com.np/api/markdown",
-            type: "text/markdown"
-          }
-        ],
-        "service-doc": [
-          {
-            href: "https://www.dipeshsapkota7.com.np",
-            type: "text/html"
-          }
+        id: "urn:air:www.dipeshsapkota7.com.np:mcp:portfolio",
+        displayName: "Dipesh Sapkota Portfolio MCP Server",
+        type: "application/json",
+        url: "https://www.dipeshsapkota7.com.np/.well-known/mcp/server-card.json",
+        representativeQueries: [
+          "What are Dipesh Sapkota's engineering projects?",
+          "Show me Dipesh Sapkota's technical skills and background."
         ]
       }
     ]
   };
 
-  return new Response(JSON.stringify(apiCatalog, null, 2), {
+  return new Response(JSON.stringify(catalog, null, 2), {
+    status: 200,
     headers: {
-      'Content-Type': 'application/linkset+json',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
     },
   });
 }

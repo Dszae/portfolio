@@ -42,6 +42,10 @@ const nextConfig = {
                 source: '/.well-known/http-message-signatures-directory',
                 destination: '/http-message-signatures-directory',
             },
+            {
+                source: '/.well-known/ai-catalog.json',
+                destination: '/ai-catalog',
+            }
         ];
     },
     async headers() {
