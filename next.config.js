@@ -2,7 +2,7 @@ import path from 'path';
 
 const nextConfig = {
   turbopack: {
-    root: path.join(__dirname, '..'),
+    root: path.resolve(process.cwd()),
   },
   async rewrites() {
     return [
