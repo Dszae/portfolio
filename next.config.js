@@ -1,46 +1,62 @@
 import path from 'path';
 
 const nextConfig = {
-  turbopack: {
-    root: path.resolve(process.cwd()),
-  },
-  async rewrites() {
-    return [
-      {
-        source: '/robots.txt',
-        destination: '/robots',
-      },
-      {
-        source: '/.well-known/api-catalog',
-        destination: '/api-catalog',
-      },
-      {
-        source: '/auth.md',
-        destination: '/auth-md',
-      },
-      {
-        source: '/.well-known/openid-configuration',
-        destination: '/openid-configuration',
-      },
-      {
-        source: '/.well-known/oauth-protected-resource',
-        destination: '/oauth-protected-resource',
-      },
-    ];
-  },
-  async headers() {
-    return [
-      {
-        source: '/',
-        headers: [
-          {
-            key: 'Link',
-            value: '</.well-known/api-catalog>; rel="api-catalog", </.well-known/llms.txt>; rel="service-doc", </auth.md>; rel="describedby"',
-          },
-        ],
-      },
-    ];
-  },
+    turbopack: {
+        root: path.resolve(process.cwd()),
+    },
+    async rewrites() {
+        return [
+            {
+                source: '/robots.txt',
+                destination: '/robots',
+            },
+            {
+                source: '/.well-known/api-catalog',
+                destination: '/api-catalog',
+            },
+            {
+                source: '/auth.md',
+                destination: '/auth-md',
+            },
+            {
+                source: '/.well-known/openid-configuration',
+                destination: '/openid-configuration',
+            },
+            {
+                source: '/.well-known/oauth-protected-resource',
+                destination: '/oauth-protected-resource',
+            },
+            {
+                source: '/.well-known/agent-card.json',
+                destination: '/agent-card',
+            },
+            {
+                source: '/.well-known/agent-skills/index.json',
+                destination: '/agent-skills/index',
+            },
+            {
+                source: '/.well-known/mcp/server-card.json',
+                destination: '/mcp/server-card',
+            },
+            {
+                source: '/.well-known/http-message-signatures-directory',
+                destination: '/http-message-signatures-directory',
+            },
+        ];
+    },
+    async headers() {
+        return [
+            {
+                source: '/',
+                headers: [
+                    {
+                        key: 'Link',
+                        value: '</.well-known/api-catalog>; rel="api-catalog", </.well-known/llms.txt>; rel="service-doc", </auth.md>; rel="describedby"',
+                    },
+                ],
+            },
+        ];
+    },
 };
 
 export default nextConfig;

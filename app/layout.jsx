@@ -1,5 +1,6 @@
 import React from 'react';
 import Script from 'next/script';
+import WebMCPInitializer from '@/components/WebMCPInitializer';
 import './globals.css';
 
 export const metadata = {
@@ -170,6 +171,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased selection:bg-blue-500/30 m-0 p-0 w-full min-h-screen overflow-x-hidden">
+        <WebMCPInitializer />
         <noscript>
           <header>
             <h1>Dipesh Sapkota</h1>
