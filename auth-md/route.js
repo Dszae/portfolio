@@ -15,6 +15,10 @@ const nextConfig: NextConfig = {
         source: '/.well-known/api-catalog',
         destination: '/api-catalog',
       },
+      {
+        source: '/auth.md',
+        destination: '/auth-md',
+      },
     ];
   },
   async headers() {
@@ -24,7 +28,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: 'Link',
-            value: '</.well-known/api-catalog>; rel="api-catalog", </.well-known/llms.txt>; rel="service-doc"',
+            value: '</.well-known/api-catalog>; rel="api-catalog", </.well-known/llms.txt>; rel="service-doc", </auth.md>; rel="describedby"',
           },
         ],
       },
