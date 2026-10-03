@@ -1,7 +1,6 @@
-import type { NextConfig } from 'next';
 import path from 'path';
 
-const nextConfig: NextConfig = {
+const nextConfig = {
   turbopack: {
     root: path.join(__dirname, '..'),
   },
@@ -18,6 +17,14 @@ const nextConfig: NextConfig = {
       {
         source: '/auth.md',
         destination: '/auth-md',
+      },
+      {
+        source: '/.well-known/openid-configuration',
+        destination: '/openid-configuration',
+      },
+      {
+        source: '/.well-known/oauth-protected-resource',
+        destination: '/oauth-protected-resource',
       },
     ];
   },
