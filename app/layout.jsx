@@ -114,7 +114,7 @@ export default function RootLayout({ children }) {
         copyrightNotice: 'Copyright 2026 Dipesh Sapkota. All rights reserved.',
         creditText: 'Dipesh Sapkota',
         acquireLicensePage: 'https://www.dipeshsapkota7.com.np/contact',
-        license: 'All rights reserved. Contact Dipesh Sapkota for permission to use this image.',
+        license: 'https://www.dipeshsapkota7.com.np/contact',
         width: 640,
         height: 640,
         representativeOfPage: true,
