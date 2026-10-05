@@ -2,7 +2,6 @@ export async function GET() {
   const robotsTxt = `User-Agent: *
 Allow: /
 
-Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 Sitemap: https://www.dipeshsapkota7.com.np/sitemap.xml`;
 
