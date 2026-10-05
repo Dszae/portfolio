@@ -6,8 +6,7 @@ export async function GET() {
         name: "portfolio-inquiry",
         type: "skill-md",
         description: "Enables automated agents to discover and query portfolio details, technical skills, and engineering projects.",
-        url: "https://www.dipeshsapkota7.com.np/auth.md",
-        digest: "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        url: "https://www.dipeshsapkota7.com.np/.well-known/llms.txt"
       }
     ]
   };

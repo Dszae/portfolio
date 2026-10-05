@@ -1,10 +1,11 @@
 export async function GET() {
   const serverCard = {
     serverInfo: {
-      name: "Dipesh Sapkota Portfolio MCP Server",
+      name: "Dipesh Sapkota Portfolio Agent",
       version: "1.0.0"
     },
-    endpoint: "https://www.dipeshsapkota7.com.np/mcp",
+    endpoint: "https://www.dipeshsapkota7.com.np/api/markdown",
+    protocol: "HTTP/REST",
     capabilities: {
       tools: {
         listChanged: true

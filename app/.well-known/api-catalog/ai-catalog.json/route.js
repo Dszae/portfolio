@@ -7,10 +7,10 @@ export async function GET() {
     },
     entries: [
       {
-        id: "urn:air:dipeshsapkota7.com.np:portfolio:openapi",
-        displayName: "Dipesh Sapkota Portfolio OpenAPI Specification",
-        type: "application/vnd.oai.openapi+json",
-        url: "https://www.dipeshsapkota7.com.np/openapi.json",
+        id: "urn:air:dipeshsapkota7.com.np:portfolio:markdown",
+        displayName: "Dipesh Sapkota Portfolio Markdown API",
+        type: "text/markdown",
+        url: "https://www.dipeshsapkota7.com.np/api/markdown",
         representativeQueries: [
           "What engineering projects has Dipesh Sapkota built?",
           "Show me Dipesh Sapkota's technical stack and software experience",
@@ -18,13 +18,12 @@ export async function GET() {
         ]
       },
       {
-        id: "urn:air:dipeshsapkota7.com.np:portfolio:catalog",
-        displayName: "Portfolio API Catalog",
-        type: "application/linkset+json",
-        url: "https://www.dipeshsapkota7.com.np/.well-known/api-catalog",
+        id: "urn:air:dipeshsapkota7.com.np:portfolio:llms",
+        displayName: "AI-readable portfolio summary",
+        type: "text/markdown",
+        url: "https://www.dipeshsapkota7.com.np/.well-known/llms.txt",
         representativeQueries: [
-          "Discover available API resources for Dipesh Sapkota's portfolio",
-          "Find service documentation and health endpoints"
+          "Summarize Dipesh Sapkota's background and projects"
         ]
       }
     ]

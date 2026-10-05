@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export const metadata = {
   title: "Contact Dipesh Sapkota - Computer Engineer & Developer",
   description: "Get in touch with Dipesh Sapkota (dszae) for freelance projects, collaborations, and technical discussions in Kathmandu, Nepal.",
@@ -25,7 +27,7 @@ export default function ContactPage() {
       </div>
 
       <div>
-        <a href="/" className="text-sky-600 dark:text-sky-400 font-semibold hover:underline">&larr; Back to Home</a>
+        <Link href="/" className="text-sky-600 dark:text-sky-400 font-semibold hover:underline">&larr; Back to Home</Link>
       </div>
     </main>
   );

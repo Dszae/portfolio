@@ -575,7 +575,7 @@ function App() {
                 Dipesh Sapkota
               </h1>
               <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-blue-500 h-12 flex items-center">
-                I'm a <span className="ml-2 sm:ml-3 text-inherit">{text}</span><span className="animate-pulse">|</span>
+                I&apos;m a <span className="ml-2 sm:ml-3 text-inherit">{text}</span><span className="animate-pulse">|</span>
               </div>
               <p className={`mt-6 max-w-xl text-base sm:text-lg leading-relaxed ${theme.muted}`}>
                 Computer Engineering student and AI/ML enthusiast blending analytical problem-solving with high-end creative execution in digital media.
@@ -1103,7 +1103,7 @@ function App() {
             <div className={`p-6 sm:p-8 md:p-14 rounded-[2rem] sm:rounded-[2.5rem] border backdrop-blur-md ${theme.card}`}>
               <div className="grid lg:grid-cols-2 gap-12">
                 <div>
-                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6">Let's Connect</h2>
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6">Let&apos;s Connect</h2>
                   <p className={`mb-10 text-base sm:text-lg ${theme.muted}`}>Open for freelance projects, collaborations, and technical discussions.</p>
 
                   <div className="space-y-6">

@@ -7,10 +7,10 @@ export async function GET() {
     },
     entries: [
       {
-        id: "urn:air:www.dipeshsapkota7.com.np:mcp:portfolio",
-        displayName: "Dipesh Sapkota Portfolio MCP Server",
-        type: "application/json",
-        url: "https://www.dipeshsapkota7.com.np/.well-known/mcp/server-card.json",
+        id: "urn:air:www.dipeshsapkota7.com.np:portfolio:markdown",
+        displayName: "Dipesh Sapkota Portfolio Markdown API",
+        type: "text/markdown",
+        url: "https://www.dipeshsapkota7.com.np/api/markdown",
         representativeQueries: [
           "What are Dipesh Sapkota's engineering projects?",
           "Show me Dipesh Sapkota's technical skills and background."

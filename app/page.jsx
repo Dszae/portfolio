@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import FadeUp from '../components/FadeUp';
 
 const SKILL_CATEGORIES = [
@@ -126,6 +127,8 @@ const NAV_LINKS = [
   { id: 'contact', label: 'Contact' }
 ];
 
+const ROLES = ["Video Editor", "Graphics Designer", "Computer Engineer"];
+
 function ScrollToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -180,7 +183,6 @@ export default function Home() {
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
   const typingSpeed = 100;
-  const roles = ["Video Editor", "Graphics Designer", "Computer Engineer"];
 
   const [skillsInView, setSkillsInView] = useState(false);
   const skillsRef = useRef(null);
@@ -252,7 +254,7 @@ export default function Home() {
       } else {
         setFormStatus("Something went wrong. Please try again.");
       }
-    } catch (error) {
+    } catch {
       setFormStatus("Network error. Please try again later.");
     }
   };
@@ -419,7 +421,7 @@ export default function Home() {
 
   useEffect(() => {
     let timer;
-    const currentRole = roles[loopNum % roles.length];
+    const currentRole = ROLES[loopNum % ROLES.length];
 
     if (isDeleting) {
       timer = setTimeout(() => setText(currentRole.substring(0, text.length - 1)), typingSpeed / 2);
@@ -568,7 +570,7 @@ export default function Home() {
                 Dipesh Sapkota
               </h1>
               <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-sky-500 h-12 flex items-center">
-                I'm a <span className="ml-2 sm:ml-3 text-inherit">{text}</span><span className="animate-pulse">|</span>
+                I&apos;m a <span className="ml-2 sm:ml-3 text-inherit">{text}</span><span className="animate-pulse">|</span>
               </div>
               <p className={`mt-6 max-w-xl text-base sm:text-lg leading-relaxed ${theme.muted}`}>
                 Computer Engineering student and AI/ML enthusiast blending analytical problem-solving with high-end creative execution in digital media.
@@ -602,7 +604,7 @@ export default function Home() {
 
             <div className="order-1 md:order-2 flex justify-center items-center relative pt-10 md:pt-0 opacity-0 animate-slide-right">
               <div className={`absolute w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] lg:w-[420px] lg:h-[420px] rounded-full border border-dashed animate-[spin_20s_linear_infinite] ${isDark ? 'border-slate-800' : 'border-sky-200'}`}></div>
-              <img
+              <Image
                 src="/og-image.webp"
                 id="primary-profile-image"
                 itemProp="image"
@@ -750,7 +752,7 @@ export default function Home() {
                           <div className="flex items-center gap-4">
                             {exp.logo && (
                               <div className="flex-shrink-0 flex items-center justify-center">
-                                <img 
+                                <Image
                                   src={exp.logo} 
                                   alt={exp.company} 
                                   width="48"
@@ -795,7 +797,7 @@ export default function Home() {
                           <div className="flex items-center gap-4">
                             {edu.logo && (
                               <div className="flex-shrink-0 flex items-center justify-center">
-                                <img 
+                                <Image
                                   src={edu.logo} 
                                   alt={edu.school} 
                                   width="48"
@@ -881,7 +883,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="h-[300px] sm:h-[450px] w-full relative overflow-hidden group">
-                    <img 
+                    <Image 
                       src="/sportivo-preview.jpg" 
                       alt="Sportivo Live Sports Streaming Platform Preview" 
                       width="993"
@@ -936,7 +938,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="h-[300px] sm:h-[450px] w-full relative overflow-hidden group">
-                    <img 
+                    <Image 
                       src="/ioe-preview.jpg" 
                       alt="IOE Admission Guide Preview" 
                       width="993"
@@ -994,7 +996,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="h-[300px] sm:h-[450px] w-full relative overflow-hidden group">
-                    <img 
+                    <Image 
                       src="/git-preview.jpg" 
                       alt="Git Visualizer Tool Preview" 
                       width="993"
@@ -1048,7 +1050,7 @@ export default function Home() {
                     className="group relative w-full aspect-video rounded-lg sm:rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-800 shadow-md cursor-pointer"
                     onClick={() => setSelectedImage({ src: item.img, title: item.title, desc: 'Visual Archive' })}
                   >
-                    <img
+                    <Image
                       src={item.img}
                       alt={`Visual archive image of ${item.title}`}
                       width="640"
@@ -1088,7 +1090,7 @@ export default function Home() {
                     onClick={() => setSelectedImage({ src: cert.img, title: cert.title, desc: `Issued by ${cert.org}` })}
                   >
                     <div className={`aspect-[4/3] overflow-hidden rounded-xl border flex items-center justify-center mb-6 transition-colors relative ${isDark ? 'border-slate-800 bg-slate-900 group-hover:border-sky-500' : 'border-slate-200 bg-slate-50 group-hover:border-sky-500'}`}>
-                      <img 
+                      <Image 
                         src={cert.img} 
                         alt={`Certificate for ${cert.title} issued by ${cert.org}`} 
                         width="400"
@@ -1119,7 +1121,7 @@ export default function Home() {
               <div className={`p-6 sm:p-8 md:p-14 rounded-[2rem] sm:rounded-[2.5rem] border backdrop-blur-md ${theme.card}`}>
                 <div className="grid lg:grid-cols-2 gap-12">
                   <div>
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">Let's Connect</h2>
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">Let&apos;s Connect</h2>
                     <p className={`mb-10 text-base sm:text-lg ${theme.muted}`}>Open for freelance projects, collaborations, and technical discussions.</p>
 
                     <div className="space-y-6">
@@ -1257,9 +1259,11 @@ export default function Home() {
             >
               <span aria-hidden="true">&times;</span>
             </button>
-            <img 
+            <Image 
               src={selectedImage.src} 
               alt={selectedImage.title} 
+              width={1200}
+              height={800}
               className="max-w-full max-h-[75vh] object-contain rounded-xl shadow-2xl" 
             />
             

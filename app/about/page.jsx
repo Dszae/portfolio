@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export const metadata = {
   title: "About Dipesh Sapkota - Computer Engineer & Video Editor",
   description: "Learn more about Dipesh Sapkota (dszae), Computer Engineering student at IOE Thapathali Campus and professional video editor in Kathmandu, Nepal.",
@@ -21,7 +23,7 @@ export default function AboutPage() {
         With over 4 years of professional experience as a freelance video editor, motion graphics artist, and graphic designer, I bridge the gap between rigorous logical programming and visually stunning digital execution.
       </p>
       <div className="mt-8">
-        <a href="/" className="text-sky-600 dark:text-sky-400 font-semibold hover:underline">&larr; Back to Home</a>
+        <Link href="/" className="text-sky-600 dark:text-sky-400 font-semibold hover:underline">&larr; Back to Home</Link>
       </div>
     </main>
   );

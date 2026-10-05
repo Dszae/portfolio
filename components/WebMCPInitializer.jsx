@@ -20,7 +20,7 @@ export default function WebMCPInitializer() {
               }
             }
           },
-          execute: async (args) => {
+          execute: async () => {
             return {
               content: [
                 {
