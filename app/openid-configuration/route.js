@@ -10,14 +10,18 @@ export async function GET() {
     token_endpoint_auth_methods_supported: ["client_secret_basic", "none"],
     identity_types_supported: ["identity_assertion", "anonymous"],
     identity_assertion: {
-      assertion_types_supported: ["urn:ietf:params:oauth:token-type:id-jag"]
-    }
+      assertion_types_supported: ["urn:ietf:params:oauth:token-type:id-jag"],
+      credential_types_supported: ["none"]
+    },
+    registration_methods_supported: ["automatic"],
+    registration_documentation: "https://www.dipeshsapkota7.com.np/auth.md"
   };
 
   return new Response(JSON.stringify(asMeta, null, 2), {
     status: 200,
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json; charset=utf-8',
+      'Cache-Control': 'public, max-age=3600',
     },
   });
 }

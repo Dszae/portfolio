@@ -20,10 +20,6 @@ const nextConfig = {
                 destination: '/llms',
             },
             {
-                source: '/auth.md',
-                destination: '/auth-md',
-            },
-            {
                 source: '/.well-known/openid-configuration',
                 destination: '/openid-configuration',
             },
