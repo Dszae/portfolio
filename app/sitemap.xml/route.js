@@ -5,7 +5,7 @@ const imageEntries = [
     loc: `${baseUrl}/`,
     images: [
       {
-        loc: `${baseUrl}/dipesh-sapkota.webp`,
+        loc: `${baseUrl}/og-image.webp`,
         title: 'Dipesh Sapkota - Computer Engineering Student and Video Editor',
         caption: 'Dipesh Sapkota, Computer Engineering student, AI/ML enthusiast, video editor, and motion graphics designer.',
       },
