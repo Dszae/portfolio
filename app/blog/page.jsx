@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Blog & Articles - Dipesh Sapkota",
+  title: "Articles",
   description: "Technical write-ups and engineering articles authored by Dipesh Sapkota (dszae).",
   alternates: { canonical: '/blog' },
   openGraph: {

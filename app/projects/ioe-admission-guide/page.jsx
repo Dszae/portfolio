@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "IOE Admission Guide - Tribhuvan University Engineering Predictor by Dipesh Sapkota",
+  title: "IOE Admission Guide Project",
   description: "Discover the IOE Admission Guide built by Dipesh Sapkota (dszae) for Tribhuvan University engineering applicants featuring statistical rank prediction and counseling workflows.",
   alternates: { canonical: '/projects/ioe-admission-guide' },
   openGraph: {
@@ -15,7 +15,7 @@ export default function IoeAdmissionProjectPage() {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name: 'IOE Entrance Preparation Portal',
-    url: 'https://ioe-admission.dipeshsapkota7.com.np/',
+    url: 'https://www.dipeshsapkota7.com.np/projects/ioe-admission-guide',
     description: 'An engineering admission portal built by Dipesh Sapkota with rank prediction, cutoff analytics, and counseling tools.',
     applicationCategory: 'EducationalApplication',
     creator: { '@id': 'https://www.dipeshsapkota7.com.np/#person' },

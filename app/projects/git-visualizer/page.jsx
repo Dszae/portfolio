@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Git Visualizer - Interactive Version Control Tool by Dipesh Sapkota",
+  title: "Git Visualizer Project",
   description: "Learn Git commands visually with Git Visualizer, an interactive developer tool created by Dipesh Sapkota (dszae).",
   alternates: { canonical: '/projects/git-visualizer' },
   openGraph: {
@@ -15,7 +15,7 @@ export default function GitVisualizerProjectPage() {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name: 'Git Visualizer',
-    url: 'https://git-visualizer.dipeshsapkota7.com.np/',
+    url: 'https://www.dipeshsapkota7.com.np/projects/git-visualizer',
     description: 'An interactive visual learning tool for Git commands and version-control workflows created by Dipesh Sapkota.',
     applicationCategory: 'DeveloperApplication',
     creator: { '@id': 'https://www.dipeshsapkota7.com.np/#person' },

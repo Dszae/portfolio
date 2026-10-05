@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Experience & Education - Dipesh Sapkota",
+  title: "Experience & Education",
   description: "Professional experience, technical internships, and academic background of Dipesh Sapkota at IOE Thapathali Campus and Clamphook Academy.",
   alternates: { canonical: '/experience' },
   openGraph: {

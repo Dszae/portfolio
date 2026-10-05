@@ -1,10 +1,10 @@
 export const metadata = {
-  title: "Sportivo - Live Sports Streaming Web App by Dipesh Sapkota",
+  title: "Sportivo Project",
   description: "Explore Sportivo, a real-time live sports streaming platform engineered by Dipesh Sapkota (dszae) featuring match schedule scraping and multi-server stream switching.",
   alternates: { canonical: '/projects/sportivo' },
   openGraph: {
     type: 'website',
-    title: 'Sportivo - Live Sports Streaming Web App by Dipesh Sapkota',
+    title: 'Sportivo Project by Dipesh Sapkota',
     description: 'A real-time live sports streaming platform engineered by Dipesh Sapkota.',
     url: '/projects/sportivo',
   },
@@ -15,7 +15,7 @@ export default function SportivoProjectPage() {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name: 'Sportivo Live Sports Streaming',
-    url: 'https://sportivo.dipeshsapkota7.com.np/',
+    url: 'https://www.dipeshsapkota7.com.np/projects/sportivo',
     description: 'A real-time live sports streaming platform engineered by Dipesh Sapkota with match schedules, search, and multi-server stream switching.',
     applicationCategory: 'SportsApplication',
     creator: { '@id': 'https://www.dipeshsapkota7.com.np/#person' },

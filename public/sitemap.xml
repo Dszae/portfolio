@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://www.dipeshsapkota7.com.np/</loc>
+    <image:image>
+      <image:loc>https://www.dipeshsapkota7.com.np/og-image.webp</image:loc>
+      <image:title>Dipesh Sapkota portfolio</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.dipeshsapkota7.com.np/cricket.webp</image:loc>
+      <image:title>Dipesh Sapkota playing cricket</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.dipeshsapkota7.com.np/clamphook.webp</image:loc>
+      <image:title>Dipesh Sapkota with the Clamphook team</image:title>
+    </image:image>
+  </url>
+  <url><loc>https://www.dipeshsapkota7.com.np/about</loc></url>
+  <url><loc>https://www.dipeshsapkota7.com.np/experience</loc></url>
+  <url><loc>https://www.dipeshsapkota7.com.np/projects/sportivo</loc></url>
+  <url><loc>https://www.dipeshsapkota7.com.np/projects/ioe-admission-guide</loc></url>
+  <url><loc>https://www.dipeshsapkota7.com.np/projects/git-visualizer</loc></url>
+  <url><loc>https://www.dipeshsapkota7.com.np/blog</loc></url>
+  <url><loc>https://www.dipeshsapkota7.com.np/contact</loc></url>
+</urlset>

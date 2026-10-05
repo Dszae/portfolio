@@ -1,12 +1,12 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: "Contact Dipesh Sapkota - Computer Engineer & Developer",
+  title: "Contact",
   description: "Get in touch with Dipesh Sapkota (dszae) for freelance projects, collaborations, and technical discussions in Kathmandu, Nepal.",
   alternates: { canonical: '/contact' },
   openGraph: {
     type: 'website',
-    title: 'Contact Dipesh Sapkota - Computer Engineer & Developer',
+    title: 'Contact Dipesh Sapkota',
     description: 'Contact Dipesh Sapkota for freelance projects, collaborations, and technical discussions.',
     url: '/contact',
   },

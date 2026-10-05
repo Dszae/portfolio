@@ -6,33 +6,15 @@ import './globals.css';
 export const metadata = {
   metadataBase: new URL('https://www.dipeshsapkota7.com.np'),
   title: {
-    default: 'Dipesh Sapkota | Computer Engineering Student & AI/ML Enthusiast',
+    default: 'Dipesh Sapkota | Computer Engineering Student in Nepal',
     template: '%s | Dipesh Sapkota',
   },
-  description: 'Dipesh Sapkota is a Computer Engineering student at IOE Thapathali, an AI ML enthusiast, and a video editor and motion graphics designer based in Nepal.',
-  keywords: [
-    'Dipesh Sapkota',
-    'dsz.ae',
-    'Dipesh sapkota cricket',
-    'cricket',
-    'dszae',
-    'dipesh',
-    'sapkota dipesh',
-    'clamphook',
-    'dipeshsapkota',
-    '#dipeshsapkota',
-    'sapkota',
-    'Computer Engineering Student at IOE Thapathali',
-    'AI ML enthusiast',
-    'Video Editor',
-    'Motion Graphics Designer',
-  ],
+  description: 'Official portfolio of Dipesh Sapkota, a Computer Engineering student at IOE Thapathali in Nepal. Explore software projects, engineering experience, and video editing work.',
   authors: [{ name: 'Dipesh Sapkota' }],
   creator: 'Dipesh Sapkota',
   publisher: 'Dipesh Sapkota',
   applicationName: 'Dipesh Sapkota Portfolio',
   category: 'portfolio',
-  classification: 'Personal portfolio and professional profile',
   referrer: 'origin-when-cross-origin',
   formatDetection: {
     email: true,
@@ -61,15 +43,15 @@ export const metadata = {
     },
   },
   alternates: {
-    canonical: 'https://www.dipeshsapkota7.com.np/',
+    canonical: '/',
   },
   openGraph: {
     type: 'website',
     url: 'https://www.dipeshsapkota7.com.np/',
     siteName: 'Dipesh Sapkota Portfolio',
     locale: 'en_US',
-    title: 'Dipesh Sapkota | Computer Engineering Student & AI/ML Enthusiast',
-    description: 'Dipesh Sapkota is a Computer Engineering student at IOE Thapathali, an AI ML enthusiast, and a video editor and motion graphics designer based in Nepal.',
+    title: 'Dipesh Sapkota | Computer Engineering Student in Nepal',
+    description: 'Official portfolio of Dipesh Sapkota, a Computer Engineering student at IOE Thapathali in Nepal. Explore software projects, engineering experience, and video editing work.',
     images: [
       {
         url: 'https://www.dipeshsapkota7.com.np/og-image.webp',
@@ -82,8 +64,8 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     url: 'https://www.dipeshsapkota7.com.np/',
-    title: 'Dipesh Sapkota | Computer Engineering Student & AI/ML Enthusiast',
-    description: 'Dipesh Sapkota is a Computer Engineering student at IOE Thapathali, an AI ML enthusiast, and a video editor and motion graphics designer based in Nepal.',
+    title: 'Dipesh Sapkota | Computer Engineering Student in Nepal',
+    description: 'Official portfolio of Dipesh Sapkota, a Computer Engineering student at IOE Thapathali in Nepal. Explore software projects, engineering experience, and video editing work.',
     images: ['https://www.dipeshsapkota7.com.np/og-image.webp'],
   },
   verification: {
