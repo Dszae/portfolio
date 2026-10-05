@@ -1247,23 +1247,15 @@ export default function Home() {
           className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/90 backdrop-blur-sm p-4 md:p-8 opacity-100 transition-opacity duration-300"
           onClick={() => setSelectedImage(null)}
         >
-          <div 
-            className="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center justify-center"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              type="button"
-              aria-label="Close image preview"
-              className="absolute top-0 right-0 z-10 rounded-full bg-white/10 px-3 py-2 text-2xl text-white hover:bg-white/20"
-              onClick={() => setSelectedImage(null)}
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
+          <div className="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center justify-center">
             <Image 
               src={selectedImage.src} 
               alt={selectedImage.title} 
               width={1200}
               height={800}
+              loading="eager"
+              fetchPriority="high"
+              onClick={(e) => e.stopPropagation()}
               className="max-w-full max-h-[75vh] object-contain rounded-xl shadow-2xl" 
             />
             
