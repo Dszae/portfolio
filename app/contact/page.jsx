@@ -1,6 +1,13 @@
 export const metadata = {
   title: "Contact Dipesh Sapkota - Computer Engineer & Developer",
   description: "Get in touch with Dipesh Sapkota (dszae) for freelance projects, collaborations, and technical discussions in Kathmandu, Nepal.",
+  alternates: { canonical: '/contact' },
+  openGraph: {
+    type: 'website',
+    title: 'Contact Dipesh Sapkota - Computer Engineer & Developer',
+    description: 'Contact Dipesh Sapkota for freelance projects, collaborations, and technical discussions.',
+    url: '/contact',
+  },
 };
 
 export default function ContactPage() {

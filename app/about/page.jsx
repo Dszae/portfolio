@@ -1,6 +1,13 @@
 export const metadata = {
   title: "About Dipesh Sapkota - Computer Engineer & Video Editor",
   description: "Learn more about Dipesh Sapkota (dszae), Computer Engineering student at IOE Thapathali Campus and professional video editor in Kathmandu, Nepal.",
+  alternates: { canonical: '/about' },
+  openGraph: {
+    type: 'profile',
+    title: 'About Dipesh Sapkota - Computer Engineer & Video Editor',
+    description: 'Learn about Dipesh Sapkota, a Computer Engineering student, AI/ML enthusiast, video editor, and motion graphics designer in Nepal.',
+    url: '/about',
+  },
 };
 
 export default function AboutPage() {

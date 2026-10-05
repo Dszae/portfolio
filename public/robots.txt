@@ -2,6 +2,6 @@ User-Agent: *
 Allow: /
 
 # Declare Content Signals preferences for AI bots
-Content-Signal: ai-train=no, search=yes, ai-input=no
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 Sitemap: https://www.dipeshsapkota7.com.np/sitemap.xml

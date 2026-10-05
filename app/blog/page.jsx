@@ -1,6 +1,13 @@
 export const metadata = {
   title: "Blog & Articles - Dipesh Sapkota",
   description: "Technical write-ups and engineering articles authored by Dipesh Sapkota (dszae).",
+  alternates: { canonical: '/blog' },
+  openGraph: {
+    type: 'website',
+    title: 'Blog & Articles - Dipesh Sapkota',
+    description: 'Technical write-ups and engineering articles authored by Dipesh Sapkota.',
+    url: '/blog',
+  },
 };
 
 export default function BlogPage() {

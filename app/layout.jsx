@@ -6,7 +6,7 @@ import './globals.css';
 export const metadata = {
   metadataBase: new URL('https://www.dipeshsapkota7.com.np'),
   title: {
-    default: 'Dipesh Sapkota | Computer Engineering Student & AI ML enthusiast',
+    default: 'Dipesh Sapkota | Computer Engineering Student & AI/ML Enthusiast',
     template: '%s | Dipesh Sapkota',
   },
   description: 'Dipesh Sapkota is a Computer Engineering student at IOE Thapathali, an AI ML enthusiast, and a video editor and motion graphics designer based in Nepal.',
@@ -30,6 +30,15 @@ export const metadata = {
   authors: [{ name: 'Dipesh Sapkota' }],
   creator: 'Dipesh Sapkota',
   publisher: 'Dipesh Sapkota',
+  applicationName: 'Dipesh Sapkota Portfolio',
+  category: 'portfolio',
+  classification: 'Personal portfolio and professional profile',
+  referrer: 'origin-when-cross-origin',
+  formatDetection: {
+    email: true,
+    address: true,
+    telephone: true,
+  },
   icons: {
     icon: [
       {
@@ -58,7 +67,7 @@ export const metadata = {
   openGraph: {
     type: 'website',
     url: 'https://www.dipeshsapkota7.com.np/',
-    title: 'Dipesh Sapkota | Computer Engineering Student & AI ML enthusiast',
+    title: 'Dipesh Sapkota | Computer Engineering Student & AI/ML Enthusiast',
     description: 'Dipesh Sapkota is a Computer Engineering student at IOE Thapathali, an AI ML enthusiast, and a video editor and motion graphics designer based in Nepal.',
     images: [
       {
@@ -72,7 +81,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     url: 'https://www.dipeshsapkota7.com.np/',
-    title: 'Dipesh Sapkota | Computer Engineering Student & AI ML enthusiast',
+    title: 'Dipesh Sapkota | Computer Engineering Student & AI/ML Enthusiast',
     description: 'Dipesh Sapkota is a Computer Engineering student at IOE Thapathali, an AI ML enthusiast, and a video editor and motion graphics designer based in Nepal.',
     images: ['https://www.dipeshsapkota7.com.np/og-image.webp'],
   },
@@ -114,55 +123,88 @@ export default function RootLayout({ children }) {
         'https://tiktok.com/@dsz.ae',
         'https://x.com/dsz_ae',
         'https://www.threads.net/@dsz.ae',
-        'https://sportivo.dipeshsapkota7.com.np/',
-        'https://ioe-admission.dipeshsapkota7.com.np/',
-        'https://git-visualizer.dipeshsapkota7.com.np/',
       ],
-      hasPart: [
-        {
-          '@type': 'WebSite',
-          name: 'Sportivo Live Sports Streaming',
-          url: 'https://sportivo.dipeshsapkota7.com.np/',
-        },
-        {
-          '@type': 'WebSite',
-          name: 'IOE Entrance Preparation Portal',
-          url: 'https://ioe-admission.dipeshsapkota7.com.np/',
-        },
-        {
-          '@type': 'WebApplication',
-          name: 'Git Visualizer',
-          url: 'https://git-visualizer.dipeshsapkota7.com.np/',
-        },
+      knowsAbout: [
+        'Computer engineering',
+        'Artificial intelligence and machine learning',
+        'Python programming',
+        'React and Next.js development',
+        'Embedded systems and circuit analysis',
+        'Video editing and motion graphics',
       ],
     },
     {
       '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
+      '@type': 'WebSite',
+      '@id': 'https://www.dipeshsapkota7.com.np/#website',
+      name: 'Dipesh Sapkota Portfolio',
+      url: 'https://www.dipeshsapkota7.com.np/',
+      description: 'Official portfolio of Dipesh Sapkota, Computer Engineering student, AI/ML enthusiast, video editor, and motion graphics designer.',
+      publisher: {
+        '@id': 'https://www.dipeshsapkota7.com.np/#person',
+      },
+      inLanguage: 'en',
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ProfilePage',
+      '@id': 'https://www.dipeshsapkota7.com.np/#profile',
+      url: 'https://www.dipeshsapkota7.com.np/',
+      name: 'Dipesh Sapkota Official Profile',
+      isPartOf: {
+        '@id': 'https://www.dipeshsapkota7.com.np/#website',
+      },
+      mainEntity: {
+        '@id': 'https://www.dipeshsapkota7.com.np/#person',
+      },
+      inLanguage: 'en',
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Dipesh Sapkota Web Applications',
       itemListElement: [
         {
           '@type': 'ListItem',
           position: 1,
-          name: 'Home',
-          item: 'https://www.dipeshsapkota7.com.np/',
+          name: 'Sportivo Live Sports Streaming',
+          item: {
+            '@type': 'SoftwareApplication',
+            name: 'Sportivo Live Sports Streaming',
+            url: 'https://sportivo.dipeshsapkota7.com.np/',
+            description: 'Live sports streaming platform with real-time match schedules, search, and multi-server stream switching.',
+            applicationCategory: 'SportsApplication',
+            creator: { '@id': 'https://www.dipeshsapkota7.com.np/#person' },
+            sameAs: 'https://github.com/dszae/sportivo',
+          },
         },
         {
           '@type': 'ListItem',
           position: 2,
-          name: 'Sportivo Live Sports',
-          item: 'https://sportivo.dipeshsapkota7.com.np/',
+          name: 'IOE Entrance Preparation Portal',
+          item: {
+            '@type': 'SoftwareApplication',
+            name: 'IOE Entrance Preparation Portal',
+            url: 'https://ioe-admission.dipeshsapkota7.com.np/',
+            description: 'Engineering admission portal with rank prediction, cutoff analytics, and counseling tools.',
+            applicationCategory: 'EducationalApplication',
+            creator: { '@id': 'https://www.dipeshsapkota7.com.np/#person' },
+            sameAs: 'https://github.com/dszae/ioe-admission-guide',
+          },
         },
         {
           '@type': 'ListItem',
           position: 3,
-          name: 'IOE Entrance Preparation Portal',
-          item: 'https://ioe-admission.dipeshsapkota7.com.np/',
-        },
-        {
-          '@type': 'ListItem',
-          position: 4,
           name: 'Git Visualizer',
-          item: 'https://git-visualizer.dipeshsapkota7.com.np/',
+          item: {
+            '@type': 'SoftwareApplication',
+            name: 'Git Visualizer',
+            url: 'https://git-visualizer.dipeshsapkota7.com.np/',
+            description: 'Interactive visual learning tool for Git commands and version-control workflows.',
+            applicationCategory: 'DeveloperApplication',
+            creator: { '@id': 'https://www.dipeshsapkota7.com.np/#person' },
+            sameAs: 'https://github.com/dszae/git-visualizer',
+          },
         },
       ],
     },

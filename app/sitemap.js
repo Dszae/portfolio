@@ -34,6 +34,24 @@ export default async function sitemap() {
       priority: 0.7,
     },
     {
+      url: `${baseUrl}/projects/sportivo`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/projects/ioe-admission-guide`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/projects/git-visualizer`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: 'https://sportivo.dipeshsapkota7.com.np/',
       lastModified,
       changeFrequency: 'weekly',

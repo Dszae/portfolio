@@ -1,11 +1,30 @@
 export const metadata = {
   title: "Git Visualizer - Interactive Version Control Tool by Dipesh Sapkota",
   description: "Learn Git commands visually with Git Visualizer, an interactive developer tool created by Dipesh Sapkota (dszae).",
+  alternates: { canonical: '/projects/git-visualizer' },
+  openGraph: {
+    type: 'website',
+    title: 'Git Visualizer by Dipesh Sapkota',
+    description: 'An interactive tool for learning Git commands and version-control workflows.',
+    url: '/projects/git-visualizer',
+  },
 };
 
 export default function GitVisualizerProjectPage() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Git Visualizer',
+    url: 'https://git-visualizer.dipeshsapkota7.com.np/',
+    description: 'An interactive visual learning tool for Git commands and version-control workflows created by Dipesh Sapkota.',
+    applicationCategory: 'DeveloperApplication',
+    creator: { '@id': 'https://www.dipeshsapkota7.com.np/#person' },
+    sameAs: 'https://github.com/dszae/git-visualizer',
+  };
+
   return (
     <main className="max-w-4xl mx-auto px-6 py-32">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <span className="inline-block px-3.5 py-1 text-xs font-semibold uppercase tracking-widest text-amber-600 bg-amber-500/10 border border-amber-500/30 rounded-full mb-4">
         Featured Web App
       </span>

@@ -1,6 +1,13 @@
 export const metadata = {
   title: "Experience & Education - Dipesh Sapkota",
   description: "Professional experience, technical internships, and academic background of Dipesh Sapkota at IOE Thapathali Campus and Clamphook Academy.",
+  alternates: { canonical: '/experience' },
+  openGraph: {
+    type: 'profile',
+    title: 'Experience & Education - Dipesh Sapkota',
+    description: 'Professional experience and academic background of Dipesh Sapkota at IOE Thapathali Campus and Clamphook Academy.',
+    url: '/experience',
+  },
 };
 
 export default function ExperiencePage() {
