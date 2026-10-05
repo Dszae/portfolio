@@ -7,6 +7,7 @@ export const metadata = {
     title: 'Git Visualizer by Dipesh Sapkota',
     description: 'An interactive tool for learning Git commands and version-control workflows.',
     url: '/projects/git-visualizer',
+    images: [{ url: '/og-image.webp', width: 640, height: 640, alt: 'Dipesh Sapkota portrait' }],
   },
 };
 

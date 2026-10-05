@@ -8,10 +8,6 @@ const nextConfig = {
     async rewrites() {
         return [
             {
-                source: '/robots.txt',
-                destination: '/robots',
-            },
-            {
                 source: '/.well-known/api-catalog',
                 destination: '/api-catalog',
             },

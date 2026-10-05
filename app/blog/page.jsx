@@ -7,6 +7,7 @@ export const metadata = {
     title: 'Blog & Articles - Dipesh Sapkota',
     description: 'Technical write-ups and engineering articles authored by Dipesh Sapkota.',
     url: '/blog',
+    images: [{ url: '/og-image.webp', width: 640, height: 640, alt: 'Dipesh Sapkota portrait' }],
   },
 };
 

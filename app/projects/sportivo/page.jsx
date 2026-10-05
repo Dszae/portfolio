@@ -7,6 +7,7 @@ export const metadata = {
     title: 'Sportivo Project by Dipesh Sapkota',
     description: 'A real-time live sports streaming platform engineered by Dipesh Sapkota.',
     url: '/projects/sportivo',
+    images: [{ url: '/og-image.webp', width: 640, height: 640, alt: 'Dipesh Sapkota portrait' }],
   },
 };
 

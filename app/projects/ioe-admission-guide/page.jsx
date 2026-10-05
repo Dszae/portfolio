@@ -7,6 +7,7 @@ export const metadata = {
     title: 'IOE Admission Guide by Dipesh Sapkota',
     description: 'Engineering admission guides, rank prediction, cutoff analytics, and counseling workflows.',
     url: '/projects/ioe-admission-guide',
+    images: [{ url: '/og-image.webp', width: 640, height: 640, alt: 'Dipesh Sapkota portrait' }],
   },
 };
 

@@ -7,6 +7,7 @@ export const metadata = {
     title: 'Experience & Education - Dipesh Sapkota',
     description: 'Professional experience and academic background of Dipesh Sapkota at IOE Thapathali Campus and Clamphook Academy.',
     url: '/experience',
+    images: [{ url: '/og-image.webp', width: 640, height: 640, alt: 'Dipesh Sapkota portrait' }],
   },
 };
 

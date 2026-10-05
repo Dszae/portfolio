@@ -9,6 +9,7 @@ export const metadata = {
     title: 'Contact Dipesh Sapkota',
     description: 'Contact Dipesh Sapkota for freelance projects, collaborations, and technical discussions.',
     url: '/contact',
+    images: [{ url: '/og-image.webp', width: 640, height: 640, alt: 'Dipesh Sapkota portrait' }],
   },
 };
 

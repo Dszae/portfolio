@@ -9,6 +9,7 @@ export const metadata = {
     title: 'About Dipesh Sapkota',
     description: 'Learn about Dipesh Sapkota, a Computer Engineering student, AI/ML enthusiast, video editor, and motion graphics designer in Nepal.',
     url: '/about',
+    images: [{ url: '/og-image.webp', width: 640, height: 640, alt: 'Dipesh Sapkota portrait' }],
   },
 };
 
