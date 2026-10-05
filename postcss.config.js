@@ -1,7 +1,9 @@
 // ES Module configuration for PostCSS
-export default {
+const postcssConfig = {
   plugins: {
     '@tailwindcss/postcss': {},
     autoprefixer: {},
   },
-}
+};
+
+export default postcssConfig;
