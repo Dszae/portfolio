@@ -74,6 +74,7 @@ export const metadata = {
   },
   other: {
     sitemap: 'https://www.dipeshsapkota7.com.np/sitemap.xml',
+    'ai-content-discovery': 'https://www.dipeshsapkota7.com.np/.well-known/llms.txt',
   },
 };
 
@@ -167,6 +168,7 @@ export default function RootLayout({ children }) {
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://api.web3forms.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://api.web3forms.com" />
+        <link rel="alternate" type="text/markdown" href="/.well-known/llms.txt" title="AI-readable site information" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

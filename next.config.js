@@ -16,6 +16,10 @@ const nextConfig = {
                 destination: '/api-catalog',
             },
             {
+                source: '/.well-known/llms.txt',
+                destination: '/llms',
+            },
+            {
                 source: '/auth.md',
                 destination: '/auth-md',
             },

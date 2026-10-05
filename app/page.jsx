@@ -502,6 +502,7 @@ export default function Home() {
               onClick={() => setIsDark(!isDark)}
               className={`w-10 h-10 rounded-full flex items-center justify-center border transition-colors shadow-sm cursor-pointer ${isDark ? 'border-slate-800 text-sky-400 hover:bg-slate-900' : 'border-slate-200 text-slate-700 hover:bg-slate-100'}`}
               aria-label="Toggle Theme Mode"
+              aria-pressed={isDark}
             >
               {isDark ? (
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
@@ -512,6 +513,8 @@ export default function Home() {
             
             <button 
               aria-label="Toggle navigation menu"
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-navigation"
               className="md:hidden w-10 h-10 rounded-lg flex items-center justify-center border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors relative z-50 cursor-pointer"
               onClick={(e) => {
                 e.stopPropagation();
@@ -528,6 +531,7 @@ export default function Home() {
         </div>
 
         <div 
+          id="mobile-navigation"
           className={`md:hidden absolute top-20 left-0 w-full z-50 backdrop-blur-xl border-b transition-all duration-300 shadow-xl overflow-hidden ${isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} ${theme.nav}`}
         >
           <div className="flex flex-col px-6 py-4 font-mono text-sm font-medium uppercase tracking-wider space-y-6 text-center relative z-20">
@@ -550,6 +554,7 @@ export default function Home() {
         <section id="home" className={`pt-32 pb-20 px-6 sm:px-12 min-h-[95vh] flex items-center w-full relative overflow-hidden ${theme.bg}`}>
           <canvas
             ref={canvasRef}
+            aria-hidden="true"
             className="absolute inset-0 w-full h-full pointer-events-none z-0"
           />
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center w-full relative z-10">
@@ -559,9 +564,9 @@ export default function Home() {
                 <svg className="w-4 h-4 inline-block mr-2 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                 System Online
               </div>
-              <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight">
                 Dipesh Sapkota
-              </h2>
+              </h1>
               <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-sky-500 h-12 flex items-center">
                 I'm a <span className="ml-2 sm:ml-3 text-inherit">{text}</span><span className="animate-pulse">|</span>
               </div>
@@ -1034,7 +1039,9 @@ export default function Home() {
               <p className={`mb-12 text-base sm:text-lg ${theme.muted}`}>A curated space for current media projects, photography, and future uploads.</p>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
                 {GALLERY_IMAGES.map((item) => (
-                  <div 
+                  <button 
+                    type="button"
+                    aria-label={`Open ${item.title}`}
                     key={item.id} 
                     className="group relative w-full aspect-video rounded-lg sm:rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-800 shadow-md cursor-pointer"
                     onClick={() => setSelectedImage({ src: item.img, title: item.title, desc: 'Visual Archive' })}
@@ -1056,7 +1063,7 @@ export default function Home() {
                         {item.title}
                       </p>
                     </div>
-                  </div>
+                  </button>
                 ))}
               </div>
             </div>
@@ -1071,7 +1078,9 @@ export default function Home() {
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {CERTIFICATES.map((cert) => (
-                  <div 
+                  <button 
+                    type="button"
+                    aria-label={`Open certificate: ${cert.title}`}
                     key={cert.id} 
                     className={`p-5 sm:p-6 rounded-2xl border backdrop-blur-md transition-all duration-300 group hover:-translate-y-2 hover:shadow-md cursor-pointer ${theme.card}`}
                     onClick={() => setSelectedImage({ src: cert.img, title: cert.title, desc: `Issued by ${cert.org}` })}
@@ -1095,7 +1104,7 @@ export default function Home() {
                     </div>
                     <h3 className="font-semibold text-sm sm:text-base mb-2 group-hover:text-sky-500 transition-colors">{cert.title}</h3>
                     <p className={`font-mono text-xs ${theme.muted}`}>{cert.org}</p>
-                  </div>
+                  </button>
                 ))}
               </div>
             </div>
@@ -1144,7 +1153,9 @@ export default function Home() {
 
                   <form className="space-y-4 sm:space-y-6" onSubmit={handleContactSubmit}>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                      <label className="sr-only" htmlFor="contact-name">Your Name</label>
                       <input
+                        id="contact-name"
                         type="text"
                         name="name"
                         placeholder="Your Name"
@@ -1152,7 +1163,9 @@ export default function Home() {
                         className={`w-full px-4 py-3 sm:px-6 sm:py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-sky-500/50 transition-all ${theme.input}`}
                         required
                       />
+                      <label className="sr-only" htmlFor="contact-email">Your Email</label>
                       <input
+                        id="contact-email"
                         type="email"
                         name="email"
                         placeholder="Your Email"
@@ -1161,7 +1174,9 @@ export default function Home() {
                         required
                       />
                     </div>
+                    <label className="sr-only" htmlFor="contact-message">Your Message</label>
                     <textarea
+                      id="contact-message"
                       name="message"
                       placeholder="Your Message..."
                       aria-label="Your Message"
@@ -1216,6 +1231,9 @@ export default function Home() {
 
       {selectedImage && (
         <div 
+          role="dialog"
+          aria-modal="true"
+          aria-label={selectedImage ? selectedImage.title : 'Image preview'}
           className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/90 backdrop-blur-sm p-4 md:p-8 opacity-100 transition-opacity duration-300"
           onClick={() => setSelectedImage(null)}
         >
@@ -1223,6 +1241,14 @@ export default function Home() {
             className="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
+            <button
+              type="button"
+              aria-label="Close image preview"
+              className="absolute top-0 right-0 z-10 rounded-full bg-white/10 px-3 py-2 text-2xl text-white hover:bg-white/20"
+              onClick={() => setSelectedImage(null)}
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
             <img 
               src={selectedImage.src} 
               alt={selectedImage.title} 

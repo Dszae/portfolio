@@ -2,14 +2,14 @@ export async function GET() {
   const content = `# auth.md - Agent Registration Discovery
 
 ## Overview
-This document specifies the authentication, authorization, and agent registration protocols for automated agents interacting with this API service.
+This document describes the public, unauthenticated discovery endpoints for automated agents interacting with this portfolio.
 
 \`\`\`json
 {
-"agent_auth": {
+"agent_discovery": {
 "skill": "portfolio-inquiry",
-"register_uri": "https://www.dipeshsapkota7.com.np/.well-known/oauth-authorization-server",
-"registration_methods_supported": ["automatic"]
+"llms_uri": "https://www.dipeshsapkota7.com.np/.well-known/llms.txt",
+"api_catalog_uri": "https://www.dipeshsapkota7.com.np/.well-known/api-catalog"
 }
 }
 \`\`\`

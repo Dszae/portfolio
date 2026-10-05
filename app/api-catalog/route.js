@@ -15,6 +15,15 @@ export async function GET() {
           "What are Dipesh Sapkota's engineering projects?",
           "Show me Dipesh Sapkota's technical skills and background."
         ]
+      },
+      {
+        id: "urn:air:www.dipeshsapkota7.com.np:llms",
+        displayName: "AI-readable portfolio summary",
+        type: "text/markdown",
+        url: "https://www.dipeshsapkota7.com.np/.well-known/llms.txt",
+        representativeQueries: [
+          "Summarize Dipesh Sapkota's background and projects"
+        ]
       }
     ]
   };

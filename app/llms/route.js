@@ -1,4 +1,4 @@
-# Dipesh Sapkota | Portfolio & Web Applications
+const content = `# Dipesh Sapkota | Portfolio & Web Applications
 
 > Official portfolio of Dipesh Sapkota, a Computer Engineering student at IOE Thapathali, AI/ML enthusiast, video editor, and motion graphics designer in Nepal.
 
@@ -19,3 +19,14 @@ C, C++, Python, React, Next.js, embedded systems, circuit analysis, video editin
 - [Portfolio markdown API](https://www.dipeshsapkota7.com.np/api/markdown)
 - [API catalog](https://www.dipeshsapkota7.com.np/.well-known/api-catalog)
 - [Agent card](https://www.dipeshsapkota7.com.np/.well-known/agent-card.json)
+`;
+
+export async function GET() {
+  return new Response(content, {
+    headers: {
+      'Content-Type': 'text/markdown; charset=utf-8',
+      'Cache-Control': 'public, max-age=3600',
+      'Access-Control-Allow-Origin': '*',
+    },
+  });
+}
