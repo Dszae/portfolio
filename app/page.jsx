@@ -1149,7 +1149,7 @@ export default function Home() {
                         </div>
                         <div>
                           <h4 className={`font-mono text-[11px] sm:text-xs uppercase ${theme.muted}`}>Email</h4>
-                          <a href="mailto:dsz.ae18@gmail.com" className="font-semibold text-sm sm:text-lg hover:text-sky-500 transition-colors block">dsz.ae18@gmail.com</a>
+                          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=dsz.ae18@gmail.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-sm sm:text-lg hover:text-sky-500 transition-colors block">dsz.ae18@gmail.com</a>
                         </div>
                       </div>
                     </div>

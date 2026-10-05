@@ -21,7 +21,7 @@ export default function ContactPage() {
       </p>
 
       <div className="space-y-4 mb-10 text-slate-700 dark:text-slate-300">
-        <p><strong>Email:</strong> <a href="mailto:dsz.ae18@gmail.com" className="text-sky-600 dark:text-sky-400 hover:underline">dsz.ae18@gmail.com</a></p>
+        <p><strong>Email:</strong> <a href="https://mail.google.com/mail/?view=cm&fs=1&to=dsz.ae18@gmail.com" target="_blank" rel="noopener noreferrer" className="text-sky-600 dark:text-sky-400 hover:underline">dsz.ae18@gmail.com</a></p>
         <p><strong>Phone:</strong> <a href="tel:+9779764685307" className="text-sky-600 dark:text-sky-400 hover:underline">9764685307</a></p>
         <p><strong>Location:</strong> Kathmandu, Nepal</p>
       </div>
