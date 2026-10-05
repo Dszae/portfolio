@@ -42,12 +42,11 @@ export const metadata = {
   icons: {
     icon: [
       {
-        url: '/favicon.png',
-        type: 'image/png',
-        sizes: '256x256',
+        url: '/favicon.ico',
+        type: 'image/x-icon',
       },
     ],
-    shortcut: '/favicon.png',
+    shortcut: '/favicon.ico',
     apple: '/favicon.png',
   },
   robots: {
@@ -225,7 +224,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <link rel="icon" type="image/png" sizes="256x256" href="/favicon.png" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="256x256" href="/favicon.png" />
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
