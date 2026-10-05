@@ -8,10 +8,10 @@ export async function GET() {
     response_types_supported: ["code"],
     grant_types_supported: ["authorization_code", "client_credentials"],
     token_endpoint_auth_methods_supported: ["client_secret_basic", "none"],
-    identity_types_supported: ["identity_assertion", "anonymous"],
-    identity_assertion: {
-      assertion_types_supported: ["urn:ietf:params:oauth:token-type:id-jag"],
-      credential_types_supported: ["none"]
+    identity_types_supported: ["anonymous"],
+    anonymous: {
+      credential_types_supported: ["none"],
+      claim_uri: "https://www.dipeshsapkota7.com.np/auth.md"
     },
     registration_methods_supported: ["automatic"],
     registration_documentation: "https://www.dipeshsapkota7.com.np/auth.md"
