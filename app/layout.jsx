@@ -66,11 +66,13 @@ export const metadata = {
   openGraph: {
     type: 'website',
     url: 'https://www.dipeshsapkota7.com.np/',
+    siteName: 'Dipesh Sapkota Portfolio',
+    locale: 'en_US',
     title: 'Dipesh Sapkota | Computer Engineering Student & AI/ML Enthusiast',
     description: 'Dipesh Sapkota is a Computer Engineering student at IOE Thapathali, an AI ML enthusiast, and a video editor and motion graphics designer based in Nepal.',
     images: [
       {
-        url: 'https://www.dipeshsapkota7.com.np/dipesh-sapkota.webp',
+        url: 'https://www.dipeshsapkota7.com.np/og-image.webp',
         width: 640,
         height: 640,
         alt: 'Dipesh Sapkota portrait',
@@ -82,7 +84,7 @@ export const metadata = {
     url: 'https://www.dipeshsapkota7.com.np/',
     title: 'Dipesh Sapkota | Computer Engineering Student & AI/ML Enthusiast',
     description: 'Dipesh Sapkota is a Computer Engineering student at IOE Thapathali, an AI ML enthusiast, and a video editor and motion graphics designer based in Nepal.',
-    images: ['https://www.dipeshsapkota7.com.np/dipesh-sapkota.webp'],
+    images: ['https://www.dipeshsapkota7.com.np/og-image.webp'],
   },
   verification: {
     google: 'E6jJLG4IQhyyDHiocZ2ca38GtjN1bOMrQGIctSGJvZ8',
@@ -105,8 +107,8 @@ export default function RootLayout({ children }) {
       image: {
         '@type': 'ImageObject',
         '@id': 'https://www.dipeshsapkota7.com.np/#primary-image',
-        url: 'https://www.dipeshsapkota7.com.np/dipesh-sapkota.webp',
-        contentUrl: 'https://www.dipeshsapkota7.com.np/dipesh-sapkota.webp',
+        url: 'https://www.dipeshsapkota7.com.np/og-image.webp',
+        contentUrl: 'https://www.dipeshsapkota7.com.np/og-image.webp',
         name: 'Dipesh Sapkota portrait',
         description: 'Official portrait of Dipesh Sapkota, Computer Engineering student, AI/ML enthusiast, video editor, and motion graphics designer.',
         caption: 'Official portrait of Dipesh Sapkota',
@@ -155,6 +157,9 @@ export default function RootLayout({ children }) {
       name: 'Dipesh Sapkota Portfolio',
       url: 'https://www.dipeshsapkota7.com.np/',
       description: 'Official portfolio of Dipesh Sapkota, Computer Engineering student, AI/ML enthusiast, video editor, and motion graphics designer.',
+      image: {
+        '@id': 'https://www.dipeshsapkota7.com.np/#primary-image',
+      },
       publisher: {
         '@id': 'https://www.dipeshsapkota7.com.np/#person',
       },
