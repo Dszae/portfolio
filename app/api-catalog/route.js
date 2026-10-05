@@ -1,28 +1,28 @@
 export async function GET() {
   const catalog = {
-    specVersion: "1.0.0",
-    host: {
-      domain: "www.dipeshsapkota7.com.np",
-      name: "Dipesh Sapkota Portfolio"
-    },
-    entries: [
+    linkset: [
       {
-        id: "urn:air:www.dipeshsapkota7.com.np:portfolio:markdown",
-        displayName: "Dipesh Sapkota Portfolio Markdown API",
-        type: "text/markdown",
-        url: "https://www.dipeshsapkota7.com.np/api/markdown",
-        representativeQueries: [
-          "What are Dipesh Sapkota's engineering projects?",
-          "Show me Dipesh Sapkota's technical skills and background."
-        ]
-      },
-      {
-        id: "urn:air:www.dipeshsapkota7.com.np:llms",
-        displayName: "AI-readable portfolio summary",
-        type: "text/markdown",
-        url: "https://www.dipeshsapkota7.com.np/.well-known/llms.txt",
-        representativeQueries: [
-          "Summarize Dipesh Sapkota's background and projects"
+        anchor: "https://www.dipeshsapkota7.com.np/api/markdown",
+        "service-desc": [
+          {
+            href: "https://www.dipeshsapkota7.com.np/openapi.json",
+            type: "application/vnd.oai.openapi+json",
+            title: "Dipesh Sapkota Portfolio API OpenAPI specification"
+          }
+        ],
+        "service-doc": [
+          {
+            href: "https://www.dipeshsapkota7.com.np/api-docs",
+            type: "text/html",
+            title: "Dipesh Sapkota Portfolio API documentation"
+          }
+        ],
+        status: [
+          {
+            href: "https://www.dipeshsapkota7.com.np/api/health",
+            type: "application/json",
+            title: "Dipesh Sapkota Portfolio API health"
+          }
         ]
       }
     ]
@@ -31,8 +31,10 @@ export async function GET() {
   return new Response(JSON.stringify(catalog, null, 2), {
     status: 200,
     headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*'
+      'Content-Type': 'application/linkset+json; profile="https://www.rfc-editor.org/info/rfc9727"',
+      'Cache-Control': 'public, max-age=3600',
+      'Access-Control-Allow-Origin': '*',
+      'Link': '<https://www.dipeshsapkota7.com.np/.well-known/api-catalog>; rel="api-catalog"'
     },
   });
 }
