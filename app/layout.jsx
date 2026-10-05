@@ -104,6 +104,8 @@ export default function RootLayout({ children }) {
         'https://instagram.com/dsz.ae',
         'https://facebook.com/dsz.ae',
         'https://tiktok.com/@dsz.ae',
+        'https://x.com/dsz_ae',
+        'https://www.threads.net/@dsz.ae',
         'https://sportivo.dipeshsapkota7.com.np/',
         'https://ioe-admission.dipeshsapkota7.com.np/',
         'https://git-visualizer.dipeshsapkota7.com.np/',

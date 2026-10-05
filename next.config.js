@@ -1,6 +1,7 @@
 import path from 'path';
 
 const nextConfig = {
+    trailingSlash: false,
     turbopack: {
         root: path.resolve(process.cwd()),
     },
