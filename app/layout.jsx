@@ -31,8 +31,15 @@ export const metadata = {
   creator: 'Dipesh Sapkota',
   publisher: 'Dipesh Sapkota',
   icons: {
-    icon: '/favicon.png',
+    icon: [
+      {
+        url: '/favicon.png',
+        type: 'image/png',
+        sizes: '256x256',
+      },
+    ],
     shortcut: '/favicon.png',
+    apple: '/favicon.png',
   },
   robots: {
     index: true,
@@ -164,6 +171,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        <link rel="icon" type="image/png" sizes="256x256" href="/favicon.png" />
+        <link rel="apple-touch-icon" sizes="256x256" href="/favicon.png" />
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://api.web3forms.com" crossOrigin="anonymous" />
