@@ -68,7 +68,7 @@ ${entry.images.map((image) => `    <image:image>
   return new Response(body, {
     status: 200,
     headers: {
-      'Content-Type': 'text/xml; charset=utf-8',
+      'Content-Type': 'text/plain; charset=utf-8',
       'Cache-Control': 'public, max-age=3600',
     },
   });
