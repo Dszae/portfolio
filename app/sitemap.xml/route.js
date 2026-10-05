@@ -5,7 +5,7 @@ const imageEntries = [
     loc: `${baseUrl}/`,
     images: [
       {
-        loc: `${baseUrl}/og-image.webp`,
+        loc: `${baseUrl}/dipesh-sapkota.webp`,
         title: 'Dipesh Sapkota - Computer Engineering Student and Video Editor',
         caption: 'Dipesh Sapkota, Computer Engineering student, AI/ML enthusiast, video editor, and motion graphics designer.',
       },
@@ -25,6 +25,7 @@ const imageEntries = [
 
 const urls = [
   { path: '/', changeFrequency: 'weekly', priority: '1.0' },
+  { path: '/favicon.ico', changeFrequency: 'monthly', priority: '0.1' },
   { path: '/about', changeFrequency: 'monthly', priority: '0.8' },
   { path: '/contact', changeFrequency: 'monthly', priority: '0.7' },
   { path: '/blog', changeFrequency: 'monthly', priority: '0.7' },

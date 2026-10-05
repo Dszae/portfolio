@@ -605,7 +605,7 @@ export default function Home() {
             <div className="order-1 md:order-2 flex justify-center items-center relative pt-10 md:pt-0 opacity-0 animate-slide-right">
               <div className={`absolute w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] lg:w-[420px] lg:h-[420px] rounded-full border border-dashed animate-[spin_20s_linear_infinite] ${isDark ? 'border-slate-800' : 'border-sky-200'}`}></div>
               <Image
-                src="/og-image.webp"
+                src="/dipesh-sapkota.webp"
                 id="primary-profile-image"
                 itemProp="image"
                 alt="Dipesh Sapkota - Computer Engineer and Video Editor Profile"

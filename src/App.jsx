@@ -607,7 +607,7 @@ function App() {
             <div className="order-1 md:order-2 flex justify-center items-center relative pt-10 md:pt-0 opacity-0 animate-slide-right">
               <div className={`absolute w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] lg:w-[420px] lg:h-[420px] rounded-full border border-dashed animate-[spin_20s_linear_infinite] ${isDark ? 'border-blue-500/30' : 'border-blue-500/20'}`}></div>
               <img
-                src="/og-image.webp"
+                src="/dipesh-sapkota.webp"
                 alt="Dipesh Sapkota Logo"
                 width="380"
                 height="380"
