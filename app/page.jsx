@@ -611,7 +611,7 @@ export default function Home() {
                 alt="Dipesh Sapkota - Computer Engineer and Video Editor Profile"
                 width="380"
                 height="380"
-                loading="eager"
+                priority
                 fetchPriority="high"
                 className={`relative z-10 w-full max-w-[220px] sm:max-w-[280px] lg:max-w-[380px] rounded-full shadow-lg border-2 transition-transform duration-500 hover:scale-105 cursor-pointer ${isDark ? 'border-sky-500/50' : 'border-sky-300'}`}
               />
