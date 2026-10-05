@@ -103,7 +103,16 @@ export default function RootLayout({ children }) {
       name: 'Dipesh Sapkota',
       alternateName: ['dsz.ae', 'Dipesh'],
       url: 'https://www.dipeshsapkota7.com.np/',
-      image: 'https://www.dipeshsapkota7.com.np/og-image.webp',
+      image: {
+        '@type': 'ImageObject',
+        '@id': 'https://www.dipeshsapkota7.com.np/#primary-image',
+        url: 'https://www.dipeshsapkota7.com.np/og-image.webp',
+        contentUrl: 'https://www.dipeshsapkota7.com.np/og-image.webp',
+        caption: 'Dipesh Sapkota',
+        width: 1200,
+        height: 630,
+        representativeOfPage: true,
+      },
       jobTitle: ['Computer Engineering Student', 'AI/ML Enthusiast', 'Video Editor', 'Motion Graphics Designer'],
       address: {
         '@type': 'PostalAddress',
@@ -156,6 +165,9 @@ export default function RootLayout({ children }) {
       },
       mainEntity: {
         '@id': 'https://www.dipeshsapkota7.com.np/#person',
+      },
+      primaryImageOfPage: {
+        '@id': 'https://www.dipeshsapkota7.com.np/#primary-image',
       },
       inLanguage: 'en',
     },

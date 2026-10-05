@@ -604,6 +604,8 @@ export default function Home() {
               <div className={`absolute w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] lg:w-[420px] lg:h-[420px] rounded-full border border-dashed animate-[spin_20s_linear_infinite] ${isDark ? 'border-slate-800' : 'border-sky-200'}`}></div>
               <img
                 src="/og-image.webp"
+                id="primary-profile-image"
+                itemProp="image"
                 alt="Dipesh Sapkota - Computer Engineer and Video Editor Profile"
                 width="380"
                 height="380"
