@@ -6,10 +6,10 @@ import './globals.css';
 export const metadata = {
   metadataBase: new URL('https://www.dipeshsapkota7.com.np'),
   title: {
-    default: 'Dipesh Sapkota | IOE Thapathali Student',
+    default: 'Dipesh Sapkota | Computer Engineering Student & AI/ML Enthusiast',
     template: '%s | Dipesh Sapkota',
   },
-  description: 'Official website of Dipesh Sapkota (dszae), a Computer Engineering student at IOE Thapathali in Nepal. View his software projects, education, and creative work.',
+  description: 'Dipesh Sapkota is a Computer Engineering student and AI/ML enthusiast at IOE Thapathali in Nepal.',
   authors: [{ name: 'Dipesh Sapkota' }],
   creator: 'Dipesh Sapkota',
   publisher: 'Dipesh Sapkota',
@@ -50,8 +50,8 @@ export const metadata = {
     url: 'https://www.dipeshsapkota7.com.np/',
     siteName: 'Dipesh Sapkota',
     locale: 'en_US',
-    title: 'Dipesh Sapkota | IOE Thapathali Student',
-    description: 'Official website of Dipesh Sapkota (dszae), a Computer Engineering student at IOE Thapathali in Nepal. View his software projects, education, and creative work.',
+    title: 'Dipesh Sapkota | Computer Engineering Student & AI/ML Enthusiast',
+    description: 'Dipesh Sapkota is a Computer Engineering student and AI/ML enthusiast at IOE Thapathali in Nepal.',
     images: [
       {
         url: 'https://www.dipeshsapkota7.com.np/og-image.webp',
@@ -64,8 +64,8 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     url: 'https://www.dipeshsapkota7.com.np/',
-    title: 'Dipesh Sapkota | IOE Thapathali Student',
-    description: 'Official website of Dipesh Sapkota (dszae), a Computer Engineering student at IOE Thapathali in Nepal. View his software projects, education, and creative work.',
+    title: 'Dipesh Sapkota | Computer Engineering Student & AI/ML Enthusiast',
+    description: 'Dipesh Sapkota is a Computer Engineering student and AI/ML enthusiast at IOE Thapathali in Nepal.',
     images: ['https://www.dipeshsapkota7.com.np/og-image.webp'],
   },
   verification: {
@@ -134,7 +134,7 @@ export default function RootLayout({ children }) {
       name: 'Dipesh Sapkota',
       alternateName: 'Dipesh Sapkota Portfolio',
       url: 'https://www.dipeshsapkota7.com.np/',
-      description: 'The official website of Dipesh Sapkota (dszae), Computer Engineering student at IOE Thapathali in Nepal.',
+      description: 'Dipesh Sapkota is a Computer Engineering student and AI/ML enthusiast at IOE Thapathali in Nepal.',
       image: {
         '@id': 'https://www.dipeshsapkota7.com.np/#primary-image',
       },
