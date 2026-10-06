@@ -9,6 +9,12 @@ export const metadata = {
     url: '/projects/git-visualizer',
     images: [{ url: '/og-image.webp', width: 640, height: 640, alt: 'Dipesh Sapkota portrait' }],
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Git Visualizer by Dipesh Sapkota',
+    description: 'An interactive Git learning tool built by Dipesh Sapkota (dszae).',
+    images: ['/og-image.webp'],
+  },
 };
 
 export default function GitVisualizerProjectPage() {

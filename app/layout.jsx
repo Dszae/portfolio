@@ -6,10 +6,10 @@ import './globals.css';
 export const metadata = {
   metadataBase: new URL('https://www.dipeshsapkota7.com.np'),
   title: {
-    default: 'Dipesh Sapkota | Computer Engineering Student in Nepal',
+    default: 'Dipesh Sapkota | IOE Thapathali Student',
     template: '%s | Dipesh Sapkota',
   },
-  description: 'Official portfolio of Dipesh Sapkota, a Computer Engineering student at IOE Thapathali in Nepal. Explore software projects, engineering experience, and video editing work.',
+  description: 'Official website of Dipesh Sapkota (dszae), a Computer Engineering student at IOE Thapathali in Nepal. View his software projects, education, and creative work.',
   authors: [{ name: 'Dipesh Sapkota' }],
   creator: 'Dipesh Sapkota',
   publisher: 'Dipesh Sapkota',
@@ -48,10 +48,10 @@ export const metadata = {
   openGraph: {
     type: 'website',
     url: 'https://www.dipeshsapkota7.com.np/',
-    siteName: 'Dipesh Sapkota Portfolio',
+    siteName: 'Dipesh Sapkota',
     locale: 'en_US',
-    title: 'Dipesh Sapkota | Computer Engineering Student in Nepal',
-    description: 'Official portfolio of Dipesh Sapkota, a Computer Engineering student at IOE Thapathali in Nepal. Explore software projects, engineering experience, and video editing work.',
+    title: 'Dipesh Sapkota | IOE Thapathali Student',
+    description: 'Official website of Dipesh Sapkota (dszae), a Computer Engineering student at IOE Thapathali in Nepal. View his software projects, education, and creative work.',
     images: [
       {
         url: 'https://www.dipeshsapkota7.com.np/og-image.webp',
@@ -64,16 +64,12 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     url: 'https://www.dipeshsapkota7.com.np/',
-    title: 'Dipesh Sapkota | Computer Engineering Student in Nepal',
-    description: 'Official portfolio of Dipesh Sapkota, a Computer Engineering student at IOE Thapathali in Nepal. Explore software projects, engineering experience, and video editing work.',
+    title: 'Dipesh Sapkota | IOE Thapathali Student',
+    description: 'Official website of Dipesh Sapkota (dszae), a Computer Engineering student at IOE Thapathali in Nepal. View his software projects, education, and creative work.',
     images: ['https://www.dipeshsapkota7.com.np/og-image.webp'],
   },
   verification: {
     google: 'E6jJLG4IQhyyDHiocZ2ca38GtjN1bOMrQGIctSGJvZ8',
-  },
-  other: {
-    sitemap: 'https://www.dipeshsapkota7.com.np/sitemap.xml',
-    'ai-content-discovery': 'https://www.dipeshsapkota7.com.np/.well-known/llms.txt',
   },
 };
 
@@ -84,8 +80,11 @@ export default function RootLayout({ children }) {
       '@type': 'Person',
       '@id': 'https://www.dipeshsapkota7.com.np/#person',
       name: 'Dipesh Sapkota',
-      alternateName: ['dsz.ae', 'Dipesh'],
+      alternateName: ['dszae', 'dsz.ae'],
+      description: 'Dipesh Sapkota is a Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal, known online as dszae and creator of independent software projects.',
+      disambiguatingDescription: 'Computer Engineering student at IOE Thapathali Campus in Nepal; known online as dszae and creator of IOE Admission Guide, Sportivo, and Git Visualizer.',
       url: 'https://www.dipeshsapkota7.com.np/',
+      mainEntityOfPage: 'https://www.dipeshsapkota7.com.np/about',
       image: {
         '@type': 'ImageObject',
         '@id': 'https://www.dipeshsapkota7.com.np/#primary-image',
@@ -95,10 +94,7 @@ export default function RootLayout({ children }) {
         description: 'Official portrait of Dipesh Sapkota, Computer Engineering student, AI/ML enthusiast, video editor, and motion graphics designer.',
         caption: 'Official portrait of Dipesh Sapkota',
         creator: { '@id': 'https://www.dipeshsapkota7.com.np/#person' },
-        copyrightNotice: 'Copyright 2026 Dipesh Sapkota. All rights reserved.',
         creditText: 'Dipesh Sapkota',
-        acquireLicensePage: 'https://www.dipeshsapkota7.com.np/contact',
-        license: 'https://www.dipeshsapkota7.com.np/contact',
         width: 640,
         height: 640,
         representativeOfPage: true,
@@ -106,8 +102,6 @@ export default function RootLayout({ children }) {
       jobTitle: ['Computer Engineering Student', 'AI/ML Enthusiast', 'Video Editor', 'Motion Graphics Designer'],
       address: {
         '@type': 'PostalAddress',
-        addressLocality: 'Gaindakot',
-        addressRegion: 'Gandaki Province',
         addressCountry: 'Nepal',
       },
       affiliation: {
@@ -122,6 +116,7 @@ export default function RootLayout({ children }) {
         'https://tiktok.com/@dsz.ae',
         'https://x.com/dsz_ae',
         'https://www.threads.net/@dsz.ae',
+        'https://dev.to/dszae',
       ],
       knowsAbout: [
         'Computer engineering',
@@ -136,9 +131,10 @@ export default function RootLayout({ children }) {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
       '@id': 'https://www.dipeshsapkota7.com.np/#website',
-      name: 'Dipesh Sapkota Portfolio',
+      name: 'Dipesh Sapkota',
+      alternateName: 'Dipesh Sapkota Portfolio',
       url: 'https://www.dipeshsapkota7.com.np/',
-      description: 'Official portfolio of Dipesh Sapkota, Computer Engineering student, AI/ML enthusiast, video editor, and motion graphics designer.',
+      description: 'The official website of Dipesh Sapkota (dszae), Computer Engineering student at IOE Thapathali in Nepal.',
       image: {
         '@id': 'https://www.dipeshsapkota7.com.np/#primary-image',
       },
@@ -146,72 +142,6 @@ export default function RootLayout({ children }) {
         '@id': 'https://www.dipeshsapkota7.com.np/#person',
       },
       inLanguage: 'en',
-    },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'ProfilePage',
-      '@id': 'https://www.dipeshsapkota7.com.np/#profile',
-      url: 'https://www.dipeshsapkota7.com.np/',
-      name: 'Dipesh Sapkota Official Profile',
-      isPartOf: {
-        '@id': 'https://www.dipeshsapkota7.com.np/#website',
-      },
-      mainEntity: {
-        '@id': 'https://www.dipeshsapkota7.com.np/#person',
-      },
-      primaryImageOfPage: {
-        '@id': 'https://www.dipeshsapkota7.com.np/#primary-image',
-      },
-      inLanguage: 'en',
-    },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'ItemList',
-      name: 'Dipesh Sapkota Web Applications',
-      itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'Sportivo Live Sports Streaming',
-          item: {
-            '@type': 'SoftwareApplication',
-            name: 'Sportivo Live Sports Streaming',
-            url: 'https://sportivo.dipeshsapkota7.com.np/',
-            description: 'Live sports streaming platform with real-time match schedules, search, and multi-server stream switching.',
-            applicationCategory: 'SportsApplication',
-            creator: { '@id': 'https://www.dipeshsapkota7.com.np/#person' },
-            sameAs: 'https://github.com/dszae/sportivo',
-          },
-        },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: 'IOE Entrance Preparation Portal',
-          item: {
-            '@type': 'SoftwareApplication',
-            name: 'IOE Entrance Preparation Portal',
-            url: 'https://ioe-admission.dipeshsapkota7.com.np/',
-            description: 'Engineering admission portal with rank prediction, cutoff analytics, and counseling tools.',
-            applicationCategory: 'EducationalApplication',
-            creator: { '@id': 'https://www.dipeshsapkota7.com.np/#person' },
-            sameAs: 'https://github.com/dszae/ioe-admission-guide',
-          },
-        },
-        {
-          '@type': 'ListItem',
-          position: 3,
-          name: 'Git Visualizer',
-          item: {
-            '@type': 'SoftwareApplication',
-            name: 'Git Visualizer',
-            url: 'https://git-visualizer.dipeshsapkota7.com.np/',
-            description: 'Interactive visual learning tool for Git commands and version-control workflows.',
-            applicationCategory: 'DeveloperApplication',
-            creator: { '@id': 'https://www.dipeshsapkota7.com.np/#person' },
-            sameAs: 'https://github.com/dszae/git-visualizer',
-          },
-        },
-      ],
     },
   ];
 
@@ -232,55 +162,6 @@ export default function RootLayout({ children }) {
       </head>
       <body className="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased selection:bg-blue-500/30 m-0 p-0 w-full min-h-screen overflow-x-hidden">
         <WebMCPInitializer />
-        <noscript>
-          <header>
-            <h1>Dipesh Sapkota</h1>
-            <p>Computer Engineering Student at IOE Thapathali | AI ML enthusiast | Video Editor & Motion Graphics Designer</p>
-            <ul>
-              <li>Location: Kathmandu, Nepal</li>
-              <li>GitHub: https://github.com/dszae</li>
-              <li>LinkedIn: https://linkedin.com/in/dszae</li>
-            </ul>
-          </header>
-          <main>
-            <section>
-              <h2>About Me</h2>
-              <p>I am Dipesh Sapkota, a dedicated Computer Engineering student at IOE Thapathali in Kathmandu, Nepal. As an AI and ML enthusiast, I am deeply invested in exploring intelligent systems, analyzing algorithms, and architecting embedded hardware solutions. Complementing my engineering background, I possess over 4 years of professional experience as a freelance Video Editor and Motion Graphics Designer.</p>
-            </section>
-            <section>
-              <h2>Featured Web Applications & Projects</h2>
-              <article>
-                <h3>1. Sportivo</h3>
-                <p>A high-performance live sports streaming platform featuring real-time match schedule scraping, multi-server stream switching, live team logo thumbnails, and direct shareable match links.</p>
-                <a href="https://sportivo.dipeshsapkota7.com.np/">View Sportivo</a>
-              </article>
-              <article>
-                <h3>2. IOE Admission Guide</h3>
-                <p>A comprehensive admission ecosystem for Tribhuvan University engineering applicants. Beyond predicting ranks, it provides step-by-step procedural counseling guides, automated priority form generation, and detailed cutoff analytics.</p>
-                <a href="https://ioe-admission.dipeshsapkota7.com.np/">View IOE Admission Guide</a>
-              </article>
-              <article>
-                <h3>3. Git Visualizer</h3>
-                <p>An interactive, visually driven learning tool designed to demystify Git version control. Features a dynamic data-flow architecture and an interactive canvas for mapping standard Git commands.</p>
-                <a href="https://git-visualizer.dipeshsapkota7.com.np/">View Git Visualizer</a>
-              </article>
-            </section>
-            <section>
-              <h2>Experience</h2>
-              <ul>
-                <li><strong>Video Editor & Graphics Designer</strong> at Clamphook Academy (2026 - Present)</li>
-                <li><strong>Video Editor</strong> at College Programs (2026 - Present)</li>
-                <li><strong>Freelance Media Creator</strong> (2023 - Present)</li>
-              </ul>
-            </section>
-            <section>
-              <h2>Education</h2>
-              <ul>
-                <li><strong>Bachelor in Computer Engineering</strong> - Institute of Engineering (IOE), Thapathali Campus (2025 - Present)</li>
-              </ul>
-            </section>
-          </main>
-        </noscript>
         {children}
         <Script
           id="google-analytics"

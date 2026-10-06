@@ -450,11 +450,6 @@ export default function Home() {
   return (
     <div className={`min-h-screen font-sans transition-colors duration-500 overflow-x-hidden ${theme.bg} relative selection:bg-sky-500/30 w-full m-0 p-0`}>
 
-      <header className="sr-only">
-        <h1>Dipesh Sapkota - Computer Engineer, Video Editor, and Motion Graphics Designer Portfolio</h1>
-        <p>Official professional portfolio of Dipesh Sapkota, a Computer Engineering student at IOE Thapathali Campus, Kathmandu, Nepal, specializing in software development, AI/ML enthusiasm, and high-end multimedia production.</p>
-      </header>
-
       <style>{`
         @keyframes slideFromLeft {
           0% { opacity: 0; transform: translateX(-60px); }

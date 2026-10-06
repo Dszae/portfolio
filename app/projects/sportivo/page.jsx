@@ -9,6 +9,12 @@ export const metadata = {
     url: '/projects/sportivo',
     images: [{ url: '/og-image.webp', width: 640, height: 640, alt: 'Dipesh Sapkota portrait' }],
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sportivo Project by Dipesh Sapkota',
+    description: 'Explore Sportivo, a live sports platform engineered by Dipesh Sapkota (dszae).',
+    images: ['/og-image.webp'],
+  },
 };
 
 export default function SportivoProjectPage() {

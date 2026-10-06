@@ -1,6 +1,6 @@
 export const metadata = {
   title: "Experience & Education",
-  description: "Professional experience, technical internships, and academic background of Dipesh Sapkota at IOE Thapathali Campus and Clamphook Academy.",
+  description: "Experience and education of Dipesh Sapkota, a Computer Engineering student at IOE Thapathali Campus and video editor at Clamphook Academy in Nepal.",
   alternates: { canonical: '/experience' },
   openGraph: {
     type: 'profile',
@@ -8,6 +8,12 @@ export const metadata = {
     description: 'Professional experience and academic background of Dipesh Sapkota at IOE Thapathali Campus and Clamphook Academy.',
     url: '/experience',
     images: [{ url: '/og-image.webp', width: 640, height: 640, alt: 'Dipesh Sapkota portrait' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Experience & Education - Dipesh Sapkota',
+    description: 'Experience and education of Dipesh Sapkota, Computer Engineering student at IOE Thapathali and video editor at Clamphook Academy.',
+    images: ['/og-image.webp'],
   },
 };
 

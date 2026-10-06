@@ -9,6 +9,12 @@ export const metadata = {
     url: '/projects/ioe-admission-guide',
     images: [{ url: '/og-image.webp', width: 640, height: 640, alt: 'Dipesh Sapkota portrait' }],
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'IOE Admission Guide by Dipesh Sapkota',
+    description: 'Engineering admission tools created by Dipesh Sapkota, including rank prediction, cutoff analytics, and counseling workflows.',
+    images: ['/og-image.webp'],
+  },
 };
 
 export default function IoeAdmissionProjectPage() {

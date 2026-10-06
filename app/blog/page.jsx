@@ -9,6 +9,12 @@ export const metadata = {
     url: '/blog',
     images: [{ url: '/og-image.webp', width: 640, height: 640, alt: 'Dipesh Sapkota portrait' }],
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Articles by Dipesh Sapkota',
+    description: 'Engineering and software development articles written by Dipesh Sapkota (dszae).',
+    images: ['/og-image.webp'],
+  },
 };
 
 export default function BlogPage() {

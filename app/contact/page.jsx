@@ -11,6 +11,12 @@ export const metadata = {
     url: '/contact',
     images: [{ url: '/og-image.webp', width: 640, height: 640, alt: 'Dipesh Sapkota portrait' }],
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact Dipesh Sapkota',
+    description: 'Contact Dipesh Sapkota for freelance projects, collaborations, and technical discussions.',
+    images: ['/og-image.webp'],
+  },
 };
 
 export default function ContactPage() {
