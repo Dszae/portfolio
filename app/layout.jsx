@@ -97,6 +97,8 @@ export default function RootLayout({ children }) {
         acquireLicensePage: 'https://www.dipeshsapkota7.com.np/contact',
         creator: { '@id': 'https://www.dipeshsapkota7.com.np/#person' },
         creditText: 'Dipesh Sapkota',
+        copyrightNotice: '© Dipesh Sapkota. All rights reserved.',
+        license: 'https://www.dipeshsapkota7.com.np/image-licensing',
         width: 627,
         height: 627,
         representativeOfPage: true,
