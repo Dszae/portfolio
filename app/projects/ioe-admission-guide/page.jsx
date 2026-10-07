@@ -7,13 +7,13 @@ export const metadata = {
     title: 'IOE Admission Guide by Dipesh Sapkota',
     description: 'Engineering admission guides, rank prediction, cutoff analytics, and counseling workflows.',
     url: '/projects/ioe-admission-guide',
-    images: [{ url: '/og-image.webp', width: 640, height: 640, alt: 'Dipesh Sapkota portrait' }],
+    images: [{ url: '/dipesh-sapkota.jpg', width: 627, height: 627, alt: 'Portrait of Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'IOE Admission Guide by Dipesh Sapkota',
     description: 'Engineering admission tools created by Dipesh Sapkota, including rank prediction, cutoff analytics, and counseling workflows.',
-    images: ['/og-image.webp'],
+    images: ['/dipesh-sapkota.jpg'],
   },
 };
 

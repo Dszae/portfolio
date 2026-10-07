@@ -7,13 +7,13 @@ export const metadata = {
     title: 'Experience & Education - Dipesh Sapkota',
     description: 'Professional experience and academic background of Dipesh Sapkota at IOE Thapathali Campus and Clamphook Academy.',
     url: '/experience',
-    images: [{ url: '/og-image.webp', width: 640, height: 640, alt: 'Dipesh Sapkota portrait' }],
+    images: [{ url: '/dipesh-sapkota.jpg', width: 627, height: 627, alt: 'Portrait of Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Experience & Education - Dipesh Sapkota',
     description: 'Experience and education of Dipesh Sapkota, Computer Engineering student at IOE Thapathali and video editor at Clamphook Academy.',
-    images: ['/og-image.webp'],
+    images: ['/dipesh-sapkota.jpg'],
   },
 };
 

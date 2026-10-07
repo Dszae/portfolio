@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const metadata = {
   title: 'Official Profile',
@@ -9,13 +10,13 @@ export const metadata = {
     title: 'About Dipesh Sapkota | Official Profile',
     description: 'Dipesh Sapkota (dszae) studies Computer Engineering at IOE Thapathali and builds software projects in Nepal.',
     url: '/about',
-    images: [{ url: '/og-image.webp', width: 640, height: 640, alt: 'Dipesh Sapkota portrait' }],
+    images: [{ url: '/dipesh-sapkota.jpg', width: 627, height: 627, alt: 'Portrait of Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'About Dipesh Sapkota | Official Profile',
     description: 'Meet Dipesh Sapkota (dszae), Computer Engineering student at IOE Thapathali in Nepal.',
-    images: ['/og-image.webp'],
+    images: ['/dipesh-sapkota.jpg'],
   },
 };
 
@@ -43,6 +44,20 @@ export default function AboutPage() {
           I am <strong>Dipesh Sapkota</strong>, known online as <strong>dszae</strong>. I study Computer Engineering at the <strong>Institute of Engineering, Thapathali Campus</strong> in Kathmandu, Nepal. This is my official website for my engineering studies, software projects, and creative work.
         </p>
       </header>
+
+      <figure className="flex flex-col items-center gap-3">
+        <Image
+          src="/dipesh-sapkota.jpg"
+          alt="Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal"
+          width={627}
+          height={627}
+          priority
+          className="h-auto w-full max-w-sm rounded-2xl"
+        />
+        <figcaption className="text-sm text-slate-600 dark:text-slate-400">
+          Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus.
+        </figcaption>
+      </figure>
 
       <section aria-labelledby="engineering-work">
         <h2 id="engineering-work" className="text-2xl font-semibold mb-3">Engineering and software projects</h2>

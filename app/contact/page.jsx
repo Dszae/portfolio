@@ -9,13 +9,13 @@ export const metadata = {
     title: 'Contact Dipesh Sapkota',
     description: 'Contact Dipesh Sapkota for freelance projects, collaborations, and technical discussions.',
     url: '/contact',
-    images: [{ url: '/og-image.webp', width: 640, height: 640, alt: 'Dipesh Sapkota portrait' }],
+    images: [{ url: '/dipesh-sapkota.jpg', width: 627, height: 627, alt: 'Portrait of Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Contact Dipesh Sapkota',
     description: 'Contact Dipesh Sapkota for freelance projects, collaborations, and technical discussions.',
-    images: ['/og-image.webp'],
+    images: ['/dipesh-sapkota.jpg'],
   },
 };
 
@@ -25,6 +25,9 @@ export default function ContactPage() {
       <h1 className="text-4xl font-bold mb-6">Contact Dipesh Sapkota</h1>
       <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-8">
         I am open for freelance web development projects, video editing collaborations, and technical discussions. Reach out via email or phone.
+      </p>
+      <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-8">
+        For image permission or licensing inquiries, contact me by email.
       </p>
 
       <div className="space-y-4 mb-10 text-slate-700 dark:text-slate-300">

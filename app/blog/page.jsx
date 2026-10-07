@@ -7,13 +7,13 @@ export const metadata = {
     title: 'Blog & Articles - Dipesh Sapkota',
     description: 'Technical write-ups and engineering articles authored by Dipesh Sapkota.',
     url: '/blog',
-    images: [{ url: '/og-image.webp', width: 640, height: 640, alt: 'Dipesh Sapkota portrait' }],
+    images: [{ url: '/dipesh-sapkota.jpg', width: 627, height: 627, alt: 'Portrait of Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Articles by Dipesh Sapkota',
     description: 'Engineering and software development articles written by Dipesh Sapkota (dszae).',
-    images: ['/og-image.webp'],
+    images: ['/dipesh-sapkota.jpg'],
   },
 };
 

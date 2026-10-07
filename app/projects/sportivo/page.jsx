@@ -7,13 +7,13 @@ export const metadata = {
     title: 'Sportivo Project by Dipesh Sapkota',
     description: 'A real-time live sports streaming platform engineered by Dipesh Sapkota.',
     url: '/projects/sportivo',
-    images: [{ url: '/og-image.webp', width: 640, height: 640, alt: 'Dipesh Sapkota portrait' }],
+    images: [{ url: '/dipesh-sapkota.jpg', width: 627, height: 627, alt: 'Portrait of Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Sportivo Project by Dipesh Sapkota',
     description: 'Explore Sportivo, a live sports platform engineered by Dipesh Sapkota (dszae).',
-    images: ['/og-image.webp'],
+    images: ['/dipesh-sapkota.jpg'],
   },
 };
 

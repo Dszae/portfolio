@@ -29,7 +29,7 @@ export const metadata = {
         sizes: '256x256',
       },
     ],
-    shortcut: '/favicon.png',
+    shortcut: '/favicon.ico',
     apple: '/favicon.png',
   },
   robots: {
@@ -55,10 +55,10 @@ export const metadata = {
     description: 'Dipesh Sapkota is a Computer Engineering student and AI/ML enthusiast at IOE Thapathali in Nepal.',
     images: [
       {
-        url: 'https://www.dipeshsapkota7.com.np/og-image.webp',
-        width: 640,
-        height: 640,
-        alt: 'Dipesh Sapkota portrait',
+        url: 'https://www.dipeshsapkota7.com.np/dipesh-sapkota.jpg',
+        width: 627,
+        height: 627,
+        alt: 'Portrait of Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal',
       },
     ],
   },
@@ -67,7 +67,7 @@ export const metadata = {
     url: 'https://www.dipeshsapkota7.com.np/',
     title: 'Dipesh Sapkota | Computer Engineering Student & AI/ML Enthusiast',
     description: 'Dipesh Sapkota is a Computer Engineering student and AI/ML enthusiast at IOE Thapathali in Nepal.',
-    images: ['https://www.dipeshsapkota7.com.np/og-image.webp'],
+    images: ['https://www.dipeshsapkota7.com.np/dipesh-sapkota.jpg'],
   },
   verification: {
     google: 'E6jJLG4IQhyyDHiocZ2ca38GtjN1bOMrQGIctSGJvZ8',
@@ -89,15 +89,16 @@ export default function RootLayout({ children }) {
       image: {
         '@type': 'ImageObject',
         '@id': 'https://www.dipeshsapkota7.com.np/#primary-image',
-        url: 'https://www.dipeshsapkota7.com.np/og-image.webp',
-        contentUrl: 'https://www.dipeshsapkota7.com.np/og-image.webp',
-        name: 'Dipesh Sapkota portrait',
+        url: 'https://www.dipeshsapkota7.com.np/dipesh-sapkota.jpg',
+        contentUrl: 'https://www.dipeshsapkota7.com.np/dipesh-sapkota.jpg',
+        name: 'Portrait of Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal',
         description: 'Official portrait of Dipesh Sapkota, Computer Engineering student, AI/ML enthusiast, video editor, and motion graphics designer.',
         caption: 'Official portrait of Dipesh Sapkota',
+        acquireLicensePage: 'https://www.dipeshsapkota7.com.np/contact',
         creator: { '@id': 'https://www.dipeshsapkota7.com.np/#person' },
         creditText: 'Dipesh Sapkota',
-        width: 640,
-        height: 640,
+        width: 627,
+        height: 627,
         representativeOfPage: true,
       },
       jobTitle: ['Computer Engineering Student', 'AI/ML Enthusiast', 'Video Editor', 'Motion Graphics Designer'],
@@ -144,13 +145,24 @@ export default function RootLayout({ children }) {
       },
       inLanguage: 'en',
     },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      '@id': 'https://www.dipeshsapkota7.com.np/#webpage',
+      url: 'https://www.dipeshsapkota7.com.np/',
+      name: 'Dipesh Sapkota | Computer Engineering Student & AI/ML Enthusiast',
+      primaryImageOfPage: {
+        '@id': 'https://www.dipeshsapkota7.com.np/#primary-image',
+      },
+      isPartOf: {
+        '@id': 'https://www.dipeshsapkota7.com.np/#website',
+      },
+    },
   ];
 
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <link rel="icon" type="image/png" sizes="256x256" href="/favicon.png" />
-        <link rel="apple-touch-icon" sizes="256x256" href="/favicon.png" />
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://api.web3forms.com" crossOrigin="anonymous" />

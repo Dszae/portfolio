@@ -1,7 +1,7 @@
 const siteUrl = 'https://www.dipeshsapkota7.com.np';
 
 const image = (path, title) => ({ path, title });
-const portrait = image('/og-image.webp', 'Dipesh Sapkota portrait');
+const portrait = image('/dipesh-sapkota.jpg', 'Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus');
 
 const pages = [
   {
@@ -48,8 +48,6 @@ const pages = [
   { path: '/projects/sportivo', images: [image('/sportivo-preview.jpg', 'Sportivo project preview')] },
   { path: '/projects/ioe-admission-guide', images: [image('/ioe-preview.jpg', 'IOE Admission Guide project preview')] },
   { path: '/projects/git-visualizer', images: [image('/git-preview.jpg', 'Git Visualizer project preview')] },
-  { path: '/blog', images: [portrait] },
-  { path: '/contact', images: [portrait] },
 ];
 
 const escapeXml = (value) => value

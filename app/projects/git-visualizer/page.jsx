@@ -7,13 +7,13 @@ export const metadata = {
     title: 'Git Visualizer by Dipesh Sapkota',
     description: 'An interactive tool for learning Git commands and version-control workflows.',
     url: '/projects/git-visualizer',
-    images: [{ url: '/og-image.webp', width: 640, height: 640, alt: 'Dipesh Sapkota portrait' }],
+    images: [{ url: '/dipesh-sapkota.jpg', width: 627, height: 627, alt: 'Portrait of Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Git Visualizer by Dipesh Sapkota',
     description: 'An interactive Git learning tool built by Dipesh Sapkota (dszae).',
-    images: ['/og-image.webp'],
+    images: ['/dipesh-sapkota.jpg'],
   },
 };
 
