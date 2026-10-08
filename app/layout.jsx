@@ -26,7 +26,12 @@ export const metadata = {
       {
         url: '/favicon.png',
         type: 'image/png',
-        sizes: '256x256',
+        sizes: '512x512',
+      },
+      {
+        url: '/favicon.ico',
+        type: 'image/x-icon',
+        sizes: 'any',
       },
     ],
     shortcut: '/favicon.ico',

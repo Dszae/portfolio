@@ -597,16 +597,15 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="order-1 md:order-2 flex justify-center items-center relative pt-10 md:pt-0 opacity-0 animate-slide-right">
+            <div className="order-1 md:order-2 flex justify-center items-center relative pt-10 md:pt-0 animate-slide-right">
               <div className={`absolute w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] lg:w-[420px] lg:h-[420px] rounded-full border border-dashed animate-[spin_20s_linear_infinite] ${isDark ? 'border-slate-800' : 'border-sky-200'}`}></div>
               <Image
                 src="/dipesh-sapkota.jpg"
                 id="primary-profile-image"
                 itemProp="image"
                 alt="Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal"
-                width="380"
-                height="380"
-                priority
+                width={380}
+                height={380}
                 fetchPriority="high"
                 className={`relative z-10 w-full max-w-[220px] sm:max-w-[280px] lg:max-w-[380px] rounded-full shadow-lg border-2 transition-transform duration-500 hover:scale-105 cursor-pointer ${isDark ? 'border-sky-500/50' : 'border-sky-300'}`}
               />
