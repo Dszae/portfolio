@@ -1,160 +1,70 @@
-import Link from 'next/link';
-import SiteHeader from '@/components/SiteHeader';
-import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
-import GalleryGrid from '@/components/GalleryGrid';
+"use client";
 
-export const metadata = {
-  title: 'Visual Archive & Photo Gallery',
-  description: 'Explore the visual archive of Dipesh Sapkota (dszae) documenting engineering student life at IOE Thapathali Campus, tech exhibitions (Yathartha), and digital media production in Nepal.',
-  alternates: { canonical: '/gallery' },
-  openGraph: {
-    type: 'website',
-    title: 'Visual Archive & Photo Gallery | Dipesh Sapkota',
-    description: 'Visual moments of campus life, robotics events, creative media, and milestone celebrations of Dipesh Sapkota.',
-    url: '/gallery',
-    images: [{ url: '/yathartha.webp', width: 1200, height: 675, alt: 'Yathartha event team visual archive' }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Visual Archive | Dipesh Sapkota',
-    description: 'Campus life, robotics events, and creative media moments of Dipesh Sapkota.',
-    images: ['/yathartha.webp'],
-  },
-};
+import React, { useState } from 'react';
+import Image from 'next/image';
+import SiteLayout from '../../components/SiteLayout';
+import FadeUp from '../../components/FadeUp';
+import BreadcrumbJsonLd from '../../components/BreadcrumbJsonLd';
 
 const GALLERY_IMAGES = [
-  {
-    id: 1,
-    title: 'Participating in College Cricket Tournament',
-    alt: 'Students posing together outdoors with cricket bats',
-    img: '/cricket.webp',
-    category: 'Campus Life',
-    description: 'Taking part in inter-batch collegiate sports and recreational tournaments alongside classmates at IOE Thapathali Campus in Kathmandu.',
-  },
-  {
-    id: 2,
-    title: 'Successfully Conducted Yathartha Tech Exhibition',
-    alt: 'Yathartha event team posing on stage with medals and posters',
-    img: '/yathartha.webp',
-    category: 'Events & Exhibitions',
-    description: 'Organizing committee celebrating on stage following the successful execution of Yathartha, the premier annual national tech exhibition featuring robotics competitions and student engineering projects.',
-  },
-  {
-    id: 3,
-    title: 'Celebrating Academic Results with the Clamphook Team',
-    alt: 'Group gathered around a dining table under Nepal-themed wall art',
-    img: '/clamphook.webp',
-    category: 'Work & Team',
-    description: 'Gathering with the instructional and production team at Clamphook Academy to celebrate outstanding entrance examination performance by students.',
-  },
-  {
-    id: 4,
-    title: 'Everyday Engineering Lectures',
-    alt: 'Student sitting at a classroom desk during a lecture',
-    img: '/lecture.webp',
-    category: 'Campus Life',
-    description: 'Classroom sessions, theoretical engineering lectures, and coursework discussions at Thapathali Campus, Institute of Engineering.',
-  },
-  {
-    id: 5,
-    title: 'Deep Focus & Creative Concept Exploration',
-    alt: 'Student wearing a headset in front of video-editing software',
-    img: '/exploring.webp',
-    category: 'Creative Media',
-    description: 'In the editing studio with headphones, color grading, cutting timelines, and experimenting with audio synchronization for video projects.',
-  },
-  {
-    id: 6,
-    title: 'Nagdhunga Surung Marga Roadside',
-    alt: 'Dipesh standing by a roadside with hills in the background',
-    img: '/nagdhunga surung marga.webp',
-    category: 'Exploration',
-    description: 'Road trip and engineering field visit around the Nagdhunga Tunnel road construction site in the hills of Kathmandu Valley, Nepal.',
-  },
+  { id: 1, title: "Participating in college cricket tournament", alt: "Students posing together outdoors with cricket bats", img: "/cricket.webp" },
+  { id: 2, title: "Successfully conducted Yathartha", alt: "Yathartha event team posing on stage with medals and posters", img: "/yathartha.webp" },
+  { id: 3, title: "Celebrating incredible results of Clamphook with the team", alt: "Group gathered around a dining table under Nepal-themed wall art", img: "/clamphook.webp" },
+  { id: 4, title: "Attending boring lectures", alt: "Student sitting at a classroom desk during a lecture", img: "/lecture.webp" },
+  { id: 5, title: "Deep in focus and exploring concepts", alt: "Student wearing a headset in front of video-editing software", img: "/exploring.webp" },
+  { id: 6, title: "Nagdhunga Surung Marga", alt: "Dipesh standing by a roadside with hills in the background", img: "/nagdhunga surung marga.webp" }
 ];
 
-const siteUrl = 'https://www.dipeshsapkota7.com.np';
-
-const galleryJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'CollectionPage',
-  name: 'Visual Archive & Photo Gallery | Dipesh Sapkota',
-  url: `${siteUrl}/gallery`,
-  description: 'Visual moments of campus life, robotics events, creative media, and milestone celebrations of Dipesh Sapkota.',
-  mainEntity: {
-    '@type': 'ItemList',
-    name: 'Visual Archive Items',
-    numberOfItems: GALLERY_IMAGES.length,
-    itemListElement: GALLERY_IMAGES.map((item, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      item: {
-        '@type': 'ImageObject',
-        name: item.title,
-        caption: item.description,
-        contentUrl: `${siteUrl}${item.img}`,
-        thumbnailUrl: `${siteUrl}${item.img}`,
-      },
-    })),
-  },
-};
-
 export default function GalleryPage() {
+  const [selectedImage, setSelectedImage] = useState(null);
+
   return (
-    <>
-      <SiteHeader />
-      <main className="max-w-6xl mx-auto px-6 py-32">
-        <BreadcrumbJsonLd
-          items={[
-            { name: 'Home', path: '/' },
-            { name: 'Gallery', path: '/gallery' },
-          ]}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(galleryJsonLd) }}
-        />
+    <SiteLayout selectedImage={selectedImage} setSelectedImage={setSelectedImage}>
+      {({ theme }) => (
+        <>
+          <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Gallery', path: '/gallery' }]} />
 
-        <header className="mb-12">
-          <span className="inline-block px-3.5 py-1 text-xs font-semibold uppercase tracking-widest text-sky-600 bg-sky-500/10 border border-sky-500/30 rounded-full mb-4">
-            Visual Archive & Memories
-          </span>
-          <h1 className="text-4xl font-bold mb-4">Photo Gallery & Visual Archive</h1>
-          <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">
-            A visual documentation of engineering studies at IOE Thapathali Campus, robotics exhibitions, creative studio workflows, and team milestones in Nepal.
-          </p>
-        </header>
-
-        <GalleryGrid images={GALLERY_IMAGES} />
-
-        <div className="mt-16 flex flex-wrap gap-4 pt-8 border-t border-slate-200 dark:border-slate-800">
-          <Link
-            href="/skills"
-            className="px-6 py-3 bg-sky-600 hover:bg-sky-500 text-white text-sm font-semibold rounded-xl transition-all shadow-sm"
-          >
-            Explore Skills
-          </Link>
-          <Link
-            href="/certificates"
-            className="px-6 py-3 border border-slate-300 dark:border-slate-700 text-sm font-semibold rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
-          >
-            View Certifications
-          </Link>
-          <Link
-            href="/projects"
-            className="px-6 py-3 border border-slate-300 dark:border-slate-700 text-sm font-semibold rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
-          >
-            Browse Projects
-          </Link>
-          <Link
-            href="/resume"
-            className="px-6 py-3 border border-slate-300 dark:border-slate-700 text-sm font-semibold rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
-          >
-            Curriculum Vitae
-          </Link>
-        </div>
-      </main>
-    </>
+          <FadeUp>
+            <section id="gallery" className={`pt-32 pb-24 px-6 sm:px-12 w-full ${theme.bg}`}>
+              <div className="max-w-7xl mx-auto w-full">
+                <h1 className="text-3xl sm:text-4xl font-bold mb-6 flex items-center gap-4">
+                  <span className="text-sky-500">/</span> Visual Archive
+                </h1>
+                <p className={`mb-12 text-base sm:text-lg ${theme.muted}`}>A curated space for current media projects, photography, and future uploads.</p>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+                  {GALLERY_IMAGES.map((item) => (
+                    <button 
+                      type="button"
+                      aria-label={`Open ${item.title}`}
+                      key={item.id} 
+                      className="group relative w-full aspect-video rounded-lg sm:rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-800 shadow-md cursor-pointer"
+                      onClick={() => setSelectedImage({ src: item.img, title: item.title, alt: item.alt, desc: 'Visual Archive' })}
+                    >
+                      <Image
+                        src={item.img}
+                        alt=""
+                        width="640"
+                        height="360"
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-between p-4 sm:p-6">
+                        <div className="self-end w-8 h-8 rounded-full bg-sky-700 text-white flex items-center justify-center shadow-md transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
+                        </div>
+                        <p className="text-white text-xs sm:text-sm md:text-base font-semibold text-center translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                          {item.title}
+                        </p>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </section>
+          </FadeUp>
+        </>
+      )}
+    </SiteLayout>
   );
 }
-

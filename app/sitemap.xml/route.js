@@ -7,6 +7,12 @@ const portrait = image('/dipesh-sapkota.jpg', 'Dipesh Sapkota, Computer Engineer
 const pages = [
   {
     path: '/',
+    images: [portrait],
+  },
+  { path: '/about', images: [portrait] },
+  { path: '/skills' },
+  {
+    path: '/resume',
     images: [
       portrait,
       image('/clamphook_.webp', 'Clamphook Academy logo'),
@@ -15,28 +21,8 @@ const pages = [
       image('/thapathali.webp', 'Thapathali Campus logo'),
       image('/janak.webp', 'Janak Model Secondary School logo'),
       image('/mahendra.webp', 'Mahendra Adarsha Secondary School logo'),
-      image('/sportivo-preview.jpg', 'Sportivo project preview'),
-      image('/ioe-preview.jpg', 'IOE Admission Guide project preview'),
-      image('/git-preview.jpg', 'Git Visualizer project preview'),
-      image('/cricket.webp', 'Participating in a college cricket tournament'),
-      image('/yathartha.webp', 'Yathartha visual archive'),
-      image('/clamphook.webp', 'Clamphook Academy design'),
-      image('/lecture.webp', 'Lecture visual archive'),
-      image('/exploring.webp', 'Exploring visual archive'),
-      image('/nagdhunga%20surung%20marga.webp', 'Nagdhunga tunnel visual archive'),
-      image('/graphic-design.webp', 'Graphic design work'),
-      image('/motion-design.webp', 'Motion design work'),
-      image('/after-effects.webp', 'Adobe After Effects'),
-      image('/davinci-resolve.webp', 'DaVinci Resolve'),
-      image('/premiere-pro.webp', 'Adobe Premiere Pro'),
-      image('/web-development.webp', 'Web development'),
-      image('/google-adwords.webp', 'Google Ads'),
-      image('/design-principles.webp', 'Design principles'),
     ],
   },
-  { path: '/about', images: [portrait] },
-  { path: '/skills' },
-  { path: '/resume', images: [portrait] },
   {
     path: '/gallery',
     images: [
@@ -61,7 +47,14 @@ const pages = [
       image('/design-principles.webp', 'Design Principles, Typography & Color Theory certificate'),
     ],
   },
-  { path: '/projects' },
+  {
+    path: '/projects',
+    images: [
+      image('/sportivo-preview.jpg', 'Sportivo project preview'),
+      image('/ioe-preview.jpg', 'IOE Admission Guide project preview'),
+      image('/git-preview.jpg', 'Git Visualizer project preview'),
+    ],
+  },
   { path: '/projects/sportivo' },
   { path: '/projects/ioe-admission-guide' },
   { path: '/projects/git-visualizer' },

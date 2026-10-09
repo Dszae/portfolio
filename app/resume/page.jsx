@@ -1,212 +1,181 @@
-import Link from 'next/link';
+"use client";
+
+import React from 'react';
 import Image from 'next/image';
-import SiteHeader from '@/components/SiteHeader';
-import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
-
-export const metadata = {
-  title: 'Resume & Curriculum Vitae',
-  description: 'Official resume of Dipesh Sapkota (dszae). Computer Engineering student at IOE Thapathali Campus and video editor with work experience at Clamphook Academy in Nepal.',
-  alternates: { canonical: '/resume' },
-  openGraph: {
-    type: 'profile',
-    title: 'Resume & Curriculum Vitae | Dipesh Sapkota',
-    description: 'Academic background, professional video editing experience, and technical projects of Dipesh Sapkota.',
-    url: '/resume',
-    images: [{ url: '/dipesh-sapkota.jpg', width: 627, height: 627, alt: 'Dipesh Sapkota resume' }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Resume | Dipesh Sapkota',
-    description: 'Academic background and professional experience of Dipesh Sapkota.',
-    images: ['/dipesh-sapkota.jpg'],
-  },
-};
-
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'ProfilePage',
-  name: 'Resume & Curriculum Vitae | Dipesh Sapkota',
-  url: 'https://www.dipeshsapkota7.com.np/resume',
-  description: 'Official resume of Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus.',
-  mainEntity: {
-    '@type': 'Person',
-    name: 'Dipesh Sapkota',
-    jobTitle: ['Computer Engineering Student', 'Video Editor', 'Graphic Designer'],
-    affiliation: {
-      '@type': 'CollegeOrUniversity',
-      name: 'Institute of Engineering (IOE), Thapathali Campus',
-    },
-    alumniOf: [
-      { '@type': 'EducationalOrganization', name: 'Shree Janak Model Secondary School' },
-      { '@type': 'EducationalOrganization', name: 'Shree Mahendra Adarsha Secondary School' },
-    ],
-  },
-};
+import SiteLayout from '../../components/SiteLayout';
+import FadeUp from '../../components/FadeUp';
+import BreadcrumbJsonLd from '../../components/BreadcrumbJsonLd';
 
 const EXPERIENCE = [
-  {
-    period: '2026 - Present',
-    role: 'Video Editor & Graphics Designer',
-    company: 'Clamphook Academy',
-    location: 'Kathmandu, Nepal',
-    desc: 'Leading digital media post-production, creating high-impact promotional video campaigns, motion design overlays, and visual assets for secondary-level and engineering entrance examination crash courses.',
-    logo: '/clamphook_.webp',
+  { 
+    year: "2026 - Present", 
+    role: "Video Editor & Graphics Designer", 
+    company: "Clamphook Academy", 
+    desc: "Producing and editing promotional videos and designing graphic materials for secondary-level and entrance examination crash courses.",
+    logo: "/clamphook_.webp" 
   },
-  {
-    period: '2026 - Present',
-    role: 'Video Editor',
-    company: 'College Programs & Events',
-    location: 'Kathmandu, Nepal',
-    desc: 'Managing post-production, multi-camera audio syncing, and visual layout execution for university events, robotics exhibitions, and student council activities.',
-    logo: '/campus.webp',
+  { 
+    year: "2026 - Present", 
+    role: "Video Editor", 
+    company: "College Programs", 
+    desc: "Managing post-production and digital layout execution for university events and academic programs.",
+    logo: "/campus.webp" 
   },
-  {
-    period: '2023 - Present',
-    role: 'Independent Freelancer',
-    company: 'Digital Content Creation',
-    location: 'Remote / Nepal',
-    desc: 'Delivering tailored digital media, graphic layouts, motion assets, and commercial video edits for educational content creators and local business clients.',
-    logo: '/freelance.webp',
-  },
+  { 
+    year: "2023 - Present", 
+    role: "Freelancer", 
+    company: "Independent", 
+    desc: "Delivering custom digital content, graphic layouts, and promotional assets for various clients.",
+    logo: "/freelance.webp" 
+  }
 ];
 
 const EDUCATION = [
   {
-    period: '2025 - Present',
-    degree: 'Bachelor in Computer Engineering',
-    institution: 'Institute of Engineering (IOE), Thapathali Campus',
-    location: 'Kathmandu, Nepal',
-    desc: 'Undergraduate engineering coursework focusing on algorithms, object-oriented programming in C++, electric circuits, instrumentation, and computer architecture.',
-    logo: '/thapathali.webp',
+    year: "2025 - Present",
+    degree: "Bachelor in Computer Engineering",
+    school: "Institute of Engineering (IOE), Thapathali Campus",
+    desc: "Currently pursuing my engineering degree.",
+    logo: "/thapathali.webp"
   },
-  {
-    period: '2022 - 2024',
-    degree: 'School Leaving Certificate (SLC) - Science Stream',
-    institution: 'Shree Janak Model Secondary School',
-    location: 'Nepal',
-    desc: 'Major in Physics, Chemistry, and Higher Mathematics. Graduated with GPA 3.88 / 4.00.',
-    logo: '/janak.webp',
+  { 
+    year: "2022 - 2024", 
+    degree: "School Leaving Certificate (SLC)", 
+    school: "Shree Janak Model Secondary School", 
+    desc: "GPA: 3.88 / 4.00",
+    logo: "/janak.webp"
   },
-  {
-    period: '2022',
-    degree: 'Secondary Education Examination (SEE)',
-    institution: 'Shree Mahendra Adarsha Secondary School',
-    location: 'Nepal',
-    desc: 'Completed secondary education with distinction. Graduated with GPA 3.88 / 4.00.',
-    logo: '/mahendra.webp',
-  },
+  { 
+    year: "2022", 
+    degree: "Secondary Education Examination (SEE)", 
+    school: "Shree Mahendra Adarsha Secondary School", 
+    desc: "GPA: 3.88 / 4.00",
+    logo: "/mahendra.webp"
+  }
 ];
 
 export default function ResumePage() {
   return (
-    <>
-      <SiteHeader />
-      <main className="max-w-4xl mx-auto px-6 py-32">
-      <BreadcrumbJsonLd
-        items={[
-          { name: 'Home', path: '/' },
-          { name: 'Resume', path: '/resume' },
-        ]}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+    <SiteLayout>
+      {({ theme }) => (
+        <>
+          <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Resume', path: '/resume' }]} />
 
-      <header className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-slate-200 dark:border-slate-800">
-        <div>
-          <span className="inline-block px-3.5 py-1 text-xs font-semibold uppercase tracking-widest text-sky-600 bg-sky-500/10 border border-sky-500/30 rounded-full mb-4">
-            Curriculum Vitae
-          </span>
-          <h1 className="text-4xl font-bold mb-3">Dipesh Sapkota</h1>
-          <p className="text-lg text-slate-600 dark:text-slate-300">
-            Computer Engineering Student &bull; Video Editor &bull; AI/ML Enthusiast
-          </p>
-        </div>
-        <div className="flex flex-wrap gap-3">
-          <a
-            href="/my_cv.pdf"
-            download="Dipesh_Sapkota_CV.pdf"
-            className="px-6 py-3 bg-sky-600 hover:bg-sky-500 text-white text-sm font-semibold rounded-xl transition-all shadow-sm flex items-center gap-2"
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-            Download PDF CV
-          </a>
-          <a
-            href="/my_cv.pdf"
-            target="_blank"
-            rel="noreferrer"
-            className="px-6 py-3 border border-slate-300 dark:border-slate-700 text-sm font-semibold rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all flex items-center gap-2"
-          >
-            View in Browser
-          </a>
-        </div>
-      </header>
-
-      <section className="mb-14">
-        <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-          <span className="w-2.5 h-6 bg-sky-500 rounded-full inline-block"></span>
-          Professional Experience
-        </h2>
-        <div className="space-y-6">
-          {EXPERIENCE.map((item) => (
-            <article key={item.period + item.company} className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 p-6 backdrop-blur">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden flex-shrink-0">
-                  <Image src={item.logo} alt={item.company} width={40} height={40} className="object-contain" />
+          <FadeUp>
+            <section id="resume" className={`pt-32 pb-24 px-6 sm:px-12 w-full ${theme.bg}`}>
+              <div className="max-w-7xl mx-auto w-full">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-16">
+                  <h1 className="text-3xl sm:text-4xl font-bold flex items-center gap-4">
+                    <span className="text-sky-500">/</span> My Journey
+                  </h1>
+                  <a
+                    href="/my_cv.pdf"
+                    download="Dipesh_Sapkota_CV.pdf"
+                    className="self-start sm:self-auto px-6 py-3 bg-sky-700 text-white font-semibold rounded-xl hover:bg-sky-800 transition-all hover:-translate-y-1 flex items-center gap-2 shadow-sm font-sans"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    Download CV
+                  </a>
                 </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex flex-wrap items-center justify-between gap-2 mb-1">
-                    <h3 className="text-lg font-bold">{item.role}</h3>
-                    <span className="text-xs font-mono font-medium text-sky-600 dark:text-sky-400 bg-sky-500/10 px-2.5 py-1 rounded-full">{item.period}</span>
+
+                <div className="grid lg:grid-cols-2 gap-16">
+
+                  <div>
+                    <h2 className="text-xl sm:text-2xl font-semibold mb-10 flex items-center gap-3">
+                      <svg className="w-5 h-5 sm:w-6 sm:h-6 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                      Experience
+                    </h2>
+                    <div className="space-y-8 relative border-l-2 border-sky-500/20 pl-6 ml-3">
+                      {EXPERIENCE.map((exp, index) => (
+                        <div 
+                          key={index} 
+                          className="relative pb-4 transition-transform duration-300 hover:translate-x-3 group cursor-default"
+                        >
+                          <div className="absolute -left-[35px] top-4 w-3.5 h-3.5 bg-sky-500 rounded-full border-4 border-slate-900"></div>
+                          
+                          <div className={`p-6 rounded-2xl transition-all duration-300 group-hover:shadow-md ${theme.card}`}>
+                            <div className="flex items-center gap-4">
+                              {exp.logo && (
+                                <div className="flex-shrink-0 flex items-center justify-center">
+                                  <Image
+                                    src={exp.logo} 
+                                    alt={exp.company} 
+                                    width="48"
+                                    height="48"
+                                    loading="lazy"
+                                    decoding="async"
+                                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover bg-white border border-slate-200 dark:border-slate-800" 
+                                    onError={(e) => { e.target.style.display = 'none'; }}
+                                  />
+                                </div>
+                              )}
+                              <div className="flex-1">
+                                <span className={`inline-block px-3 py-1 text-[11px] sm:text-xs font-semibold rounded-md mb-2 ${theme.tag}`}>
+                                  {exp.year}
+                                </span>
+                                <h3 className="text-lg sm:text-xl font-semibold mb-1">{exp.role}</h3>
+                                <p className="font-mono text-xs sm:text-sm mb-2 font-light text-blue-900 dark:text-blue-400">{exp.company}</p>
+                                <p className={`text-sm leading-relaxed ${theme.muted}`}>{exp.desc}</p>
+                              </div>
+                            </div>
+                            <div className="absolute bottom-0 left-6 w-0 h-1 bg-sky-500 transition-all duration-300 group-hover:w-[calc(100%-3rem)] rounded-b-2xl"></div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-3">{item.company} &bull; {item.location}</p>
-                  <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">{item.desc}</p>
+
+                  <div>
+                    <h2 className="text-xl sm:text-2xl font-semibold mb-10 flex items-center gap-3">
+                      <svg className="w-5 h-5 sm:w-6 sm:h-6 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z" /><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" /></svg>
+                      Education
+                    </h2>
+                    <div className="space-y-8 relative border-l-2 border-sky-500/20 pl-6 ml-3">
+                      {EDUCATION.map((edu, index) => (
+                        <div 
+                          key={index} 
+                          className="relative pb-4 transition-transform duration-300 hover:translate-x-3 group cursor-default"
+                        >
+                          <div className="absolute -left-[35px] top-4 w-3.5 h-3.5 bg-sky-500 rounded-full border-4 border-slate-900"></div>
+                          
+                          <div className={`p-6 rounded-2xl transition-all duration-300 group-hover:shadow-md ${theme.card}`}>
+                            <div className="flex items-center gap-4">
+                              {edu.logo && (
+                                <div className="flex-shrink-0 flex items-center justify-center">
+                                  <Image
+                                    src={edu.logo} 
+                                    alt={edu.school} 
+                                    width="48"
+                                    height="48"
+                                    loading="lazy"
+                                    decoding="async"
+                                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover bg-white border border-slate-200 dark:border-slate-800" 
+                                    onError={(e) => { e.target.style.display = 'none'; }}
+                                  />
+                                </div>
+                              )}
+                              <div className="flex-1">
+                                <span className={`inline-block px-3 py-1 text-[11px] sm:text-xs font-semibold rounded-md mb-2 ${theme.tag}`}>
+                                  {edu.year}
+                                </span>
+                                <h3 className="text-base sm:text-lg font-semibold leading-tight mb-1">{edu.degree}</h3>
+                                <p className="font-mono text-xs sm:text-sm mb-2 font-light text-blue-900 dark:text-blue-400">{edu.school}</p>
+                                <p className={`text-sm leading-relaxed ${theme.muted}`}>{edu.desc}</p>
+                              </div>
+                            </div>
+                            <div className="absolute bottom-0 left-6 w-0 h-1 bg-sky-500 transition-all duration-300 group-hover:w-[calc(100%-3rem)] rounded-b-2xl"></div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
                 </div>
               </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="mb-14">
-        <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-          <span className="w-2.5 h-6 bg-sky-500 rounded-full inline-block"></span>
-          Education & Academic Background
-        </h2>
-        <div className="space-y-6">
-          {EDUCATION.map((item) => (
-            <article key={item.degree} className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 p-6 backdrop-blur">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden flex-shrink-0">
-                  <Image src={item.logo} alt={item.institution} width={40} height={40} className="object-contain" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex flex-wrap items-center justify-between gap-2 mb-1">
-                    <h3 className="text-lg font-bold">{item.degree}</h3>
-                    <span className="text-xs font-mono font-medium text-sky-600 dark:text-sky-400 bg-sky-500/10 px-2.5 py-1 rounded-full">{item.period}</span>
-                  </div>
-                  <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-3">{item.institution} &bull; {item.location}</p>
-                  <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">{item.desc}</p>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <div className="flex flex-wrap gap-4 pt-8 border-t border-slate-200 dark:border-slate-800">
-        <Link href="/skills" className="px-6 py-3 bg-sky-600 hover:bg-sky-500 text-white text-sm font-semibold rounded-xl transition-all shadow-sm">
-          Technical Skills
-        </Link>
-        <Link href="/projects" className="px-6 py-3 border border-slate-300 dark:border-slate-700 text-sm font-semibold rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
-          Featured Projects
-        </Link>
-        <Link href="/contact" className="px-6 py-3 border border-slate-300 dark:border-slate-700 text-sm font-semibold rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
-          Contact for Hire
-        </Link>
-      </div>
-    </main>
-    </>
+            </section>
+          </FadeUp>
+        </>
+      )}
+    </SiteLayout>
   );
 }
