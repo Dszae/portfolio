@@ -1,5 +1,5 @@
 import React from 'react';
-import AnalyticsPrivacyControls from '@/components/AnalyticsPrivacyControls';
+
 import JsonLdSchema from '@/components/JsonLdSchema';
 import WebMCPInitializer from '@/components/WebMCPInitializer';
 import './globals.css';
@@ -90,7 +90,7 @@ export default function RootLayout({ children }) {
         <JsonLdSchema />
         <WebMCPInitializer />
         {children}
-        <AnalyticsPrivacyControls />
+
       </body>
     </html>
   );
