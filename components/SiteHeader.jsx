@@ -26,10 +26,8 @@ export default function SiteHeader() {
       const isDark = stored !== null ? stored === 'dark' : prefersDark;
       if (isDark) {
         document.documentElement.classList.add('dark');
-        document.documentElement.style.backgroundColor = '#0B0F0E';
       } else {
         document.documentElement.classList.remove('dark');
-        document.documentElement.style.backgroundColor = '#F8FAFC';
       }
     } catch {
       // Fallback
@@ -40,7 +38,6 @@ export default function SiteHeader() {
     const isDark = document.documentElement.classList.toggle('dark');
     try {
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      document.documentElement.style.backgroundColor = isDark ? '#0B0F0E' : '#F8FAFC';
     } catch {
       // Fallback
     }

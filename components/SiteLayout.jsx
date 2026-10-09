@@ -64,6 +64,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
 
   useEffect(() => {
     try {
+      document.documentElement.style.removeProperty('background-color');
       const stored = localStorage.getItem('theme');
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       const isDarkActive = stored !== null ? stored === 'dark' : prefersDark;
@@ -83,6 +84,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
     const nextDark = !isDark;
     setIsDark(nextDark);
     try {
+      document.documentElement.style.removeProperty('background-color');
       if (nextDark) {
         document.documentElement.classList.add('dark');
         localStorage.setItem('theme', 'dark');
