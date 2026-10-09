@@ -673,6 +673,14 @@ button:hover .smooth-img-zoom {
   .site-mobile-nav {
     display: none;
   }
+
+  .hero-copy {
+    order: 1;
+  }
+
+  .hero-portrait-wrap {
+    order: 2;
+  }
 }
 
 @media (max-width: 899px) {
@@ -691,7 +699,7 @@ button:hover .smooth-img-zoom {
   }
 
   .hero-portrait-wrap {
-    order: 0;
+    order: -1;
     width: min(100% - 16px, 360px);
     margin-inline: auto;
     justify-self: center;
@@ -725,7 +733,7 @@ button:hover .smooth-img-zoom {
   }
 
   .hero-portrait-wrap {
-    order: 0;
+    order: -1;
     width: min(100% - 16px, 320px);
     margin-inline: auto;
     justify-self: center;

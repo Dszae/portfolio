@@ -62,26 +62,7 @@ export default function Home() {
           {/* ===================== HERO SECTION ===================== */}
           <section id="home" className="home-hero">
             <div className="home-hero-inner">
-              {/* Image at Top in markup & on mobile */}
-              <figure className="hero-portrait-wrap">
-                <div className="hero-portrait-accent" aria-hidden="true" />
-                <div className="hero-portrait-frame">
-                  <Image
-                    src="/dipesh-sapkota.jpg"
-                    id="primary-profile-image"
-                    itemProp="image"
-                    alt="Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal"
-                    fill
-                    sizes="(max-width: 680px) 88vw, (max-width: 899px) 38vw, 440px"
-                    loading="eager"
-                    priority
-                    fetchPriority="high"
-                    className="hero-portrait-image"
-                  />
-                </div>
-              </figure>
-
-              {/* Content below image on mobile */}
+              {/* Desktop Left / Mobile Below Image */}
               <div className="hero-copy">
                 <p className="hero-eyebrow">COMPUTER ENGINEERING &middot; CREATIVE MEDIA</p>
                 <h1 className="hero-title">
@@ -125,6 +106,25 @@ export default function Home() {
                   </a>
                 </nav>
               </div>
+
+              {/* Desktop Right / Mobile Top */}
+              <figure className="hero-portrait-wrap">
+                <div className="hero-portrait-accent" aria-hidden="true" />
+                <div className="hero-portrait-frame">
+                  <Image
+                    src="/dipesh-sapkota.jpg"
+                    id="primary-profile-image"
+                    itemProp="image"
+                    alt="Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal"
+                    fill
+                    sizes="(max-width: 680px) 88vw, (max-width: 899px) 38vw, 440px"
+                    loading="eager"
+                    priority
+                    fetchPriority="high"
+                    className="hero-portrait-image"
+                  />
+                </div>
+              </figure>
             </div>
           </section>
 
