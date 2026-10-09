@@ -98,12 +98,12 @@ const PROJECTS = [
 ];
 
 const GALLERY_IMAGES = [
-  { id: 1, title: "Participating in college cricket tournament", img: "/cricket.webp" },
-  { id: 2, title: "Successfully conducted Yathartha", img: "/yathartha.webp" },
-  { id: 3, title: "Celebrating incredible results of Clamphook with the team", img: "/clamphook.webp" },
-  { id: 4, title: "Attending boring lectures", img: "/lecture.webp" },
-  { id: 5, title: "Deep in focus and exploring concepts", img: "/exploring.webp" },
-  { id: 6, title: "Nagdhunga Surung Marga", img: "/nagdhunga surung marga.webp" }
+  { id: 1, title: "Participating in college cricket tournament", alt: "Students posing together outdoors with cricket bats", img: "/cricket.webp" },
+  { id: 2, title: "Successfully conducted Yathartha", alt: "Yathartha event team posing on stage with medals and posters", img: "/yathartha.webp" },
+  { id: 3, title: "Celebrating incredible results of Clamphook with the team", alt: "Group gathered around a dining table under Nepal-themed wall art", img: "/clamphook.webp" },
+  { id: 4, title: "Attending boring lectures", alt: "Student sitting at a classroom desk during a lecture", img: "/lecture.webp" },
+  { id: 5, title: "Deep in focus and exploring concepts", alt: "Student wearing a headset in front of video-editing software", img: "/exploring.webp" },
+  { id: 6, title: "Nagdhunga Surung Marga", alt: "Dipesh standing by a roadside with hills in the background", img: "/nagdhunga surung marga.webp" }
 ];
 
 const CERTIFICATES = [
@@ -495,6 +495,7 @@ export default function Home() {
               <a 
                 key={link.id} 
                 href={`#${link.id}`} 
+                aria-label={link.id === 'about' ? 'About section' : undefined}
                 className={`${activeSection === link.id ? 'text-sky-500 font-bold' : 'opacity-80 hover:opacity-100'} hover:text-sky-500 transition-colors`}
               >
                 {link.label}
@@ -544,6 +545,7 @@ export default function Home() {
               <a 
                 key={link.id} 
                 href={`#${link.id}`} 
+                aria-label={link.id === 'about' ? 'About section' : undefined}
                 onClick={() => setIsMenuOpen(false)} 
                 className={`${activeSection === link.id ? 'text-sky-500 font-bold' : ''} hover:text-sky-500 transition-colors`}
               >
@@ -1053,11 +1055,11 @@ export default function Home() {
                     aria-label={`Open ${item.title}`}
                     key={item.id} 
                     className="group relative w-full aspect-video rounded-lg sm:rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-800 shadow-md cursor-pointer"
-                    onClick={() => setSelectedImage({ src: item.img, title: item.title, desc: 'Visual Archive' })}
+                    onClick={() => setSelectedImage({ src: item.img, title: item.title, alt: item.alt, desc: 'Visual Archive' })}
                   >
                     <Image
                       src={item.img}
-                      alt={item.title}
+                      alt=""
                       width="640"
                       height="360"
                       loading="lazy"
@@ -1234,7 +1236,7 @@ export default function Home() {
             </a>
           </div>
           <nav aria-label="Footer navigation" className="flex flex-wrap justify-center gap-x-5 gap-y-2 mb-6">
-            <a href="/about" className="hover:text-sky-500 transition-colors">About</a>
+            <a href="/about" aria-label="About Dipesh Sapkota profile page" className="hover:text-sky-500 transition-colors">About</a>
             <a href="/experience" className="hover:text-sky-500 transition-colors">Experience</a>
             <a href="/blog" className="hover:text-sky-500 transition-colors">Articles</a>
             <a href="/contact" className="hover:text-sky-500 transition-colors">Contact</a>
@@ -1258,7 +1260,7 @@ export default function Home() {
           <div className="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center justify-center">
             <Image 
               src={selectedImage.src} 
-              alt={selectedImage.title} 
+              alt={selectedImage.alt}
               width={1200}
               height={800}
               loading="eager"
