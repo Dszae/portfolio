@@ -1160,9 +1160,6 @@ export default function Home() {
                   </div>
 
                   <form className="space-y-4 sm:space-y-6" onSubmit={handleContactSubmit} aria-busy={isSubmitting}>
-                    <p className={`text-sm leading-relaxed ${theme.muted}`}>
-                      Your name, email, and message are sent through Web3Forms to deliver your message.
-                    </p>
                     <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} aria-hidden="true" />
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                       <label className="sr-only" htmlFor="contact-name">Your Name</label>
