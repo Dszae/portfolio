@@ -3,8 +3,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 import SiteLayout from '../../components/SiteLayout';
-import FadeUp from '../../components/FadeUp';
 import BreadcrumbJsonLd from '../../components/BreadcrumbJsonLd';
 
 const ALL_PROJECTS = [
@@ -16,6 +16,7 @@ const ALL_PROJECTS = [
     type: "Featured Web App",
     description: "A high-performance live sports streaming platform featuring real-time match schedule scraping, multi-server stream switching, and direct shareable match links.",
     featured: true,
+    isComplex: true,
     image: "/sportivo-preview.jpg",
     tech: ["Next.js", "React", "Node.js", "REST APIs"],
     liveUrl: "https://sportivo.dipeshsapkota7.com.np/",
@@ -41,6 +42,7 @@ const ALL_PROJECTS = [
     type: "Interactive Tool",
     description: "An interactive educational tool designed to demystify Git version control operations through live data-flow rendering and dynamic canvas mapping of branching, commits, and merges.",
     featured: true,
+    isComplex: false,
     image: "/git-preview.jpg",
     tech: ["HTML5 Canvas", "JavaScript", "Git DAG", "CSS3"],
     liveUrl: "https://git-visualizer.dipeshsapkota7.com.np/",
@@ -66,6 +68,7 @@ const ALL_PROJECTS = [
     type: "Web Application",
     description: "A comprehensive admission ecosystem for Tribhuvan University engineering applicants, offering statistical rank prediction, procedural counseling checklists, and automated priority form generation.",
     featured: true,
+    isComplex: false,
     image: "/ioe-preview.jpg",
     tech: ["React", "JavaScript", "Data Analytics", "Tailwind CSS"],
     liveUrl: "https://ioe-admission.dipeshsapkota7.com.np/",
@@ -90,6 +93,7 @@ const ALL_PROJECTS = [
     type: "Motion Graphics & Video Editing",
     description: "High-impact dynamic sports video editing showcasing football and cricket highlights. Features audio-visual rhythm synchronization, speed ramps, and custom color grading.",
     featured: false,
+    isComplex: true,
     image: "/cricket.webp",
     tech: ["Premiere Pro", "After Effects", "DaVinci Resolve", "Sound Design"],
     modalDetails: {
@@ -111,6 +115,7 @@ const ALL_PROJECTS = [
     type: "Hardware Prototype",
     description: "Physical breadboard circuit built and simulated using an NE555 timer IC, calculating RC time constants for frequency control and stable square-wave oscillation cycles.",
     featured: false,
+    isComplex: false,
     tech: ["NE555 Timer IC", "Proteus Suite", "Breadboard", "Analog Oscilloscopy"],
     modalDetails: {
       overview: "A hardware relaxation oscillator prototype engineered around the NE555 timer IC in astable multivibrator configuration, generating continuous square-wave pulses for dual complementary LEDs.",
@@ -131,6 +136,7 @@ const ALL_PROJECTS = [
     type: "Engineering Analysis",
     description: "Torque derivations and equivalent circuit analysis of three-phase induction and DC motors, solving complex phasor networks and performance characteristics.",
     featured: false,
+    isComplex: false,
     tech: ["Phasor Calculus", "Motor Analysis", "MATLAB", "Equivalent Circuits"],
     modalDetails: {
       overview: "Mathematical analysis and steady-state simulation of 3-phase squirrel cage induction machines and separately excited DC motors conducted as part of electrical engineering coursework at IOE Thapathali Campus.",
@@ -151,6 +157,7 @@ const ALL_PROJECTS = [
     type: "Instrumentation Engineering",
     description: "Troubleshooting procedures for vacuum pressure systems, syringe probe calibrations, and electromechanical component layouts on medical immunoassay instruments.",
     featured: false,
+    isComplex: false,
     tech: ["Biomedical Tech", "Fluidics", "Calibration Systems", "Instrumentation"],
     modalDetails: {
       overview: "Diagnostic methodology development and electromechanical troubleshooting protocols for automated clinical immunoassay and biochemical laboratory instruments.",
@@ -165,218 +172,393 @@ const ALL_PROJECTS = [
   }
 ];
 
-/* Refined Technical Illustration for 555-Timer Hardware */
-function CircuitVisual() {
+/* -------------------------------------------------------------
+ * 1. Antigravity Physics Canvas Background
+ * ------------------------------------------------------------- */
+function AntigravityCanvas() {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let animId;
+    let width = 0;
+    let height = 0;
+    const dpr = window.devicePixelRatio || 1;
+
+    // Check prefers-reduced-motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const parent = canvas.parentElement;
+    const mouse = { x: -9999, y: -9999, radius: 130 };
+
+    const handleResize = () => {
+      if (!parent) return;
+      width = parent.offsetWidth;
+      height = parent.offsetHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.scale(dpr, dpr);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    const handleMouseMove = (e) => {
+      if (!parent) return;
+      const rect = parent.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    };
+
+    const handleMouseLeave = () => {
+      mouse.x = -9999;
+      mouse.y = -9999;
+    };
+
+    parent.addEventListener('mousemove', handleMouseMove);
+    parent.addEventListener('mouseleave', handleMouseLeave);
+
+    // Particle nodes definition
+    const particleCount = Math.min(Math.floor((width * height) / 12000), 55);
+    const particles = [];
+    const shapes = ['circle', 'diamond', 'cross'];
+    const colors = [
+      'rgba(52, 211, 153, ', // Mint green
+      'rgba(16, 185, 129, ', // Emerald
+      'rgba(148, 163, 184, ', // Slate
+      'rgba(45, 212, 191, '  // Teal
+    ];
+
+    for (let i = 0; i < particleCount; i++) {
+      const baseVy = -0.4 - Math.random() * 0.7; // Constant negative gravity vector
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.6,
+        vy: baseVy,
+        baseVy,
+        maxVy: -2.8,
+        size: 1.5 + Math.random() * 2,
+        shape: shapes[Math.floor(Math.random() * shapes.length)],
+        colorBase: colors[Math.floor(Math.random() * colors.length)],
+        alpha: 0.25 + Math.random() * 0.45
+      });
+    }
+
+    const render = () => {
+      ctx.clearRect(0, 0, width, height);
+
+      // Draw faint connections between nearby nodes
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.hypot(dx, dy);
+          if (dist < 65) {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(52, 211, 153, ${(1 - dist / 65) * 0.12})`;
+            ctx.lineWidth = 0.75;
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Update and render each particle
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+
+        if (!prefersReducedMotion) {
+          // Negative gravity acceleration (upwards)
+          p.vy -= 0.012;
+          if (p.vy < p.maxVy) p.vy = p.maxVy;
+
+          // Cursor dynamic scattering
+          const dx = p.x - mouse.x;
+          const dy = p.y - mouse.y;
+          const dist = Math.hypot(dx, dy);
+
+          if (dist < mouse.radius && dist > 0) {
+            const force = (1 - dist / mouse.radius) * 4.8;
+            const nx = dx / dist;
+            const ny = dy / dist;
+            p.vx += nx * force;
+            p.vy += ny * force;
+          }
+
+          // Damping & returning seamlessly to upward drift
+          p.vx *= 0.94;
+          p.vy = p.vy * 0.94 + p.baseVy * 0.06;
+
+          // Move
+          p.x += p.vx;
+          p.y += p.vy;
+
+          // Boundary collision & wrapping logic
+          if (p.x < 0) {
+            p.x = 0;
+            p.vx = -p.vx * 0.8;
+          } else if (p.x > width) {
+            p.x = width;
+            p.vx = -p.vx * 0.8;
+          }
+
+          if (p.y < -15) {
+            // Re-spawn at the bottom
+            p.y = height + 10;
+            p.x = Math.random() * width;
+            p.vx = (Math.random() - 0.5) * 0.5;
+            p.vy = p.baseVy;
+          } else if (p.y > height + 25) {
+            p.vy = p.baseVy;
+          }
+        }
+
+        // Draw node
+        ctx.save();
+        ctx.fillStyle = `${p.colorBase}${p.alpha})`;
+        ctx.strokeStyle = `${p.colorBase}${p.alpha})`;
+
+        if (p.shape === 'circle') {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fill();
+        } else if (p.shape === 'diamond') {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y - p.size);
+          ctx.lineTo(p.x + p.size, p.y);
+          ctx.lineTo(p.x, p.y + p.size);
+          ctx.lineTo(p.x - p.size, p.y);
+          ctx.closePath();
+          ctx.fill();
+        } else if (p.shape === 'cross') {
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(p.x - p.size, p.y);
+          ctx.lineTo(p.x + p.size, p.y);
+          ctx.moveTo(p.x, p.y - p.size);
+          ctx.lineTo(p.x, p.y + p.size);
+          ctx.stroke();
+        }
+        ctx.restore();
+      }
+
+      animId = requestAnimationFrame(render);
+    };
+
+    animId = requestAnimationFrame(render);
+
+    return () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener('resize', handleResize);
+      if (parent) {
+        parent.removeEventListener('mousemove', handleMouseMove);
+        parent.removeEventListener('mouseleave', handleMouseLeave);
+      }
+    };
+  }, []);
+
   return (
-    <div className="w-full h-full bg-[#08130E] relative overflow-hidden flex flex-col justify-between p-5 font-mono select-none">
-      <div 
-        className="absolute inset-0 opacity-[0.12]"
-        style={{
-          backgroundImage: 'radial-gradient(#10B981 1px, transparent 1px)',
-          backgroundSize: '14px 14px'
-        }}
-      />
-      <div className="relative z-10 flex items-center justify-between text-[11px] text-[#34D399] tracking-wider border-b border-[#10B981]/20 pb-2">
-        <span className="flex items-center gap-2 font-bold">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#10B981] opacity-75 motion-reduce:hidden" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#10B981]" />
-          </span>
-          NE555 OSCILLATOR
-        </span>
-        <span className="text-[10px] text-[#6EE7B7]/80 bg-[#062419] px-2 py-0.5 rounded border border-[#10B981]/30">
-          ASTABLE CIRCUIT
-        </span>
-      </div>
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 w-full h-full pointer-events-none select-none z-0"
+      aria-hidden="true"
+    />
+  );
+}
 
-      <div className="relative z-10 my-auto flex items-center justify-between gap-4 py-2">
-        <div className="border border-[#10B981]/40 bg-[#0A261B]/90 rounded-lg p-2.5 shadow-md min-w-[115px]">
-          <div className="text-[10px] text-[#6EE7B7] font-bold text-center border-b border-[#10B981]/30 pb-1 mb-1.5 flex items-center justify-between">
-            <span>NE555P</span>
-            <span className="text-[8.5px] text-[#34D399]/70">DIP-8</span>
-          </div>
-          <div className="grid grid-cols-2 gap-x-2 gap-y-0.5 text-[8.5px] text-[#A7F3D0]">
-            <div>1: GND</div>
-            <div className="text-right">8: VCC</div>
-            <div>2: TRIG</div>
-            <div className="text-right">7: DISCH</div>
-            <div>3: OUT</div>
-            <div className="text-right">6: THRES</div>
-            <div>4: RST</div>
-            <div className="text-right">5: CTRL</div>
-          </div>
-        </div>
+/* -------------------------------------------------------------
+ * 4. Animated Project Counter (Rapid 00 -> 07 animation)
+ * ------------------------------------------------------------- */
+function AnimatedProjectCounter({ total = 7 }) {
+  const [count, setCount] = useState(0);
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: true, amount: 0.6 });
 
-        <div className="flex-1 flex flex-col justify-center">
-          <div className="flex items-center justify-between text-[9px] text-[#A7F3D0]/80 mb-1 px-1">
-            <span>PULSE TRAIN</span>
-            <span className="text-[#34D399] font-bold">f ≈ 1.5 Hz</span>
-          </div>
-          <div className="bg-[#051A13]/80 rounded border border-[#10B981]/30 p-1.5 overflow-hidden">
-            <svg className="w-full h-8 stroke-[#34D399] fill-none" viewBox="0 0 160 32">
-              <line x1="0" y1="16" x2="160" y2="16" stroke="#0D3525" strokeWidth="0.75" strokeDasharray="3,3" />
-              <path
-                d="M 0 25 L 18 25 L 18 7 L 48 7 L 48 25 L 68 25 L 68 7 L 98 7 L 98 25 L 118 25 L 118 7 L 148 7 L 148 25 L 160 25"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-          <div className="text-[8.5px] text-[#6EE7B7]/90 text-center mt-1 font-mono">
-            f = 1.44 / [(R₁ + 2R₂) · C₁]
-          </div>
-        </div>
-      </div>
+  useEffect(() => {
+    if (!isInView) return;
 
-      <div className="relative z-10 flex items-center justify-between text-[9.5px] text-[#A7F3D0]/80 border-t border-[#10B981]/20 pt-1.5">
-        <span className="flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-          VCC: 9.0V DC
-        </span>
-        <span>DUTY: 60%</span>
-        <span className="text-[#34D399]">ACTIVE</span>
-      </div>
+    const duration = 850;
+    const startTime = performance.now();
+
+    const animateCount = (now) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // easeOutExpo
+      const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const current = Math.round(ease * total);
+      setCount(current);
+
+      if (progress < 1) {
+        requestAnimationFrame(animateCount);
+      } else {
+        setCount(total);
+      }
+    };
+
+    const frame = requestAnimationFrame(animateCount);
+    return () => cancelAnimationFrame(frame);
+  }, [isInView, total]);
+
+  const formatted = String(count).padStart(2, '0');
+
+  return (
+    <div
+      ref={containerRef}
+      className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-950/40 text-emerald-400 font-mono text-xs font-semibold tracking-widest uppercase select-none shadow-sm backdrop-blur-sm"
+    >
+      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse motion-reduce:animate-none" />
+      <span>{formatted} Total Projects</span>
     </div>
   );
 }
 
-/* Refined Technical Illustration for Electrical Machinery Modeling */
-function MotorModelingVisual() {
+/* -------------------------------------------------------------
+ * 3. Modern Glassmorphism Project Card
+ * ------------------------------------------------------------- */
+function ProjectCard({ project, onOpenModal }) {
+  const hasDedicatedPage = Boolean(project.detailUrl);
+
   return (
-    <div className="w-full h-full bg-[#08111A] relative overflow-hidden flex flex-col justify-between p-5 font-mono select-none">
-      <div 
-        className="absolute inset-0 opacity-[0.14]"
-        style={{
-          backgroundImage: 'radial-gradient(#38BDF8 1px, transparent 1px)',
-          backgroundSize: '14px 14px'
-        }}
-      />
-      <div className="relative z-10 flex items-center justify-between text-[11px] text-[#38BDF8] tracking-wider border-b border-sky-900/40 pb-2">
-        <span className="flex items-center gap-2 font-bold">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0284C7] opacity-75 motion-reduce:hidden" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0284C7]" />
-          </span>
-          INDUCTION MOTOR
-        </span>
-        <span className="text-[10px] text-[#7DD3FC] bg-[#072738] px-2 py-0.5 rounded border border-[#38BDF8]/30">
-          PHASOR MODEL
-        </span>
-      </div>
+    <article className="group relative h-full flex flex-col justify-between rounded-2xl bg-white/70 dark:bg-white/[0.04] backdrop-blur-md border border-slate-200/80 dark:border-white/10 shadow-sm hover:shadow-xl dark:hover:shadow-[0_16px_36px_rgba(0,0,0,0.5)] hover:border-[#065F46]/40 dark:hover:border-[#34D399]/40 transition-all duration-300 -translate-y-0 hover:-translate-y-1 overflow-hidden">
+      <div>
+        {/* Top Thumbnail Image with 5% scale hover without overflowing */}
+        <div className="relative w-full aspect-[16/10] overflow-hidden bg-slate-950/90 border-b border-slate-200/80 dark:border-white/10 select-none">
+          {project.image ? (
+            <Image
+              src={project.image}
+              alt={`${project.title} Preview`}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105 motion-reduce:transform-none"
+            />
+          ) : (
+            <div className="w-full h-full bg-[#08130E] flex flex-col items-center justify-center p-4 text-center font-mono text-emerald-400/80">
+              <span className="text-xs uppercase tracking-widest font-bold mb-1">
+                {project.type}
+              </span>
+              <span className="text-[10px] text-slate-400">
+                {project.id === '555-flasher' ? 'NE555 OSCILLATOR CIRCUIT' : project.id === 'motor-modeling' ? '3-PHASE PHASOR ANALYSIS' : 'DIAGNOSTIC INSTRUMENTATION'}
+              </span>
+            </div>
+          )}
 
-      <div className="relative z-10 my-auto flex items-center justify-around gap-2 py-2">
-        <div className="w-18 h-18 rounded-full border border-[#0284C7]/50 relative flex items-center justify-center bg-[#072738]/50 shadow-inner">
-          <div className="absolute inset-0 border border-dashed border-[#38BDF8]/25 rounded-full" />
-          <svg className="w-full h-full" viewBox="0 0 72 72">
-            <line x1="36" y1="4" x2="36" y2="68" stroke="#0284C7" strokeWidth="0.75" strokeDasharray="2,2" />
-            <line x1="4" y1="36" x2="68" y2="36" stroke="#0284C7" strokeWidth="0.75" strokeDasharray="2,2" />
-            <line x1="36" y1="36" x2="36" y2="10" stroke="#38BDF8" strokeWidth="2" strokeLinecap="round" />
-            <polygon points="36,7 33,12 39,12" fill="#38BDF8" />
-            <line x1="36" y1="36" x2="58" y2="47" stroke="#34D399" strokeWidth="2" strokeLinecap="round" />
-            <polygon points="61,49 55,45 57,51" fill="#34D399" />
-          </svg>
-          <span className="absolute top-1 left-2 text-[7.5px] text-[#38BDF8] font-bold">V₁ ∠ 0°</span>
-          <span className="absolute bottom-1 right-2 text-[7.5px] text-[#34D399] font-bold">I₁ ∠ -θ</span>
+          {/* Floating Live Tag (if active) */}
+          {project.liveUrl && (
+            <div className="absolute top-3 right-3 z-10">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-black/80 backdrop-blur-md text-emerald-400 border border-emerald-500/30 shadow-md">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse motion-reduce:animate-none" />
+                LIVE
+              </span>
+            </div>
+          )}
         </div>
 
-        <div className="flex flex-col justify-center">
-          <div className="text-[8.5px] text-[#7DD3FC] mb-1 font-semibold flex justify-between">
-            <span>TORQUE-SLIP CURVE</span>
-            <span className="text-[#F59E0B]">T_max</span>
+        {/* Project Body */}
+        <div className="p-6">
+          <div className="flex items-center justify-between gap-2 mb-2.5">
+            <span className="text-[11px] font-mono uppercase tracking-wider text-[#065F46] dark:text-[#34D399] font-bold">
+              {project.categoryLabel}
+            </span>
+            <span className="text-[11px] font-mono text-slate-500 dark:text-neutral-400 truncate">
+              {project.type}
+            </span>
           </div>
-          <div className="bg-[#051622]/80 rounded border border-[#0284C7]/30 p-1">
-            <svg className="w-28 h-11 stroke-[#38BDF8] fill-none" viewBox="0 0 110 44">
-              <line x1="8" y1="38" x2="104" y2="38" stroke="#334155" strokeWidth="1" />
-              <line x1="8" y1="4" x2="8" y2="38" stroke="#334155" strokeWidth="1" />
-              <path
-                d="M 8 38 Q 38 4, 56 16 T 100 38"
-                strokeWidth="2"
-                stroke="#38BDF8"
-              />
-              <circle cx="38" cy="9" r="2.5" fill="#F59E0B" />
-            </svg>
-          </div>
-          <div className="text-[7.5px] text-slate-400 flex items-center justify-between mt-0.5 px-0.5">
-            <span>s=1 (Start)</span>
-            <span className="text-[#F59E0B]">Pull-Out</span>
-            <span>s=0 (Sync)</span>
-          </div>
+
+          <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F172A] dark:text-[#F9FAFB] group-hover:text-[#065F46] dark:group-hover:text-[#34D399] transition-colors leading-snug mb-2.5">
+            {hasDedicatedPage ? (
+              <Link href={project.detailUrl} className="hover:underline">
+                {project.title}
+              </Link>
+            ) : (
+              <button
+                type="button"
+                onClick={(e) => onOpenModal(project, e)}
+                className="hover:underline text-left cursor-pointer"
+              >
+                {project.title}
+              </button>
+            )}
+          </h3>
+
+          <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300 line-clamp-3 mb-4">
+            {project.description}
+          </p>
         </div>
       </div>
 
-      <div className="relative z-10 flex items-center justify-between text-[9.5px] text-[#7DD3FC]/80 border-t border-sky-900/40 pt-1.5">
-        <span>3-PHASE 400V</span>
-        <span>COS φ: 0.85 LAG</span>
-        <span className="text-emerald-400">NOMINAL</span>
+      {/* Card Footer: Tags & Action Links */}
+      <div className="px-6 pb-6 pt-2">
+        {/* Minimal Monochromatic Tags with Faint Left-Border Accent */}
+        <div className="flex flex-wrap items-center gap-x-3.5 gap-y-1.5 mb-5">
+          {project.tech.map((t) => (
+            <span
+              key={t}
+              className="border-l border-slate-300 dark:border-neutral-700/80 pl-2 text-[11px] font-mono text-slate-500 dark:text-neutral-400 group-hover:text-slate-800 dark:group-hover:text-neutral-200 group-hover:border-[#065F46] dark:group-hover:border-[#34D399] transition-colors"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+
+        {/* Action Link Footer */}
+        <div className="pt-3 border-t border-slate-200/60 dark:border-white/10 flex items-center justify-between text-xs font-mono">
+          {hasDedicatedPage ? (
+            <Link
+              href={project.detailUrl}
+              className="font-bold text-[#065F46] dark:text-[#34D399] hover:underline flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399]"
+            >
+              Case Study &rarr;
+            </Link>
+          ) : (
+            <button
+              type="button"
+              onClick={(e) => onOpenModal(project, e)}
+              className="font-bold text-[#065F46] dark:text-[#34D399] hover:underline flex items-center gap-1 cursor-pointer focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399]"
+            >
+              Technical Specs &rarr;
+            </button>
+          )}
+
+          <div className="flex items-center gap-3">
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-500 dark:text-neutral-400 hover:text-[#0F172A] dark:hover:text-white transition-colors"
+                title="Launch Live App"
+              >
+                Live &nearr;
+              </a>
+            )}
+            {project.githubUrl && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-500 dark:text-neutral-400 hover:text-[#0F172A] dark:hover:text-white transition-colors"
+                title="View GitHub Repository"
+              >
+                Code &nearr;
+              </a>
+            )}
+          </div>
+        </div>
       </div>
-    </div>
+    </article>
   );
 }
 
-/* Refined Technical Illustration for Automated Analyzer Diagnostics */
-function AnalyzerDiagVisual() {
-  return (
-    <div className="w-full h-full bg-[#081517] relative overflow-hidden flex flex-col justify-between p-5 font-mono select-none">
-      <div 
-        className="absolute inset-0 opacity-[0.14]"
-        style={{
-          backgroundImage: 'radial-gradient(#14B8A6 1px, transparent 1px)',
-          backgroundSize: '14px 14px'
-        }}
-      />
-      <div className="relative z-10 flex items-center justify-between text-[11px] text-[#2DD4BF] tracking-wider border-b border-teal-900/40 pb-2">
-        <span className="flex items-center gap-2 font-bold">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0D9488] opacity-75 motion-reduce:hidden" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0D9488]" />
-          </span>
-          FLUIDIC DIAGNOSTICS
-        </span>
-        <span className="text-[10px] text-[#5EEAD4] bg-[#042F2E] px-2 py-0.5 rounded border border-[#14B8A6]/30">
-          IMMUNOASSAY
-        </span>
-      </div>
-
-      <div className="relative z-10 my-auto flex items-center justify-between gap-3 py-2">
-        <div className="border border-[#14B8A6]/40 bg-[#042A29]/80 rounded-lg p-2 flex-1 shadow-md">
-          <div className="text-[8.5px] text-[#99F6E4] font-bold mb-1 flex items-center justify-between">
-            <span>PROBE VOL</span>
-            <span className="text-[#34D399]">±1.0 µL</span>
-          </div>
-          <div className="w-full bg-[#021817] rounded-full h-2 border border-[#14B8A6]/30 p-0.5 overflow-hidden">
-            <div className="bg-[#2DD4BF] h-full rounded-full w-3/4" />
-          </div>
-          <div className="text-[7.5px] text-teal-300/80 mt-1 flex justify-between">
-            <span>ASPIRATE: OK</span>
-            <span>LEVEL: SENSED</span>
-          </div>
-        </div>
-
-        <div className="border border-[#14B8A6]/40 bg-[#042A29]/80 rounded-lg p-2 flex-1 shadow-md">
-          <div className="text-[8.5px] text-[#99F6E4] font-bold mb-1 flex items-center justify-between">
-            <span>VACUUM P</span>
-            <span className="text-[#F59E0B]">-48.2 kPa</span>
-          </div>
-          <div className="w-full bg-[#021817] rounded-full h-2 border border-[#14B8A6]/30 p-0.5 overflow-hidden">
-            <div className="bg-[#F59E0B] h-full rounded-full w-4/5" />
-          </div>
-          <div className="text-[7.5px] text-teal-300/80 mt-1 flex justify-between">
-            <span>-40 to -60 kPa</span>
-            <span className="text-emerald-400 font-bold">NOMINAL</span>
-          </div>
-        </div>
-      </div>
-
-      <div className="relative z-10 flex items-center justify-between text-[9.5px] text-[#5EEAD4]/80 border-t border-teal-900/40 pt-1.5">
-        <span>VALVES: 12/12 CYCLE OK</span>
-        <span>ERROR LOGS: 0</span>
-        <span className="text-emerald-400">READY</span>
-      </div>
-    </div>
-  );
-}
-
+/* -------------------------------------------------------------
+ * Main Projects Page with Bento Grid & Antigravity Header
+ * ------------------------------------------------------------- */
 export default function ProjectsPage() {
   const [filter, setFilter] = useState('all');
   const [activeModalProject, setActiveModalProject] = useState(null);
@@ -418,15 +600,10 @@ export default function ProjectsPage() {
     };
   }, [activeModalProject]);
 
-  const devCount = ALL_PROJECTS.filter((p) => p.category === 'dev').length;
-  const mediaCount = ALL_PROJECTS.filter((p) => p.category === 'media').length;
-  const expCount = ALL_PROJECTS.filter((p) => p.category === 'exp').length;
-
-  const sportivo = ALL_PROJECTS.find((p) => p.id === 'sportivo');
-  const gitVisualizer = ALL_PROJECTS.find((p) => p.id === 'git-visualizer');
-  const ioeAdmission = ALL_PROJECTS.find((p) => p.id === 'ioe-admission');
-  const sportsReels = ALL_PROJECTS.find((p) => p.id === 'sports-reels');
-  const expProjects = ALL_PROJECTS.filter((p) => p.category === 'exp');
+  const filtered = ALL_PROJECTS.filter((p) => {
+    if (filter === 'all') return true;
+    return p.category === filter;
+  });
 
   return (
     <SiteLayout>
@@ -434,435 +611,131 @@ export default function ProjectsPage() {
         <>
           <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Projects', path: '/projects' }]} />
 
-          <FadeUp>
-            <section id="projects" className={`pt-24 sm:pt-28 pb-32 px-4 sm:px-6 lg:px-8 w-full ${theme.bg}`}>
-              <div className="max-w-7xl mx-auto w-full">
-                
-                {/* 1. Concise Editorial Intro */}
-                <header className="mb-14 sm:mb-16">
-                  <div className="text-[11px] font-mono uppercase tracking-widest text-[#065F46] dark:text-[#34D399] font-bold mb-2">
-                    Selected Work
+          <section id="projects" className={`pt-24 sm:pt-28 pb-32 px-4 sm:px-6 lg:px-8 w-full ${theme.bg}`}>
+            <div className="max-w-7xl mx-auto w-full">
+
+              {/* 1. Projects Header with Interactive Antigravity Canvas */}
+              <header className="relative min-h-[340px] sm:min-h-[400px] flex flex-col items-center justify-center overflow-hidden rounded-3xl bg-[#090E0C] border border-slate-200/60 dark:border-white/10 mb-12 sm:mb-16 p-8 sm:p-14 text-center select-none shadow-lg">
+                {/* Antigravity Canvas Physics System */}
+                <AntigravityCanvas />
+
+                {/* Header Content on Top of Canvas */}
+                <div className="relative z-10 max-w-3xl flex flex-col items-center">
+                  {/* 4. Animated Project Counter (Rapid 00 -> 07) */}
+                  <div className="mb-4">
+                    <AnimatedProjectCounter total={ALL_PROJECTS.length} />
                   </div>
-                  <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-200 dark:border-neutral-800 pb-6">
-                    <div>
-                      <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#0F172A] dark:text-[#F9FAFB] leading-tight">
-                        Projects that bring ideas to life.
-                      </h1>
-                      <p className="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-xl">
-                        A curated archive of full-stack web applications, interactive visual tools, hardware prototypes, and creative motion production.
-                      </p>
-                    </div>
 
-                    {/* Compact Filter Navigation */}
-                    <div className="flex items-center gap-5 sm:gap-6 text-xs font-mono uppercase tracking-wider self-start md:self-auto" role="tablist" aria-label="Filter projects">
-                      <button
-                        type="button"
-                        role="tab"
-                        aria-selected={filter === 'all'}
-                        onClick={() => setFilter('all')}
-                        className={`transition-colors cursor-pointer py-1 ${
-                          filter === 'all'
-                            ? 'text-[#065F46] dark:text-[#34D399] font-bold border-b-2 border-[#065F46] dark:border-[#34D399]'
-                            : 'text-slate-500 dark:text-slate-400 hover:text-[#0F172A] dark:hover:text-white'
-                        }`}
-                      >
-                        All ({ALL_PROJECTS.length})
-                      </button>
-                      <button
-                        type="button"
-                        role="tab"
-                        aria-selected={filter === 'dev'}
-                        onClick={() => setFilter('dev')}
-                        className={`transition-colors cursor-pointer py-1 ${
-                          filter === 'dev'
-                            ? 'text-[#065F46] dark:text-[#34D399] font-bold border-b-2 border-[#065F46] dark:border-[#34D399]'
-                            : 'text-slate-500 dark:text-slate-400 hover:text-[#0F172A] dark:hover:text-white'
-                        }`}
-                      >
-                        Development ({devCount})
-                      </button>
-                      <button
-                        type="button"
-                        role="tab"
-                        aria-selected={filter === 'media'}
-                        onClick={() => setFilter('media')}
-                        className={`transition-colors cursor-pointer py-1 ${
-                          filter === 'media'
-                            ? 'text-[#065F46] dark:text-[#34D399] font-bold border-b-2 border-[#065F46] dark:border-[#34D399]'
-                            : 'text-slate-500 dark:text-slate-400 hover:text-[#0F172A] dark:hover:text-white'
-                        }`}
-                      >
-                        Media ({mediaCount})
-                      </button>
-                      <button
-                        type="button"
-                        role="tab"
-                        aria-selected={filter === 'exp'}
-                        onClick={() => setFilter('exp')}
-                        className={`transition-colors cursor-pointer py-1 ${
-                          filter === 'exp'
-                            ? 'text-[#065F46] dark:text-[#34D399] font-bold border-b-2 border-[#065F46] dark:border-[#34D399]'
-                            : 'text-slate-500 dark:text-slate-400 hover:text-[#0F172A] dark:hover:text-white'
-                        }`}
-                      >
-                        Experiments ({expCount})
-                      </button>
-                    </div>
-                  </div>
-                </header>
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#F9FAFB] leading-tight mb-4">
+                    Ideas, engineered and brought to life
+                  </h1>
 
-                {/* 2. Featured Project: Sportivo (Hero Showcase) */}
-                {(filter === 'all' || filter === 'dev') && sportivo && (
-                  <section aria-labelledby="featured-project-heading" className="mb-20 sm:mb-24 lg:mb-28">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                      {/* Large Visual Preview with Browser Frame */}
-                      <div className="lg:col-span-8 group">
-                        <Link 
-                          href={sportivo.detailUrl}
-                          className="block relative overflow-hidden rounded-xl border border-slate-200 dark:border-neutral-800 bg-slate-900 shadow-sm focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399]"
-                          aria-label="View Sportivo project case study"
-                        >
-                          {/* Clean Browser Chrome Header */}
-                          <div className="flex items-center justify-between px-4 py-2.5 bg-slate-100 dark:bg-neutral-900 border-b border-slate-200 dark:border-neutral-800 select-none">
-                            <div className="flex items-center gap-1.5">
-                              <span className="w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-neutral-700" />
-                              <span className="w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-neutral-700" />
-                              <span className="w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-neutral-700" />
-                            </div>
-                            <span className="text-[11px] font-mono text-slate-500 dark:text-neutral-400 truncate max-w-[220px]">
-                              sportivo.dipeshsapkota7.com.np
-                            </span>
-                            <span className="text-[10px] font-mono font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
-                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse motion-reduce:animate-none" />
-                              LIVE
-                            </span>
-                          </div>
+                  <p className="text-sm sm:text-base md:text-lg text-slate-300 max-w-2xl leading-relaxed">
+                    A curated archive of full-stack software systems, interactive educational tools, hardware circuits, and creative motion production.
+                  </p>
+                </div>
+              </header>
 
-                          {/* Screenshot */}
-                          <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-950">
-                            <Image
-                              src={sportivo.image}
-                              alt="Sportivo live sports streaming platform interface"
-                              fill
-                              priority
-                              sizes="(max-width: 1024px) 100vw, 66vw"
-                              className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.02] motion-reduce:transform-none"
-                            />
-                          </div>
-                        </Link>
-                      </div>
+              {/* 2. Fluid Category Filter Buttons */}
+              <div className="flex items-center justify-between gap-4 border-b border-slate-200 dark:border-neutral-800 pb-5 mb-10 overflow-x-auto no-scrollbar">
+                <div className="flex items-center gap-6 text-xs font-mono uppercase tracking-wider" role="tablist" aria-label="Filter projects">
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={filter === 'all'}
+                    onClick={() => setFilter('all')}
+                    className={`transition-colors cursor-pointer py-1 ${
+                      filter === 'all'
+                        ? 'text-[#065F46] dark:text-[#34D399] font-bold border-b-2 border-[#065F46] dark:border-[#34D399]'
+                        : 'text-slate-500 dark:text-slate-400 hover:text-[#0F172A] dark:hover:text-white'
+                    }`}
+                  >
+                    All ({ALL_PROJECTS.length})
+                  </button>
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={filter === 'dev'}
+                    onClick={() => setFilter('dev')}
+                    className={`transition-colors cursor-pointer py-1 ${
+                      filter === 'dev'
+                        ? 'text-[#065F46] dark:text-[#34D399] font-bold border-b-2 border-[#065F46] dark:border-[#34D399]'
+                        : 'text-slate-500 dark:text-slate-400 hover:text-[#0F172A] dark:hover:text-white'
+                    }`}
+                  >
+                    Development (3)
+                  </button>
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={filter === 'media'}
+                    onClick={() => setFilter('media')}
+                    className={`transition-colors cursor-pointer py-1 ${
+                      filter === 'media'
+                        ? 'text-[#065F46] dark:text-[#34D399] font-bold border-b-2 border-[#065F46] dark:border-[#34D399]'
+                        : 'text-slate-500 dark:text-slate-400 hover:text-[#0F172A] dark:hover:text-white'
+                    }`}
+                  >
+                    Creative Media (1)
+                  </button>
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={filter === 'exp'}
+                    onClick={() => setFilter('exp')}
+                    className={`transition-colors cursor-pointer py-1 ${
+                      filter === 'exp'
+                        ? 'text-[#065F46] dark:text-[#34D399] font-bold border-b-2 border-[#065F46] dark:border-[#34D399]'
+                        : 'text-slate-500 dark:text-slate-400 hover:text-[#0F172A] dark:hover:text-white'
+                    }`}
+                  >
+                    Experiments (3)
+                  </button>
+                </div>
 
-                      {/* Asymmetrical Narrative & Links */}
-                      <div className="lg:col-span-4 flex flex-col justify-center">
-                        <div className="text-[11px] font-mono uppercase tracking-wider text-[#065F46] dark:text-[#34D399] font-bold mb-2">
-                          01 &middot; Featured Web App
-                        </div>
-                        <h2 id="featured-project-heading" className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0F172A] dark:text-[#F9FAFB] mb-3">
-                          <Link href={sportivo.detailUrl} className="hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors">
-                            {sportivo.title}
-                          </Link>
-                        </h2>
-                        <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
-                          {sportivo.description}
-                        </p>
-                        <div className="text-xs font-mono text-slate-500 dark:text-slate-400 mb-6">
-                          {sportivo.tech.join(" · ")}
-                        </div>
-                        <div className="flex items-center gap-4 text-xs font-mono">
-                          <Link
-                            href={sportivo.detailUrl}
-                            className="font-bold text-[#065F46] dark:text-[#34D399] hover:underline flex items-center gap-1"
-                          >
-                            Explore Case Study &rarr;
-                          </Link>
-                          {sportivo.liveUrl && (
-                            <a
-                              href={sportivo.liveUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-slate-600 dark:text-slate-400 hover:text-[#0F172A] dark:hover:text-white transition-colors"
-                            >
-                              Live App &nearr;
-                            </a>
-                          )}
-                          {sportivo.githubUrl && (
-                            <a
-                              href={sportivo.githubUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-slate-600 dark:text-slate-400 hover:text-[#0F172A] dark:hover:text-white transition-colors"
-                            >
-                              Code &nearr;
-                            </a>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </section>
-                )}
-
-                {/* 3. The Editorial Pair: Git Visualizer & IOE Admission Guide */}
-                {(filter === 'all' || filter === 'dev') && gitVisualizer && ioeAdmission && (
-                  <section aria-labelledby="editorial-pair-heading" className="mb-20 sm:mb-24 lg:mb-28">
-                    <h2 id="editorial-pair-heading" className="sr-only">Web Systems & Interactive Tools</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-                      {/* Project 2: Git Visualizer */}
-                      <article className="group flex flex-col justify-between">
-                        <Link
-                          href={gitVisualizer.detailUrl}
-                          className="block relative overflow-hidden rounded-xl border border-slate-200 dark:border-neutral-800 bg-slate-900 shadow-sm focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399] mb-5"
-                          aria-label="View Git Visualizer interactive case study"
-                        >
-                          <div className="flex items-center justify-between px-3 py-2 bg-slate-100 dark:bg-neutral-900 border-b border-slate-200 dark:border-neutral-800 text-[10px] font-mono text-slate-500 dark:text-neutral-400">
-                            <span>git-visualizer</span>
-                            <span className="text-emerald-600 dark:text-emerald-400 font-bold">LIVE APP</span>
-                          </div>
-                          <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-950">
-                            <Image
-                              src={gitVisualizer.image}
-                              alt="Git Visualizer interactive graph mapping interface"
-                              fill
-                              sizes="(max-width: 768px) 100vw, 50vw"
-                              className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03] motion-reduce:transform-none"
-                            />
-                          </div>
-                        </Link>
-                        <div>
-                          <div className="text-[11px] font-mono uppercase tracking-wider text-[#065F46] dark:text-[#34D399] font-bold mb-1.5">
-                            02 &middot; Interactive Learning Tool
-                          </div>
-                          <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F172A] dark:text-[#F9FAFB] mb-2">
-                            <Link href={gitVisualizer.detailUrl} className="hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors">
-                              {gitVisualizer.title}
-                            </Link>
-                          </h3>
-                          <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
-                            {gitVisualizer.description}
-                          </p>
-                          <div className="text-xs font-mono text-slate-500 dark:text-slate-400 mb-4">
-                            {gitVisualizer.tech.join(" · ")}
-                          </div>
-                          <div className="flex items-center gap-4 text-xs font-mono">
-                            <Link href={gitVisualizer.detailUrl} className="font-bold text-[#065F46] dark:text-[#34D399] hover:underline">
-                              Case Study &rarr;
-                            </Link>
-                            <a href={gitVisualizer.liveUrl} target="_blank" rel="noopener noreferrer" className="text-slate-600 dark:text-slate-400 hover:text-[#0F172A] dark:hover:text-white">
-                              Live Tool &nearr;
-                            </a>
-                            <a href={gitVisualizer.githubUrl} target="_blank" rel="noopener noreferrer" className="text-slate-600 dark:text-slate-400 hover:text-[#0F172A] dark:hover:text-white">
-                              Code &nearr;
-                            </a>
-                          </div>
-                        </div>
-                      </article>
-
-                      {/* Project 3: IOE Admission Guide */}
-                      <article className="group flex flex-col justify-between">
-                        <Link
-                          href={ioeAdmission.detailUrl}
-                          className="block relative overflow-hidden rounded-xl border border-slate-200 dark:border-neutral-800 bg-slate-900 shadow-sm focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399] mb-5"
-                          aria-label="View IOE Admission Guide case study"
-                        >
-                          <div className="flex items-center justify-between px-3 py-2 bg-slate-100 dark:bg-neutral-900 border-b border-slate-200 dark:border-neutral-800 text-[10px] font-mono text-slate-500 dark:text-neutral-400">
-                            <span>ioe-admission</span>
-                            <span className="text-emerald-600 dark:text-emerald-400 font-bold">LIVE APP</span>
-                          </div>
-                          <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-950">
-                            <Image
-                              src={ioeAdmission.image}
-                              alt="IOE Admission Guide platform interface"
-                              fill
-                              sizes="(max-width: 768px) 100vw, 50vw"
-                              className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03] motion-reduce:transform-none"
-                            />
-                          </div>
-                        </Link>
-                        <div>
-                          <div className="text-[11px] font-mono uppercase tracking-wider text-[#065F46] dark:text-[#34D399] font-bold mb-1.5">
-                            03 &middot; Web Application
-                          </div>
-                          <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F172A] dark:text-[#F9FAFB] mb-2">
-                            <Link href={ioeAdmission.detailUrl} className="hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors">
-                              {ioeAdmission.title}
-                            </Link>
-                          </h3>
-                          <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
-                            {ioeAdmission.description}
-                          </p>
-                          <div className="text-xs font-mono text-slate-500 dark:text-slate-400 mb-4">
-                            {ioeAdmission.tech.join(" · ")}
-                          </div>
-                          <div className="flex items-center gap-4 text-xs font-mono">
-                            <Link href={ioeAdmission.detailUrl} className="font-bold text-[#065F46] dark:text-[#34D399] hover:underline">
-                              Case Study &rarr;
-                            </Link>
-                            <a href={ioeAdmission.liveUrl} target="_blank" rel="noopener noreferrer" className="text-slate-600 dark:text-slate-400 hover:text-[#0F172A] dark:hover:text-white">
-                              Live App &nearr;
-                            </a>
-                            <a href={ioeAdmission.githubUrl} target="_blank" rel="noopener noreferrer" className="text-slate-600 dark:text-slate-400 hover:text-[#0F172A] dark:hover:text-white">
-                              Code &nearr;
-                            </a>
-                          </div>
-                        </div>
-                      </article>
-                    </div>
-                  </section>
-                )}
-
-                {/* 4. The Wide Rhythm-Breaker: Sports Highlight Motion Reels */}
-                {(filter === 'all' || filter === 'media') && sportsReels && (
-                  <section aria-labelledby="media-reels-heading" className="mb-20 sm:mb-24 lg:mb-28">
-                    <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-neutral-800 bg-[#090D14] text-white">
-                      {/* Cinematic Split / Widescreen Banner */}
-                      <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[380px] lg:min-h-[440px]">
-                        {/* Authentic Media Asset Preview */}
-                        <div className="lg:col-span-7 relative h-64 lg:h-full overflow-hidden select-none">
-                          <Image
-                            src={sportsReels.image}
-                            alt="Sports motion editing highlights frame"
-                            fill
-                            sizes="(max-width: 1024px) 100vw, 58vw"
-                            className="object-cover object-center"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-transparent via-[#090D14]/60 to-[#090D14]" />
-                          <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
-                            <span className="px-2 py-1 rounded text-[10px] font-mono font-bold bg-black/80 backdrop-blur-md text-emerald-400 border border-emerald-500/30">
-                              4K 60FPS
-                            </span>
-                            <span className="px-2 py-1 rounded text-[10px] font-mono text-slate-300 bg-black/80 backdrop-blur-md">
-                              TC: 00:01:24:18
-                            </span>
-                          </div>
-                        </div>
-
-                        {/* Editorial Details & Post-Production Specs */}
-                        <div className="lg:col-span-5 p-6 sm:p-8 lg:p-10 flex flex-col justify-center relative z-10">
-                          <div className="text-[11px] font-mono uppercase tracking-wider text-emerald-400 font-bold mb-2">
-                            04 &middot; Creative Media
-                          </div>
-                          <h2 id="media-reels-heading" className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white mb-3">
-                            {sportsReels.title}
-                          </h2>
-                          <p className="text-sm text-slate-300 leading-relaxed mb-5">
-                            {sportsReels.description}
-                          </p>
-
-                          {/* Mini NLE Track Visual */}
-                          <div className="space-y-1.5 p-3 rounded-lg bg-black/60 border border-neutral-800 font-mono text-[9px] mb-6">
-                            <div className="flex items-center gap-2">
-                              <span className="text-slate-400 w-4">V1</span>
-                              <div className="flex-1 h-3 bg-neutral-900 rounded flex gap-1 p-0.5 overflow-hidden">
-                                <div className="h-full w-2/5 bg-emerald-600/80 rounded" />
-                                <div className="h-full w-1/4 bg-sky-600/80 rounded" />
-                                <div className="h-full w-1/3 bg-teal-600/80 rounded" />
-                              </div>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <span className="text-slate-400 w-4">A1</span>
-                              <div className="flex-1 h-3 bg-neutral-900 rounded flex items-center px-1 overflow-hidden">
-                                <div className="w-full h-1.5 flex items-center gap-0.5">
-                                  {[4, 8, 12, 6, 14, 16, 10, 6, 14, 18, 12, 8, 14, 16, 8, 4, 10, 16, 14, 8].map((h, i) => (
-                                    <div key={i} className="flex-1 bg-amber-400/80" style={{ height: `${h}px` }} />
-                                  ))}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="text-xs font-mono text-slate-400 mb-6">
-                            {sportsReels.tech.join(" · ")}
-                          </div>
-
-                          <div>
-                            <button
-                              type="button"
-                              onClick={(e) => handleOpenModal(sportsReels, e)}
-                              className="inline-flex items-center gap-2 text-xs font-mono font-bold text-emerald-400 hover:text-emerald-300 hover:underline cursor-pointer focus-visible:outline-2 focus-visible:outline-emerald-400"
-                            >
-                              <span>View Production Breakdown &rarr;</span>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </section>
-                )}
-
-                {/* 5. The Engineering & Hardware Staggered Trio */}
-                {(filter === 'all' || filter === 'exp') && (
-                  <section aria-labelledby="experiments-heading" className="mb-12">
-                    <div className="border-t border-slate-200 dark:border-neutral-800 pt-10 mb-8">
-                      <div className="text-[11px] font-mono uppercase tracking-wider text-[#065F46] dark:text-[#34D399] font-bold mb-1">
-                        Physical Circuits & Simulation
-                      </div>
-                      <h2 id="experiments-heading" className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0F172A] dark:text-[#F9FAFB]">
-                        Engineering Prototypes & Analysis
-                      </h2>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                      {expProjects.map((proj, idx) => (
-                        <article key={proj.id} className="group flex flex-col justify-between">
-                          <div 
-                            onClick={(e) => handleOpenModal(proj, e)}
-                            className="relative aspect-[16/10] w-full overflow-hidden rounded-xl border border-slate-200 dark:border-neutral-800 shadow-sm cursor-pointer mb-4"
-                            role="button"
-                            tabIndex={0}
-                            onKeyDown={(e) => { if (e.key === 'Enter') handleOpenModal(proj, e); }}
-                            aria-label={`View technical specifications for ${proj.title}`}
-                          >
-                            {proj.id === '555-flasher' ? (
-                              <CircuitVisual />
-                            ) : proj.id === 'motor-modeling' ? (
-                              <MotorModelingVisual />
-                            ) : (
-                              <AnalyzerDiagVisual />
-                            )}
-                          </div>
-
-                          <div>
-                            <div className="text-[11px] font-mono uppercase tracking-wider text-[#065F46] dark:text-[#34D399] font-bold mb-1">
-                              0{idx + 5} &middot; {proj.type}
-                            </div>
-                            <h3 className="text-lg sm:text-xl font-bold tracking-tight text-[#0F172A] dark:text-[#F9FAFB] mb-2">
-                              <button
-                                type="button"
-                                onClick={(e) => handleOpenModal(proj, e)}
-                                className="hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors text-left cursor-pointer"
-                              >
-                                {proj.title}
-                              </button>
-                            </h3>
-                            <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
-                              {proj.description}
-                            </p>
-                            <div className="text-xs font-mono text-slate-500 dark:text-slate-400 mb-4">
-                              {proj.tech.join(" · ")}
-                            </div>
-                            <div>
-                              <button
-                                type="button"
-                                onClick={(e) => handleOpenModal(proj, e)}
-                                className="text-xs font-mono font-bold text-[#065F46] dark:text-[#34D399] hover:underline cursor-pointer"
-                              >
-                                Technical Specs &rarr;
-                              </button>
-                            </div>
-                          </div>
-                        </article>
-                      ))}
-                    </div>
-                  </section>
-                )}
-
+                <div className="hidden sm:block text-xs font-mono text-slate-500 dark:text-neutral-400">
+                  Showing {filtered.length} of {ALL_PROJECTS.length}
+                </div>
               </div>
-            </section>
-          </FadeUp>
+
+              {/* 2. Asymmetrical Bento Box Grid with Fluid Framer Motion Filtering */}
+              <motion.div
+                layout
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 auto-rows-fr"
+              >
+                <AnimatePresence mode="popLayout">
+                  {filtered.map((proj) => {
+                    const isComplex = proj.isComplex;
+
+                    return (
+                      <motion.div
+                        key={proj.id}
+                        layout
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.35, ease: "easeInOut" }}
+                        className={`h-full ${
+                          isComplex ? 'col-span-1 md:col-span-2 lg:col-span-2' : 'col-span-1'
+                        }`}
+                      >
+                        <ProjectCard
+                          project={proj}
+                          onOpenModal={handleOpenModal}
+                        />
+                      </motion.div>
+                    );
+                  })}
+                </AnimatePresence>
+              </motion.div>
+
+            </div>
+          </section>
 
           {/* Accessible Project Detail Modal Dialog */}
           {activeModalProject && (
             <div
-              className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200"
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/75 backdrop-blur-sm animate-in fade-in duration-200"
               onClick={handleCloseModal}
               role="dialog"
               aria-modal="true"
@@ -943,8 +816,12 @@ export default function ProjectsPage() {
                     <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-[#065F46] dark:text-[#34D399] mb-2">
                       Tools & Technologies
                     </h4>
-                    <div className="text-xs font-mono text-slate-600 dark:text-slate-300">
-                      {activeModalProject.tech.join(" · ")}
+                    <div className="flex flex-wrap gap-2 text-xs font-mono text-slate-600 dark:text-slate-300">
+                      {activeModalProject.tech.map((t) => (
+                        <span key={t} className="border-l border-slate-300 dark:border-neutral-700 pl-2">
+                          {t}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </div>
