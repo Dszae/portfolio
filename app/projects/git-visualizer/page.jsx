@@ -46,12 +46,12 @@ export default function GitVisualizerProjectPage() {
           Featured Web App
         </span>
         <h1 className="text-3xl sm:text-4xl font-bold mb-6 tracking-tight">Git Visualizer: Interactive Version Control Tool</h1>
-        <p className="text-base sm:text-lg text-[#475569] dark:text-[#A7B0BE] mb-6 leading-relaxed">
+        <p className="text-base sm:text-lg text-[#334155] dark:text-[#A7B0BE] mb-6 leading-relaxed">
           Created by <strong>Dipesh Sapkota</strong>, Git Visualizer is an interactive, visually-driven learning web application designed to demystify Git version control operations through live data-flow rendering and canvas mapping.
         </p>
 
         <h2 className="text-2xl font-semibold mb-3">Key Highlights</h2>
-        <ul className="list-disc pl-6 space-y-2 mb-8 text-[#475569] dark:text-[#A7B0BE]">
+        <ul className="list-disc pl-6 space-y-2 mb-8 text-[#334155] dark:text-[#A7B0BE]">
           <li>Interactive hover-driven UI explaining commits, branches, and merges.</li>
           <li>Real-time canvas diagramming of standard Git commands.</li>
           <li>Built for students and developers mastering version control workflows.</li>

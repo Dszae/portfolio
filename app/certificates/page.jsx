@@ -38,7 +38,7 @@ export default function CertificatesPage() {
                       type="button"
                       aria-label={`Open certificate: ${cert.title}`}
                       key={cert.id} 
-                      className={`p-5 sm:p-6 rounded-2xl border backdrop-blur-md smooth-card-hover hover:shadow-lg cursor-pointer text-left ${theme.card}`}
+                      className={`group p-5 sm:p-6 rounded-2xl border backdrop-blur-md smooth-card-hover hover:shadow-lg cursor-pointer text-left ${theme.card}`}
                       onClick={() => setSelectedImage({ src: cert.img, title: cert.title, desc: `Issued by ${cert.org}` })}
                     >
                       <div className={`aspect-[4/3] overflow-hidden rounded-xl border flex items-center justify-center mb-6 transition-colors duration-200 relative ${isDark ? 'border-[#26352F] bg-[#16221D] group-hover:border-[#34D399]/60' : 'border-[#E2E8F0] bg-[#F1F5F9] group-hover:border-[#047857]/60'}`}>

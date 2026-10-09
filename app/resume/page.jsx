@@ -97,14 +97,14 @@ export default function ResumePage() {
                             <div className="flex items-center gap-4">
                               {exp.logo && (
                                 <div className="flex-shrink-0 flex items-center justify-center">
-                                  <Image
+                                    <Image
                                     src={exp.logo} 
                                     alt={exp.company} 
                                     width="48"
                                     height="48"
                                     loading="lazy"
                                     decoding="async"
-                                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover bg-white border border-[#E2E8F0] dark:border-[#26352F]" 
+                                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover" 
                                     onError={(e) => { e.target.style.display = 'none'; }}
                                   />
                                 </div>
@@ -114,7 +114,7 @@ export default function ResumePage() {
                                   {exp.year}
                                 </span>
                                 <h3 className="text-lg sm:text-xl font-semibold mb-1">{exp.role}</h3>
-                                <p className="font-mono text-xs sm:text-sm mb-2 font-medium text-[#047857] dark:text-[#34D399]">{exp.company}</p>
+                                <p className="text-xs sm:text-sm mb-2 font-light tracking-wide text-[#047857] dark:text-[#6EE7B7]">{exp.company}</p>
                                 <p className={`text-sm leading-relaxed ${theme.muted}`}>{exp.desc}</p>
                               </div>
                             </div>
@@ -149,7 +149,7 @@ export default function ResumePage() {
                                     height="48"
                                     loading="lazy"
                                     decoding="async"
-                                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover bg-white border border-[#E2E8F0] dark:border-[#26352F]" 
+                                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover" 
                                     onError={(e) => { e.target.style.display = 'none'; }}
                                   />
                                 </div>
@@ -159,7 +159,7 @@ export default function ResumePage() {
                                   {edu.year}
                                 </span>
                                 <h3 className="text-base sm:text-lg font-semibold leading-tight mb-1">{edu.degree}</h3>
-                                <p className="font-mono text-xs sm:text-sm mb-2 font-medium text-[#047857] dark:text-[#34D399]">{edu.school}</p>
+                                <p className="text-xs sm:text-sm mb-2 font-light tracking-wide text-[#047857] dark:text-[#6EE7B7]">{edu.school}</p>
                                 <p className={`text-sm leading-relaxed ${theme.muted}`}>{edu.desc}</p>
                               </div>
                             </div>

@@ -46,12 +46,12 @@ export default function IoeAdmissionProjectPage() {
           Featured Web App
         </span>
         <h1 className="text-3xl sm:text-4xl font-bold mb-6 tracking-tight">IOE Admission Guide & Rank Predictor</h1>
-        <p className="text-base sm:text-lg text-[#475569] dark:text-[#A7B0BE] mb-6 leading-relaxed">
+        <p className="text-base sm:text-lg text-[#334155] dark:text-[#A7B0BE] mb-6 leading-relaxed">
           Developed by <strong>Dipesh Sapkota</strong>, a Computer Engineering student at IOE Thapathali Campus, this web application serves as a comprehensive admission ecosystem for Tribhuvan University engineering aspirants.
         </p>
 
         <h2 className="text-2xl font-semibold mb-3">Core Modules</h2>
-        <ul className="list-disc pl-6 space-y-2 mb-8 text-[#475569] dark:text-[#A7B0BE]">
+        <ul className="list-disc pl-6 space-y-2 mb-8 text-[#334155] dark:text-[#A7B0BE]">
           <li>Statistical rank prediction based on historical cutoff trends.</li>
           <li>Step-by-step procedural IOE counseling and document checklists.</li>
           <li>Automated priority form generator for constituent engineering campuses.</li>

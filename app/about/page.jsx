@@ -43,7 +43,7 @@ export default function AboutPage() {
                 </h1>
                 <div className="grid md:grid-cols-12 gap-8 items-center">
                   
-                  <div className={`md:col-span-7 p-6 sm:p-8 md:p-12 rounded-[2rem] border backdrop-blur-md ${theme.card}`}>
+                  <div className={`md:col-span-7 p-6 sm:p-8 md:p-12 rounded-[2rem] border backdrop-blur-md smooth-card-hover hover:shadow-lg ${theme.card}`}>
                     <h2 className="text-2xl md:text-3xl font-semibold mb-6 leading-tight">Bridging Logic and Visual Execution</h2>
                     <p className={`text-base sm:text-lg leading-relaxed mb-6 ${theme.muted}`}>
                       Hello! I am <strong>Dipesh Sapkota</strong>, a dedicated Computer Engineering student at <span className="font-semibold text-[#047857] dark:text-[#34D399]">IOE Thapathali Campus</span> in Kathmandu, Nepal. As an AI and ML enthusiast, I am deeply invested in exploring intelligent systems, analyzing algorithms, and architecting embedded hardware solutions. My technical foundation is built on rigorous academic training and a continuous drive to solve complex computational challenges.
@@ -55,9 +55,9 @@ export default function AboutPage() {
                   
                   <div className="md:col-span-5 flex flex-col gap-4 sm:gap-6">
                     
-                    <div className={`p-5 sm:p-6 md:p-8 rounded-2xl border backdrop-blur-md flex items-center gap-4 sm:gap-6 transition-all duration-300 hover:-translate-y-1 ${theme.card}`}>
-                      <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#047857]/10 dark:bg-[#34D399]/10 flex items-center justify-center flex-shrink-0">
-                        <svg className="w-7 h-7 sm:w-8 sm:h-8 text-[#047857] dark:text-[#34D399]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className={`group p-5 sm:p-6 md:p-8 rounded-2xl border backdrop-blur-md flex items-center gap-4 sm:gap-6 smooth-card-hover hover:shadow-lg cursor-default ${theme.card}`}>
+                      <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#047857]/10 dark:bg-[#34D399]/10 flex items-center justify-center flex-shrink-0 group-hover:scale-105 group-hover:bg-[#047857]/15 dark:group-hover:bg-[#34D399]/15 transition-all duration-300">
+                        <svg className="w-7 h-7 sm:w-8 sm:h-8 text-[#047857] dark:text-[#34D399] transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
                         </svg>
                       </div>
@@ -67,9 +67,9 @@ export default function AboutPage() {
                       </div>
                     </div>
                     
-                    <div className={`p-5 sm:p-6 md:p-8 rounded-2xl border backdrop-blur-md flex items-center gap-4 sm:gap-6 transition-all duration-300 hover:-translate-y-1 ${theme.card}`}>
-                      <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#047857]/10 dark:bg-[#34D399]/10 flex items-center justify-center flex-shrink-0">
-                        <svg className="w-7 h-7 sm:w-8 sm:h-8 text-[#047857] dark:text-[#34D399]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className={`group p-5 sm:p-6 md:p-8 rounded-2xl border backdrop-blur-md flex items-center gap-4 sm:gap-6 smooth-card-hover hover:shadow-lg cursor-default ${theme.card}`}>
+                      <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#047857]/10 dark:bg-[#34D399]/10 flex items-center justify-center flex-shrink-0 group-hover:scale-105 group-hover:bg-[#047857]/15 dark:group-hover:bg-[#34D399]/15 transition-all duration-300">
+                        <svg className="w-7 h-7 sm:w-8 sm:h-8 text-[#047857] dark:text-[#34D399] transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                       </div>
@@ -79,9 +79,9 @@ export default function AboutPage() {
                       </div>
                     </div>
 
-                    <div className={`p-5 sm:p-6 md:p-8 rounded-2xl border backdrop-blur-md flex items-center gap-4 sm:gap-6 transition-all duration-300 hover:-translate-y-1 ${theme.card}`}>
-                      <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#047857]/10 dark:bg-[#34D399]/10 flex items-center justify-center flex-shrink-0">
-                        <svg className="w-7 h-7 sm:w-8 sm:h-8 text-[#047857] dark:text-[#34D399]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className={`group p-5 sm:p-6 md:p-8 rounded-2xl border backdrop-blur-md flex items-center gap-4 sm:gap-6 smooth-card-hover hover:shadow-lg cursor-default ${theme.card}`}>
+                      <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#047857]/10 dark:bg-[#34D399]/10 flex items-center justify-center flex-shrink-0 group-hover:scale-105 group-hover:bg-[#047857]/15 dark:group-hover:bg-[#34D399]/15 transition-all duration-300">
+                        <svg className="w-7 h-7 sm:w-8 sm:h-8 text-[#047857] dark:text-[#34D399] transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
                       </div>

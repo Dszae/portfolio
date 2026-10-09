@@ -196,14 +196,14 @@ export default function ProjectsPage() {
                         )}
 
                         <div className="flex items-center justify-between mb-3">
-                          <span className="inline-block px-3 py-1 text-[11px] font-mono font-semibold uppercase tracking-wider rounded-md bg-[#047857]/10 dark:bg-[#34D399]/10 text-[#047857] dark:text-[#34D399] border border-[#047857]/20 dark:border-[#34D399]/20">
+                          <span className="inline-block px-3 py-1 text-[11px] font-mono font-bold uppercase tracking-wider rounded-md bg-[#047857]/10 dark:bg-[#34D399]/10 text-[#047857] dark:text-[#34D399] border border-[#047857]/20 dark:border-[#34D399]/20">
                             {proj.categoryLabel}
                           </span>
-                          <span className={`text-[11px] font-mono ${theme.muted}`}>{proj.type}</span>
+                          <span className="text-[11px] font-mono text-[#475569] dark:text-[#94A3B8] font-medium">{proj.type}</span>
                         </div>
 
                         <h2 className="text-xl font-bold mb-2.5 text-[#111827] dark:text-[#F9FAFB]">{proj.title}</h2>
-                        <p className={`text-sm leading-relaxed mb-5 ${theme.muted}`}>{proj.description}</p>
+                        <p className="text-sm leading-relaxed mb-5 text-[#334155] dark:text-[#A7B0BE]">{proj.description}</p>
                       </div>
 
                       <div>
