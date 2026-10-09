@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import SiteHeader from '@/components/SiteHeader';
 import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 
 export const metadata = {
@@ -86,7 +87,9 @@ const PROJECTS = [
 
 export default function ProjectsPage() {
   return (
-    <main className="max-w-4xl mx-auto px-6 py-32">
+    <>
+      <SiteHeader />
+      <main className="max-w-4xl mx-auto px-6 py-32">
       <BreadcrumbJsonLd
         items={[
           { name: 'Home', path: '/' },
@@ -156,6 +159,7 @@ export default function ProjectsPage() {
         ))}
       </div>
     </main>
+    </>
   );
 }
 

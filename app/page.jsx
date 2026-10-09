@@ -661,9 +661,14 @@ export default function Home() {
         <FadeUp>
           <section id="about" className={`py-24 px-6 sm:px-12 w-full ${theme.bg}`}>
             <div className="max-w-7xl mx-auto w-full">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-12 flex items-center gap-4">
-                <span className="text-sky-500">/</span> About Me
-              </h2>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-12 gap-4">
+                <h2 className="text-3xl sm:text-4xl font-bold flex items-center gap-4">
+                  <span className="text-sky-500">/</span> About Me
+                </h2>
+                <a href="/about" className="inline-flex items-center gap-2 text-sm font-semibold text-sky-600 dark:text-sky-400 hover:underline">
+                  View Official Profile &rarr;
+                </a>
+              </div>
               <div className="grid md:grid-cols-12 gap-8 items-center">
                 
                 <div className={`md:col-span-7 p-6 sm:p-8 md:p-12 rounded-[2.5rem] border backdrop-blur-md ${theme.card}`}>
@@ -723,9 +728,14 @@ export default function Home() {
         <FadeUp>
           <section id="skills" ref={skillsRef} className={`py-16 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
             <div className="max-w-[100rem] mx-auto w-full">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-10 flex items-center gap-4">
-                <span className="text-sky-500">/</span> Technical Proficiency
-              </h2>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-10 gap-4">
+                <h2 className="text-3xl sm:text-4xl font-bold flex items-center gap-4">
+                  <span className="text-sky-500">/</span> Technical Proficiency
+                </h2>
+                <a href="/skills" className="inline-flex items-center gap-2 text-sm font-semibold text-sky-600 dark:text-sky-400 hover:underline">
+                  View Full Skills Directory &rarr;
+                </a>
+              </div>
 
               <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
                 {SKILL_CATEGORIES.map((category, idx) => (
@@ -768,9 +778,14 @@ export default function Home() {
         <FadeUp>
           <section id="resume" className={`py-24 px-6 sm:px-12 w-full ${theme.bg}`}>
             <div className="max-w-7xl mx-auto w-full">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-16 flex items-center gap-4">
-                <span className="text-sky-500">/</span> My Journey
-              </h2>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-16 gap-4">
+                <h2 className="text-3xl sm:text-4xl font-bold flex items-center gap-4">
+                  <span className="text-sky-500">/</span> My Journey
+                </h2>
+                <a href="/resume" className="inline-flex items-center gap-2 text-sm font-semibold text-sky-600 dark:text-sky-400 hover:underline">
+                  View Full Resume & CV &rarr;
+                </a>
+              </div>
               <div className="grid lg:grid-cols-2 gap-16">
 
                 <div>
@@ -870,9 +885,14 @@ export default function Home() {
 
         <section id="projects" className={`py-24 px-6 sm:px-12 w-full ${theme.bg}`}>
           <div className="max-w-7xl mx-auto w-full">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-12 flex items-center gap-4">
-              <span className="text-sky-500">/</span> Projects Archive
-            </h2>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-12 gap-4">
+              <h2 className="text-3xl sm:text-4xl font-bold flex items-center gap-4">
+                <span className="text-sky-500">/</span> Projects Archive
+              </h2>
+              <a href="/projects" className="inline-flex items-center gap-2 text-sm font-semibold text-sky-600 dark:text-sky-400 hover:underline">
+                View All Projects Directory &rarr;
+              </a>
+            </div>
 
             <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-lg transition-all duration-500 hover:-translate-y-2 hover:border-sky-500 ${theme.card}`}>
               <div className="w-full lg:w-1/2">
@@ -1078,9 +1098,14 @@ export default function Home() {
         <FadeUp>
           <section id="gallery" className={`py-24 px-6 sm:px-12 w-full ${theme.bg}`}>
             <div className="max-w-7xl mx-auto w-full">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6 flex items-center gap-4">
-                <span className="text-sky-500">/</span> Visual Archive
-              </h2>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-4">
+                <h2 className="text-3xl sm:text-4xl font-bold flex items-center gap-4">
+                  <span className="text-sky-500">/</span> Visual Archive
+                </h2>
+                <a href="/gallery" className="inline-flex items-center gap-2 text-sm font-semibold text-sky-600 dark:text-sky-400 hover:underline">
+                  Explore Full Visual Archive &rarr;
+                </a>
+              </div>
               <p className={`mb-12 text-base sm:text-lg ${theme.muted}`}>A curated space for current media projects, photography, and future uploads.</p>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
                 {GALLERY_IMAGES.map((item) => (
@@ -1118,9 +1143,14 @@ export default function Home() {
         <FadeUp>
           <section id="certificates" className={`py-24 px-6 sm:px-12 w-full ${theme.bg}`}>
             <div className="max-w-7xl mx-auto w-full">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-12 flex items-center gap-4">
-                <span className="text-sky-500">/</span> Certifications
-              </h2>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-12 gap-4">
+                <h2 className="text-3xl sm:text-4xl font-bold flex items-center gap-4">
+                  <span className="text-sky-500">/</span> Certifications
+                </h2>
+                <a href="/certificates" className="inline-flex items-center gap-2 text-sm font-semibold text-sky-600 dark:text-sky-400 hover:underline">
+                  View All Verified Certificates &rarr;
+                </a>
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {CERTIFICATES.map((cert) => (
                   <button 
@@ -1161,7 +1191,12 @@ export default function Home() {
               <div className={`p-6 sm:p-8 md:p-14 rounded-[2rem] sm:rounded-[2.5rem] border backdrop-blur-md ${theme.card}`}>
                 <div className="grid lg:grid-cols-2 gap-12">
                   <div>
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">Let&apos;s Connect</h2>
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">Let&apos;s Connect</h2>
+                      <a href="/contact" className="inline-flex items-center gap-2 text-sm font-semibold text-sky-600 dark:text-sky-400 hover:underline">
+                        Dedicated Contact Page &rarr;
+                      </a>
+                    </div>
                     <p className={`mb-10 text-base sm:text-lg ${theme.muted}`}>Open for freelance projects, collaborations, and technical discussions.</p>
 
                     <div className="space-y-6">
@@ -1271,9 +1306,14 @@ export default function Home() {
           </div>
           <nav aria-label="Footer navigation" className="flex flex-wrap justify-center gap-x-5 gap-y-2 mb-6">
             <a href="/about" aria-label="About Dipesh Sapkota profile page" className="hover:text-sky-500 transition-colors">About</a>
+            <a href="/skills" aria-label="Technical skills and competencies" className="hover:text-sky-500 transition-colors">Skills</a>
+            <a href="/resume" aria-label="Curriculum vitae and work history" className="hover:text-sky-500 transition-colors">Resume</a>
+            <a href="/projects" aria-label="Software and engineering projects" className="hover:text-sky-500 transition-colors">Projects</a>
+            <a href="/gallery" aria-label="Visual archive and gallery" className="hover:text-sky-500 transition-colors">Gallery</a>
+            <a href="/certificates" aria-label="Professional credentials and certificates" className="hover:text-sky-500 transition-colors">Certificates</a>
             <a href="/experience" className="hover:text-sky-500 transition-colors">Experience</a>
             <a href="/blog" className="hover:text-sky-500 transition-colors">Articles</a>
-            <a href="/contact" className="hover:text-sky-500 transition-colors">Contact</a>
+            <a href="/contact" aria-label="Get in touch" className="hover:text-sky-500 transition-colors">Contact</a>
           </nav>
           <p className="font-semibold">
             &copy; {new Date().getFullYear()} <a href="https://www.dipeshsapkota7.com.np/" className="hover:text-sky-500 underline transition-colors">Dipesh Sapkota</a>. All rights reserved.

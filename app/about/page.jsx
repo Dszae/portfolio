@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import SiteHeader from '@/components/SiteHeader';
 import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 import { person, portraitImage, siteUrl } from '@/components/JsonLdSchema';
 
@@ -44,7 +45,9 @@ const profilePageJsonLd = {
 
 export default function AboutPage() {
   return (
-    <main className="max-w-4xl mx-auto px-6 py-32 space-y-10">
+    <>
+      <SiteHeader />
+      <main className="max-w-4xl mx-auto px-6 py-32 space-y-10">
       <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'About', path: '/about' }]} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageJsonLd) }} />
 
@@ -108,5 +111,6 @@ export default function AboutPage() {
 
       <Link href="/" className="inline-block text-sky-600 dark:text-sky-400 font-semibold hover:underline">&larr; Back to home</Link>
     </main>
+    </>
   );
 }

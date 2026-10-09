@@ -1,0 +1,218 @@
+"use client";
+
+import React, { useState, useEffect, useCallback } from 'react';
+import Image from 'next/image';
+
+export default function GalleryGrid({ images }) {
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [activeImageIndex, setActiveImageIndex] = useState(null);
+
+  const categories = ['All', ...Array.from(new Set(images.map((item) => item.category)))];
+
+  const filteredImages = selectedCategory === 'All'
+    ? images
+    : images.filter((item) => item.category === selectedCategory);
+
+  const activeImage = activeImageIndex !== null ? filteredImages[activeImageIndex] : null;
+
+  const handlePrev = useCallback(() => {
+    if (activeImageIndex === null) return;
+    setActiveImageIndex((prev) => (prev > 0 ? prev - 1 : filteredImages.length - 1));
+  }, [activeImageIndex, filteredImages.length]);
+
+  const handleNext = useCallback(() => {
+    if (activeImageIndex === null) return;
+    setActiveImageIndex((prev) => (prev < filteredImages.length - 1 ? prev + 1 : 0));
+  }, [activeImageIndex, filteredImages.length]);
+
+  const handleClose = useCallback(() => {
+    setActiveImageIndex(null);
+  }, []);
+
+  useEffect(() => {
+    if (activeImageIndex === null) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') handleClose();
+      if (e.key === 'ArrowLeft') handlePrev();
+      if (e.key === 'ArrowRight') handleNext();
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'auto';
+    };
+  }, [activeImageIndex, handleClose, handlePrev, handleNext]);
+
+  return (
+    <div>
+      {/* Category Filter */}
+      <div className="flex flex-wrap gap-2 mb-8">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            type="button"
+            onClick={() => {
+              setSelectedCategory(cat);
+              setActiveImageIndex(null);
+            }}
+            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
+              selectedCategory === cat
+                ? 'bg-sky-600 text-white shadow-sm'
+                : 'border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      {/* Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filteredImages.map((item, idx) => (
+          <article
+            key={item.id}
+            className="group rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 overflow-hidden backdrop-blur flex flex-col hover:border-sky-500 dark:hover:border-sky-500 transition-all duration-300 hover:-translate-y-1 shadow-sm"
+          >
+            <button
+              type="button"
+              onClick={() => setActiveImageIndex(idx)}
+              className="relative w-full aspect-[16/10] overflow-hidden bg-slate-900 text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-sky-500"
+              aria-label={`View full image: ${item.title}`}
+            >
+              <Image
+                src={item.img}
+                alt={item.alt}
+                width={800}
+                height={500}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4">
+                <span className="text-xs font-mono text-white/90 bg-slate-950/60 px-2 py-1 rounded backdrop-blur-sm">
+                  Click to enlarge
+                </span>
+                <div className="w-8 h-8 rounded-full bg-sky-600 text-white flex items-center justify-center shadow">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                  </svg>
+                </div>
+              </div>
+            </button>
+
+            <div className="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="inline-block px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-sky-600 dark:text-sky-400 bg-sky-500/10 rounded-full border border-sky-500/20">
+                    {item.category}
+                  </span>
+                </div>
+                <h3 className="font-semibold text-base mb-2 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
+                  {item.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      {/* Lightbox Modal */}
+      {activeImage && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={activeImage.title}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/90 backdrop-blur-md animate-fadeIn"
+          onClick={handleClose}
+        >
+          <div
+            className="relative max-w-4xl w-full bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-950/50">
+              <div className="flex items-center gap-3">
+                <span className="text-xs font-mono uppercase tracking-wider text-sky-400 bg-sky-500/10 px-2.5 py-1 rounded border border-sky-500/30">
+                  {activeImage.category}
+                </span>
+                <span className="text-xs text-slate-400">
+                  {activeImageIndex + 1} of {filteredImages.length}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <a
+                  href={activeImage.img}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="p-2 text-slate-400 hover:text-white transition-colors text-xs rounded-lg hover:bg-slate-800"
+                  title="Open original file"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+                <button
+                  type="button"
+                  onClick={handleClose}
+                  aria-label="Close dialog"
+                  className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            {/* Modal Image */}
+            <div className="relative w-full aspect-[16/10] max-h-[60vh] bg-black flex items-center justify-center overflow-hidden">
+              <Image
+                src={activeImage.img}
+                alt={activeImage.alt}
+                width={1200}
+                height={750}
+                priority
+                className="w-full h-full object-contain"
+              />
+
+              {/* Prev / Next Buttons */}
+              <button
+                type="button"
+                onClick={handlePrev}
+                aria-label="Previous image"
+                className="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-slate-900/80 hover:bg-sky-600 text-white backdrop-blur transition-all"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                type="button"
+                onClick={handleNext}
+                aria-label="Next image"
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-slate-900/80 hover:bg-sky-600 text-white backdrop-blur transition-all"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Modal Caption */}
+            <div className="p-6 bg-slate-900">
+              <h3 className="text-lg font-bold text-white mb-2">{activeImage.title}</h3>
+              <p className="text-sm text-slate-300 leading-relaxed">{activeImage.description}</p>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+

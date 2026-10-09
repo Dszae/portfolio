@@ -1,3 +1,5 @@
+import Link from 'next/link';
+import SiteHeader from '@/components/SiteHeader';
 import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 
 export const metadata = {
@@ -21,20 +23,32 @@ export const metadata = {
 
 export default function ExperiencePage() {
   return (
-    <main className="max-w-4xl mx-auto px-6 py-32">
-      <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Experience & Education', path: '/experience' }]} />
-      <h1 className="text-4xl font-bold mb-6">Experience & Education</h1>
-      <section className="mb-10">
-        <h2 className="text-2xl font-semibold text-sky-500 mb-4">Professional Experience</h2>
-        <h3 className="text-xl font-bold">Video Editor & Graphics Designer - Clamphook Academy</h3>
-        <p className="text-sm text-slate-500 mb-2">2026 - Present</p>
-        <p className="text-slate-700 dark:text-slate-300">Producing promotional videos and design assets for entrance examination crash courses.</p>
-      </section>
-      <section>
-        <h2 className="text-2xl font-semibold text-sky-500 mb-4">Education</h2>
-        <h3 className="text-xl font-bold">Bachelor in Computer Engineering - IOE Thapathali Campus</h3>
-        <p className="text-sm text-slate-500 mb-2">2025 - Present | Kathmandu, Nepal</p>
-      </section>
-    </main>
+    <>
+      <SiteHeader />
+      <main className="max-w-4xl mx-auto px-6 py-32">
+        <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Experience & Education', path: '/experience' }]} />
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-200 dark:border-slate-800">
+          <h1 className="text-4xl font-bold">Experience & Education</h1>
+          <Link
+            href="/resume"
+            className="px-5 py-2.5 bg-sky-600 hover:bg-sky-500 text-white text-sm font-semibold rounded-xl transition-all shadow-sm flex items-center gap-2"
+          >
+            <span>View Full Resume & CV</span>
+            <span>&rarr;</span>
+          </Link>
+        </div>
+        <section className="mb-10">
+          <h2 className="text-2xl font-semibold text-sky-500 mb-4">Professional Experience</h2>
+          <h3 className="text-xl font-bold">Video Editor & Graphics Designer - Clamphook Academy</h3>
+          <p className="text-sm text-slate-500 mb-2">2026 - Present</p>
+          <p className="text-slate-700 dark:text-slate-300">Producing promotional videos and design assets for entrance examination crash courses.</p>
+        </section>
+        <section>
+          <h2 className="text-2xl font-semibold text-sky-500 mb-4">Education</h2>
+          <h3 className="text-xl font-bold">Bachelor in Computer Engineering - IOE Thapathali Campus</h3>
+          <p className="text-sm text-slate-500 mb-2">2025 - Present | Kathmandu, Nepal</p>
+        </section>
+      </main>
+    </>
   );
 }
