@@ -1,4 +1,5 @@
 const siteUrl = 'https://www.dipeshsapkota7.com.np';
+export const dynamic = 'force-static';
 
 const image = (path, title) => ({ path, title });
 const portrait = image('/dipesh-sapkota.jpg', 'Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus');
@@ -34,20 +35,13 @@ const pages = [
     ],
   },
   { path: '/about', images: [portrait] },
-  {
-    path: '/experience',
-    images: [
-      image('/clamphook_.webp', 'Clamphook Academy logo'),
-      image('/campus.webp', 'College Programs logo'),
-      image('/freelance.webp', 'Freelance work logo'),
-      image('/thapathali.webp', 'Thapathali Campus logo'),
-      image('/janak.webp', 'Janak Model Secondary School logo'),
-      image('/mahendra.webp', 'Mahendra Adarsha Secondary School logo'),
-    ],
-  },
-  { path: '/projects/sportivo', images: [image('/sportivo-preview.jpg', 'Sportivo project preview')] },
-  { path: '/projects/ioe-admission-guide', images: [image('/ioe-preview.jpg', 'IOE Admission Guide project preview')] },
-  { path: '/projects/git-visualizer', images: [image('/git-preview.jpg', 'Git Visualizer project preview')] },
+  { path: '/blog' },
+  { path: '/contact' },
+  { path: '/experience' },
+  { path: '/image-licensing' },
+  { path: '/projects/sportivo' },
+  { path: '/projects/ioe-admission-guide' },
+  { path: '/projects/git-visualizer' },
 ];
 
 const escapeXml = (value) => value

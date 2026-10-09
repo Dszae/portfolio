@@ -103,7 +103,6 @@ The portfolio exposes public, read-only resources:
 - [`/.well-known/api-catalog`](https://www.dipeshsapkota7.com.np/.well-known/api-catalog) - API catalog.
 - [`/.well-known/llms.txt`](https://www.dipeshsapkota7.com.np/.well-known/llms.txt) - AI-readable portfolio summary.
 - [`/.well-known/agent-card.json`](https://www.dipeshsapkota7.com.np/.well-known/agent-card.json) - Agent capability card.
-- [`/.well-known/mcp/server-card.json`](https://www.dipeshsapkota7.com.np/.well-known/mcp/server-card.json) - MCP server discovery metadata.
 
 These resources contain public information only and do not require authentication.
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import Script from 'next/script';
+import AnalyticsPrivacyControls from '@/components/AnalyticsPrivacyControls';
 import WebMCPInitializer from '@/components/WebMCPInitializer';
 import './globals.css';
 
@@ -15,7 +15,7 @@ export const metadata = {
   publisher: 'Dipesh Sapkota',
   applicationName: 'Dipesh Sapkota Portfolio',
   category: 'portfolio',
-  referrer: 'origin-when-cross-origin',
+  referrer: 'strict-origin-when-cross-origin',
   formatDetection: {
     email: true,
     address: true,
@@ -170,10 +170,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://api.web3forms.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://api.web3forms.com" />
         <link rel="alternate" type="text/markdown" href="/.well-known/llms.txt" title="AI-readable site information" />
         <script
           type="application/ld+json"
@@ -183,23 +179,7 @@ export default function RootLayout({ children }) {
       <body className="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased selection:bg-blue-500/30 m-0 p-0 w-full min-h-screen overflow-x-hidden">
         <WebMCPInitializer />
         {children}
-        <Script
-          id="google-analytics"
-          strategy="lazyOnload"
-          src="https://www.googletagmanager.com/gtag/js?id=G-49P9YBE6PD"
-        />
-        <Script
-          id="google-analytics-config"
-          strategy="lazyOnload"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-49P9YBE6PD', { 'send_page_view': true });
-            `,
-          }}
-        />
+        <AnalyticsPrivacyControls />
       </body>
     </html>
   );

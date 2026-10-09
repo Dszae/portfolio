@@ -1,19 +1,19 @@
 export const metadata = {
   title: "IOE Admission Guide Project",
-  description: "Discover the IOE Admission Guide built by Dipesh Sapkota (dszae) for Tribhuvan University engineering applicants featuring statistical rank prediction and counseling workflows.",
+  description: "Explore the IOE Admission Guide by Dipesh Sapkota (dszae), with rank prediction, cutoff analytics, and counseling tools for applicants.",
   alternates: { canonical: '/projects/ioe-admission-guide' },
   openGraph: {
     type: 'website',
     title: 'IOE Admission Guide by Dipesh Sapkota',
     description: 'Engineering admission guides, rank prediction, cutoff analytics, and counseling workflows.',
     url: '/projects/ioe-admission-guide',
-    images: [{ url: '/dipesh-sapkota.jpg', width: 627, height: 627, alt: 'Portrait of Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal' }],
+    images: [{ url: '/ioe-preview.jpg', alt: 'IOE Admission Guide project preview' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'IOE Admission Guide by Dipesh Sapkota',
     description: 'Engineering admission tools created by Dipesh Sapkota, including rank prediction, cutoff analytics, and counseling workflows.',
-    images: ['/dipesh-sapkota.jpg'],
+    images: ['/ioe-preview.jpg'],
   },
 };
 

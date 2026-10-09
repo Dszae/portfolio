@@ -1,19 +1,19 @@
 export const metadata = {
   title: "Sportivo Project",
-  description: "Explore Sportivo, a real-time live sports streaming platform engineered by Dipesh Sapkota (dszae) featuring match schedule scraping and multi-server stream switching.",
+  description: "Explore Sportivo, a live sports platform by Dipesh Sapkota (dszae), with real-time schedules, match search, and multi-server streaming.",
   alternates: { canonical: '/projects/sportivo' },
   openGraph: {
     type: 'website',
     title: 'Sportivo Project by Dipesh Sapkota',
     description: 'A real-time live sports streaming platform engineered by Dipesh Sapkota.',
     url: '/projects/sportivo',
-    images: [{ url: '/dipesh-sapkota.jpg', width: 627, height: 627, alt: 'Portrait of Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal' }],
+    images: [{ url: '/sportivo-preview.jpg', alt: 'Sportivo project preview' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Sportivo Project by Dipesh Sapkota',
     description: 'Explore Sportivo, a live sports platform engineered by Dipesh Sapkota (dszae).',
-    images: ['/dipesh-sapkota.jpg'],
+    images: ['/sportivo-preview.jpg'],
   },
 };
 

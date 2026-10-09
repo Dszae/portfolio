@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 /node_modules
 /.pnp
@@ -11,61 +8,39 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
+# tests and generated output
 /coverage
-
-# next.js
 /.next/
 /out/
+/build/
+/dist/
+/dist-ssr/
 
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-
-# env files (can opt-in for committing if needed)
-.env*
-
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
-=======
-# Logs
-logs
+# logs and local files
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-node_modules
-dist
-dist-ssr
+.pnpm-debug.log*
 *.local
 
-# Editor directories and files
+# environment and Vercel configuration
+.env*
+.vercel
+
+# editors and operating system files
+.DS_Store
+*.pem
 .vscode/*
 !.vscode/extensions.json
-.idea
-.DS_Store
+.idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
 
-.vercel
-.env*
->>>>>>> d5c6e7228ee213c3835a31d10336f0387c2dfc66
+# TypeScript output
+*.tsbuildinfo
+next-env.d.ts

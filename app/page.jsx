@@ -172,6 +172,7 @@ function ScrollToTopButton() {
 export default function Home() {
   const [isDark, setIsDark] = useState(false);
   const [formStatus, setFormStatus] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const canvasRef = useRef(null);
   
   const [selectedImage, setSelectedImage] = useState(null);
@@ -237,6 +238,9 @@ export default function Home() {
 
   const handleContactSubmit = async (event) => {
     event.preventDefault();
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
     setFormStatus("Sending message...");
 
     const formData = new FormData(event.target);
@@ -256,6 +260,8 @@ export default function Home() {
       }
     } catch {
       setFormStatus("Network error. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -1095,7 +1101,6 @@ export default function Home() {
                         loading="lazy"
                         decoding="async"
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
-                        onError={(e) => { e.target.src = 'https://via.placeholder.com/400x300?text=Certificate' }} 
                       />
                       <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <div className="w-10 h-10 rounded-full bg-sky-500 text-white flex items-center justify-center shadow-md transform scale-75 group-hover:scale-100 transition-transform duration-300">
@@ -1127,7 +1132,7 @@ export default function Home() {
                           <svg className="w-5 h-5 sm:w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                         </div>
                         <div>
-                          <h4 className={`font-mono text-[11px] sm:text-xs uppercase ${theme.muted}`}>Location</h4>
+                          <h3 className={`font-mono text-[11px] sm:text-xs uppercase ${theme.muted}`}>Location</h3>
                           <p className="font-semibold text-sm sm:text-lg">Kathmandu, Nepal</p>
                         </div>
                       </div>
@@ -1136,7 +1141,7 @@ export default function Home() {
                           <svg className="w-5 h-5 sm:w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
                         </div>
                         <div>
-                          <h4 className={`font-mono text-[11px] sm:text-xs uppercase ${theme.muted}`}>Phone</h4>
+                          <h3 className={`font-mono text-[11px] sm:text-xs uppercase ${theme.muted}`}>Phone</h3>
                           <a href="tel:+9779764685307" className="font-semibold text-sm sm:text-lg hover:text-sky-500 transition-colors block">9764685307</a>
                         </div>
                       </div>
@@ -1145,14 +1150,18 @@ export default function Home() {
                           <svg className="w-5 h-5 sm:w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                         </div>
                         <div>
-                          <h4 className={`font-mono text-[11px] sm:text-xs uppercase ${theme.muted}`}>Email</h4>
+                          <h3 className={`font-mono text-[11px] sm:text-xs uppercase ${theme.muted}`}>Email</h3>
                           <a href="https://mail.google.com/mail/?view=cm&fs=1&to=dsz.ae18@gmail.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-sm sm:text-lg hover:text-sky-500 transition-colors block">dsz.ae18@gmail.com</a>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <form className="space-y-4 sm:space-y-6" onSubmit={handleContactSubmit}>
+                  <form className="space-y-4 sm:space-y-6" onSubmit={handleContactSubmit} aria-busy={isSubmitting}>
+                    <p className={`text-sm leading-relaxed ${theme.muted}`}>
+                      Your name, email, and message are sent through Web3Forms to deliver your message.
+                    </p>
+                    <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} aria-hidden="true" />
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                       <label className="sr-only" htmlFor="contact-name">Your Name</label>
                       <input
@@ -1161,6 +1170,7 @@ export default function Home() {
                         name="name"
                         placeholder="Your Name"
                         aria-label="Your Name"
+                        autoComplete="name"
                         className={`w-full px-4 py-3 sm:px-6 sm:py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-sky-500/50 transition-all ${theme.input}`}
                         required
                       />
@@ -1171,6 +1181,7 @@ export default function Home() {
                         name="email"
                         placeholder="Your Email"
                         aria-label="Your Email"
+                        autoComplete="email"
                         className={`w-full px-4 py-3 sm:px-6 sm:py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-sky-500/50 transition-all ${theme.input}`}
                         required
                       />
@@ -1188,13 +1199,14 @@ export default function Home() {
 
                     <button
                       type="submit"
-                      className="px-6 py-4 sm:px-10 sm:py-5 bg-sky-500 text-white font-semibold rounded-xl hover:bg-sky-600 transition-colors w-full shadow-md cursor-pointer"
+                      disabled={isSubmitting}
+                      className="px-6 py-4 sm:px-10 sm:py-5 bg-sky-500 text-white font-semibold rounded-xl hover:bg-sky-600 disabled:cursor-not-allowed disabled:opacity-60 transition-colors w-full shadow-md cursor-pointer"
                     >
                       Send Message
                     </button>
 
                     {formStatus && (
-                      <p className={`text-sm text-center font-semibold mt-4 ${formStatus.includes("wrong") || formStatus.includes("error") ? "text-red-500" : "text-emerald-500"}`}>
+                      <p role="status" aria-live="polite" className={`text-sm text-center font-semibold mt-4 ${formStatus.includes("wrong") || formStatus.includes("error") ? "text-red-500" : "text-emerald-500"}`}>
                         {formStatus}
                       </p>
                     )}

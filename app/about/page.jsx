@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export const metadata = {
   title: 'Official Profile',
-  description: 'Meet Dipesh Sapkota (dszae), a Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal. Explore his software projects, technical interests, and creative work.',
+  description: 'Meet Dipesh Sapkota, a Computer Engineering student at IOE Thapathali in Kathmandu, Nepal. Explore his software projects and creative work.',
   alternates: { canonical: '/about' },
   openGraph: {
     type: 'profile',
