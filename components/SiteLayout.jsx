@@ -62,27 +62,35 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    const isDarkStored = localStorage.getItem('theme') === 'dark';
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const shouldBeDark = isDarkStored || (!('theme' in localStorage) && prefersDark);
-    if (shouldBeDark) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
+    try {
+      const stored = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDarkActive = stored !== null ? stored === 'dark' : prefersDark;
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setIsDark(isDarkActive);
+      if (isDarkActive) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    } catch {
+      // Fallback
     }
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setIsDark(shouldBeDark);
   }, []);
 
   const toggleTheme = () => {
     const nextDark = !isDark;
     setIsDark(nextDark);
-    if (nextDark) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
+    try {
+      if (nextDark) {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      }
+    } catch {
+      // Fallback
     }
   };
 
@@ -98,9 +106,9 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
     bg: isDark ? 'bg-slate-950 text-slate-100' : 'bg-white text-slate-900',
     nav: isDark ? 'bg-slate-950/95 border-slate-800 text-slate-100' : 'bg-white/95 border-slate-200 text-slate-900',
     card: isDark ? 'bg-slate-900 backdrop-blur-md border-slate-800 hover:border-sky-500 text-slate-100' : 'bg-white backdrop-blur-md border-slate-200 hover:border-sky-500 text-slate-900 shadow-sm',
-    muted: isDark ? 'text-slate-400' : 'text-slate-600',
-    tag: isDark ? 'bg-slate-800 text-sky-400' : 'bg-sky-50 text-sky-700',
-    input: isDark ? 'bg-slate-900 border-slate-800 text-white placeholder-slate-500 focus:border-sky-500' : 'bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:border-sky-500'
+    muted: isDark ? 'text-slate-300' : 'text-slate-700',
+    tag: isDark ? 'bg-slate-800 text-sky-300 border border-slate-700' : 'bg-sky-50 text-sky-800 border border-sky-200',
+    input: isDark ? 'bg-slate-900 border-slate-800 text-white placeholder-slate-400 focus:border-sky-500' : 'bg-slate-50 border-slate-300 text-slate-900 placeholder-slate-500 focus:border-sky-500'
   };
 
   const isCurrentPage = (path) => {
@@ -211,16 +219,16 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
               <svg className="w-5 h-5 sm:w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
             </a>
           </div>
-          <nav aria-label="Footer navigation" className="flex flex-wrap justify-center gap-x-5 gap-y-2 mb-6">
-            <Link href="/about" className="hover:text-sky-500 transition-colors">About</Link>
-            <Link href="/skills" className="hover:text-sky-500 transition-colors">Skills</Link>
-            <Link href="/resume" className="hover:text-sky-500 transition-colors">Resume</Link>
-            <Link href="/projects" className="hover:text-sky-500 transition-colors">Projects</Link>
-            <Link href="/gallery" className="hover:text-sky-500 transition-colors">Gallery</Link>
-            <Link href="/certificates" className="hover:text-sky-500 transition-colors">Certificates</Link>
-            <Link href="/experience" className="hover:text-sky-500 transition-colors">Experience</Link>
-            <Link href="/blog" className="hover:text-sky-500 transition-colors">Articles</Link>
-            <Link href="/contact" className="hover:text-sky-500 transition-colors">Contact</Link>
+          <nav aria-label="Footer navigation" className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6">
+            {NAV_LINKS.map((link) => (
+              <Link 
+                key={`footer-${link.id}`} 
+                href={link.path} 
+                className="hover:text-sky-500 transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
           </nav>
           <p className="font-semibold">
             &copy; {new Date().getFullYear()} <Link href="/" className="hover:text-sky-500 underline transition-colors">Dipesh Sapkota</Link>. All rights reserved.

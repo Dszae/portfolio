@@ -35,23 +35,23 @@ export default function ProjectsPage() {
                     Featured Web App
                   </span>
                   <h2 className="text-3xl sm:text-4xl font-bold mb-4 tracking-tight">Sportivo</h2>
-                  <p className={`text-sm sm:text-base mb-6 leading-relaxed ${theme.muted}`}>
+                  <p className="text-sm sm:text-base mb-6 leading-relaxed text-slate-800 dark:text-slate-200 font-normal">
                     A high-performance live sports streaming platform featuring real-time match schedule scraping, multi-server stream switching, live team logo thumbnails, and direct shareable match links.
                   </p>
                   
                   <ul className="space-y-3 mb-8">
-                    <li className="flex items-center gap-3 text-sm font-semibold">
+                    <li className="flex items-center gap-3 text-sm font-semibold text-slate-900 dark:text-slate-100">
                       <svg className={`w-5 h-5 ${isDark ? 'text-sky-300' : 'text-sky-700'} flex-shrink-0`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                       Real-time Football, Cricket & Basketball Streams
                     </li>
-                    <li className="flex items-center gap-3 text-sm font-semibold">
+                    <li className="flex items-center gap-3 text-sm font-semibold text-slate-900 dark:text-slate-100">
                       <svg className={`w-5 h-5 ${isDark ? 'text-sky-300' : 'text-sky-700'} flex-shrink-0`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                       Instant Live Match Search & Filter
                     </li>
                   </ul>
 
                   <div className="flex flex-wrap gap-4">
-                    <Link href="/projects/sportivo" className="px-6 py-3 border border-sky-500/40 text-sky-700 dark:text-sky-300 text-sm font-semibold rounded-xl hover:bg-sky-500/10 transition-all">Project details</Link>
+                    <Link href="/projects/sportivo" className="px-6 py-3 border-2 border-sky-600 dark:border-sky-400 text-sky-950 dark:text-sky-100 bg-sky-100 dark:bg-sky-950/60 text-sm font-bold rounded-xl hover:bg-sky-600 hover:text-white dark:hover:bg-sky-400 dark:hover:text-slate-950 transition-all shadow-sm">Project details</Link>
                     <a href="https://sportivo.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-sky-700 hover:bg-sky-800 text-white text-sm font-semibold rounded-xl transition-all flex items-center gap-2 shadow-sm">
                       Launch Sportivo
                     </a>
@@ -99,23 +99,23 @@ export default function ProjectsPage() {
                     Featured Web App
                   </span>
                   <h2 className="text-3xl sm:text-4xl font-bold mb-4 tracking-tight">IOE Admission Guide</h2>
-                  <p className={`text-sm sm:text-base mb-6 leading-relaxed ${theme.muted}`}>
+                  <p className="text-sm sm:text-base mb-6 leading-relaxed text-slate-800 dark:text-slate-200 font-normal">
                     A comprehensive admission ecosystem for Tribhuvan University engineering applicants. Beyond predicting ranks, it provides step-by-step procedural counseling guides, automated priority form generation, and detailed cutoff analytics.
                   </p>
                   
                   <ul className="space-y-3 mb-8">
-                    <li className="flex items-center gap-3 text-sm font-semibold">
+                    <li className="flex items-center gap-3 text-sm font-semibold text-slate-900 dark:text-slate-100">
                       <svg className={`w-5 h-5 ${isDark ? 'text-cyan-300' : 'text-cyan-700'} flex-shrink-0`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                       Step-by-Step IOE Counseling & Document Guides
                     </li>
-                    <li className="flex items-center gap-3 text-sm font-semibold">
+                    <li className="flex items-center gap-3 text-sm font-semibold text-slate-900 dark:text-slate-100">
                       <svg className={`w-5 h-5 ${isDark ? 'text-cyan-300' : 'text-cyan-700'} flex-shrink-0`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                       Statistical Rank Predictor & Priority Form Generator
                     </li>
                   </ul>
 
                   <div className="flex flex-wrap gap-4">
-                    <Link href="/projects/ioe-admission-guide" className="px-6 py-3 border border-cyan-500/40 text-cyan-700 dark:text-cyan-300 text-sm font-semibold rounded-xl hover:bg-cyan-500/10 transition-all">Project details</Link>
+                    <Link href="/projects/ioe-admission-guide" className="px-6 py-3 border-2 border-cyan-600 dark:border-cyan-400 text-cyan-950 dark:text-cyan-100 bg-cyan-100 dark:bg-cyan-950/60 text-sm font-bold rounded-xl hover:bg-cyan-600 hover:text-white dark:hover:bg-cyan-400 dark:hover:text-slate-950 transition-all shadow-sm">Project details</Link>
                     <a href="https://ioe-admission.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-cyan-700 hover:bg-cyan-800 text-white text-sm font-semibold rounded-xl transition-all flex items-center gap-2 shadow-sm">
                       Explore Guide
                     </a>
@@ -156,23 +156,23 @@ export default function ProjectsPage() {
                     Featured Web App
                   </span>
                   <h2 className="text-3xl sm:text-4xl font-bold mb-4 tracking-tight">Git Visualizer</h2>
-                  <p className={`text-sm sm:text-base mb-6 leading-relaxed ${theme.muted}`}>
+                  <p className="text-sm sm:text-base mb-6 leading-relaxed text-slate-800 dark:text-slate-200 font-normal">
                     An interactive, visually driven learning tool designed to demystify Git version control. Features a dynamic data-flow architecture and an interactive canvas for mapping standard Git commands.
                   </p>
                   
                   <ul className="space-y-3 mb-8">
-                    <li className="flex items-center gap-3 text-sm font-semibold">
+                    <li className="flex items-center gap-3 text-sm font-semibold text-slate-900 dark:text-slate-100">
                       <svg className={`w-5 h-5 ${isDark ? 'text-amber-300' : 'text-amber-700'} flex-shrink-0`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                       Interactive Hover-Driven UI
                     </li>
-                    <li className="flex items-center gap-3 text-sm font-semibold">
+                    <li className="flex items-center gap-3 text-sm font-semibold text-slate-900 dark:text-slate-100">
                       <svg className={`w-5 h-5 ${isDark ? 'text-amber-300' : 'text-amber-700'} flex-shrink-0`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                       Live Diagramming of Git Operations
                     </li>
                   </ul>
 
                   <div className="flex flex-wrap gap-4">
-                    <Link href="/projects/git-visualizer" className="px-6 py-3 border border-amber-500/40 text-amber-700 dark:text-amber-300 text-sm font-semibold rounded-xl hover:bg-amber-500/10 transition-all">Project details</Link>
+                    <Link href="/projects/git-visualizer" className="px-6 py-3 border-2 border-amber-600 dark:border-amber-400 text-amber-950 dark:text-amber-100 bg-amber-100 dark:bg-amber-950/60 text-sm font-bold rounded-xl hover:bg-amber-600 hover:text-white dark:hover:bg-amber-400 dark:hover:text-slate-950 transition-all shadow-sm">Project details</Link>
                     <a href="https://git-visualizer.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-amber-700 hover:bg-amber-800 text-white text-sm font-semibold rounded-xl transition-all flex items-center gap-2 shadow-sm">
                       Explore Visualizer
                     </a>
@@ -219,7 +219,7 @@ export default function ProjectsPage() {
                       </span>
                     </div>
                     <h3 className="text-xl sm:text-2xl font-semibold mb-4 group-hover:text-sky-500 transition-colors">{proj.title}</h3>
-                    <p className={`mb-8 line-clamp-3 text-sm sm:text-base leading-relaxed ${theme.muted}`}>{proj.description}</p>
+                    <p className="mb-8 line-clamp-3 text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-300 font-normal">{proj.description}</p>
                     <div className="flex flex-wrap gap-2 mt-auto">
                       {proj.tech.map((t) => (
                         <span key={t} className={`px-2.5 py-1 sm:px-3 sm:py-1.5 text-xs font-mono font-medium rounded-lg ${theme.tag}`}>

@@ -3,16 +3,30 @@ export const dynamic = 'force-static';
 
 const image = (path, title) => ({ path, title });
 const portrait = image('/dipesh-sapkota.jpg', 'Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus');
+const currentDate = '2026-10-09';
 
 const pages = [
   {
     path: '/',
+    priority: '1.0',
+    changefreq: 'daily',
     images: [portrait],
   },
-  { path: '/about', images: [portrait] },
-  { path: '/skills' },
+  {
+    path: '/about',
+    priority: '0.9',
+    changefreq: 'weekly',
+    images: [portrait],
+  },
+  {
+    path: '/skills',
+    priority: '0.9',
+    changefreq: 'weekly',
+  },
   {
     path: '/resume',
+    priority: '0.9',
+    changefreq: 'weekly',
     images: [
       portrait,
       image('/clamphook_.webp', 'Clamphook Academy logo'),
@@ -24,7 +38,37 @@ const pages = [
     ],
   },
   {
+    path: '/projects',
+    priority: '0.9',
+    changefreq: 'weekly',
+    images: [
+      image('/sportivo-preview.jpg', 'Sportivo project preview'),
+      image('/ioe-preview.jpg', 'IOE Admission Guide project preview'),
+      image('/git-preview.jpg', 'Git Visualizer project preview'),
+    ],
+  },
+  {
+    path: '/projects/sportivo',
+    priority: '0.8',
+    changefreq: 'monthly',
+    images: [image('/sportivo-preview.jpg', 'Sportivo project preview')],
+  },
+  {
+    path: '/projects/ioe-admission-guide',
+    priority: '0.8',
+    changefreq: 'monthly',
+    images: [image('/ioe-preview.jpg', 'IOE Admission Guide project preview')],
+  },
+  {
+    path: '/projects/git-visualizer',
+    priority: '0.8',
+    changefreq: 'monthly',
+    images: [image('/git-preview.jpg', 'Git Visualizer project preview')],
+  },
+  {
     path: '/gallery',
+    priority: '0.9',
+    changefreq: 'weekly',
     images: [
       image('/cricket.webp', 'Participating in college cricket tournament'),
       image('/yathartha.webp', 'Successfully conducted Yathartha Tech Exhibition'),
@@ -36,6 +80,8 @@ const pages = [
   },
   {
     path: '/certificates',
+    priority: '0.9',
+    changefreq: 'weekly',
     images: [
       image('/graphic-design.webp', 'Graphic Design Masterclass certificate'),
       image('/motion-design.webp', 'Motion Design with Figma certificate'),
@@ -48,20 +94,25 @@ const pages = [
     ],
   },
   {
-    path: '/projects',
-    images: [
-      image('/sportivo-preview.jpg', 'Sportivo project preview'),
-      image('/ioe-preview.jpg', 'IOE Admission Guide project preview'),
-      image('/git-preview.jpg', 'Git Visualizer project preview'),
-    ],
+    path: '/contact',
+    priority: '0.9',
+    changefreq: 'monthly',
   },
-  { path: '/projects/sportivo' },
-  { path: '/projects/ioe-admission-guide' },
-  { path: '/projects/git-visualizer' },
-  { path: '/experience' },
-  { path: '/contact' },
-  { path: '/blog' },
-  { path: '/image-licensing' },
+  {
+    path: '/experience',
+    priority: '0.8',
+    changefreq: 'monthly',
+  },
+  {
+    path: '/blog',
+    priority: '0.8',
+    changefreq: 'weekly',
+  },
+  {
+    path: '/image-licensing',
+    priority: '0.6',
+    changefreq: 'monthly',
+  },
 ];
 
 const escapeXml = (value) => value
@@ -72,14 +123,14 @@ const escapeXml = (value) => value
   .replaceAll("'", '&apos;');
 
 export async function GET() {
-  const entries = pages.map(({ path, images = [] }) => {
+  const entries = pages.map(({ path, priority = '0.7', changefreq = 'weekly', images = [] }) => {
     const imageEntries = images
       .map(({ path: imagePath, title }) => (
         `<image:image><image:loc>${escapeXml(`${siteUrl}${imagePath}`)}</image:loc><image:title>${escapeXml(title)}</image:title></image:image>`
       ))
       .join('');
 
-    return `<url><loc>${escapeXml(`${siteUrl}${path}`)}</loc>${imageEntries}</url>`;
+    return `<url><loc>${escapeXml(`${siteUrl}${path}`)}</loc><lastmod>${currentDate}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority>${imageEntries}</url>`;
   }).join('');
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">${entries}</urlset>`;
@@ -87,6 +138,7 @@ export async function GET() {
   return new Response(sitemap, {
     headers: {
       'Content-Type': 'application/xml; charset=utf-8',
+      'Cache-Control': 'public, max-age=3600, s-maxage=3600',
     },
   });
 }

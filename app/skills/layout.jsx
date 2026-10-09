@@ -19,3 +19,4 @@ export const metadata = {
 export default function SkillsLayout({ children }) {
   return children;
 }
+
