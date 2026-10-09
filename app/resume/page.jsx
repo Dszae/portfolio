@@ -66,7 +66,7 @@ export default function ResumePage() {
               <div className="max-w-7xl mx-auto w-full">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-16">
                   <h1 className="text-3xl sm:text-4xl font-bold flex items-center gap-4 text-[#0F172A] dark:text-[#F9FAFB]">
-                    <span className="text-[#065F46] dark:text-[#34D399]">/</span> My Journey
+                    <span className="text-[#065F46] dark:text-[#34D399]">/</span> Resume & Career Journey
                   </h1>
                   <a
                     href="/my_cv.pdf"

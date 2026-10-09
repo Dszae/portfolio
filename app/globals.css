@@ -219,7 +219,7 @@ html {
 .site-desktop-nav {
   display: none;
   align-items: center;
-  gap: clamp(10px, 1.25vw, 20px);
+  gap: clamp(6px, 1.1vw, 16px);
 }
 
 .site-nav-link {
@@ -228,7 +228,7 @@ html {
   display: inline-flex;
   align-items: center;
   color: var(--text-secondary);
-  font-size: 0.83rem;
+  font-size: 0.81rem;
   font-weight: 550;
   text-decoration: none;
   transition: color var(--duration-fast) ease;

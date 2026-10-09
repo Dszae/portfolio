@@ -24,12 +24,12 @@ export default function SkillsPage() {
                     <span>WHAT I WORK WITH</span>
                   </div>
 
-                  <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] leading-tight mb-4">
-                    Built with logic. Made with creativity.
+                  <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] leading-tight mb-4 flex items-center gap-3">
+                    <span className="text-[#065F46] dark:text-[#34D399]">/</span> Technical Skills
                   </h1>
 
                   <p className="max-w-2xl text-base sm:text-lg text-[#1E293B] dark:text-[#A7B5AE] leading-relaxed">
-                    A multidisciplinary toolkit spanning software development, digital media, and computer engineering.
+                    Built with logic. Made with creativity. A multidisciplinary toolkit spanning software development, digital media, and computer engineering.
                   </p>
                 </header>
 

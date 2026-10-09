@@ -100,8 +100,8 @@ const pages = [
   },
   {
     path: '/experience',
-    priority: '0.8',
-    changefreq: 'monthly',
+    priority: '0.9',
+    changefreq: 'weekly',
   },
   {
     path: '/blog',

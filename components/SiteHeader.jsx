@@ -8,11 +8,12 @@ const NAV_ITEMS = [
   { path: '/', label: 'Home' },
   { path: '/about', label: 'About' },
   { path: '/skills', label: 'Skills' },
-  { path: '/resume', label: 'Resume' },
   { path: '/projects', label: 'Projects' },
-  { path: '/gallery', label: 'Gallery' },
+  { path: '/experience', label: 'Experience' },
   { path: '/certificates', label: 'Certificates' },
+  { path: '/resume', label: 'Resume' },
   { path: '/contact', label: 'Contact' },
+  { path: '/gallery', label: 'Gallery' },
 ];
 
 export default function SiteHeader() {
@@ -73,7 +74,7 @@ export default function SiteHeader() {
 
           <nav
             aria-label="Main Navigation"
-            className="hidden md:flex items-center gap-2 lg:gap-4 font-mono text-xs lg:text-sm font-medium uppercase tracking-wider"
+            className="hidden md:flex items-center gap-1.5 lg:gap-3 font-mono text-[11px] lg:text-xs font-medium uppercase tracking-wider"
           >
             {NAV_ITEMS.map((item) => {
               const active = isActive(item.path);

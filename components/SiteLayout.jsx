@@ -10,10 +10,11 @@ export const NAV_LINKS = [
   { path: '/about', label: 'About', id: 'about' },
   { path: '/skills', label: 'Skills', id: 'skills' },
   { path: '/projects', label: 'Projects', id: 'projects' },
-  { path: '/gallery', label: 'Gallery', id: 'gallery' },
+  { path: '/experience', label: 'Experience', id: 'experience' },
   { path: '/certificates', label: 'Certificates', id: 'certificates' },
   { path: '/resume', label: 'Resume', id: 'resume' },
   { path: '/contact', label: 'Contact', id: 'contact' },
+  { path: '/gallery', label: 'Gallery', id: 'gallery' },
 ];
 
 function ScrollToTopButton() {

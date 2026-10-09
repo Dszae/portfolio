@@ -1,9 +1,9 @@
 export const metadata = {
-  title: 'Technical Skills & Proficiency | Dipesh Sapkota',
+  title: 'Skills',
   description: 'Technical competencies of Dipesh Sapkota across programming (C/C++, Python, React, PHP), creative media (video editing, motion graphics, graphic design), and engineering (circuit analysis, Proteus).',
   alternates: { canonical: '/skills' },
   openGraph: {
-    title: 'Technical Skills & Proficiency | Dipesh Sapkota',
+    title: 'Skills | Dipesh Sapkota',
     description: 'Programming, Creative Media, and Engineering skills of Dipesh Sapkota.',
     url: 'https://www.dipeshsapkota7.com.np/skills',
     images: [{ url: '/dipesh-sapkota.jpg', width: 627, height: 627, alt: 'Dipesh Sapkota Skills' }],
