@@ -51,10 +51,10 @@ export default function GitVisualizerProjectPage() {
         <a href="https://git-visualizer.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-amber-600 text-white font-semibold rounded-xl hover:bg-amber-500 transition-all">
           Launch Visualizer
         </a>
-        <a href="https://github.com/dszae/git-visualizer" target="_blank" rel="noreferrer" className="px-6 py-3 border font-semibold rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+        <a href="https://github.com/dszae/git-visualizer" target="_blank" rel="noreferrer" aria-label="View the Git Visualizer GitHub repository" className="px-6 py-3 border font-semibold rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
           GitHub Repository
         </a>
-        <a href="https://how-i-built-an-interactive-git-visualizer.hashnode.dev/how-i-built-an-interactive-git-visualizer-to-master-version-control" target="_blank" rel="noreferrer" className="px-6 py-3 bg-purple-700 text-white font-semibold rounded-xl hover:bg-purple-600 transition-all">
+        <a href="https://how-i-built-an-interactive-git-visualizer.hashnode.dev/how-i-built-an-interactive-git-visualizer-to-master-version-control" target="_blank" rel="noreferrer" aria-label="Read the article about building the Git Visualizer" className="px-6 py-3 bg-purple-700 text-white font-semibold rounded-xl hover:bg-purple-600 transition-all">
           Read Engineering Article
         </a>
       </div>

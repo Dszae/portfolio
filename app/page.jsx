@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import FadeUp from '../components/FadeUp';
+import { HomePageJsonLd } from '../components/JsonLdSchema';
 
 const SKILL_CATEGORIES = [
   {
@@ -455,6 +456,7 @@ export default function Home() {
 
   return (
     <div className={`min-h-screen font-sans transition-colors duration-500 overflow-x-hidden ${theme.bg} relative selection:bg-sky-500/30 w-full m-0 p-0`}>
+      <HomePageJsonLd />
 
       <style>{`
         @keyframes slideFromLeft {
@@ -858,14 +860,14 @@ export default function Home() {
                 </ul>
 
                 <div className="flex flex-wrap gap-4">
-                  <a href="/projects/sportivo" className="px-6 py-3 border border-sky-500/40 text-sky-700 dark:text-sky-300 text-sm font-semibold rounded-xl hover:bg-sky-500/10 transition-all">Project details</a>
+                  <a href="/projects/sportivo" aria-label="View Sportivo project details" className="px-6 py-3 border border-sky-500/40 text-sky-700 dark:text-sky-300 text-sm font-semibold rounded-xl hover:bg-sky-500/10 transition-all">Project details</a>
                   <a href="https://sportivo.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-sky-500 hover:bg-sky-600 text-white text-sm font-semibold rounded-xl transition-all flex items-center gap-2 shadow-sm">
                     Launch Sportivo
                   </a>
-                  <a href="https://github.com/dszae/sportivo" target="_blank" rel="noreferrer" className={`px-6 py-3 text-sm font-semibold rounded-xl transition-all flex items-center gap-2 border ${isDark ? 'border-slate-800 hover:bg-slate-900 bg-slate-900' : 'border-slate-200 hover:bg-slate-50 bg-slate-100'}`}>
+                  <a href="https://github.com/dszae/sportivo" target="_blank" rel="noreferrer" aria-label="View Sportivo source code on GitHub" className={`px-6 py-3 text-sm font-semibold rounded-xl transition-all flex items-center gap-2 border ${isDark ? 'border-slate-800 hover:bg-slate-900 bg-slate-900' : 'border-slate-200 hover:bg-slate-50 bg-slate-100'}`}>
                     Source Code
                   </a>
-                  <a href="https://building-sportivo-live-sports-streaming.hashnode.dev/building-sportivo-how-i-engineered-a-real-time-live-sports-streaming-web-app" target="_blank" rel="noreferrer" className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white text-sm font-semibold rounded-xl transition-all flex items-center gap-2 shadow-sm">
+                  <a href="https://building-sportivo-live-sports-streaming.hashnode.dev/building-sportivo-how-i-engineered-a-real-time-live-sports-streaming-web-app" target="_blank" rel="noreferrer" aria-label="Read the article about building Sportivo" className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white text-sm font-semibold rounded-xl transition-all flex items-center gap-2 shadow-sm">
                     Read Article
                   </a>
                 </div>
@@ -921,11 +923,11 @@ export default function Home() {
                 </ul>
 
                 <div className="flex flex-wrap gap-4">
-                  <a href="/projects/ioe-admission-guide" className="px-6 py-3 border border-cyan-500/40 text-cyan-700 dark:text-cyan-300 text-sm font-semibold rounded-xl hover:bg-cyan-500/10 transition-all">Project details</a>
+                  <a href="/projects/ioe-admission-guide" aria-label="View IOE Admission Guide project details" className="px-6 py-3 border border-cyan-500/40 text-cyan-700 dark:text-cyan-300 text-sm font-semibold rounded-xl hover:bg-cyan-500/10 transition-all">Project details</a>
                   <a href="https://ioe-admission.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-cyan-600 hover:bg-cyan-700 text-white text-sm font-semibold rounded-xl transition-all flex items-center gap-2 shadow-sm">
                     Explore Guide
                   </a>
-                  <a href="https://github.com/dszae/ioe-admission-guide" target="_blank" rel="noreferrer" className={`px-6 py-3 text-sm font-semibold rounded-xl transition-all flex items-center gap-2 border ${isDark ? 'border-slate-800 hover:bg-slate-900 bg-slate-900' : 'border-slate-200 hover:bg-slate-50 bg-slate-100'}`}>
+                  <a href="https://github.com/dszae/ioe-admission-guide" target="_blank" rel="noreferrer" aria-label="View IOE Admission Guide source code on GitHub" className={`px-6 py-3 text-sm font-semibold rounded-xl transition-all flex items-center gap-2 border ${isDark ? 'border-slate-800 hover:bg-slate-900 bg-slate-900' : 'border-slate-200 hover:bg-slate-50 bg-slate-100'}`}>
                     Source Code
                   </a>
                 </div>
@@ -977,14 +979,14 @@ export default function Home() {
                 </ul>
 
                 <div className="flex flex-wrap gap-4">
-                  <a href="/projects/git-visualizer" className="px-6 py-3 border border-amber-500/40 text-amber-700 dark:text-amber-300 text-sm font-semibold rounded-xl hover:bg-amber-500/10 transition-all">Project details</a>
+                  <a href="/projects/git-visualizer" aria-label="View Git Visualizer project details" className="px-6 py-3 border border-amber-500/40 text-amber-700 dark:text-amber-300 text-sm font-semibold rounded-xl hover:bg-amber-500/10 transition-all">Project details</a>
                   <a href="https://git-visualizer.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-amber-600 hover:bg-amber-700 text-white text-sm font-semibold rounded-xl transition-all flex items-center gap-2 shadow-sm">
                     Explore Visualizer
                   </a>
-                  <a href="https://github.com/dszae/git-visualizer" target="_blank" rel="noreferrer" className={`px-6 py-3 text-sm font-semibold rounded-xl transition-all flex items-center gap-2 border ${isDark ? 'border-slate-800 hover:bg-slate-900 bg-slate-900' : 'border-slate-200 hover:bg-slate-50 bg-slate-100'}`}>
+                  <a href="https://github.com/dszae/git-visualizer" target="_blank" rel="noreferrer" aria-label="View Git Visualizer source code on GitHub" className={`px-6 py-3 text-sm font-semibold rounded-xl transition-all flex items-center gap-2 border ${isDark ? 'border-slate-800 hover:bg-slate-900 bg-slate-900' : 'border-slate-200 hover:bg-slate-50 bg-slate-100'}`}>
                     Source Code
                   </a>
-                  <a href="https://how-i-built-an-interactive-git-visualizer.hashnode.dev/how-i-built-an-interactive-git-visualizer-to-master-version-control" target="_blank" rel="noreferrer" className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white text-sm font-semibold rounded-xl transition-all flex items-center gap-2 shadow-sm">
+                  <a href="https://how-i-built-an-interactive-git-visualizer.hashnode.dev/how-i-built-an-interactive-git-visualizer-to-master-version-control" target="_blank" rel="noreferrer" aria-label="Read the article about building the Git Visualizer" className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white text-sm font-semibold rounded-xl transition-all flex items-center gap-2 shadow-sm">
                     Read Article
                   </a>
                 </div>
@@ -1055,7 +1057,7 @@ export default function Home() {
                   >
                     <Image
                       src={item.img}
-                      alt={`Visual archive image of ${item.title}`}
+                      alt={item.title}
                       width="640"
                       height="360"
                       loading="lazy"

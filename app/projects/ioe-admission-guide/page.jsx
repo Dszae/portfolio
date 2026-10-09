@@ -51,7 +51,7 @@ export default function IoeAdmissionProjectPage() {
         <a href="https://ioe-admission.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-cyan-600 text-white font-semibold rounded-xl hover:bg-cyan-500 transition-all">
           Explore Guide App
         </a>
-        <a href="https://github.com/dszae/ioe-admission-guide" target="_blank" rel="noreferrer" className="px-6 py-3 border font-semibold rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+        <a href="https://github.com/dszae/ioe-admission-guide" target="_blank" rel="noreferrer" aria-label="View the IOE Admission Guide GitHub repository" className="px-6 py-3 border font-semibold rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
           GitHub Repository
         </a>
       </div>

@@ -52,10 +52,10 @@ export default function SportivoProjectPage() {
         <a href="https://sportivo.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-sky-600 text-white font-semibold rounded-xl hover:bg-sky-500 transition-all">
           Launch Live App
         </a>
-        <a href="https://github.com/dszae/sportivo" target="_blank" rel="noreferrer" className="px-6 py-3 border font-semibold rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+        <a href="https://github.com/dszae/sportivo" target="_blank" rel="noreferrer" aria-label="View the Sportivo GitHub repository" className="px-6 py-3 border font-semibold rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
           GitHub Repository
         </a>
-        <a href="https://building-sportivo-live-sports-streaming.hashnode.dev/building-sportivo-how-i-engineered-a-real-time-live-sports-streaming-web-app" target="_blank" rel="noreferrer" className="px-6 py-3 bg-purple-700 text-white font-semibold rounded-xl hover:bg-purple-600 transition-all">
+        <a href="https://building-sportivo-live-sports-streaming.hashnode.dev/building-sportivo-how-i-engineered-a-real-time-live-sports-streaming-web-app" target="_blank" rel="noreferrer" aria-label="Read the article about building Sportivo" className="px-6 py-3 bg-purple-700 text-white font-semibold rounded-xl hover:bg-purple-600 transition-all">
           Read Engineering Article
         </a>
       </div>
