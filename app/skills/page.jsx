@@ -14,7 +14,7 @@ export default function SkillsPage() {
           <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Skills', path: '/skills' }]} />
 
           <FadeUp>
-            <section id="skills" className={`pt-32 pb-24 px-6 sm:px-12 w-full ${theme.bg}`}>
+            <section id="skills" className={`pt-28 sm:pt-32 pb-24 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
               <div className="max-w-6xl mx-auto w-full">
                 
                 {/* Section Introduction */}

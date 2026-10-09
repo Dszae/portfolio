@@ -109,7 +109,7 @@ export default function ProjectsPage() {
           <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Projects', path: '/projects' }]} />
 
           <FadeUp>
-            <section id="projects" className={`pt-32 pb-24 px-6 sm:px-12 w-full ${theme.bg}`}>
+            <section id="projects" className={`pt-28 sm:pt-32 pb-24 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
               <div className="max-w-7xl mx-auto w-full">
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
                   <div>
@@ -176,21 +176,21 @@ export default function ProjectsPage() {
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {filtered.map((proj) => (
                     <div
                       key={proj.id}
-                      className={`p-6 rounded-2xl border backdrop-blur-md transition-all duration-300 flex flex-col justify-between ${theme.card} hover:-translate-y-1.5`}
+                      className={`p-6 rounded-2xl border backdrop-blur-md smooth-card-hover group hover:shadow-lg flex flex-col justify-between ${theme.card}`}
                     >
                       <div>
                         {proj.image && (
-                          <div className={`w-full h-44 mb-5 rounded-xl overflow-hidden border border-[#E2E8F0] dark:border-[#26352F] relative group bg-[#111B17]`}>
+                          <div className={`w-full h-44 mb-5 rounded-xl overflow-hidden border border-[#E2E8F0] dark:border-[#26352F] relative bg-[#111B17]`}>
                             <Image
                               src={proj.image}
                               alt={`${proj.title} Preview`}
                               fill
                               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                              className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                              className="object-cover object-top smooth-img-zoom"
                             />
                           </div>
                         )}

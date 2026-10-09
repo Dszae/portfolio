@@ -36,7 +36,7 @@ export default function AboutPage() {
           />
 
           <FadeUp>
-            <section id="about" className={`pt-32 pb-24 px-6 sm:px-12 w-full ${theme.bg}`}>
+            <section id="about" className={`pt-28 sm:pt-32 pb-24 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
               <div className="max-w-7xl mx-auto w-full">
                 <h1 className="text-3xl sm:text-4xl font-bold mb-12 flex items-center gap-4">
                   <span className="text-[#047857] dark:text-[#34D399]">/</span> About Me

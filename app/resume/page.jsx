@@ -62,7 +62,7 @@ export default function ResumePage() {
           <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Resume', path: '/resume' }]} />
 
           <FadeUp>
-            <section id="resume" className={`pt-32 pb-24 px-6 sm:px-12 w-full ${theme.bg}`}>
+            <section id="resume" className={`pt-28 sm:pt-32 pb-24 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
               <div className="max-w-7xl mx-auto w-full">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-16">
                   <h1 className="text-3xl sm:text-4xl font-bold flex items-center gap-4">

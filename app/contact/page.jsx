@@ -79,7 +79,7 @@ export default function ContactPage() {
           <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact' }]} />
 
           <FadeUp>
-            <section id="contact" className={`pt-32 pb-24 px-6 sm:px-12 w-full ${theme.bg}`}>
+            <section id="contact" className={`pt-28 sm:pt-32 pb-24 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
               <div className="max-w-7xl mx-auto w-full">
                 <div className={`p-6 sm:p-8 md:p-14 rounded-[2rem] border backdrop-blur-md ${theme.card}`}>
                   <div className="grid lg:grid-cols-2 gap-12">

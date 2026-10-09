@@ -113,6 +113,7 @@ html {
 .theme-page {
   background-color: var(--page-bg);
   color: var(--text-primary);
+  transition: background-color var(--duration-theme) ease, color var(--duration-theme) ease;
 }
 
 .theme-nav {
@@ -126,6 +127,7 @@ html {
   background-color: var(--surface-elevated);
   border-color: var(--border-default);
   box-shadow: var(--shadow-subtle);
+  transition: background-color var(--duration-theme) ease, border-color var(--duration-theme) ease, color var(--duration-theme) ease;
 }
 
 .theme-card-elevated {
@@ -173,11 +175,12 @@ html {
 .site-shell {
   background-color: var(--page-bg);
   color: var(--text-primary);
+  transition: background-color var(--duration-theme) ease, color var(--duration-theme) ease;
 }
 
 .site-nav {
   position: fixed;
-  z-index: 50;
+  z-index: 65;
   inset: 0 0 auto;
   border-bottom: 1px solid var(--border-default);
   background-color: var(--nav-surface);
@@ -274,18 +277,20 @@ html {
 }
 
 .site-mobile-nav {
-  position: absolute;
+  position: fixed;
   top: 72px;
   right: 0;
   left: 0;
-  z-index: 51;
+  z-index: 60;
   max-height: 0;
   overflow-y: auto;
   visibility: hidden;
   border-bottom: 1px solid var(--border-default);
   background: var(--nav-surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   opacity: 0;
-  transition: max-height 200ms ease, opacity 160ms ease, visibility 200ms;
+  transition: max-height 250ms ease, opacity 200ms ease, visibility 250ms;
 }
 
 .site-mobile-nav.is-open {
@@ -314,9 +319,41 @@ html {
 
 .site-backdrop {
   position: fixed;
-  z-index: 40;
+  z-index: 55;
   inset: 72px 0 0;
-  background: rgb(4 10 7 / 55%);
+  background: rgb(4 10 7 / 65%);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* GPU-accelerated silky smooth card & image hover transitions */
+.smooth-card-hover {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform, box-shadow;
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 300ms ease, border-color 300ms ease;
+}
+
+.smooth-card-hover:hover {
+  transform: translateY(-5px) translateZ(0);
+  -webkit-transform: translateY(-5px) translateZ(0);
+}
+
+.smooth-img-zoom {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
+  transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.group:hover .smooth-img-zoom,
+button:hover .smooth-img-zoom {
+  transform: scale(1.05) translateZ(0);
+  -webkit-transform: scale(1.05) translateZ(0);
 }
 
 .site-backdrop[aria-hidden="true"] {
@@ -659,6 +696,10 @@ html {
 
   .skills-preview {
     padding-bottom: 60px;
+  }
+
+  .skills-preview-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
