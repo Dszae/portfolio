@@ -44,6 +44,15 @@ const nextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: '/profile',
+        destination: '/about',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

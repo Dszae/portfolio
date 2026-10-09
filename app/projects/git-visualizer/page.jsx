@@ -27,13 +27,17 @@ export default function GitVisualizerProjectPage() {
     url: 'https://www.dipeshsapkota7.com.np/projects/git-visualizer',
     description: 'An interactive visual learning tool for Git commands and version-control workflows created by Dipesh Sapkota.',
     applicationCategory: 'DeveloperApplication',
-    creator: { '@id': 'https://www.dipeshsapkota7.com.np/#person' },
+    creator: {
+      '@type': 'Person',
+      name: 'Dipesh Sapkota',
+      url: 'https://www.dipeshsapkota7.com.np/',
+    },
     sameAs: 'https://github.com/dszae/git-visualizer',
   };
 
   return (
     <main className="max-w-4xl mx-auto px-6 py-32">
-      <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Projects', path: '/#projects' }, { name: 'Git Visualizer', path: '/projects/git-visualizer' }]} />
+      <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Projects', path: '/projects' }, { name: 'Git Visualizer', path: '/projects/git-visualizer' }]} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <span className="inline-block px-3.5 py-1 text-xs font-semibold uppercase tracking-widest text-amber-600 bg-amber-500/10 border border-amber-500/30 rounded-full mb-4">
         Featured Web App

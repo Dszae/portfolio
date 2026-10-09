@@ -39,6 +39,7 @@ const pages = [
   { path: '/contact' },
   { path: '/experience' },
   { path: '/image-licensing' },
+  { path: '/projects' },
   { path: '/projects/sportivo' },
   { path: '/projects/ioe-admission-guide' },
   { path: '/projects/git-visualizer' },

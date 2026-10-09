@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
+import { person, portraitImage, siteUrl } from '@/components/JsonLdSchema';
 
 export const metadata = {
   title: 'Official Profile',
@@ -24,13 +25,20 @@ export const metadata = {
 const profilePageJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfilePage',
-  '@id': 'https://www.dipeshsapkota7.com.np/about#profile-page',
-  url: 'https://www.dipeshsapkota7.com.np/about',
-  name: 'About Dipesh Sapkota',
+  '@id': `${siteUrl}/about#profile-page`,
+  url: `${siteUrl}/about`,
+  name: 'About Dipesh Sapkota | Official Profile',
   description: 'Official profile of Dipesh Sapkota, a Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal, and creator of independent software projects.',
-  isPartOf: { '@id': 'https://www.dipeshsapkota7.com.np/#website' },
-  mainEntity: { '@id': 'https://www.dipeshsapkota7.com.np/#person' },
-  primaryImageOfPage: { '@id': 'https://www.dipeshsapkota7.com.np/#primary-image' },
+  dateCreated: '2025-01-01T00:00:00+05:45',
+  dateModified: '2026-10-09T00:00:00+05:45',
+  mainEntity: person,
+  primaryImageOfPage: portraitImage,
+  isPartOf: {
+    '@type': 'WebSite',
+    '@id': `${siteUrl}/#website`,
+    name: 'Dipesh Sapkota',
+    url: `${siteUrl}/`,
+  },
   inLanguage: 'en',
 };
 

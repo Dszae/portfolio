@@ -27,13 +27,17 @@ export default function SportivoProjectPage() {
     url: 'https://www.dipeshsapkota7.com.np/projects/sportivo',
     description: 'A real-time live sports streaming platform engineered by Dipesh Sapkota with match schedules, search, and multi-server stream switching.',
     applicationCategory: 'SportsApplication',
-    creator: { '@id': 'https://www.dipeshsapkota7.com.np/#person' },
+    creator: {
+      '@type': 'Person',
+      name: 'Dipesh Sapkota',
+      url: 'https://www.dipeshsapkota7.com.np/',
+    },
     sameAs: 'https://github.com/dszae/sportivo',
   };
 
   return (
     <main className="max-w-4xl mx-auto px-6 py-32">
-      <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Projects', path: '/#projects' }, { name: 'Sportivo', path: '/projects/sportivo' }]} />
+      <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Projects', path: '/projects' }, { name: 'Sportivo', path: '/projects/sportivo' }]} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <span className="inline-block px-3.5 py-1 text-xs font-semibold uppercase tracking-widest text-sky-600 bg-sky-500/10 border border-sky-500/30 rounded-full mb-4">
         Featured Web App

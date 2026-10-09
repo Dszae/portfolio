@@ -1,9 +1,9 @@
-const siteUrl = 'https://www.dipeshsapkota7.com.np';
-const personId = `${siteUrl}/#person`;
-const websiteId = `${siteUrl}/#website`;
-const imageId = `${siteUrl}/#primary-image`;
+export const siteUrl = 'https://www.dipeshsapkota7.com.np';
+export const personId = `${siteUrl}/#person`;
+export const websiteId = `${siteUrl}/#website`;
+export const imageId = `${siteUrl}/#primary-image`;
 
-const portraitImage = {
+export const portraitImage = {
   '@type': 'ImageObject',
   '@id': imageId,
   url: `${siteUrl}/dipesh-sapkota.jpg`,
@@ -11,17 +11,20 @@ const portraitImage = {
   name: 'Portrait of Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal',
   description: 'Official portrait of Dipesh Sapkota, Computer Engineering student, AI/ML enthusiast, video editor, and motion graphics designer.',
   caption: 'Official portrait of Dipesh Sapkota',
-  acquireLicensePage: `${siteUrl}/contact`,
-  creator: { '@id': personId },
+  acquireLicensePage: `${siteUrl}/image-licensing`,
+  creator: {
+    '@type': 'Person',
+    name: 'Dipesh Sapkota',
+  },
   creditText: 'Dipesh Sapkota',
-  copyrightNotice: '© Dipesh Sapkota. All rights reserved.',
+  copyrightNotice: '© 2026 Dipesh Sapkota. All rights reserved.',
   license: `${siteUrl}/image-licensing`,
   width: 627,
   height: 627,
   representativeOfPage: true,
 };
 
-const person = {
+export const person = {
   '@type': 'Person',
   '@id': personId,
   name: 'Dipesh Sapkota',
@@ -30,7 +33,7 @@ const person = {
   disambiguatingDescription: 'Computer Engineering student at IOE Thapathali Campus in Nepal; known online as dszae and creator of IOE Admission Guide, Sportivo, and Git Visualizer.',
   url: `${siteUrl}/`,
   mainEntityOfPage: `${siteUrl}/`,
-  image: { '@id': imageId },
+  image: portraitImage,
   jobTitle: ['Computer Engineering Student', 'AI/ML Enthusiast', 'Video Editor', 'Motion Graphics Designer'],
   address: {
     '@type': 'PostalAddress',
@@ -40,6 +43,10 @@ const person = {
   affiliation: {
     '@type': 'CollegeOrUniversity',
     name: 'Institute of Engineering (IOE), Thapathali Campus',
+  },
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Clamphook Academy',
   },
   sameAs: [
     'https://github.com/dszae',
@@ -61,24 +68,24 @@ const person = {
   ],
 };
 
-const website = {
+export const website = {
   '@type': 'WebSite',
   '@id': websiteId,
   name: 'Dipesh Sapkota',
   alternateName: 'Dipesh Sapkota Portfolio',
   url: `${siteUrl}/`,
   description: 'Dipesh Sapkota is a Computer Engineering student and AI/ML enthusiast at IOE Thapathali in Nepal.',
-  image: { '@id': imageId },
-  publisher: { '@id': personId },
+  image: portraitImage,
+  publisher: person,
   inLanguage: 'en',
 };
 
-const siteSchema = {
+export const siteSchema = {
   '@context': 'https://schema.org',
   '@graph': [person, portraitImage, website],
 };
 
-const homePageSchema = {
+export const homePageSchema = {
   '@context': 'https://schema.org',
   '@graph': [
     {
@@ -87,8 +94,10 @@ const homePageSchema = {
       url: `${siteUrl}/`,
       name: 'Dipesh Sapkota | Computer Engineering Student & AI/ML Enthusiast',
       description: 'Dipesh Sapkota is a Computer Engineering student and AI/ML enthusiast at IOE Thapathali in Nepal.',
-      mainEntity: { '@id': personId },
-      primaryImageOfPage: { '@id': imageId },
+      dateCreated: '2025-01-01T00:00:00+05:45',
+      dateModified: '2026-10-09T00:00:00+05:45',
+      mainEntity: person,
+      primaryImageOfPage: portraitImage,
       isPartOf: { '@id': websiteId },
     },
     {
@@ -97,13 +106,13 @@ const homePageSchema = {
       name: 'Main portfolio navigation',
       hasPart: [
         { '@type': 'WebPage', name: 'Home', url: `${siteUrl}/#home` },
-        { '@type': 'WebPage', name: 'About', url: `${siteUrl}/#about` },
+        { '@type': 'WebPage', name: 'About', url: `${siteUrl}/about` },
         { '@type': 'WebPage', name: 'Skills', url: `${siteUrl}/#skills` },
         { '@type': 'WebPage', name: 'Resume', url: `${siteUrl}/#resume` },
-        { '@type': 'WebPage', name: 'Projects', url: `${siteUrl}/#projects` },
+        { '@type': 'WebPage', name: 'Projects', url: `${siteUrl}/projects` },
         { '@type': 'WebPage', name: 'Gallery', url: `${siteUrl}/#gallery` },
         { '@type': 'WebPage', name: 'Certificates', url: `${siteUrl}/#certificates` },
-        { '@type': 'WebPage', name: 'Contact', url: `${siteUrl}/#contact` },
+        { '@type': 'WebPage', name: 'Contact', url: `${siteUrl}/contact` },
       ],
     },
   ],

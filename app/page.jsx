@@ -161,7 +161,7 @@ function ScrollToTopButton() {
     <button
       onClick={scrollToTop}
       aria-label="Scroll to top of page"
-      className="fixed bottom-6 right-6 z-50 p-3.5 bg-sky-800 dark:bg-sky-600 hover:bg-sky-700 dark:hover:bg-sky-500 text-white rounded-xl shadow-lg transition-all duration-300 hover:-translate-y-1 flex items-center justify-center cursor-pointer border border-sky-700/40 backdrop-blur-md"
+      className="fixed bottom-6 right-6 z-50 p-3.5 bg-sky-800 dark:bg-sky-700 hover:bg-sky-700 dark:hover:bg-sky-800 text-white rounded-xl shadow-lg transition-all duration-300 hover:-translate-y-1 flex items-center justify-center cursor-pointer border border-sky-700/40 backdrop-blur-md"
     >
       <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
@@ -448,7 +448,7 @@ export default function Home() {
   const theme = {
     bg: isDark ? 'bg-slate-950 text-slate-100' : 'bg-white text-slate-900',
     nav: isDark ? 'bg-slate-950/95 border-slate-800 text-slate-100' : 'bg-white/95 border-slate-200 text-slate-900',
-    card: isDark ? 'bg-slate-900/60 backdrop-blur-md border-slate-800 hover:border-sky-500 text-slate-100' : 'bg-white backdrop-blur-md border-slate-200 hover:border-sky-500 text-slate-900 shadow-sm',
+    card: isDark ? 'bg-slate-900 backdrop-blur-md border-slate-800 hover:border-sky-500 text-slate-100' : 'bg-white backdrop-blur-md border-slate-200 hover:border-sky-500 text-slate-900 shadow-sm',
     muted: isDark ? 'text-slate-400' : 'text-slate-600',
     tag: isDark ? 'bg-slate-800 text-sky-400' : 'bg-sky-50 text-sky-700',
     input: isDark ? 'bg-slate-900 border-slate-800 text-white placeholder-slate-500 focus:border-sky-500' : 'bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:border-sky-500'
@@ -595,7 +595,7 @@ export default function Home() {
               </div>
 
               <div className="mt-8 sm:mt-10 flex flex-wrap gap-4">
-                <a href="/my_cv.pdf" download="Dipesh_Sapkota_CV.pdf" className="px-6 py-3 sm:px-8 sm:py-4 bg-sky-500 text-white font-semibold rounded-xl hover:bg-sky-600 transition-all hover:-translate-y-1 flex items-center gap-2 shadow-sm">
+                <a href="/my_cv.pdf" download="Dipesh_Sapkota_CV.pdf" className="px-6 py-3 sm:px-8 sm:py-4 bg-sky-700 text-white font-semibold rounded-xl hover:bg-sky-800 transition-all hover:-translate-y-1 flex items-center gap-2 shadow-sm">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                   Download CV
                 </a>
@@ -840,7 +840,7 @@ export default function Home() {
 
             <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-lg transition-all duration-500 hover:-translate-y-2 hover:border-sky-500 ${theme.card}`}>
               <div className="w-full lg:w-1/2">
-                <span className="inline-block px-3.5 py-1 text-xs font-semibold uppercase tracking-widest text-sky-500 bg-sky-500/10 border border-sky-500/20 rounded-full mb-4">
+                <span className={`inline-block px-3.5 py-1 text-xs font-semibold uppercase tracking-widest ${isDark ? 'text-sky-300' : 'text-sky-800'} bg-sky-500/10 border border-sky-500/20 rounded-full mb-4`}>
                   Featured Web App
                 </span>
                 <h3 className="text-3xl sm:text-4xl font-bold mb-4 tracking-tight">Sportivo</h3>
@@ -850,18 +850,18 @@ export default function Home() {
                 
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center gap-3 text-sm font-semibold">
-                    <svg className="w-5 h-5 text-sky-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <svg className={`w-5 h-5 ${isDark ? 'text-sky-300' : 'text-sky-700'} flex-shrink-0`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     Real-time Football, Cricket & Basketball Streams
                   </li>
                   <li className="flex items-center gap-3 text-sm font-semibold">
-                    <svg className="w-5 h-5 text-sky-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <svg className={`w-5 h-5 ${isDark ? 'text-sky-300' : 'text-sky-700'} flex-shrink-0`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     Instant Live Match Search & Filter
                   </li>
                 </ul>
 
                 <div className="flex flex-wrap gap-4">
                   <a href="/projects/sportivo" aria-label="View Sportivo project details" className="px-6 py-3 border border-sky-500/40 text-sky-700 dark:text-sky-300 text-sm font-semibold rounded-xl hover:bg-sky-500/10 transition-all">Project details</a>
-                  <a href="https://sportivo.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-sky-500 hover:bg-sky-600 text-white text-sm font-semibold rounded-xl transition-all flex items-center gap-2 shadow-sm">
+                  <a href="https://sportivo.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-sky-700 hover:bg-sky-800 text-white text-sm font-semibold rounded-xl transition-all flex items-center gap-2 shadow-sm">
                     Launch Sportivo
                   </a>
                   <a href="https://github.com/dszae/sportivo" target="_blank" rel="noreferrer" aria-label="View Sportivo source code on GitHub" className={`px-6 py-3 text-sm font-semibold rounded-xl transition-all flex items-center gap-2 border ${isDark ? 'border-slate-800 hover:bg-slate-900 bg-slate-900' : 'border-slate-200 hover:bg-slate-50 bg-slate-100'}`}>
@@ -903,7 +903,7 @@ export default function Home() {
 
             <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-lg transition-all duration-500 hover:-translate-y-2 hover:border-cyan-500 ${theme.card}`}>
               <div className="w-full lg:w-1/2">
-                <span className="inline-block px-3.5 py-1 text-xs font-semibold uppercase tracking-widest text-cyan-500 bg-cyan-500/10 border border-cyan-500/20 rounded-full mb-4">
+                <span className={`inline-block px-3.5 py-1 text-xs font-semibold uppercase tracking-widest ${isDark ? 'text-cyan-300' : 'text-cyan-800'} bg-cyan-500/10 border border-cyan-500/20 rounded-full mb-4`}>
                   Featured Web App
                 </span>
                 <h3 className="text-3xl sm:text-4xl font-bold mb-4 tracking-tight">IOE Admission Guide</h3>
@@ -913,18 +913,18 @@ export default function Home() {
                 
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center gap-3 text-sm font-semibold">
-                    <svg className="w-5 h-5 text-cyan-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <svg className={`w-5 h-5 ${isDark ? 'text-cyan-300' : 'text-cyan-700'} flex-shrink-0`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     Step-by-Step IOE Counseling & Document Guides
                   </li>
                   <li className="flex items-center gap-3 text-sm font-semibold">
-                    <svg className="w-5 h-5 text-cyan-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <svg className={`w-5 h-5 ${isDark ? 'text-cyan-300' : 'text-cyan-700'} flex-shrink-0`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     Statistical Rank Predictor & Priority Form Generator
                   </li>
                 </ul>
 
                 <div className="flex flex-wrap gap-4">
                   <a href="/projects/ioe-admission-guide" aria-label="View IOE Admission Guide project details" className="px-6 py-3 border border-cyan-500/40 text-cyan-700 dark:text-cyan-300 text-sm font-semibold rounded-xl hover:bg-cyan-500/10 transition-all">Project details</a>
-                  <a href="https://ioe-admission.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-cyan-600 hover:bg-cyan-700 text-white text-sm font-semibold rounded-xl transition-all flex items-center gap-2 shadow-sm">
+                  <a href="https://ioe-admission.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-cyan-700 hover:bg-cyan-800 text-white text-sm font-semibold rounded-xl transition-all flex items-center gap-2 shadow-sm">
                     Explore Guide
                   </a>
                   <a href="https://github.com/dszae/ioe-admission-guide" target="_blank" rel="noreferrer" aria-label="View IOE Admission Guide source code on GitHub" className={`px-6 py-3 text-sm font-semibold rounded-xl transition-all flex items-center gap-2 border ${isDark ? 'border-slate-800 hover:bg-slate-900 bg-slate-900' : 'border-slate-200 hover:bg-slate-50 bg-slate-100'}`}>
@@ -959,7 +959,7 @@ export default function Home() {
 
             <div className={`mb-16 p-6 sm:p-10 rounded-[2rem] border backdrop-blur-xl flex flex-col lg:flex-row items-center gap-10 shadow-lg transition-all duration-500 hover:-translate-y-2 hover:border-amber-500 ${theme.card}`}>
               <div className="w-full lg:w-1/2">
-                <span className="inline-block px-3.5 py-1 text-xs font-semibold uppercase tracking-widest text-amber-500 bg-amber-500/10 border border-amber-500/20 rounded-full mb-4">
+                <span className={`inline-block px-3.5 py-1 text-xs font-semibold uppercase tracking-widest ${isDark ? 'text-amber-300' : 'text-amber-800'} bg-amber-500/10 border border-amber-500/20 rounded-full mb-4`}>
                   Featured Web App
                 </span>
                 <h3 className="text-3xl sm:text-4xl font-bold mb-4 tracking-tight">Git Visualizer</h3>
@@ -969,18 +969,18 @@ export default function Home() {
                 
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center gap-3 text-sm font-semibold">
-                    <svg className="w-5 h-5 text-amber-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <svg className={`w-5 h-5 ${isDark ? 'text-amber-300' : 'text-amber-700'} flex-shrink-0`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     Interactive Hover-Driven UI
                   </li>
                   <li className="flex items-center gap-3 text-sm font-semibold">
-                    <svg className="w-5 h-5 text-amber-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <svg className={`w-5 h-5 ${isDark ? 'text-amber-300' : 'text-amber-700'} flex-shrink-0`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     Live Diagramming of Git Operations
                   </li>
                 </ul>
 
                 <div className="flex flex-wrap gap-4">
                   <a href="/projects/git-visualizer" aria-label="View Git Visualizer project details" className="px-6 py-3 border border-amber-500/40 text-amber-700 dark:text-amber-300 text-sm font-semibold rounded-xl hover:bg-amber-500/10 transition-all">Project details</a>
-                  <a href="https://git-visualizer.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-amber-600 hover:bg-amber-700 text-white text-sm font-semibold rounded-xl transition-all flex items-center gap-2 shadow-sm">
+                  <a href="https://git-visualizer.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-amber-700 hover:bg-amber-800 text-white text-sm font-semibold rounded-xl transition-all flex items-center gap-2 shadow-sm">
                     Explore Visualizer
                   </a>
                   <a href="https://github.com/dszae/git-visualizer" target="_blank" rel="noreferrer" aria-label="View Git Visualizer source code on GitHub" className={`px-6 py-3 text-sm font-semibold rounded-xl transition-all flex items-center gap-2 border ${isDark ? 'border-slate-800 hover:bg-slate-900 bg-slate-900' : 'border-slate-200 hover:bg-slate-50 bg-slate-100'}`}>
@@ -1020,7 +1020,7 @@ export default function Home() {
               {PROJECTS.map((proj) => (
                 <div key={proj.id} className={`p-6 sm:p-8 rounded-2xl border backdrop-blur-md transition-all duration-300 group ${theme.card} flex flex-col`}>
                   <div className="flex justify-between items-start mb-6">
-                    <span className="inline-block px-3.5 py-1 bg-sky-500/10 text-sky-500 text-xs font-semibold rounded-full uppercase tracking-wider border border-sky-500/20">
+                    <span className={`inline-block px-3.5 py-1 bg-sky-500/10 ${isDark ? 'text-sky-300' : 'text-sky-800'} text-xs font-semibold rounded-full uppercase tracking-wider border border-sky-500/20`}>
                       {proj.category}
                     </span>
                   </div>
@@ -1065,7 +1065,7 @@ export default function Home() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-between p-4 sm:p-6">
-                      <div className="self-end w-8 h-8 rounded-full bg-sky-500 text-white flex items-center justify-center shadow-md transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                      <div className="self-end w-8 h-8 rounded-full bg-sky-700 text-white flex items-center justify-center shadow-md transform scale-75 group-hover:scale-100 transition-transform duration-300">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
                       </div>
                       <p className="text-white text-xs sm:text-sm md:text-base font-semibold text-center translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
@@ -1105,7 +1105,7 @@ export default function Home() {
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
                       />
                       <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <div className="w-10 h-10 rounded-full bg-sky-500 text-white flex items-center justify-center shadow-md transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                        <div className="w-10 h-10 rounded-full bg-sky-700 text-white flex items-center justify-center shadow-md transform scale-75 group-hover:scale-100 transition-transform duration-300">
                           <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
                         </div>
                       </div>
@@ -1199,7 +1199,7 @@ export default function Home() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="px-6 py-4 sm:px-10 sm:py-5 bg-sky-500 text-white font-semibold rounded-xl hover:bg-sky-600 disabled:cursor-not-allowed disabled:opacity-60 transition-colors w-full shadow-md cursor-pointer"
+                      className="px-6 py-4 sm:px-10 sm:py-5 bg-sky-700 text-white font-semibold rounded-xl hover:bg-sky-800 disabled:cursor-not-allowed disabled:opacity-60 transition-colors w-full shadow-md cursor-pointer"
                     >
                       Send Message
                     </button>
