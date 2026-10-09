@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 import FadeUp from '../components/FadeUp';
 import { HomePageJsonLd } from '../components/JsonLdSchema';
@@ -118,14 +119,14 @@ const CERTIFICATES = [
 ];
 
 const NAV_LINKS = [
-  { id: 'home', label: 'Home' },
-  { id: 'about', label: 'About' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'resume', label: 'Resume' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'gallery', label: 'Gallery' },
-  { id: 'certificates', label: 'Certificates' },
-  { id: 'contact', label: 'Contact' }
+  { path: '/', label: 'Home', id: 'home' },
+  { path: '/about', label: 'About', id: 'about' },
+  { path: '/skills', label: 'Skills', id: 'skills' },
+  { path: '/resume', label: 'Resume', id: 'resume' },
+  { path: '/projects', label: 'Projects', id: 'projects' },
+  { path: '/gallery', label: 'Gallery', id: 'gallery' },
+  { path: '/certificates', label: 'Certificates', id: 'certificates' },
+  { path: '/contact', label: 'Contact', id: 'contact' },
 ];
 
 const ROLES = ["Video Editor", "Graphics Designer", "Computer Engineer"];
@@ -526,14 +527,14 @@ export default function Home() {
           
           <div className="hidden md:flex gap-4 lg:gap-8 font-mono text-sm font-medium uppercase tracking-wider">
             {NAV_LINKS.map((link) => (
-              <a 
+              <Link 
                 key={link.id} 
-                href={`#${link.id}`} 
+                href={link.path} 
                 aria-label={link.id === 'about' ? 'About section' : undefined}
                 className={`${activeSection === link.id ? 'text-sky-500 font-bold' : 'opacity-80 hover:opacity-100'} hover:text-sky-500 transition-colors`}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -576,15 +577,15 @@ export default function Home() {
         >
           <div className="flex flex-col px-6 py-4 font-mono text-sm font-medium uppercase tracking-wider space-y-6 text-center relative z-20">
             {NAV_LINKS.map((link) => (
-              <a 
+              <Link 
                 key={link.id} 
-                href={`#${link.id}`} 
+                href={link.path} 
                 aria-label={link.id === 'about' ? 'About section' : undefined}
                 onClick={() => setIsMenuOpen(false)} 
                 className={`${activeSection === link.id ? 'text-sky-500 font-bold' : ''} hover:text-sky-500 transition-colors`}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
