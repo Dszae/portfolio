@@ -20,19 +20,30 @@ export default function SiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    const isDarkStored = localStorage.getItem('theme') === 'dark';
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const shouldBeDark = isDarkStored || (!('theme' in localStorage) && prefersDark);
-    if (shouldBeDark) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
+    try {
+      const stored = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = stored !== null ? stored === 'dark' : prefersDark;
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        document.documentElement.style.backgroundColor = '#0B0F0E';
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.style.backgroundColor = '#F8FAFC';
+      }
+    } catch {
+      // Fallback
     }
   }, []);
 
   const toggleTheme = () => {
     const isDark = document.documentElement.classList.toggle('dark');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    try {
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      document.documentElement.style.backgroundColor = isDark ? '#0B0F0E' : '#F8FAFC';
+    } catch {
+      // Fallback
+    }
   };
 
   const isActive = (path) => {
@@ -46,15 +57,15 @@ export default function SiteHeader() {
     <>
       <header
         role="banner"
-        className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-white/90 dark:bg-slate-950/90 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300"
+        className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-[#FFFFFF]/90 dark:bg-[#0B0F0E]/90 border-b border-[#E2E8F0] dark:border-[#26352F] transition-colors duration-300"
       >
         <div className="max-w-7xl mx-auto px-6 sm:px-12 h-20 flex justify-between items-center">
           <Link
             href="/"
-            className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white hover:text-sky-600 dark:hover:text-sky-400 transition-colors"
+            className="text-2xl font-bold tracking-tight text-[#111827] dark:text-[#F9FAFB] hover:text-[#047857] dark:hover:text-[#34D399] transition-colors"
             onClick={() => setIsMenuOpen(false)}
           >
-            Dipesh Sapkota<span className="text-sky-500">.</span>
+            Dipesh Sapkota<span className="text-[#047857] dark:text-[#34D399]">.</span>
           </Link>
 
           <nav
@@ -69,8 +80,8 @@ export default function SiteHeader() {
                   href={item.path}
                   className={`transition-colors py-2 px-2.5 rounded-lg ${
                     active
-                      ? 'text-sky-600 dark:text-sky-400 font-bold bg-sky-500/10'
-                      : 'text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-slate-100 dark:hover:bg-slate-900'
+                      ? 'text-[#047857] dark:text-[#34D399] font-bold bg-[#047857]/10 dark:bg-[#34D399]/10'
+                      : 'text-[#475569] dark:text-[#A7B0BE] hover:text-[#047857] dark:hover:text-[#34D399] hover:bg-[#F1F5F9] dark:hover:bg-[#16221D]'
                   }`}
                   aria-current={active ? 'page' : undefined}
                 >
@@ -84,7 +95,7 @@ export default function SiteHeader() {
             <button
               onClick={toggleTheme}
               type="button"
-              className="w-10 h-10 rounded-full flex items-center justify-center border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-sky-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors shadow-sm cursor-pointer"
+              className="w-10 h-10 rounded-full flex items-center justify-center border border-[#E2E8F0] dark:border-[#26352F] text-[#047857] dark:text-[#34D399] hover:bg-[#F1F5F9] dark:hover:bg-[#16221D] transition-colors shadow-sm cursor-pointer"
               aria-label="Toggle Theme Mode"
             >
               <svg className="hidden dark:block w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -100,7 +111,7 @@ export default function SiteHeader() {
               aria-label="Toggle navigation menu"
               aria-expanded={isMenuOpen}
               aria-controls="mobile-site-nav"
-              className="md:hidden w-10 h-10 rounded-lg flex items-center justify-center border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors text-slate-700 dark:text-slate-200"
+              className="md:hidden w-10 h-10 rounded-lg flex items-center justify-center border border-[#E2E8F0] dark:border-[#26352F] hover:bg-[#F1F5F9] dark:hover:bg-[#16221D] transition-colors text-[#111827] dark:text-[#F9FAFB]"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? (
@@ -119,7 +130,7 @@ export default function SiteHeader() {
         {/* Mobile dropdown */}
         <div
           id="mobile-site-nav"
-          className={`md:hidden absolute top-20 left-0 w-full backdrop-blur-xl bg-white/95 dark:bg-slate-950/95 border-b border-slate-200 dark:border-slate-800 transition-all duration-300 shadow-xl overflow-hidden ${
+          className={`md:hidden absolute top-20 left-0 w-full backdrop-blur-xl bg-[#FFFFFF]/95 dark:bg-[#0B0F0E]/95 border-b border-[#E2E8F0] dark:border-[#26352F] transition-all duration-300 shadow-xl overflow-hidden ${
             isMenuOpen ? 'max-h-96 opacity-100 py-4' : 'max-h-0 opacity-0 py-0'
           }`}
         >
@@ -133,8 +144,8 @@ export default function SiteHeader() {
                   onClick={() => setIsMenuOpen(false)}
                   className={`py-2 px-4 rounded-lg transition-colors ${
                     active
-                      ? 'text-sky-600 dark:text-sky-400 font-bold bg-sky-500/10'
-                      : 'text-slate-700 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-slate-100 dark:hover:bg-slate-900'
+                      ? 'text-[#047857] dark:text-[#34D399] font-bold bg-[#047857]/10 dark:bg-[#34D399]/10'
+                      : 'text-[#475569] dark:text-[#A7B0BE] hover:text-[#047857] dark:hover:text-[#34D399] hover:bg-[#F1F5F9] dark:hover:bg-[#16221D]'
                   }`}
                   aria-current={active ? 'page' : undefined}
                 >
@@ -149,7 +160,7 @@ export default function SiteHeader() {
       {/* Backdrop for mobile */}
       {isMenuOpen && (
         <div
-          className="md:hidden fixed inset-0 z-40 bg-slate-950/60 backdrop-blur-sm"
+          className="md:hidden fixed inset-0 z-40 bg-[#0B0F0E]/60 backdrop-blur-sm"
           onClick={() => setIsMenuOpen(false)}
         />
       )}

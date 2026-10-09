@@ -23,34 +23,34 @@ const EXPERIENCE = [
   },
   { 
     year: "2023 - Present", 
-    role: "Freelancer", 
-    company: "Independent", 
-    desc: "Delivering custom digital content, graphic layouts, and promotional assets for various clients.",
+    role: "Freelance Creative Editor", 
+    company: "Independent Practice", 
+    desc: "Delivering custom digital content, motion graphics layouts, and promotional assets for various clients.",
     logo: "/freelance.webp" 
   }
 ];
 
 const EDUCATION = [
-  {
-    year: "2025 - Present",
-    degree: "Bachelor in Computer Engineering",
-    school: "Institute of Engineering (IOE), Thapathali Campus",
-    desc: "Currently pursuing my engineering degree.",
-    logo: "/thapathali.webp"
+  { 
+    year: "2025 - Present", 
+    degree: "Bachelor in Computer Engineering", 
+    school: "Institute of Engineering (IOE), Thapathali Campus", 
+    desc: "Currently pursuing Bachelor's in Computer Engineering.",
+    logo: "/thapathali.webp" 
   },
   { 
     year: "2022 - 2024", 
-    degree: "School Leaving Certificate (SLC)", 
+    degree: "School Leaving Certificate (SLC / +2)", 
     school: "Shree Janak Model Secondary School", 
     desc: "GPA: 3.88 / 4.00",
-    logo: "/janak.webp"
+    logo: "/janak.webp" 
   },
   { 
     year: "2022", 
     degree: "Secondary Education Examination (SEE)", 
     school: "Shree Mahendra Adarsha Secondary School", 
     desc: "GPA: 3.88 / 4.00",
-    logo: "/mahendra.webp"
+    logo: "/mahendra.webp" 
   }
 ];
 
@@ -66,12 +66,12 @@ export default function ResumePage() {
               <div className="max-w-7xl mx-auto w-full">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-16">
                   <h1 className="text-3xl sm:text-4xl font-bold flex items-center gap-4">
-                    <span className="text-sky-500">/</span> My Journey
+                    <span className="text-[#047857] dark:text-[#34D399]">/</span> My Journey
                   </h1>
                   <a
                     href="/my_cv.pdf"
                     download="Dipesh_Sapkota_CV.pdf"
-                    className="self-start sm:self-auto px-6 py-3 bg-sky-700 text-white font-semibold rounded-xl hover:bg-sky-800 transition-all hover:-translate-y-1 flex items-center gap-2 shadow-sm font-sans"
+                    className="self-start sm:self-auto px-6 py-3 bg-[#047857] dark:bg-[#34D399] text-white dark:text-[#0B0F0E] font-semibold rounded-xl hover:bg-[#065F46] dark:hover:bg-[#6EE7B7] transition-all hover:-translate-y-1 flex items-center gap-2 shadow-sm font-sans cursor-pointer"
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                     Download CV
@@ -82,16 +82,16 @@ export default function ResumePage() {
 
                   <div>
                     <h2 className="text-xl sm:text-2xl font-semibold mb-10 flex items-center gap-3">
-                      <svg className="w-5 h-5 sm:w-6 sm:h-6 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                      <svg className="w-5 h-5 sm:w-6 sm:h-6 text-[#047857] dark:text-[#34D399]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                       Experience
                     </h2>
-                    <div className="space-y-8 relative border-l-2 border-sky-500/20 pl-6 ml-3">
+                    <div className="space-y-8 relative border-l-2 border-[#047857]/20 dark:border-[#34D399]/20 pl-6 ml-3">
                       {EXPERIENCE.map((exp, index) => (
                         <div 
                           key={index} 
-                          className="relative pb-4 transition-transform duration-300 hover:translate-x-3 group cursor-default"
+                          className="relative pb-4 transition-transform duration-300 hover:translate-x-2 group cursor-default"
                         >
-                          <div className="absolute -left-[35px] top-4 w-3.5 h-3.5 bg-sky-500 rounded-full border-4 border-slate-900"></div>
+                          <div className="absolute -left-[33px] top-4 w-3.5 h-3.5 bg-[#047857] dark:bg-[#34D399] rounded-full border-4 border-white dark:border-[#0B0F0E]"></div>
                           
                           <div className={`p-6 rounded-2xl transition-all duration-300 group-hover:shadow-md ${theme.card}`}>
                             <div className="flex items-center gap-4">
@@ -104,7 +104,7 @@ export default function ResumePage() {
                                     height="48"
                                     loading="lazy"
                                     decoding="async"
-                                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover bg-white border border-slate-200 dark:border-slate-800" 
+                                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover bg-white border border-[#E2E8F0] dark:border-[#26352F]" 
                                     onError={(e) => { e.target.style.display = 'none'; }}
                                   />
                                 </div>
@@ -114,11 +114,11 @@ export default function ResumePage() {
                                   {exp.year}
                                 </span>
                                 <h3 className="text-lg sm:text-xl font-semibold mb-1">{exp.role}</h3>
-                                <p className="font-mono text-xs sm:text-sm mb-2 font-light text-blue-900 dark:text-blue-400">{exp.company}</p>
+                                <p className="font-mono text-xs sm:text-sm mb-2 font-medium text-[#047857] dark:text-[#34D399]">{exp.company}</p>
                                 <p className={`text-sm leading-relaxed ${theme.muted}`}>{exp.desc}</p>
                               </div>
                             </div>
-                            <div className="absolute bottom-0 left-6 w-0 h-1 bg-sky-500 transition-all duration-300 group-hover:w-[calc(100%-3rem)] rounded-b-2xl"></div>
+                            <div className="absolute bottom-0 left-6 w-0 h-1 bg-[#047857] dark:bg-[#34D399] transition-all duration-300 group-hover:w-[calc(100%-3rem)] rounded-b-2xl"></div>
                           </div>
                         </div>
                       ))}
@@ -127,16 +127,16 @@ export default function ResumePage() {
 
                   <div>
                     <h2 className="text-xl sm:text-2xl font-semibold mb-10 flex items-center gap-3">
-                      <svg className="w-5 h-5 sm:w-6 sm:h-6 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z" /><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" /></svg>
+                      <svg className="w-5 h-5 sm:w-6 sm:h-6 text-[#047857] dark:text-[#34D399]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z" /><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" /></svg>
                       Education
                     </h2>
-                    <div className="space-y-8 relative border-l-2 border-sky-500/20 pl-6 ml-3">
+                    <div className="space-y-8 relative border-l-2 border-[#047857]/20 dark:border-[#34D399]/20 pl-6 ml-3">
                       {EDUCATION.map((edu, index) => (
                         <div 
                           key={index} 
-                          className="relative pb-4 transition-transform duration-300 hover:translate-x-3 group cursor-default"
+                          className="relative pb-4 transition-transform duration-300 hover:translate-x-2 group cursor-default"
                         >
-                          <div className="absolute -left-[35px] top-4 w-3.5 h-3.5 bg-sky-500 rounded-full border-4 border-slate-900"></div>
+                          <div className="absolute -left-[33px] top-4 w-3.5 h-3.5 bg-[#047857] dark:bg-[#34D399] rounded-full border-4 border-white dark:border-[#0B0F0E]"></div>
                           
                           <div className={`p-6 rounded-2xl transition-all duration-300 group-hover:shadow-md ${theme.card}`}>
                             <div className="flex items-center gap-4">
@@ -149,7 +149,7 @@ export default function ResumePage() {
                                     height="48"
                                     loading="lazy"
                                     decoding="async"
-                                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover bg-white border border-slate-200 dark:border-slate-800" 
+                                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover bg-white border border-[#E2E8F0] dark:border-[#26352F]" 
                                     onError={(e) => { e.target.style.display = 'none'; }}
                                   />
                                 </div>
@@ -159,11 +159,11 @@ export default function ResumePage() {
                                   {edu.year}
                                 </span>
                                 <h3 className="text-base sm:text-lg font-semibold leading-tight mb-1">{edu.degree}</h3>
-                                <p className="font-mono text-xs sm:text-sm mb-2 font-light text-blue-900 dark:text-blue-400">{edu.school}</p>
+                                <p className="font-mono text-xs sm:text-sm mb-2 font-medium text-[#047857] dark:text-[#34D399]">{edu.school}</p>
                                 <p className={`text-sm leading-relaxed ${theme.muted}`}>{edu.desc}</p>
                               </div>
                             </div>
-                            <div className="absolute bottom-0 left-6 w-0 h-1 bg-sky-500 transition-all duration-300 group-hover:w-[calc(100%-3rem)] rounded-b-2xl"></div>
+                            <div className="absolute bottom-0 left-6 w-0 h-1 bg-[#047857] dark:bg-[#34D399] transition-all duration-300 group-hover:w-[calc(100%-3rem)] rounded-b-2xl"></div>
                           </div>
                         </div>
                       ))}

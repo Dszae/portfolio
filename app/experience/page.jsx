@@ -25,28 +25,28 @@ export default function ExperiencePage() {
   return (
     <>
       <SiteHeader />
-      <main className="max-w-4xl mx-auto px-6 py-32">
+      <main className="max-w-4xl mx-auto px-6 py-32 text-[#111827] dark:text-[#F9FAFB]">
         <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Experience & Education', path: '/experience' }]} />
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-200 dark:border-slate-800">
-          <h1 className="text-4xl font-bold">Experience & Education</h1>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-[#E2E8F0] dark:border-[#26352F]">
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">Experience & Education</h1>
           <Link
             href="/resume"
-            className="px-5 py-2.5 bg-sky-600 hover:bg-sky-500 text-white text-sm font-semibold rounded-xl transition-all shadow-sm flex items-center gap-2"
+            className="px-5 py-2.5 bg-[#047857] hover:bg-[#065F46] dark:bg-[#34D399] dark:hover:bg-[#6EE7B7] text-white dark:text-[#0B0F0E] text-sm font-semibold rounded-xl transition-all shadow-sm flex items-center gap-2"
           >
-            <span>View Full Resume & CV</span>
+            <span>View Full Journey</span>
             <span>&rarr;</span>
           </Link>
         </div>
         <section className="mb-10">
-          <h2 className="text-2xl font-semibold text-sky-500 mb-4">Professional Experience</h2>
-          <h3 className="text-xl font-bold">Video Editor & Graphics Designer - Clamphook Academy</h3>
-          <p className="text-sm text-slate-500 mb-2">2026 - Present</p>
-          <p className="text-slate-700 dark:text-slate-300">Producing promotional videos and design assets for entrance examination crash courses.</p>
+          <h2 className="text-2xl font-semibold text-[#047857] dark:text-[#34D399] mb-4">Professional Experience</h2>
+          <h3 className="text-xl font-bold mb-1">Video Editor & Graphics Designer &bull; Clamphook Academy</h3>
+          <p className="text-sm text-[#475569] dark:text-[#A7B0BE] mb-2 font-mono">2026 - Present</p>
+          <p className="text-[#475569] dark:text-[#A7B0BE] leading-relaxed">Producing promotional videos and design assets for entrance examination crash courses.</p>
         </section>
         <section>
-          <h2 className="text-2xl font-semibold text-sky-500 mb-4">Education</h2>
-          <h3 className="text-xl font-bold">Bachelor in Computer Engineering - IOE Thapathali Campus</h3>
-          <p className="text-sm text-slate-500 mb-2">2025 - Present | Kathmandu, Nepal</p>
+          <h2 className="text-2xl font-semibold text-[#047857] dark:text-[#34D399] mb-4">Education</h2>
+          <h3 className="text-xl font-bold mb-1">Bachelor in Computer Engineering &bull; IOE Thapathali Campus</h3>
+          <p className="text-sm text-[#475569] dark:text-[#A7B0BE] mb-2 font-mono">2025 - Present | Kathmandu, Nepal</p>
         </section>
       </main>
     </>
