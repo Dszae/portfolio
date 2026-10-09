@@ -62,10 +62,10 @@ export default function SiteHeader() {
         <div className="max-w-7xl mx-auto px-6 sm:px-12 h-20 flex justify-between items-center">
           <Link
             href="/"
-            className="text-2xl font-bold tracking-tight text-[#111827] dark:text-[#F9FAFB] hover:text-[#047857] dark:hover:text-[#34D399] transition-colors"
+            className="text-2xl font-bold tracking-tight text-[#0F172A] dark:text-[#F9FAFB] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors"
             onClick={() => setIsMenuOpen(false)}
           >
-            Dipesh Sapkota<span className="text-[#047857] dark:text-[#34D399]">.</span>
+            Dipesh Sapkota<span className="text-[#065F46] dark:text-[#34D399]">.</span>
           </Link>
 
           <nav
@@ -80,8 +80,8 @@ export default function SiteHeader() {
                   href={item.path}
                   className={`transition-colors py-2 px-2.5 rounded-lg ${
                     active
-                      ? 'text-[#047857] dark:text-[#34D399] font-bold bg-[#047857]/10 dark:bg-[#34D399]/10'
-                      : 'text-[#475569] dark:text-[#A7B0BE] hover:text-[#047857] dark:hover:text-[#34D399] hover:bg-[#F1F5F9] dark:hover:bg-[#16221D]'
+                      ? 'text-[#065F46] dark:text-[#34D399] font-bold bg-[#E2E8F0] dark:bg-[#34D399]/10'
+                      : 'text-[#1E293B] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] hover:bg-[#F1F5F9] dark:hover:bg-[#16221D]'
                   }`}
                   aria-current={active ? 'page' : undefined}
                 >
@@ -95,7 +95,7 @@ export default function SiteHeader() {
             <button
               onClick={toggleTheme}
               type="button"
-              className="w-10 h-10 rounded-full flex items-center justify-center border border-[#E2E8F0] dark:border-[#26352F] text-[#047857] dark:text-[#34D399] hover:bg-[#F1F5F9] dark:hover:bg-[#16221D] transition-colors shadow-sm cursor-pointer"
+              className="w-10 h-10 rounded-full flex items-center justify-center border border-[#CBD5E1] dark:border-[#26352F] text-[#065F46] dark:text-[#34D399] hover:bg-[#F1F5F9] dark:hover:bg-[#16221D] transition-colors shadow-sm cursor-pointer"
               aria-label="Toggle Theme Mode"
             >
               <svg className="hidden dark:block w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -111,7 +111,7 @@ export default function SiteHeader() {
               aria-label="Toggle navigation menu"
               aria-expanded={isMenuOpen}
               aria-controls="mobile-site-nav"
-              className="md:hidden w-10 h-10 rounded-lg flex items-center justify-center border border-[#E2E8F0] dark:border-[#26352F] hover:bg-[#F1F5F9] dark:hover:bg-[#16221D] transition-colors text-[#111827] dark:text-[#F9FAFB]"
+              className="md:hidden w-10 h-10 rounded-lg flex items-center justify-center border border-[#CBD5E1] dark:border-[#26352F] hover:bg-[#F1F5F9] dark:hover:bg-[#16221D] transition-colors text-[#0F172A] dark:text-[#F9FAFB]"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? (
@@ -130,7 +130,7 @@ export default function SiteHeader() {
         {/* Mobile dropdown */}
         <div
           id="mobile-site-nav"
-          className={`md:hidden absolute top-20 left-0 w-full backdrop-blur-xl bg-[#FFFFFF]/95 dark:bg-[#0B0F0E]/95 border-b border-[#E2E8F0] dark:border-[#26352F] transition-all duration-300 shadow-xl overflow-hidden ${
+          className={`md:hidden absolute top-20 left-0 w-full backdrop-blur-xl bg-[#FFFFFF]/95 dark:bg-[#0B0F0E]/95 border-b border-[#CBD5E1] dark:border-[#26352F] transition-all duration-300 shadow-xl overflow-hidden ${
             isMenuOpen ? 'max-h-96 opacity-100 py-4' : 'max-h-0 opacity-0 py-0'
           }`}
         >
@@ -144,8 +144,8 @@ export default function SiteHeader() {
                   onClick={() => setIsMenuOpen(false)}
                   className={`py-2 px-4 rounded-lg transition-colors ${
                     active
-                      ? 'text-[#047857] dark:text-[#34D399] font-bold bg-[#047857]/10 dark:bg-[#34D399]/10'
-                      : 'text-[#475569] dark:text-[#A7B0BE] hover:text-[#047857] dark:hover:text-[#34D399] hover:bg-[#F1F5F9] dark:hover:bg-[#16221D]'
+                      ? 'text-[#065F46] dark:text-[#34D399] font-bold bg-[#E2E8F0] dark:bg-[#34D399]/10'
+                      : 'text-[#1E293B] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] hover:bg-[#F1F5F9] dark:hover:bg-[#16221D]'
                   }`}
                   aria-current={active ? 'page' : undefined}
                 >

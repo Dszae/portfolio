@@ -29,8 +29,8 @@ export default function CertificatesPage() {
           <FadeUp>
             <section id="certificates" className={`pt-28 sm:pt-32 pb-24 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
               <div className="max-w-7xl mx-auto w-full">
-                <h1 className="text-3xl sm:text-4xl font-bold mb-12 flex items-center gap-4">
-                  <span className="text-[#047857] dark:text-[#34D399]">/</span> Certifications
+                <h1 className="text-3xl sm:text-4xl font-bold mb-12 flex items-center gap-4 text-[#0F172A] dark:text-[#F9FAFB]">
+                  <span className="text-[#065F46] dark:text-[#34D399]">/</span> Certifications
                 </h1>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                   {CERTIFICATES.map((cert) => (
@@ -41,7 +41,7 @@ export default function CertificatesPage() {
                       className={`group p-5 sm:p-6 rounded-2xl border backdrop-blur-md smooth-card-hover hover:shadow-lg cursor-pointer text-left ${theme.card}`}
                       onClick={() => setSelectedImage({ src: cert.img, title: cert.title, desc: `Issued by ${cert.org}` })}
                     >
-                      <div className={`aspect-[4/3] overflow-hidden rounded-xl border flex items-center justify-center mb-6 transition-colors duration-200 relative ${isDark ? 'border-[#26352F] bg-[#16221D] group-hover:border-[#34D399]/60' : 'border-[#E2E8F0] bg-[#F1F5F9] group-hover:border-[#047857]/60'}`}>
+                      <div className={`aspect-[4/3] overflow-hidden rounded-xl border flex items-center justify-center mb-6 transition-colors duration-200 relative ${isDark ? 'border-[#26352F] bg-[#16221D] group-hover:border-[#34D399]/60' : 'border-[#CBD5E1] bg-[#F1F5F9] group-hover:border-[#065F46]/60'}`}>
                         <Image 
                           src={cert.img} 
                           alt={`Certificate for ${cert.title} issued by ${cert.org}`} 
@@ -52,13 +52,13 @@ export default function CertificatesPage() {
                           className="w-full h-full object-cover smooth-img-zoom" 
                         />
                         <div className="absolute inset-0 bg-[#0B0F0E]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                          <div className="w-10 h-10 rounded-full bg-[#047857] dark:bg-[#34D399] text-white dark:text-[#0B0F0E] flex items-center justify-center shadow-md transform-gpu scale-75 group-hover:scale-100 transition-transform duration-300">
+                          <div className="w-10 h-10 rounded-full bg-[#065F46] dark:bg-[#34D399] text-white dark:text-[#0B0F0E] flex items-center justify-center shadow-md transform-gpu scale-75 group-hover:scale-100 transition-transform duration-300">
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
                           </div>
                         </div>
                       </div>
-                      <h2 className="font-semibold text-sm sm:text-base mb-2 group-hover:text-[#047857] dark:group-hover:text-[#34D399] transition-colors">{cert.title}</h2>
-                      <p className={`font-mono text-xs ${theme.muted}`}>{cert.org}</p>
+                      <h2 className="font-semibold text-sm sm:text-base mb-2 text-[#0F172A] dark:text-[#F8FAFC] group-hover:text-[#065F46] dark:group-hover:text-[#34D399] transition-colors">{cert.title}</h2>
+                      <p className="font-mono text-xs text-[#334155] dark:text-[#A7B0BE] font-bold">{cert.org}</p>
                     </button>
                   ))}
                 </div>

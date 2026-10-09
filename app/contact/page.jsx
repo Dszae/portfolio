@@ -84,37 +84,37 @@ export default function ContactPage() {
                 <div className={`p-6 sm:p-8 md:p-14 rounded-[2rem] border backdrop-blur-md ${theme.card}`}>
                   <div className="grid lg:grid-cols-2 gap-12">
                     <div>
-                      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Let&apos;s Connect</h1>
-                      <p className="mb-10 text-base sm:text-lg text-[#334155] dark:text-[#A7B0BE]">Open for freelance projects, technical collaborations, and software engineering opportunities.</p>
+                      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-[#0F172A] dark:text-[#F9FAFB]">Let&apos;s Connect</h1>
+                      <p className="mb-10 text-base sm:text-lg text-[#1E293B] dark:text-[#A7B0BE]">Open for freelance projects, technical collaborations, and software engineering opportunities.</p>
 
                       <div className="space-y-6">
                         <div className="flex items-center gap-4">
-                          <div className="w-12 h-12 rounded-2xl bg-[#047857]/10 dark:bg-[#34D399]/10 flex items-center justify-center text-[#047857] dark:text-[#34D399] flex-shrink-0">
+                          <div className="w-12 h-12 rounded-2xl bg-[#F1F5F9] dark:bg-[#16221D] border border-[#CBD5E1] dark:border-[#26352F] flex items-center justify-center text-[#065F46] dark:text-[#34D399] flex-shrink-0">
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                           </div>
                           <div>
-                            <h2 className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[#475569] dark:text-[#94A3B8] font-semibold">Location</h2>
-                            <p className="font-semibold text-sm sm:text-base text-[#111827] dark:text-[#F9FAFB]">Kathmandu, Nepal</p>
+                            <h2 className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-bold">Location</h2>
+                            <p className="font-semibold text-sm sm:text-base text-[#0F172A] dark:text-[#F9FAFB]">Kathmandu, Nepal</p>
                           </div>
                         </div>
 
                         <div className="flex items-center gap-4">
-                          <div className="w-12 h-12 rounded-2xl bg-[#047857]/10 dark:bg-[#34D399]/10 flex items-center justify-center text-[#047857] dark:text-[#34D399] flex-shrink-0">
+                          <div className="w-12 h-12 rounded-2xl bg-[#F1F5F9] dark:bg-[#16221D] border border-[#CBD5E1] dark:border-[#26352F] flex items-center justify-center text-[#065F46] dark:text-[#34D399] flex-shrink-0">
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
                           </div>
                           <div>
-                            <h2 className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[#475569] dark:text-[#94A3B8] font-semibold">Phone</h2>
-                            <a href="tel:+9779764685307" className="font-semibold text-sm sm:text-base text-[#111827] dark:text-[#F9FAFB] hover:text-[#047857] dark:hover:text-[#34D399] transition-colors block">9764685307</a>
+                            <h2 className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-bold">Phone</h2>
+                            <a href="tel:+9779764685307" className="font-semibold text-sm sm:text-base text-[#0F172A] dark:text-[#F9FAFB] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors block">9764685307</a>
                           </div>
                         </div>
 
                         <div className="flex items-center gap-4">
-                          <div className="w-12 h-12 rounded-2xl bg-[#047857]/10 dark:bg-[#34D399]/10 flex items-center justify-center text-[#047857] dark:text-[#34D399] flex-shrink-0">
+                          <div className="w-12 h-12 rounded-2xl bg-[#F1F5F9] dark:bg-[#16221D] border border-[#CBD5E1] dark:border-[#26352F] flex items-center justify-center text-[#065F46] dark:text-[#34D399] flex-shrink-0">
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                           </div>
                           <div>
-                            <h2 className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[#475569] dark:text-[#94A3B8] font-semibold">Email</h2>
-                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=dsz.ae18@gmail.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-sm sm:text-base text-[#111827] dark:text-[#F9FAFB] hover:text-[#047857] dark:hover:text-[#34D399] transition-colors block">dsz.ae18@gmail.com</a>
+                            <h2 className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-bold">Email</h2>
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=dsz.ae18@gmail.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-sm sm:text-base text-[#0F172A] dark:text-[#F9FAFB] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors block">dsz.ae18@gmail.com</a>
                           </div>
                         </div>
                       </div>
@@ -132,7 +132,7 @@ export default function ContactPage() {
                             placeholder="Your Name"
                             aria-label="Your Name"
                             autoComplete="name"
-                            className={`w-full px-4 py-3 sm:px-6 sm:py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#047857]/30 dark:focus:ring-[#34D399]/30 transition-all ${theme.input}`}
+                            className={`w-full px-4 py-3 sm:px-6 sm:py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#065F46]/30 dark:focus:ring-[#34D399]/30 transition-all ${theme.input}`}
                             required
                           />
                         </div>
@@ -145,7 +145,7 @@ export default function ContactPage() {
                             placeholder="Your Email"
                             aria-label="Your Email"
                             autoComplete="email"
-                            className={`w-full px-4 py-3 sm:px-6 sm:py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#047857]/30 dark:focus:ring-[#34D399]/30 transition-all ${theme.input}`}
+                            className={`w-full px-4 py-3 sm:px-6 sm:py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#065F46]/30 dark:focus:ring-[#34D399]/30 transition-all ${theme.input}`}
                             required
                           />
                         </div>
@@ -158,7 +158,7 @@ export default function ContactPage() {
                           placeholder="Your Message..."
                           aria-label="Your Message"
                           rows="5"
-                          className={`w-full px-4 py-3 sm:px-6 sm:py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#047857]/30 dark:focus:ring-[#34D399]/30 transition-all resize-none ${theme.input}`}
+                          className={`w-full px-4 py-3 sm:px-6 sm:py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#065F46]/30 dark:focus:ring-[#34D399]/30 transition-all resize-none ${theme.input}`}
                           required
                         ></textarea>
                       </div>
@@ -166,13 +166,13 @@ export default function ContactPage() {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="px-6 py-4 sm:px-10 sm:py-4.5 bg-[#047857] hover:bg-[#065F46] dark:bg-[#34D399] dark:hover:bg-[#6EE7B7] text-white dark:text-[#0B0F0E] font-semibold rounded-xl disabled:cursor-not-allowed disabled:opacity-60 transition-all w-full shadow-md cursor-pointer hover:-translate-y-0.5"
+                        className="px-6 py-4 sm:px-10 sm:py-4.5 bg-[#065F46] hover:bg-[#044E39] dark:bg-[#34D399] dark:hover:bg-[#6EE7B7] text-white dark:text-[#0B0F0E] font-semibold rounded-xl disabled:cursor-not-allowed disabled:opacity-60 transition-all w-full shadow-md cursor-pointer hover:-translate-y-0.5"
                       >
                         {isSubmitting ? "Sending..." : "Send Message"}
                       </button>
 
                       {formStatus && (
-                        <p role="status" aria-live="polite" className={`text-sm text-center font-semibold mt-4 ${formStatus.includes("wrong") || formStatus.includes("error") ? "text-red-500" : "text-[#047857] dark:text-[#34D399]"}`}>
+                        <p role="status" aria-live="polite" className={`text-sm text-center font-semibold mt-4 ${formStatus.includes("wrong") || formStatus.includes("error") ? "text-red-500" : "text-[#065F46] dark:text-[#34D399]"}`}>
                           {formStatus}
                         </p>
                       )}

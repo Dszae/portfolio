@@ -113,14 +113,14 @@ export default function ProjectsPage() {
               <div className="max-w-7xl mx-auto w-full">
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
                   <div>
-                    <h1 className="text-3xl sm:text-4xl font-bold flex items-center gap-4">
-                      <span className="text-[#047857] dark:text-[#34D399]">/</span> Projects Archive
+                    <h1 className="text-3xl sm:text-4xl font-bold flex items-center gap-4 text-[#0F172A] dark:text-[#F9FAFB]">
+                      <span className="text-[#065F46] dark:text-[#34D399]">/</span> Projects Archive
                     </h1>
-                    <p className={`mt-2 text-base ${theme.muted}`}>Full collection of engineering software, interactive tools, hardware simulations, and media.</p>
+                    <p className="mt-2 text-base text-[#1E293B] dark:text-[#A7B0BE] font-medium">Full collection of engineering software, interactive tools, hardware simulations, and media.</p>
                   </div>
 
                   {/* Filter tabs */}
-                  <div className="flex flex-wrap gap-2 p-1.5 rounded-xl border border-[#E2E8F0] dark:border-[#26352F] bg-[#FFFFFF] dark:bg-[#111B17] self-start md:self-auto" role="tablist" aria-label="Project category filter">
+                  <div className="flex flex-wrap gap-2 p-1.5 rounded-xl border border-[#CBD5E1] dark:border-[#26352F] bg-[#FFFFFF] dark:bg-[#111B17] self-start md:self-auto" role="tablist" aria-label="Project category filter">
                     <button
                       type="button"
                       role="tab"
@@ -128,8 +128,8 @@ export default function ProjectsPage() {
                       onClick={() => setFilter('all')}
                       className={`px-4 py-2 text-xs font-mono uppercase tracking-wider font-semibold rounded-lg transition-all cursor-pointer ${
                         filter === 'all'
-                          ? 'bg-[#047857] dark:bg-[#34D399] text-white dark:text-[#0B0F0E] shadow-sm'
-                          : 'text-[#475569] dark:text-[#A7B0BE] hover:text-[#047857] dark:hover:text-[#34D399]'
+                          ? 'bg-[#065F46] hover:bg-[#044E39] dark:bg-[#34D399] text-white dark:text-[#0B0F0E] shadow-sm'
+                          : 'text-[#0F172A] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399]'
                       }`}
                     >
                       All ({ALL_PROJECTS.length})
@@ -141,8 +141,8 @@ export default function ProjectsPage() {
                       onClick={() => setFilter('dev')}
                       className={`px-4 py-2 text-xs font-mono uppercase tracking-wider font-semibold rounded-lg transition-all cursor-pointer ${
                         filter === 'dev'
-                          ? 'bg-[#047857] dark:bg-[#34D399] text-white dark:text-[#0B0F0E] shadow-sm'
-                          : 'text-[#475569] dark:text-[#A7B0BE] hover:text-[#047857] dark:hover:text-[#34D399]'
+                          ? 'bg-[#065F46] hover:bg-[#044E39] dark:bg-[#34D399] text-white dark:text-[#0B0F0E] shadow-sm'
+                          : 'text-[#0F172A] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399]'
                       }`}
                     >
                       Development
@@ -154,8 +154,8 @@ export default function ProjectsPage() {
                       onClick={() => setFilter('media')}
                       className={`px-4 py-2 text-xs font-mono uppercase tracking-wider font-semibold rounded-lg transition-all cursor-pointer ${
                         filter === 'media'
-                          ? 'bg-[#047857] dark:bg-[#34D399] text-white dark:text-[#0B0F0E] shadow-sm'
-                          : 'text-[#475569] dark:text-[#A7B0BE] hover:text-[#047857] dark:hover:text-[#34D399]'
+                          ? 'bg-[#065F46] hover:bg-[#044E39] dark:bg-[#34D399] text-white dark:text-[#0B0F0E] shadow-sm'
+                          : 'text-[#0F172A] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399]'
                       }`}
                     >
                       Creative Media
@@ -167,8 +167,8 @@ export default function ProjectsPage() {
                       onClick={() => setFilter('exp')}
                       className={`px-4 py-2 text-xs font-mono uppercase tracking-wider font-semibold rounded-lg transition-all cursor-pointer ${
                         filter === 'exp'
-                          ? 'bg-[#047857] dark:bg-[#34D399] text-white dark:text-[#0B0F0E] shadow-sm'
-                          : 'text-[#475569] dark:text-[#A7B0BE] hover:text-[#047857] dark:hover:text-[#34D399]'
+                          ? 'bg-[#065F46] hover:bg-[#044E39] dark:bg-[#34D399] text-white dark:text-[#0B0F0E] shadow-sm'
+                          : 'text-[#0F172A] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399]'
                       }`}
                     >
                       Experiments
@@ -184,7 +184,7 @@ export default function ProjectsPage() {
                     >
                       <div>
                         {proj.image && (
-                          <div className={`w-full h-44 mb-5 rounded-xl overflow-hidden border border-[#E2E8F0] dark:border-[#26352F] relative bg-[#111B17]`}>
+                          <div className={`w-full h-44 mb-5 rounded-xl overflow-hidden border border-[#CBD5E1] dark:border-[#26352F] relative bg-[#111B17]`}>
                             <Image
                               src={proj.image}
                               alt={`${proj.title} Preview`}
@@ -196,32 +196,32 @@ export default function ProjectsPage() {
                         )}
 
                         <div className="flex items-center justify-between mb-3">
-                          <span className="inline-block px-3 py-1 text-[11px] font-mono font-bold uppercase tracking-wider rounded-md bg-[#047857]/10 dark:bg-[#34D399]/10 text-[#047857] dark:text-[#34D399] border border-[#047857]/20 dark:border-[#34D399]/20">
+                          <span className="inline-block px-3 py-1 text-[11px] font-mono font-bold uppercase tracking-wider rounded-md bg-[#F1F5F9] dark:bg-[#34D399]/15 text-[#065F46] dark:text-[#34D399] border border-[#CBD5E1] dark:border-[#34D399]/30">
                             {proj.categoryLabel}
                           </span>
-                          <span className="text-[11px] font-mono text-[#475569] dark:text-[#94A3B8] font-medium">{proj.type}</span>
+                          <span className="text-[11px] font-mono text-[#0F172A] dark:text-[#94A3B8] font-bold">{proj.type}</span>
                         </div>
 
-                        <h2 className="text-xl font-bold mb-2.5 text-[#111827] dark:text-[#F9FAFB]">{proj.title}</h2>
-                        <p className="text-sm leading-relaxed mb-5 text-[#334155] dark:text-[#A7B0BE]">{proj.description}</p>
+                        <h2 className="text-xl font-bold mb-2.5 text-[#0F172A] dark:text-[#F9FAFB]">{proj.title}</h2>
+                        <p className="text-sm leading-relaxed mb-5 text-[#1E293B] dark:text-[#A7B0BE]">{proj.description}</p>
                       </div>
 
                       <div>
                         <div className="flex flex-wrap gap-1.5 mb-5">
                           {proj.tech.map((t) => (
-                            <span key={t} className={`px-2.5 py-1 text-[11px] font-mono rounded-md ${theme.tag}`}>
+                            <span key={t} className="px-2.5 py-1 text-[11px] font-mono font-semibold rounded-md bg-[#F1F5F9] dark:bg-[#16221D] text-[#0F172A] dark:text-[#34D399] border border-[#CBD5E1] dark:border-[#26352F]">
                               {t}
                             </span>
                           ))}
                         </div>
 
-                        <div className="flex items-center gap-2 pt-3 border-t border-[#E2E8F0] dark:border-[#26352F] flex-wrap">
+                        <div className="flex items-center gap-2 pt-3 border-t border-[#CBD5E1] dark:border-[#26352F] flex-wrap">
                           {proj.liveUrl && (
                             <a
                               href={proj.liveUrl}
                               target="_blank"
                               rel="noreferrer"
-                              className="px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-[#047857] dark:bg-[#34D399] text-white dark:text-[#0B0F0E] hover:bg-[#065F46] dark:hover:bg-[#6EE7B7] transition-all flex items-center gap-1.5 cursor-pointer shadow-sm"
+                              className="px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-[#065F46] hover:bg-[#044E39] dark:bg-[#34D399] dark:hover:bg-[#6EE7B7] text-white dark:text-[#0B0F0E] transition-all flex items-center gap-1.5 cursor-pointer shadow-sm"
                             >
                               <span>Live App</span>
                               <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
@@ -233,7 +233,7 @@ export default function ProjectsPage() {
                               href={proj.githubUrl}
                               target="_blank"
                               rel="noreferrer"
-                              className="px-3 py-1.5 text-xs font-semibold rounded-lg border border-[#E2E8F0] dark:border-[#26352F] hover:bg-[#F1F5F9] dark:hover:bg-[#16221D] transition-all flex items-center gap-1"
+                              className="px-3 py-1.5 text-xs font-semibold rounded-lg border border-[#CBD5E1] dark:border-[#26352F] hover:bg-[#F1F5F9] dark:hover:bg-[#16221D] transition-all flex items-center gap-1 text-[#0F172A] dark:text-[#F9FAFB]"
                             >
                               <span>Code</span>
                             </a>
@@ -242,7 +242,7 @@ export default function ProjectsPage() {
                           {proj.detailUrl && (
                             <Link
                               href={proj.detailUrl}
-                              className="px-3 py-1.5 text-xs font-semibold rounded-lg text-[#047857] dark:text-[#34D399] hover:underline transition-all ml-auto font-mono"
+                              className="px-3 py-1.5 text-xs font-bold rounded-lg text-[#065F46] dark:text-[#34D399] hover:underline transition-all ml-auto font-mono"
                             >
                               Details &rarr;
                             </Link>

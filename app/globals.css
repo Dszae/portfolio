@@ -20,16 +20,16 @@
   --surface-main: #FFFFFF;
   --surface-elevated: #FFFFFF;
   --surface-secondary: #F1F5F9;
-  --text-primary: #111827;
-  --text-secondary: #334155;
-  --text-muted: #475569;
-  --accent-primary: #047857;
-  --accent-strong: #047857;
-  --accent-bright: #10B981;
+  --text-primary: #0F172A;
+  --text-secondary: #1E293B;
+  --text-muted: #334155;
+  --accent-primary: #065F46;
+  --accent-strong: #044E39;
+  --accent-bright: #065F46;
   --accent-on: #FFFFFF;
-  --border-default: #E2E8F0;
-  --focus-ring: #047857;
-  --shadow-subtle: 0 12px 30px rgb(17 24 39 / 5%);
+  --border-default: #CBD5E1;
+  --focus-ring: #065F46;
+  --shadow-subtle: 0 12px 30px rgb(15 23 42 / 6%);
   --nav-surface: #F8FAFC;
 }
 
@@ -458,12 +458,12 @@ button:hover .smooth-img-zoom {
 }
 
 .hero-button-primary {
-  color: var(--accent-on);
-  background: var(--accent-bright);
+  color: #FFFFFF;
+  background: var(--accent-primary);
 }
 
 .hero-button-primary:hover {
-  background: color-mix(in srgb, var(--accent-bright) 86%, white);
+  background: var(--accent-strong);
 }
 
 .hero-button-secondary {
@@ -631,7 +631,8 @@ button:hover .smooth-img-zoom {
   justify-content: center;
   border-radius: 8px;
   color: var(--accent-strong);
-  background: color-mix(in srgb, var(--accent-primary) 12%, var(--surface-main));
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-default);
 }
 
 .skill-preview-card h3 {
