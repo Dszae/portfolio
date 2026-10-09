@@ -244,8 +244,42 @@ export default function Home() {
     setIsSubmitting(true);
     setFormStatus("Sending message...");
 
-    const formData = new FormData(event.target);
-    formData.append("access_key", "e6fd2e32-2b5c-4a3f-81d9-aa02f4dfcc76");
+    const form = event.target;
+    const formData = new FormData(form);
+
+    // Honeypot spam filter
+    if (formData.get("botcheck")) {
+      setFormStatus("Thank you! Your message has been sent.");
+      form.reset();
+      setIsSubmitting(false);
+      return;
+    }
+
+    const name = (formData.get("name") || "").toString().trim();
+    const email = (formData.get("email") || "").toString().trim();
+    const message = (formData.get("message") || "").toString().trim();
+
+    if (!name || name.length > 100) {
+      setFormStatus("Please provide a valid name (up to 100 characters).");
+      setIsSubmitting(false);
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email) || email.length > 150) {
+      setFormStatus("Please provide a valid email address.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!message || message.length > 5000) {
+      setFormStatus("Please provide a message (up to 5,000 characters).");
+      setIsSubmitting(false);
+      return;
+    }
+
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "e6fd2e32-2b5c-4a3f-81d9-aa02f4dfcc76";
+    formData.set("access_key", accessKey);
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
