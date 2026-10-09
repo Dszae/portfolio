@@ -86,10 +86,12 @@ export default function ExperiencePage() {
                   <div className="flex flex-wrap items-center gap-3">
                     <Link
                       href="/resume"
-                      className="px-5 py-2.5 bg-[#065F46] hover:bg-[#044E39] dark:bg-[#34D399] dark:hover:bg-[#6EE7B7] text-white dark:text-[#0B0F0E] text-sm font-semibold rounded-xl transition-all shadow-sm flex items-center gap-2"
+                      className="px-5 py-2.5 bg-[#065F46] hover:bg-[#044E39] dark:bg-[#34D399] dark:hover:bg-[#6EE7B7] text-white dark:text-[#0B0F0E] text-sm font-semibold rounded-xl transition-all shadow-sm flex items-center gap-2 group"
                     >
                       <span>Full Resume</span>
-                      <span aria-hidden="true">&rarr;</span>
+                      <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
                     </Link>
                     <a
                       href="/my_cv.pdf"

@@ -142,10 +142,12 @@ export default function SkillsPage() {
                       <span className="text-[#1E293B] dark:text-[#A7B5AE] font-semibold">Applied in real applications</span>
                       <Link 
                         href="/projects" 
-                        className="text-[#065F46] dark:text-[#6EE7B7] hover:text-[#065F46] font-bold hover:underline flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#065F46] rounded"
+                        className="text-[#065F46] dark:text-[#6EE7B7] hover:text-[#065F46] font-bold hover:underline flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#065F46] rounded group"
                       >
                         <span>Explore Sportivo &amp; Git Visualizer</span>
-                        <span aria-hidden="true">&rarr;</span>
+                        <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
                       </Link>
                     </div>
                   </article>
@@ -228,10 +230,12 @@ export default function SkillsPage() {
                       <span className="text-[#1E293B] dark:text-[#A7B5AE] font-semibold">50+ client assets</span>
                       <Link 
                         href="/gallery" 
-                        className="text-[#065F46] dark:text-[#6EE7B7] hover:text-[#065F46] font-bold hover:underline flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#065F46] rounded"
+                        className="text-[#065F46] dark:text-[#6EE7B7] hover:text-[#065F46] font-bold hover:underline flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#065F46] rounded group"
                       >
                         <span>Open Visual Archive</span>
-                        <span aria-hidden="true">&rarr;</span>
+                        <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
                       </Link>
                     </div>
                   </article>
@@ -264,10 +268,12 @@ export default function SkillsPage() {
 
                         <Link 
                           href="/projects" 
-                          className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#065F46] dark:text-[#6EE7B7] hover:text-[#065F46] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#065F46] rounded"
+                          className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#065F46] dark:text-[#6EE7B7] hover:text-[#065F46] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#065F46] rounded group"
                         >
                           <span>Explore 555 Flasher &amp; Machinery Builds</span>
-                          <span aria-hidden="true">&rarr;</span>
+                          <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                          </svg>
                         </Link>
                       </div>
 

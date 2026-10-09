@@ -389,19 +389,23 @@ export default function ProjectsPage() {
                             {hasDedicatedPage ? (
                               <Link
                                 href={project.detailUrl}
-                                className="font-bold text-[#065F46] dark:text-[#34D399] hover:underline flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399]"
+                                className="font-bold text-[#065F46] dark:text-[#34D399] hover:underline flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399] group"
                               >
                                 <span>Case Study</span>
-                                <span aria-hidden="true">&rarr;</span>
+                                <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
                               </Link>
                             ) : (
                               <button
                                 type="button"
                                 onClick={(e) => handleOpenModal(project, e)}
-                                className="font-bold text-[#065F46] dark:text-[#34D399] hover:underline flex items-center gap-1 cursor-pointer focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399]"
+                                className="font-bold text-[#065F46] dark:text-[#34D399] hover:underline flex items-center gap-1 cursor-pointer focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399] group"
                               >
                                 <span>Breakdown</span>
-                                <span aria-hidden="true">&rarr;</span>
+                                <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
                               </button>
                             )}
 

@@ -136,7 +136,12 @@ export default function Home() {
             <div className="skills-preview-inner">
               <div className="skills-preview-heading">
                 <h2 id="skills-preview-heading">Technical Skills & Disciplines</h2>
-                <Link href="/skills">View All Technical Skills <span aria-hidden="true">&rarr;</span></Link>
+                <Link href="/skills" className="inline-flex items-center gap-1.5 group">
+                  <span>View All Technical Skills</span>
+                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </Link>
               </div>
               <div className="skills-preview-grid">
                 {SKILLS_PREVIEW.map((skill) => (
@@ -185,9 +190,11 @@ export default function Home() {
                     Learn about Dipesh Sapkota, a Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal, combining algorithmic logic with visual media design.
                   </p>
                 </div>
-                <Link href="/about" className="inline-flex items-center gap-2 text-sm font-semibold text-[#065F46] dark:text-[#34D399] hover:underline">
+                <Link href="/about" className="inline-flex items-center gap-2 text-sm font-semibold text-[#065F46] dark:text-[#34D399] hover:underline group">
                   <span>Read About Me</span>
-                  <span aria-hidden="true">&rarr;</span>
+                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
                 </Link>
               </article>
 
@@ -203,9 +210,11 @@ export default function Home() {
                     Comprehensive overview of programming languages (C/C++, Python, JavaScript), full-stack frameworks (React, Next.js), and media suites.
                   </p>
                 </div>
-                <Link href="/skills" className="inline-flex items-center gap-2 text-sm font-semibold text-[#065F46] dark:text-[#34D399] hover:underline">
+                <Link href="/skills" className="inline-flex items-center gap-2 text-sm font-semibold text-[#065F46] dark:text-[#34D399] hover:underline group">
                   <span>View Technical Skills</span>
-                  <span aria-hidden="true">&rarr;</span>
+                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
                 </Link>
               </article>
 
@@ -221,9 +230,11 @@ export default function Home() {
                     Interactive applications including Sportivo (live sports streaming), IOE Admission Guide (engineering admission counseling), and Git Visualizer.
                   </p>
                 </div>
-                <Link href="/projects" className="inline-flex items-center gap-2 text-sm font-semibold text-[#065F46] dark:text-[#34D399] hover:underline">
+                <Link href="/projects" className="inline-flex items-center gap-2 text-sm font-semibold text-[#065F46] dark:text-[#34D399] hover:underline group">
                   <span>View Projects</span>
-                  <span aria-hidden="true">&rarr;</span>
+                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
                 </Link>
               </article>
 
@@ -239,9 +250,11 @@ export default function Home() {
                     Professional editing and design roles at Clamphook Academy and undergraduate coursework at Institute of Engineering (IOE), Thapathali Campus.
                   </p>
                 </div>
-                <Link href="/experience" className="inline-flex items-center gap-2 text-sm font-semibold text-[#065F46] dark:text-[#34D399] hover:underline">
+                <Link href="/experience" className="inline-flex items-center gap-2 text-sm font-semibold text-[#065F46] dark:text-[#34D399] hover:underline group">
                   <span>View Experience</span>
-                  <span aria-hidden="true">&rarr;</span>
+                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
                 </Link>
               </article>
 
@@ -257,9 +270,11 @@ export default function Home() {
                     Verified coursework and credentials from Udemy, Blackmagic Design, and EDUCBA across design principles, color correction, and software development.
                   </p>
                 </div>
-                <Link href="/certificates" className="inline-flex items-center gap-2 text-sm font-semibold text-[#065F46] dark:text-[#34D399] hover:underline">
+                <Link href="/certificates" className="inline-flex items-center gap-2 text-sm font-semibold text-[#065F46] dark:text-[#34D399] hover:underline group">
                   <span>View Certificates</span>
-                  <span aria-hidden="true">&rarr;</span>
+                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
                 </Link>
               </article>
 
@@ -275,9 +290,11 @@ export default function Home() {
                     Complete curriculum vitae, work experience milestones, academic history at IOE Thapathali, and direct CV download options.
                   </p>
                 </div>
-                <Link href="/resume" className="inline-flex items-center gap-2 text-sm font-semibold text-[#065F46] dark:text-[#34D399] hover:underline">
+                <Link href="/resume" className="inline-flex items-center gap-2 text-sm font-semibold text-[#065F46] dark:text-[#34D399] hover:underline group">
                   <span>View Resume</span>
-                  <span aria-hidden="true">&rarr;</span>
+                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
                 </Link>
               </article>
 
@@ -293,9 +310,11 @@ export default function Home() {
                     Get in touch with Dipesh Sapkota for freelance video editing, software engineering collaborations, or inquiries.
                   </p>
                 </div>
-                <Link href="/contact" className="inline-flex items-center gap-2 text-sm font-semibold text-[#065F46] dark:text-[#34D399] hover:underline">
+                <Link href="/contact" className="inline-flex items-center gap-2 text-sm font-semibold text-[#065F46] dark:text-[#34D399] hover:underline group">
                   <span>Contact Dipesh</span>
-                  <span aria-hidden="true">&rarr;</span>
+                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
                 </Link>
               </article>
 
@@ -311,9 +330,11 @@ export default function Home() {
                     Photographic moments from college cricket tournaments, Yathartha tech exhibitions, and campus life at IOE Thapathali in Nepal.
                   </p>
                 </div>
-                <Link href="/gallery" className="inline-flex items-center gap-2 text-sm font-semibold text-[#065F46] dark:text-[#34D399] hover:underline">
+                <Link href="/gallery" className="inline-flex items-center gap-2 text-sm font-semibold text-[#065F46] dark:text-[#34D399] hover:underline group">
                   <span>Browse Gallery</span>
-                  <span aria-hidden="true">&rarr;</span>
+                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
                 </Link>
               </article>
 
@@ -329,9 +350,11 @@ export default function Home() {
                     In-depth software engineering write-ups documenting the architectural decisions behind Sportivo and Git Visualizer.
                   </p>
                 </div>
-                <Link href="/blog" className="inline-flex items-center gap-2 text-sm font-semibold text-[#065F46] dark:text-[#34D399] hover:underline">
+                <Link href="/blog" className="inline-flex items-center gap-2 text-sm font-semibold text-[#065F46] dark:text-[#34D399] hover:underline group">
                   <span>Read Articles</span>
-                  <span aria-hidden="true">&rarr;</span>
+                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
                 </Link>
               </article>
             </div>
