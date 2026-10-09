@@ -1,3 +1,5 @@
+import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
+
 export const metadata = {
   title: "Experience & Education",
   description: "Experience and education of Dipesh Sapkota, a Computer Engineering student at IOE Thapathali Campus and video editor at Clamphook Academy in Nepal.",
@@ -20,6 +22,7 @@ export const metadata = {
 export default function ExperiencePage() {
   return (
     <main className="max-w-4xl mx-auto px-6 py-32">
+      <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Experience & Education', path: '/experience' }]} />
       <h1 className="text-4xl font-bold mb-6">Experience & Education</h1>
       <section className="mb-10">
         <h2 className="text-2xl font-semibold text-sky-500 mb-4">Professional Experience</h2>

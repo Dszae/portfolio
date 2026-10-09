@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 
 export const metadata = {
   title: 'Official Profile',
@@ -26,6 +27,7 @@ const profilePageJsonLd = {
   '@id': 'https://www.dipeshsapkota7.com.np/about#profile-page',
   url: 'https://www.dipeshsapkota7.com.np/about',
   name: 'About Dipesh Sapkota',
+  description: 'Official profile of Dipesh Sapkota, a Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal, and creator of independent software projects.',
   isPartOf: { '@id': 'https://www.dipeshsapkota7.com.np/#website' },
   mainEntity: { '@id': 'https://www.dipeshsapkota7.com.np/#person' },
   primaryImageOfPage: { '@id': 'https://www.dipeshsapkota7.com.np/#primary-image' },
@@ -35,6 +37,7 @@ const profilePageJsonLd = {
 export default function AboutPage() {
   return (
     <main className="max-w-4xl mx-auto px-6 py-32 space-y-10">
+      <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'About', path: '/about' }]} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageJsonLd) }} />
 
       <header>

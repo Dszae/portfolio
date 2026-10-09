@@ -1,3 +1,5 @@
+import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
+
 export const metadata = {
   title: "Articles",
   description: "Technical write-ups and engineering articles authored by Dipesh Sapkota (dszae).",
@@ -20,6 +22,7 @@ export const metadata = {
 export default function BlogPage() {
   return (
     <main className="max-w-4xl mx-auto px-6 py-32">
+      <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Articles', path: '/blog' }]} />
       <h1 className="text-4xl font-bold mb-6">Articles by Dipesh Sapkota</h1>
       <p className="text-lg text-slate-600 dark:text-slate-300 mb-6">
         Read my technical articles published on Hashnode covering web engineering and development:

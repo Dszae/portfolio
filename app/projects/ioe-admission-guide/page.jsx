@@ -1,3 +1,5 @@
+import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
+
 export const metadata = {
   title: "IOE Admission Guide Project",
   description: "Explore the IOE Admission Guide by Dipesh Sapkota (dszae), with rank prediction, cutoff analytics, and counseling tools for applicants.",
@@ -31,6 +33,7 @@ export default function IoeAdmissionProjectPage() {
 
   return (
     <main className="max-w-4xl mx-auto px-6 py-32">
+      <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Projects', path: '/#projects' }, { name: 'IOE Admission Guide', path: '/projects/ioe-admission-guide' }]} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <span className="inline-block px-3.5 py-1 text-xs font-semibold uppercase tracking-widest text-cyan-600 bg-cyan-500/10 border border-cyan-500/30 rounded-full mb-4">
         Featured Web App

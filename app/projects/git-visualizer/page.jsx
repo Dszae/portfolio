@@ -1,3 +1,5 @@
+import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
+
 export const metadata = {
   title: "Git Visualizer Project",
   description: "Learn Git commands visually with Git Visualizer, an interactive developer tool created by Dipesh Sapkota (dszae).",
@@ -31,6 +33,7 @@ export default function GitVisualizerProjectPage() {
 
   return (
     <main className="max-w-4xl mx-auto px-6 py-32">
+      <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Projects', path: '/#projects' }, { name: 'Git Visualizer', path: '/projects/git-visualizer' }]} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <span className="inline-block px-3.5 py-1 text-xs font-semibold uppercase tracking-widest text-amber-600 bg-amber-500/10 border border-amber-500/30 rounded-full mb-4">
         Featured Web App

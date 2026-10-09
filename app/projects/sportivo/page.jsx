@@ -1,3 +1,5 @@
+import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
+
 export const metadata = {
   title: "Sportivo Project",
   description: "Explore Sportivo, a live sports platform by Dipesh Sapkota (dszae), with real-time schedules, match search, and multi-server streaming.",
@@ -31,6 +33,7 @@ export default function SportivoProjectPage() {
 
   return (
     <main className="max-w-4xl mx-auto px-6 py-32">
+      <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Projects', path: '/#projects' }, { name: 'Sportivo', path: '/projects/sportivo' }]} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <span className="inline-block px-3.5 py-1 text-xs font-semibold uppercase tracking-widest text-sky-600 bg-sky-500/10 border border-sky-500/30 rounded-full mb-4">
         Featured Web App

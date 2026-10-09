@@ -1,6 +1,25 @@
 const siteUrl = 'https://www.dipeshsapkota7.com.np';
 const personId = `${siteUrl}/#person`;
 const websiteId = `${siteUrl}/#website`;
+const imageId = `${siteUrl}/#primary-image`;
+
+const portraitImage = {
+  '@type': 'ImageObject',
+  '@id': imageId,
+  url: `${siteUrl}/dipesh-sapkota.jpg`,
+  contentUrl: `${siteUrl}/dipesh-sapkota.jpg`,
+  name: 'Portrait of Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal',
+  description: 'Official portrait of Dipesh Sapkota, Computer Engineering student, AI/ML enthusiast, video editor, and motion graphics designer.',
+  caption: 'Official portrait of Dipesh Sapkota',
+  acquireLicensePage: `${siteUrl}/contact`,
+  creator: { '@id': personId },
+  creditText: 'Dipesh Sapkota',
+  copyrightNotice: '© Dipesh Sapkota. All rights reserved.',
+  license: `${siteUrl}/image-licensing`,
+  width: 627,
+  height: 627,
+  representativeOfPage: true,
+};
 
 const person = {
   '@type': 'Person',
@@ -11,23 +30,7 @@ const person = {
   disambiguatingDescription: 'Computer Engineering student at IOE Thapathali Campus in Nepal; known online as dszae and creator of IOE Admission Guide, Sportivo, and Git Visualizer.',
   url: `${siteUrl}/`,
   mainEntityOfPage: `${siteUrl}/`,
-  image: {
-    '@type': 'ImageObject',
-    '@id': `${siteUrl}/#primary-image`,
-    url: `${siteUrl}/dipesh-sapkota.jpg`,
-    contentUrl: `${siteUrl}/dipesh-sapkota.jpg`,
-    name: 'Portrait of Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal',
-    description: 'Official portrait of Dipesh Sapkota, Computer Engineering student, AI/ML enthusiast, video editor, and motion graphics designer.',
-    caption: 'Official portrait of Dipesh Sapkota',
-    acquireLicensePage: `${siteUrl}/contact`,
-    creator: { '@id': personId },
-    creditText: 'Dipesh Sapkota',
-    copyrightNotice: '© Dipesh Sapkota. All rights reserved.',
-    license: `${siteUrl}/image-licensing`,
-    width: 627,
-    height: 627,
-    representativeOfPage: true,
-  },
+  image: { '@id': imageId },
   jobTitle: ['Computer Engineering Student', 'AI/ML Enthusiast', 'Video Editor', 'Motion Graphics Designer'],
   address: {
     '@type': 'PostalAddress',
@@ -65,14 +68,14 @@ const website = {
   alternateName: 'Dipesh Sapkota Portfolio',
   url: `${siteUrl}/`,
   description: 'Dipesh Sapkota is a Computer Engineering student and AI/ML enthusiast at IOE Thapathali in Nepal.',
-  image: { '@id': `${siteUrl}/#primary-image` },
+  image: { '@id': imageId },
   publisher: { '@id': personId },
   inLanguage: 'en',
 };
 
 const siteSchema = {
   '@context': 'https://schema.org',
-  '@graph': [person, website],
+  '@graph': [person, portraitImage, website],
 };
 
 const homePageSchema = {
@@ -85,7 +88,7 @@ const homePageSchema = {
       name: 'Dipesh Sapkota | Computer Engineering Student & AI/ML Enthusiast',
       description: 'Dipesh Sapkota is a Computer Engineering student and AI/ML enthusiast at IOE Thapathali in Nepal.',
       mainEntity: { '@id': personId },
-      primaryImageOfPage: { '@id': `${siteUrl}/#primary-image` },
+      primaryImageOfPage: { '@id': imageId },
       isPartOf: { '@id': websiteId },
     },
     {

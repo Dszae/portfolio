@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 
 export const metadata = {
   title: "Contact",
@@ -22,6 +23,7 @@ export const metadata = {
 export default function ContactPage() {
   return (
     <main className="max-w-4xl mx-auto px-6 py-32">
+      <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact' }]} />
       <h1 className="text-4xl font-bold mb-6">Contact Dipesh Sapkota</h1>
       <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-8">
         I am open for freelance web development projects, video editing collaborations, and technical discussions. Reach out via email or phone.
