@@ -43,7 +43,7 @@ export default function GalleryPage() {
                     >
                       <Image
                         src={item.img}
-                        alt=""
+                        alt={item.alt || item.title}
                         width="640"
                         height="360"
                         loading="lazy"

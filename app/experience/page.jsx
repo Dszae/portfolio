@@ -96,12 +96,13 @@ export default function ExperiencePage() {
                     <a
                       href="/my_cv.pdf"
                       download="Dipesh_Sapkota_CV.pdf"
+                      aria-label="Download CV (PDF document, 105 KB)"
                       className="px-5 py-2.5 border border-[#CBD5E1] dark:border-[#26352F] bg-white dark:bg-[#111B17] text-[#0F172A] dark:text-[#F9FAFB] hover:bg-[#F1F5F9] dark:hover:bg-[#16221D] text-sm font-semibold rounded-xl transition-all shadow-sm flex items-center gap-2"
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                       </svg>
-                      <span>Download CV</span>
+                      <span>Download CV <span className="text-xs font-mono font-normal opacity-75">(PDF)</span></span>
                     </a>
                   </div>
                 </div>
@@ -127,7 +128,7 @@ export default function ExperiencePage() {
                                 <div className="flex-shrink-0 flex items-center justify-center">
                                   <Image
                                     src={role.logo}
-                                    alt={role.company}
+                                    alt={`${role.company} logo`}
                                     width="48"
                                     height="48"
                                     loading="lazy"
@@ -177,7 +178,7 @@ export default function ExperiencePage() {
                                 <div className="flex-shrink-0 flex items-center justify-center">
                                   <Image
                                     src={edu.logo}
-                                    alt={edu.school}
+                                    alt={`${edu.school} logo`}
                                     width="48"
                                     height="48"
                                     loading="lazy"
