@@ -282,7 +282,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
             ))}
           </nav>
           <p className="font-semibold text-xs sm:text-sm">
-            &copy; {new Date().getFullYear()} <Link href="/" className="site-footer-link underline transition-colors">Dipesh Sapkota</Link>. All rights reserved.
+            &copy; {new Date().getFullYear()} <Link href="/" className="site-footer-link underline transition-colors">Dipesh Sapkota<span className="site-wordmark-dot">.</span></Link> All rights reserved.
           </p>
         </div>
       </footer>

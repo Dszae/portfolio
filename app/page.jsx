@@ -64,7 +64,7 @@ export default function Home() {
             <div className="home-hero-inner">
               {/* Desktop Left / Mobile Below Image */}
               <div className="hero-copy">
-                <p className="hero-eyebrow">DIPESH SAPKOTA &middot; COMPUTER ENGINEERING &middot; CREATIVE MEDIA</p>
+                <p className="hero-eyebrow">Computer Engineering &middot; Creative Media</p>
                 <h1 className="hero-title">
                   <span className="hero-name-badge block font-mono text-sm sm:text-base font-bold tracking-widest uppercase text-[#065F46] dark:text-[#34D399] mb-3">
                     Dipesh Sapkota
@@ -144,6 +144,12 @@ export default function Home() {
                     <span className="skill-preview-icon">{skill.icon}</span>
                     <h3>{skill.title}</h3>
                     <p>{skill.description}</p>
+                    <span className="skill-preview-action" aria-hidden="true">
+                      <span>View details</span>
+                      <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </span>
                   </Link>
                 ))}
               </div>
