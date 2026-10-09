@@ -1,17 +1,10 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import SiteLayout from '../components/SiteLayout';
 import { HomePageJsonLd } from '../components/JsonLdSchema';
-
-const ROLES = [
-  "Computer Engineering Student",
-  "Full-Stack Web Developer",
-  "Video Editor & Motion Designer",
-  "AI & Machine Learning Explorer"
-];
 
 const PROJECTS = [
   {
@@ -133,204 +126,44 @@ const TOOLKIT_GROUPS = [
   }
 ];
 
-function HeroCanvas({ isDark }) {
-  const canvasRef = useRef(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let particlesArray = [];
-    let animationFrameId;
-
-    const heroSection = document.getElementById('home');
-    if (!heroSection) return;
-
-    canvas.width = heroSection.offsetWidth;
-    canvas.height = heroSection.offsetHeight;
-
-    let mouse = { x: null, y: null, radius: 180 };
-
-    const handleMouseMove = (event) => {
-      const rect = canvas.getBoundingClientRect();
-      mouse.x = event.clientX - rect.left;
-      mouse.y = event.clientY - rect.top;
-    };
-
-    const handleMouseOut = () => {
-      mouse.x = null;
-      mouse.y = null;
-    };
-
-    let currentWidth = heroSection.offsetWidth;
-
-    const handleResize = () => {
-      if (heroSection && heroSection.offsetWidth !== currentWidth) {
-        canvas.width = heroSection.offsetWidth;
-        canvas.height = heroSection.offsetHeight;
-        currentWidth = heroSection.offsetWidth;
-        init();
-      }
-    };
-
-    heroSection.addEventListener('mousemove', handleMouseMove);
-    heroSection.addEventListener('mouseout', handleMouseOut);
-    window.addEventListener('resize', handleResize);
-
-    class Particle {
-      constructor(x, y, directionX, directionY, size, color) {
-        this.x = x;
-        this.y = y;
-        this.directionX = directionX;
-        this.directionY = directionY;
-        this.size = size;
-        this.color = color;
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-        ctx.fillStyle = this.color;
-        ctx.fill();
-      }
-      update() {
-        if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
-        if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
-        this.x += this.directionX;
-        this.y += this.directionY;
-        this.draw();
-      }
-    }
-
-    function init() {
-      particlesArray = [];
-      const isMobile = window.innerWidth < 768;
-      if (isMobile) return;
-      
-      const densityDivider = 15000;
-      const numberOfParticles = (canvas.height * canvas.width) / densityDivider;
-      for (let i = 0; i < numberOfParticles; i++) {
-        const size = Math.random() * 2 + 1;
-        const x = Math.random() * (canvas.width - size * 4) + size * 2;
-        const y = Math.random() * (canvas.height - size * 4) + size * 2;
-        const directionX = Math.random() * 0.6 - 0.3;
-        const directionY = Math.random() * 0.6 - 0.3;
-        const color = isDark ? 'rgba(52, 211, 153, 0.25)' : 'rgba(4, 120, 87, 0.22)';
-        particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
-      }
-    }
-
-    function connect() {
-      for (let a = 0; a < particlesArray.length; a++) {
-        for (let b = a + 1; b < particlesArray.length; b++) {
-          const dx = particlesArray[a].x - particlesArray[b].x;
-          const dy = particlesArray[a].y - particlesArray[b].y;
-          const distance = dx * dx + dy * dy;
-
-          if (distance < (canvas.width / 7) * (canvas.height / 7)) {
-            const opacityValue = 1 - distance / 20000;
-            ctx.strokeStyle = isDark
-              ? `rgba(52, 211, 153, ${Math.max(0, opacityValue * 0.12)})`
-              : `rgba(4, 120, 87, ${Math.max(0, opacityValue * 0.18)})`;
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-            ctx.stroke();
-          }
-        }
-
-        if (mouse.x != null && mouse.y != null) {
-          const dx = particlesArray[a].x - mouse.x;
-          const dy = particlesArray[a].y - mouse.y;
-          const distanceToMouse = dx * dx + dy * dy;
-
-          if (distanceToMouse < mouse.radius * mouse.radius) {
-            const opacityValue = 1 - distanceToMouse / (mouse.radius * mouse.radius);
-            ctx.strokeStyle = isDark
-              ? `rgba(110, 231, 183, ${opacityValue * 0.65})`
-              : `rgba(4, 120, 87, ${opacityValue * 0.55})`;
-            ctx.lineWidth = 1.2;
-            ctx.beginPath();
-            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-            ctx.lineTo(mouse.x, mouse.y);
-            ctx.stroke();
-          }
-        }
-      }
-    }
-
-    function animate() {
-      animationFrameId = requestAnimationFrame(animate);
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      if (mouse.x != null && mouse.y != null) {
-        const glowRadius = 240;
-        const gradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, glowRadius);
-        gradient.addColorStop(0, isDark ? 'rgba(52, 211, 153, 0.15)' : 'rgba(4, 120, 87, 0.12)');
-        gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
-        ctx.fillStyle = gradient;
-        ctx.beginPath();
-        ctx.arc(mouse.x, mouse.y, glowRadius, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      for (let i = 0; i < particlesArray.length; i++) {
-        particlesArray[i].update();
-      }
-      connect();
-    }
-
-    init();
-    if (window.innerWidth >= 768) {
-      animate();
-    }
-
-    return () => {
-      cancelAnimationFrame(animationFrameId);
-      heroSection.removeEventListener('mousemove', handleMouseMove);
-      heroSection.removeEventListener('mouseout', handleMouseOut);
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [isDark]);
-
-  return (
-    <canvas
-      ref={canvasRef}
-      aria-hidden="true"
-      className="absolute inset-0 w-full h-full pointer-events-none z-0"
-    />
-  );
-}
+const SKILLS_PREVIEW = [
+  {
+    title: "Engineering",
+    description: "C/C++, Python, Problem Solving",
+    href: "#projects",
+    label: "Explore engineering projects",
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-8-2 6h4l-2 5" /></svg>
+  },
+  {
+    title: "AI / ML",
+    description: "Learning, building, experimentation",
+    href: "/skills",
+    label: "Explore AI and machine learning skills",
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><circle cx="12" cy="12" r="2.2" /><circle cx="5" cy="6" r="1.6" /><circle cx="19" cy="6" r="1.6" /><circle cx="5" cy="18" r="1.6" /><circle cx="19" cy="18" r="1.6" /><path strokeLinecap="round" d="m10.4 10.5-4-3m7.2 3 4-3m-7.2 6-4 3m7.2-3 4 3" /></svg>
+  },
+  {
+    title: "Video & Editing",
+    description: "Storytelling, post-production",
+    href: "#media",
+    label: "Explore video and media work",
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path strokeLinecap="round" strokeLinejoin="round" d="m10 9 5 3-5 3V9Z" /></svg>
+  },
+  {
+    title: "Graphic Design",
+    description: "Visuals, branding, creativity",
+    href: "/skills",
+    label: "Explore graphic design skills",
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="m4 20 4.2-1 10.6-10.6a2.1 2.1 0 0 0-3-3L5.2 16 4 20Z" /><path strokeLinecap="round" d="m14.5 7.5 3 3M4 20h16" /></svg>
+  }
+];
 
 export default function Home() {
-  const [text, setText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [loopNum, setLoopNum] = useState(0);
   const [selectedFilter, setSelectedFilter] = useState('all');
   const [selectedImage, setSelectedImage] = useState(null);
 
   // Contact form state
   const [formStatus, setFormStatus] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  // Typewriter effect
-  useEffect(() => {
-    const currentRole = ROLES[loopNum % ROLES.length];
-    const typingSpeed = isDeleting ? 40 : 80;
-
-    const timer = setTimeout(() => {
-      if (!isDeleting && text === currentRole) {
-        setTimeout(() => setIsDeleting(true), 2000);
-      } else if (isDeleting && text === '') {
-        setIsDeleting(false);
-        setLoopNum((prev) => prev + 1);
-      } else {
-        setText(currentRole.substring(0, isDeleting ? text.length - 1 : text.length + 1));
-      }
-    }, typingSpeed);
-
-    return () => clearTimeout(timer);
-  }, [text, isDeleting, loopNum]);
 
   // Filtered projects
   const filteredProjects = PROJECTS.filter((p) => {
@@ -407,123 +240,92 @@ export default function Home() {
         <>
           <HomePageJsonLd />
 
-          <style>{`
-            @keyframes slideFromLeft {
-              0% { opacity: 0; transform: translateX(-30px); }
-              100% { opacity: 1; transform: translateX(0); }
-            }
-            @keyframes slideFromRight {
-              0% { opacity: 0; transform: translateX(30px); }
-              100% { opacity: 1; transform: translateX(0); }
-            }
-            .animate-slide-left {
-              animation: slideFromLeft 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            }
-            .animate-slide-right {
-              animation: slideFromRight 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            }
-          `}</style>
-
           {/* ===================== HERO SECTION ===================== */}
-          <section id="home" className={`pt-28 sm:pt-32 pb-20 px-6 sm:px-12 min-h-[92vh] flex items-center w-full relative overflow-hidden ${theme.bg}`}>
-            <HeroCanvas isDark={isDark} />
-
-            <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 lg:gap-16 items-center w-full relative z-10">
-              <div className="md:col-span-7 order-2 md:order-1 opacity-0 animate-slide-left">
-                {/* Eyebrow */}
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#047857]/30 bg-[#047857]/10 dark:border-[#34D399]/30 dark:bg-[#34D399]/10 text-[#047857] dark:text-[#34D399] font-mono text-xs sm:text-sm font-medium mb-6 backdrop-blur-sm">
-                  <span className="w-2 h-2 rounded-full bg-[#10B981] dark:bg-[#34D399] animate-pulse"></span>
-                  COMPUTER ENGINEERING &times; CREATIVE TECHNOLOGY
-                </div>
-
-                {/* Main Headline */}
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-4 leading-[1.15]">
-                  Building with logic.<br />
-                  <span className="text-[#047857] dark:text-[#34D399]">Creating with imagination.</span>
+          <section id="home" className="home-hero">
+            <div className="home-hero-inner">
+              <div className="hero-copy">
+                <p className="hero-eyebrow">COMPUTER ENGINEERING &middot; CREATIVE MEDIA</p>
+                <h1 className="hero-title">
+                  Engineering logic.<br />
+                  <span>Creating experiences.</span>
                 </h1>
-
-                {/* Interactive Dynamic Role */}
-                <div className="text-lg sm:text-xl md:text-2xl font-semibold text-[#047857] dark:text-[#34D399] h-10 flex items-center font-mono">
-                  <span>&gt; </span>
-                  <span className="ml-2 text-inherit">{text}</span>
-                  <span className="animate-pulse ml-0.5 font-sans font-normal">|</span>
-                </div>
-
-                {/* Supporting Text */}
-                <p className={`mt-5 max-w-xl text-base sm:text-lg leading-relaxed ${theme.muted}`}>
-                  I&apos;m <strong>Dipesh Sapkota</strong> &mdash; a computer engineering student at IOE Thapathali Campus exploring software development, intelligent systems, and high-end digital media production.
+                <p className="hero-description">
+                  Computer engineering student exploring AI/ML, building software, and creating visual stories through video and design.
                 </p>
 
-                {/* Social links */}
-                <div className="flex gap-4 sm:gap-5 mt-6 items-center flex-wrap">
-                  <a href="https://github.com/dszae" target="_blank" rel="me noreferrer" aria-label="GitHub Profile" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#047857] dark:hover:text-[#34D399] transition-colors p-1">
-                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.332-5.467-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
+                <div className="hero-actions">
+                  <a href="#projects" className="hero-button hero-button-primary">
+                    Explore My Work
+                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6 6 6-6 6" /></svg>
                   </a>
-                  <a href="https://linkedin.com/in/dszae" target="_blank" rel="me noreferrer" aria-label="LinkedIn Profile" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#047857] dark:hover:text-[#34D399] transition-colors p-1">
-                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
-                  </a>
-                  <a href="https://instagram.com/dsz.ae" target="_blank" rel="me noreferrer" aria-label="Instagram Profile" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#047857] dark:hover:text-[#34D399] transition-colors p-1">
-                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" /></svg>
-                  </a>
-                  <a href="https://facebook.com/dsz.ae" target="_blank" rel="me noreferrer" aria-label="Facebook Profile" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#047857] dark:hover:text-[#34D399] transition-colors p-1">
-                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" /></svg>
+                  <a href="#contact" className="hero-button hero-button-secondary">Get In Touch</a>
+                  <a href="/my_cv.pdf" download="Dipesh_Sapkota_CV.pdf" className="hero-cv-link">
+                    Download CV
+                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M12 3v12m0 0 4-4m-4 4-4-4m-3 7v2h14v-2" /></svg>
                   </a>
                 </div>
 
-                {/* Primary Calls to Action */}
-                <div className="mt-8 sm:mt-10 flex flex-wrap gap-4">
-                  <a 
-                    href="#projects" 
-                    className="px-6 py-3.5 sm:px-8 sm:py-4 bg-[#047857] dark:bg-[#34D399] text-white dark:text-[#0B0F0E] font-semibold rounded-xl hover:bg-[#065F46] dark:hover:bg-[#6EE7B7] transition-all hover:-translate-y-0.5 flex items-center gap-2 shadow-sm cursor-pointer"
-                  >
-                    <span>Explore Projects</span>
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" /></svg>
+                <div className="hero-socials" aria-label="Social profiles">
+                  <a href="https://github.com/dszae" target="_blank" rel="me noreferrer" aria-label="GitHub profile" className="hero-social-link">
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.332-5.467-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
                   </a>
-                  <a 
-                    href="/my_cv.pdf" 
-                    download="Dipesh_Sapkota_CV.pdf" 
-                    className={`px-6 py-3.5 sm:px-8 sm:py-4 border font-semibold rounded-xl transition-all hover:-translate-y-0.5 flex items-center gap-2 cursor-pointer ${isDark ? 'border-[#26352F] hover:bg-[#16221D] bg-[#111B17] text-[#F9FAFB]' : 'border-[#E2E8F0] hover:bg-[#F1F5F9] bg-[#FFFFFF] text-[#111827]'}`}
-                  >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                    <span>Download CV</span>
+                  <a href="https://linkedin.com/in/dszae" target="_blank" rel="me noreferrer" aria-label="LinkedIn profile" className="hero-social-link">
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
                   </a>
-                  <a 
-                    href="#contact" 
-                    className={`px-6 py-3.5 sm:px-8 sm:py-4 border font-semibold rounded-xl transition-all hover:-translate-y-0.5 cursor-pointer ${isDark ? 'border-[#26352F] hover:bg-[#16221D] bg-[#111B17] text-[#F9FAFB]' : 'border-[#E2E8F0] hover:bg-[#F1F5F9] bg-[#FFFFFF] text-[#111827]'}`}
-                  >
-                    Get In Touch
+                  <a href="https://instagram.com/dsz.ae" target="_blank" rel="me noreferrer" aria-label="Instagram profile" className="hero-social-link">
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.28-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" /></svg>
+                  </a>
+                  <a href="https://facebook.com/dsz.ae" target="_blank" rel="me noreferrer" aria-label="Facebook profile" className="hero-social-link">
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" /></svg>
                   </a>
                 </div>
               </div>
 
-              {/* Portrait & Geometry Focal Point */}
-              <div className="md:col-span-5 order-1 md:order-2 flex justify-center items-center relative pt-4 md:pt-0 animate-slide-right">
-                <div className={`absolute w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] lg:w-[380px] lg:h-[380px] rounded-full border border-dashed animate-[spin_25s_linear_infinite] ${isDark ? 'border-[#26352F]' : 'border-[#E2E8F0]'}`}></div>
-                <div className="absolute w-[240px] h-[240px] sm:w-[300px] sm:h-[300px] lg:w-[360px] lg:h-[360px] rounded-full border border-[#047857]/10 dark:border-[#34D399]/10"></div>
-                <Image
-                  src="/dipesh-sapkota.jpg"
-                  id="primary-profile-image"
-                  itemProp="image"
-                  alt="Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal"
-                  width={340}
-                  height={340}
-                  fetchPriority="high"
-                  priority
-                  className={`relative z-10 w-full max-w-[220px] sm:max-w-[270px] lg:max-w-[340px] rounded-full shadow-xl border-2 transition-transform duration-500 hover:scale-105 cursor-pointer ${isDark ? 'border-[#34D399]/60' : 'border-[#047857]/50'}`}
-                />
-              </div>
+              <figure className="hero-portrait-wrap">
+                <div className="hero-portrait-accent" aria-hidden="true" />
+                <div className="hero-portrait-frame">
+                  <Image
+                    src="/dipesh-sapkota.jpg"
+                    id="primary-profile-image"
+                    itemProp="image"
+                    alt="Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal"
+                    fill
+                    sizes="(max-width: 680px) 88vw, (max-width: 899px) 38vw, 440px"
+                    fetchPriority="high"
+                    priority
+                    className="hero-portrait-image"
+                  />
+                </div>
+              </figure>
             </div>
           </section>
 
+          <section className="skills-preview" aria-labelledby="skills-preview-heading">
+            <div className="skills-preview-inner">
+              <div className="skills-preview-heading">
+                <h2 id="skills-preview-heading">Areas I work across</h2>
+                <Link href="/skills">View all skills <span aria-hidden="true">&rarr;</span></Link>
+              </div>
+              <div className="skills-preview-grid">
+                {SKILLS_PREVIEW.map((skill) => (
+                  <Link key={skill.title} href={skill.href} aria-label={skill.label} className="skill-preview-card">
+                    <span className="skill-preview-icon">{skill.icon}</span>
+                    <h3>{skill.title}</h3>
+                    <p>{skill.description}</p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
           {/* ===================== ABOUT SECTION ===================== */}
-          <section id="about" className={`py-24 px-6 sm:px-12 w-full border-t ${isDark ? 'border-[#26352F]' : 'border-[#E2E8F0]'} ${theme.bg}`}>
+          <section id="about" className={`py-24 px-6 sm:px-12 w-full border-t ${isDark ? 'border-[#29372F]' : 'border-[#D6E1D9]'} ${theme.bg}`}>
             <div className="max-w-7xl mx-auto w-full">
               <div className="flex items-center justify-between mb-12 flex-wrap gap-4">
                 <div>
-                  <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#047857] dark:text-[#34D399]">01. Profile &amp; Background</span>
+                  <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#087F5B] dark:text-[#34D399]">01. Profile &amp; Background</span>
                   <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mt-1">Bridging Logic &amp; Visual Execution</h2>
                 </div>
-                <Link href="/about" className="text-sm font-semibold text-[#047857] dark:text-[#34D399] hover:underline flex items-center gap-1.5 font-mono">
+                <Link href="/about" className="text-sm font-semibold text-[#087F5B] dark:text-[#34D399] hover:underline flex items-center gap-1.5 font-mono">
                   <span>View Full Profile Page</span>
                   <span>&rarr;</span>
                 </Link>
@@ -534,14 +336,14 @@ export default function Home() {
                   <div>
                     <h3 className="text-xl sm:text-2xl font-bold mb-4">Engineering Problem Solving Meets Creative Direction</h3>
                     <p className={`text-base sm:text-lg leading-relaxed mb-5 ${theme.muted}`}>
-                      Hello! I am <strong>Dipesh Sapkota</strong>, a Computer Engineering student at <span className="font-semibold text-[#047857] dark:text-[#34D399]">IOE Thapathali Campus</span> in Kathmandu, Nepal. My technical focus centers on algorithms, software architecture, and intelligent hardware systems.
+                      Hello! I am <strong>Dipesh Sapkota</strong>, a Computer Engineering student at <span className="font-semibold text-[#087F5B] dark:text-[#34D399]">IOE Thapathali Campus</span> in Kathmandu, Nepal. My technical focus centers on algorithms, software architecture, and intelligent hardware systems.
                     </p>
                     <p className={`text-base sm:text-lg leading-relaxed ${theme.muted}`}>
                       Alongside engineering, I bring 4+ years of professional freelance experience in video editing, motion graphics, and graphic design for global clients and academic institutions. This dual foundation enables me to design software with visual clarity and engineer creative assets with technical precision.
                     </p>
                   </div>
 
-                  <div className="mt-8 pt-6 border-t border-[#E2E8F0] dark:border-[#26352F] flex flex-wrap gap-3">
+                  <div className="mt-8 pt-6 border-t border-[#D6E1D9] dark:border-[#29372F] flex flex-wrap gap-3">
                     <span className={`px-3 py-1 text-xs font-mono rounded-lg ${theme.tag}`}>Algorithms &amp; C/C++</span>
                     <span className={`px-3 py-1 text-xs font-mono rounded-lg ${theme.tag}`}>Full-Stack Web</span>
                     <span className={`px-3 py-1 text-xs font-mono rounded-lg ${theme.tag}`}>Motion Post-Production</span>
@@ -551,25 +353,25 @@ export default function Home() {
 
                 <div className="md:col-span-5 grid grid-cols-2 gap-4">
                   <div className={`p-6 rounded-2xl border ${theme.card} flex flex-col justify-center text-center`}>
-                    <div className="text-3xl sm:text-4xl font-extrabold text-[#047857] dark:text-[#34D399] mb-1">4+</div>
+                    <div className="text-3xl sm:text-4xl font-extrabold text-[#087F5B] dark:text-[#34D399] mb-1">4+</div>
                     <div className="font-mono text-xs uppercase tracking-wider font-semibold">Years Experience</div>
                     <div className={`text-xs mt-1 ${theme.muted}`}>Media &amp; Freelance</div>
                   </div>
 
                   <div className={`p-6 rounded-2xl border ${theme.card} flex flex-col justify-center text-center`}>
-                    <div className="text-3xl sm:text-4xl font-extrabold text-[#047857] dark:text-[#34D399] mb-1">50+</div>
+                    <div className="text-3xl sm:text-4xl font-extrabold text-[#087F5B] dark:text-[#34D399] mb-1">50+</div>
                     <div className="font-mono text-xs uppercase tracking-wider font-semibold">Global Clients</div>
                     <div className={`text-xs mt-1 ${theme.muted}`}>Delivered Assets</div>
                   </div>
 
                   <div className={`p-6 rounded-2xl border ${theme.card} flex flex-col justify-center text-center`}>
-                    <div className="text-3xl sm:text-4xl font-extrabold text-[#047857] dark:text-[#34D399] mb-1">10+</div>
+                    <div className="text-3xl sm:text-4xl font-extrabold text-[#087F5B] dark:text-[#34D399] mb-1">10+</div>
                     <div className="font-mono text-xs uppercase tracking-wider font-semibold">Live Projects</div>
                     <div className={`text-xs mt-1 ${theme.muted}`}>Web &amp; Hardware</div>
                   </div>
 
                   <div className={`p-6 rounded-2xl border ${theme.card} flex flex-col justify-center text-center`}>
-                    <div className="text-3xl sm:text-4xl font-extrabold text-[#047857] dark:text-[#34D399] mb-1">IOE</div>
+                    <div className="text-3xl sm:text-4xl font-extrabold text-[#087F5B] dark:text-[#34D399] mb-1">IOE</div>
                     <div className="font-mono text-xs uppercase tracking-wider font-semibold">Thapathali</div>
                     <div className={`text-xs mt-1 ${theme.muted}`}>Computer Eng.</div>
                   </div>
@@ -579,17 +381,17 @@ export default function Home() {
           </section>
 
           {/* ===================== PROJECT SHOWCASE ===================== */}
-          <section id="projects" className={`py-24 px-6 sm:px-12 w-full border-t ${isDark ? 'border-[#26352F]' : 'border-[#E2E8F0]'} ${theme.bg}`}>
+          <section id="projects" className={`py-24 px-6 sm:px-12 w-full border-t ${isDark ? 'border-[#29372F]' : 'border-[#D6E1D9]'} ${theme.bg}`}>
             <div className="max-w-7xl mx-auto w-full">
               <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
                 <div>
-                  <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#047857] dark:text-[#34D399]">02. Selected Work</span>
+                  <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#087F5B] dark:text-[#34D399]">02. Selected Work</span>
                   <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mt-1">Project Showcase &amp; Engineering</h2>
                   <p className={`mt-2 text-base ${theme.muted}`}>Interactive web systems, developer utilities, hardware prototypes, and creative motion.</p>
                 </div>
 
                 {/* Working Project Filtering Tabs */}
-                <div className="flex flex-wrap gap-2 p-1.5 rounded-xl border border-[#E2E8F0] dark:border-[#26352F] bg-[#FFFFFF] dark:bg-[#111B17] self-start md:self-auto" role="tablist" aria-label="Project category filter">
+                <div className="flex flex-wrap gap-2 p-1.5 rounded-xl border border-[#D6E1D9] dark:border-[#29372F] bg-[#FFFFFF] dark:bg-[#121916] self-start md:self-auto" role="tablist" aria-label="Project category filter">
                   <button
                     type="button"
                     role="tab"
@@ -597,8 +399,8 @@ export default function Home() {
                     onClick={() => setSelectedFilter('all')}
                     className={`px-4 py-2 text-xs font-mono uppercase tracking-wider font-semibold rounded-lg transition-all cursor-pointer ${
                       selectedFilter === 'all'
-                        ? 'bg-[#047857] dark:bg-[#34D399] text-white dark:text-[#0B0F0E] shadow-sm'
-                        : 'text-[#475569] dark:text-[#A7B0BE] hover:text-[#047857] dark:hover:text-[#34D399]'
+                        ? 'bg-[#087F5B] dark:bg-[#34D399] text-white dark:text-[#0B0F0D] shadow-sm'
+                        : 'text-[#45574C] dark:text-[#B0BBB5] hover:text-[#087F5B] dark:hover:text-[#34D399]'
                     }`}
                   >
                     All ({PROJECTS.length})
@@ -611,8 +413,8 @@ export default function Home() {
                     onClick={() => setSelectedFilter('dev')}
                     className={`px-4 py-2 text-xs font-mono uppercase tracking-wider font-semibold rounded-lg transition-all cursor-pointer ${
                       selectedFilter === 'dev'
-                        ? 'bg-[#047857] dark:bg-[#34D399] text-white dark:text-[#0B0F0E] shadow-sm'
-                        : 'text-[#475569] dark:text-[#A7B0BE] hover:text-[#047857] dark:hover:text-[#34D399]'
+                        ? 'bg-[#087F5B] dark:bg-[#34D399] text-white dark:text-[#0B0F0D] shadow-sm'
+                        : 'text-[#45574C] dark:text-[#B0BBB5] hover:text-[#087F5B] dark:hover:text-[#34D399]'
                     }`}
                   >
                     Development
@@ -625,8 +427,8 @@ export default function Home() {
                     onClick={() => setSelectedFilter('media')}
                     className={`px-4 py-2 text-xs font-mono uppercase tracking-wider font-semibold rounded-lg transition-all cursor-pointer ${
                       selectedFilter === 'media'
-                        ? 'bg-[#047857] dark:bg-[#34D399] text-white dark:text-[#0B0F0E] shadow-sm'
-                        : 'text-[#475569] dark:text-[#A7B0BE] hover:text-[#047857] dark:hover:text-[#34D399]'
+                        ? 'bg-[#087F5B] dark:bg-[#34D399] text-white dark:text-[#0B0F0D] shadow-sm'
+                        : 'text-[#45574C] dark:text-[#B0BBB5] hover:text-[#087F5B] dark:hover:text-[#34D399]'
                     }`}
                   >
                     Creative Media
@@ -639,8 +441,8 @@ export default function Home() {
                     onClick={() => setSelectedFilter('exp')}
                     className={`px-4 py-2 text-xs font-mono uppercase tracking-wider font-semibold rounded-lg transition-all cursor-pointer ${
                       selectedFilter === 'exp'
-                        ? 'bg-[#047857] dark:bg-[#34D399] text-white dark:text-[#0B0F0E] shadow-sm'
-                        : 'text-[#475569] dark:text-[#A7B0BE] hover:text-[#047857] dark:hover:text-[#34D399]'
+                        ? 'bg-[#087F5B] dark:bg-[#34D399] text-white dark:text-[#0B0F0D] shadow-sm'
+                        : 'text-[#45574C] dark:text-[#B0BBB5] hover:text-[#087F5B] dark:hover:text-[#34D399]'
                     }`}
                   >
                     Experiments
@@ -658,7 +460,7 @@ export default function Home() {
                     <div>
                       {/* Image Preview if available */}
                       {proj.image && (
-                        <div className={`w-full h-44 mb-5 rounded-xl overflow-hidden border border-[#E2E8F0] dark:border-[#26352F] relative group bg-[#111B17]`}>
+                        <div className={`w-full h-44 mb-5 rounded-xl overflow-hidden border border-[#D6E1D9] dark:border-[#29372F] relative group bg-[#121916]`}>
                           <Image
                             src={proj.image}
                             alt={`${proj.title} Preview`}
@@ -670,13 +472,13 @@ export default function Home() {
                       )}
 
                       <div className="flex items-center justify-between mb-3">
-                        <span className="inline-block px-3 py-1 text-[11px] font-mono font-semibold uppercase tracking-wider rounded-md bg-[#047857]/10 dark:bg-[#34D399]/10 text-[#047857] dark:text-[#34D399] border border-[#047857]/20 dark:border-[#34D399]/20">
+                        <span className="inline-block px-3 py-1 text-[11px] font-mono font-semibold uppercase tracking-wider rounded-md bg-[#087F5B]/10 dark:bg-[#34D399]/10 text-[#087F5B] dark:text-[#34D399] border border-[#087F5B]/20 dark:border-[#34D399]/20">
                           {proj.categoryLabel}
                         </span>
                         <span className={`text-[11px] font-mono ${theme.muted}`}>{proj.type}</span>
                       </div>
 
-                      <h3 className="text-xl font-bold mb-2.5 text-[#111827] dark:text-[#F9FAFB]">{proj.title}</h3>
+                      <h3 className="text-xl font-bold mb-2.5 text-[#14231B] dark:text-[#F5F7F5]">{proj.title}</h3>
                       <p className={`text-sm leading-relaxed mb-5 ${theme.muted}`}>{proj.description}</p>
                     </div>
 
@@ -691,13 +493,13 @@ export default function Home() {
                       </div>
 
                       {/* Action Links */}
-                      <div className="flex items-center gap-2 pt-3 border-t border-[#E2E8F0] dark:border-[#26352F] flex-wrap">
+                      <div className="flex items-center gap-2 pt-3 border-t border-[#D6E1D9] dark:border-[#29372F] flex-wrap">
                         {proj.liveUrl && (
                           <a
                             href={proj.liveUrl}
                             target="_blank"
                             rel="noreferrer"
-                            className="px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-[#047857] dark:bg-[#34D399] text-white dark:text-[#0B0F0E] hover:bg-[#065F46] dark:hover:bg-[#6EE7B7] transition-all flex items-center gap-1.5 cursor-pointer shadow-sm"
+                            className="px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-[#087F5B] dark:bg-[#34D399] text-white dark:text-[#0B0F0D] hover:bg-[#066747] dark:hover:bg-[#6EE7B7] transition-all flex items-center gap-1.5 cursor-pointer shadow-sm"
                           >
                             <span>Live App</span>
                             <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
@@ -709,7 +511,7 @@ export default function Home() {
                             href={proj.githubUrl}
                             target="_blank"
                             rel="noreferrer"
-                            className="px-3 py-1.5 text-xs font-semibold rounded-lg border border-[#E2E8F0] dark:border-[#26352F] hover:bg-[#F1F5F9] dark:hover:bg-[#16221D] transition-all flex items-center gap-1"
+                            className="px-3 py-1.5 text-xs font-semibold rounded-lg border border-[#D6E1D9] dark:border-[#29372F] hover:bg-[#EDF3EF] dark:hover:bg-[#18221D] transition-all flex items-center gap-1"
                           >
                             <span>Code</span>
                           </a>
@@ -718,7 +520,7 @@ export default function Home() {
                         {proj.detailUrl && (
                           <Link
                             href={proj.detailUrl}
-                            className="px-3 py-1.5 text-xs font-semibold rounded-lg text-[#047857] dark:text-[#34D399] hover:underline transition-all ml-auto font-mono"
+                            className="px-3 py-1.5 text-xs font-semibold rounded-lg text-[#087F5B] dark:text-[#34D399] hover:underline transition-all ml-auto font-mono"
                           >
                             Details &rarr;
                           </Link>
@@ -732,7 +534,7 @@ export default function Home() {
               <div className="mt-12 text-center">
                 <Link
                   href="/projects"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-[#047857] dark:border-[#34D399] text-[#047857] dark:text-[#34D399] font-semibold text-sm hover:bg-[#047857] hover:text-white dark:hover:bg-[#34D399] dark:hover:text-[#0B0F0E] transition-all cursor-pointer font-mono"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-[#087F5B] dark:border-[#34D399] text-[#087F5B] dark:text-[#34D399] font-semibold text-sm hover:bg-[#087F5B] hover:text-white dark:hover:bg-[#34D399] dark:hover:text-[#0B0F0D] transition-all cursor-pointer font-mono"
                 >
                   <span>Explore Complete Project Archive</span>
                   <span>&rarr;</span>
@@ -742,15 +544,15 @@ export default function Home() {
           </section>
 
           {/* ===================== CREATIVE WORK & MEDIA ===================== */}
-          <section id="media" className={`py-24 px-6 sm:px-12 w-full border-t ${isDark ? 'border-[#26352F]' : 'border-[#E2E8F0]'} ${theme.bg}`}>
+          <section id="media" className={`py-24 px-6 sm:px-12 w-full border-t ${isDark ? 'border-[#29372F]' : 'border-[#D6E1D9]'} ${theme.bg}`}>
             <div className="max-w-7xl mx-auto w-full">
               <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
                 <div>
-                  <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#047857] dark:text-[#34D399]">03. Creative Direction</span>
+                  <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#087F5B] dark:text-[#34D399]">03. Creative Direction</span>
                   <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mt-1">Creative Media &amp; Visual Archive</h2>
                   <p className={`mt-2 text-base ${theme.muted}`}>Documenting video editing, event leadership, campus athletics, and technical milestones.</p>
                 </div>
-                <Link href="/gallery" className="text-sm font-semibold text-[#047857] dark:text-[#34D399] hover:underline flex items-center gap-1.5 font-mono">
+                <Link href="/gallery" className="text-sm font-semibold text-[#087F5B] dark:text-[#34D399] hover:underline flex items-center gap-1.5 font-mono">
                   <span>Open Full Gallery Page</span>
                   <span>&rarr;</span>
                 </Link>
@@ -763,7 +565,7 @@ export default function Home() {
                     key={item.id}
                     aria-label={`Open photo: ${item.title}`}
                     onClick={() => setSelectedImage({ src: item.img, title: item.title, alt: item.alt, desc: item.desc })}
-                    className="group relative w-full aspect-video rounded-xl overflow-hidden border border-[#E2E8F0] dark:border-[#26352F] bg-[#111B17] shadow-sm hover:shadow-md cursor-pointer transition-all duration-300 hover:border-[#047857]/60 dark:hover:border-[#34D399]/60"
+                    className="group relative w-full aspect-video rounded-xl overflow-hidden border border-[#D6E1D9] dark:border-[#29372F] bg-[#121916] shadow-sm hover:shadow-md cursor-pointer transition-all duration-300 hover:border-[#087F5B]/60 dark:hover:border-[#34D399]/60"
                   >
                     <Image
                       src={item.img}
@@ -773,13 +575,13 @@ export default function Home() {
                       loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F0E]/90 via-[#0B0F0E]/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-between p-4 sm:p-5">
-                      <div className="self-end w-8 h-8 rounded-full bg-[#047857] dark:bg-[#34D399] text-white dark:text-[#0B0F0E] flex items-center justify-center shadow-md transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F0D]/90 via-[#0B0F0D]/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-between p-4 sm:p-5">
+                      <div className="self-end w-8 h-8 rounded-full bg-[#087F5B] dark:bg-[#34D399] text-white dark:text-[#0B0F0D] flex items-center justify-center shadow-md transform scale-75 group-hover:scale-100 transition-transform duration-300">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
                       </div>
                       <div className="text-left">
                         <p className="text-[11px] font-mono uppercase tracking-wider text-[#34D399] font-semibold">{item.desc}</p>
-                        <p className="text-[#F9FAFB] text-xs sm:text-sm font-semibold truncate mt-0.5">{item.title}</p>
+                        <p className="text-[#F5F7F5] text-xs sm:text-sm font-semibold truncate mt-0.5">{item.title}</p>
                       </div>
                     </div>
                   </button>
@@ -789,15 +591,15 @@ export default function Home() {
           </section>
 
           {/* ===================== SKILLS & TOOLKIT ===================== */}
-          <section id="skills" className={`py-24 px-6 sm:px-12 w-full border-t ${isDark ? 'border-[#26352F]' : 'border-[#E2E8F0]'} ${theme.bg}`}>
+          <section id="skills" className={`py-24 px-6 sm:px-12 w-full border-t ${isDark ? 'border-[#29372F]' : 'border-[#D6E1D9]'} ${theme.bg}`}>
             <div className="max-w-7xl mx-auto w-full">
               <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
                 <div>
-                  <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#047857] dark:text-[#34D399]">04. Technical Capabilities</span>
+                  <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#087F5B] dark:text-[#34D399]">04. Technical Capabilities</span>
                   <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mt-1">Skills &amp; Professional Toolkit</h2>
                   <p className={`mt-2 text-base ${theme.muted}`}>Core technical capabilities organized across engineering, creative media, and computing.</p>
                 </div>
-                <Link href="/skills" className="text-sm font-semibold text-[#047857] dark:text-[#34D399] hover:underline flex items-center gap-1.5 font-mono">
+                <Link href="/skills" className="text-sm font-semibold text-[#087F5B] dark:text-[#34D399] hover:underline flex items-center gap-1.5 font-mono">
                   <span>View Detailed Proficiency Page</span>
                   <span>&rarr;</span>
                 </Link>
@@ -808,10 +610,10 @@ export default function Home() {
                   <div key={gIdx} className={`p-6 rounded-2xl border backdrop-blur-md ${theme.card} flex flex-col justify-between`}>
                     <div>
                       <div className="flex items-center gap-3 mb-5">
-                        <div className="w-10 h-10 rounded-xl bg-[#047857]/10 dark:bg-[#34D399]/10 text-[#047857] dark:text-[#34D399] flex items-center justify-center flex-shrink-0">
+                        <div className="w-10 h-10 rounded-xl bg-[#087F5B]/10 dark:bg-[#34D399]/10 text-[#087F5B] dark:text-[#34D399] flex items-center justify-center flex-shrink-0">
                           {group.icon}
                         </div>
-                        <h3 className="font-bold text-base text-[#111827] dark:text-[#F9FAFB] leading-tight">{group.title}</h3>
+                        <h3 className="font-bold text-base text-[#14231B] dark:text-[#F5F7F5] leading-tight">{group.title}</h3>
                       </div>
 
                       <div className="flex flex-wrap gap-2">
@@ -819,7 +621,7 @@ export default function Home() {
                           <span
                             key={skill}
                             className={`px-3 py-1.5 text-xs font-mono font-medium rounded-lg border ${
-                              isDark ? 'bg-[#16221D] border-[#26352F] text-[#F9FAFB]' : 'bg-[#F1F5F9] border-[#E2E8F0] text-[#111827]'
+                              isDark ? 'bg-[#18221D] border-[#29372F] text-[#F5F7F5]' : 'bg-[#EDF3EF] border-[#D6E1D9] text-[#14231B]'
                             }`}
                           >
                             {skill}
@@ -834,12 +636,12 @@ export default function Home() {
           </section>
 
           {/* ===================== CONTACT SECTION ===================== */}
-          <section id="contact" className={`py-24 px-6 sm:px-12 w-full border-t ${isDark ? 'border-[#26352F]' : 'border-[#E2E8F0]'} ${theme.bg}`}>
+          <section id="contact" className={`py-24 px-6 sm:px-12 w-full border-t ${isDark ? 'border-[#29372F]' : 'border-[#D6E1D9]'} ${theme.bg}`}>
             <div className="max-w-7xl mx-auto w-full">
               <div className={`p-6 sm:p-10 md:p-14 rounded-3xl border backdrop-blur-md ${theme.card}`}>
                 <div className="grid lg:grid-cols-12 gap-12">
                   <div className="lg:col-span-5">
-                    <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#047857] dark:text-[#34D399]">05. Get In Touch</span>
+                    <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#087F5B] dark:text-[#34D399]">05. Get In Touch</span>
                     <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mt-1 mb-4">Let&apos;s Connect</h2>
                     <p className={`mb-8 text-base leading-relaxed ${theme.muted}`}>
                       I am open for software engineering internships, freelance video editing and motion graphics projects, and collaborative technical initiatives.
@@ -847,7 +649,7 @@ export default function Home() {
 
                     <div className="space-y-5">
                       <div className="flex items-center gap-4">
-                        <div className="w-11 h-11 rounded-xl bg-[#047857]/10 dark:bg-[#34D399]/10 flex items-center justify-center text-[#047857] dark:text-[#34D399] flex-shrink-0">
+                        <div className="w-11 h-11 rounded-xl bg-[#087F5B]/10 dark:bg-[#34D399]/10 flex items-center justify-center text-[#087F5B] dark:text-[#34D399] flex-shrink-0">
                           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                         </div>
                         <div>
@@ -857,22 +659,22 @@ export default function Home() {
                       </div>
 
                       <div className="flex items-center gap-4">
-                        <div className="w-11 h-11 rounded-xl bg-[#047857]/10 dark:bg-[#34D399]/10 flex items-center justify-center text-[#047857] dark:text-[#34D399] flex-shrink-0">
+                        <div className="w-11 h-11 rounded-xl bg-[#087F5B]/10 dark:bg-[#34D399]/10 flex items-center justify-center text-[#087F5B] dark:text-[#34D399] flex-shrink-0">
                           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
                         </div>
                         <div>
                           <div className={`font-mono text-[11px] uppercase tracking-wider ${theme.muted}`}>Phone</div>
-                          <a href="tel:+9779764685307" className="font-semibold text-sm hover:text-[#047857] dark:hover:text-[#34D399] transition-colors">9764685307</a>
+                          <a href="tel:+9779764685307" className="font-semibold text-sm hover:text-[#087F5B] dark:hover:text-[#34D399] transition-colors">9764685307</a>
                         </div>
                       </div>
 
                       <div className="flex items-center gap-4">
-                        <div className="w-11 h-11 rounded-xl bg-[#047857]/10 dark:bg-[#34D399]/10 flex items-center justify-center text-[#047857] dark:text-[#34D399] flex-shrink-0">
+                        <div className="w-11 h-11 rounded-xl bg-[#087F5B]/10 dark:bg-[#34D399]/10 flex items-center justify-center text-[#087F5B] dark:text-[#34D399] flex-shrink-0">
                           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                         </div>
                         <div>
                           <div className={`font-mono text-[11px] uppercase tracking-wider ${theme.muted}`}>Email</div>
-                          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=dsz.ae18@gmail.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-sm hover:text-[#047857] dark:hover:text-[#34D399] transition-colors">dsz.ae18@gmail.com</a>
+                          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=dsz.ae18@gmail.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-sm hover:text-[#087F5B] dark:hover:text-[#34D399] transition-colors">dsz.ae18@gmail.com</a>
                         </div>
                       </div>
                     </div>
@@ -890,7 +692,7 @@ export default function Home() {
                             name="name"
                             placeholder="Your Name"
                             autoComplete="name"
-                            className={`w-full px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#047857]/30 dark:focus:ring-[#34D399]/30 transition-all ${theme.input}`}
+                            className={`w-full px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#087F5B]/30 dark:focus:ring-[#34D399]/30 transition-all ${theme.input}`}
                             required
                           />
                         </div>
@@ -902,7 +704,7 @@ export default function Home() {
                             name="email"
                             placeholder="Your Email"
                             autoComplete="email"
-                            className={`w-full px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#047857]/30 dark:focus:ring-[#34D399]/30 transition-all ${theme.input}`}
+                            className={`w-full px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#087F5B]/30 dark:focus:ring-[#34D399]/30 transition-all ${theme.input}`}
                             required
                           />
                         </div>
@@ -915,7 +717,7 @@ export default function Home() {
                           name="message"
                           placeholder="Tell me about your project, ideas, or opportunity..."
                           rows="4"
-                          className={`w-full px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#047857]/30 dark:focus:ring-[#34D399]/30 transition-all resize-none ${theme.input}`}
+                          className={`w-full px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#087F5B]/30 dark:focus:ring-[#34D399]/30 transition-all resize-none ${theme.input}`}
                           required
                         ></textarea>
                       </div>
@@ -923,13 +725,13 @@ export default function Home() {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="px-6 py-3.5 sm:px-8 sm:py-4 bg-[#047857] hover:bg-[#065F46] dark:bg-[#34D399] dark:hover:bg-[#6EE7B7] text-white dark:text-[#0B0F0E] font-semibold rounded-xl disabled:cursor-not-allowed disabled:opacity-60 transition-all w-full shadow-md cursor-pointer hover:-translate-y-0.5 text-sm"
+                        className="px-6 py-3.5 sm:px-8 sm:py-4 bg-[#087F5B] hover:bg-[#066747] dark:bg-[#34D399] dark:hover:bg-[#6EE7B7] text-white dark:text-[#0B0F0D] font-semibold rounded-xl disabled:cursor-not-allowed disabled:opacity-60 transition-all w-full shadow-md cursor-pointer hover:-translate-y-0.5 text-sm"
                       >
                         {isSubmitting ? "Sending..." : "Send Message"}
                       </button>
 
                       {formStatus && (
-                        <p role="status" aria-live="polite" className={`text-xs text-center font-semibold mt-3 ${formStatus.includes("wrong") || formStatus.includes("error") ? "text-red-500" : "text-[#047857] dark:text-[#34D399]"}`}>
+                        <p role="status" aria-live="polite" className={`text-xs text-center font-semibold mt-3 ${formStatus.includes("wrong") || formStatus.includes("error") ? "text-red-500" : "text-[#087F5B] dark:text-[#34D399]"}`}>
                           {formStatus}
                         </p>
                       )}

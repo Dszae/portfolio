@@ -102,10 +102,8 @@ export default function RootLayout({ children }) {
                   var isDark = stored !== null ? stored === 'dark' : prefersDark;
                   if (isDark) {
                     document.documentElement.classList.add('dark');
-                    document.documentElement.style.backgroundColor = '#0B0F0E';
                   } else {
                     document.documentElement.classList.remove('dark');
-                    document.documentElement.style.backgroundColor = '#F8FAFC';
                   }
                 } catch (e) {}
               })();
@@ -113,7 +111,7 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body className="bg-[#F8FAFC] dark:bg-[#0B0F0E] text-[#111827] dark:text-[#F9FAFB] font-sans antialiased selection:bg-[#10B981]/25 dark:selection:bg-[#34D399]/25 m-0 p-0 w-full min-h-screen overflow-x-hidden">
+      <body className="theme-page font-sans antialiased m-0 p-0 w-full min-h-screen overflow-x-hidden">
         <JsonLdSchema />
         <WebMCPInitializer />
         {children}
