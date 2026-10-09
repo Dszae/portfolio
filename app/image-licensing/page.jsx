@@ -6,13 +6,19 @@ export const metadata = {
   title: 'Image Licensing',
   description: 'Copyright and licensing information for photographs published on Dipesh Sapkota’s website.',
   alternates: { canonical: '/image-licensing' },
+  openGraph: {
+    title: 'Image Licensing | Dipesh Sapkota',
+    description: 'Copyright and licensing information for photographs published on Dipesh Sapkota’s website.',
+    url: 'https://www.dipeshsapkota7.com.np/image-licensing',
+    images: [{ url: '/dipesh-sapkota.jpg', width: 627, height: 627, alt: 'Dipesh Sapkota' }],
+  },
 };
 
 export default function ImageLicensingPage() {
   return (
     <>
       <SiteHeader />
-      <main className="max-w-3xl mx-auto px-6 py-32 text-[#111827] dark:text-[#F9FAFB]">
+      <main id="main-content" tabIndex={-1} className="max-w-3xl mx-auto px-6 py-32 text-[#111827] dark:text-[#F9FAFB] outline-none">
         <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Image Licensing', path: '/image-licensing' }]} />
         <h1 className="text-3xl sm:text-4xl font-bold mb-6 tracking-tight text-[#0F172A] dark:text-[#F9FAFB]">Image Licensing</h1>
         <p className="text-[#1E293B] dark:text-[#A7B0BE] leading-relaxed mb-4">

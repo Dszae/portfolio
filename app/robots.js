@@ -4,6 +4,7 @@ export default function robots() {
       {
         userAgent: '*',
         allow: '/',
+        disallow: '/api/',
       },
       {
         userAgent: [
@@ -32,6 +33,7 @@ export default function robots() {
           'Omgilibot',
         ],
         allow: '/',
+        disallow: '/api/',
       },
     ],
     sitemap: 'https://www.dipeshsapkota7.com.np/sitemap.xml',

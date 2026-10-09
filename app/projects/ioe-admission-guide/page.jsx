@@ -9,7 +9,7 @@ export const metadata = {
     type: 'website',
     title: 'IOE Admission Guide by Dipesh Sapkota',
     description: 'Engineering admission guides, rank prediction, cutoff analytics, and counseling workflows.',
-    url: '/projects/ioe-admission-guide',
+    url: 'https://www.dipeshsapkota7.com.np/projects/ioe-admission-guide',
     images: [{ url: '/ioe-preview.jpg', alt: 'IOE Admission Guide project preview' }],
   },
   twitter: {
@@ -39,7 +39,7 @@ export default function IoeAdmissionProjectPage() {
   return (
     <>
       <SiteHeader />
-      <main className="max-w-4xl mx-auto px-6 py-32 text-[#111827] dark:text-[#F9FAFB]">
+      <main id="main-content" tabIndex={-1} className="max-w-4xl mx-auto px-6 py-32 text-[#111827] dark:text-[#F9FAFB] outline-none">
         <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Projects', path: '/projects' }, { name: 'IOE Admission Guide', path: '/projects/ioe-admission-guide' }]} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <span className="inline-block px-3.5 py-1 text-xs font-bold uppercase tracking-widest text-[#065F46] dark:text-[#34D399] bg-[#F1F5F9] dark:bg-[#34D399]/15 border border-[#CBD5E1] dark:border-[#34D399]/30 rounded-full mb-4">

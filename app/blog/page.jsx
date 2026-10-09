@@ -9,7 +9,7 @@ export const metadata = {
     type: 'website',
     title: 'Blog & Articles - Dipesh Sapkota',
     description: 'Technical write-ups and engineering articles authored by Dipesh Sapkota.',
-    url: '/blog',
+    url: 'https://www.dipeshsapkota7.com.np/blog',
     images: [{ url: '/dipesh-sapkota.jpg', width: 627, height: 627, alt: 'Portrait of Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal' }],
   },
   twitter: {
@@ -24,7 +24,7 @@ export default function BlogPage() {
   return (
     <>
       <SiteHeader />
-      <main className="max-w-4xl mx-auto px-6 py-32 text-[#111827] dark:text-[#F9FAFB]">
+      <main id="main-content" tabIndex={-1} className="max-w-4xl mx-auto px-6 py-32 text-[#111827] dark:text-[#F9FAFB] outline-none">
         <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Articles', path: '/blog' }]} />
         <h1 className="text-3xl sm:text-4xl font-bold mb-6 tracking-tight text-[#0F172A] dark:text-[#F9FAFB]">Articles by Dipesh Sapkota</h1>
         <p className="text-base sm:text-lg text-[#1E293B] dark:text-[#A7B0BE] mb-8 leading-relaxed">

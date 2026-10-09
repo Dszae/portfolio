@@ -10,7 +10,7 @@ export const metadata = {
     type: 'profile',
     title: 'Experience & Education - Dipesh Sapkota',
     description: 'Professional experience and academic background of Dipesh Sapkota at IOE Thapathali Campus and Clamphook Academy.',
-    url: '/experience',
+    url: 'https://www.dipeshsapkota7.com.np/experience',
     images: [{ url: '/dipesh-sapkota.jpg', width: 627, height: 627, alt: 'Portrait of Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal' }],
   },
   twitter: {
@@ -25,7 +25,7 @@ export default function ExperiencePage() {
   return (
     <>
       <SiteHeader />
-      <main className="max-w-4xl mx-auto px-6 py-32 text-[#111827] dark:text-[#F9FAFB]">
+      <main id="main-content" tabIndex={-1} className="max-w-4xl mx-auto px-6 py-32 text-[#111827] dark:text-[#F9FAFB] outline-none">
         <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Experience & Education', path: '/experience' }]} />
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-[#CBD5E1] dark:border-[#26352F]">
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#0F172A] dark:text-[#F9FAFB]">Experience & Education</h1>

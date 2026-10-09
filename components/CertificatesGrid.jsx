@@ -47,8 +47,8 @@ export default function CertificatesGrid({ certificates }) {
             }}
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
               selectedCategory === cat
-                ? 'bg-sky-600 text-white shadow-sm'
-                : 'border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
+                ? 'bg-[#065F46] dark:bg-[#34D399] text-white dark:text-[#0B0F0E] shadow-sm'
+                : 'border border-[#CBD5E1] dark:border-[#26352F] text-[#1E293B] dark:text-[#CBD5E1] hover:bg-[#F1F5F9] dark:hover:bg-[#16221D]'
             }`}
           >
             {cat}
@@ -61,13 +61,13 @@ export default function CertificatesGrid({ certificates }) {
         {filtered.map((cert) => (
           <article
             key={cert.id}
-            className="group rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 p-5 backdrop-blur flex flex-col justify-between hover:border-sky-500 dark:hover:border-sky-500 transition-all duration-300 hover:-translate-y-1 shadow-sm"
+            className="group rounded-2xl border border-[#CBD5E1] dark:border-[#26352F] bg-white dark:bg-[#111B17] p-5 backdrop-blur flex flex-col justify-between hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all duration-300 hover:-translate-y-1 shadow-sm"
           >
             <div>
               <button
                 type="button"
                 onClick={() => setActiveCert(cert)}
-                className="w-full aspect-[4/3] rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-900 relative mb-4 group-hover:border-sky-500/50 transition-colors cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-sky-500"
+                className="w-full aspect-[4/3] rounded-xl overflow-hidden border border-[#CBD5E1] dark:border-[#26352F] bg-slate-900 relative mb-4 group-hover:border-[#065F46]/50 dark:group-hover:border-[#34D399]/50 transition-colors cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-[#065F46] dark:focus:ring-[#34D399]"
                 aria-label={`Inspect certificate: ${cert.title}`}
               >
                 <Image
@@ -79,7 +79,7 @@ export default function CertificatesGrid({ certificates }) {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <div className="w-10 h-10 rounded-full bg-sky-600 text-white flex items-center justify-center shadow-lg">
+                  <div className="w-10 h-10 rounded-full bg-[#065F46] dark:bg-[#34D399] text-white dark:text-[#0B0F0E] flex items-center justify-center shadow-lg">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
                     </svg>
@@ -88,31 +88,31 @@ export default function CertificatesGrid({ certificates }) {
               </button>
 
               <div className="flex items-center justify-between gap-2 mb-2">
-                <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/20 font-semibold">
+                <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-[#065F46]/10 dark:bg-[#34D399]/15 text-[#065F46] dark:text-[#34D399] border border-[#065F46]/20 dark:border-[#34D399]/30 font-semibold">
                   {cert.org}
                 </span>
-                <span className="text-[11px] font-mono text-slate-400">
+                <span className="text-[11px] font-mono text-[#475569] dark:text-[#94A3B8]">
                   {cert.category}
                 </span>
               </div>
 
-              <h3 className="font-semibold text-base mb-2 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors leading-snug">
+              <h3 className="font-semibold text-base mb-2 text-[#0F172A] dark:text-[#F9FAFB] group-hover:text-[#065F46] dark:group-hover:text-[#34D399] transition-colors leading-snug">
                 {cert.title}
               </h3>
 
-              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+              <p className="text-xs text-[#1E293B] dark:text-[#A7B0BE] leading-relaxed mb-4">
                 {cert.description}
               </p>
             </div>
 
-            <div className="pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
-              <span className="text-[11px] font-medium text-slate-500">
+            <div className="pt-3 border-t border-[#CBD5E1]/50 dark:border-[#26352F] flex items-center justify-between">
+              <span className="text-[11px] font-medium text-[#475569] dark:text-[#94A3B8]">
                 Skills: {cert.skills}
               </span>
               <button
                 type="button"
                 onClick={() => setActiveCert(cert)}
-                className="text-xs font-semibold text-sky-600 dark:text-sky-400 hover:underline"
+                className="text-xs font-semibold text-[#065F46] dark:text-[#34D399] hover:underline"
               >
                 View &rarr;
               </button>
@@ -137,7 +137,7 @@ export default function CertificatesGrid({ certificates }) {
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-950/50">
               <div className="flex items-center gap-3">
-                <span className="text-xs font-mono uppercase tracking-wider text-sky-400 bg-sky-500/10 px-2.5 py-1 rounded border border-sky-500/30">
+                <span className="text-xs font-mono uppercase tracking-wider text-[#34D399] bg-[#34D399]/15 px-2.5 py-1 rounded border border-[#34D399]/30 font-semibold">
                   {activeCert.org}
                 </span>
                 <span className="text-xs text-slate-300 font-semibold">{activeCert.category}</span>
@@ -147,7 +147,7 @@ export default function CertificatesGrid({ certificates }) {
                   href={activeCert.img}
                   target="_blank"
                   rel="noreferrer"
-                  className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors text-xs"
+                  className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors text-xs focus:outline-none focus:ring-2 focus:ring-[#34D399]"
                   title="Open original certificate"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -158,7 +158,7 @@ export default function CertificatesGrid({ certificates }) {
                   type="button"
                   onClick={handleClose}
                   aria-label="Close dialog"
-                  className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"
+                  className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-[#34D399]"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
@@ -185,7 +185,7 @@ export default function CertificatesGrid({ certificates }) {
               <p className="text-sm text-slate-300 mb-3 leading-relaxed">{activeCert.description}</p>
               <div className="flex flex-wrap items-center gap-2 text-xs">
                 <span className="text-slate-400">Validated Skills:</span>
-                <span className="font-mono text-sky-400 bg-slate-800 px-2.5 py-1 rounded">
+                <span className="font-mono text-[#34D399] bg-slate-800 px-2.5 py-1 rounded border border-[#26352F]">
                   {activeCert.skills}
                 </span>
                 <span className="text-slate-400 ml-auto">Issuing Institution: <strong className="text-white">{activeCert.org}</strong></span>

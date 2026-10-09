@@ -52,6 +52,12 @@ export default function SiteHeader() {
 
   return (
     <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:bg-[#065F46] focus:text-white dark:focus:bg-[#34D399] dark:focus:text-[#0B0F0E] focus:rounded-lg focus:font-semibold focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#065F46] dark:focus:ring-[#34D399]"
+      >
+        Skip to main content
+      </a>
       <header
         role="banner"
         className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-[#FFFFFF]/90 dark:bg-[#0B0F0E]/90 border-b border-[#E2E8F0] dark:border-[#26352F] transition-colors duration-300"

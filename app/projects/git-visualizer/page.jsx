@@ -9,7 +9,7 @@ export const metadata = {
     type: 'website',
     title: 'Git Visualizer by Dipesh Sapkota',
     description: 'An interactive tool for learning Git commands and version-control workflows.',
-    url: '/projects/git-visualizer',
+    url: 'https://www.dipeshsapkota7.com.np/projects/git-visualizer',
     images: [{ url: '/git-preview.jpg', alt: 'Git Visualizer project preview' }],
   },
   twitter: {
@@ -39,7 +39,7 @@ export default function GitVisualizerProjectPage() {
   return (
     <>
       <SiteHeader />
-      <main className="max-w-4xl mx-auto px-6 py-32 text-[#111827] dark:text-[#F9FAFB]">
+      <main id="main-content" tabIndex={-1} className="max-w-4xl mx-auto px-6 py-32 text-[#111827] dark:text-[#F9FAFB] outline-none">
         <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Projects', path: '/projects' }, { name: 'Git Visualizer', path: '/projects/git-visualizer' }]} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <span className="inline-block px-3.5 py-1 text-xs font-bold uppercase tracking-widest text-[#065F46] dark:text-[#34D399] bg-[#F1F5F9] dark:bg-[#34D399]/15 border border-[#CBD5E1] dark:border-[#34D399]/30 rounded-full mb-4">

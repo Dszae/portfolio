@@ -119,6 +119,19 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
     return () => window.removeEventListener('keydown', closeOnEscape);
   }, [isMenuOpen]);
 
+  useEffect(() => {
+    if (!selectedImage || !setSelectedImage) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setSelectedImage(null);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedImage, setSelectedImage]);
+
   const theme = {
     bg: 'theme-page',
     nav: 'theme-nav',
@@ -140,6 +153,13 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
 
   return (
     <div className={`site-shell min-h-screen font-sans relative w-full m-0 p-0 ${theme.bg}`}>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:bg-[#065F46] focus:text-white dark:focus:bg-[#34D399] dark:focus:text-[#0B0F0E] focus:rounded-lg focus:font-semibold focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#065F46] dark:focus:ring-[#34D399]"
+      >
+        Skip to main content
+      </a>
+
       {isMenuOpen && (
         <div
           className="site-backdrop"
@@ -229,7 +249,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
         </div>
       </div>
 
-      <main className="relative z-10 w-full flex flex-col items-center">
+      <main id="main-content" tabIndex={-1} className="relative z-10 w-full flex flex-col items-center outline-none">
         {typeof children === 'function' ? children({ theme, isDark }) : children}
       </main>
 
@@ -277,6 +297,16 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
           onClick={() => setSelectedImage(null)}
         >
           <div className="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center justify-center">
+            <button
+              type="button"
+              onClick={() => setSelectedImage(null)}
+              aria-label="Close image preview"
+              className="absolute -top-10 right-0 p-2 text-white/80 hover:text-white rounded-lg bg-black/50 hover:bg-black/70 transition-colors focus:outline-none focus:ring-2 focus:ring-[#34D399]"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
             <Image 
               src={selectedImage.src} 
               alt={selectedImage.alt || selectedImage.title} 
