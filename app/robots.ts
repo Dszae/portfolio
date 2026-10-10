@@ -54,3 +54,4 @@ export default function robots(): MetadataRoute.Robots {
     sitemap: 'https://www.dipeshsapkota7.com.np/sitemap.xml',
   };
 }
+
