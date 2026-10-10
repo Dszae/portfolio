@@ -3,7 +3,7 @@ export const dynamic = 'force-static';
 
 const image = (path, title) => ({ path, title });
 const portrait = image('/dipesh-sapkota.jpg', 'Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus');
-const currentDate = '2026-10-09';
+const currentDate = '2026-10-10';
 
 const pages = [
   {
@@ -35,19 +35,19 @@ const pages = [
   },
   {
     path: '/projects/sportivo',
-    priority: '0.8',
+    priority: '0.85',
     changefreq: 'monthly',
     images: [image('/sportivo-preview.jpg', 'Sportivo project preview')],
   },
   {
     path: '/projects/ioe-admission-guide',
-    priority: '0.8',
+    priority: '0.85',
     changefreq: 'monthly',
     images: [image('/ioe-preview.jpg', 'IOE Admission Guide project preview')],
   },
   {
     path: '/projects/git-visualizer',
-    priority: '0.8',
+    priority: '0.85',
     changefreq: 'monthly',
     images: [image('/git-preview.jpg', 'Git Visualizer project preview')],
   },
@@ -100,7 +100,7 @@ const pages = [
   },
   {
     path: '/blog',
-    priority: '0.8',
+    priority: '0.85',
     changefreq: 'weekly',
   },
   {

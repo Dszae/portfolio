@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export const NAV_LINKS = [
   { path: '/', label: 'Home', id: 'home' },
@@ -53,6 +54,55 @@ function ScrollToTopButton() {
         <path strokeLinecap="round" strokeLinejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
       </svg>
     </button>
+  );
+}
+
+function LightboxModal({ image, onClose }) {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  return (
+    <motion.div 
+      key="image-lightbox-backdrop"
+      role="dialog"
+      aria-modal="true"
+      aria-label={image ? image.title : 'Image preview'}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.24, ease: 'easeOut' }}
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 backdrop-blur-md p-4 sm:p-6 md:p-10 cursor-pointer"
+      onClick={onClose}
+    >
+      <motion.div 
+        key="image-lightbox-card"
+        initial={{ opacity: 0, scale: 0.92, y: 10 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.92, y: 10 }}
+        transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+        onClick={(e) => e.stopPropagation()}
+        className="relative max-w-5xl w-auto max-h-[90vh] flex flex-col items-center justify-center cursor-default select-none"
+      >
+        <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/15 dark:border-[#34D399]/30 ring-1 ring-black/20 dark:ring-[#34D399]/20 bg-[#0B0F0E]">
+          <Image 
+            src={image.src} 
+            alt={image.alt || image.title} 
+            width={1200} 
+            height={800} 
+            loading="eager" 
+            priority
+            onLoad={() => setImageLoaded(true)}
+            className={`max-w-full max-h-[75vh] w-auto h-auto object-contain block transition-opacity duration-300 ease-out ${
+              imageLoaded ? 'opacity-100' : 'opacity-0'
+            }`} 
+          />
+        </div>
+        
+        <div className="mt-4 sm:mt-5 text-center px-4">
+          <h3 className="text-base sm:text-lg md:text-xl font-semibold text-[#F5F7F5] mb-1">{image.title}</h3>
+          <p className="text-[#065F46] dark:text-[#34D399] font-mono text-xs tracking-wider uppercase font-semibold">{image.desc}</p>
+        </div>
+      </motion.div>
+    </motion.div>
   );
 }
 
@@ -297,37 +347,15 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
 
       <ScrollToTopButton />
 
-      {selectedImage && setSelectedImage && (
-        <div 
-          role="dialog"
-          aria-modal="true"
-          aria-label={selectedImage ? selectedImage.title : 'Image preview'}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 backdrop-blur-md p-4 sm:p-6 md:p-10 cursor-pointer animate-fadeIn"
-          onClick={() => setSelectedImage(null)}
-        >
-          <div 
-            onClick={(e) => e.stopPropagation()}
-            className="relative max-w-5xl w-auto max-h-[90vh] flex flex-col items-center justify-center cursor-default animate-zoomIn"
-          >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-[#CBD5E1]/40 dark:border-[#34D399]/30 ring-1 ring-black/10 dark:ring-white/10 bg-[#0B0F0E]">
-              <Image 
-                src={selectedImage.src} 
-                alt={selectedImage.alt || selectedImage.title} 
-                width={1200} 
-                height={800} 
-                loading="eager" 
-                priority
-                className="max-w-full max-h-[75vh] w-auto h-auto object-contain block" 
-              />
-            </div>
-            
-            <div className="mt-4 sm:mt-5 text-center px-4">
-              <h3 className="text-base sm:text-lg md:text-xl font-semibold text-[#F5F7F5] mb-1">{selectedImage.title}</h3>
-              <p className="text-[#065F46] dark:text-[#34D399] font-mono text-xs tracking-wider uppercase font-semibold">{selectedImage.desc}</p>
-            </div>
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+        {selectedImage && setSelectedImage && (
+          <LightboxModal 
+            key={selectedImage.src || 'lightbox'} 
+            image={selectedImage} 
+            onClose={() => setSelectedImage(null)} 
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }
