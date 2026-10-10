@@ -59,6 +59,11 @@ const nextConfig = {
         destination: '/.well-known/security.txt',
         permanent: true,
       },
+      {
+        source: '/sitemap',
+        destination: '/sitemap.xml',
+        permanent: true,
+      },
     ];
   },
   async headers() {
