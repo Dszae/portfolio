@@ -34,13 +34,20 @@ export default function GalleryPage() {
                 <p className="mb-12 text-base sm:text-lg text-[#1E293B] dark:text-[#A7B0BE] font-medium">A curated space for campus memories, event leadership, and engineering moments.</p>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-                  {GALLERY_IMAGES.map((item) => (
+                  {GALLERY_IMAGES.map((item, idx) => (
                     <button 
                       type="button"
                       aria-label={`Open ${item.title}`}
                       key={item.id} 
                       className="group relative w-full aspect-video rounded-xl overflow-hidden border border-[#CBD5E1] dark:border-[#26372F] bg-[#111B17] shadow-sm hover:shadow-md cursor-pointer smooth-card-hover hover:border-[#065F46]/60 dark:hover:border-[#34D399]/50"
-                      onClick={() => setSelectedImage({ src: item.img, title: item.title, alt: item.alt, desc: 'Visual Archive' })}
+                      onClick={() => setSelectedImage({
+                        src: item.img,
+                        title: item.title,
+                        alt: item.alt,
+                        desc: 'Visual Archive',
+                        items: GALLERY_IMAGES.map((g) => ({ src: g.img, title: g.title, alt: g.alt, desc: 'Visual Archive' })),
+                        index: idx,
+                      })}
                     >
                       <Image
                         src={item.img}

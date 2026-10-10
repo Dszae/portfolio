@@ -34,13 +34,19 @@ export default function CertificatesPage() {
                   <span className="text-[#065F46] dark:text-[#34D399]">/</span> Certificates
                 </h1>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {CERTIFICATES.map((cert) => (
+                  {CERTIFICATES.map((cert, idx) => (
                     <button 
                       type="button"
                       aria-label={`Open certificate: ${cert.title}`}
                       key={cert.id} 
                       className={`group p-5 sm:p-6 rounded-2xl border backdrop-blur-md smooth-card-hover hover:shadow-lg cursor-pointer text-left ${theme.card}`}
-                      onClick={() => setSelectedImage({ src: cert.img, title: cert.title, desc: `Issued by ${cert.org}` })}
+                      onClick={() => setSelectedImage({
+                        src: cert.img,
+                        title: cert.title,
+                        desc: `Issued by ${cert.org}`,
+                        items: CERTIFICATES.map((c) => ({ src: c.img, title: c.title, desc: `Issued by ${c.org}` })),
+                        index: idx,
+                      })}
                     >
                       <div className={`aspect-[4/3] overflow-hidden rounded-xl border flex items-center justify-center mb-6 transition-colors duration-200 relative ${isDark ? 'border-[#26352F] bg-[#16221D] group-hover:border-[#34D399]/60' : 'border-[#CBD5E1] bg-[#F1F5F9] group-hover:border-[#065F46]/60'}`}>
                         <Image 

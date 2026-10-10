@@ -12,7 +12,7 @@ const capabilities = {
 const tools = [
   {
     name: "get_portfolio_summary",
-    description: "Retrieve comprehensive developer portfolio summary in Markdown format",
+    description: "Retrieve comprehensive portfolio summary in Markdown format",
     inputSchema: { type: "object", properties: {} }
   },
   {

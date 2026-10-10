@@ -25,7 +25,7 @@ export default function WebMCPInitializer() {
               content: [
                 {
                   type: "text",
-                  text: `Dipesh Sapkota is an engineering student at Thapathali Campus and a developer working with React, Next.js, Python, C++, and IoT embedded systems.`
+                  text: `Dipesh Sapkota is a Computer Engineering student at IOE Thapathali Campus and an AI/ML enthusiast exploring Python, Machine Learning, Deep Learning, and intelligent web systems.`
                 }
               ]
             };

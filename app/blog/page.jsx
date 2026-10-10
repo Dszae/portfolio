@@ -15,7 +15,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Articles by Dipesh Sapkota',
-    description: 'Engineering and software development articles written by Dipesh Sapkota (dszae).',
+    description: 'Engineering, AI/ML, and intelligent systems articles written by Dipesh Sapkota (dszae).',
     images: ['/dipesh-sapkota.jpg'],
   },
 };
@@ -28,9 +28,15 @@ export default function BlogPage() {
         <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Articles', path: '/blog' }]} />
         <h1 className="text-3xl sm:text-4xl font-bold mb-6 tracking-tight text-[#0F172A] dark:text-[#F9FAFB]">Articles by Dipesh Sapkota</h1>
         <p className="text-base sm:text-lg text-[#1E293B] dark:text-[#A7B0BE] mb-8 leading-relaxed">
-          Read my technical articles published on Hashnode covering web engineering, system architecture, and development:
+          Read my technical write-ups and publications on DEV Community and engineering platforms covering AI/ML, system architecture, and interactive software:
         </p>
         <ul className="space-y-4">
+          <li className="p-5 rounded-2xl border border-[#CBD5E1] dark:border-[#26352F] bg-white dark:bg-[#111B17] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors shadow-sm">
+            <a href="https://dev.to/dszae" target="_blank" rel="me noopener noreferrer" className="text-[#065F46] dark:text-[#34D399] hover:underline text-lg font-semibold block">
+              Follow Dipesh Sapkota on DEV Community (@dszae) &rarr;
+            </a>
+            <p className="text-xs sm:text-sm text-[#475569] dark:text-[#94A3B8] mt-1">Official DEV Community profile, technical write-ups, AI engineering notes, and community contributions.</p>
+          </li>
           <li className="p-5 rounded-2xl border border-[#CBD5E1] dark:border-[#26352F] bg-white dark:bg-[#111B17] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors shadow-sm">
             <a href="https://building-sportivo-live-sports-streaming.hashnode.dev/building-sportivo-how-i-engineered-a-real-time-live-sports-streaming-web-app" target="_blank" rel="noreferrer" className="text-[#065F46] dark:text-[#34D399] hover:underline text-lg font-semibold block">
               Building Sportivo: How I Engineered a Real-Time Live Sports Streaming Web App &rarr;

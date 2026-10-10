@@ -127,25 +127,28 @@ export default function ContactPage() {
                             Connect Online (All Profiles)
                           </h2>
                           <div className="flex flex-wrap gap-2">
-                            <a href="https://github.com/dszae" target="_blank" rel="me noreferrer" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
+                            <a href="https://github.com/dszae" target="_blank" rel="me noopener noreferrer" title="Dipesh Sapkota on GitHub (dszae)" aria-label="Dipesh Sapkota on GitHub" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
                               GitHub
                             </a>
-                            <a href="https://linkedin.com/in/dszae" target="_blank" rel="me noreferrer" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
+                            <a href="https://linkedin.com/in/dszae" target="_blank" rel="me noopener noreferrer" title="Dipesh Sapkota on LinkedIn (dszae)" aria-label="Dipesh Sapkota on LinkedIn" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
                               LinkedIn
                             </a>
-                            <a href="https://x.com/dsz_ae" target="_blank" rel="me noreferrer" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
+                            <a href="https://dev.to/dszae" target="_blank" rel="me noopener noreferrer" title="Dipesh Sapkota on DEV Community (dszae)" aria-label="Dipesh Sapkota on DEV Community" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
+                              DEV Community
+                            </a>
+                            <a href="https://www.youtube.com/@dszae" target="_blank" rel="me noopener noreferrer" title="Dipesh Sapkota on YouTube (@dszae)" aria-label="Dipesh Sapkota on YouTube" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
+                              YouTube
+                            </a>
+                            <a href="https://x.com/dsz_ae" target="_blank" rel="me noopener noreferrer" title="Dipesh Sapkota on X (dsz_ae)" aria-label="Dipesh Sapkota on X (Twitter)" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
                               X (Twitter)
                             </a>
-                            <a href="https://hashnode.com/@dszae" target="_blank" rel="me noreferrer" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
-                              Hashnode
-                            </a>
-                            <a href="https://instagram.com/dsz.ae" target="_blank" rel="me noreferrer" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
+                            <a href="https://instagram.com/dsz.ae" target="_blank" rel="me noopener noreferrer" title="Dipesh Sapkota on Instagram (dsz.ae)" aria-label="Dipesh Sapkota on Instagram" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
                               Instagram
                             </a>
-                            <a href="https://facebook.com/dsz.ae" target="_blank" rel="me noreferrer" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
+                            <a href="https://facebook.com/dsz.ae" target="_blank" rel="me noopener noreferrer" title="Dipesh Sapkota on Facebook (dsz.ae)" aria-label="Dipesh Sapkota on Facebook" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
                               Facebook
                             </a>
-                            <a href="https://tiktok.com/@dsz_ae" target="_blank" rel="me noreferrer" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
+                            <a href="https://tiktok.com/@dsz_ae" target="_blank" rel="me noopener noreferrer" title="Dipesh Sapkota on TikTok (dsz_ae)" aria-label="Dipesh Sapkota on TikTok" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
                               TikTok
                             </a>
                           </div>

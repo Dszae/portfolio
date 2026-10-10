@@ -133,21 +133,21 @@ export default function CertificatesGrid({ certificates }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.24, ease: 'easeOut' }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/90 backdrop-blur-md cursor-pointer"
+            transition={{ duration: 0.22, ease: 'easeOut' }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 md:p-8 bg-slate-950/90 backdrop-blur-md cursor-pointer"
             onClick={handleClose}
           >
             <motion.div
               key="cert-modal-card"
-              initial={{ opacity: 0, scale: 0.92, y: 10 }}
+              initial={{ opacity: 0, scale: 0.94, y: 12 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.92, y: 10 }}
+              exit={{ opacity: 0, scale: 0.94, y: 12 }}
               transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-              className="relative max-w-3xl w-full bg-[#0F172A] dark:bg-[#111B17] border border-[#CBD5E1]/40 dark:border-[#34D399]/30 ring-1 ring-black/10 dark:ring-white/10 rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh] cursor-default"
+              className="relative w-[95vw] max-w-5xl lg:max-w-6xl max-h-[92vh] bg-[#0F172A] dark:bg-[#111B17] border border-[#CBD5E1]/40 dark:border-[#34D399]/30 ring-1 ring-black/10 dark:ring-white/10 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl flex flex-col cursor-default select-none"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
-              <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 dark:border-[#26352F] bg-slate-950/50 dark:bg-[#0B0F0E]/60">
+              <div className="flex items-center justify-between px-5 sm:px-6 py-3.5 border-b border-slate-800 dark:border-[#26352F] bg-slate-950/60 dark:bg-[#0B0F0E]/70 backdrop-blur-sm z-20">
                 <div className="flex items-center gap-3">
                   <span className="text-xs font-mono uppercase tracking-wider text-[#34D399] bg-[#34D399]/15 px-2.5 py-1 rounded border border-[#34D399]/30 font-semibold">
                     {activeCert.org}
@@ -159,33 +159,44 @@ export default function CertificatesGrid({ certificates }) {
                     href={activeCert.img}
                     target="_blank"
                     rel="noreferrer"
-                    className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 dark:hover:bg-[#16221D] transition-colors text-xs focus:outline-none focus:ring-2 focus:ring-[#34D399]"
+                    className="p-2 text-slate-300 hover:text-white rounded-lg hover:bg-slate-800 dark:hover:bg-[#16221D] transition-colors text-xs flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-[#34D399]"
                     title="Open original certificate in new tab"
                     aria-label="Open original certificate in new tab"
                   >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                     </svg>
+                    <span className="hidden sm:inline font-mono text-xs">Full Size</span>
                   </a>
+                  <button
+                    type="button"
+                    onClick={handleClose}
+                    aria-label="Close certificate dialog"
+                    className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 dark:hover:bg-[#16221D] transition-colors focus:outline-none focus:ring-2 focus:ring-[#34D399]"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
                 </div>
               </div>
 
-              {/* Certificate Image */}
-              <div className="relative w-full aspect-[4/3] max-h-[60vh] bg-black flex items-center justify-center p-2">
+              {/* Certificate Image - Strictly Fixed Geometry to Prevent Layout Shift */}
+              <div className="relative w-full h-[52vh] sm:h-[60vh] md:h-[66vh] lg:h-[70vh] bg-black flex items-center justify-center p-2 sm:p-4 overflow-hidden">
                 <Image
                   src={activeCert.img}
                   alt={`Certificate: ${activeCert.title}`}
-                  width={1000}
-                  height={750}
+                  fill
+                  sizes="(max-width: 1280px) 95vw, 1280px"
                   priority
-                  className="w-full h-full object-contain"
+                  className="object-contain p-2 sm:p-4 block"
                 />
               </div>
 
-              {/* Details */}
-              <div className="p-6 bg-slate-900 border-t border-slate-800">
-                <h3 className="text-xl font-bold text-white mb-2">{activeCert.title}</h3>
-                <p className="text-sm text-slate-300 mb-3 leading-relaxed">{activeCert.description}</p>
+              {/* Details - Fixed at Bottom */}
+              <div className="p-5 sm:p-6 bg-slate-900 border-t border-slate-800 dark:border-[#26352F]">
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-1.5">{activeCert.title}</h3>
+                <p className="text-xs sm:text-sm text-slate-300 mb-3 leading-relaxed">{activeCert.description}</p>
                 <div className="flex flex-wrap items-center gap-2 text-xs">
                   <span className="text-slate-400">Validated Skills:</span>
                   <span className="font-mono text-[#34D399] bg-slate-800 px-2.5 py-1 rounded border border-[#26352F]">

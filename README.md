@@ -5,7 +5,7 @@
 [![React](https://img.shields.io/badge/React-19-20232a?style=for-the-badge&logo=react&logoColor=61dafb)](https://react.dev/)
 [![License](https://img.shields.io/badge/License-Private-lightgrey?style=for-the-badge)](package.json)
 
-The personal portfolio of **Dipesh Sapkota**, a Computer Engineering student at IOE Thapathali Campus, AI/ML enthusiast, developer, video editor, and motion graphics designer based in Nepal.
+The personal portfolio of **Dipesh Sapkota**, a Computer Engineering student at IOE Thapathali Campus, AI/ML enthusiast, video editor, and motion graphics designer based in Nepal.
 
 The site brings together professional experience, technical skills, selected projects, engineering articles, contact information, and machine-readable portfolio resources for search engines and AI agents.
 
