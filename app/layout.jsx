@@ -27,38 +27,38 @@ export const metadata = {
   icons: {
     icon: [
       {
-        url: '/favicon-48x48.png',
+        url: '/favicon-48x48.png?v=2',
         type: 'image/png',
         sizes: '48x48',
       },
       {
-        url: '/favicon-96x96.png',
+        url: '/favicon-96x96.png?v=2',
         type: 'image/png',
         sizes: '96x96',
       },
       {
-        url: '/favicon-192x192.png',
+        url: '/favicon-192x192.png?v=2',
         type: 'image/png',
         sizes: '192x192',
       },
       {
-        url: '/favicon.svg',
+        url: '/favicon.svg?v=2',
         type: 'image/svg+xml',
         sizes: 'any',
       },
       {
-        url: '/favicon.png',
+        url: '/favicon.png?v=2',
         type: 'image/png',
         sizes: '512x512',
       },
       {
-        url: '/favicon.ico',
+        url: '/favicon.ico?v=2',
         type: 'image/x-icon',
         sizes: '48x48',
       },
     ],
-    shortcut: '/favicon.ico',
-    apple: '/favicon-192x192.png',
+    shortcut: '/favicon.ico?v=2',
+    apple: '/favicon-192x192.png?v=2',
   },
   robots: {
     index: true,
