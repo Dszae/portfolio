@@ -1,8 +1,20 @@
-export default function robots() {
+import type { MetadataRoute } from 'next';
+
+export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
-        userAgent: '*',
+        userAgent: 'OAI-SearchBot',
+        allow: '/',
+        disallow: '/api/',
+      },
+      {
+        userAgent: 'GPTBot',
+        allow: '/',
+        disallow: '/api/',
+      },
+      {
+        userAgent: 'ChatGPT-User',
         allow: '/',
         disallow: '/api/',
       },
@@ -19,8 +31,6 @@ export default function robots() {
           'YandexBot',
           'Applebot',
           'Applebot-Extended',
-          'GPTBot',
-          'ChatGPT-User',
           'ClaudeBot',
           'Claude-Web',
           'anthropic-ai',
@@ -35,8 +45,12 @@ export default function robots() {
         allow: '/',
         disallow: '/api/',
       },
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: '/api/',
+      },
     ],
     sitemap: 'https://www.dipeshsapkota7.com.np/sitemap.xml',
-    host: 'https://www.dipeshsapkota7.com.np',
   };
 }
