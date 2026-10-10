@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import SiteLayout from '../../components/SiteLayout';
 import FadeUp from '../../components/FadeUp';
 import BreadcrumbJsonLd from '../../components/BreadcrumbJsonLd';
+import PagePagination from '../../components/PagePagination';
 
 export default function ContactPage() {
   const [formStatus, setFormStatus] = useState("");
@@ -119,6 +120,36 @@ export default function ContactPage() {
                             <a href="https://mail.google.com/mail/?view=cm&fs=1&to=dsz.ae18@gmail.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-sm sm:text-base text-[#0F172A] dark:text-[#F9FAFB] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors block">dsz.ae18@gmail.com</a>
                           </div>
                         </div>
+
+                        {/* Complete Social Links (7 profiles) */}
+                        <div className="pt-4 border-t border-[#CBD5E1]/60 dark:border-[#26352F]">
+                          <h2 className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-bold mb-3">
+                            Connect Online (All Profiles)
+                          </h2>
+                          <div className="flex flex-wrap gap-2">
+                            <a href="https://github.com/dszae" target="_blank" rel="me noreferrer" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
+                              GitHub
+                            </a>
+                            <a href="https://linkedin.com/in/dszae" target="_blank" rel="me noreferrer" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
+                              LinkedIn
+                            </a>
+                            <a href="https://x.com/dsz_ae" target="_blank" rel="me noreferrer" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
+                              X (Twitter)
+                            </a>
+                            <a href="https://hashnode.com/@dszae" target="_blank" rel="me noreferrer" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
+                              Hashnode
+                            </a>
+                            <a href="https://instagram.com/dsz.ae" target="_blank" rel="me noreferrer" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
+                              Instagram
+                            </a>
+                            <a href="https://facebook.com/dsz.ae" target="_blank" rel="me noreferrer" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
+                              Facebook
+                            </a>
+                            <a href="https://tiktok.com/@dsz_ae" target="_blank" rel="me noreferrer" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
+                              TikTok
+                            </a>
+                          </div>
+                        </div>
                       </div>
                     </div>
 
@@ -181,6 +212,10 @@ export default function ContactPage() {
                     </form>
                   </div>
                 </div>
+                <PagePagination 
+                  prev={{ label: 'Gallery & Visual Archive', path: '/gallery' }} 
+                  next={{ label: 'Return Home', path: '/' }} 
+                />
               </div>
             </section>
           </FadeUp>

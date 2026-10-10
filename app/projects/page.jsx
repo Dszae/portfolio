@@ -6,6 +6,100 @@ import Link from 'next/link';
 import SiteLayout from '../../components/SiteLayout';
 import FadeUp from '../../components/FadeUp';
 import BreadcrumbJsonLd from '../../components/BreadcrumbJsonLd';
+import PagePagination from '../../components/PagePagination';
+
+function MotionReelsGraphic() {
+  return (
+    <div className="relative aspect-[16/10] w-full bg-[#0A100D] text-slate-200 overflow-hidden select-none font-mono flex flex-col justify-between p-4 sm:p-5 border border-slate-200 dark:border-[#26372F] rounded-lg">
+      {/* Top Monitor Status Bar */}
+      <div className="flex items-center justify-between text-[11px] pb-2 border-b border-[#26372F]/80">
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+          <span className="font-bold text-red-400">REC · 4K UHD</span>
+        </div>
+        <div className="text-slate-400 font-medium hidden sm:block">120 FPS · OPTICAL FLOW</div>
+        <div className="text-[#34D399] font-bold">00:01:24:18</div>
+      </div>
+
+      {/* Main Center Video Grading Scope & Motion Path Canvas */}
+      <div className="relative my-auto py-3 flex flex-col items-center justify-center">
+        {/* Speed Ramp Bezier Curve Visual */}
+        <div className="w-full relative h-20 flex items-center justify-center">
+          <svg className="w-full h-full overflow-visible" viewBox="0 0 300 80" fill="none">
+            {/* Grid guide lines */}
+            <line x1="0" y1="20" x2="300" y2="20" stroke="#1F2E27" strokeDasharray="3 3" />
+            <line x1="0" y1="60" x2="300" y2="60" stroke="#1F2E27" strokeDasharray="3 3" />
+            
+            {/* Speed Ramping Curve */}
+            <path 
+              d="M 10 65 Q 70 65 95 35 T 160 15 T 225 35 Q 250 65 290 65" 
+              stroke="#34D399" 
+              strokeWidth="2.5" 
+              fill="none" 
+            />
+            {/* Area fill under curve */}
+            <path 
+              d="M 10 65 Q 70 65 95 35 T 160 15 T 225 35 Q 250 65 290 65 L 290 75 L 10 75 Z" 
+              fill="url(#emeraldGlow)" 
+              opacity="0.15" 
+            />
+            <defs>
+              <linearGradient id="emeraldGlow" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#34D399" />
+                <stop offset="100%" stopColor="transparent" />
+              </linearGradient>
+            </defs>
+
+            {/* Keyframe Nodes */}
+            <circle cx="95" cy="35" r="4" fill="#34D399" />
+            <circle cx="160" cy="15" r="4.5" fill="#FFFFFF" stroke="#34D399" strokeWidth="2" />
+            <circle cx="225" cy="35" r="4" fill="#34D399" />
+          </svg>
+
+          {/* Floating Keyframe Label */}
+          <div className="absolute top-0 text-[10px] bg-[#162920] border border-[#34D399]/40 text-[#34D399] px-2 py-0.5 rounded shadow">
+            Speed Ramp · 120fps (20% Speed)
+          </div>
+        </div>
+
+        {/* Framing Crosshairs & Metadata */}
+        <div className="flex items-center justify-between w-full text-[10px] text-slate-400 mt-2 px-1">
+          <span className="flex items-center gap-1.5">
+            <span className="text-[#34D399]">LUT:</span> Rec.709 Film Curve
+          </span>
+          <span className="flex items-center gap-1.5">
+            <span className="text-[#34D399]">AUDIO:</span> -14 LUFS Normalized
+          </span>
+        </div>
+      </div>
+
+      {/* Bottom DAW / NLE Multitrack Timeline */}
+      <div className="space-y-1.5 pt-2 border-t border-[#26372F]/80 text-[10px]">
+        {/* Track V1 */}
+        <div className="flex items-center gap-2">
+          <span className="w-6 text-slate-400 font-semibold">V1</span>
+          <div className="flex-1 h-4 rounded bg-[#162B21] border border-[#34D399]/30 flex items-center px-2 text-[#34D399] font-medium overflow-hidden">
+            <span>Main Footage (4K 120fps Capture)</span>
+          </div>
+        </div>
+        {/* Track A1 */}
+        <div className="flex items-center gap-2">
+          <span className="w-6 text-slate-400 font-semibold">A1</span>
+          <div className="flex-1 h-4 rounded bg-[#11221B] border border-[#26372F] flex items-center px-2 gap-1 overflow-hidden">
+            <span className="text-slate-400">Stadium Ambience &amp; Sound FX</span>
+            <div className="ml-auto flex items-center gap-0.5 opacity-70">
+              <span className="w-0.5 h-2 bg-[#34D399]"></span>
+              <span className="w-0.5 h-3 bg-[#34D399]"></span>
+              <span className="w-0.5 h-1.5 bg-[#34D399]"></span>
+              <span className="w-0.5 h-2.5 bg-[#34D399]"></span>
+              <span className="w-0.5 h-1 bg-[#34D399]"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 const FEATURED_PROJECTS = [
   {
@@ -60,7 +154,7 @@ const FEATURED_PROJECTS = [
     label: "Featured Project",
     type: "Motion Graphics & Video Editing",
     description: "High-impact short-form sports highlight edits created for commercial clients and athletics tournaments. Incorporates beat-matched cut sequencing, 120fps optical-flow speed ramping, custom multi-layered stadium sound design (-14 LUFS standard), and cinematic color grading in DaVinci Resolve.",
-    image: "/cricket.webp",
+    image: null,
     tech: ["Premiere Pro", "After Effects", "DaVinci Resolve", "Sound Design"],
     modalDetails: {
       overview: "Commercial sports motion edits designed for multi-platform short-form distribution. Combines dynamic speed ramps, beat-matched cut points, and cinematic color transformation.",
@@ -319,16 +413,20 @@ export default function ProjectsPage() {
                               onKeyDown={(e) => { if (e.key === 'Enter') handleOpenModal(project, e); }}
                               aria-label={`View ${project.title} technical breakdown`}
                             >
-                              <div className="relative aspect-[16/10] w-full overflow-hidden">
-                                <Image
-                                  src={project.image}
-                                  alt={`${project.title} preview`}
-                                  fill
-                                  sizes="(max-width: 1024px) 100vw, 58vw"
-                                  className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.02] motion-reduce:transform-none"
-                                />
-                                <div className="absolute inset-0 bg-[#065F46]/10 dark:bg-[#34D399]/10 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none" />
-                              </div>
+                              {project.image ? (
+                                <div className="relative aspect-[16/10] w-full overflow-hidden">
+                                  <Image
+                                    src={project.image}
+                                    alt={`${project.title} preview`}
+                                    fill
+                                    sizes="(max-width: 1024px) 100vw, 58vw"
+                                    className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.02] motion-reduce:transform-none"
+                                  />
+                                  <div className="absolute inset-0 bg-[#065F46]/10 dark:bg-[#34D399]/10 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none" />
+                                </div>
+                              ) : (
+                                <MotionReelsGraphic />
+                              )}
                             </div>
                           )}
                         </div>
@@ -525,20 +623,24 @@ export default function ProjectsPage() {
                 </div>
               )}
 
+              <PagePagination 
+                prev={{ label: 'Technical Skills', path: '/skills' }} 
+                next={{ label: 'Certificates & Credentials', path: '/certificates' }} 
+              />
             </section>
           </FadeUp>
 
           {/* Accessible Project Detail Modal Dialog */}
           {activeModalProject && (
             <div
-              className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/75 backdrop-blur-xs animate-in fade-in duration-200"
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md animate-fadeIn"
               onClick={handleCloseModal}
               role="dialog"
               aria-modal="true"
               aria-labelledby="modal-project-title"
             >
               <div
-                className="relative w-full max-w-2xl bg-white dark:bg-[#121A17] border border-slate-200 dark:border-[#26372F] rounded-lg shadow-2xl overflow-hidden max-h-[90vh] flex flex-col animate-in zoom-in-95 duration-200"
+                className="relative w-full max-w-2xl bg-white dark:bg-[#121A17] border border-[#CBD5E1]/60 dark:border-[#34D399]/30 rounded-2xl shadow-2xl ring-1 ring-black/10 dark:ring-white/10 overflow-hidden max-h-[90vh] flex flex-col animate-zoomIn cursor-default"
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* Modal Header */}

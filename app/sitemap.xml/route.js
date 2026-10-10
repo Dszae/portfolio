@@ -24,20 +24,6 @@ const pages = [
     changefreq: 'weekly',
   },
   {
-    path: '/resume',
-    priority: '0.9',
-    changefreq: 'weekly',
-    images: [
-      portrait,
-      image('/clamphook_.webp', 'Clamphook Academy logo'),
-      image('/campus.webp', 'College Programs logo'),
-      image('/freelance.webp', 'Freelance work logo'),
-      image('/thapathali.webp', 'Thapathali Campus logo'),
-      image('/janak.webp', 'Janak Model Secondary School logo'),
-      image('/mahendra.webp', 'Mahendra Adarsha Secondary School logo'),
-    ],
-  },
-  {
     path: '/projects',
     priority: '0.9',
     changefreq: 'weekly',
@@ -66,19 +52,6 @@ const pages = [
     images: [image('/git-preview.jpg', 'Git Visualizer project preview')],
   },
   {
-    path: '/gallery',
-    priority: '0.9',
-    changefreq: 'weekly',
-    images: [
-      image('/cricket.webp', 'Participating in college cricket tournament'),
-      image('/yathartha.webp', 'Successfully conducted Yathartha Tech Exhibition'),
-      image('/clamphook.webp', 'Celebrating academic results with Clamphook team'),
-      image('/lecture.webp', 'Engineering lectures at IOE Thapathali'),
-      image('/exploring.webp', 'Creative video editing and focus'),
-      image('/nagdhunga%20surung%20marga.webp', 'Nagdhunga tunnel roadside field visit'),
-    ],
-  },
-  {
     path: '/certificates',
     priority: '0.9',
     changefreq: 'weekly',
@@ -94,14 +67,36 @@ const pages = [
     ],
   },
   {
+    path: '/resume',
+    priority: '0.9',
+    changefreq: 'weekly',
+    images: [
+      portrait,
+      image('/clamphook_.webp', 'Clamphook Academy logo'),
+      image('/campus.webp', 'College Programs logo'),
+      image('/freelance.webp', 'Freelance work logo'),
+      image('/thapathali.webp', 'Thapathali Campus logo'),
+      image('/janak.webp', 'Janak Model Secondary School logo'),
+      image('/mahendra.webp', 'Mahendra Adarsha Secondary School logo'),
+    ],
+  },
+  {
+    path: '/gallery',
+    priority: '0.9',
+    changefreq: 'weekly',
+    images: [
+      image('/cricket.webp', 'Participating in college cricket tournament'),
+      image('/yathartha.webp', 'Successfully conducted Yathartha Tech Exhibition'),
+      image('/clamphook.webp', 'Celebrating academic results with Clamphook team'),
+      image('/lecture.webp', 'Engineering lectures at IOE Thapathali'),
+      image('/exploring.webp', 'Creative video editing and focus'),
+      image('/nagdhunga%20surung%20marga.webp', 'Nagdhunga tunnel roadside field visit'),
+    ],
+  },
+  {
     path: '/contact',
     priority: '0.9',
     changefreq: 'monthly',
-  },
-  {
-    path: '/experience',
-    priority: '0.9',
-    changefreq: 'weekly',
   },
   {
     path: '/blog',

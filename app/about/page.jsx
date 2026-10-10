@@ -4,6 +4,7 @@ import React from 'react';
 import SiteLayout from '../../components/SiteLayout';
 import FadeUp from '../../components/FadeUp';
 import BreadcrumbJsonLd from '../../components/BreadcrumbJsonLd';
+import PagePagination from '../../components/PagePagination';
 import { person, portraitImage, siteUrl } from '../../components/JsonLdSchema';
 
 const profilePageJsonLd = {
@@ -92,6 +93,10 @@ export default function AboutPage() {
                     </div>
                   </div>
 
+                  <PagePagination 
+                    prev={{ label: 'Home Page', path: '/' }} 
+                    next={{ label: 'Technical Skills', path: '/skills' }} 
+                  />
                 </div>
               </div>
             </section>

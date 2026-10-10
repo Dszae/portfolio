@@ -8,11 +8,10 @@ const NAV_ITEMS = [
   { path: '/about', label: 'About' },
   { path: '/skills', label: 'Skills' },
   { path: '/projects', label: 'Projects' },
-  { path: '/experience', label: 'Experience' },
   { path: '/certificates', label: 'Certificates' },
   { path: '/resume', label: 'Resume' },
-  { path: '/contact', label: 'Contact' },
   { path: '/gallery', label: 'Gallery' },
+  { path: '/contact', label: 'Contact' },
 ];
 
 export default function SiteHeader() {

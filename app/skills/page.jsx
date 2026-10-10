@@ -5,6 +5,7 @@ import Link from 'next/link';
 import SiteLayout from '../../components/SiteLayout';
 import FadeUp from '../../components/FadeUp';
 import BreadcrumbJsonLd from '../../components/BreadcrumbJsonLd';
+import PagePagination from '../../components/PagePagination';
 
 export default function SkillsPage() {
   return (
@@ -326,6 +327,10 @@ export default function SkillsPage() {
 
                 </div>
 
+                <PagePagination 
+                  prev={{ label: 'About Dipesh', path: '/about' }} 
+                  next={{ label: 'Featured Projects', path: '/projects' }} 
+                />
               </div>
             </section>
           </FadeUp>

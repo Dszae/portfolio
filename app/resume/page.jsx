@@ -5,6 +5,7 @@ import Image from 'next/image';
 import SiteLayout from '../../components/SiteLayout';
 import FadeUp from '../../components/FadeUp';
 import BreadcrumbJsonLd from '../../components/BreadcrumbJsonLd';
+import PagePagination from '../../components/PagePagination';
 
 const EXPERIENCE = [
   { 
@@ -172,6 +173,11 @@ export default function ResumePage() {
                   </div>
 
                 </div>
+
+                <PagePagination 
+                  prev={{ label: 'Certificates & Credentials', path: '/certificates' }} 
+                  next={{ label: 'Gallery & Visual Archive', path: '/gallery' }} 
+                />
               </div>
             </section>
           </FadeUp>

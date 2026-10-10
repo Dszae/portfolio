@@ -5,6 +5,7 @@ import Image from 'next/image';
 import SiteLayout from '../../components/SiteLayout';
 import FadeUp from '../../components/FadeUp';
 import BreadcrumbJsonLd from '../../components/BreadcrumbJsonLd';
+import PagePagination from '../../components/PagePagination';
 
 const CERTIFICATES = [
   { id: 1, title: "Graphic Design Masterclass", org: "Udemy", img: "/graphic-design.webp" },
@@ -61,9 +62,14 @@ export default function CertificatesPage() {
                       <p className="font-mono text-xs text-[#334155] dark:text-[#A7B0BE] font-bold">{cert.org}</p>
                     </button>
                   ))}
+                  </div>
+
+                  <PagePagination 
+                    prev={{ label: 'Featured Projects', path: '/projects' }} 
+                    next={{ label: 'Resume & Journey', path: '/resume' }} 
+                  />
                 </div>
-              </div>
-            </section>
+              </section>
           </FadeUp>
         </>
       )}

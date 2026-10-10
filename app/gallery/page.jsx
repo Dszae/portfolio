@@ -5,6 +5,7 @@ import Image from 'next/image';
 import SiteLayout from '../../components/SiteLayout';
 import FadeUp from '../../components/FadeUp';
 import BreadcrumbJsonLd from '../../components/BreadcrumbJsonLd';
+import PagePagination from '../../components/PagePagination';
 
 const GALLERY_IMAGES = [
   { id: 1, title: "Participating in college cricket tournament", alt: "Students posing together outdoors with cricket bats", img: "/cricket.webp" },
@@ -60,9 +61,14 @@ export default function GalleryPage() {
                       </div>
                     </button>
                   ))}
+                  </div>
+
+                  <PagePagination 
+                    prev={{ label: 'Resume & Journey', path: '/resume' }} 
+                    next={{ label: 'Contact & Connect', path: '/contact' }} 
+                  />
                 </div>
-              </div>
-            </section>
+              </section>
           </FadeUp>
         </>
       )}

@@ -131,39 +131,30 @@ export default function CertificatesGrid({ certificates }) {
           onClick={handleClose}
         >
           <div
-            className="relative max-w-3xl w-full bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]"
+            className="relative max-w-3xl w-full bg-[#0F172A] dark:bg-[#111B17] border border-[#CBD5E1]/40 dark:border-[#34D399]/30 ring-1 ring-black/10 dark:ring-white/10 rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh] animate-zoomIn cursor-default"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-950/50">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 dark:border-[#26352F] bg-slate-950/50 dark:bg-[#0B0F0E]/60">
               <div className="flex items-center gap-3">
                 <span className="text-xs font-mono uppercase tracking-wider text-[#34D399] bg-[#34D399]/15 px-2.5 py-1 rounded border border-[#34D399]/30 font-semibold">
                   {activeCert.org}
                 </span>
-                <span className="text-xs text-slate-300 font-semibold">{activeCert.category}</span>
+                <span className="text-xs text-slate-300 dark:text-slate-400 font-semibold">{activeCert.category}</span>
               </div>
               <div className="flex items-center gap-2">
                 <a
                   href={activeCert.img}
                   target="_blank"
                   rel="noreferrer"
-                  className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors text-xs focus:outline-none focus:ring-2 focus:ring-[#34D399]"
-                  title="Open original certificate"
+                  className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 dark:hover:bg-[#16221D] transition-colors text-xs focus:outline-none focus:ring-2 focus:ring-[#34D399]"
+                  title="Open original certificate in new tab"
+                  aria-label="Open original certificate in new tab"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
                 </a>
-                <button
-                  type="button"
-                  onClick={handleClose}
-                  aria-label="Close dialog"
-                  className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-[#34D399]"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
               </div>
             </div>
 
