@@ -114,7 +114,7 @@ const nextConfig = {
         ],
       },
       {
-        source: '/(api/.*|\\.well-known/.*|openapi\\.json|auth\\.md|llms)',
+        source: '/(api/.*|\\.well-known/.*|openapi\\.json|auth\\.md|llms|mcp)',
         headers: [
           {
             key: 'Cross-Origin-Resource-Policy',
@@ -127,7 +127,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Link',
-            value: '</.well-known/api-catalog>; rel="api-catalog", </.well-known/llms.txt>; rel="service-doc", </auth.md>; rel="describedby", </.well-known/oauth-protected-resource>; rel="oauth-protected-resource", </.well-known/oauth-authorization-server>; rel="oauth-authorization-server"',
+            value: '</.well-known/api-catalog>; rel="api-catalog", </.well-known/llms.txt>; rel="service-doc", </auth.md>; rel="describedby", </.well-known/oauth-protected-resource>; rel="oauth-protected-resource", </.well-known/oauth-authorization-server>; rel="oauth-authorization-server", </.well-known/mcp/server-card.json>; rel="mcp-server-card"',
           },
         ],
       },
