@@ -122,7 +122,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Link',
-            value: '</.well-known/api-catalog>; rel="api-catalog", </.well-known/llms.txt>; rel="service-doc", </auth.md>; rel="describedby"',
+            value: '</.well-known/api-catalog>; rel="api-catalog", </.well-known/llms.txt>; rel="service-doc", </auth.md>; rel="describedby", </.well-known/oauth-protected-resource>; rel="oauth-protected-resource", </.well-known/oauth-authorization-server>; rel="oauth-authorization-server"',
           },
         ],
       },
