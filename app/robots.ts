@@ -7,16 +7,25 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: 'OAI-SearchBot',
         allow: '/',
         disallow: '/api/',
+        other: {
+          'Content-Signal': 'ai-train=no, search=yes, ai-input=yes',
+        },
       },
       {
         userAgent: 'GPTBot',
         allow: '/',
         disallow: '/api/',
+        other: {
+          'Content-Signal': 'ai-train=no, search=yes, ai-input=no',
+        },
       },
       {
         userAgent: 'ChatGPT-User',
         allow: '/',
         disallow: '/api/',
+        other: {
+          'Content-Signal': 'ai-train=no, search=yes, ai-input=yes',
+        },
       },
       {
         userAgent: [
@@ -44,11 +53,17 @@ export default function robots(): MetadataRoute.Robots {
         ],
         allow: '/',
         disallow: '/api/',
+        other: {
+          'Content-Signal': 'ai-train=no, search=yes, ai-input=yes',
+        },
       },
       {
         userAgent: '*',
         allow: '/',
         disallow: '/api/',
+        other: {
+          'Content-Signal': 'ai-train=no, search=yes, ai-input=no',
+        },
       },
     ],
     sitemap: 'https://www.dipeshsapkota7.com.np/sitemap.xml',
