@@ -267,7 +267,7 @@ export default function ProjectsPage() {
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-200 dark:border-[#26372F] pb-8">
                   <div>
                     <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#0F172A] dark:text-[#F9FAFB] flex items-center gap-3">
-                      <span className="font-mono text-sm sm:text-base font-normal text-[#065F46] dark:text-[#34D399]">03.</span>
+                      <span className="text-[#065F46] dark:text-[#34D399]">/</span>
                       Projects
                     </h1>
                     <p className="mt-2 text-sm sm:text-base text-[#475569] dark:text-[#A7B0BE] max-w-xl leading-relaxed">

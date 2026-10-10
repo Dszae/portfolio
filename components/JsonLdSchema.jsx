@@ -79,6 +79,57 @@ export const website = {
   image: portraitImage,
   publisher: person,
   inLanguage: 'en',
+  hasPart: [
+    {
+      '@type': 'WebPage',
+      '@id': `${siteUrl}/about`,
+      name: 'About',
+      description: 'Academic background, journey, and technical focus of Dipesh Sapkota at IOE Thapathali Campus.',
+      url: `${siteUrl}/about`,
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${siteUrl}/skills`,
+      name: 'Skills',
+      description: 'Programming languages, tools, frameworks, and engineering competencies.',
+      url: `${siteUrl}/skills`,
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${siteUrl}/projects`,
+      name: 'Projects',
+      description: 'Featured software systems, open-source projects, and engineering tools.',
+      url: `${siteUrl}/projects`,
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${siteUrl}/certificates`,
+      name: 'Certificates',
+      description: 'Verified technical certifications from Udemy, EDUCBA, and Blackmagic Design.',
+      url: `${siteUrl}/certificates`,
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${siteUrl}/resume`,
+      name: 'Resume',
+      description: 'Curriculum Vitae, academic history, roles, and downloadable PDF resume.',
+      url: `${siteUrl}/resume`,
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${siteUrl}/gallery`,
+      name: 'Gallery',
+      description: 'Campus memories, leadership events, and creative media visual archive.',
+      url: `${siteUrl}/gallery`,
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${siteUrl}/contact`,
+      name: 'Contact',
+      description: 'Get in touch for engineering collaborations, freelance work, and inquiries.',
+      url: `${siteUrl}/contact`,
+    },
+  ],
 };
 
 export const siteSchema = {
@@ -106,7 +157,6 @@ export const homePageSchema = {
       '@id': `${siteUrl}/#navigation`,
       name: 'Main portfolio navigation',
       hasPart: [
-        { '@type': 'WebPage', name: 'Home', description: 'Homepage of Dipesh Sapkota, Computer Engineering student and developer.', url: `${siteUrl}/` },
         { '@type': 'WebPage', name: 'About', description: 'Academic background, journey, and technical focus of Dipesh Sapkota.', url: `${siteUrl}/about` },
         { '@type': 'WebPage', name: 'Skills', description: 'Programming languages, tools, frameworks, and engineering competencies.', url: `${siteUrl}/skills` },
         { '@type': 'WebPage', name: 'Projects', description: 'Featured software systems, open-source projects, and engineering tools.', url: `${siteUrl}/projects` },
@@ -114,20 +164,19 @@ export const homePageSchema = {
         { '@type': 'WebPage', name: 'Resume', description: 'Curriculum Vitae, academic history, roles, and downloadable PDF resume.', url: `${siteUrl}/resume` },
         { '@type': 'WebPage', name: 'Gallery', description: 'Campus memories, leadership events, and creative media visual archive.', url: `${siteUrl}/gallery` },
         { '@type': 'WebPage', name: 'Contact', description: 'Get in touch for engineering collaborations, freelance work, and inquiries.', url: `${siteUrl}/contact` },
-        { '@type': 'WebPage', name: 'Articles', description: 'Technical articles, system architecture breakdowns, and engineering blogs.', url: `${siteUrl}/blog` },
       ],
     },
     {
       '@type': 'ItemList',
       '@id': `${siteUrl}/#sitelinks-list`,
-      name: 'Dipesh Sapkota Portfolio Sitelinks',
-      description: 'Primary sitelinks navigation list for Google Search results',
+      name: 'Dipesh Sapkota Sitelinks',
+      description: 'Core sitelinks navigation list for Google Search results',
       itemListElement: [
         {
           '@type': 'SiteNavigationElement',
           position: 1,
           name: 'About',
-          description: 'Academic background, journey, and technical focus of Dipesh Sapkota at IOE Thapathali.',
+          description: 'Academic background, journey, and technical focus of Dipesh Sapkota at IOE Thapathali Campus.',
           url: `${siteUrl}/about`,
         },
         {
@@ -171,13 +220,6 @@ export const homePageSchema = {
           name: 'Contact',
           description: 'Get in touch for engineering collaborations, freelance work, and inquiries.',
           url: `${siteUrl}/contact`,
-        },
-        {
-          '@type': 'SiteNavigationElement',
-          position: 8,
-          name: 'Articles',
-          description: 'Technical articles, system architecture breakdowns, and engineering blogs.',
-          url: `${siteUrl}/blog`,
         },
       ],
     },

@@ -218,7 +218,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
         />
       )}
 
-      <nav aria-label="Main navigation" className="site-nav">
+      <nav aria-label="Main navigation" className="site-nav" itemScope itemType="https://schema.org/SiteNavigationElement">
         <div className="site-nav-inner relative z-10">
           <Link href="/" className="site-wordmark" onClick={() => setIsMenuOpen(false)}>
             Dipesh Sapkota<span className="site-wordmark-dot">.</span>
@@ -231,10 +231,11 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
                 <Link 
                   key={link.id} 
                   href={link.path} 
+                  itemProp="url"
                   aria-current={active ? 'page' : undefined}
                   className={`site-nav-link ${active ? 'is-active' : ''}`}
                 >
-                  {link.label}
+                  <span itemProp="name">{link.label}</span>
                 </Link>
               );
             })}
@@ -275,10 +276,13 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
 
       </nav>
 
-      <div
+      <nav
         id="mobile-navigation"
         className={`site-mobile-nav ${isMenuOpen ? 'is-open' : ''}`}
         aria-hidden={!isMenuOpen}
+        aria-label="Mobile navigation"
+        itemScope
+        itemType="https://schema.org/SiteNavigationElement"
       >
         <div className="site-mobile-nav-list">
           {NAV_LINKS.map((link) => {
@@ -287,17 +291,18 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
               <Link
                 key={`mobile-${link.id}`}
                 href={link.path}
+                itemProp="url"
                 aria-current={active ? 'page' : undefined}
                 tabIndex={isMenuOpen ? 0 : -1}
                 onClick={() => setIsMenuOpen(false)}
                 className={`site-nav-link ${active ? 'is-active' : ''}`}
               >
-                {link.label}
+                <span itemProp="name">{link.label}</span>
               </Link>
             );
           })}
         </div>
-      </div>
+      </nav>
 
       <main id="main-content" tabIndex={-1} className="relative z-10 w-full flex flex-col items-center outline-none">
         {typeof children === 'function' ? children({ theme, isDark }) : children}
@@ -328,14 +333,15 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
               <svg className="w-5 h-5 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.59-1.01V14.5c0 1.95-.53 3.91-1.63 5.49-1.61 2.31-4.32 3.82-7.16 3.99-2.03.12-4.11-.43-5.78-1.66-2.19-1.61-3.48-4.24-3.35-6.99.11-2.45 1.3-4.83 3.23-6.28 1.79-1.35 4.15-1.87 6.37-1.44v4.18c-1.16-.36-2.46-.3-3.56.24-.95.46-1.68 1.36-1.88 2.4-.33 1.72.76 3.5 2.44 3.96 1.48.41 3.16-.16 4.02-1.44.42-.62.62-1.38.62-2.14V.02z"/></svg>
             </a>
           </div>
-          <nav aria-label="Footer navigation" className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6">
+          <nav aria-label="Footer navigation" className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6" itemScope itemType="https://schema.org/SiteNavigationElement">
             {NAV_LINKS.map((link) => (
               <Link 
                 key={`footer-${link.id}`} 
                 href={link.path} 
+                itemProp="url"
                 className="site-footer-link transition-colors"
               >
-                {link.label}
+                <span itemProp="name">{link.label}</span>
               </Link>
             ))}
           </nav>

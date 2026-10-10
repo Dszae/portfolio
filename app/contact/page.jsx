@@ -86,7 +86,7 @@ export default function ContactPage() {
                   <div className="grid lg:grid-cols-2 gap-12">
                     <div>
                       <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-[#0F172A] dark:text-[#F9FAFB] flex items-center gap-3">
-                        <span className="text-[#065F46] dark:text-[#34D399]">/</span> Contact & Connect
+                        <span className="text-[#065F46] dark:text-[#34D399]">/</span> Contact
                       </h1>
                       <p className="mb-10 text-base sm:text-lg text-[#1E293B] dark:text-[#A7B0BE]">Open for freelance projects, technical collaborations, and software engineering opportunities.</p>
 

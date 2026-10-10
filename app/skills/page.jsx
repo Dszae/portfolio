@@ -26,7 +26,7 @@ export default function SkillsPage() {
                   </div>
 
                   <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] leading-tight mb-4 flex items-center gap-3">
-                    <span className="text-[#065F46] dark:text-[#34D399]">/</span> Technical Skills
+                    <span className="text-[#065F46] dark:text-[#34D399]">/</span> Skills
                   </h1>
 
                   <p className="max-w-2xl text-base sm:text-lg text-[#1E293B] dark:text-[#A7B5AE] leading-relaxed">

@@ -6,26 +6,28 @@ const portrait = image('/dipesh-sapkota.jpg', 'Dipesh Sapkota, Computer Engineer
 const currentDate = '2026-10-10';
 
 const pages = [
+  // Primary Homepage
   {
     path: '/',
     priority: '1.0',
     changefreq: 'daily',
     images: [portrait],
   },
+  // Core Sitelinks (Primary Navigation Pages)
   {
     path: '/about',
-    priority: '0.9',
+    priority: '0.95',
     changefreq: 'weekly',
     images: [portrait],
   },
   {
     path: '/skills',
-    priority: '0.9',
+    priority: '0.95',
     changefreq: 'weekly',
   },
   {
     path: '/projects',
-    priority: '0.9',
+    priority: '0.95',
     changefreq: 'weekly',
     images: [
       image('/sportivo-preview.jpg', 'Sportivo project preview'),
@@ -33,6 +35,55 @@ const pages = [
       image('/git-preview.jpg', 'Git Visualizer project preview'),
     ],
   },
+  {
+    path: '/certificates',
+    priority: '0.95',
+    changefreq: 'weekly',
+    images: [
+      image('/graphic-design.webp', 'Graphic Design Masterclass certificate'),
+      image('/motion-design.webp', 'Motion Design with Figma certificate'),
+      image('/after-effects.webp', 'Adobe After Effects certificate'),
+      image('/davinci-resolve.webp', 'DaVinci Resolve 16 Color Correction certificate'),
+      image('/premiere-pro.webp', 'Adobe Premiere Pro CC Masterclass certificate'),
+      image('/web-development.webp', 'Web Development Masterclass certificate'),
+      image('/google-adwords.webp', 'Google Adwords certificate'),
+      image('/design-principles.webp', 'Design Principles, Typography & Color Theory certificate'),
+    ],
+  },
+  {
+    path: '/resume',
+    priority: '0.95',
+    changefreq: 'weekly',
+    images: [
+      portrait,
+      image('/clamphook_.webp', 'Clamphook Academy logo'),
+      image('/campus.webp', 'College Programs logo'),
+      image('/freelance.webp', 'Freelance work logo'),
+      image('/thapathali.webp', 'Thapathali Campus logo'),
+      image('/janak.webp', 'Janak Model Secondary School logo'),
+      image('/mahendra.webp', 'Mahendra Adarsha Secondary School logo'),
+    ],
+  },
+  {
+    path: '/gallery',
+    priority: '0.95',
+    changefreq: 'weekly',
+    images: [
+      image('/cricket.webp', 'Participating in college cricket tournament'),
+      image('/yathartha.webp', 'Successfully conducted Yathartha Tech Exhibition'),
+      image('/clamphook.webp', 'Celebrating academic results with Clamphook team'),
+      image('/lecture.webp', 'Engineering lectures at IOE Thapathali'),
+      image('/exploring.webp', 'Creative video editing and focus'),
+      image('/nagdhunga%20surung%20marga.webp', 'Nagdhunga tunnel roadside field visit'),
+    ],
+  },
+  {
+    path: '/contact',
+    priority: '0.95',
+    changefreq: 'monthly',
+    images: [portrait],
+  },
+  // Sub-pages, Case Studies, and Secondary Resources
   {
     path: '/projects/sportivo',
     priority: '0.85',
@@ -71,54 +122,6 @@ const pages = [
     path: '/projects/analyzer-diag',
     priority: '0.8',
     changefreq: 'monthly',
-  },
-  {
-    path: '/certificates',
-    priority: '0.9',
-    changefreq: 'weekly',
-    images: [
-      image('/graphic-design.webp', 'Graphic Design Masterclass certificate'),
-      image('/motion-design.webp', 'Motion Design with Figma certificate'),
-      image('/after-effects.webp', 'Adobe After Effects certificate'),
-      image('/davinci-resolve.webp', 'DaVinci Resolve 16 Color Correction certificate'),
-      image('/premiere-pro.webp', 'Adobe Premiere Pro CC Masterclass certificate'),
-      image('/web-development.webp', 'Web Development Masterclass certificate'),
-      image('/google-adwords.webp', 'Google Adwords certificate'),
-      image('/design-principles.webp', 'Design Principles, Typography & Color Theory certificate'),
-    ],
-  },
-  {
-    path: '/resume',
-    priority: '0.9',
-    changefreq: 'weekly',
-    images: [
-      portrait,
-      image('/clamphook_.webp', 'Clamphook Academy logo'),
-      image('/campus.webp', 'College Programs logo'),
-      image('/freelance.webp', 'Freelance work logo'),
-      image('/thapathali.webp', 'Thapathali Campus logo'),
-      image('/janak.webp', 'Janak Model Secondary School logo'),
-      image('/mahendra.webp', 'Mahendra Adarsha Secondary School logo'),
-    ],
-  },
-  {
-    path: '/gallery',
-    priority: '0.9',
-    changefreq: 'weekly',
-    images: [
-      image('/cricket.webp', 'Participating in college cricket tournament'),
-      image('/yathartha.webp', 'Successfully conducted Yathartha Tech Exhibition'),
-      image('/clamphook.webp', 'Celebrating academic results with Clamphook team'),
-      image('/lecture.webp', 'Engineering lectures at IOE Thapathali'),
-      image('/exploring.webp', 'Creative video editing and focus'),
-      image('/nagdhunga%20surung%20marga.webp', 'Nagdhunga tunnel roadside field visit'),
-    ],
-  },
-  {
-    path: '/contact',
-    priority: '0.9',
-    changefreq: 'monthly',
-    images: [portrait],
   },
   {
     path: '/blog',

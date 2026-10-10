@@ -29,7 +29,7 @@ export default function GalleryPage() {
             <section id="gallery" className={`pt-28 sm:pt-32 pb-24 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
               <div className="max-w-7xl mx-auto w-full">
                 <h1 className="text-3xl sm:text-4xl font-bold mb-4 flex items-center gap-4 text-[#0F172A] dark:text-[#F9FAFB]">
-                  <span className="text-[#065F46] dark:text-[#34D399]">/</span> Gallery & Visual Archive
+                  <span className="text-[#065F46] dark:text-[#34D399]">/</span> Gallery
                 </h1>
                 <p className="mb-12 text-base sm:text-lg text-[#1E293B] dark:text-[#A7B0BE] font-medium">A curated space for campus memories, event leadership, and engineering moments.</p>
                 

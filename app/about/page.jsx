@@ -40,7 +40,7 @@ export default function AboutPage() {
             <section id="about" className={`pt-28 sm:pt-32 pb-24 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
               <div className="max-w-7xl mx-auto w-full">
                 <h1 className="text-3xl sm:text-4xl font-bold mb-12 flex items-center gap-4 text-[#0F172A] dark:text-[#F9FAFB]">
-                  <span className="text-[#065F46] dark:text-[#34D399]">/</span> About Me
+                  <span className="text-[#065F46] dark:text-[#34D399]">/</span> About
                 </h1>
                 <div className="grid md:grid-cols-12 gap-8 items-center">
                   
