@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import SiteLayout from '../../components/SiteLayout';
@@ -156,6 +156,7 @@ const FEATURED_PROJECTS = [
     description: "High-impact short-form sports highlight edits created for commercial clients and athletics tournaments. Incorporates beat-matched cut sequencing, 120fps optical-flow speed ramping, custom multi-layered stadium sound design (-14 LUFS standard), and cinematic color grading in DaVinci Resolve.",
     image: null,
     tech: ["Premiere Pro", "After Effects", "DaVinci Resolve", "Sound Design"],
+    detailUrl: "/projects/sports-reels",
     modalDetails: {
       overview: "Commercial sports motion edits designed for multi-platform short-form distribution. Combines dynamic speed ramps, beat-matched cut points, and cinematic color transformation.",
       architecture: [
@@ -178,6 +179,7 @@ const NOTEWORTHY_PROJECTS = [
     type: "Hardware Circuit Prototype",
     description: "Physical breadboard relaxation oscillator circuit built with the NE555 timer IC in an astable configuration. Calculates RC timing networks to generate stable square-wave switching pulses across complementary output LEDs.",
     tech: ["NE555 Timer IC", "Circuit Analysis", "Proteus ISIS", "Breadboard"],
+    detailUrl: "/projects/555-flasher",
     modalDetails: {
       overview: "A hardware relaxation oscillator prototype engineered around the NE555 timer IC in astable multivibrator configuration, generating continuous square-wave pulses for dual complementary LEDs.",
       architecture: [
@@ -197,6 +199,7 @@ const NOTEWORTHY_PROJECTS = [
     type: "Engineering Analysis",
     description: "Steady-state mathematical modeling and parameter derivation for 3-phase squirrel cage induction machines and DC motors. Derives torque-speed curves from locked-rotor test data and solves complex stator/rotor phasor impedance networks.",
     tech: ["Electrical Machines", "Phasor Calculus", "Motor Analysis", "MATLAB"],
+    detailUrl: "/projects/motor-modeling",
     modalDetails: {
       overview: "Mathematical analysis and steady-state simulation of 3-phase squirrel cage induction machines and separately excited DC motors conducted as part of electrical engineering coursework at IOE Thapathali Campus.",
       architecture: [
@@ -216,6 +219,7 @@ const NOTEWORTHY_PROJECTS = [
     type: "Instrumentation Engineering",
     description: "Diagnostic troubleshooting protocol and component analysis for automated clinical immunoassay and biochemical laboratory equipment. Analyzes negative pressure tolerances (-40 to -60 kPa), micro-stepping syringe probe calibrations, and electro-fluidic valve sequences.",
     tech: ["Biomedical Tech", "Fluidics", "Calibration Systems", "Instrumentation"],
+    detailUrl: "/projects/analyzer-diag",
     modalDetails: {
       overview: "Diagnostic methodology development and electromechanical troubleshooting protocols for automated clinical immunoassay and biochemical laboratory instruments.",
       architecture: [
@@ -233,44 +237,6 @@ const ALL_PROJECTS = [...FEATURED_PROJECTS, ...NOTEWORTHY_PROJECTS];
 
 export default function ProjectsPage() {
   const [filter, setFilter] = useState('all');
-  const [activeModalProject, setActiveModalProject] = useState(null);
-  const modalCloseBtnRef = useRef(null);
-  const lastActiveElementRef = useRef(null);
-
-  const handleCloseModal = () => {
-    setActiveModalProject(null);
-    if (lastActiveElementRef.current) {
-      lastActiveElementRef.current.focus();
-    }
-  };
-
-  const handleOpenModal = (project, e) => {
-    lastActiveElementRef.current = e?.currentTarget || null;
-    setActiveModalProject(project);
-  };
-
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape' && activeModalProject) {
-        handleCloseModal();
-      }
-    };
-
-    if (activeModalProject) {
-      document.body.style.overflow = 'hidden';
-      window.addEventListener('keydown', handleKeyDown);
-      setTimeout(() => {
-        modalCloseBtnRef.current?.focus();
-      }, 50);
-    } else {
-      document.body.style.overflow = '';
-    }
-
-    return () => {
-      document.body.style.overflow = '';
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [activeModalProject]);
 
   const filteredFeatured = FEATURED_PROJECTS.filter((p) => {
     if (filter === 'all') return true;
@@ -372,7 +338,6 @@ export default function ProjectsPage() {
                 <div className="space-y-20 sm:space-y-28 mb-24">
                   {filteredFeatured.map((project, idx) => {
                     const isEven = idx % 2 === 0;
-                    const hasDedicatedPage = Boolean(project.detailUrl);
 
                     return (
                       <article
@@ -385,12 +350,12 @@ export default function ProjectsPage() {
                             isEven ? 'lg:order-1' : 'lg:order-2'
                           }`}
                         >
-                          {hasDedicatedPage ? (
-                            <Link
-                              href={project.detailUrl}
-                              className="group block relative rounded-lg overflow-hidden border border-slate-200 dark:border-[#26372F] bg-slate-100 dark:bg-[#121A17] shadow-sm hover:border-[#065F46]/60 dark:hover:border-[#34D399]/60 transition-colors focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399]"
-                              aria-label={`View ${project.title} case study`}
-                            >
+                          <Link
+                            href={project.detailUrl}
+                            className="group block relative rounded-lg overflow-hidden border border-slate-200 dark:border-[#26372F] bg-slate-100 dark:bg-[#121A17] shadow-sm hover:border-[#065F46]/60 dark:hover:border-[#34D399]/60 transition-colors focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399]"
+                            aria-label={`View ${project.title} case study`}
+                          >
+                            {project.image ? (
                               <div className="relative aspect-[16/10] w-full overflow-hidden">
                                 <Image
                                   src={project.image}
@@ -400,35 +365,15 @@ export default function ProjectsPage() {
                                   sizes="(max-width: 1024px) 100vw, 58vw"
                                   className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02] motion-reduce:transform-none"
                                 />
-                                {/* Signature subtle tint overlay that clears on hover */}
                                 <div className="absolute inset-0 bg-[#065F46]/10 dark:bg-[#34D399]/10 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none" />
                               </div>
-                            </Link>
-                          ) : (
-                            <div
-                              onClick={(e) => handleOpenModal(project, e)}
-                              className="group block relative rounded-lg overflow-hidden border border-slate-200 dark:border-[#26372F] bg-slate-100 dark:bg-[#121A17] shadow-sm cursor-pointer hover:border-[#065F46]/60 dark:hover:border-[#34D399]/60 transition-colors focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399]"
-                              role="button"
-                              tabIndex={0}
-                              onKeyDown={(e) => { if (e.key === 'Enter') handleOpenModal(project, e); }}
-                              aria-label={`View ${project.title} technical breakdown`}
-                            >
-                              {project.image ? (
-                                <div className="relative aspect-[16/10] w-full overflow-hidden">
-                                  <Image
-                                    src={project.image}
-                                    alt={`${project.title} preview`}
-                                    fill
-                                    sizes="(max-width: 1024px) 100vw, 58vw"
-                                    className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.02] motion-reduce:transform-none"
-                                  />
-                                  <div className="absolute inset-0 bg-[#065F46]/10 dark:bg-[#34D399]/10 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none" />
-                                </div>
-                              ) : (
+                            ) : (
+                              <div className="relative">
                                 <MotionReelsGraphic />
-                              )}
-                            </div>
-                          )}
+                                <div className="absolute inset-0 bg-[#065F46]/10 dark:bg-[#34D399]/10 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none" />
+                              </div>
+                            )}
+                          </Link>
                         </div>
 
                         {/* 2. Structured Content (5 columns on desktop, overlapping aligned) */}
@@ -444,22 +389,12 @@ export default function ProjectsPage() {
 
                           {/* Project Title */}
                           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0F172A] dark:text-[#F9FAFB] mb-3">
-                            {hasDedicatedPage ? (
-                              <Link
-                                href={project.detailUrl}
-                                className="hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399]"
-                              >
-                                {project.title}
-                              </Link>
-                            ) : (
-                              <button
-                                type="button"
-                                onClick={(e) => handleOpenModal(project, e)}
-                                className="hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors cursor-pointer text-left lg:text-inherit"
-                              >
-                                {project.title}
-                              </button>
-                            )}
+                            <Link
+                              href={project.detailUrl}
+                              className="hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399]"
+                            >
+                              {project.title}
+                            </Link>
                           </h2>
 
                           {/* Concise, Readable Description Block */}
@@ -484,27 +419,27 @@ export default function ProjectsPage() {
                               isEven ? 'justify-start' : 'lg:justify-end justify-start'
                             }`}
                           >
-                            {hasDedicatedPage ? (
-                              <Link
-                                href={project.detailUrl}
-                                className="font-bold text-[#065F46] dark:text-[#34D399] hover:underline flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399] group"
+                            <Link
+                              href={project.detailUrl}
+                              className="font-bold text-[#065F46] dark:text-[#34D399] hover:underline flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399] group"
+                            >
+                              <span>Case Study</span>
+                              <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                              </svg>
+                            </Link>
+
+                            {project.liveUrl && (
+                              <a
+                                href={project.liveUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors p-1"
+                                aria-label={`${project.title} live application`}
+                                title="Live Application"
                               >
-                                <span>Case Study</span>
-                                <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
-                                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                </svg>
-                              </Link>
-                            ) : (
-                              <button
-                                type="button"
-                                onClick={(e) => handleOpenModal(project, e)}
-                                className="font-bold text-[#065F46] dark:text-[#34D399] hover:underline flex items-center gap-1 cursor-pointer focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399] group"
-                              >
-                                <span>Breakdown</span>
-                                <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
-                                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                </svg>
-                              </button>
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                              </a>
                             )}
 
                             {project.githubUrl && (
@@ -584,25 +519,23 @@ export default function ProjectsPage() {
                               )}
                             </span>
 
-                            <button
-                              type="button"
-                              onClick={(e) => handleOpenModal(project, e)}
-                              className="text-[#64748B] dark:text-[#94A3B8] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors p-1 cursor-pointer"
+                            <Link
+                              href={project.detailUrl}
+                              className="text-[#64748B] dark:text-[#94A3B8] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors p-1"
                               aria-label={`View specs for ${project.title}`}
                             >
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-                            </button>
+                            </Link>
                           </div>
 
                           {/* Title */}
                           <h3 className="text-lg font-bold text-[#0F172A] dark:text-[#F9FAFB] group-hover:text-[#065F46] dark:group-hover:text-[#34D399] transition-colors mb-2">
-                            <button
-                              type="button"
-                              onClick={(e) => handleOpenModal(project, e)}
-                              className="text-left cursor-pointer"
+                            <Link
+                              href={project.detailUrl}
+                              className="text-left"
                             >
                               {project.title}
-                            </button>
+                            </Link>
                           </h3>
 
                           {/* Description */}
@@ -611,12 +544,25 @@ export default function ProjectsPage() {
                           </p>
                         </div>
 
-                        {/* Tech Stack */}
-                        <ul className="flex flex-wrap gap-x-3 gap-y-1 font-mono text-[11px] text-[#64748B] dark:text-[#7A8A82] pt-3 border-t border-slate-100 dark:border-[#1E2D26]">
-                          {project.tech.map((t) => (
-                            <li key={t}>{t}</li>
-                          ))}
-                        </ul>
+                        <div>
+                          {/* Tech Stack */}
+                          <ul className="flex flex-wrap gap-x-3 gap-y-1 font-mono text-[11px] text-[#64748B] dark:text-[#7A8A82] pt-3 border-t border-slate-100 dark:border-[#1E2D26] mb-3">
+                            {project.tech.map((t) => (
+                              <li key={t}>{t}</li>
+                            ))}
+                          </ul>
+
+                          {/* Dedicated Breakdown Link */}
+                          <Link
+                            href={project.detailUrl}
+                            className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#065F46] dark:text-[#34D399] hover:underline group"
+                          >
+                            <span>Technical Breakdown</span>
+                            <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                          </Link>
+                        </div>
                       </article>
                     ))}
                   </div>
@@ -629,143 +575,6 @@ export default function ProjectsPage() {
               />
             </section>
           </FadeUp>
-
-          {/* Accessible Project Detail Modal Dialog */}
-          {activeModalProject && (
-            <div
-              className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md animate-fadeIn"
-              onClick={handleCloseModal}
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="modal-project-title"
-            >
-              <div
-                className="relative w-full max-w-2xl bg-white dark:bg-[#121A17] border border-[#CBD5E1]/60 dark:border-[#34D399]/30 rounded-2xl shadow-2xl ring-1 ring-black/10 dark:ring-white/10 overflow-hidden max-h-[90vh] flex flex-col animate-zoomIn cursor-default"
-                onClick={(e) => e.stopPropagation()}
-              >
-                {/* Modal Header */}
-                <div className="p-6 border-b border-slate-200 dark:border-[#26372F] flex items-center justify-between gap-4 bg-slate-50 dark:bg-[#16221D]">
-                  <div>
-                    <span className="font-mono text-xs uppercase tracking-wider text-[#065F46] dark:text-[#34D399] font-bold">
-                      {activeModalProject.categoryLabel} &middot; {activeModalProject.type}
-                    </span>
-                  </div>
-                  <button
-                    ref={modalCloseBtnRef}
-                    type="button"
-                    onClick={handleCloseModal}
-                    className="p-1.5 rounded text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/80 dark:hover:bg-[#26372F] transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399]"
-                    aria-label="Close dialog (Escape)"
-                  >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
-                  </button>
-                </div>
-
-                {/* Modal Scrollable Body */}
-                <div className="p-6 overflow-y-auto space-y-5">
-                  <div>
-                    <h3 id="modal-project-title" className="text-2xl font-bold text-[#0F172A] dark:text-[#F9FAFB] leading-tight mb-2">
-                      {activeModalProject.title}
-                    </h3>
-                    <p className="text-sm text-[#334155] dark:text-[#A7B0BE] leading-relaxed">
-                      {activeModalProject.description}
-                    </p>
-                  </div>
-
-                  {activeModalProject.modalDetails?.overview && (
-                    <div>
-                      <h4 className="font-mono text-xs uppercase tracking-wider font-bold text-[#065F46] dark:text-[#34D399] mb-1.5">
-                        Project Overview
-                      </h4>
-                      <p className="text-sm text-[#1E293B] dark:text-[#CBD5E1] leading-relaxed">
-                        {activeModalProject.modalDetails.overview}
-                      </p>
-                    </div>
-                  )}
-
-                  {activeModalProject.modalDetails?.architecture && (
-                    <div>
-                      <h4 className="font-mono text-xs uppercase tracking-wider font-bold text-[#065F46] dark:text-[#34D399] mb-1.5">
-                        Technical Specifications & Methodology
-                      </h4>
-                      <ul className="space-y-1.5">
-                        {activeModalProject.modalDetails.architecture.map((item, idx) => (
-                          <li key={idx} className="flex items-start gap-2 text-sm text-[#1E293B] dark:text-[#CBD5E1] leading-relaxed">
-                            <span className="text-[#065F46] dark:text-[#34D399] font-bold mt-0.5">▸</span>
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {activeModalProject.modalDetails?.metrics && (
-                    <div className="p-4 rounded-lg bg-emerald-50/80 dark:bg-[#162921]/60 border border-emerald-200 dark:border-[#264D3B]">
-                      <h4 className="font-mono text-xs uppercase tracking-wider font-bold text-[#065F46] dark:text-[#34D399] mb-1">
-                        Measured Outcome & Impact
-                      </h4>
-                      <p className="font-mono text-xs sm:text-sm text-[#065F46] dark:text-emerald-300">
-                        {activeModalProject.modalDetails.metrics}
-                      </p>
-                    </div>
-                  )}
-
-                  <div>
-                    <h4 className="font-mono text-xs uppercase tracking-wider font-bold text-[#065F46] dark:text-[#34D399] mb-1.5">
-                      Technologies & Tools
-                    </h4>
-                    <ul className="flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs text-[#475569] dark:text-[#94A3B8]">
-                      {activeModalProject.tech.map((t) => (
-                        <li key={t}>{t}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                {/* Modal Footer */}
-                <div className="p-5 border-t border-slate-200 dark:border-[#26372F] flex items-center justify-between gap-3 bg-slate-50 dark:bg-[#16221D] flex-wrap">
-                  <div className="flex items-center gap-4 font-mono text-xs">
-                    {activeModalProject.detailUrl && (
-                      <Link
-                        href={activeModalProject.detailUrl}
-                        className="font-bold text-[#065F46] dark:text-[#34D399] hover:underline"
-                      >
-                        Full Case Study &rarr;
-                      </Link>
-                    )}
-                    {activeModalProject.liveUrl && (
-                      <a
-                        href={activeModalProject.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399]"
-                      >
-                        Live App &nearr;
-                      </a>
-                    )}
-                    {activeModalProject.githubUrl && (
-                      <a
-                        href={activeModalProject.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399]"
-                      >
-                        GitHub &nearr;
-                      </a>
-                    )}
-                  </div>
-
-                  <button
-                    type="button"
-                    onClick={handleCloseModal}
-                    className="px-3.5 py-1.5 text-xs font-mono font-semibold rounded border border-slate-200 dark:border-[#26372F] hover:bg-white dark:hover:bg-[#121A17] text-[#334155] dark:text-[#A7B0BE] transition-all cursor-pointer ml-auto"
-                  >
-                    Close
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
         </>
       )}
     </SiteLayout>

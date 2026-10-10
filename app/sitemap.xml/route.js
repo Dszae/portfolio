@@ -52,6 +52,27 @@ const pages = [
     images: [image('/git-preview.jpg', 'Git Visualizer project preview')],
   },
   {
+    path: '/projects/sports-reels',
+    priority: '0.85',
+    changefreq: 'monthly',
+    images: [portrait],
+  },
+  {
+    path: '/projects/555-flasher',
+    priority: '0.8',
+    changefreq: 'monthly',
+  },
+  {
+    path: '/projects/motor-modeling',
+    priority: '0.8',
+    changefreq: 'monthly',
+  },
+  {
+    path: '/projects/analyzer-diag',
+    priority: '0.8',
+    changefreq: 'monthly',
+  },
+  {
     path: '/certificates',
     priority: '0.9',
     changefreq: 'weekly',
