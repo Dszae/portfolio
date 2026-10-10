@@ -25,6 +25,13 @@ export async function GET() {
     agent_auth: {
       skill: 'https://www.dipeshsapkota7.com.np/auth.md',
       register_uri: 'https://www.dipeshsapkota7.com.np/api/agent/auth',
+      claim_uri: 'https://www.dipeshsapkota7.com.np/api/agent/claim',
+      claim_endpoint: 'https://www.dipeshsapkota7.com.np/api/agent/claim',
+      revocation_uri: 'https://www.dipeshsapkota7.com.np/api/agent/revoke',
+      events_supported: [
+        'revocation',
+        'https://schemas.agent-auth.org/events/revocation'
+      ],
       identity_types_supported: [
         'identity_assertion',
         'anonymous'
@@ -37,19 +44,24 @@ export async function GET() {
         credential_types_supported: [
           'bearer'
         ],
-        claim_uri: 'https://www.dipeshsapkota7.com.np/api/agent/claim'
+        claim_uri: 'https://www.dipeshsapkota7.com.np/api/agent/claim',
+        claim_endpoint: 'https://www.dipeshsapkota7.com.np/api/agent/claim',
+        revocation_uri: 'https://www.dipeshsapkota7.com.np/api/agent/revoke'
       },
       anonymous: {
         credential_types_supported: [
           'bearer'
         ],
-        claim_uri: 'https://www.dipeshsapkota7.com.np/api/agent/claim'
+        claim_uri: 'https://www.dipeshsapkota7.com.np/api/agent/claim',
+        claim_endpoint: 'https://www.dipeshsapkota7.com.np/api/agent/claim'
       },
-      revocation_uri: 'https://www.dipeshsapkota7.com.np/api/agent/revoke',
-      events_supported: [
-        'revocation',
-        'https://schemas.agent-auth.org/events/revocation'
-      ]
+      verified_email: {
+        credential_types_supported: [
+          'bearer'
+        ],
+        claim_uri: 'https://www.dipeshsapkota7.com.np/api/agent/claim',
+        claim_endpoint: 'https://www.dipeshsapkota7.com.np/api/agent/claim'
+      }
     }
   };
 
