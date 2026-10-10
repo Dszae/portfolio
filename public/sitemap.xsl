@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="2.0"
+<xsl:stylesheet version="1.0"
     xmlns:html="http://www.w3.org/TR/REC-html40"
     xmlns:sitemap="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
@@ -426,7 +426,7 @@
 
           <footer>
             <div>
-              &copy; 2026 <a href="https://www.dipeshsapkota7.com.np/">Dipesh Sapkota</a>. All rights reserved.
+              &#169; 2026 <a href="https://www.dipeshsapkota7.com.np/">Dipesh Sapkota</a>. All rights reserved.
             </div>
             <div>
               Generated for Googlebot, Bingbot &amp; Standards Crawlers
