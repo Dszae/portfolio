@@ -262,7 +262,7 @@ export default function ProjectsPage() {
                   </div>
 
                   {/* Compact, understated category filter row */}
-                  <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs font-mono tracking-wider self-start md:self-auto" role="tablist" aria-label="Filter projects">
+                  <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs font-medium tracking-wide self-start md:self-auto" role="tablist" aria-label="Filter projects">
                     <button
                       type="button"
                       role="tab"
@@ -367,7 +367,7 @@ export default function ProjectsPage() {
                           }`}
                         >
                           {/* Eyebrow Label */}
-                          <div className="font-mono text-xs text-[#065F46] dark:text-[#34D399] tracking-wider mb-1 font-semibold">
+                          <div className="section-eyebrow mb-2">
                             {project.label || "Featured Project"} &middot; {project.categoryLabel}
                           </div>
 
@@ -382,13 +382,13 @@ export default function ProjectsPage() {
                           </h2>
 
                           {/* Concise, Readable Description Block */}
-                          <div className="p-5 sm:p-6 rounded-xl bg-white dark:bg-[#0F1216] border border-slate-200 dark:border-[#222933] shadow-sm mb-4 text-sm leading-relaxed text-[#334155] dark:text-[#A7B0BE]">
-                            <p>{project.description}</p>
+                          <div className="p-5 sm:p-6 rounded-xl bg-white dark:bg-[#0F1216] border border-slate-200 dark:border-[#222933] shadow-sm mb-4">
+                            <p className="card-description">{project.description}</p>
                           </div>
 
-                          {/* Relevant Monospace Tech List */}
+                          {/* Relevant Tech List */}
                           <ul
-                            className={`flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs text-[#64748B] dark:text-[#94A3B8] mb-5 ${
+                            className={`flex flex-wrap gap-x-4 gap-y-1 tech-tag mb-5 ${
                               isEven ? 'justify-start' : 'lg:justify-end justify-start'
                             }`}
                           >
@@ -399,7 +399,7 @@ export default function ProjectsPage() {
 
                           {/* Subtle Links */}
                           <div
-                            className={`flex items-center gap-4 text-xs font-mono ${
+                            className={`flex items-center gap-4 text-xs font-medium ${
                               isEven ? 'justify-start' : 'lg:justify-end justify-start'
                             }`}
                           >
@@ -453,7 +453,7 @@ export default function ProjectsPage() {
                     <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F172A] dark:text-[#F9FAFB]">
                       Other Noteworthy Engineering Projects
                     </h2>
-                    <p className="mt-1 font-mono text-xs text-[#065F46] dark:text-[#34D399]">
+                    <p className="mt-2 section-eyebrow">
                       Hardware prototypes, machinery analysis, and laboratory instrumentation
                     </p>
                   </div>
@@ -479,7 +479,7 @@ export default function ProjectsPage() {
                           </div>
 
                           {/* Title */}
-                          <h3 className="text-lg font-bold text-[#0F172A] dark:text-[#F9FAFB] group-hover:text-[#065F46] dark:group-hover:text-[#34D399] transition-colors mb-2">
+                          <h3 className="text-lg font-semibold tracking-tight text-[#0F172A] dark:text-[#F9FAFB] group-hover:text-[#065F46] dark:group-hover:text-[#34D399] transition-colors mb-2">
                             <Link
                               href={project.detailUrl}
                               className="text-left"
@@ -489,14 +489,14 @@ export default function ProjectsPage() {
                           </h3>
 
                           {/* Description */}
-                          <p className="text-xs sm:text-sm text-[#475569] dark:text-[#A7B0BE] leading-relaxed mb-4">
+                          <p className="card-description mb-4">
                             {project.description}
                           </p>
                         </div>
 
                         <div>
                           {/* Tech Stack */}
-                          <ul className="flex flex-wrap gap-x-3 gap-y-1 font-mono text-[11px] text-[#64748B] dark:text-[#94A3B8] pt-3 border-t border-slate-100 dark:border-[#222933] mb-3">
+                          <ul className="flex flex-wrap gap-x-3 gap-y-1 tech-tag pt-3 border-t border-slate-100 dark:border-[#222933] mb-3">
                             {project.tech.map((t) => (
                               <li key={t}>{t}</li>
                             ))}
@@ -505,7 +505,7 @@ export default function ProjectsPage() {
                           {/* Dedicated Breakdown Link */}
                           <Link
                             href={project.detailUrl}
-                            className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#065F46] dark:text-[#34D399] hover:underline group"
+                            className="inline-flex items-center gap-1.5 text-xs font-medium text-[#065F46] dark:text-[#34D399] hover:underline group"
                           >
                             <span>Technical Breakdown</span>
                             <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">

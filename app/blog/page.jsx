@@ -41,59 +41,59 @@ export default function BlogPage() {
           <ul className="space-y-6">
             {/* DEV Community Featured Publication */}
             <li className="p-6 sm:p-8 rounded-2xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all shadow-sm">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="font-mono text-[11px] font-semibold uppercase tracking-wider text-[#065F46] dark:text-[#34D399] bg-[#065F46]/10 dark:bg-[#34D399]/15 px-2.5 py-0.5 rounded border border-[#065F46]/20 dark:border-[#34D399]/30">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="card-category-label">
                   DEV Community
                 </span>
-                <span className="text-xs font-mono text-[#64748B] dark:text-[#94A3B8]">@dszae</span>
+                <span className="card-meta">@dszae</span>
               </div>
               <a 
                 href="https://dev.to/dszae" 
                 target="_blank" 
                 rel="me noopener noreferrer" 
-                className="text-lg sm:text-xl font-bold text-[#0F172A] dark:text-[#F9FAFB] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors block mb-2"
+                className="card-heading hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors block mb-3"
               >
                 Dipesh Sapkota on DEV Community &rarr;
               </a>
-              <p className="text-sm text-[#1E293B] dark:text-[#A7B0BE] leading-relaxed">
+              <p className="card-description">
                 Follow technical notes, AI/ML engineering insights, and practical developer tutorials on my official DEV Community author profile.
               </p>
             </li>
 
             {/* Sportivo Engineering Deep Dive */}
             <li className="p-6 sm:p-8 rounded-2xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all shadow-sm">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="font-mono text-[11px] font-semibold uppercase tracking-wider text-[#065F46] dark:text-[#34D399] bg-[#065F46]/10 dark:bg-[#34D399]/15 px-2.5 py-0.5 rounded border border-[#065F46]/20 dark:border-[#34D399]/30">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="card-category-label">
                   Technical Architecture
                 </span>
-                <span className="text-xs font-mono text-[#64748B] dark:text-[#94A3B8]">Full Case Study</span>
+                <span className="card-meta">Full Case Study</span>
               </div>
               <Link 
                 href="/projects/sportivo" 
-                className="text-lg sm:text-xl font-bold text-[#0F172A] dark:text-[#F9FAFB] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors block mb-2"
+                className="card-heading hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors block mb-3"
               >
                 Building Sportivo: Engineering a Real-Time Live Sports Streaming Web App &rarr;
               </Link>
-              <p className="text-sm text-[#1E293B] dark:text-[#A7B0BE] leading-relaxed">
+              <p className="card-description">
                 Comprehensive technical case study documenting multi-server stream switching, headless DOM parsing, schedule synchronization, and resilient fallback handling.
               </p>
             </li>
 
             {/* Git Visualizer Technical Article */}
             <li className="p-6 sm:p-8 rounded-2xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all shadow-sm">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="font-mono text-[11px] font-semibold uppercase tracking-wider text-[#065F46] dark:text-[#34D399] bg-[#065F46]/10 dark:bg-[#34D399]/15 px-2.5 py-0.5 rounded border border-[#065F46]/20 dark:border-[#34D399]/30">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="card-category-label">
                   Data Structures &amp; DAG
                 </span>
-                <span className="text-xs font-mono text-[#64748B] dark:text-[#94A3B8]">Interactive Canvas</span>
+                <span className="card-meta">Interactive Canvas</span>
               </div>
               <Link 
                 href="/projects/git-visualizer" 
-                className="text-lg sm:text-xl font-bold text-[#0F172A] dark:text-[#F9FAFB] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors block mb-2"
+                className="card-heading hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors block mb-3"
               >
                 How I Built an Interactive Git Visualizer to Master Version Control &rarr;
               </Link>
-              <p className="text-sm text-[#1E293B] dark:text-[#A7B0BE] leading-relaxed">
+              <p className="card-description">
                 Deep dive into graph theory, directed acyclic graphs (DAG), Canvas rendering performance, and interactive state models for version control pedagogy.
               </p>
             </li>

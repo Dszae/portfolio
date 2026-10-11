@@ -1,6 +1,13 @@
 import React from 'react';
-import { GeistSans } from 'geist/font/sans';
+import { Inter } from 'next/font/google';
 import { GeistMono } from 'geist/font/mono';
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-inter',
+  display: 'swap',
+});
 
 import JsonLdSchema from '@/components/JsonLdSchema';
 import WebMCPInitializer from '@/components/WebMCPInitializer';
@@ -123,7 +130,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`scroll-smooth ${GeistSans.variable} ${GeistMono.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`scroll-smooth ${inter.variable} ${GeistMono.variable}`} suppressHydrationWarning>
       <head>
         <link rel="alternate" type="text/markdown" href="/.well-known/llms.txt" title="AI-readable site information" />
         <script
