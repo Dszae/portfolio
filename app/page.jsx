@@ -9,7 +9,7 @@ const SKILLS_PREVIEW = [
   {
     title: "Software & Web Development",
     description: "C, C++, Python, React, Next.js, and practical full-stack system architecture.",
-    href: "/skills",
+    href: "/skills#development",
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
@@ -160,7 +160,7 @@ export default function Home() {
                     <p>{skill.description}</p>
                     <span className="skill-preview-action" aria-hidden="true">
                       <span>View details</span>
-                      <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                       </svg>
                     </span>

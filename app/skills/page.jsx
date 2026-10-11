@@ -38,7 +38,7 @@ export default function SkillsPage() {
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8">
 
                   {/* Card A: Development (~58% desktop width: md:col-span-7) */}
-                  <article className="md:col-span-7 bg-[#FFFFFF] dark:bg-[#0F1216] border border-[#CBD5E1] dark:border-[#222933] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-1 hover:border-[#065F46]/50 dark:hover:border-[#6EE7B7]/50 relative overflow-hidden flex flex-col justify-between group">
+                  <article id="development" className="md:col-span-7 bg-[#FFFFFF] dark:bg-[#0F1216] border border-[#CBD5E1] dark:border-[#222933] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-1 hover:border-[#065F46]/50 dark:hover:border-[#6EE7B7]/50 relative overflow-hidden flex flex-col justify-between group">
                     <div>
                       {/* Card Header */}
                       <div className="flex items-center gap-4 mb-4">

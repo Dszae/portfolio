@@ -19,7 +19,7 @@ export default function PagePagination({ prev, next }) {
             aria-label={`Previous page: ${prev.label}`}
           >
             <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-[#181D24] border border-slate-200 dark:border-[#222933] flex items-center justify-center text-[#065F46] dark:text-[#34D399] group-hover:-translate-x-1 transition-transform flex-shrink-0">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
               </svg>
             </div>
@@ -51,7 +51,7 @@ export default function PagePagination({ prev, next }) {
               </span>
             </div>
             <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-[#181D24] border border-slate-200 dark:border-[#222933] flex items-center justify-center text-[#065F46] dark:text-[#34D399] group-hover:translate-x-1 transition-transform flex-shrink-0">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
               </svg>
             </div>

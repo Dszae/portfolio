@@ -8,6 +8,7 @@ export default function MathFormula({ math, block = false, className = '' }) {
       displayMode: block,
       throwOnError: false,
     });
+    html = html.replace(/<svg\b(?![^>]*\baria-hidden=)/g, '<svg aria-hidden="true" focusable="false" ');
   } catch (err) {
     html = `<span>${math}</span>`;
   }
