@@ -17,7 +17,7 @@ import './globals.css';
 export const metadata = {
   metadataBase: new URL('https://www.dipeshsapkota7.com.np'),
   title: {
-    default: 'Dipesh Sapkota | IOE Admission Hub & Git Visualizer',
+    default: 'Dipesh Sapkota | Computer Engineering Student & AI/ML Enthusiast',
     template: '%s | Dipesh Sapkota',
   },
   description: 'Official portfolio of Dipesh Sapkota featuring software projects including IOE Admission Hub and Git Visualizer, alongside technical engineering and creative work.',
@@ -103,7 +103,7 @@ export const metadata = {
     url: 'https://www.dipeshsapkota7.com.np/',
     siteName: 'Dipesh Sapkota',
     locale: 'en_US',
-    title: 'Dipesh Sapkota | IOE Admission Hub & Git Visualizer',
+    title: 'Dipesh Sapkota | Computer Engineering Student & AI/ML Enthusiast',
     description: 'Official portfolio of Dipesh Sapkota featuring software projects including IOE Admission Hub and Git Visualizer, alongside technical engineering and creative work.',
     images: [
       {
