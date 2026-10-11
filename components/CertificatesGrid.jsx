@@ -182,7 +182,7 @@ export default function CertificatesGrid({ certificates }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.22, ease: 'easeOut' }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-1.5 sm:p-6 md:p-8 bg-slate-950/90 backdrop-blur-md cursor-pointer"
+            className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-6 md:p-8 bg-slate-950/90 backdrop-blur-md cursor-pointer"
             onClick={handleClose}
           >
             <motion.div

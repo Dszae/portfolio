@@ -82,7 +82,7 @@ export default function ContactPage() {
           <FadeUp>
             <section id="contact" className={`pt-28 sm:pt-32 pb-24 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
               <div className="max-w-7xl mx-auto w-full">
-                <div className={`p-6 sm:p-8 md:p-14 rounded-[2rem] border backdrop-blur-md ${theme.card}`}>
+                <div className={`p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl border backdrop-blur-md ${theme.card}`}>
                   <div className="grid lg:grid-cols-2 gap-12">
                     <div>
                       <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-[#0F172A] dark:text-[#F9FAFB] flex items-center gap-3">

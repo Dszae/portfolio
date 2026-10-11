@@ -143,7 +143,7 @@ function LightboxModal({ image, onClose }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.22, ease: 'easeOut' }}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md p-1.5 sm:p-6 md:p-8 cursor-pointer"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md p-2 sm:p-6 md:p-8 cursor-pointer"
       onClick={onClose}
     >
       <motion.div 

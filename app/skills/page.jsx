@@ -38,7 +38,7 @@ export default function SkillsPage() {
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8">
 
                   {/* Card A: Development (~58% desktop width: md:col-span-7) */}
-                  <article className="md:col-span-7 bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26372F] rounded-2xl sm:rounded-[22px] p-6 sm:p-8 lg:p-9 shadow-sm hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-1.5 hover:border-[#065F46]/50 dark:hover:border-[#6EE7B7]/50 relative overflow-hidden flex flex-col justify-between group">
+                  <article className="md:col-span-7 bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26372F] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-1 hover:border-[#065F46]/50 dark:hover:border-[#6EE7B7]/50 relative overflow-hidden flex flex-col justify-between group">
                     {/* Decorative subtle code watermark */}
                     <div 
                       aria-hidden="true" 
@@ -154,7 +154,7 @@ export default function SkillsPage() {
                   </article>
 
                   {/* Card B: Creative Media (~42% desktop width: md:col-span-5) */}
-                  <article className="md:col-span-5 bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26372F] rounded-2xl sm:rounded-[22px] p-6 sm:p-8 lg:p-9 shadow-sm hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-1.5 hover:border-[#065F46]/50 dark:hover:border-[#6EE7B7]/50 relative overflow-hidden flex flex-col justify-between group">
+                  <article className="md:col-span-5 bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26372F] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-1 hover:border-[#065F46]/50 dark:hover:border-[#6EE7B7]/50 relative overflow-hidden flex flex-col justify-between group">
                     {/* Layered decorative ambient element */}
                     <div 
                       aria-hidden="true" 
@@ -242,7 +242,7 @@ export default function SkillsPage() {
                   </article>
 
                   {/* Card C: Hardware & Engineering (100% width beneath: md:col-span-12) */}
-                  <article className="md:col-span-12 bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26372F] rounded-2xl sm:rounded-[22px] p-6 sm:p-8 lg:p-9 shadow-sm hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-1.5 hover:border-[#065F46]/50 dark:hover:border-[#6EE7B7]/50 relative overflow-hidden group">
+                  <article className="md:col-span-12 bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26372F] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-1 hover:border-[#065F46]/50 dark:hover:border-[#6EE7B7]/50 relative overflow-hidden group">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                       
                       {/* Left: Category Overview */}

@@ -11,9 +11,9 @@
   --space-3: 1.5rem;
   --space-4: 2rem;
   --space-section: clamp(2.5rem, 6vw, 5rem);
-  --radius-control: 10px;
-  --radius-card: 12px;
-  --radius-image: 14px;
+  --radius-control: 12px;
+  --radius-card: 16px;
+  --radius-image: 16px;
   --duration-fast: 160ms;
   --duration-theme: 220ms;
 
@@ -229,7 +229,7 @@ html {
   align-items: center;
   color: var(--text-secondary);
   font-size: 0.81rem;
-  font-weight: 550;
+  font-weight: 500;
   text-decoration: none;
   transition: color var(--duration-fast) ease;
 }
@@ -339,8 +339,8 @@ html {
 }
 
 .smooth-card-hover:hover {
-  transform: translateY(-5px) translateZ(0);
-  -webkit-transform: translateY(-5px) translateZ(0);
+  transform: translateY(-2px) translateZ(0);
+  -webkit-transform: translateY(-2px) translateZ(0);
 }
 
 .smooth-img-zoom {
@@ -396,7 +396,7 @@ button:hover .smooth-img-zoom {
   gap: 11px;
   color: var(--text-secondary);
   font-size: 0.78rem;
-  font-weight: 650;
+  font-weight: 600;
   letter-spacing: 0.075em;
   line-height: 1.5;
 }
@@ -450,7 +450,7 @@ button:hover .smooth-img-zoom {
   border: 1px solid transparent;
   border-radius: var(--radius-control);
   font-size: 0.96rem;
-  font-weight: 650;
+  font-weight: 600;
   text-decoration: none;
   transition: transform var(--duration-fast) ease, background-color var(--duration-fast) ease, border-color var(--duration-fast) ease, color var(--duration-fast) ease;
 }
@@ -505,7 +505,7 @@ button:hover .smooth-img-zoom {
 }
 
 .hero-socials {
-  margin-top: 22px;
+  margin-top: 24px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -518,7 +518,7 @@ button:hover .smooth-img-zoom {
   align-items: center;
   justify-content: center;
   border: 1px solid transparent;
-  border-radius: 9px;
+  border-radius: var(--radius-control);
   color: var(--text-secondary);
   transition: border-color 160ms ease, color 160ms ease, background-color 160ms ease;
 }
@@ -543,7 +543,7 @@ button:hover .smooth-img-zoom {
   bottom: -16px;
   left: 18px;
   border: 1px solid var(--accent-primary);
-  border-radius: 15px;
+  border-radius: var(--radius-card);
   opacity: 0.7;
 }
 
@@ -553,7 +553,7 @@ button:hover .smooth-img-zoom {
   aspect-ratio: 0.86;
   overflow: hidden;
   border: 1px solid var(--border-default);
-  border-radius: var(--radius-image);
+  border-radius: var(--radius-card);
   background: var(--surface-secondary);
   box-shadow: var(--shadow-subtle);
 }
@@ -565,7 +565,7 @@ button:hover .smooth-img-zoom {
 
 .skills-preview {
   width: 100%;
-  padding: 25px 24px 76px;
+  padding: 24px 24px 80px;
   background: var(--page-bg);
 }
 
@@ -586,7 +586,7 @@ button:hover .smooth-img-zoom {
   margin: 0;
   color: var(--text-primary);
   font-size: 1.03rem;
-  font-weight: 650;
+  font-weight: 600;
   letter-spacing: -0.02em;
 }
 
@@ -602,13 +602,13 @@ button:hover .smooth-img-zoom {
 .skills-preview-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
+  gap: 16px;
 }
 
 .skill-preview-card {
   min-width: 0;
   min-height: 162px;
-  padding: 19px 18px 18px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -625,7 +625,7 @@ button:hover .smooth-img-zoom {
 }
 
 .skill-preview-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   border-color: var(--accent-primary);
 }
 
@@ -646,13 +646,13 @@ button:hover .smooth-img-zoom {
   margin: 0;
   color: var(--text-primary);
   font-size: 1rem;
-  font-weight: 650;
+  font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.35;
 }
 
 .skill-preview-card p {
-  margin: 5px 0 0;
+  margin: 8px 0 0;
   color: var(--text-secondary);
   font-size: 0.85rem;
   line-height: 1.5;
@@ -660,7 +660,7 @@ button:hover .smooth-img-zoom {
 }
 
 .skill-preview-action {
-  margin-top: 14px;
+  margin-top: 16px;
   display: inline-flex;
   align-items: center;
   gap: 5px;
@@ -807,7 +807,7 @@ button:hover .smooth-img-zoom {
   }
 
   .hero-eyebrow {
-    margin-bottom: 18px;
+    margin-bottom: 16px;
     font-size: 0.72rem;
   }
 
@@ -816,18 +816,18 @@ button:hover .smooth-img-zoom {
   }
 
   .hero-description {
-    margin-top: 19px;
+    margin-top: 16px;
     font-size: 1rem;
   }
 
   .hero-actions {
     margin-top: 24px;
-    gap: 9px;
+    gap: 8px;
   }
 
   .hero-button {
     min-height: 48px;
-    padding-inline: 15px;
+    padding-inline: 16px;
     font-size: 0.9rem;
   }
 
@@ -838,21 +838,21 @@ button:hover .smooth-img-zoom {
   }
 
   .hero-socials {
-    margin-top: 15px;
+    margin-top: 16px;
   }
 
   .skills-preview {
-    padding: 18px 20px 48px;
+    padding: 24px 20px 48px;
   }
 
   .skills-preview-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
+    gap: 12px;
   }
 
   .skill-preview-card {
     min-height: 158px;
-    padding: 15px 13px;
+    padding: 16px;
   }
 }
 

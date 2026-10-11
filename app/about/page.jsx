@@ -44,7 +44,7 @@ export default function AboutPage() {
                 </h1>
                 <div className="grid md:grid-cols-12 gap-8 items-center">
                   
-                  <div className={`md:col-span-7 p-6 sm:p-8 md:p-12 rounded-[2rem] border border-[#CBD5E1] dark:border-[#26352F] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 backdrop-blur-md smooth-card-hover hover:shadow-lg ${theme.card}`}>
+                  <div className={`md:col-span-7 p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl border border-[#CBD5E1] dark:border-[#26352F] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 backdrop-blur-md smooth-card-hover hover:shadow-lg ${theme.card}`}>
                     <h2 className="text-2xl md:text-3xl font-bold mb-6 leading-tight text-[#0F172A] dark:text-[#F8FAFC]">Bridging Logic and Visual Execution</h2>
                     <p className="text-base sm:text-lg leading-relaxed mb-6 text-[#1E293B] dark:text-[#A7B0BE]">
                       Hello! I am <strong className="text-[#0F172A] dark:text-white">Dipesh Sapkota</strong>, a dedicated Computer Engineering student at <span className="font-semibold text-[#065F46] dark:text-[#34D399]">IOE Thapathali Campus</span> in Kathmandu, Nepal. As an AI and ML enthusiast, I am deeply invested in exploring intelligent systems, analyzing algorithms, and architecting embedded hardware solutions. My technical foundation is built on rigorous academic training and a continuous drive to solve complex computational challenges.

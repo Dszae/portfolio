@@ -15,7 +15,7 @@ export default function PagePagination({ prev, next }) {
         {prev ? (
           <Link
             href={prev.path}
-            className="group flex-1 flex items-center gap-3.5 p-4 sm:p-5 rounded-2xl border border-slate-200 dark:border-[#26372F] bg-white dark:bg-[#111B17] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 hover:bg-slate-50 dark:hover:bg-[#16221D] transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-[#065F46] dark:focus:ring-[#34D399]"
+            className="group flex-1 flex items-center gap-4 p-4 sm:p-6 rounded-2xl border border-slate-200 dark:border-[#26372F] bg-white dark:bg-[#111B17] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 hover:bg-slate-50 dark:hover:bg-[#16221D] transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-[#065F46] dark:focus:ring-[#34D399]"
             aria-label={`Previous page: ${prev.label}`}
           >
             <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-[#16221D] border border-slate-200 dark:border-[#26372F] flex items-center justify-center text-[#065F46] dark:text-[#34D399] group-hover:-translate-x-1 transition-transform flex-shrink-0">
@@ -39,7 +39,7 @@ export default function PagePagination({ prev, next }) {
         {next && (
           <Link
             href={next.path}
-            className="group flex-1 flex items-center justify-between sm:justify-end gap-3.5 p-4 sm:p-5 rounded-2xl border border-slate-200 dark:border-[#26372F] bg-white dark:bg-[#111B17] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 hover:bg-slate-50 dark:hover:bg-[#16221D] transition-all shadow-sm text-right focus:outline-none focus:ring-2 focus:ring-[#065F46] dark:focus:ring-[#34D399]"
+            className="group flex-1 flex items-center justify-between sm:justify-end gap-4 p-4 sm:p-6 rounded-2xl border border-slate-200 dark:border-[#26372F] bg-white dark:bg-[#111B17] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 hover:bg-slate-50 dark:hover:bg-[#16221D] transition-all shadow-sm text-right focus:outline-none focus:ring-2 focus:ring-[#065F46] dark:focus:ring-[#34D399]"
             aria-label={`Next page: ${next.label}`}
           >
             <div className="flex flex-col text-left sm:text-right">
