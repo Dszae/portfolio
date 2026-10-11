@@ -276,7 +276,7 @@ export default function Home() {
                   </div>
                   <h3 className="text-xl font-bold text-[#0F172A] dark:text-[#F9FAFB] mb-2">Resume</h3>
                   <p className="text-sm text-[#1E293B] dark:text-[#A7B0BE] leading-relaxed mb-6">
-                    Complete curriculum vitae, work milestones in video editing & motion design, academic credentials, and direct CV download.
+                    Complete curriculum vitae, work milestones at Clamphook Academy, academic history at IOE Thapathali Campus, and direct CV download options.
                   </p>
                 </div>
                 <Link href="/resume" className="inline-flex items-center gap-2 text-sm font-semibold text-[#065F46] dark:text-[#34D399] hover:underline group">

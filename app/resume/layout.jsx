@@ -1,6 +1,6 @@
 export const metadata = {
   title: 'Resume',
-  description: 'Career journey, work experience, and educational background of Dipesh Sapkota (dszae) — Programmer, Video Editor, and Graphic Designer. Download full CV.',
+  description: 'Career journey, work experience, and educational background of Dipesh Sapkota (dszae) at IOE Thapathali Campus and Clamphook Academy. Download full CV.',
   alternates: { canonical: '/resume' },
   openGraph: {
     title: 'Resume | Dipesh Sapkota',
