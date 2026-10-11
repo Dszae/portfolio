@@ -140,6 +140,11 @@ const pages = [
 // and may show them as sitelinks for dipeshsapkota7.com.np
 const externalPages = [
   {
+    url: 'https://sportivo.dipeshsapkota7.com.np/',
+    priority: '0.9',
+    changefreq: 'weekly',
+  },
+  {
     url: 'https://ioe-admission.dipeshsapkota7.com.np/',
     priority: '0.9',
     changefreq: 'weekly',

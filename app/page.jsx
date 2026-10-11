@@ -52,6 +52,27 @@ const SKILLS_PREVIEW = [
   }
 ];
 
+const FEATURED_PROJECTS = [
+  {
+    name: "Sportivo",
+    description: "Real-time live sports streaming and match schedule platform with resilient multi-server switching.",
+    href: "/projects/sportivo",
+    image: "/sportivo-preview.jpg",
+  },
+  {
+    name: "IOE Admission Guide (Admission Hub)",
+    description: "Engineering admission portal with historical cutoff analytics, rank prediction, and counseling tools.",
+    href: "/projects/ioe-admission-guide",
+    image: "/ioe-preview.jpg",
+  },
+  {
+    name: "Git Visualizer",
+    description: "Interactive canvas tool that explains Git commits, branches, merges, and HEAD movement through DAGs.",
+    href: "/projects/git-visualizer",
+    image: "/git-preview.jpg",
+  },
+];
+
 export default function Home() {
   return (
     <SiteLayout>
@@ -164,6 +185,48 @@ export default function Home() {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                       </svg>
                     </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section id="featured-projects" className="px-6 py-16 sm:px-10 lg:px-16" aria-labelledby="featured-projects-heading">
+            <div className="mx-auto max-w-6xl">
+              <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+                <div>
+                  <p className="section-eyebrow">Selected work by Dipesh Sapkota</p>
+                  <h2 id="featured-projects-heading" className="mt-2 text-3xl font-bold tracking-tight text-[#0F172A] dark:text-white">
+                    Featured Engineering Projects
+                  </h2>
+                  <p className="mt-3 max-w-2xl text-[#475569] dark:text-[#A7B0BE]">
+                    Explore Sportivo, the IOE Admission Guide admission hub, and Git Visualizer built by Dipesh Sapkota.
+                  </p>
+                </div>
+                <Link href="/projects" className="font-mono text-sm font-semibold text-[#065F46] hover:underline dark:text-[#34D399]">
+                  View all projects &rarr;
+                </Link>
+              </div>
+              <div className="grid gap-6 md:grid-cols-3">
+                {FEATURED_PROJECTS.map((project) => (
+                  <Link
+                    key={project.name}
+                    href={project.href}
+                    className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:border-[#222933] dark:bg-[#0F1216]"
+                  >
+                    <Image
+                      src={project.image}
+                      alt={`${project.name} by Dipesh Sapkota`}
+                      width={993}
+                      height={450}
+                      className="h-40 w-full object-cover"
+                    />
+                    <div className="p-5">
+                      <h3 className="text-xl font-semibold text-[#0F172A] group-hover:text-[#065F46] dark:text-white dark:group-hover:text-[#34D399]">
+                        {project.name}
+                      </h3>
+                      <p className="mt-2 text-sm leading-6 text-[#475569] dark:text-[#A7B0BE]">{project.description}</p>
+                    </div>
                   </Link>
                 ))}
               </div>
