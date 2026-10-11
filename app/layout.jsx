@@ -17,10 +17,10 @@ import './globals.css';
 export const metadata = {
   metadataBase: new URL('https://www.dipeshsapkota7.com.np'),
   title: {
-    default: 'Dipesh Sapkota | Computer Engineering Student & AI/ML Enthusiast',
+    default: 'Dipesh Sapkota | IOE Admission Hub & Git Visualizer',
     template: '%s | Dipesh Sapkota',
   },
-  description: 'Official portfolio of Dipesh Sapkota, a Computer Engineering student and AI/ML enthusiast at IOE Thapathali Campus, Nepal. Explore AI/ML projects, technical engineering pursuits, and creative work.',
+  description: 'Official portfolio of Dipesh Sapkota featuring software projects including IOE Admission Hub and Git Visualizer, alongside technical engineering and creative work.',
   authors: [{ name: 'Dipesh Sapkota' }],
   creator: 'Dipesh Sapkota',
   publisher: 'Dipesh Sapkota',
@@ -103,8 +103,8 @@ export const metadata = {
     url: 'https://www.dipeshsapkota7.com.np/',
     siteName: 'Dipesh Sapkota',
     locale: 'en_US',
-    title: 'Dipesh Sapkota | Computer Engineering Student & AI/ML Enthusiast',
-    description: 'Official portfolio of Dipesh Sapkota, a Computer Engineering student and AI/ML enthusiast at IOE Thapathali Campus, Nepal. Explore AI/ML projects, technical engineering pursuits, and creative work.',
+    title: 'Dipesh Sapkota | IOE Admission Hub & Git Visualizer',
+    description: 'Official portfolio of Dipesh Sapkota featuring software projects including IOE Admission Hub and Git Visualizer, alongside technical engineering and creative work.',
     images: [
       {
         url: 'https://www.dipeshsapkota7.com.np/dipesh-sapkota.jpg',
@@ -117,8 +117,8 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     url: 'https://www.dipeshsapkota7.com.np/',
-    title: 'Dipesh Sapkota | Computer Engineering Student & AI/ML Enthusiast',
-    description: 'Official portfolio of Dipesh Sapkota, a Computer Engineering student and AI/ML enthusiast at IOE Thapathali Campus, Nepal. Explore AI/ML projects, technical engineering pursuits, and creative work.',
+    title: 'Dipesh Sapkota | IOE Admission Hub & Git Visualizer',
+    description: 'Official portfolio of Dipesh Sapkota featuring software projects including IOE Admission Hub and Git Visualizer, alongside technical engineering and creative work.',
     images: ['https://www.dipeshsapkota7.com.np/dipesh-sapkota.jpg'],
     creator: '@DszAe18',
     site: '@DszAe18',

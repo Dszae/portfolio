@@ -1,5 +1,5 @@
 export const siteUrl = 'https://www.dipeshsapkota7.com.np';
-export const personId = `${siteUrl}/#person`;
+export const personId = `${siteUrl}/#author`;
 export const websiteId = `${siteUrl}/#website`;
 export const imageId = `${siteUrl}/#primary-image`;
 
@@ -258,20 +258,38 @@ export const homePageSchema = {
           position: 2,
           name: 'IOE Admission Guide (Admission Hub)',
           description: 'Engineering admission portal with rank prediction, cutoff analytics, and counseling tools created by Dipesh Sapkota.',
-          url: `${siteUrl}/projects/ioe-admission-guide`,
+          url: 'https://ioe-admission.dipeshsapkota7.com.np/',
           image: `${siteUrl}/ioe-preview.jpg`,
+          author: { '@id': personId },
           creator: { '@id': personId },
-          sameAs: 'https://ioe-admission.dipeshsapkota7.com.np/',
         },
         {
           '@type': 'SoftwareApplication',
           position: 3,
           name: 'Git Visualizer',
           description: 'Interactive Git version-control and DAG learning tool created by Dipesh Sapkota.',
-          url: `${siteUrl}/projects/git-visualizer`,
+          url: 'https://git-visualizer.dipeshsapkota7.com.np/',
           image: `${siteUrl}/git-preview.jpg`,
+          author: { '@id': personId },
           creator: { '@id': personId },
-          sameAs: 'https://git-visualizer.dipeshsapkota7.com.np/',
+        },
+        {
+          '@type': 'WebApplication',
+          '@id': 'https://ioe-admission.dipeshsapkota7.com.np/#app',
+          name: 'IOE Admission Hub',
+          description: 'An admission toolkit for Institute of Engineering applicants featuring rank prediction, campus exploration, priority planning, CBT score calculation, and counseling guidance.',
+          url: 'https://ioe-admission.dipeshsapkota7.com.np/',
+          author: { '@id': personId },
+          creator: { '@id': personId },
+        },
+        {
+          '@type': 'WebApplication',
+          '@id': 'https://git-visualizer.dipeshsapkota7.com.np/#app',
+          name: 'Git Visualizer',
+          description: 'An interactive Git learning platform featuring a live commit graph, deterministic Git command simulator, guided lessons, safe undo tools, command reference, and a visual explanation of how Git moves code between repository stages.',
+          url: 'https://git-visualizer.dipeshsapkota7.com.np/',
+          author: { '@id': personId },
+          creator: { '@id': personId },
         },
       ],
     },

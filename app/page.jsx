@@ -60,16 +60,18 @@ const FEATURED_PROJECTS = [
     image: "/sportivo-preview.jpg",
   },
   {
-    name: "IOE Admission Guide (Admission Hub)",
-    description: "Engineering admission portal with historical cutoff analytics, rank prediction, and counseling tools.",
-    href: "/projects/ioe-admission-guide",
+    name: "IOE Admission Hub",
+    description: "An admission toolkit for Institute of Engineering applicants featuring rank prediction, campus exploration, priority planning, CBT score calculation, and counseling guidance.",
+    href: "https://ioe-admission.dipeshsapkota7.com.np/",
     image: "/ioe-preview.jpg",
+    linkLabel: "Explore IOE Admission Hub",
   },
   {
     name: "Git Visualizer",
-    description: "Interactive canvas tool that explains Git commits, branches, merges, and HEAD movement through DAGs.",
-    href: "/projects/git-visualizer",
+    description: "An interactive Git learning platform featuring a live commit graph, deterministic Git command simulator, guided lessons, safe undo tools, command reference, and a visual explanation of how Git moves code between repository stages.",
+    href: "https://git-visualizer.dipeshsapkota7.com.np/",
     image: "/git-preview.jpg",
+    linkLabel: "Explore Git Visualizer",
   },
 ];
 
@@ -209,9 +211,11 @@ export default function Home() {
               </div>
               <div className="grid gap-6 md:grid-cols-3">
                 {FEATURED_PROJECTS.map((project) => (
-                  <Link
+                  <a
                     key={project.name}
                     href={project.href}
+                    target={project.href.startsWith('https://') ? '_blank' : undefined}
+                    rel={project.href.startsWith('https://') ? 'noopener noreferrer' : undefined}
                     className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:border-[#222933] dark:bg-[#0F1216]"
                   >
                     <Image
@@ -226,8 +230,13 @@ export default function Home() {
                         {project.name}
                       </h3>
                       <p className="mt-2 text-sm leading-6 text-[#475569] dark:text-[#A7B0BE]">{project.description}</p>
+                      {project.linkLabel && (
+                        <span className="mt-4 inline-flex font-mono text-sm font-semibold text-[#065F46] group-hover:underline dark:text-[#34D399]">
+                          {project.linkLabel} &rarr;
+                        </span>
+                      )}
                     </div>
-                  </Link>
+                  </a>
                 ))}
               </div>
             </div>
