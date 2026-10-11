@@ -96,6 +96,8 @@ export const metadata = {
     title: 'Dipesh Sapkota | Computer Engineering Student & AI/ML Enthusiast',
     description: 'Official portfolio of Dipesh Sapkota, a Computer Engineering student and AI/ML enthusiast at IOE Thapathali Campus, Nepal. Explore AI/ML projects, technical engineering pursuits, and creative work.',
     images: ['https://www.dipeshsapkota7.com.np/dipesh-sapkota.jpg'],
+    creator: '@DszAe18',
+    site: '@DszAe18',
   },
   verification: {
     google: 'E6jJLG4IQhyyDHiocZ2ca38GtjN1bOMrQGIctSGJvZ8',

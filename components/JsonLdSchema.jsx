@@ -53,7 +53,7 @@ export const person = {
     'https://www.linkedin.com/in/dszae',
     'https://dev.to/dszae',
     'https://www.youtube.com/@dszae',
-    'https://x.com/dsz_ae',
+    'https://x.com/DszAe18',
     'https://instagram.com/dsz.ae',
     'https://facebook.com/dsz.ae',
     'https://tiktok.com/@dsz_ae',
