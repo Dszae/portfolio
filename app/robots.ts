@@ -58,6 +58,14 @@ export default function robots(): MetadataRoute.Robots {
         },
       },
       {
+        userAgent: 'Cloudflare-AI-Search',
+        allow: '/',
+        disallow: '/api/',
+        other: {
+          'Content-Signal': 'ai-train=no, search=yes, ai-input=yes',
+        },
+      },
+      {
         userAgent: '*',
         allow: '/',
         disallow: '/api/',
