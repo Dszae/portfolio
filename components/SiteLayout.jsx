@@ -60,20 +60,27 @@ function ScrollToTopButton() {
 function LightboxModal({ image, onClose }) {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [activeIdx, setActiveIdx] = useState(image?.index ?? 0);
+  const [isZoomed, setIsZoomed] = useState(false);
 
   const items = image?.items;
   const hasItems = Array.isArray(items) && items.length > 0;
   const currentItem = hasItems && items[activeIdx] ? items[activeIdx] : image;
   const totalCount = hasItems ? items.length : 1;
 
+  // Touch swipe gesture refs
+  const touchStartX = useRef(null);
+  const touchStartY = useRef(null);
+
   useEffect(() => {
     setImageLoaded(false);
+    setIsZoomed(false);
   }, [currentItem?.src]);
 
   const handlePrev = (e) => {
     if (e) e.stopPropagation();
     if (!hasItems) return;
     setImageLoaded(false);
+    setIsZoomed(false);
     setActiveIdx((prev) => (prev > 0 ? prev - 1 : items.length - 1));
   };
 
@@ -81,7 +88,39 @@ function LightboxModal({ image, onClose }) {
     if (e) e.stopPropagation();
     if (!hasItems) return;
     setImageLoaded(false);
+    setIsZoomed(false);
     setActiveIdx((prev) => (prev < items.length - 1 ? prev + 1 : 0));
+  };
+
+  const handleTouchStart = (e) => {
+    if (e.touches && e.touches.length > 0) {
+      touchStartX.current = e.touches[0].clientX;
+      touchStartY.current = e.touches[0].clientY;
+    }
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartX.current === null || touchStartY.current === null) return;
+    const touch = e.changedTouches && e.changedTouches[0];
+    if (!touch) return;
+    const deltaX = touchStartX.current - touch.clientX;
+    const deltaY = touchStartY.current - touch.clientY;
+
+    // Horizontal swipe (left for next, right for prev)
+    if (Math.abs(deltaX) > 35 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) {
+      if (deltaX > 0 && hasItems) {
+        handleNext();
+      } else if (deltaX < 0 && hasItems) {
+        handlePrev();
+      }
+    }
+    // Vertical swipe down to close modal (only if not zoomed)
+    else if (!isZoomed && deltaY < -75 && Math.abs(deltaY) > Math.abs(deltaX) * 1.5) {
+      onClose();
+    }
+
+    touchStartX.current = null;
+    touchStartY.current = null;
   };
 
   useEffect(() => {
@@ -104,7 +143,7 @@ function LightboxModal({ image, onClose }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.22, ease: 'easeOut' }}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 backdrop-blur-md p-3 sm:p-6 md:p-8 cursor-pointer"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md p-1.5 sm:p-6 md:p-8 cursor-pointer"
       onClick={onClose}
     >
       <motion.div 
@@ -114,39 +153,64 @@ function LightboxModal({ image, onClose }) {
         exit={{ opacity: 0, scale: 0.94, y: 12 }}
         transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
         onClick={(e) => e.stopPropagation()}
-        className="relative w-[95vw] max-w-5xl lg:max-w-6xl max-h-[92vh] flex flex-col bg-[#0B0F0E] border border-white/15 dark:border-[#34D399]/30 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden cursor-default select-none"
+        className="relative w-full max-w-[98vw] sm:max-w-5xl lg:max-w-6xl max-h-[95vh] sm:max-h-[92vh] flex flex-col bg-[#0B0F0E] border border-white/15 dark:border-[#34D399]/30 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden cursor-default select-none"
       >
         {/* Modal Top Toolbar */}
-        <div className="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-white/10 dark:border-[#26352F] bg-[#0F172A]/70 dark:bg-[#0B0F0E]/80 backdrop-blur-sm z-20">
-          <div className="flex items-center gap-3">
-            <span className="text-xs font-mono uppercase tracking-wider text-[#34D399] bg-[#34D399]/15 px-2.5 py-1 rounded border border-[#34D399]/30 font-semibold">
+        <div className="flex-shrink-0 flex items-center justify-between px-3.5 sm:px-6 py-2.5 sm:py-3 border-b border-white/10 dark:border-[#26352F] bg-[#0F172A]/80 dark:bg-[#0B0F0E]/90 backdrop-blur-sm z-20">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+            <span className="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-[#34D399] bg-[#34D399]/15 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded border border-[#34D399]/30 font-semibold truncate max-w-[130px] sm:max-w-none">
               {currentItem?.desc || 'Preview'}
             </span>
             {hasItems && (
-              <span className="text-xs font-mono text-slate-400">
-                {activeIdx + 1} of {totalCount}
+              <span className="text-[11px] sm:text-xs font-mono text-slate-400">
+                {activeIdx + 1}/{totalCount}
               </span>
             )}
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            {/* Zoom toggle button */}
+            <button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); setIsZoomed((z) => !z); }}
+              aria-label={isZoomed ? "Zoom out" : "Zoom in"}
+              className={`p-2 rounded-lg text-xs font-mono transition-colors flex items-center gap-1 focus:outline-none focus:ring-2 focus:ring-[#34D399] ${
+                isZoomed 
+                  ? 'bg-[#34D399] text-[#0B0F0E] font-bold' 
+                  : 'text-slate-300 hover:text-white bg-white/10 hover:bg-white/15'
+              }`}
+              title={isZoomed ? "Zoom out" : "Zoom in"}
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {isZoomed ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM13 10H7" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
+                )}
+              </svg>
+              <span className="hidden sm:inline">{isZoomed ? 'Zoom Out' : 'Zoom In'}</span>
+            </button>
+
+            {/* Open full resolution in new tab */}
             <a
               href={currentItem?.src}
               target="_blank"
               rel="noreferrer"
-              className="p-2 text-slate-300 hover:text-white rounded-lg hover:bg-white/10 transition-colors text-xs flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-[#34D399]"
+              className="p-2 text-slate-300 hover:text-white rounded-lg bg-white/10 hover:bg-white/15 transition-colors text-xs flex items-center gap-1 focus:outline-none focus:ring-2 focus:ring-[#34D399]"
               title="Open full resolution in new tab"
               aria-label="Open full resolution in new tab"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
-              <span className="hidden sm:inline font-mono text-xs">Full Size</span>
+              <span className="hidden sm:inline font-mono">Full Size</span>
             </a>
+
+            {/* Close button with large touch target */}
             <button
               type="button"
               onClick={onClose}
               aria-label="Close modal"
-              className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-[#34D399]"
+              className="w-9 h-9 sm:w-8 sm:h-8 flex items-center justify-center text-slate-300 hover:text-white rounded-lg bg-white/10 hover:bg-white/20 active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-[#34D399]"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
@@ -155,8 +219,15 @@ function LightboxModal({ image, onClose }) {
           </div>
         </div>
 
-        {/* Image Box - Strictly Fixed Reserved Height: Never Collapses, Never Shifts */}
-        <div className="relative w-full h-[52vh] sm:h-[60vh] md:h-[66vh] lg:h-[70vh] flex items-center justify-center bg-black/60 overflow-hidden">
+        {/* Image Box - Adaptive Height with Touch Swiping */}
+        <div 
+          className={`relative w-full h-[50vh] sm:h-[60vh] md:h-[66vh] lg:h-[70vh] min-h-[240px] flex items-center justify-center bg-black/80 select-none ${
+            isZoomed ? 'overflow-auto touch-pan-x touch-pan-y' : 'overflow-hidden touch-pan-y'
+          }`}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          onDoubleClick={() => setIsZoomed((z) => !z)}
+        >
           {/* Skeleton loading state with spinner */}
           {!imageLoaded && (
             <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#0B0F0E] z-10">
@@ -170,23 +241,23 @@ function LightboxModal({ image, onClose }) {
             src={currentItem?.src} 
             alt={currentItem?.alt || currentItem?.title || 'Preview'} 
             fill
-            sizes="(max-width: 1280px) 95vw, 1280px"
+            sizes="(max-width: 640px) 98vw, (max-width: 1280px) 95vw, 1280px"
             loading="eager" 
             priority
             onLoad={() => setImageLoaded(true)}
-            className={`object-contain p-2 sm:p-4 block transition-opacity duration-300 ease-out ${
+            className={`object-contain p-2 sm:p-4 block transition-all duration-300 ease-out ${
               imageLoaded ? 'opacity-100' : 'opacity-0'
-            }`} 
+            } ${isZoomed ? 'scale-[1.75] sm:scale-150 cursor-zoom-out' : 'scale-100 cursor-zoom-in'}`} 
           />
 
-          {/* Prev / Next buttons if multiple items */}
+          {/* Desktop-only floating side arrows (hidden on mobile so they don't cover content) */}
           {hasItems && (
             <>
               <button
                 type="button"
                 onClick={handlePrev}
                 aria-label="Previous image"
-                className="absolute left-3 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-full bg-black/60 hover:bg-[#065F46] dark:hover:bg-[#34D399] text-white dark:hover:text-[#0B0F0E] border border-white/10 hover:border-transparent backdrop-blur transition-all focus:outline-none focus:ring-2 focus:ring-[#34D399]"
+                className="hidden sm:flex absolute left-3 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-full bg-black/60 hover:bg-[#065F46] dark:hover:bg-[#34D399] text-white dark:hover:text-[#0B0F0E] border border-white/10 hover:border-transparent backdrop-blur transition-all focus:outline-none focus:ring-2 focus:ring-[#34D399]"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
@@ -196,7 +267,7 @@ function LightboxModal({ image, onClose }) {
                 type="button"
                 onClick={handleNext}
                 aria-label="Next image"
-                className="absolute right-3 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-full bg-black/60 hover:bg-[#065F46] dark:hover:bg-[#34D399] text-white dark:hover:text-[#0B0F0E] border border-white/10 hover:border-transparent backdrop-blur transition-all focus:outline-none focus:ring-2 focus:ring-[#34D399]"
+                className="hidden sm:flex absolute right-3 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-full bg-black/60 hover:bg-[#065F46] dark:hover:bg-[#34D399] text-white dark:hover:text-[#0B0F0E] border border-white/10 hover:border-transparent backdrop-blur transition-all focus:outline-none focus:ring-2 focus:ring-[#34D399]"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
@@ -206,18 +277,46 @@ function LightboxModal({ image, onClose }) {
           )}
         </div>
         
-        {/* Fixed Caption Bar permanently anchored at bottom */}
-        <div className="px-5 sm:px-6 py-4 bg-[#0F172A]/90 dark:bg-[#111B17]/90 border-t border-white/10 dark:border-[#26352F] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-          <div>
-            <h3 className="text-base sm:text-lg md:text-xl font-semibold text-[#F5F7F5]">{currentItem?.title}</h3>
+        {/* Caption Bar with Thumb-Friendly Bottom Navigation on Mobile & Desktop */}
+        <div className="flex-shrink-0 px-4 sm:px-6 py-3 sm:py-3.5 bg-[#0F172A]/90 dark:bg-[#111B17]/90 border-t border-white/10 dark:border-[#26352F] flex items-center justify-between gap-3">
+          <div className="min-w-0 flex-1">
+            <h3 className="text-sm sm:text-base md:text-xl font-semibold text-[#F5F7F5] line-clamp-1 sm:line-clamp-2 leading-snug">
+              {currentItem?.title}
+            </h3>
             {currentItem?.desc && (
-              <p className="text-xs sm:text-sm text-[#065F46] dark:text-[#34D399] font-mono tracking-wide font-medium mt-0.5">{currentItem?.desc}</p>
+              <p className="text-[11px] sm:text-xs md:text-sm text-[#065F46] dark:text-[#34D399] font-mono tracking-wide font-medium mt-0.5 truncate">
+                {currentItem?.desc}
+              </p>
             )}
           </div>
+
+          {/* Thumb-friendly mobile navigation controls (always reachable with thumb) */}
           {hasItems && (
-            <span className="hidden sm:inline-block text-xs font-mono text-slate-400">
-              Use &larr; &rarr; keys to browse
-            </span>
+            <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
+              <button
+                type="button"
+                onClick={handlePrev}
+                aria-label="Previous image"
+                className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-white/10 hover:bg-white/20 active:scale-90 text-white flex items-center justify-center transition-all focus:outline-none focus:ring-2 focus:ring-[#34D399]"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <span className="font-mono text-xs text-slate-300 px-1 sm:px-2 min-w-[2.5rem] sm:min-w-[3rem] text-center">
+                {activeIdx + 1}/{totalCount}
+              </span>
+              <button
+                type="button"
+                onClick={handleNext}
+                aria-label="Next image"
+                className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-white/10 hover:bg-white/20 active:scale-90 text-white flex items-center justify-center transition-all focus:outline-none focus:ring-2 focus:ring-[#34D399]"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
           )}
         </div>
       </motion.div>
