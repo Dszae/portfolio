@@ -40,7 +40,7 @@ export default function BlogPage() {
 
           <ul className="space-y-6">
             {/* DEV Community Featured Publication */}
-            <li className="p-6 sm:p-8 rounded-2xl border border-[#CBD5E1] dark:border-[#26352F] bg-white dark:bg-[#111B17] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all shadow-sm">
+            <li className="p-6 sm:p-8 rounded-2xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all shadow-sm">
               <div className="flex items-center gap-3 mb-3">
                 <span className="font-mono text-[11px] font-semibold uppercase tracking-wider text-[#065F46] dark:text-[#34D399] bg-[#065F46]/10 dark:bg-[#34D399]/15 px-2.5 py-0.5 rounded border border-[#065F46]/20 dark:border-[#34D399]/30">
                   DEV Community
@@ -61,7 +61,7 @@ export default function BlogPage() {
             </li>
 
             {/* Sportivo Engineering Deep Dive */}
-            <li className="p-6 sm:p-8 rounded-2xl border border-[#CBD5E1] dark:border-[#26352F] bg-white dark:bg-[#111B17] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all shadow-sm">
+            <li className="p-6 sm:p-8 rounded-2xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all shadow-sm">
               <div className="flex items-center gap-3 mb-3">
                 <span className="font-mono text-[11px] font-semibold uppercase tracking-wider text-[#065F46] dark:text-[#34D399] bg-[#065F46]/10 dark:bg-[#34D399]/15 px-2.5 py-0.5 rounded border border-[#065F46]/20 dark:border-[#34D399]/30">
                   Technical Architecture
@@ -80,7 +80,7 @@ export default function BlogPage() {
             </li>
 
             {/* Git Visualizer Technical Article */}
-            <li className="p-6 sm:p-8 rounded-2xl border border-[#CBD5E1] dark:border-[#26352F] bg-white dark:bg-[#111B17] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all shadow-sm">
+            <li className="p-6 sm:p-8 rounded-2xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all shadow-sm">
               <div className="flex items-center gap-3 mb-3">
                 <span className="font-mono text-[11px] font-semibold uppercase tracking-wider text-[#065F46] dark:text-[#34D399] bg-[#065F46]/10 dark:bg-[#34D399]/15 px-2.5 py-0.5 rounded border border-[#065F46]/20 dark:border-[#34D399]/30">
                   Data Structures &amp; DAG

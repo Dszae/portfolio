@@ -21,7 +21,7 @@ export default function ImageLicensingPage() {
         <div className="max-w-3xl mx-auto w-full">
           <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Image Licensing', path: '/image-licensing' }]} />
           
-          <div className="p-6 sm:p-10 rounded-2xl sm:rounded-3xl border border-[#CBD5E1] dark:border-[#26352F] bg-white dark:bg-[#111B17] shadow-sm">
+          <div className="p-6 sm:p-10 rounded-2xl sm:rounded-3xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] shadow-sm">
             <h1 className="text-3xl sm:text-4xl font-bold mb-6 tracking-tight text-[#0F172A] dark:text-[#F9FAFB] flex items-center gap-3">
               <span className="text-[#065F46] dark:text-[#34D399]">/</span> Image Licensing &amp; Rights
             </h1>

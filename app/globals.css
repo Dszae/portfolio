@@ -37,21 +37,21 @@
 
 html.dark {
   color-scheme: dark;
-  --page-bg: #0B0F0E;
-  --surface-main: #111B17;
-  --surface-elevated: #111B17;
-  --surface-secondary: #16221D;
-  --text-primary: #F9FAFB;
-  --text-secondary: #A7B0BE;
-  --text-muted: #94A3B8;
-  --accent-primary: #34D399;
+  --page-bg: #090B0E;
+  --surface-main: #0F1216;
+  --surface-elevated: #13171D;
+  --surface-secondary: #181D24;
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  --accent-primary: #10B981;
   --accent-strong: #34D399;
   --accent-bright: #6EE7B7;
-  --accent-on: #0B0F0E;
-  --border-default: #26352F;
+  --accent-on: #090B0E;
+  --border-default: #222933;
   --focus-ring: #34D399;
-  --shadow-subtle: 0 16px 36px rgb(0 0 0 / 20%);
-  --nav-surface: #0B0F0E;
+  --shadow-subtle: 0 16px 36px rgb(0 0 0 / 30%);
+  --nav-surface: #090B0E;
 }
 
 @layer base {
@@ -323,7 +323,7 @@ html {
   position: fixed;
   z-index: 55;
   inset: 72px 0 0;
-  background: rgb(4 10 7 / 65%);
+  background: rgb(0 0 0 / 70%);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 }

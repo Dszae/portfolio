@@ -88,7 +88,7 @@ export default function MotorModelingPage() {
             </p>
 
             {/* Quick Specs Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-[#26352F] bg-white dark:bg-[#111B17] shadow-sm mb-8 font-mono text-xs">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] shadow-sm mb-8 font-mono text-xs">
               <div>
                 <span className="text-[#64748B] dark:text-[#94A3B8] block mb-1">Machine Class</span>
                 <strong className="text-[#0F172A] dark:text-[#F9FAFB]">3-Phase Squirrel Cage</strong>
@@ -117,8 +117,8 @@ export default function MotorModelingPage() {
               <p className="leading-relaxed text-base sm:text-lg">
                 {"The per-phase steady-state model of a polyphase induction motor transforms electromagnetic stator-rotor coupling into a generalized transformer circuit with a slip-dependent resistive mechanical load component $R_2' \\cdot \\frac{1 - s}{s}$."}
               </p>
-              <div className="p-6 rounded-2xl border border-slate-200 dark:border-[#26352F] bg-[#0E1612] font-mono text-xs sm:text-sm text-slate-300 space-y-3">
-                <div className="text-[#34D399] font-bold pb-2 border-b border-[#26352F]">Thevenin Equivalent Stator Formulation:</div>
+              <div className="p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-[#090B0E] font-mono text-xs sm:text-sm text-slate-300 space-y-3">
+                <div className="text-[#34D399] font-bold pb-2 border-b border-[#222933]">Thevenin Equivalent Stator Formulation:</div>
                 <div>{"Converting the stator impedance ($R_1 + jX_1$) and shunt magnetizing branch ($jX_m$) into a Thevenin equivalent circuit:"}</div>
                 <div className="text-[#34D399] pl-4">{"$$V_{th} = V_{phase} \\cdot \\left| \\frac{jX_m}{R_1 + j(X_1 + X_m)} \\right|$$"}</div>
                 <div className="text-[#34D399] pl-4">{"$$Z_{th} = R_{th} + jX_{th} = \\frac{jX_m \\cdot (R_1 + jX_1)}{R_1 + j(X_1 + X_m)}$$"}</div>
@@ -147,7 +147,7 @@ export default function MotorModelingPage() {
               <p className="leading-relaxed text-base sm:text-lg">
                 {"Differentiating $T_{em}$ with respect to slip $s$ yields the maximum pull-out breakdown slip $s_{max}$:"}
               </p>
-              <div className="p-4 rounded-xl border border-slate-200 dark:border-[#26352F] bg-slate-50 dark:bg-[#111B17] font-mono text-sm text-[#065F46] dark:text-[#34D399]">
+              <div className="p-4 rounded-xl border border-slate-200 dark:border-[#222933] bg-slate-50 dark:bg-[#0F1216] font-mono text-sm text-[#065F46] dark:text-[#34D399]">
                 {"$$s_{max} = \\frac{R_2'}{\\sqrt{R_{th}^2 + (X_{th} + X_2')^2}}$$"}
               </div>
               <p className="leading-relaxed text-base sm:text-lg">

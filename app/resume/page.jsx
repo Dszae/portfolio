@@ -73,7 +73,7 @@ export default function ResumePage() {
                     href="/my_cv.pdf"
                     download="Dipesh_Sapkota_CV.pdf"
                     aria-label="Download CV (PDF document, 105 KB)"
-                    className="self-start sm:self-auto px-6 py-3 bg-[#065F46] hover:bg-[#044E39] dark:bg-[#34D399] dark:hover:bg-[#6EE7B7] text-white dark:text-[#0B0F0E] font-semibold rounded-xl transition-all hover:-translate-y-1 flex items-center gap-2 shadow-sm font-sans cursor-pointer"
+                    className="self-start sm:self-auto px-6 py-3 bg-[#065F46] hover:bg-[#044E39] dark:bg-[#34D399] dark:hover:bg-[#6EE7B7] text-white dark:text-[#090B0E] font-semibold rounded-xl transition-all hover:-translate-y-1 flex items-center gap-2 shadow-sm font-sans cursor-pointer"
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                     <span>Download CV <span className="text-xs font-mono font-normal opacity-85">(PDF)</span></span>
@@ -93,7 +93,7 @@ export default function ResumePage() {
                           key={index} 
                           className="relative pb-2 group cursor-default"
                         >
-                          <div className="absolute -left-[31px] top-5 w-3.5 h-3.5 bg-[#065F46] dark:bg-[#34D399] rounded-full border-4 border-white dark:border-[#0B0F0E]"></div>
+                          <div className="absolute -left-[31px] top-5 w-3.5 h-3.5 bg-[#065F46] dark:bg-[#34D399] rounded-full border-4 border-white dark:border-[#090B0E]"></div>
                           
                           <div className={`p-6 rounded-2xl transition-all duration-200 border group-hover:shadow-md ${theme.card}`}>
                             <div className="flex items-center gap-4">
@@ -112,10 +112,10 @@ export default function ResumePage() {
                                 </div>
                               )}
                               <div className="flex-1">
-                                <span className="inline-block px-3 py-1 text-[11px] sm:text-xs font-semibold rounded-md mb-2 bg-[#F1F5F9] dark:bg-[#16221D] text-[#0F172A] dark:text-[#34D399] border border-[#CBD5E1] dark:border-[#26352F]">
+                                <span className="inline-block px-3 py-1 text-[11px] sm:text-xs font-semibold rounded-md mb-2 bg-[#F1F5F9] dark:bg-[#181D24] text-[#0F172A] dark:text-[#34D399] border border-[#CBD5E1] dark:border-[#222933]">
                                   {exp.year}
                                 </span>
-                                <h3 className="text-lg sm:text-xl font-bold mb-1 text-[#0F172A] dark:text-[#F8FAFC]">{exp.role}</h3>
+                                <h3 className="text-lg sm:text-xl font-bold mb-1 text-[#0F172A] dark:text-[#F9FAFB]">{exp.role}</h3>
                                 <p className="text-xs sm:text-sm mb-2 font-medium text-[#065F46] dark:text-[#6EE7B7]">{exp.company}</p>
                                 <p className="text-sm leading-relaxed text-[#1E293B] dark:text-[#A7B0BE]">{exp.desc}</p>
                               </div>
@@ -137,7 +137,7 @@ export default function ResumePage() {
                           key={index} 
                           className="relative pb-2 group cursor-default"
                         >
-                          <div className="absolute -left-[31px] top-5 w-3.5 h-3.5 bg-[#065F46] dark:bg-[#34D399] rounded-full border-4 border-white dark:border-[#0B0F0E]"></div>
+                          <div className="absolute -left-[31px] top-5 w-3.5 h-3.5 bg-[#065F46] dark:bg-[#34D399] rounded-full border-4 border-white dark:border-[#090B0E]"></div>
                           
                           <div className={`p-6 rounded-2xl transition-all duration-200 border group-hover:shadow-md ${theme.card}`}>
                             <div className="flex items-center gap-4">
@@ -156,7 +156,7 @@ export default function ResumePage() {
                                 </div>
                               )}
                               <div className="flex-1">
-                                <span className="inline-block px-3 py-1 text-[11px] sm:text-xs font-semibold rounded-md mb-2 bg-[#F1F5F9] dark:bg-[#16221D] text-[#0F172A] dark:text-[#34D399] border border-[#CBD5E1] dark:border-[#26352F]">
+                                <span className="inline-block px-3 py-1 text-[11px] sm:text-xs font-semibold rounded-md mb-2 bg-[#F1F5F9] dark:bg-[#181D24] text-[#0F172A] dark:text-[#34D399] border border-[#CBD5E1] dark:border-[#222933]">
                                   {edu.year}
                                 </span>
                                 <h3 className="text-base sm:text-lg font-bold leading-tight mb-1 text-[#0F172A] dark:text-[#F8FAFC]">{edu.degree}</h3>

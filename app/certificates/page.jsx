@@ -48,7 +48,7 @@ export default function CertificatesPage() {
                         index: idx,
                       })}
                     >
-                      <div className={`aspect-[4/3] overflow-hidden rounded-xl border flex items-center justify-center mb-6 transition-colors duration-200 relative ${isDark ? 'border-[#26352F] bg-[#16221D] group-hover:border-[#34D399]/60' : 'border-[#CBD5E1] bg-[#F1F5F9] group-hover:border-[#065F46]/60'}`}>
+                      <div className={`aspect-[4/3] overflow-hidden rounded-xl border flex items-center justify-center mb-6 transition-colors duration-200 relative ${isDark ? 'border-[#222933] bg-[#181D24] group-hover:border-[#34D399]/60' : 'border-[#CBD5E1] bg-[#F1F5F9] group-hover:border-[#065F46]/60'}`}>
                         <Image 
                           src={cert.img} 
                           alt={`Certificate for ${cert.title} issued by ${cert.org}`} 
@@ -58,8 +58,8 @@ export default function CertificatesPage() {
                           decoding="async"
                           className="w-full h-full object-cover smooth-img-zoom" 
                         />
-                        <div className="absolute inset-0 bg-[#0B0F0E]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
-                          <div className="w-10 h-10 rounded-full bg-[#065F46] dark:bg-[#34D399] text-white dark:text-[#0B0F0E] flex items-center justify-center shadow-sm">
+                        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+                          <div className="w-10 h-10 rounded-full bg-[#065F46] dark:bg-[#34D399] text-white dark:text-[#090B0E] flex items-center justify-center shadow-sm">
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
                           </div>
                         </div>

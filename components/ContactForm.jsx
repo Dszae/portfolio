@@ -90,7 +90,7 @@ export default function ContactForm() {
             name="name"
             placeholder="John Doe"
             autoComplete="name"
-            className="w-full px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#26352F] bg-white dark:bg-[#111B17] text-[#0F172A] dark:text-[#F9FAFB] placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#065F46] dark:focus:ring-[#34D399] transition-all"
+            className="w-full px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] text-[#0F172A] dark:text-[#F9FAFB] placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#065F46] dark:focus:ring-[#34D399] transition-all"
             required
           />
         </div>
@@ -105,7 +105,7 @@ export default function ContactForm() {
             name="email"
             placeholder="john@example.com"
             autoComplete="email"
-            className="w-full px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#26352F] bg-white dark:bg-[#111B17] text-[#0F172A] dark:text-[#F9FAFB] placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#065F46] dark:focus:ring-[#34D399] transition-all"
+            className="w-full px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] text-[#0F172A] dark:text-[#F9FAFB] placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#065F46] dark:focus:ring-[#34D399] transition-all"
             required
           />
         </div>
@@ -120,7 +120,7 @@ export default function ContactForm() {
           name="message"
           rows={5}
           placeholder="Tell me about your project, idea, or collaboration..."
-          className="w-full px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#26352F] bg-white dark:bg-[#111B17] text-[#0F172A] dark:text-[#F9FAFB] placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#065F46] dark:focus:ring-[#34D399] transition-all resize-none"
+          className="w-full px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] text-[#0F172A] dark:text-[#F9FAFB] placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#065F46] dark:focus:ring-[#34D399] transition-all resize-none"
           required
         ></textarea>
       </div>
@@ -128,7 +128,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full py-4 px-8 bg-[#065F46] hover:bg-[#044E39] dark:bg-[#34D399] dark:hover:bg-[#6EE7B7] text-white dark:text-[#0B0F0E] font-semibold rounded-xl shadow-md transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#065F46] dark:focus:ring-[#34D399]"
+        className="w-full py-4 px-8 bg-[#065F46] hover:bg-[#044E39] dark:bg-[#34D399] dark:hover:bg-[#6EE7B7] text-white dark:text-[#090B0E] font-semibold rounded-xl shadow-md transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#065F46] dark:focus:ring-[#34D399]"
       >
         {isSubmitting ? (
           <>

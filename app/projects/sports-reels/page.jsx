@@ -98,7 +98,7 @@ export default function SportsReelsCaseStudyPage() {
             </p>
 
             {/* Metadata Matrix */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-[#26352F] bg-white dark:bg-[#111B17] shadow-sm mb-8 font-mono text-xs">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] shadow-sm mb-8 font-mono text-xs">
               <div>
                 <span className="text-[#64748B] dark:text-[#94A3B8] block mb-1">Role</span>
                 <strong className="text-[#0F172A] dark:text-[#F9FAFB]">Lead Video Editor &amp; Motion Designer</strong>
@@ -122,7 +122,7 @@ export default function SportsReelsCaseStudyPage() {
               {['Adobe Premiere Pro', 'Adobe After Effects', 'DaVinci Resolve Studio', 'Optical Flow Retiming', 'Multi-Layer Sound Design', 'iZotope RX Audio', 'Dynamic 9:16 Framing'].map((t) => (
                 <span
                   key={t}
-                  className="px-3 py-1 rounded-md text-xs font-mono font-medium bg-slate-100 dark:bg-[#16221D] text-[#334155] dark:text-[#CBD5E1] border border-slate-200 dark:border-[#26352F]"
+                  className="px-3 py-1 rounded-md text-xs font-mono font-medium bg-slate-100 dark:bg-[#181D24] text-[#334155] dark:text-[#CBD5E1] border border-slate-200 dark:border-[#222933]"
                 >
                   {t}
                 </span>
@@ -132,8 +132,8 @@ export default function SportsReelsCaseStudyPage() {
 
           {/* Interactive NLE Simulation Monitor */}
           <section className="mb-14" aria-labelledby="nle-monitor-heading">
-            <div className="rounded-2xl border border-slate-200 dark:border-[#26352F] bg-[#0A100D] p-5 sm:p-6 shadow-xl overflow-hidden font-mono text-slate-200">
-              <div className="flex items-center justify-between border-b border-[#26352F] pb-3 mb-4 text-xs">
+            <div className="rounded-2xl border border-slate-200 dark:border-[#222933] bg-[#090B0E] p-5 sm:p-6 shadow-xl overflow-hidden font-mono text-slate-200">
+              <div className="flex items-center justify-between border-b border-[#222933] pb-3 mb-4 text-xs">
                 <div className="flex items-center gap-2.5">
                   <span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse"></span>
                   <span className="font-bold text-red-400 uppercase tracking-wider">Multi-Track NLE Timeline Monitor</span>
@@ -145,9 +145,9 @@ export default function SportsReelsCaseStudyPage() {
               <div className="relative py-4 flex flex-col items-center justify-center">
                 <div className="w-full relative h-28 sm:h-32 flex items-center justify-center">
                   <svg className="w-full h-full overflow-visible" viewBox="0 0 500 100" fill="none">
-                    <line x1="0" y1="20" x2="500" y2="20" stroke="#1F2E27" strokeDasharray="4 4" />
-                    <line x1="0" y1="50" x2="500" y2="50" stroke="#1F2E27" strokeDasharray="4 4" />
-                    <line x1="0" y1="80" x2="500" y2="80" stroke="#1F2E27" strokeDasharray="4 4" />
+                    <line x1="0" y1="20" x2="500" y2="20" stroke="#1E293B" strokeDasharray="4 4" />
+                    <line x1="0" y1="50" x2="500" y2="50" stroke="#1E293B" strokeDasharray="4 4" />
+                    <line x1="0" y1="80" x2="500" y2="80" stroke="#1E293B" strokeDasharray="4 4" />
 
                     {/* Speed Ramp Bezier Curve */}
                     <path
@@ -156,17 +156,6 @@ export default function SportsReelsCaseStudyPage() {
                       strokeWidth="3"
                       fill="none"
                     />
-                    <path
-                      d="M 10 80 Q 100 80 140 30 T 250 15 T 360 40 Q 400 80 490 80 L 490 95 L 10 95 Z"
-                      fill="url(#caseEmeraldGlow)"
-                      opacity="0.2"
-                    />
-                    <defs>
-                      <linearGradient id="caseEmeraldGlow" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#34D399" />
-                        <stop offset="100%" stopColor="transparent" />
-                      </linearGradient>
-                    </defs>
 
                     {/* Keyframe Nodes */}
                     <circle cx="140" cy="30" r="5" fill="#34D399" />
@@ -174,7 +163,7 @@ export default function SportsReelsCaseStudyPage() {
                     <circle cx="360" cy="40" r="5" fill="#34D399" />
                   </svg>
 
-                  <div className="absolute top-1 text-[11px] bg-[#162920] border border-[#34D399]/50 text-[#34D399] px-2.5 py-1 rounded shadow">
+                  <div className="absolute top-1 text-[11px] bg-[#181D24] border border-[#34D399]/40 text-[#34D399] px-2.5 py-1 rounded shadow">
                     Speed Ramp Curve: 800% Velocity &rarr; 20% Optical Flow Impact Deceleration
                   </div>
                 </div>
@@ -187,34 +176,34 @@ export default function SportsReelsCaseStudyPage() {
               </div>
 
               {/* Multi-Track DAW Layers */}
-              <div className="space-y-2 pt-4 border-t border-[#26352F] text-[11px]">
+              <div className="space-y-2 pt-4 border-t border-[#222933] text-[11px]">
                 <div className="flex items-center gap-3">
                   <span className="w-8 text-slate-400 font-bold">V2</span>
-                  <div className="flex-1 h-5 rounded bg-[#1C2C23] border border-[#34D399]/40 flex items-center px-2.5 text-[#34D399] font-semibold text-[10px] sm:text-xs">
+                  <div className="flex-1 h-5 rounded bg-[#181D24] border border-[#34D399]/40 flex items-center px-2.5 text-[#34D399] font-semibold text-[10px] sm:text-xs">
                     Lower-Third Kinetic Typography &amp; Match Tracking Overlays
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="w-8 text-slate-400 font-bold">V1</span>
-                  <div className="flex-1 h-5 rounded bg-[#162B21] border border-[#34D399]/30 flex items-center px-2.5 text-[#34D399] font-medium text-[10px] sm:text-xs">
+                  <div className="flex-1 h-5 rounded bg-[#13171D] border border-[#34D399]/30 flex items-center px-2.5 text-[#34D399] font-medium text-[10px] sm:text-xs">
                     Master Footage (4K 120 FPS Capture Retimed via Speed Ramps)
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="w-8 text-slate-400 font-bold">A1</span>
-                  <div className="flex-1 h-5 rounded bg-[#11221B] border border-[#26352F] flex items-center px-2.5 text-slate-300 text-[10px] sm:text-xs">
+                  <div className="flex-1 h-5 rounded bg-[#0F1216] border border-[#222933] flex items-center px-2.5 text-slate-300 text-[10px] sm:text-xs">
                     Diegetic Foley: Leather Ball Strikes, Turf Impact, Sneaker Traction
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="w-8 text-slate-400 font-bold">A2</span>
-                  <div className="flex-1 h-5 rounded bg-[#101F18] border border-[#26352F] flex items-center px-2.5 text-slate-300 text-[10px] sm:text-xs">
+                  <div className="flex-1 h-5 rounded bg-[#0F1216] border border-[#222933] flex items-center px-2.5 text-slate-300 text-[10px] sm:text-xs">
                     Stadium Atmosphere: Stereo Reverb Bed, Crowd Roar &amp; Riser Transitions
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="w-8 text-slate-400 font-bold">A3</span>
-                  <div className="flex-1 h-5 rounded bg-[#0D1A14] border border-[#26352F] flex items-center px-2.5 text-slate-400 text-[10px] sm:text-xs">
+                  <div className="flex-1 h-5 rounded bg-[#0F1216] border border-[#222933] flex items-center px-2.5 text-slate-400 text-[10px] sm:text-xs">
                     Soundtrack Stem with Dynamic EQ Sidechain Ducking (-3.5dB on Hits)
                   </div>
                 </div>
@@ -238,7 +227,7 @@ export default function SportsReelsCaseStudyPage() {
               <p className="leading-relaxed text-base sm:text-lg">
                 To engineer reels that achieve a <strong>+85% viewer retention curve</strong> through the final frame, the editing pipeline must establish non-linear kinetic pacing. This means compressing dead air (such as an athlete setting up a penalty kick or dribbling in midfield) to 800% velocity, followed by a dramatic, sub-frame deceleration to 20% speed at the exact instant of ball strike or pivot.
               </p>
-              <div className="p-5 rounded-xl border border-slate-200 dark:border-[#26352F] bg-slate-50 dark:bg-[#111B17] text-sm">
+              <div className="p-5 rounded-xl border border-slate-200 dark:border-[#222933] bg-slate-50 dark:bg-[#0F1216] text-sm">
                 <strong className="text-[#065F46] dark:text-[#34D399] block mb-1">Core Editing Thesis:</strong>
                 Speed is only perceived in contrast to slowness. Velocity ramping creates an elastic tension-and-release rhythm that commands involuntary visual attention.
               </div>
@@ -260,13 +249,13 @@ export default function SportsReelsCaseStudyPage() {
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
-                <div className="p-5 rounded-xl border border-slate-200 dark:border-[#26352F] bg-white dark:bg-[#121A17]">
+                <div className="p-5 rounded-xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216]">
                   <h3 className="font-mono text-xs uppercase font-bold text-[#065F46] dark:text-[#34D399] mb-2">Nearest Neighbor / Frame Blending</h3>
                   <p className="text-xs sm:text-sm text-[#475569] dark:text-[#A7B0BE] leading-relaxed">
                     Duplicates adjacent frames or averages pixel luma across temporal steps. Results in jerky motion judder and transparent ghosting around high-contrast athletic borders. Unacceptable for commercial broadcast delivery.
                   </p>
                 </div>
-                <div className="p-5 rounded-xl border border-[#065F46]/30 dark:border-[#34D399]/40 bg-emerald-50/50 dark:bg-[#162921]/60">
+                <div className="p-5 rounded-xl border border-[#065F46]/30 dark:border-[#34D399]/40 bg-emerald-50/50 dark:bg-[#181D24]">
                   <h3 className="font-mono text-xs uppercase font-bold text-[#065F46] dark:text-[#34D399] mb-2">Optical Flow Motion Estimation</h3>
                   <p className="text-xs sm:text-sm text-[#1E293B] dark:text-[#CBD5E1] leading-relaxed">
                     {"Tracks pixel velocity vectors v⃗(x, y) between frame n and n+1, synthesizing intermediate in-between frames mathematically. Produces glassy, butter-smooth 1000fps-style deceleration without artificial distortion."}
@@ -292,7 +281,7 @@ export default function SportsReelsCaseStudyPage() {
               </p>
 
               <div className="space-y-3 font-mono text-xs sm:text-sm">
-                <div className="p-4 rounded-xl border border-slate-200 dark:border-[#26352F] bg-white dark:bg-[#121A17] flex items-start gap-3">
+                <div className="p-4 rounded-xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] flex items-start gap-3">
                   <span className="text-[#065F46] dark:text-[#34D399] font-bold">Layer 1:</span>
                   <div>
                     <strong className="text-[#0F172A] dark:text-[#F9FAFB] block">Diegetic Mechanical Foley</strong>
@@ -302,7 +291,7 @@ export default function SportsReelsCaseStudyPage() {
                   </div>
                 </div>
 
-                <div className="p-4 rounded-xl border border-slate-200 dark:border-[#26352F] bg-white dark:bg-[#121A17] flex items-start gap-3">
+                <div className="p-4 rounded-xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] flex items-start gap-3">
                   <span className="text-[#065F46] dark:text-[#34D399] font-bold">Layer 2:</span>
                   <div>
                     <strong className="text-[#0F172A] dark:text-[#F9FAFB] block">Spatial Stadium Atmosphere Bed</strong>
@@ -312,7 +301,7 @@ export default function SportsReelsCaseStudyPage() {
                   </div>
                 </div>
 
-                <div className="p-4 rounded-xl border border-slate-200 dark:border-[#26352F] bg-white dark:bg-[#121A17] flex items-start gap-3">
+                <div className="p-4 rounded-xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] flex items-start gap-3">
                   <span className="text-[#065F46] dark:text-[#34D399] font-bold">Layer 3:</span>
                   <div>
                     <strong className="text-[#0F172A] dark:text-[#F9FAFB] block">Non-Diegetic Psychoacoustic Accents</strong>
@@ -322,7 +311,7 @@ export default function SportsReelsCaseStudyPage() {
                   </div>
                 </div>
 
-                <div className="p-4 rounded-xl border border-slate-200 dark:border-[#26352F] bg-white dark:bg-[#121A17] flex items-start gap-3">
+                <div className="p-4 rounded-xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] flex items-start gap-3">
                   <span className="text-[#065F46] dark:text-[#34D399] font-bold">Layer 4:</span>
                   <div>
                     <strong className="text-[#0F172A] dark:text-[#F9FAFB] block">Master Bus &amp; Loudness Compliance (-14 LUFS)</strong>
@@ -349,8 +338,8 @@ export default function SportsReelsCaseStudyPage() {
                 In DaVinci Resolve Studio, I establish a sequential node tree utilizing a scene-referred color management workflow:
               </p>
 
-              <div className="p-6 rounded-2xl border border-slate-200 dark:border-[#26352F] bg-[#0E1612] font-mono text-xs sm:text-sm text-slate-300 space-y-3">
-                <div className="text-[#34D399] font-bold pb-2 border-b border-[#26352F]">
+              <div className="p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-[#090B0E] font-mono text-xs sm:text-sm text-slate-300 space-y-3">
+                <div className="text-[#34D399] font-bold pb-2 border-b border-[#222933]">
                   DaVinci Resolve Node Tree Architecture:
                 </div>
                 <div><strong>Node 01 [Exposure &amp; Offset]:</strong> Camera balance recovery using linear offset wheel without altering color ratios.</div>
@@ -391,15 +380,15 @@ export default function SportsReelsCaseStudyPage() {
                 Measured Production Outcomes &amp; Client Impact
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 my-6">
-                <div className="p-5 rounded-xl border border-slate-200 dark:border-[#26352F] bg-white dark:bg-[#121A17] text-center">
+                <div className="p-5 rounded-xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] text-center">
                   <div className="text-3xl font-bold text-[#065F46] dark:text-[#34D399] font-mono mb-1">50+</div>
                   <div className="text-xs text-[#64748B] dark:text-[#94A3B8] font-mono">Delivered Reels Packages</div>
                 </div>
-                <div className="p-5 rounded-xl border border-slate-200 dark:border-[#26352F] bg-white dark:bg-[#121A17] text-center">
+                <div className="p-5 rounded-xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] text-center">
                   <div className="text-3xl font-bold text-[#065F46] dark:text-[#34D399] font-mono mb-1">87%</div>
                   <div className="text-xs text-[#64748B] dark:text-[#94A3B8] font-mono">Average View-Through Rate</div>
                 </div>
-                <div className="p-5 rounded-xl border border-slate-200 dark:border-[#26352F] bg-white dark:bg-[#121A17] text-center">
+                <div className="p-5 rounded-xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] text-center">
                   <div className="text-3xl font-bold text-[#065F46] dark:text-[#34D399] font-mono mb-1">100%</div>
                   <div className="text-xs text-[#64748B] dark:text-[#94A3B8] font-mono">-14 LUFS Audio Compliance</div>
                 </div>

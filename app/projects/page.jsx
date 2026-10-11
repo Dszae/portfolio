@@ -10,9 +10,9 @@ import PagePagination from '../../components/PagePagination';
 
 function MotionReelsGraphic() {
   return (
-    <div className="relative aspect-[16/10] w-full bg-[#0A100D] text-slate-200 overflow-hidden select-none font-mono flex flex-col justify-between p-4 sm:p-5 border border-slate-200 dark:border-[#26352F] rounded-xl">
+    <div className="relative aspect-[16/10] w-full bg-[#090B0E] text-slate-200 overflow-hidden select-none font-mono flex flex-col justify-between p-4 sm:p-5 border border-slate-200 dark:border-[#222933] rounded-xl">
       {/* Top Monitor Status Bar */}
-      <div className="flex items-center justify-between text-[11px] pb-2 border-b border-[#26352F]/80">
+      <div className="flex items-center justify-between text-[11px] pb-2 border-b border-[#222933]">
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
           <span className="font-bold text-red-400">REC · 4K UHD</span>
@@ -27,8 +27,8 @@ function MotionReelsGraphic() {
         <div className="w-full relative h-20 flex items-center justify-center">
           <svg className="w-full h-full overflow-visible" viewBox="0 0 300 80" fill="none">
             {/* Grid guide lines */}
-            <line x1="0" y1="20" x2="300" y2="20" stroke="#1F2E27" strokeDasharray="3 3" />
-            <line x1="0" y1="60" x2="300" y2="60" stroke="#1F2E27" strokeDasharray="3 3" />
+            <line x1="0" y1="20" x2="300" y2="20" stroke="#1E293B" strokeDasharray="3 3" />
+            <line x1="0" y1="60" x2="300" y2="60" stroke="#1E293B" strokeDasharray="3 3" />
             
             {/* Speed Ramping Curve */}
             <path 
@@ -37,18 +37,6 @@ function MotionReelsGraphic() {
               strokeWidth="2.5" 
               fill="none" 
             />
-            {/* Area fill under curve */}
-            <path 
-              d="M 10 65 Q 70 65 95 35 T 160 15 T 225 35 Q 250 65 290 65 L 290 75 L 10 75 Z" 
-              fill="url(#emeraldGlow)" 
-              opacity="0.15" 
-            />
-            <defs>
-              <linearGradient id="emeraldGlow" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#34D399" />
-                <stop offset="100%" stopColor="transparent" />
-              </linearGradient>
-            </defs>
 
             {/* Keyframe Nodes */}
             <circle cx="95" cy="35" r="4" fill="#34D399" />
@@ -57,7 +45,7 @@ function MotionReelsGraphic() {
           </svg>
 
           {/* Floating Keyframe Label */}
-          <div className="absolute top-0 text-[10px] bg-[#162920] border border-[#34D399]/40 text-[#34D399] px-2 py-0.5 rounded shadow">
+          <div className="absolute top-0 text-[10px] bg-[#181D24] border border-[#34D399]/40 text-[#34D399] px-2 py-0.5 rounded shadow">
             Speed Ramp · 120fps (20% Speed)
           </div>
         </div>
@@ -74,18 +62,18 @@ function MotionReelsGraphic() {
       </div>
 
       {/* Bottom DAW / NLE Multitrack Timeline */}
-      <div className="space-y-1.5 pt-2 border-t border-[#26352F]/80 text-[10px]">
+      <div className="space-y-1.5 pt-2 border-t border-[#222933] text-[10px]">
         {/* Track V1 */}
         <div className="flex items-center gap-2">
           <span className="w-6 text-slate-400 font-semibold">V1</span>
-          <div className="flex-1 h-4 rounded bg-[#162B21] border border-[#34D399]/30 flex items-center px-2 text-[#34D399] font-medium overflow-hidden">
+          <div className="flex-1 h-4 rounded bg-[#181D24] border border-[#34D399]/30 flex items-center px-2 text-[#34D399] font-medium overflow-hidden">
             <span>Main Footage (4K 120fps Capture)</span>
           </div>
         </div>
         {/* Track A1 */}
         <div className="flex items-center gap-2">
           <span className="w-6 text-slate-400 font-semibold">A1</span>
-          <div className="flex-1 h-4 rounded bg-[#11221B] border border-[#26352F] flex items-center px-2 gap-1 overflow-hidden">
+          <div className="flex-1 h-4 rounded bg-[#13171D] border border-[#222933] flex items-center px-2 gap-1 overflow-hidden">
             <span className="text-slate-400">Stadium Ambience &amp; Sound FX</span>
             <div className="ml-auto flex items-center gap-0.5 opacity-70">
               <span className="w-0.5 h-2 bg-[#34D399]"></span>
@@ -262,7 +250,7 @@ export default function ProjectsPage() {
               
               {/* A. Clean Section Heading */}
               <header className="mb-16 sm:mb-20">
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-200 dark:border-[#26352F] pb-8">
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-200 dark:border-[#222933] pb-8">
                   <div>
                     <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#0F172A] dark:text-[#F9FAFB] flex items-center gap-3">
                       <span className="text-[#065F46] dark:text-[#34D399]">/</span>
@@ -350,7 +338,7 @@ export default function ProjectsPage() {
                         >
                           <Link
                             href={project.detailUrl}
-                            className="group block relative rounded-2xl overflow-hidden border border-slate-200 dark:border-[#26352F] bg-slate-100 dark:bg-[#121A17] shadow-sm hover:border-[#065F46]/60 dark:hover:border-[#34D399]/60 transition-colors focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399]"
+                            className="group block relative rounded-2xl overflow-hidden border border-slate-200 dark:border-[#222933] bg-slate-100 dark:bg-[#0F1216] shadow-sm hover:border-[#065F46]/60 dark:hover:border-[#34D399]/60 transition-colors focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399]"
                             aria-label={`View ${project.title} case study`}
                           >
                             {project.image ? (
@@ -363,12 +351,10 @@ export default function ProjectsPage() {
                                   sizes="(max-width: 1024px) 100vw, 58vw"
                                   className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02] motion-reduce:transform-none"
                                 />
-                                <div className="absolute inset-0 bg-[#065F46]/10 dark:bg-[#34D399]/10 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none" />
                               </div>
                             ) : (
                               <div className="relative">
                                 <MotionReelsGraphic />
-                                <div className="absolute inset-0 bg-[#065F46]/10 dark:bg-[#34D399]/10 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none" />
                               </div>
                             )}
                           </Link>
@@ -396,7 +382,7 @@ export default function ProjectsPage() {
                           </h2>
 
                           {/* Concise, Readable Description Block */}
-                          <div className="p-5 sm:p-6 rounded-xl bg-white dark:bg-[#121A17] border border-slate-200 dark:border-[#26352F] shadow-sm mb-4 text-sm leading-relaxed text-[#334155] dark:text-[#A7B0BE]">
+                          <div className="p-5 sm:p-6 rounded-xl bg-white dark:bg-[#0F1216] border border-slate-200 dark:border-[#222933] shadow-sm mb-4 text-sm leading-relaxed text-[#334155] dark:text-[#A7B0BE]">
                             <p>{project.description}</p>
                           </div>
 
@@ -462,7 +448,7 @@ export default function ProjectsPage() {
 
               {/* C. Other Engineering Prototypes & Experiments (Clean Aligned Grid) */}
               {filteredNoteworthy.length > 0 && (
-                <div className="pt-12 border-t border-slate-200 dark:border-[#26352F]">
+                <div className="pt-12 border-t border-slate-200 dark:border-[#222933]">
                   <div className="text-center mb-10">
                     <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F172A] dark:text-[#F9FAFB]">
                       Other Noteworthy Engineering Projects
@@ -476,7 +462,7 @@ export default function ProjectsPage() {
                     {filteredNoteworthy.map((project) => (
                       <article
                         key={project.id}
-                        className="group flex flex-col justify-between p-6 rounded-2xl bg-white dark:bg-[#121A17] border border-slate-200 dark:border-[#26352F] shadow-sm hover:-translate-y-0.5 hover:border-[#065F46]/60 dark:hover:border-[#34D399]/60 transition-all duration-200"
+                        className="group flex flex-col justify-between p-6 rounded-2xl bg-white dark:bg-[#0F1216] border border-slate-200 dark:border-[#222933] shadow-sm hover:-translate-y-0.5 hover:border-[#065F46]/60 dark:hover:border-[#34D399]/60 transition-all duration-200"
                       >
                         <div>
                           {/* Top Row: Technical Icon & External Action */}
@@ -518,7 +504,7 @@ export default function ProjectsPage() {
 
                         <div>
                           {/* Tech Stack */}
-                          <ul className="flex flex-wrap gap-x-3 gap-y-1 font-mono text-[11px] text-[#64748B] dark:text-[#7A8A82] pt-3 border-t border-slate-100 dark:border-[#1E2D26] mb-3">
+                          <ul className="flex flex-wrap gap-x-3 gap-y-1 font-mono text-[11px] text-[#64748B] dark:text-[#94A3B8] pt-3 border-t border-slate-100 dark:border-[#222933] mb-3">
                             {project.tech.map((t) => (
                               <li key={t}>{t}</li>
                             ))}

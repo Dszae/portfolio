@@ -92,7 +92,7 @@ export default function ContactPage() {
 
                       <div className="space-y-6">
                         <div className="flex items-center gap-4">
-                          <div className="w-12 h-12 rounded-2xl bg-[#F1F5F9] dark:bg-[#16221D] border border-[#CBD5E1] dark:border-[#26352F] flex items-center justify-center text-[#065F46] dark:text-[#34D399] flex-shrink-0">
+                          <div className="w-12 h-12 rounded-2xl bg-[#F1F5F9] dark:bg-[#181D24] border border-[#CBD5E1] dark:border-[#222933] flex items-center justify-center text-[#065F46] dark:text-[#34D399] flex-shrink-0">
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                           </div>
                           <div>
@@ -102,7 +102,7 @@ export default function ContactPage() {
                         </div>
 
                         <div className="flex items-center gap-4">
-                          <div className="w-12 h-12 rounded-2xl bg-[#F1F5F9] dark:bg-[#16221D] border border-[#CBD5E1] dark:border-[#26352F] flex items-center justify-center text-[#065F46] dark:text-[#34D399] flex-shrink-0">
+                          <div className="w-12 h-12 rounded-2xl bg-[#F1F5F9] dark:bg-[#181D24] border border-[#CBD5E1] dark:border-[#222933] flex items-center justify-center text-[#065F46] dark:text-[#34D399] flex-shrink-0">
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
                           </div>
                           <div>
@@ -112,7 +112,7 @@ export default function ContactPage() {
                         </div>
 
                         <div className="flex items-center gap-4">
-                          <div className="w-12 h-12 rounded-2xl bg-[#F1F5F9] dark:bg-[#16221D] border border-[#CBD5E1] dark:border-[#26352F] flex items-center justify-center text-[#065F46] dark:text-[#34D399] flex-shrink-0">
+                          <div className="w-12 h-12 rounded-2xl bg-[#F1F5F9] dark:bg-[#181D24] border border-[#CBD5E1] dark:border-[#222933] flex items-center justify-center text-[#065F46] dark:text-[#34D399] flex-shrink-0">
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                           </div>
                           <div>
@@ -122,30 +122,30 @@ export default function ContactPage() {
                         </div>
 
                         {/* Complete Social Links (7 profiles) */}
-                        <div className="pt-4 border-t border-[#CBD5E1]/60 dark:border-[#26352F]">
+                        <div className="pt-4 border-t border-[#CBD5E1]/60 dark:border-[#222933]">
                           <h2 className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-bold mb-3">
                             Connect Online (All Profiles)
                           </h2>
                           <div className="flex flex-wrap gap-2">
-                            <a href="https://github.com/dszae" target="_blank" rel="me noopener noreferrer" title="Dipesh Sapkota on GitHub (dszae)" aria-label="Dipesh Sapkota on GitHub" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
+                            <a href="https://github.com/dszae" target="_blank" rel="me noopener noreferrer" title="Dipesh Sapkota on GitHub (dszae)" aria-label="Dipesh Sapkota on GitHub" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#222933] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
                               GitHub
                             </a>
-                            <a href="https://linkedin.com/in/dszae" target="_blank" rel="me noopener noreferrer" title="Dipesh Sapkota on LinkedIn (dszae)" aria-label="Dipesh Sapkota on LinkedIn" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
+                            <a href="https://linkedin.com/in/dszae" target="_blank" rel="me noopener noreferrer" title="Dipesh Sapkota on LinkedIn (dszae)" aria-label="Dipesh Sapkota on LinkedIn" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#222933] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
                               LinkedIn
                             </a>
-                            <a href="https://dev.to/dszae" target="_blank" rel="me noopener noreferrer" title="Dipesh Sapkota on DEV Community (dszae)" aria-label="Dipesh Sapkota on DEV Community" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
+                            <a href="https://dev.to/dszae" target="_blank" rel="me noopener noreferrer" title="Dipesh Sapkota on DEV Community (dszae)" aria-label="Dipesh Sapkota on DEV Community" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#222933] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
                               DEV Community
                             </a>
-                            <a href="https://x.com/DszAe18" target="_blank" rel="me noopener noreferrer" title="Dipesh Sapkota on X (DszAe18)" aria-label="Dipesh Sapkota on X (Twitter)" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
+                            <a href="https://x.com/DszAe18" target="_blank" rel="me noopener noreferrer" title="Dipesh Sapkota on X (DszAe18)" aria-label="Dipesh Sapkota on X (Twitter)" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#222933] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
                               X (Twitter)
                             </a>
-                            <a href="https://instagram.com/dsz.ae" target="_blank" rel="me noopener noreferrer" title="Dipesh Sapkota on Instagram (dsz.ae)" aria-label="Dipesh Sapkota on Instagram" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
+                            <a href="https://instagram.com/dsz.ae" target="_blank" rel="me noopener noreferrer" title="Dipesh Sapkota on Instagram (dsz.ae)" aria-label="Dipesh Sapkota on Instagram" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#222933] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
                               Instagram
                             </a>
-                            <a href="https://facebook.com/dsz.ae" target="_blank" rel="me noopener noreferrer" title="Dipesh Sapkota on Facebook (dsz.ae)" aria-label="Dipesh Sapkota on Facebook" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
+                            <a href="https://facebook.com/dsz.ae" target="_blank" rel="me noopener noreferrer" title="Dipesh Sapkota on Facebook (dsz.ae)" aria-label="Dipesh Sapkota on Facebook" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#222933] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
                               Facebook
                             </a>
-                            <a href="https://tiktok.com/@dsz_ae" target="_blank" rel="me noopener noreferrer" title="Dipesh Sapkota on TikTok (dsz_ae)" aria-label="Dipesh Sapkota on TikTok" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
+                            <a href="https://tiktok.com/@dsz_ae" target="_blank" rel="me noopener noreferrer" title="Dipesh Sapkota on TikTok (dsz_ae)" aria-label="Dipesh Sapkota on TikTok" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#222933] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
                               TikTok
                             </a>
                           </div>
@@ -199,7 +199,7 @@ export default function ContactPage() {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="px-6 py-4 sm:px-10 sm:py-4.5 bg-[#065F46] hover:bg-[#044E39] dark:bg-[#34D399] dark:hover:bg-[#6EE7B7] text-white dark:text-[#0B0F0E] font-semibold rounded-xl disabled:cursor-not-allowed disabled:opacity-60 transition-all w-full shadow-md cursor-pointer hover:-translate-y-0.5"
+                        className="px-6 py-4 sm:px-10 sm:py-4.5 bg-[#065F46] hover:bg-[#044E39] dark:bg-[#34D399] dark:hover:bg-[#6EE7B7] text-white dark:text-[#090B0E] font-semibold rounded-xl disabled:cursor-not-allowed disabled:opacity-60 transition-all w-full shadow-md cursor-pointer hover:-translate-y-0.5"
                       >
                         {isSubmitting ? "Sending..." : "Send Message"}
                       </button>

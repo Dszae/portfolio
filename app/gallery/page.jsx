@@ -39,7 +39,7 @@ export default function GalleryPage() {
                       type="button"
                       aria-label={`Open ${item.title}`}
                       key={item.id} 
-                      className="group relative w-full aspect-video rounded-xl overflow-hidden border border-[#CBD5E1] dark:border-[#26352F] bg-[#111B17] shadow-sm hover:shadow-md cursor-pointer smooth-card-hover hover:border-[#065F46]/60 dark:hover:border-[#34D399]/50"
+                      className="group relative w-full aspect-video rounded-xl overflow-hidden border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] shadow-sm hover:shadow-md cursor-pointer smooth-card-hover hover:border-[#065F46]/60 dark:hover:border-[#34D399]/50"
                       onClick={() => setSelectedImage({
                         src: item.img,
                         title: item.title,
@@ -58,8 +58,8 @@ export default function GalleryPage() {
                         decoding="async"
                         className="w-full h-full object-cover smooth-img-zoom"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F0E]/90 via-[#0B0F0E]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col justify-between p-4 sm:p-6">
-                        <div className="self-end w-8 h-8 rounded-full bg-[#065F46] dark:bg-[#34D399] text-white dark:text-[#0B0F0E] flex items-center justify-center shadow-sm">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col justify-between p-4 sm:p-6">
+                        <div className="self-end w-8 h-8 rounded-full bg-[#065F46] dark:bg-[#34D399] text-white dark:text-[#090B0E] flex items-center justify-center shadow-sm">
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
                         </div>
                         <p className="text-[#F9FAFB] text-xs sm:text-sm font-semibold text-center">

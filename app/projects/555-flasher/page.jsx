@@ -88,7 +88,7 @@ export default function AstableMultivibratorPage() {
             </p>
 
             {/* Quick Specs Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-[#26352F] bg-white dark:bg-[#111B17] shadow-sm mb-8 font-mono text-xs">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] shadow-sm mb-8 font-mono text-xs">
               <div>
                 <span className="text-[#64748B] dark:text-[#94A3B8] block mb-1">IC Architecture</span>
                 <strong className="text-[#0F172A] dark:text-[#F9FAFB]">Bipolar NE555 Timer</strong>
@@ -117,8 +117,8 @@ export default function AstableMultivibratorPage() {
               <p className="leading-relaxed text-base sm:text-lg">
                 {"An astable multivibrator lacks a stable quiescent equilibrium state; it continuously switches between high and low output states without external clock triggering. Inside the NE555 timer, three matched 5 kΩ internal resistors divide the V_CC rail into reference thresholds at (2/3)V_CC (Threshold pin 6) and (1/3)V_CC (Trigger pin 2)."}
               </p>
-              <div className="p-6 rounded-2xl border border-slate-200 dark:border-[#26352F] bg-[#0E1612] font-mono text-xs sm:text-sm text-slate-300 space-y-3">
-                <div className="text-[#34D399] font-bold pb-2 border-b border-[#26352F]">Mathematical Formulation:</div>
+              <div className="p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-[#090B0E] font-mono text-xs sm:text-sm text-slate-300 space-y-3">
+                <div className="text-[#34D399] font-bold pb-2 border-b border-[#222933]">Mathematical Formulation:</div>
                 <div><strong>Charging Cycle (t_high):</strong> {"C₁ charges from (1/3)V_CC to (2/3)V_CC through (R₁ + R₂):"}</div>
                 <div className="text-[#34D399] pl-4">{"$$t_{high} = \\ln(2) \\cdot (R_1 + R_2) \\cdot C_1 \\approx 0.693 \\cdot (R_1 + R_2) \\cdot C_1$$"}</div>
                 <div><strong>Discharging Cycle (t_low):</strong> {"C₁ discharges from (2/3)V_CC to (1/3)V_CC strictly through R₂ via the internal open-collector discharge transistor (pin 7):"}</div>
