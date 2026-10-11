@@ -84,7 +84,7 @@ export default function AnalyzerDiagnosticsPage() {
             </h1>
 
             <p className="text-base sm:text-lg lg:text-xl text-[#334155] dark:text-[#CBD5E1] leading-relaxed max-w-3xl mb-8">
-              A comprehensive technical analysis and diagnostic troubleshooting protocol engineered for automated clinical immunoassay and biochemical laboratory instruments. Analyzing micro-stepping syringe probe calibrations (&plusmn;1.0 &mu;L), negative pressure vacuum dynamics (-40 to -60 kPa), and capacitive liquid level sensing.
+              A comprehensive technical analysis and diagnostic troubleshooting protocol engineered for automated clinical immunoassay and biochemical laboratory instruments. Analyzing micro-stepping syringe probe calibrations (±1.0 µL), negative pressure vacuum dynamics (-40 to -60 kPa), and capacitive liquid level sensing.
             </p>
 
             {/* Quick Specs Grid */}
@@ -95,7 +95,7 @@ export default function AnalyzerDiagnosticsPage() {
               </div>
               <div>
                 <span className="text-[#64748B] dark:text-[#94A3B8] block mb-1">Dosing Precision</span>
-                <strong className="text-[#0F172A] dark:text-[#F9FAFB]">&plusmn;1.0 &mu;L Repeatability</strong>
+                <strong className="text-[#0F172A] dark:text-[#F9FAFB]">±1.0 µL Repeatability</strong>
               </div>
               <div>
                 <span className="text-[#64748B] dark:text-[#94A3B8] block mb-1">Sensing Modality</span>
@@ -130,16 +130,25 @@ export default function AnalyzerDiagnosticsPage() {
                 2. Micro-Stepping Syringe Displacement &amp; Volumetric Calibration
               </h2>
               <p className="leading-relaxed text-base sm:text-lg">
-                Precision sample dosing relies on lead-screw stepper motors operating at $1/16$ microstepping resolution coupled to a glass syringe cylinder. Aspiration volumes range from 2.0 &mu;L (concentrated serum) up to 250 &mu;L (diluent buffer).
+                Precision sample dosing relies on lead-screw stepper motors operating at 1/16 microstepping resolution coupled to a glass syringe cylinder. Aspiration volumes range from 2.0 µL (concentrated serum) up to 250 µL (diluent buffer).
               </p>
               <p className="leading-relaxed text-base sm:text-lg">
-                {"The displacement protocol maps step pulses $N_{steps}$ to volumetric delivery:"}
+                The displacement protocol converts motor step pulses into dispensed liquid volume:
               </p>
-              <div className="p-4 rounded-xl border border-slate-200 dark:border-[#222933] bg-slate-50 dark:bg-[#0F1216] font-mono text-sm text-[#065F46] dark:text-[#34D399]">
-                {"$$V = N_{steps} \\cdot \\left(\\frac{P_{pitch}}{200 \\cdot M}\\right) \\cdot \\left(\\frac{\\pi D_{syringe}^2}{4}\\right)$$"}
+              <div className="p-5 rounded-xl border border-slate-200 dark:border-[#222933] bg-slate-50 dark:bg-[#0F1216] font-mono text-xs sm:text-sm text-slate-800 dark:text-slate-200 space-y-2">
+                <div className="font-bold text-[#065F46] dark:text-[#34D399] font-sans">Syringe Dispense Volume Formula:</div>
+                <div className="text-[#065F46] dark:text-[#34D399] pl-2 font-semibold text-sm">
+                  Volume (V) = Step Count × [ Thread Pitch / (200 × Microsteps) ] × [ (π × Diameter²) / 4 ]
+                </div>
+                <div className="text-xs text-slate-500 dark:text-slate-400 pt-2 border-t border-slate-200 dark:border-[#222933] space-y-1">
+                  <div>• <strong>Step Count:</strong> Total electrical pulses commanded to the lead-screw motor</div>
+                  <div>• <strong>Thread Pitch:</strong> Linear distance traveled per 360° lead-screw revolution</div>
+                  <div>• <strong>Microsteps:</strong> Microstepping division factor (16 divisions/step = 3,200 pulses/rev)</div>
+                  <div>• <strong>Diameter:</strong> Inner bore diameter of the precision glass syringe barrel</div>
+                </div>
               </div>
               <p className="leading-relaxed text-base sm:text-lg">
-                {"Where $P_{pitch}$ is the lead-screw thread pitch, $M=16$ is the microstepping division, and $D_{syringe}$ is the bore diameter. Gravimetric balance verification with deionized water achieved repeatability within ±1.0 μL (CV < 0.8%)."}
+                Gravimetric balance verification with deionized water achieved repeatability within ±1.0 µL with a coefficient of variation (CV) under 0.8%.
               </p>
             </section>
 

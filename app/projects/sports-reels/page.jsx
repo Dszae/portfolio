@@ -258,7 +258,7 @@ export default function SportsReelsCaseStudyPage() {
                 <div className="p-5 rounded-xl border border-[#065F46]/30 dark:border-[#34D399]/40 bg-emerald-50/50 dark:bg-[#181D24]">
                   <h3 className="font-mono text-xs uppercase font-bold text-[#065F46] dark:text-[#34D399] mb-2">Optical Flow Motion Estimation</h3>
                   <p className="text-xs sm:text-sm text-[#1E293B] dark:text-[#CBD5E1] leading-relaxed">
-                    {"Tracks pixel velocity vectors v⃗(x, y) between frame n and n+1, synthesizing intermediate in-between frames mathematically. Produces glassy, butter-smooth 1000fps-style deceleration without artificial distortion."}
+                    Tracks pixel velocity vectors (vx, vy) between frame n and frame n+1, synthesizing intermediate in-between frames mathematically. Produces glassy, butter-smooth 1000fps-style deceleration without artificial distortion.
                   </p>
                 </div>
               </div>

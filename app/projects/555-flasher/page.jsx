@@ -115,18 +115,38 @@ export default function AstableMultivibratorPage() {
                 1. Relaxation Oscillator Fundamentals &amp; State Equations
               </h2>
               <p className="leading-relaxed text-base sm:text-lg">
-                {"An astable multivibrator lacks a stable quiescent equilibrium state; it continuously switches between high and low output states without external clock triggering. Inside the NE555 timer, three matched 5 kΩ internal resistors divide the V_CC rail into reference thresholds at (2/3)V_CC (Threshold pin 6) and (1/3)V_CC (Trigger pin 2)."}
+                An astable multivibrator lacks a stable resting state; it continuously alternates between HIGH and LOW output states without an external trigger. Inside the NE555 timer, three matched 5 kΩ resistors divide the DC supply rail (Vcc) into two internal threshold levels: 2/3 Vcc at the Threshold input (pin 6) and 1/3 Vcc at the Trigger input (pin 2).
               </p>
-              <div className="p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-[#090B0E] font-mono text-xs sm:text-sm text-slate-300 space-y-3">
-                <div className="text-[#34D399] font-bold pb-2 border-b border-[#222933]">Mathematical Formulation:</div>
-                <div><strong>Charging Cycle (t_high):</strong> {"C₁ charges from (1/3)V_CC to (2/3)V_CC through (R₁ + R₂):"}</div>
-                <div className="text-[#34D399] pl-4">{"$$t_{high} = \\ln(2) \\cdot (R_1 + R_2) \\cdot C_1 \\approx 0.693 \\cdot (R_1 + R_2) \\cdot C_1$$"}</div>
-                <div><strong>Discharging Cycle (t_low):</strong> {"C₁ discharges from (2/3)V_CC to (1/3)V_CC strictly through R₂ via the internal open-collector discharge transistor (pin 7):"}</div>
-                <div className="text-[#34D399] pl-4">{"$$t_{low} = \\ln(2) \\cdot R_2 \\cdot C_1 \\approx 0.693 \\cdot R_2 \\cdot C_1$$"}</div>
-                <div><strong>Total Oscillation Period ($T$):</strong></div>
-                <div className="text-[#34D399] pl-4">{"$$T = t_{high} + t_{low} = 0.693 \\cdot (R_1 + 2R_2) \\cdot C_1$$"}</div>
-                <div><strong>Oscillation Frequency ($f$):</strong></div>
-                <div className="text-[#34D399] pl-4">{"$$f = \\frac{1}{T} = \\frac{1.44}{(R_1 + 2R_2) \\cdot C_1}$$"}</div>
+              <div className="p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-[#090B0E] font-mono text-xs sm:text-sm text-slate-300 space-y-4">
+                <div className="text-[#34D399] font-bold pb-2 border-b border-[#222933]">Circuit Timing Formulas:</div>
+                
+                <div>
+                  <div className="text-slate-400">1. Charging Time (t_high): Output HIGH while C1 charges through (R1 + R2)</div>
+                  <div className="text-[#34D399] pl-4 mt-1 font-semibold">
+                    t_high = ln(2) × (R1 + R2) × C1 ≈ 0.693 × (R1 + R2) × C1
+                  </div>
+                </div>
+
+                <div>
+                  <div className="text-slate-400">2. Discharging Time (t_low): Output LOW while C1 discharges through R2</div>
+                  <div className="text-[#34D399] pl-4 mt-1 font-semibold">
+                    t_low = ln(2) × R2 × C1 ≈ 0.693 × R2 × C1
+                  </div>
+                </div>
+
+                <div>
+                  <div className="text-slate-400">3. Total Oscillation Period (T): Total cycle duration</div>
+                  <div className="text-[#34D399] pl-4 mt-1 font-semibold">
+                    T = t_high + t_low = 0.693 × (R1 + 2×R2) × C1
+                  </div>
+                </div>
+
+                <div>
+                  <div className="text-slate-400">4. Oscillation Frequency (f): Flashes per second</div>
+                  <div className="text-[#34D399] pl-4 mt-1 font-semibold">
+                    f = 1 / T = 1.44 / [ (R1 + 2×R2) × C1 ]
+                  </div>
+                </div>
               </div>
             </section>
 
@@ -135,12 +155,12 @@ export default function AstableMultivibratorPage() {
                 2. Component Sizing &amp; Decoupling Architecture
               </h2>
               <p className="leading-relaxed text-base sm:text-lg">
-                To yield a visible, rhythmic LED flash alternating at approximately 1.5 Hz, the timing network was calculated using a 10 &mu;F electrolytic capacitor ($C_1$), a 10 k&Omega; resistor ($R_1$), and a 47 k&Omega; resistor ($R_2$):
+                To yield a visible, rhythmic LED flash alternating at approximately 1.4 Hz, the timing network was calculated using a 10 µF electrolytic capacitor (C1), a 10 kΩ resistor (R1), and a 47 kΩ resistor (R2):
               </p>
               <ul className="list-disc pl-6 space-y-2 text-sm sm:text-base">
-                <li>{"t_high = 0.693 × (10kΩ + 47kΩ) × 10μF ≈ 0.395 s"}</li>
-                <li>{"t_low = 0.693 × (47kΩ) × 10μF ≈ 0.325 s"}</li>
-                <li>{"Total Period T = 0.720 s ⟹ f ≈ 1.39 Hz"}</li>
+                <li>t_high = 0.693 × (10 kΩ + 47 kΩ) × 10 µF ≈ 0.395 seconds (LED 1 ON)</li>
+                <li>t_low = 0.693 × 47 kΩ × 10 µF ≈ 0.325 seconds (LED 2 ON)</li>
+                <li>Total Period (T) = 0.395 s + 0.325 s = 0.720 seconds → Frequency (f) ≈ 1.39 Hz</li>
               </ul>
               <p className="leading-relaxed text-base sm:text-lg">
                 <strong>Critical Engineering Consideration (Pin 5 Bypass):</strong> The Control Voltage pin (pin 5) accesses the internal upper comparator ladder. A 100 nF ceramic disc decoupling capacitor was tied to ground to bypass supply rail transients, preventing false comparator switching caused by sudden LED turn-on current spikes.
@@ -152,7 +172,7 @@ export default function AstableMultivibratorPage() {
                 3. Simulation &amp; Physical Breadboard Verification
               </h2>
               <p className="leading-relaxed text-base sm:text-lg">
-                Prior to physical fabrication, a full schematic capture and transient domain simulation was executed in <strong>Proteus ISIS</strong>. The virtual oscilloscope confirmed clean square-wave outputs with &lt;100 ns rise times and verified the complementary sinking and sourcing configuration of output pin 3 driving dual anti-parallel indicator LEDs with current-limiting 470 &Omega; resistors.
+                Prior to physical fabrication, a full schematic capture and transient domain simulation was executed in <strong>Proteus ISIS</strong>. The virtual oscilloscope confirmed clean square-wave outputs with &lt;100 ns rise times and verified the complementary sinking and sourcing configuration of output pin 3 driving dual anti-parallel indicator LEDs with current-limiting 470 Ω resistors.
               </p>
               <p className="leading-relaxed text-base sm:text-lg">
                 Physical prototyping on a solderless breadboard validated the transient calculations within 4.2% component tolerance variance.
