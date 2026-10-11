@@ -28,38 +28,54 @@ export const metadata = {
   icons: {
     icon: [
       {
-        url: '/favicon-48x48.png?v=2',
+        url: '/icon-48x48.png',
         type: 'image/png',
         sizes: '48x48',
       },
       {
-        url: '/favicon-96x96.png?v=2',
+        url: '/favicon-48x48.png',
+        type: 'image/png',
+        sizes: '48x48',
+      },
+      {
+        url: '/icon-96x96.png',
         type: 'image/png',
         sizes: '96x96',
       },
       {
-        url: '/favicon-192x192.png?v=2',
+        url: '/favicon-96x96.png',
+        type: 'image/png',
+        sizes: '96x96',
+      },
+      {
+        url: '/icon-192x192.png',
         type: 'image/png',
         sizes: '192x192',
       },
       {
-        url: '/favicon.svg?v=2',
+        url: '/favicon-192x192.png',
+        type: 'image/png',
+        sizes: '192x192',
+      },
+      {
+        url: '/favicon.svg',
         type: 'image/svg+xml',
         sizes: 'any',
       },
       {
-        url: '/favicon.png?v=2',
-        type: 'image/png',
-        sizes: '512x512',
-      },
-      {
-        url: '/favicon.ico?v=2',
+        url: '/favicon.ico',
         type: 'image/x-icon',
         sizes: '48x48',
       },
     ],
-    shortcut: '/favicon.ico?v=2',
-    apple: '/favicon-192x192.png?v=2',
+    shortcut: '/favicon.ico',
+    apple: [
+      {
+        url: '/apple-touch-icon.png',
+        sizes: '180x180',
+        type: 'image/png',
+      },
+    ],
   },
   robots: {
     index: true,
