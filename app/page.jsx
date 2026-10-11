@@ -188,7 +188,7 @@ export default function Home() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {/* 1. About */}
-              <article className="p-6 rounded-2xl border border-[#CBD5E1] dark:border-[#26352F] bg-white dark:bg-[#111B17] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all hover:-translate-y-1 shadow-sm flex flex-col justify-between">
+              <article className="p-6 rounded-2xl border border-[#CBD5E1] dark:border-[#26352F] bg-white dark:bg-[#111B17] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all hover:-translate-y-0.5 shadow-sm flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <span className="font-mono text-xs font-semibold uppercase text-[#065F46] dark:text-[#34D399]">01. Profile</span>
@@ -208,7 +208,7 @@ export default function Home() {
               </article>
 
               {/* 2. Skills */}
-              <article className="p-6 rounded-2xl border border-[#CBD5E1] dark:border-[#26352F] bg-white dark:bg-[#111B17] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all hover:-translate-y-1 shadow-sm flex flex-col justify-between">
+              <article className="p-6 rounded-2xl border border-[#CBD5E1] dark:border-[#26352F] bg-white dark:bg-[#111B17] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all hover:-translate-y-0.5 shadow-sm flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <span className="font-mono text-xs font-semibold uppercase text-[#065F46] dark:text-[#34D399]">02. Competencies</span>
@@ -228,7 +228,7 @@ export default function Home() {
               </article>
 
               {/* 3. Projects */}
-              <article className="p-6 rounded-2xl border border-[#CBD5E1] dark:border-[#26352F] bg-white dark:bg-[#111B17] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all hover:-translate-y-1 shadow-sm flex flex-col justify-between">
+              <article className="p-6 rounded-2xl border border-[#CBD5E1] dark:border-[#26352F] bg-white dark:bg-[#111B17] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all hover:-translate-y-0.5 shadow-sm flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <span className="font-mono text-xs font-semibold uppercase text-[#065F46] dark:text-[#34D399]">03. Showcase</span>
@@ -248,7 +248,7 @@ export default function Home() {
               </article>
 
               {/* 4. Certificates */}
-              <article className="p-6 rounded-2xl border border-[#CBD5E1] dark:border-[#26352F] bg-white dark:bg-[#111B17] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all hover:-translate-y-1 shadow-sm flex flex-col justify-between">
+              <article className="p-6 rounded-2xl border border-[#CBD5E1] dark:border-[#26352F] bg-white dark:bg-[#111B17] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all hover:-translate-y-0.5 shadow-sm flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <span className="font-mono text-xs font-semibold uppercase text-[#065F46] dark:text-[#34D399]">04. Credentials</span>
@@ -268,7 +268,7 @@ export default function Home() {
               </article>
 
               {/* 5. Resume */}
-              <article className="p-6 rounded-2xl border border-[#CBD5E1] dark:border-[#26352F] bg-white dark:bg-[#111B17] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all hover:-translate-y-1 shadow-sm flex flex-col justify-between">
+              <article className="p-6 rounded-2xl border border-[#CBD5E1] dark:border-[#26352F] bg-white dark:bg-[#111B17] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all hover:-translate-y-0.5 shadow-sm flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <span className="font-mono text-xs font-semibold uppercase text-[#065F46] dark:text-[#34D399]">05. CV & Journey</span>
@@ -288,7 +288,7 @@ export default function Home() {
               </article>
 
               {/* 6. Gallery */}
-              <article className="p-6 rounded-2xl border border-[#CBD5E1] dark:border-[#26352F] bg-white dark:bg-[#111B17] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all hover:-translate-y-1 shadow-sm flex flex-col justify-between">
+              <article className="p-6 rounded-2xl border border-[#CBD5E1] dark:border-[#26352F] bg-white dark:bg-[#111B17] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all hover:-translate-y-0.5 shadow-sm flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <span className="font-mono text-xs font-semibold uppercase text-[#065F46] dark:text-[#34D399]">06. Visual Archive</span>
@@ -308,7 +308,7 @@ export default function Home() {
               </article>
 
               {/* 7. Contact */}
-              <article className="p-6 rounded-2xl border border-[#CBD5E1] dark:border-[#26352F] bg-white dark:bg-[#111B17] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all hover:-translate-y-1 shadow-sm flex flex-col justify-between">
+              <article className="p-6 rounded-2xl border border-[#CBD5E1] dark:border-[#26352F] bg-white dark:bg-[#111B17] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all hover:-translate-y-0.5 shadow-sm flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <span className="font-mono text-xs font-semibold uppercase text-[#065F46] dark:text-[#34D399]">07. Get In Touch</span>
@@ -328,7 +328,7 @@ export default function Home() {
               </article>
 
               {/* 8. Articles */}
-              <article className="p-6 rounded-2xl border border-[#CBD5E1] dark:border-[#26352F] bg-white dark:bg-[#111B17] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all hover:-translate-y-1 shadow-sm flex flex-col justify-between">
+              <article className="p-6 rounded-2xl border border-[#CBD5E1] dark:border-[#26352F] bg-white dark:bg-[#111B17] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all hover:-translate-y-0.5 shadow-sm flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <span className="font-mono text-xs font-semibold uppercase text-[#065F46] dark:text-[#34D399]">08. Publications</span>

@@ -91,11 +91,11 @@ export default function ResumePage() {
                       {EXPERIENCE.map((exp, index) => (
                         <div 
                           key={index} 
-                          className="relative pb-4 transition-transform duration-300 hover:translate-x-2 group cursor-default"
+                          className="relative pb-2 group cursor-default"
                         >
-                          <div className="absolute -left-[33px] top-4 w-3.5 h-3.5 bg-[#065F46] dark:bg-[#34D399] rounded-full border-4 border-white dark:border-[#0B0F0E]"></div>
+                          <div className="absolute -left-[31px] top-5 w-3.5 h-3.5 bg-[#065F46] dark:bg-[#34D399] rounded-full border-4 border-white dark:border-[#0B0F0E]"></div>
                           
-                          <div className={`p-6 rounded-2xl transition-all duration-300 group-hover:shadow-md ${theme.card}`}>
+                          <div className={`p-6 rounded-2xl transition-all duration-200 border group-hover:shadow-md ${theme.card}`}>
                             <div className="flex items-center gap-4">
                               {exp.logo && (
                                 <div className="flex-shrink-0 flex items-center justify-center">
@@ -116,11 +116,10 @@ export default function ResumePage() {
                                   {exp.year}
                                 </span>
                                 <h3 className="text-lg sm:text-xl font-bold mb-1 text-[#0F172A] dark:text-[#F8FAFC]">{exp.role}</h3>
-                                <p className="text-xs sm:text-sm mb-2 font-light tracking-wide text-[#065F46] dark:text-[#6EE7B7]">{exp.company}</p>
+                                <p className="text-xs sm:text-sm mb-2 font-medium text-[#065F46] dark:text-[#6EE7B7]">{exp.company}</p>
                                 <p className="text-sm leading-relaxed text-[#1E293B] dark:text-[#A7B0BE]">{exp.desc}</p>
                               </div>
                             </div>
-                            <div className="absolute bottom-0 left-6 w-0 h-1 bg-[#065F46] dark:bg-[#34D399] transition-all duration-300 group-hover:w-[calc(100%-3rem)] rounded-b-2xl"></div>
                           </div>
                         </div>
                       ))}
@@ -136,11 +135,11 @@ export default function ResumePage() {
                       {EDUCATION.map((edu, index) => (
                         <div 
                           key={index} 
-                          className="relative pb-4 transition-transform duration-300 hover:translate-x-2 group cursor-default"
+                          className="relative pb-2 group cursor-default"
                         >
-                          <div className="absolute -left-[33px] top-4 w-3.5 h-3.5 bg-[#065F46] dark:bg-[#34D399] rounded-full border-4 border-white dark:border-[#0B0F0E]"></div>
+                          <div className="absolute -left-[31px] top-5 w-3.5 h-3.5 bg-[#065F46] dark:bg-[#34D399] rounded-full border-4 border-white dark:border-[#0B0F0E]"></div>
                           
-                          <div className={`p-6 rounded-2xl transition-all duration-300 group-hover:shadow-md ${theme.card}`}>
+                          <div className={`p-6 rounded-2xl transition-all duration-200 border group-hover:shadow-md ${theme.card}`}>
                             <div className="flex items-center gap-4">
                               {edu.logo && (
                                 <div className="flex-shrink-0 flex items-center justify-center">
@@ -161,11 +160,10 @@ export default function ResumePage() {
                                   {edu.year}
                                 </span>
                                 <h3 className="text-base sm:text-lg font-bold leading-tight mb-1 text-[#0F172A] dark:text-[#F8FAFC]">{edu.degree}</h3>
-                                <p className="text-xs sm:text-sm mb-2 font-light tracking-wide text-[#065F46] dark:text-[#6EE7B7]">{edu.school}</p>
+                                <p className="text-xs sm:text-sm mb-2 font-medium text-[#065F46] dark:text-[#6EE7B7]">{edu.school}</p>
                                 <p className="text-sm leading-relaxed text-[#1E293B] dark:text-[#A7B0BE]">{edu.desc}</p>
                               </div>
                             </div>
-                            <div className="absolute bottom-0 left-6 w-0 h-1 bg-[#065F46] dark:bg-[#34D399] transition-all duration-300 group-hover:w-[calc(100%-3rem)] rounded-b-2xl"></div>
                           </div>
                         </div>
                       ))}

@@ -38,19 +38,11 @@ export default function SkillsPage() {
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8">
 
                   {/* Card A: Development (~58% desktop width: md:col-span-7) */}
-                  <article className="md:col-span-7 bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26372F] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-1 hover:border-[#065F46]/50 dark:hover:border-[#6EE7B7]/50 relative overflow-hidden flex flex-col justify-between group">
-                    {/* Decorative subtle code watermark */}
-                    <div 
-                      aria-hidden="true" 
-                      className="absolute right-6 top-6 font-mono text-[10px] text-[#065F46]/15 dark:text-[#6EE7B7]/15 pointer-events-none select-none hidden sm:block tracking-wide"
-                    >
-                      {"// logic => functional_software"}
-                    </div>
-
+                  <article className="md:col-span-7 bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26352F] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-1 hover:border-[#065F46]/50 dark:hover:border-[#6EE7B7]/50 relative overflow-hidden flex flex-col justify-between group">
                     <div>
                       {/* Card Header */}
                       <div className="flex items-center gap-4 mb-4">
-                        <div className="w-12 h-12 rounded-xl bg-[#F1F5F9] dark:bg-[#18231E] border border-[#CBD5E1] dark:border-[#26372F] text-[#065F46] dark:text-[#6EE7B7] flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-200">
+                        <div className="w-12 h-12 rounded-xl bg-[#F1F5F9] dark:bg-[#18231E] border border-[#CBD5E1] dark:border-[#26352F] text-[#065F46] dark:text-[#6EE7B7] flex items-center justify-center flex-shrink-0 group-hover:border-[#065F46]/50 dark:group-hover:border-[#34D399]/50 transition-colors duration-200">
                           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                           </svg>
@@ -72,8 +64,8 @@ export default function SkillsPage() {
                       {/* Technology Chips Grid */}
                       <ul role="list" className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
                         {/* C */}
-                        <li className="p-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#26372F] bg-[#F1F5F9] dark:bg-[#18231E] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#121A17] hover:border-[#065F46]/40 dark:hover:border-[#6EE7B7]/40 transition-all duration-150 flex items-start gap-3">
-                          <div className="w-7 h-7 rounded-lg bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26372F] flex items-center justify-center text-[#065F46] dark:text-[#6EE7B7] flex-shrink-0 mt-0.5">
+                        <li className="p-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#26352F] bg-[#F1F5F9] dark:bg-[#18231E] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#121A17] hover:border-[#065F46]/40 dark:hover:border-[#6EE7B7]/40 transition-all duration-150 flex items-start gap-3">
+                          <div className="w-7 h-7 rounded-lg bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26352F] flex items-center justify-center text-[#065F46] dark:text-[#6EE7B7] flex-shrink-0 mt-0.5">
                             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8c2.25 0 4.28.93 5.74 2.42l-2.12 2.12C14.73 7.63 13.43 7 12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5c1.43 0 2.73-.63 3.62-1.54l2.12 2.12C16.28 19.07 14.25 20 12 20z" />
                             </svg>
@@ -85,8 +77,8 @@ export default function SkillsPage() {
                         </li>
 
                         {/* C++ */}
-                        <li className="p-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#26372F] bg-[#F1F5F9] dark:bg-[#18231E] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#121A17] hover:border-[#065F46]/40 dark:hover:border-[#6EE7B7]/40 transition-all duration-150 flex items-start gap-3">
-                          <div className="w-7 h-7 rounded-lg bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26372F] flex items-center justify-center text-[#065F46] dark:text-[#6EE7B7] flex-shrink-0 mt-0.5">
+                        <li className="p-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#26352F] bg-[#F1F5F9] dark:bg-[#18231E] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#121A17] hover:border-[#065F46]/40 dark:hover:border-[#6EE7B7]/40 transition-all duration-150 flex items-start gap-3">
+                          <div className="w-7 h-7 rounded-lg bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26352F] flex items-center justify-center text-[#065F46] dark:text-[#6EE7B7] flex-shrink-0 mt-0.5">
                             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                               <path d="M22.38 8.65c-.47-.8-1.1-1.47-1.87-1.95L13.8 2.37c-.77-.47-1.68-.73-2.61-.73s-1.84.26-2.61.73L1.87 6.7C1.1 7.18.47 7.85 0 8.65v6.7c.47.8 1.1 1.47 1.87 1.95l6.71 4.33c.77.47 1.68.73 2.61.73s1.84-.26 2.61-.73l6.71-4.33c.77-.48 1.4-1.15 1.87-1.95v-6.7zM10.1 14.86c-1.58 0-2.86-1.28-2.86-2.86s1.28-2.86 2.86-2.86c.86 0 1.62.38 2.14.99l1.45-1.45C12.87 7.69 11.58 7.14 10.1 7.14c-2.68 0-4.86 2.18-4.86 4.86s2.18 4.86 4.86 4.86c1.48 0 2.77-.55 3.59-1.54l-1.45-1.45c-.52.61-1.28.99-2.14.99zm6.18-2.18h1.16v-1.36h-1.16V10.16h-1.36v1.16h-1.16v1.36h1.16v1.16h1.36v-1.16zm4.12 0h1.16v-1.36H20.4V10.16h-1.36v1.16h-1.16v1.36h1.16v1.16h1.36v-1.16z" />
                             </svg>
@@ -98,8 +90,8 @@ export default function SkillsPage() {
                         </li>
 
                         {/* Python */}
-                        <li className="p-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#26372F] bg-[#F1F5F9] dark:bg-[#18231E] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#121A17] hover:border-[#065F46]/40 dark:hover:border-[#6EE7B7]/40 transition-all duration-150 flex items-start gap-3">
-                          <div className="w-7 h-7 rounded-lg bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26372F] flex items-center justify-center text-[#065F46] dark:text-[#6EE7B7] flex-shrink-0 mt-0.5">
+                        <li className="p-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#26352F] bg-[#F1F5F9] dark:bg-[#18231E] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#121A17] hover:border-[#065F46]/40 dark:hover:border-[#6EE7B7]/40 transition-all duration-150 flex items-start gap-3">
+                          <div className="w-7 h-7 rounded-lg bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26352F] flex items-center justify-center text-[#065F46] dark:text-[#6EE7B7] flex-shrink-0 mt-0.5">
                             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                               <path d="M11.914 0C5.82 0 6.2 2.656 6.2 2.656l.006 2.75h5.816v.825H3.924S0 5.787 0 11.916c0 6.127 3.42 5.918 3.42 5.918h2.043v-2.873s-.11-3.425 3.366-3.425h5.79v-.848s.07-2.613-3.666-2.613H6.887S7.067 4.15 11.914 4.15c4.848 0 4.11 2.375 4.11 2.375l-.004 1.704h2.044s3.42-.209 3.42 5.918c0 6.128-3.924 5.685-3.924 5.685h-2.044v-2.874s.11-3.424-3.366-3.424h-5.79v.848s-.07 2.613 3.666 2.613h4.068s-.18 3.925-5.027 3.925c-4.848 0-4.11-2.375-4.11-2.375l.004-1.704H3.924S.504 16.924.504 10.796c0-6.128 3.924-5.685 3.924-5.685h2.044V7.985S6.362 11.41 9.838 11.41h5.79v-.848s.07-2.614-3.666-2.614H7.894S8.074 4.023 12.92 4.023c4.848 0 4.11 2.375 4.11 2.375l-.006 5.518H11.21v.825h8.098S23.23 12.296 23.23 6.168C23.23.04 19.81.25 19.81.25H17.766V3.123s.11 3.425-3.366 3.425H8.61v.848s-.07 2.613 3.666 2.613h4.068S16.164 6.084 11.914 0z" />
                             </svg>
@@ -111,8 +103,8 @@ export default function SkillsPage() {
                         </li>
 
                         {/* React.js */}
-                        <li className="p-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#26372F] bg-[#F1F5F9] dark:bg-[#18231E] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#121A17] hover:border-[#065F46]/40 dark:hover:border-[#6EE7B7]/40 transition-all duration-150 flex items-start gap-3">
-                          <div className="w-7 h-7 rounded-lg bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26372F] flex items-center justify-center text-[#065F46] dark:text-[#6EE7B7] flex-shrink-0 mt-0.5">
+                        <li className="p-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#26352F] bg-[#F1F5F9] dark:bg-[#18231E] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#121A17] hover:border-[#065F46]/40 dark:hover:border-[#6EE7B7]/40 transition-all duration-150 flex items-start gap-3">
+                          <div className="w-7 h-7 rounded-lg bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26352F] flex items-center justify-center text-[#065F46] dark:text-[#6EE7B7] flex-shrink-0 mt-0.5">
                             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                               <path d="M12 9.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zm0-7.5c-3.1 0-5.8 1.4-7.5 3.6 1.4 1.4 3.4 2.8 5.7 3.8C10.8 7.4 11.4 5.3 12 2c.6 3.3 1.2 5.4 1.8 7.4 2.3-1 4.3-2.4 5.7-3.8C17.8 3.4 15.1 2 12 2zm8.5 7.5c-.8 2.8-2.4 5.3-4.5 7.1 1.7 1.2 3.6 2 5.5 2.4.9-1.3 1.5-2.8 1.5-4.5 0-1.8-.7-3.5-1.9-4.8-.2-.1-.4-.1-.6-.2zm-17 0c-.2.1-.4.1-.6.2C1.7 8.5 1 10.2 1 12c0 1.7.6 3.2 1.5 4.5 1.9-.4 3.8-1.2 5.5-2.4C5.9 12.3 4.3 9.8 3.5 7.5zm8.5 14.5c3.1 0 5.8-1.4 7.5-3.6-1.4-1.4-3.4-2.8-5.7-3.8-.6 2-1.2 4.1-1.8 7.4-.6-3.3-1.2-5.4-1.8-7.4-2.3 1-4.3 2.4-5.7 3.8 1.7 2.2 4.4 3.6 7.5 3.6z" />
                             </svg>
@@ -124,8 +116,8 @@ export default function SkillsPage() {
                         </li>
 
                         {/* PHP */}
-                        <li className="p-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#26372F] bg-[#F1F5F9] dark:bg-[#18231E] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#121A17] hover:border-[#065F46]/40 dark:hover:border-[#6EE7B7]/40 transition-all duration-150 flex items-start gap-3 sm:col-span-2">
-                          <div className="w-7 h-7 rounded-lg bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26372F] flex items-center justify-center text-[#065F46] dark:text-[#6EE7B7] flex-shrink-0 mt-0.5">
+                        <li className="p-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#26352F] bg-[#F1F5F9] dark:bg-[#18231E] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#121A17] hover:border-[#065F46]/40 dark:hover:border-[#6EE7B7]/40 transition-all duration-150 flex items-start gap-3 sm:col-span-2">
+                          <div className="w-7 h-7 rounded-lg bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26352F] flex items-center justify-center text-[#065F46] dark:text-[#6EE7B7] flex-shrink-0 mt-0.5">
                             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-5.7 13.5l1.05-5.25h2.1c1.35 0 2.25.6 2.25 1.8 0 1.5-1.2 3.45-3.15 3.45H6.3zm7.65 0l1.05-5.25h2.1c1.35 0 2.25.6 2.25 1.8 0 1.5-1.2 3.45-3.15 3.45H13.95zm-3.15-5.25l-.75 3.75h1.2c.9 0 1.5-.75 1.5-1.65 0-.75-.45-1.05-1.2-1.05h-.75zm7.65 0l-.75 3.75h1.2c.9 0 1.5-.75 1.5-1.65 0-.75-.45-1.05-1.2-1.05h-.75z" />
                             </svg>
@@ -154,17 +146,11 @@ export default function SkillsPage() {
                   </article>
 
                   {/* Card B: Creative Media (~42% desktop width: md:col-span-5) */}
-                  <article className="md:col-span-5 bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26372F] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-1 hover:border-[#065F46]/50 dark:hover:border-[#6EE7B7]/50 relative overflow-hidden flex flex-col justify-between group">
-                    {/* Layered decorative ambient element */}
-                    <div 
-                      aria-hidden="true" 
-                      className="absolute -right-10 -bottom-10 w-36 h-36 rounded-full bg-[#065F46]/10 dark:bg-[#6EE7B7]/10 pointer-events-none blur-2xl"
-                    ></div>
-
+                  <article className="md:col-span-5 bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26352F] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-1 hover:border-[#065F46]/50 dark:hover:border-[#6EE7B7]/50 relative overflow-hidden flex flex-col justify-between group">
                     <div>
                       {/* Card Header */}
                       <div className="flex items-center gap-4 mb-4">
-                        <div className="w-12 h-12 rounded-xl bg-[#F1F5F9] dark:bg-[#18231E] border border-[#CBD5E1] dark:border-[#26372F] text-[#065F46] dark:text-[#6EE7B7] flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-200">
+                        <div className="w-12 h-12 rounded-xl bg-[#F1F5F9] dark:bg-[#18231E] border border-[#CBD5E1] dark:border-[#26352F] text-[#065F46] dark:text-[#6EE7B7] flex items-center justify-center flex-shrink-0 group-hover:border-[#065F46]/50 dark:group-hover:border-[#34D399]/50 transition-colors duration-200">
                           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                           </svg>
@@ -186,8 +172,8 @@ export default function SkillsPage() {
                       {/* Showcase Items */}
                       <ul role="list" className="space-y-3 mb-6">
                         {/* Video Editing */}
-                        <li className="p-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#26372F] bg-[#F1F5F9] dark:bg-[#18231E] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#121A17] hover:border-[#065F46]/40 dark:hover:border-[#6EE7B7]/40 transition-all duration-150 flex items-start gap-3">
-                          <div className="w-8 h-8 rounded-lg bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26372F] flex items-center justify-center text-[#065F46] dark:text-[#6EE7B7] flex-shrink-0 mt-0.5">
+                        <li className="p-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#26352F] bg-[#F1F5F9] dark:bg-[#18231E] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#121A17] hover:border-[#065F46]/40 dark:hover:border-[#6EE7B7]/40 transition-all duration-150 flex items-start gap-3">
+                          <div className="w-8 h-8 rounded-lg bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26352F] flex items-center justify-center text-[#065F46] dark:text-[#6EE7B7] flex-shrink-0 mt-0.5">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                             </svg>
@@ -199,8 +185,8 @@ export default function SkillsPage() {
                         </li>
 
                         {/* Motion Graphics */}
-                        <li className="p-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#26372F] bg-[#F1F5F9] dark:bg-[#18231E] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#121A17] hover:border-[#065F46]/40 dark:hover:border-[#6EE7B7]/40 transition-all duration-150 flex items-start gap-3">
-                          <div className="w-8 h-8 rounded-lg bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26372F] flex items-center justify-center text-[#065F46] dark:text-[#6EE7B7] flex-shrink-0 mt-0.5">
+                        <li className="p-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#26352F] bg-[#F1F5F9] dark:bg-[#18231E] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#121A17] hover:border-[#065F46]/40 dark:hover:border-[#6EE7B7]/40 transition-all duration-150 flex items-start gap-3">
+                          <div className="w-8 h-8 rounded-lg bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26352F] flex items-center justify-center text-[#065F46] dark:text-[#6EE7B7] flex-shrink-0 mt-0.5">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
                             </svg>
@@ -212,8 +198,8 @@ export default function SkillsPage() {
                         </li>
 
                         {/* Graphic Design */}
-                        <li className="p-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#26372F] bg-[#F1F5F9] dark:bg-[#18231E] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#121A17] hover:border-[#065F46]/40 dark:hover:border-[#6EE7B7]/40 transition-all duration-150 flex items-start gap-3">
-                          <div className="w-8 h-8 rounded-lg bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26372F] flex items-center justify-center text-[#065F46] dark:text-[#6EE7B7] flex-shrink-0 mt-0.5">
+                        <li className="p-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#26352F] bg-[#F1F5F9] dark:bg-[#18231E] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#121A17] hover:border-[#065F46]/40 dark:hover:border-[#6EE7B7]/40 transition-all duration-150 flex items-start gap-3">
+                          <div className="w-8 h-8 rounded-lg bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26352F] flex items-center justify-center text-[#065F46] dark:text-[#6EE7B7] flex-shrink-0 mt-0.5">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                             </svg>
@@ -242,13 +228,13 @@ export default function SkillsPage() {
                   </article>
 
                   {/* Card C: Hardware & Engineering (100% width beneath: md:col-span-12) */}
-                  <article className="md:col-span-12 bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26372F] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-1 hover:border-[#065F46]/50 dark:hover:border-[#6EE7B7]/50 relative overflow-hidden group">
+                  <article className="md:col-span-12 bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26352F] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-1 hover:border-[#065F46]/50 dark:hover:border-[#6EE7B7]/50 relative overflow-hidden group">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                       
                       {/* Left: Category Overview */}
                       <div className="lg:col-span-5">
                         <div className="flex items-center gap-4 mb-4">
-                          <div className="w-12 h-12 rounded-xl bg-[#F1F5F9] dark:bg-[#18231E] border border-[#CBD5E1] dark:border-[#26372F] text-[#065F46] dark:text-[#6EE7B7] flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-200">
+                          <div className="w-12 h-12 rounded-xl bg-[#F1F5F9] dark:bg-[#18231E] border border-[#CBD5E1] dark:border-[#26352F] text-[#065F46] dark:text-[#6EE7B7] flex items-center justify-center flex-shrink-0 group-hover:border-[#065F46]/50 dark:group-hover:border-[#34D399]/50 transition-colors duration-200">
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
                             </svg>
@@ -282,8 +268,8 @@ export default function SkillsPage() {
                       <div className="lg:col-span-7">
                         <ul role="list" className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
                           {/* Proteus Suite */}
-                          <li className="p-4 rounded-xl border border-[#CBD5E1] dark:border-[#26372F] bg-[#F1F5F9] dark:bg-[#18231E] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#121A17] hover:border-[#065F46]/40 dark:hover:border-[#6EE7B7]/40 transition-all duration-150 flex flex-col justify-between">
-                            <div className="w-8 h-8 rounded-lg bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26372F] flex items-center justify-center text-[#065F46] dark:text-[#6EE7B7] mb-3">
+                          <li className="p-4 rounded-xl border border-[#CBD5E1] dark:border-[#26352F] bg-[#F1F5F9] dark:bg-[#18231E] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#121A17] hover:border-[#065F46]/40 dark:hover:border-[#6EE7B7]/40 transition-all duration-150 flex flex-col justify-between">
+                            <div className="w-8 h-8 rounded-lg bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26352F] flex items-center justify-center text-[#065F46] dark:text-[#6EE7B7] mb-3">
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                               </svg>
@@ -295,8 +281,8 @@ export default function SkillsPage() {
                           </li>
 
                           {/* Circuit Analysis */}
-                          <li className="p-4 rounded-xl border border-[#CBD5E1] dark:border-[#26372F] bg-[#F1F5F9] dark:bg-[#18231E] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#121A17] hover:border-[#065F46]/40 dark:hover:border-[#6EE7B7]/40 transition-all duration-150 flex flex-col justify-between">
-                            <div className="w-8 h-8 rounded-lg bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26372F] flex items-center justify-center text-[#065F46] dark:text-[#6EE7B7] mb-3">
+                          <li className="p-4 rounded-xl border border-[#CBD5E1] dark:border-[#26352F] bg-[#F1F5F9] dark:bg-[#18231E] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#121A17] hover:border-[#065F46]/40 dark:hover:border-[#6EE7B7]/40 transition-all duration-150 flex flex-col justify-between">
+                            <div className="w-8 h-8 rounded-lg bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26352F] flex items-center justify-center text-[#065F46] dark:text-[#6EE7B7] mb-3">
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                               </svg>
@@ -308,8 +294,8 @@ export default function SkillsPage() {
                           </li>
 
                           {/* Breadboarding */}
-                          <li className="p-4 rounded-xl border border-[#CBD5E1] dark:border-[#26372F] bg-[#F1F5F9] dark:bg-[#18231E] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#121A17] hover:border-[#065F46]/40 dark:hover:border-[#6EE7B7]/40 transition-all duration-150 flex flex-col justify-between">
-                            <div className="w-8 h-8 rounded-lg bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26372F] flex items-center justify-center text-[#065F46] dark:text-[#6EE7B7] mb-3">
+                          <li className="p-4 rounded-xl border border-[#CBD5E1] dark:border-[#26352F] bg-[#F1F5F9] dark:bg-[#18231E] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#121A17] hover:border-[#065F46]/40 dark:hover:border-[#6EE7B7]/40 transition-all duration-150 flex flex-col justify-between">
+                            <div className="w-8 h-8 rounded-lg bg-[#FFFFFF] dark:bg-[#121A17] border border-[#CBD5E1] dark:border-[#26352F] flex items-center justify-center text-[#065F46] dark:text-[#6EE7B7] mb-3">
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                               </svg>

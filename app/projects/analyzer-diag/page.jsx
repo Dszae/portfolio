@@ -88,7 +88,7 @@ export default function AnalyzerDiagnosticsPage() {
             </p>
 
             {/* Quick Specs Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-[#26372F] bg-white dark:bg-[#111B17] shadow-sm mb-8 font-mono text-xs">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-[#26352F] bg-white dark:bg-[#111B17] shadow-sm mb-8 font-mono text-xs">
               <div>
                 <span className="text-[#64748B] dark:text-[#94A3B8] block mb-1">Vacuum Tolerance</span>
                 <strong className="text-[#0F172A] dark:text-[#F9FAFB]">-40 to -60 kPa Window</strong>
@@ -117,8 +117,8 @@ export default function AnalyzerDiagnosticsPage() {
               <p className="leading-relaxed text-base sm:text-lg">
                 Automated clinical analyzers rely on precise fluidic paths to aspirate patient serum, dispense enzymatic reagents, and flush reaction cuvettes. Vacuum waste manifolds operate within a strict negative pressure tolerance window of <strong>-40 to -60 kPa</strong> monitored by analog piezoresistive pressure transducers.
               </p>
-              <div className="p-6 rounded-2xl border border-slate-200 dark:border-[#26372F] bg-[#0E1612] font-mono text-xs sm:text-sm text-slate-300 space-y-3">
-                <div className="text-[#34D399] font-bold pb-2 border-b border-[#26372F]">Fluidic Pressure Diagnostics:</div>
+              <div className="p-6 rounded-2xl border border-slate-200 dark:border-[#26352F] bg-[#0E1612] font-mono text-xs sm:text-sm text-slate-300 space-y-3">
+                <div className="text-[#34D399] font-bold pb-2 border-b border-[#26352F]">Fluidic Pressure Diagnostics:</div>
                 <div>&bull; <strong>Pressure &gt; -40 kPa (Insufficient Vacuum):</strong> Causes incomplete cuvette aspiration, reagent carryover contamination, and liquid accumulation in the wash station.</div>
                 <div>&bull; <strong>Pressure &lt; -60 kPa (Excessive Vacuum):</strong> Leads to cavitation, air micro-bubbles in sample lines, and premature fatigue of silicone pinch valves.</div>
                 <div>&bull; <strong>Leak Rate Protocol:</strong> System vacuum decay must remain &lt; 1.5 kPa over a 60-second dwell test with all solenoid pinch valves isolated.</div>
@@ -135,7 +135,7 @@ export default function AnalyzerDiagnosticsPage() {
               <p className="leading-relaxed text-base sm:text-lg">
                 {"The displacement protocol maps step pulses $N_{steps}$ to volumetric delivery:"}
               </p>
-              <div className="p-4 rounded-xl border border-slate-200 dark:border-[#26372F] bg-slate-50 dark:bg-[#111B17] font-mono text-sm text-[#065F46] dark:text-[#34D399]">
+              <div className="p-4 rounded-xl border border-slate-200 dark:border-[#26352F] bg-slate-50 dark:bg-[#111B17] font-mono text-sm text-[#065F46] dark:text-[#34D399]">
                 {"$$V = N_{steps} \\cdot \\left(\\frac{P_{pitch}}{200 \\cdot M}\\right) \\cdot \\left(\\frac{\\pi D_{syringe}^2}{4}\\right)$$"}
               </div>
               <p className="leading-relaxed text-base sm:text-lg">

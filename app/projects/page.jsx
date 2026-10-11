@@ -10,9 +10,9 @@ import PagePagination from '../../components/PagePagination';
 
 function MotionReelsGraphic() {
   return (
-    <div className="relative aspect-[16/10] w-full bg-[#0A100D] text-slate-200 overflow-hidden select-none font-mono flex flex-col justify-between p-4 sm:p-5 border border-slate-200 dark:border-[#26372F] rounded-lg">
+    <div className="relative aspect-[16/10] w-full bg-[#0A100D] text-slate-200 overflow-hidden select-none font-mono flex flex-col justify-between p-4 sm:p-5 border border-slate-200 dark:border-[#26352F] rounded-xl">
       {/* Top Monitor Status Bar */}
-      <div className="flex items-center justify-between text-[11px] pb-2 border-b border-[#26372F]/80">
+      <div className="flex items-center justify-between text-[11px] pb-2 border-b border-[#26352F]/80">
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
           <span className="font-bold text-red-400">REC · 4K UHD</span>
@@ -74,7 +74,7 @@ function MotionReelsGraphic() {
       </div>
 
       {/* Bottom DAW / NLE Multitrack Timeline */}
-      <div className="space-y-1.5 pt-2 border-t border-[#26372F]/80 text-[10px]">
+      <div className="space-y-1.5 pt-2 border-t border-[#26352F]/80 text-[10px]">
         {/* Track V1 */}
         <div className="flex items-center gap-2">
           <span className="w-6 text-slate-400 font-semibold">V1</span>
@@ -85,7 +85,7 @@ function MotionReelsGraphic() {
         {/* Track A1 */}
         <div className="flex items-center gap-2">
           <span className="w-6 text-slate-400 font-semibold">A1</span>
-          <div className="flex-1 h-4 rounded bg-[#11221B] border border-[#26372F] flex items-center px-2 gap-1 overflow-hidden">
+          <div className="flex-1 h-4 rounded bg-[#11221B] border border-[#26352F] flex items-center px-2 gap-1 overflow-hidden">
             <span className="text-slate-400">Stadium Ambience &amp; Sound FX</span>
             <div className="ml-auto flex items-center gap-0.5 opacity-70">
               <span className="w-0.5 h-2 bg-[#34D399]"></span>
@@ -114,7 +114,6 @@ const FEATURED_PROJECTS = [
     tech: ["Next.js", "React", "Node.js", "Tailwind CSS", "REST APIs"],
     liveUrl: "https://sportivo.dipeshsapkota7.com.np/",
     githubUrl: "https://github.com/dszae/sportivo",
-    articleUrl: "https://building-sportivo-live-sports-streaming.hashnode.dev/building-sportivo-how-i-engineered-a-real-time-live-sports-streaming-web-app",
     detailUrl: "/projects/sportivo"
   },
   {
@@ -129,7 +128,6 @@ const FEATURED_PROJECTS = [
     tech: ["HTML5 Canvas", "JavaScript", "Git DAG", "CSS3"],
     liveUrl: "https://git-visualizer.dipeshsapkota7.com.np/",
     githubUrl: "https://github.com/dszae/git-visualizer",
-    articleUrl: "https://how-i-built-an-interactive-git-visualizer.hashnode.dev/how-i-built-an-interactive-git-visualizer-to-master-version-control",
     detailUrl: "/projects/git-visualizer"
   },
   {
@@ -264,7 +262,7 @@ export default function ProjectsPage() {
               
               {/* A. Clean Section Heading */}
               <header className="mb-16 sm:mb-20">
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-200 dark:border-[#26372F] pb-8">
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-200 dark:border-[#26352F] pb-8">
                   <div>
                     <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#0F172A] dark:text-[#F9FAFB] flex items-center gap-3">
                       <span className="text-[#065F46] dark:text-[#34D399]">/</span>
@@ -352,7 +350,7 @@ export default function ProjectsPage() {
                         >
                           <Link
                             href={project.detailUrl}
-                            className="group block relative rounded-lg overflow-hidden border border-slate-200 dark:border-[#26372F] bg-slate-100 dark:bg-[#121A17] shadow-sm hover:border-[#065F46]/60 dark:hover:border-[#34D399]/60 transition-colors focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399]"
+                            className="group block relative rounded-2xl overflow-hidden border border-slate-200 dark:border-[#26352F] bg-slate-100 dark:bg-[#121A17] shadow-sm hover:border-[#065F46]/60 dark:hover:border-[#34D399]/60 transition-colors focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399]"
                             aria-label={`View ${project.title} case study`}
                           >
                             {project.image ? (
@@ -398,7 +396,7 @@ export default function ProjectsPage() {
                           </h2>
 
                           {/* Concise, Readable Description Block */}
-                          <div className="p-5 sm:p-6 rounded-lg bg-white dark:bg-[#121A17] border border-slate-200 dark:border-[#26372F] shadow-sm mb-4 text-sm leading-relaxed text-[#334155] dark:text-[#A7B0BE]">
+                          <div className="p-5 sm:p-6 rounded-xl bg-white dark:bg-[#121A17] border border-slate-200 dark:border-[#26352F] shadow-sm mb-4 text-sm leading-relaxed text-[#334155] dark:text-[#A7B0BE]">
                             <p>{project.description}</p>
                           </div>
 
@@ -454,32 +452,6 @@ export default function ProjectsPage() {
                                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.332-5.467-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
                               </a>
                             )}
-
-                            {project.liveUrl && (
-                              <a
-                                href={project.liveUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors p-1"
-                                aria-label={`${project.title} live application`}
-                                title="Launch App"
-                              >
-                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-                              </a>
-                            )}
-
-                            {project.articleUrl && (
-                              <a
-                                href={project.articleUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors p-1"
-                                aria-label={`Read article about ${project.title}`}
-                                title="Engineering Article"
-                              >
-                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
-                              </a>
-                            )}
                           </div>
                         </div>
                       </article>
@@ -490,7 +462,7 @@ export default function ProjectsPage() {
 
               {/* C. Other Engineering Prototypes & Experiments (Clean Aligned Grid) */}
               {filteredNoteworthy.length > 0 && (
-                <div className="pt-12 border-t border-slate-200 dark:border-[#26372F]">
+                <div className="pt-12 border-t border-slate-200 dark:border-[#26352F]">
                   <div className="text-center mb-10">
                     <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F172A] dark:text-[#F9FAFB]">
                       Other Noteworthy Engineering Projects
@@ -504,7 +476,7 @@ export default function ProjectsPage() {
                     {filteredNoteworthy.map((project) => (
                       <article
                         key={project.id}
-                        className="group flex flex-col justify-between p-6 rounded-lg bg-white dark:bg-[#121A17] border border-slate-200 dark:border-[#26372F] shadow-sm hover:-translate-y-1 hover:border-[#065F46]/60 dark:hover:border-[#34D399]/60 transition-all duration-300"
+                        className="group flex flex-col justify-between p-6 rounded-2xl bg-white dark:bg-[#121A17] border border-slate-200 dark:border-[#26352F] shadow-sm hover:-translate-y-0.5 hover:border-[#065F46]/60 dark:hover:border-[#34D399]/60 transition-all duration-200"
                       >
                         <div>
                           {/* Top Row: Technical Icon & External Action */}
