@@ -11,6 +11,7 @@ export const NAV_LINKS = [
   { path: '/about', label: 'About', id: 'about' },
   { path: '/skills', label: 'Skills', id: 'skills' },
   { path: '/projects', label: 'Projects', id: 'projects' },
+  { path: '/blog', label: 'Articles', id: 'blog' },
   { path: '/certificates', label: 'Certificates', id: 'certificates' },
   { path: '/resume', label: 'Resume', id: 'resume' },
   { path: '/gallery', label: 'Gallery', id: 'gallery' },
@@ -526,46 +527,163 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
         {typeof children === 'function' ? children({ theme, isDark }) : children}
       </main>
 
-      <footer className="theme-footer py-8 sm:py-10 text-center text-xs sm:text-sm border-t w-full">
+      <footer className="theme-footer pt-16 pb-12 text-xs sm:text-sm border-t w-full" role="contentinfo">
         <div className="w-full max-w-7xl mx-auto px-6 sm:px-12">
-          <div className="flex flex-wrap justify-center items-center gap-x-5 sm:gap-x-7 gap-y-3 mb-6 sm:mb-8">
-            <a href="https://github.com/dszae" target="_blank" rel="me noopener noreferrer" aria-label="Dipesh Sapkota on GitHub (dszae)" className="site-footer-link transition-colors p-1" title="Dipesh Sapkota on GitHub (dszae)">
-              <svg className="w-5 h-5 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.332-5.467-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
-            </a>
-            <a href="https://linkedin.com/in/dszae" target="_blank" rel="me noopener noreferrer" aria-label="Dipesh Sapkota on LinkedIn (dszae)" className="site-footer-link transition-colors p-1" title="Dipesh Sapkota on LinkedIn (dszae)">
-              <svg className="w-5 h-5 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
-            </a>
-            <a href="https://dev.to/dszae" target="_blank" rel="me noopener noreferrer" aria-label="Dipesh Sapkota on DEV Community (dszae)" className="site-footer-link transition-colors p-1" title="Dipesh Sapkota on DEV Community (dszae)">
-              <svg className="w-5 h-5 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M7.42 10.05c-.18-.16-.46-.23-.84-.23H5.34v4.36h1.22c.4 0 .69-.08.87-.25.18-.17.28-.46.28-.86v-2.16c0-.4-.1-.69-.29-.86zM20.5 2H3.5A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8.94 13.08c0 .73-.24 1.3-.72 1.7-.48.4-1.16.6-2.04.6H3.6V8.62h2.58c.88 0 1.56.2 2.04.6.48.4.72.97.72 1.7v2.16zm5.12-3.26h-2.58v1.65h2.2v1.18h-2.2v1.73h2.58v1.2H9.8V8.62h4.26v1.2zm6.34 0l-1.9 6.96h-1.38l-1.9-6.96h1.44l1.15 4.79 1.15-4.79h1.44z"/></svg>
-            </a>
-            <a href="https://x.com/DszAe18" target="_blank" rel="me noopener noreferrer" aria-label="Dipesh Sapkota on X (DszAe18)" className="site-footer-link transition-colors p-1" title="Dipesh Sapkota on X (DszAe18)">
-              <svg className="w-5 h-5 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </a>
-            <a href="https://instagram.com/dsz.ae" target="_blank" rel="me noopener noreferrer" aria-label="Dipesh Sapkota on Instagram (dsz.ae)" className="site-footer-link transition-colors p-1" title="Dipesh Sapkota on Instagram (dsz.ae)">
-              <svg className="w-5 h-5 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" /></svg>
-            </a>
-            <a href="https://facebook.com/dsz.ae" target="_blank" rel="me noopener noreferrer" aria-label="Dipesh Sapkota on Facebook (dsz.ae)" className="site-footer-link transition-colors p-1" title="Dipesh Sapkota on Facebook (dsz.ae)">
-              <svg className="w-5 h-5 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
-            </a>
-            <a href="https://tiktok.com/@dsz_ae" target="_blank" rel="me noopener noreferrer" aria-label="Dipesh Sapkota on TikTok (dsz_ae)" className="site-footer-link transition-colors p-1" title="Dipesh Sapkota on TikTok (dsz_ae)">
-              <svg className="w-5 h-5 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.59-1.01V14.5c0 1.95-.53 3.91-1.63 5.49-1.61 2.31-4.32 3.82-7.16 3.99-2.03.12-4.11-.43-5.78-1.66-2.19-1.61-3.48-4.24-3.35-6.99.11-2.45 1.3-4.83 3.23-6.28 1.79-1.35 4.15-1.87 6.37-1.44v4.18c-1.16-.36-2.46-.3-3.56.24-.95.46-1.68 1.36-1.88 2.4-.33 1.72.76 3.5 2.44 3.96 1.48.41 3.16-.16 4.02-1.44.42-.62.62-1.38.62-2.14V.02z"/></svg>
-            </a>
-          </div>
-          <nav aria-label="Footer navigation" className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6" itemScope itemType="https://schema.org/SiteNavigationElement">
-            {NAV_LINKS.map((link) => (
-              <Link 
-                key={`footer-${link.id}`} 
-                href={link.path} 
-                itemProp="url"
-                className="site-footer-link transition-colors"
-              >
-                <span itemProp="name">{link.label}</span>
+          {/* Main Footer 4-Column Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 pb-12 border-b border-[#CBD5E1] dark:border-[#26352F]">
+            
+            {/* Column 1: Identity & Profile */}
+            <div className="flex flex-col items-start text-left">
+              <Link href="/" className="site-wordmark text-lg font-bold mb-3">
+                Dipesh Sapkota<span className="site-wordmark-dot">.</span>
               </Link>
-            ))}
-          </nav>
-          <p className="font-semibold text-xs sm:text-sm">
-            &copy; {new Date().getFullYear()} <Link href="/" className="site-footer-link underline transition-colors">Dipesh Sapkota<span className="site-wordmark-dot">.</span></Link> All rights reserved.
-          </p>
+              <p className="text-xs sm:text-sm text-[#475569] dark:text-[#A7B0BE] leading-relaxed mb-4">
+                Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal. Focused on AI/ML enthusiast research, software systems, and creative digital media.
+              </p>
+              <div className="inline-flex items-center gap-2 text-xs font-mono font-medium text-[#065F46] dark:text-[#34D399] bg-[#065F46]/10 dark:bg-[#34D399]/10 px-3 py-1.5 rounded-lg mb-2">
+                <span className="w-2 h-2 rounded-full bg-[#065F46] dark:bg-[#34D399] animate-pulse"></span>
+                <span>Kathmandu, Nepal (UTC+5:45)</span>
+              </div>
+              <p className="text-[11px] font-mono text-[#64748B] dark:text-[#7A8A82]">
+                Tribhuvan University &middot; Institute of Engineering
+              </p>
+            </div>
+
+            {/* Column 2: Core Exploration Navigation */}
+            <nav aria-label="Footer primary navigation" className="text-left" itemScope itemType="https://schema.org/SiteNavigationElement">
+              <h2 className="font-mono text-xs font-bold uppercase tracking-widest text-[#0F172A] dark:text-[#F8FAFC] mb-4">
+                Directory
+              </h2>
+              <ul className="space-y-2.5">
+                {NAV_LINKS.map((link) => (
+                  <li key={`footer-${link.id}`}>
+                    <Link
+                      href={link.path}
+                      itemProp="url"
+                      className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors inline-block"
+                    >
+                      <span itemProp="name">{link.label}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            {/* Column 3: In-Depth Engineering Case Studies */}
+            <nav aria-label="Footer case studies and projects" className="text-left">
+              <h2 className="font-mono text-xs font-bold uppercase tracking-widest text-[#0F172A] dark:text-[#F8FAFC] mb-4">
+                Case Studies
+              </h2>
+              <ul className="space-y-2.5">
+                <li>
+                  <Link href="/projects/sportivo" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors inline-block">
+                    Sportivo (Streaming Engine)
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/projects/git-visualizer" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors inline-block">
+                    Git Visualizer (DAG Internals)
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/projects/ioe-admission-guide" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors inline-block">
+                    IOE Admission Guide Portal
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/projects/sports-reels" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors inline-block">
+                    Sports Motion Graphics Reels
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/projects/555-flasher" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors inline-block">
+                    NE555 Timer Circuit Prototype
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/projects/motor-modeling" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors inline-block">
+                    Electrical Machinery Modeling
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/projects/analyzer-diag" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors inline-block">
+                    Clinical Analyzer Diagnostics
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+
+            {/* Column 4: Verified Profiles & Standards */}
+            <div className="text-left flex flex-col justify-between">
+              <div>
+                <h2 className="font-mono text-xs font-bold uppercase tracking-widest text-[#0F172A] dark:text-[#F8FAFC] mb-4">
+                  Verified Profiles
+                </h2>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  <a href="https://github.com/dszae" target="_blank" rel="me noopener noreferrer" aria-label="Dipesh Sapkota on GitHub (dszae)" className="w-9 h-9 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] flex items-center justify-center text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors" title="Dipesh Sapkota on GitHub (dszae)">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.332-5.467-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
+                  </a>
+                  <a href="https://linkedin.com/in/dszae" target="_blank" rel="me noopener noreferrer" aria-label="Dipesh Sapkota on LinkedIn (dszae)" className="w-9 h-9 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] flex items-center justify-center text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors" title="Dipesh Sapkota on LinkedIn (dszae)">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
+                  </a>
+                  <a href="https://dev.to/dszae" target="_blank" rel="me noopener noreferrer" aria-label="Dipesh Sapkota on DEV Community (dszae)" className="w-9 h-9 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] flex items-center justify-center text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors" title="Dipesh Sapkota on DEV Community (dszae)">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M7.42 10.05c-.18-.16-.46-.23-.84-.23H5.34v4.36h1.22c.4 0 .69-.08.87-.25.18-.17.28-.46.28-.86v-2.16c0-.4-.1-.69-.29-.86zM20.5 2H3.5A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8.94 13.08c0 .73-.24 1.3-.72 1.7-.48.4-1.16.6-2.04.6H3.6V8.62h2.58c.88 0 1.56.2 2.04.6.48.4.72.97.72 1.7v2.16zm5.12-3.26h-2.58v1.65h2.2v1.18h-2.2v1.73h2.58v1.2H9.8V8.62h4.26v1.2zm6.34 0l-1.9 6.96h-1.38l-1.9-6.96h1.44l1.15 4.79 1.15-4.79h1.44z"/></svg>
+                  </a>
+                  <a href="https://x.com/DszAe18" target="_blank" rel="me noopener noreferrer" aria-label="Dipesh Sapkota on X (DszAe18)" className="w-9 h-9 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] flex items-center justify-center text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors" title="Dipesh Sapkota on X (DszAe18)">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                  </a>
+                  <a href="https://instagram.com/dsz.ae" target="_blank" rel="me noopener noreferrer" aria-label="Dipesh Sapkota on Instagram (dsz.ae)" className="w-9 h-9 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] flex items-center justify-center text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors" title="Dipesh Sapkota on Instagram (dsz.ae)">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" /></svg>
+                  </a>
+                  <a href="https://facebook.com/dsz.ae" target="_blank" rel="me noopener noreferrer" aria-label="Dipesh Sapkota on Facebook (dsz.ae)" className="w-9 h-9 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] flex items-center justify-center text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors" title="Dipesh Sapkota on Facebook (dsz.ae)">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+                  </a>
+                  <a href="https://tiktok.com/@dsz_ae" target="_blank" rel="me noopener noreferrer" aria-label="Dipesh Sapkota on TikTok (dsz_ae)" className="w-9 h-9 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] flex items-center justify-center text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors" title="Dipesh Sapkota on TikTok (dsz_ae)">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.59-1.01V14.5c0 1.95-.53 3.91-1.63 5.49-1.61 2.31-4.32 3.82-7.16 3.99-2.03.12-4.11-.43-5.78-1.66-2.19-1.61-3.48-4.24-3.35-6.99.11-2.45 1.3-4.83 3.23-6.28 1.79-1.35 4.15-1.87 6.37-1.44v4.18c-1.16-.36-2.46-.3-3.56.24-.95.46-1.68 1.36-1.88 2.4-.33 1.72.76 3.5 2.44 3.96 1.48.41 3.16-.16 4.02-1.44.42-.62.62-1.38.62-2.14V.02z"/></svg>
+                  </a>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#64748B] dark:text-[#7A8A82] mb-2.5">
+                  Discovery &amp; Standards
+                </h3>
+                <ul className="space-y-1.5 text-xs">
+                  <li>
+                    <Link href="/image-licensing" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors">
+                      Image Licensing Policy
+                    </Link>
+                  </li>
+                  <li>
+                    <a href="/sitemap.xml" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors">
+                      XML Sitemap
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/llms.txt" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors">
+                      LLMs Machine Readable Index
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/agent-card" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors">
+                      Agent Discovery Card (A2A)
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#64748B] dark:text-[#94A3B8]">
+            <p className="font-medium text-center sm:text-left">
+              &copy; {new Date().getFullYear()} <Link href="/" className="font-semibold text-[#0F172A] dark:text-[#F9FAFB] hover:underline">Dipesh Sapkota<span className="site-wordmark-dot">.</span></Link> All rights reserved.
+            </p>
+            <p className="text-center sm:text-right font-mono text-[11px] text-[#64748B] dark:text-[#7A8A82]">
+              IOE Thapathali Campus &middot; Kathmandu, Nepal
+            </p>
+          </div>
         </div>
       </footer>
 

@@ -543,7 +543,7 @@ export default function ProjectsPage() {
 
               <PagePagination 
                 prev={{ label: 'Technical Skills', path: '/skills' }} 
-                next={{ label: 'Certificates & Credentials', path: '/certificates' }} 
+                next={{ label: 'Engineering Articles', path: '/blog' }} 
               />
             </section>
           </FadeUp>

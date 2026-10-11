@@ -71,7 +71,7 @@ export default function CertificatesPage() {
                   </div>
 
                   <PagePagination 
-                    prev={{ label: 'Featured Projects', path: '/projects' }} 
+                    prev={{ label: 'Engineering Articles', path: '/blog' }} 
                     next={{ label: 'Resume & Journey', path: '/resume' }} 
                   />
                 </div>

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import SiteLayout from '@/components/SiteLayout';
 import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
+import PagePagination from '@/components/PagePagination';
 
 export const metadata = {
   title: "Articles",
@@ -97,6 +98,11 @@ export default function BlogPage() {
               </p>
             </li>
           </ul>
+
+          <PagePagination
+            prev={{ label: 'Featured Projects', path: '/projects' }}
+            next={{ label: 'Certificates & Credentials', path: '/certificates' }}
+          />
         </div>
       </div>
     </SiteLayout>

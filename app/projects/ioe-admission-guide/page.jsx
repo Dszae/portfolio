@@ -41,7 +41,7 @@ export default function IoeAdmissionProjectPage() {
 
   return (
     <SiteLayout>
-      <main id="main-content" tabIndex={-1} className="w-full max-w-5xl mx-auto px-4 sm:px-8 lg:px-12 pt-28 sm:pt-32 pb-24 outline-none">
+      <div className="w-full max-w-5xl mx-auto px-4 sm:px-8 lg:px-12 pt-28 sm:pt-32 pb-24">
         <BreadcrumbJsonLd
           items={[
             { name: 'Home', path: '/' },
@@ -259,7 +259,7 @@ export default function IoeAdmissionProjectPage() {
           prev={{ label: 'Case Study: Sportivo', path: '/projects/sportivo' }}
           next={{ label: 'Case Study: Git Visualizer', path: '/projects/git-visualizer' }}
         />
-      </main>
+      </div>
     </SiteLayout>
   );
 }
