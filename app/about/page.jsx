@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 import SiteLayout from '../../components/SiteLayout';
 import FadeUp from '../../components/FadeUp';
 import BreadcrumbJsonLd from '../../components/BreadcrumbJsonLd';
@@ -51,6 +52,9 @@ export default function AboutPage() {
                     </p>
                     <p className="text-base sm:text-lg leading-relaxed text-[#1E293B] dark:text-[#A7B0BE]">
                       Complementing my engineering background, I possess over 4 years of professional experience as a freelance Video Editor and Motion Graphics Designer. This unique convergence of analytical problem-solving and high-end creative design empowers me to bridge the gap between logical architecture and visually engaging digital execution.
+                    </p>
+                    <p className="mt-6 text-base sm:text-lg leading-relaxed text-[#1E293B] dark:text-[#A7B0BE]">
+                      I also build independent software projects, including <Link href="/projects/sportivo" className="font-semibold text-[#065F46] hover:underline dark:text-[#34D399]">Sportivo — Live Scores, Fixtures &amp; Sports News</Link>, a sports platform connected to its <a href="https://sportivo.dipeshsapkota7.com.np/" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#065F46] hover:underline dark:text-[#34D399]">live sports platform</a>.
                     </p>
                   </div>
                   

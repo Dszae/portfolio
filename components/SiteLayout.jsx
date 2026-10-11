@@ -11,6 +11,7 @@ export const NAV_LINKS = [
   { path: '/about', label: 'About', id: 'about' },
   { path: '/skills', label: 'Skills', id: 'skills' },
   { path: '/projects', label: 'Projects', id: 'projects' },
+  { path: '/projects/sportivo', label: 'Sportivo', id: 'sportivo' },
   { path: '/blog', label: 'Articles', id: 'blog' },
   { path: '/certificates', label: 'Certificates', id: 'certificates' },
   { path: '/resume', label: 'Resume', id: 'resume' },
@@ -577,7 +578,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
               <ul className="space-y-2.5">
                 <li>
                   <Link href="/projects/sportivo" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors inline-block">
-                    Sportivo (Streaming Engine)
+                    Sportivo — Live Scores, Fixtures & Sports News
                   </Link>
                 </li>
                 <li>

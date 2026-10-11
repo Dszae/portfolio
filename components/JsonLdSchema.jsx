@@ -248,10 +248,14 @@ export const homePageSchema = {
           position: 1,
           name: 'Sportivo',
           description: 'Real-time live sports streaming and match schedule platform created by Dipesh Sapkota.',
-          url: `${siteUrl}/projects/sportivo`,
+          url: 'https://sportivo.dipeshsapkota7.com.np/',
           image: `${siteUrl}/sportivo-preview.jpg`,
+          author: { '@id': personId },
           creator: { '@id': personId },
-          sameAs: 'https://sportivo.dipeshsapkota7.com.np/',
+          sameAs: [
+            'https://sportivo.dipeshsapkota7.com.np/',
+            'https://github.com/dszae/sportivo',
+          ],
         },
         {
           '@type': 'SoftwareApplication',

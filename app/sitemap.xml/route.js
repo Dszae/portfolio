@@ -86,7 +86,7 @@ const pages = [
   // Sub-pages, Case Studies, and Secondary Resources
   {
     path: '/projects/sportivo',
-    priority: '0.85',
+    priority: '0.95',
     changefreq: 'monthly',
     images: [image('/sportivo-preview.jpg', 'Sportivo project preview')],
   },

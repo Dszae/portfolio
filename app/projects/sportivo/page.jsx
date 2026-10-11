@@ -5,20 +5,20 @@ import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 import PagePagination from '@/components/PagePagination';
 
 export const metadata = {
-  title: "Sportivo: Live Sports Streaming Platform Case Study",
-  description: "Technical case study of Sportivo by Dipesh Sapkota (dszae): real-time fixture aggregation, resilient multi-server stream switching, and clean sports UI engineering.",
-  alternates: { canonical: '/projects/sportivo' },
+  title: "Sportivo — Live Scores, Fixtures & Sports News",
+  description: "Sportivo is a sports platform built by Dipesh Sapkota for live scores, fixtures, and sports news.",
+  alternates: { canonical: '/projects/sportivo/' },
   openGraph: {
     type: 'website',
-    title: 'Sportivo Case Study by Dipesh Sapkota',
-    description: 'A real-time live sports streaming platform engineered by Dipesh Sapkota with resilient multi-server fallback logic.',
+    title: 'Sportivo — Live Scores, Fixtures & Sports News | Dipesh Sapkota',
+    description: 'Sportivo is a sports platform built by Dipesh Sapkota for live scores, fixtures, and sports news.',
     url: 'https://www.dipeshsapkota7.com.np/projects/sportivo',
-    images: [{ url: '/sportivo-preview.jpg', alt: 'Sportivo project interface preview' }],
+    images: [{ url: '/sportivo-preview.jpg', width: 993, height: 450, alt: 'Sportivo live sports platform preview' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Sportivo Case Study by Dipesh Sapkota',
-    description: 'Explore the architecture and engineering behind Sportivo, built by Dipesh Sapkota (dszae).',
+    title: 'Sportivo — Live Scores, Fixtures & Sports News | Dipesh Sapkota',
+    description: 'Explore Sportivo, a sports platform built by Dipesh Sapkota.',
     images: ['/sportivo-preview.jpg'],
   },
 };
@@ -27,16 +27,24 @@ export default function SportivoProjectPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
-    name: 'Sportivo Live Sports Streaming',
-    url: 'https://www.dipeshsapkota7.com.np/projects/sportivo',
-    description: 'A real-time live sports streaming platform engineered by Dipesh Sapkota with match schedules, search, and multi-server stream switching.',
+    name: 'Sportivo',
+    url: 'https://sportivo.dipeshsapkota7.com.np/',
+    description: 'Sportivo is a sports platform built by Dipesh Sapkota for live scores, fixtures, and sports news.',
     applicationCategory: 'SportsApplication',
+    author: {
+      '@type': 'Person',
+      name: 'Dipesh Sapkota',
+      url: 'https://www.dipeshsapkota7.com.np/',
+    },
     creator: {
       '@type': 'Person',
       name: 'Dipesh Sapkota',
       url: 'https://www.dipeshsapkota7.com.np/',
     },
-    sameAs: 'https://github.com/dszae/sportivo',
+    sameAs: [
+      'https://sportivo.dipeshsapkota7.com.np/',
+      'https://github.com/dszae/sportivo',
+    ],
   };
 
   return (
@@ -46,7 +54,7 @@ export default function SportivoProjectPage() {
           items={[
             { name: 'Home', path: '/' },
             { name: 'Projects', path: '/projects' },
-            { name: 'Sportivo', path: '/projects/sportivo' },
+            { name: 'Sportivo', path: '/projects/sportivo/' },
           ]}
         />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
@@ -71,35 +79,35 @@ export default function SportivoProjectPage() {
               Featured Case Study
             </span>
             <span className="text-xs font-mono text-[#64748B] dark:text-[#94A3B8]">
-              Full-Stack System Architecture
+              Independent Sports Platform
             </span>
           </div>
 
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0F172A] dark:text-[#F9FAFB] leading-tight mb-6">
-            Sportivo: Real-Time Live Sports Streaming &amp; Schedule Platform
+            Sportivo — Live Scores, Fixtures &amp; Sports News
           </h1>
 
           <p className="text-base sm:text-lg lg:text-xl text-[#334155] dark:text-[#CBD5E1] leading-relaxed max-w-3xl mb-8">
-            A production web application engineered to aggregate high-definition football, cricket, and basketball fixtures with automated schedule parsing, dynamic CORS-compliant stream proxies, and instant multi-server failover switching.
+            Sportivo is a sports platform built by Dipesh Sapkota. It brings live scores, fixtures, and sports news together in one accessible web experience.
           </p>
 
           {/* Quick Meta Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] shadow-sm mb-8 font-mono text-xs">
             <div>
               <span className="text-[#64748B] dark:text-[#94A3B8] block mb-1">Role</span>
-              <strong className="text-[#0F172A] dark:text-[#F9FAFB]">Full-Stack Engineer</strong>
+              <strong className="text-[#0F172A] dark:text-[#F9FAFB]">Creator</strong>
             </div>
             <div>
               <span className="text-[#64748B] dark:text-[#94A3B8] block mb-1">Timeline</span>
-              <strong className="text-[#0F172A] dark:text-[#F9FAFB]">Production / 2025</strong>
+              <strong className="text-[#0F172A] dark:text-[#F9FAFB]">Independent project</strong>
             </div>
             <div>
               <span className="text-[#64748B] dark:text-[#94A3B8] block mb-1">Tech Stack</span>
-              <strong className="text-[#0F172A] dark:text-[#F9FAFB]">Next.js, Node, Tailwind</strong>
+              <strong className="text-[#0F172A] dark:text-[#F9FAFB]">Web platform</strong>
             </div>
             <div>
               <span className="text-[#64748B] dark:text-[#94A3B8] block mb-1">Status</span>
-              <strong className="text-[#065F46] dark:text-[#34D399]">Live Application</strong>
+              <strong className="text-[#065F46] dark:text-[#34D399]">Live site</strong>
             </div>
           </div>
 
@@ -111,7 +119,7 @@ export default function SportivoProjectPage() {
               rel="noreferrer"
               className="px-6 py-3 bg-[#065F46] hover:bg-[#044E39] dark:bg-[#34D399] dark:hover:bg-[#6EE7B7] text-white dark:text-[#090B0E] font-semibold rounded-xl transition-all shadow-sm flex items-center gap-2 cursor-pointer"
             >
-              <span>Launch Live Application</span>
+              <span>Visit Sportivo</span>
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
@@ -173,59 +181,59 @@ export default function SportivoProjectPage() {
           </div>
         </section>
 
-        {/* Key Engineering Highlights Grid */}
+        {/* Project Highlights Grid */}
         <section className="mb-16">
           <h2 className="text-2xl font-bold tracking-tight text-[#0F172A] dark:text-[#F9FAFB] mb-6 flex items-center gap-3">
-            <span className="text-[#065F46] dark:text-[#34D399]">#</span> System Highlights &amp; Metrics
+            <span className="text-[#065F46] dark:text-[#34D399]">#</span> Sportivo Highlights
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             <div className="p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] shadow-sm">
               <span className="text-3xl font-extrabold text-[#065F46] dark:text-[#34D399] font-mono block mb-1">
-                &lt; 350ms
+                Live scores
               </span>
               <h3 className="font-semibold text-sm text-[#0F172A] dark:text-[#F9FAFB] mb-1">
-                Failover Switch Latency
+                Score-focused browsing
               </h3>
               <p className="text-xs text-[#64748B] dark:text-[#A7B0BE] leading-relaxed">
-                Client-side video stream switching detects broken HLS feeds and triggers backup servers without unmounting the UI player.
+                Sportivo gives visitors a dedicated place to follow current sports score information.
               </p>
             </div>
 
             <div className="p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] shadow-sm">
               <span className="text-3xl font-extrabold text-[#065F46] dark:text-[#34D399] font-mono block mb-1">
-                Multi-Sport
+                Fixtures
               </span>
               <h3 className="font-semibold text-sm text-[#0F172A] dark:text-[#F9FAFB] mb-1">
-                Automated Fixture Aggregation
+                Match schedules
               </h3>
               <p className="text-xs text-[#64748B] dark:text-[#A7B0BE] leading-relaxed">
-                Scrapes and normalizes match schedules across football (EPL, La Liga, UCL), cricket (IPL, T20 World Cup), and basketball (NBA).
+                Browse upcoming fixtures and keep sports schedules close to the live scores experience.
               </p>
             </div>
 
             <div className="p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] shadow-sm">
               <span className="text-3xl font-extrabold text-[#065F46] dark:text-[#34D399] font-mono block mb-1">
-                100%
+                Sports news
               </span>
               <h3 className="font-semibold text-sm text-[#0F172A] dark:text-[#F9FAFB] mb-1">
-                Direct Shareable URLs
+                A broader sports view
               </h3>
               <p className="text-xs text-[#64748B] dark:text-[#A7B0BE] leading-relaxed">
-                Unique persistent match links allow fans to share a game directly, deep-linking into specific teams and live streams.
+                The platform combines sports news with scores and fixtures in one web destination.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Deep Architecture Breakdown */}
+        {/* Project Overview */}
         <section className="mb-16 space-y-8">
           <div>
             <h2 className="text-2xl font-bold tracking-tight text-[#0F172A] dark:text-[#F9FAFB] mb-4 flex items-center gap-3">
-              <span className="text-[#065F46] dark:text-[#34D399]">#</span> Architectural Deep Dive
+              <span className="text-[#065F46] dark:text-[#34D399]">#</span> About Sportivo
             </h2>
             <p className="text-sm sm:text-base text-[#334155] dark:text-[#CBD5E1] leading-relaxed mb-6">
-              Online streaming aggregators face two persistent challenges: volatile stream health and unstable third-party data providers. Sportivo is built on an isolated, resilient pipeline designed to never crash the user session.
+              Sportivo is an independent sports platform built by Dipesh Sapkota. The project brings live scores, fixtures, and sports news together in a responsive interface for people who want a focused sports destination.
             </p>
           </div>
 
@@ -233,19 +241,19 @@ export default function SportivoProjectPage() {
             <div className="p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216]">
               <h3 className="text-lg font-bold text-[#0F172A] dark:text-[#F9FAFB] mb-2 flex items-center gap-2">
                 <span className="font-mono text-[#065F46] dark:text-[#34D399] text-sm">01.</span>
-                Resilient Multi-Server Stream Switching Engine
+                Live scores
               </h3>
               <p className="text-sm text-[#334155] dark:text-[#A7B0BE] leading-relaxed mb-3">
-                Live sporting streams often go down unexpectedly due to server overloads. Sportivo attaches multiple verified source endpoints (Server 1, Server 2, Server 3, etc.) to each fixture.
+                The live scores area is one of Sportivo&apos;s central project experiences.
               </p>
               <ul className="space-y-2 text-xs sm:text-sm text-[#475569] dark:text-[#CBD5E1]">
                 <li className="flex items-start gap-2">
                   <span className="text-[#065F46] dark:text-[#34D399] font-bold mt-0.5">▸</span>
-                  <span><strong>Automatic Heartbeat Detection:</strong> Monitored player playback buffer to detect stalled media streams or 403 Forbidden errors.</span>
+                  <span><strong>Clear focus:</strong> Score information is presented as a primary part of the sports platform.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[#065F46] dark:text-[#34D399] font-bold mt-0.5">▸</span>
-                  <span><strong>Seamless Fallback Rotation:</strong> If primary HLS URL errors out, the player automatically promotes the secondary stream without refreshing the browser tab.</span>
+                  <span><strong>Accessible destination:</strong> Visitors can open the live Sportivo platform directly from this portfolio.</span>
                 </li>
               </ul>
             </div>
@@ -253,19 +261,19 @@ export default function SportivoProjectPage() {
             <div className="p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216]">
               <h3 className="text-lg font-bold text-[#0F172A] dark:text-[#F9FAFB] mb-2 flex items-center gap-2">
                 <span className="font-mono text-[#065F46] dark:text-[#34D399] text-sm">02.</span>
-                Automated Background Schedule Scraper &amp; Timezone Normalization
+                Fixtures and sports news
               </h3>
               <p className="text-sm text-[#334155] dark:text-[#A7B0BE] leading-relaxed mb-3">
-                Match schedules change dynamically due to weather or league rescheduling. Sportivo uses a scheduled Node.js extraction service that normalizes kickoff times into standard ISO timestamps.
+                Fixtures and sports news complement the live scores experience and give the project its broader sports focus.
               </p>
               <ul className="space-y-2 text-xs sm:text-sm text-[#475569] dark:text-[#CBD5E1]">
                 <li className="flex items-start gap-2">
                   <span className="text-[#065F46] dark:text-[#34D399] font-bold mt-0.5">▸</span>
-                  <span><strong>Local Clock Synchronization:</strong> Automatically converts UTC kickoffs into the viewer&apos;s local timezone (e.g. NPT +5:45 in Nepal).</span>
+                  <span><strong>One connected platform:</strong> Scores, fixtures, and news are presented as related parts of Sportivo.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[#065F46] dark:text-[#34D399] font-bold mt-0.5">▸</span>
-                  <span><strong>Live Status Indicator:</strong> Matches are dynamically classified as &apos;Live Now&apos;, &apos;Upcoming&apos;, or &apos;Finished&apos; based on real-time clock thresholds.</span>
+                  <span><strong>Built by Dipesh Sapkota:</strong> Sportivo is part of Dipesh&apos;s independent software portfolio.</span>
                 </li>
               </ul>
             </div>
@@ -273,10 +281,10 @@ export default function SportivoProjectPage() {
             <div className="p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216]">
               <h3 className="text-lg font-bold text-[#0F172A] dark:text-[#F9FAFB] mb-2 flex items-center gap-2">
                 <span className="font-mono text-[#065F46] dark:text-[#34D399] text-sm">03.</span>
-                Mobile-First Responsive Video Experience
+                Responsive web experience
               </h3>
               <p className="text-sm text-[#334155] dark:text-[#A7B0BE] leading-relaxed">
-                Many streaming sites fail miserably on mobile viewports due to intrusive overlays and non-responsive video wrappers. Sportivo was engineered with strict 16:9 aspect ratio locking, native touch tap-to-pause gestures, and custom full-screen toggle handling on iOS Safari and Android Chrome.
+                Sportivo is presented as a responsive web platform and can be explored from the live site on desktop and mobile devices.
               </p>
             </div>
           </div>

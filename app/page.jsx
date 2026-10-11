@@ -54,10 +54,12 @@ const SKILLS_PREVIEW = [
 
 const FEATURED_PROJECTS = [
   {
-    name: "Sportivo",
-    description: "Real-time live sports streaming and match schedule platform with resilient multi-server switching.",
+    name: "Sportivo — Live Scores, Fixtures & Sports News",
+    description: "A sports platform built by Dipesh Sapkota for live scores, fixtures, and sports news.",
     href: "/projects/sportivo",
     image: "/sportivo-preview.jpg",
+    liveUrl: "https://sportivo.dipeshsapkota7.com.np/",
+    linkLabel: "Visit Sportivo",
   },
   {
     name: "IOE Admission Hub",
@@ -211,11 +213,8 @@ export default function Home() {
               </div>
               <div className="grid gap-6 md:grid-cols-3">
                 {FEATURED_PROJECTS.map((project) => (
-                  <a
+                  <article
                     key={project.name}
-                    href={project.href}
-                    target={project.href.startsWith('https://') ? '_blank' : undefined}
-                    rel={project.href.startsWith('https://') ? 'noopener noreferrer' : undefined}
                     className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:border-[#222933] dark:bg-[#0F1216]"
                   >
                     <Image
@@ -226,17 +225,19 @@ export default function Home() {
                       className="h-40 w-full object-cover"
                     />
                     <div className="p-5">
-                      <h3 className="text-xl font-semibold text-[#0F172A] group-hover:text-[#065F46] dark:text-white dark:group-hover:text-[#34D399]">
-                        {project.name}
+                      <h3 className="text-xl font-semibold text-[#0F172A] dark:text-white">
+                        <Link href={project.href} className="hover:text-[#065F46] dark:hover:text-[#34D399]">
+                          {project.name}
+                        </Link>
                       </h3>
                       <p className="mt-2 text-sm leading-6 text-[#475569] dark:text-[#A7B0BE]">{project.description}</p>
-                      {project.linkLabel && (
-                        <span className="mt-4 inline-flex font-mono text-sm font-semibold text-[#065F46] group-hover:underline dark:text-[#34D399]">
+                      {project.liveUrl && (
+                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex font-mono text-sm font-semibold text-[#065F46] hover:underline dark:text-[#34D399]">
                           {project.linkLabel} &rarr;
-                        </span>
+                        </a>
                       )}
                     </div>
-                  </a>
+                  </article>
                 ))}
               </div>
             </div>

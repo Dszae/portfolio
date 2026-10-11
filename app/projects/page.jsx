@@ -92,12 +92,12 @@ function MotionReelsGraphic() {
 const FEATURED_PROJECTS = [
   {
     id: "sportivo",
-    title: "Sportivo",
+    title: "Sportivo — Live Scores, Fixtures & Sports News",
     category: "dev",
     categoryLabel: "Development",
     label: "Featured Project",
     type: "Live Sports Streaming Platform",
-    description: "A real-time live sports streaming web application engineered to aggregate match schedules across international football, cricket, and basketball leagues. Features automated background scraping, resilient multi-server stream switching with fallback logic, and direct shareable match URLs.",
+    description: "A sports platform built by Dipesh Sapkota for live scores, fixtures, and sports news.",
     image: "/sportivo-preview.jpg",
     tech: ["Next.js", "React", "Node.js", "Tailwind CSS", "REST APIs"],
     liveUrl: "https://sportivo.dipeshsapkota7.com.np/",
@@ -419,7 +419,7 @@ export default function ProjectsPage() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors p-1"
-                                aria-label={`${project.title} live application`}
+                                aria-label={project.id === 'sportivo' ? 'Visit Sportivo' : `${project.title} live application`}
                                 title="Live Application"
                               >
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
