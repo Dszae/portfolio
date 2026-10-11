@@ -136,9 +136,6 @@ export default function ContactPage() {
                             <a href="https://dev.to/dszae" target="_blank" rel="me noopener noreferrer" title="Dipesh Sapkota on DEV Community (dszae)" aria-label="Dipesh Sapkota on DEV Community" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
                               DEV Community
                             </a>
-                            <a href="https://www.youtube.com/@dszae" target="_blank" rel="me noopener noreferrer" title="Dipesh Sapkota on YouTube (@dszae)" aria-label="Dipesh Sapkota on YouTube" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
-                              YouTube
-                            </a>
                             <a href="https://x.com/DszAe18" target="_blank" rel="me noopener noreferrer" title="Dipesh Sapkota on X (DszAe18)" aria-label="Dipesh Sapkota on X (Twitter)" className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#26352F] text-xs font-mono font-medium hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors">
                               X (Twitter)
                             </a>

@@ -52,7 +52,6 @@ export const person = {
     'https://github.com/dszae',
     'https://www.linkedin.com/in/dszae',
     'https://dev.to/dszae',
-    'https://www.youtube.com/@dszae',
     'https://x.com/DszAe18',
     'https://instagram.com/dsz.ae',
     'https://facebook.com/dsz.ae',
