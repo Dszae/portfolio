@@ -613,13 +613,13 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
               </ul>
             </nav>
 
-            {/* Column 4: Verified Profiles & Standards */}
-            <div className="text-left flex flex-col justify-between">
+            {/* Column 4: Verified Profiles */}
+            <div className="text-left flex flex-col justify-start">
               <div>
                 <h2 className="font-mono text-xs font-bold uppercase tracking-widest text-[#0F172A] dark:text-[#F8FAFC] mb-4">
                   Verified Profiles
                 </h2>
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="flex flex-wrap gap-2">
                   <a href="https://github.com/dszae" target="_blank" rel="me noopener noreferrer" aria-label="Dipesh Sapkota on GitHub (dszae)" className="w-9 h-9 rounded-lg border border-[#CBD5E1] dark:border-[#222933] flex items-center justify-center text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors" title="Dipesh Sapkota on GitHub (dszae)">
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.332-5.467-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
                   </a>
@@ -642,34 +642,6 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.59-1.01V14.5c0 1.95-.53 3.91-1.63 5.49-1.61 2.31-4.32 3.82-7.16 3.99-2.03.12-4.11-.43-5.78-1.66-2.19-1.61-3.48-4.24-3.35-6.99.11-2.45 1.3-4.83 3.23-6.28 1.79-1.35 4.15-1.87 6.37-1.44v4.18c-1.16-.36-2.46-.3-3.56.24-.95.46-1.68 1.36-1.88 2.4-.33 1.72.76 3.5 2.44 3.96 1.48.41 3.16-.16 4.02-1.44.42-.62.62-1.38.62-2.14V.02z"/></svg>
                   </a>
                 </div>
-              </div>
-
-              <div>
-                <h3 className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#64748B] dark:text-[#94A3B8] mb-2.5">
-                  Discovery &amp; Standards
-                </h3>
-                <ul className="space-y-1.5 text-xs">
-                  <li>
-                    <Link href="/image-licensing" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors">
-                      Image Licensing Policy
-                    </Link>
-                  </li>
-                  <li>
-                    <a href="/sitemap.xml" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors">
-                      XML Sitemap
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/llms.txt" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors">
-                      LLMs Machine Readable Index
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/agent-card" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors">
-                      Agent Discovery Card (A2A)
-                    </a>
-                  </li>
-                </ul>
               </div>
             </div>
 

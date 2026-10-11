@@ -9,7 +9,7 @@ export default function PagePagination({ prev, next }) {
   return (
     <nav 
       aria-label="Sequential page navigation" 
-      className="w-full max-w-6xl mx-auto px-4 sm:px-8 mt-16 sm:mt-24 pt-8 sm:pt-10 border-t border-slate-200 dark:border-[#222933]"
+      className="md:hidden w-full max-w-6xl mx-auto px-4 mt-12 pt-6 border-t border-slate-200 dark:border-[#222933]"
     >
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
         {prev ? (
