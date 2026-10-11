@@ -3,6 +3,7 @@ import Link from 'next/link';
 import SiteLayout from '@/components/SiteLayout';
 import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 import PagePagination from '@/components/PagePagination';
+import MathFormula from '@/components/MathFormula';
 
 export const metadata = {
   title: "Automated Analyzer Diagnostics: Clinical Instrumentation Case Study",
@@ -133,18 +134,16 @@ export default function AnalyzerDiagnosticsPage() {
                 Precision sample dosing relies on lead-screw stepper motors operating at 1/16 microstepping resolution coupled to a glass syringe cylinder. Aspiration volumes range from 2.0 µL (concentrated serum) up to 250 µL (diluent buffer).
               </p>
               <p className="leading-relaxed text-base sm:text-lg">
-                The displacement protocol converts motor step pulses into dispensed liquid volume:
+                The displacement protocol maps commanded motor step pulses (<MathFormula math="N_{steps}" />) directly to dispensed volumetric fluid:
               </p>
-              <div className="p-5 rounded-xl border border-slate-200 dark:border-[#222933] bg-slate-50 dark:bg-[#0F1216] font-mono text-xs sm:text-sm text-slate-800 dark:text-slate-200 space-y-2">
-                <div className="font-bold text-[#065F46] dark:text-[#34D399] font-sans">Syringe Dispense Volume Formula:</div>
-                <div className="text-[#065F46] dark:text-[#34D399] pl-2 font-semibold text-sm">
-                  Volume (V) = Step Count × [ Thread Pitch / (200 × Microsteps) ] × [ (π × Diameter²) / 4 ]
-                </div>
-                <div className="text-xs text-slate-500 dark:text-slate-400 pt-2 border-t border-slate-200 dark:border-[#222933] space-y-1">
-                  <div>• <strong>Step Count:</strong> Total electrical pulses commanded to the lead-screw motor</div>
-                  <div>• <strong>Thread Pitch:</strong> Linear distance traveled per 360° lead-screw revolution</div>
-                  <div>• <strong>Microsteps:</strong> Microstepping division factor (16 divisions/step = 3,200 pulses/rev)</div>
-                  <div>• <strong>Diameter:</strong> Inner bore diameter of the precision glass syringe barrel</div>
+              <div className="p-5 rounded-xl border border-slate-200 dark:border-[#222933] bg-[#090B0E] text-[#34D399] space-y-3">
+                <div className="font-bold text-slate-300 font-sans text-xs">Syringe Dispense Volume Formulation:</div>
+                <MathFormula math="V = N_{steps} \cdot \left(\frac{P_{pitch}}{200 \cdot M}\right) \cdot \left(\frac{\pi D_{syringe}^2}{4}\right)" block />
+                <div className="text-xs text-slate-400 pt-3 border-t border-[#222933] space-y-1 font-sans">
+                  <div>• <MathFormula math="N_{steps}" />: Commanded electrical step pulses sent to the lead-screw motor</div>
+                  <div>• <MathFormula math="P_{pitch}" />: Lead-screw linear thread pitch (advance per 360° turn)</div>
+                  <div>• <MathFormula math="M = 16" />: Microstepping resolution division factor (3,200 pulses/revolution)</div>
+                  <div>• <MathFormula math="D_{syringe}" />: Inner bore diameter of the precision glass syringe cylinder</div>
                 </div>
               </div>
               <p className="leading-relaxed text-base sm:text-lg">

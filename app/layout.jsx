@@ -4,6 +4,7 @@ import { GeistMono } from 'geist/font/mono';
 
 import JsonLdSchema from '@/components/JsonLdSchema';
 import WebMCPInitializer from '@/components/WebMCPInitializer';
+import 'katex/dist/katex.min.css';
 import './globals.css';
 
 export const metadata = {

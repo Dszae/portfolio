@@ -3,6 +3,7 @@ import Link from 'next/link';
 import SiteLayout from '@/components/SiteLayout';
 import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 import PagePagination from '@/components/PagePagination';
+import MathFormula from '@/components/MathFormula';
 
 export const metadata = {
   title: "Electrical Machinery Modeling: Induction & DC Machine Analysis Case Study",
@@ -115,33 +116,31 @@ export default function MotorModelingPage() {
                 1. Equivalent Circuit Representation of the Induction Machine
               </h2>
               <p className="leading-relaxed text-base sm:text-lg">
-                The per-phase steady-state model of an induction motor transforms electromagnetic stator-rotor coupling into a generalized equivalent transformer circuit with a slip-dependent mechanical load resistance: R2&apos; × (1 - s) / s.
+                The per-phase steady-state model of an induction motor transforms electromagnetic stator-rotor coupling into a generalized equivalent transformer circuit with a slip-dependent mechanical load resistance: <MathFormula math="R_2' \cdot \frac{1 - s}{s}" />.
               </p>
               <div className="p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-[#090B0E] font-mono text-xs sm:text-sm text-slate-300 space-y-4">
-                <div className="text-[#34D399] font-bold pb-2 border-b border-[#222933]">Thevenin Stator &amp; Torque Equations:</div>
+                <div className="text-[#34D399] font-bold pb-2 border-b border-[#222933] font-sans">Thevenin Stator &amp; Torque Formulations:</div>
 
                 <div>
-                  <div className="text-slate-400">1. Thevenin Equivalent Stator Voltage (V_th):</div>
-                  <div className="text-[#34D399] pl-4 mt-1 font-semibold">
-                    V_th = V_phase × | jXm / [ R1 + j(X1 + Xm) ] |
+                  <div className="text-slate-400 font-sans text-xs">1. Thevenin Equivalent Stator Voltage:</div>
+                  <div className="text-[#34D399] pl-2 mt-1">
+                    <MathFormula math="V_{th} = V_{phase} \cdot \left| \frac{jX_m}{R_1 + j(X_1 + X_m)} \right|" block />
                   </div>
-                  <div className="text-xs text-slate-500 pl-4 mt-0.5">Magnitude of voltage across magnetizing reactance Xm</div>
                 </div>
 
                 <div>
-                  <div className="text-slate-400">2. Thevenin Stator Impedance (Z_th = R_th + jX_th):</div>
-                  <div className="text-[#34D399] pl-4 mt-1 font-semibold">
-                    Z_th = [ jXm × (R1 + jX1) ] / [ R1 + j(X1 + Xm) ]
+                  <div className="text-slate-400 font-sans text-xs">2. Thevenin Stator Impedance:</div>
+                  <div className="text-[#34D399] pl-2 mt-1">
+                    <MathFormula math="Z_{th} = R_{th} + jX_{th} = \frac{jX_m \cdot (R_1 + jX_1)}{R_1 + j(X_1 + X_m)}" block />
                   </div>
-                  <div className="text-xs text-slate-500 pl-4 mt-0.5">Parallel combination of stator impedance and magnetizing branch</div>
                 </div>
 
                 <div>
-                  <div className="text-slate-400">3. Electromagnetic Developed Torque (T_em):</div>
-                  <div className="text-[#34D399] pl-4 mt-1 font-semibold">
-                    T_em = [ 3 × (V_th)² × (R2&apos; / s) ] / [ ω_s × ( (R_th + R2&apos;/s)² + (X_th + X2&apos;)² ) ]
+                  <div className="text-slate-400 font-sans text-xs">3. Electromagnetic Developed Torque:</div>
+                  <div className="text-[#34D399] pl-2 mt-1">
+                    <MathFormula math="T_{em} = \frac{3 \cdot V_{th}^2 \cdot (R_2'/s)}{\omega_s \cdot \left[ (R_{th} + R_2'/s)^2 + (X_{th} + X_2')^2 \right]}" block />
                   </div>
-                  <div className="text-xs text-slate-500 pl-4 mt-0.5">Where ω_s is synchronous angular speed (rad/s), and s is rotor slip</div>
+                  <div className="text-xs text-slate-500 pl-4 mt-1 font-sans">Where <MathFormula math="\omega_s" /> is synchronous angular speed in rad/s, and <MathFormula math="s" /> is rotor slip.</div>
                 </div>
               </div>
             </section>
@@ -154,8 +153,8 @@ export default function MotorModelingPage() {
                 Equivalent circuit parameters were extracted from empirical laboratory datasets conducted on a 3-phase test motor:
               </p>
               <ul className="list-disc pl-6 space-y-2 text-sm sm:text-base">
-                <li><strong>No-Load Test:</strong> Uncoupled motor driven at rated voltage (V_nl, I_nl, P_nl). Stator copper loss is subtracted to isolate core loss resistance (Rc) and magnetizing reactance (Xm).</li>
-                <li><strong>Blocked-Rotor Test:</strong> Rotor locked mechanically (slip s = 1), driven under reduced voltage (V_br) to rated current (I_br). Active power (P_br) isolates equivalent resistance (Req = R1 + R2&apos;) and leakage reactance (Xeq = X1 + X2&apos;).</li>
+                <li><strong>No-Load Test:</strong> Uncoupled motor driven at rated voltage (<MathFormula math="V_{nl}, I_{nl}, P_{nl}" />). Stator copper loss is subtracted to isolate core loss resistance (<MathFormula math="R_c" />) and magnetizing reactance (<MathFormula math="X_m" />).</li>
+                <li><strong>Blocked-Rotor Test:</strong> Rotor locked mechanically (slip <MathFormula math="s = 1" />), driven under reduced voltage (<MathFormula math="V_{br}" />) to rated current (<MathFormula math="I_{br}" />). Active power (<MathFormula math="P_{br}" />) isolates equivalent resistance (<MathFormula math="R_{eq} = R_1 + R_2'" />) and leakage reactance (<MathFormula math="X_{eq} = X_1 + X_2'" />).</li>
               </ul>
             </section>
 
@@ -164,16 +163,14 @@ export default function MotorModelingPage() {
                 3. Breakdown Torque Analysis &amp; MATLAB Validation
               </h2>
               <p className="leading-relaxed text-base sm:text-lg">
-                Differentiating electromagnetic torque (T_em) with respect to slip (s) yields the breakdown slip (s_max) where peak pull-out torque occurs:
+                Differentiating electromagnetic torque (<MathFormula math="T_{em}" />) with respect to slip (<MathFormula math="s" />) yields the breakdown slip (<MathFormula math="s_{max}" />) where peak pull-out torque occurs:
               </p>
-              <div className="p-4 rounded-xl border border-slate-200 dark:border-[#222933] bg-slate-50 dark:bg-[#0F1216] font-mono text-xs sm:text-sm text-[#065F46] dark:text-[#34D399] space-y-1">
-                <div className="font-bold text-[#0F172A] dark:text-[#F9FAFB] font-sans">Maximum Torque Breakdown Slip:</div>
-                <div className="pl-2 font-semibold">
-                  s_max = R2&apos; / √[ (R_th)² + (X_th + X2&apos;)² ]
-                </div>
+              <div className="p-5 rounded-xl border border-slate-200 dark:border-[#222933] bg-[#090B0E] text-[#34D399]">
+                <div className="text-xs font-mono text-slate-400 mb-2">Maximum Torque Breakdown Slip:</div>
+                <MathFormula math="s_{max} = \frac{R_2'}{\sqrt{R_{th}^2 + (X_{th} + X_2')^2}}" block />
               </div>
               <p className="leading-relaxed text-base sm:text-lg">
-                Simulation plots confirmed that while adding rotor resistance shifts s_max toward starting slip (s = 1), the absolute magnitude of maximum breakdown torque (T_max) remains invariant. Computed torque-speed curves correlated with physical dynamometer laboratory bench test results within ±3.5% accuracy.
+                Simulation plots confirmed that while adding rotor resistance shifts <MathFormula math="s_{max}" /> toward starting slip (<MathFormula math="s = 1" />), the absolute magnitude of maximum breakdown torque (<MathFormula math="T_{max}" />) remains invariant. Computed torque-speed curves correlated with physical dynamometer laboratory bench test results within ±3.5% accuracy.
               </p>
             </section>
           </article>
