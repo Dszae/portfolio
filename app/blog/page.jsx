@@ -52,7 +52,7 @@ export default function BlogPage() {
                 rel="me noopener noreferrer" 
                 className="card-heading hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors block mb-3"
               >
-                Dipesh Sapkota on DEV Community &rarr;
+                My DEV Community profile &rarr;
               </a>
               <p className="card-description">
                 Follow technical notes, AI/ML engineering insights, and practical developer tutorials on my official DEV Community author profile.

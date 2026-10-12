@@ -26,7 +26,7 @@ export default function ImageLicensingPage() {
               <span className="text-[#065F46] dark:text-[#34D399]">/</span> Image Licensing &amp; Rights
             </h1>
             <p className="text-base text-[#1E293B] dark:text-[#A7B0BE] leading-relaxed mb-4">
-              All visual assets, including the portrait photograph and project media published on this domain, are copyrighted by <strong className="text-[#0F172A] dark:text-white">Dipesh Sapkota</strong>.
+              I own the copyright to all visual assets, including the portrait photograph and project media published on this domain.
             </p>
             <p className="text-base text-[#1E293B] dark:text-[#A7B0BE] leading-relaxed mb-6">
               All rights are reserved. No open license is granted to reproduce, modify, crawl for model training, or redistribute these media files without explicit written consent.

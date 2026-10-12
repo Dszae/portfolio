@@ -104,7 +104,7 @@ export default function SportivoProjectPage() {
           </h1>
 
           <p className="text-base sm:text-lg lg:text-xl text-[#334155] dark:text-[#CBD5E1] leading-relaxed max-w-3xl mb-8">
-            Sportivo is a focused real-time sports platform built by Dipesh Sapkota to bring live scores, upcoming fixtures, match discovery, and sports news into one responsive experience. The interface is structured for fast scanning across football, cricket, and basketball, helping visitors move from a quick match update to deeper fixture information and available streams without unnecessary friction.
+            I built Sportivo as a focused real-time sports platform for live scores, upcoming fixtures, match discovery, and sports news in one responsive experience. I structured it for fast scanning across football, cricket, and basketball, helping visitors move from a quick match update to deeper fixture information and available streams without unnecessary friction.
           </p>
 
           {/* Quick Meta Grid */}
@@ -252,7 +252,7 @@ export default function SportivoProjectPage() {
               <span className="text-[#065F46] dark:text-[#34D399]">#</span> About Sportivo
             </h2>
             <p className="text-sm sm:text-base text-[#334155] dark:text-[#CBD5E1] leading-relaxed mb-6">
-              Sportivo is an independent sports platform built by Dipesh Sapkota. The project brings live scores, fixtures, and sports news together in a responsive interface for people who want a focused sports destination.
+              Sportivo is my independent sports platform. I bring live scores, fixtures, and sports news together in a responsive interface for people who want a focused sports destination.
             </p>
           </div>
 
@@ -292,7 +292,7 @@ export default function SportivoProjectPage() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[#065F46] dark:text-[#34D399] font-bold mt-0.5">▸</span>
-                  <span><strong>Built by Dipesh Sapkota:</strong> Sportivo is part of Dipesh&apos;s independent software portfolio.</span>
+                  <span><strong>Built by me:</strong> Sportivo is part of my independent software portfolio.</span>
                 </li>
               </ul>
             </div>

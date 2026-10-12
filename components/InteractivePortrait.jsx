@@ -41,7 +41,7 @@ export default function InteractivePortrait() {
         src="/dipesh-sapkota.jpg"
         id="primary-profile-image"
         itemProp="image"
-        alt="Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal"
+        alt="My portrait from IOE Thapathali Campus in Kathmandu, Nepal"
         fill
         sizes="(max-width: 680px) 88vw, (max-width: 899px) 38vw, 440px"
         loading="eager"

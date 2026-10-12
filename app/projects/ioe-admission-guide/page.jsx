@@ -103,7 +103,7 @@ export default function IoeAdmissionProjectPage() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] shadow-sm mb-8 font-mono text-xs">
             <div>
               <span className="text-[#64748B] dark:text-[#94A3B8] block mb-1">Author</span>
-              <strong className="text-[#0F172A] dark:text-[#F9FAFB]">Dipesh Sapkota (IOE)</strong>
+              <strong className="text-[#0F172A] dark:text-[#F9FAFB]">Me (IOE)</strong>
             </div>
             <div>
               <span className="text-[#64748B] dark:text-[#94A3B8] block mb-1">Target Campus</span>

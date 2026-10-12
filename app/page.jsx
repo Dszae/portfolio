@@ -99,7 +99,7 @@ export default function Home() {
                   <span>Creating experiences.</span>
                 </h1>
                 <p className="hero-description">
-                  Computer engineering student exploring AI/ML, building software, and creating visual stories through video and design.
+                  I explore AI/ML, build software, and create visual stories through video and design.
                 </p>
 
                 <div className="hero-actions">
@@ -121,22 +121,22 @@ export default function Home() {
                 </div>
 
                 <nav className="hero-socials" aria-label="Social profiles">
-                  <a href="https://github.com/dszae" target="_blank" rel="me noopener noreferrer" aria-label="Dipesh Sapkota on GitHub (dszae)" className="hero-social-link" title="Dipesh Sapkota on GitHub (dszae)">
+                  <a href="https://github.com/dszae" target="_blank" rel="me noopener noreferrer" aria-label="My GitHub profile (dszae)" className="hero-social-link" title="My GitHub profile (dszae)">
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.332-5.467-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
                   </a>
-                  <a href="https://linkedin.com/in/dszae" target="_blank" rel="me noopener noreferrer" aria-label="Dipesh Sapkota on LinkedIn (dszae)" className="hero-social-link" title="Dipesh Sapkota on LinkedIn (dszae)">
+                  <a href="https://linkedin.com/in/dszae" target="_blank" rel="me noopener noreferrer" aria-label="My LinkedIn profile (dszae)" className="hero-social-link" title="My LinkedIn profile (dszae)">
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
                   </a>
-                  <a href="https://dev.to/dszae" target="_blank" rel="me noopener noreferrer" aria-label="Dipesh Sapkota on DEV Community (dszae)" className="hero-social-link" title="Dipesh Sapkota on DEV Community (dszae)">
+                  <a href="https://dev.to/dszae" target="_blank" rel="me noopener noreferrer" aria-label="My DEV Community profile (dszae)" className="hero-social-link" title="My DEV Community profile (dszae)">
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.42 10.05c-.18-.16-.46-.23-.84-.23H5.34v4.36h1.22c.4 0 .69-.08.87-.25.18-.17.28-.46.28-.86v-2.16c0-.4-.1-.69-.29-.86zM20.5 2H3.5A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8.94 13.08c0 .73-.24 1.3-.72 1.7-.48.4-1.16.6-2.04.6H3.6V8.62h2.58c.88 0 1.56.2 2.04.6.48.4.72.97.72 1.7v2.16zm5.12-3.26h-2.58v1.65h2.2v1.18h-2.2v1.73h2.58v1.2H9.8V8.62h4.26v1.2zm6.34 0l-1.9 6.96h-1.38l-1.9-6.96h1.44l1.15 4.79 1.15-4.79h1.44z"/></svg>
                   </a>
-                  <a href="https://x.com/DszAe18" target="_blank" rel="me noopener noreferrer" aria-label="Dipesh Sapkota on X (DszAe18)" className="hero-social-link" title="Dipesh Sapkota on X (DszAe18)">
+                  <a href="https://x.com/DszAe18" target="_blank" rel="me noopener noreferrer" aria-label="My X profile (DszAe18)" className="hero-social-link" title="My X profile (DszAe18)">
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                   </a>
-                  <a href="https://instagram.com/dsz.ae" target="_blank" rel="me noopener noreferrer" aria-label="Dipesh Sapkota on Instagram (dsz.ae)" className="hero-social-link" title="Dipesh Sapkota on Instagram (dsz.ae)">
+                  <a href="https://instagram.com/dsz.ae" target="_blank" rel="me noopener noreferrer" aria-label="My Instagram profile (dsz.ae)" className="hero-social-link" title="My Instagram profile (dsz.ae)">
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" /></svg>
                   </a>
-                  <a href="https://facebook.com/dsz.ae" target="_blank" rel="me noopener noreferrer" aria-label="Dipesh Sapkota on Facebook (dsz.ae)" className="hero-social-link" title="Dipesh Sapkota on Facebook (dsz.ae)">
+                  <a href="https://facebook.com/dsz.ae" target="_blank" rel="me noopener noreferrer" aria-label="My Facebook profile (dsz.ae)" className="hero-social-link" title="My Facebook profile (dsz.ae)">
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" /></svg>
                   </a>
                 </nav>
@@ -184,12 +184,12 @@ export default function Home() {
             <div className="mx-auto max-w-6xl">
               <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
                 <div>
-                  <p className="section-eyebrow">Selected work by Dipesh Sapkota</p>
+                  <p className="section-eyebrow">Selected work from my practice</p>
                   <h2 id="featured-projects-heading" className="mt-2 text-3xl font-bold tracking-tight text-[#0F172A] dark:text-white">
                     Featured Engineering Projects
                   </h2>
                   <p className="mt-3 max-w-2xl text-[#475569] dark:text-[#A7B0BE]">
-                    Explore Sportivo, the IOE Admission Guide admission hub, and Git Visualizer built by Dipesh Sapkota.
+                    Explore Sportivo, the IOE Admission Guide admission hub, and Git Visualizer from my engineering practice.
                   </p>
                 </div>
                 <Link href="/projects" className="font-mono text-sm font-semibold text-[#065F46] hover:underline dark:text-[#34D399]">
@@ -204,7 +204,7 @@ export default function Home() {
                   >
                     <Image
                       src={project.image}
-                      alt={`${project.name} by Dipesh Sapkota`}
+                      alt={`${project.name} project preview`}
                       width={993}
                       height={450}
                       className="h-40 w-full object-cover"
