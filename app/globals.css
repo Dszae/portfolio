@@ -815,13 +815,17 @@ button:hover .smooth-img-zoom {
 
 .project-preview-observer {
   z-index: 1;
+  width: 100%;
 }
 
 .project-preview-image-scroll-sportivo,
 .project-preview-image-scroll-git,
 .project-preview-image-scroll-ioe {
   height: auto !important;
+  width: 100% !important;
+  min-width: 100% !important;
   max-width: none !important;
+  display: block;
   object-fit: initial !important;
   object-position: top center !important;
   animation: project-preview-scroll 11s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite paused;
