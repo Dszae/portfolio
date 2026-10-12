@@ -824,13 +824,13 @@ button:hover .smooth-img-zoom {
   max-width: none !important;
   object-fit: initial !important;
   object-position: top center !important;
-  animation: project-preview-scroll 14s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite paused;
+  animation: project-preview-scroll 11s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite paused;
   will-change: transform;
 }
 
-.project-preview-observer.is-visible .project-preview-image-scroll-sportivo,
-.project-preview-observer.is-visible .project-preview-image-scroll-git,
-.project-preview-observer.is-visible .project-preview-image-scroll-ioe {
+.project-preview-observer.is-active .project-preview-image-scroll-sportivo,
+.project-preview-observer.is-active .project-preview-image-scroll-git,
+.project-preview-observer.is-active .project-preview-image-scroll-ioe {
   animation-play-state: running;
 }
 
@@ -848,12 +848,12 @@ button:hover .smooth-img-zoom {
 
 @keyframes project-preview-scroll {
   0%,
-  12% {
+  3% {
     transform: translateY(0);
   }
 
   48%,
-  68% {
+  64% {
     transform: translateY(var(--preview-scroll-distance));
   }
 
