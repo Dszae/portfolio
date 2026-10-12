@@ -23,7 +23,7 @@ export const metadata = {
 };
 
 export default function SportivoProjectPage() {
-  const jsonLd = {
+  const jsonLd = [{
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name: 'Sportivo',
@@ -44,7 +44,20 @@ export default function SportivoProjectPage() {
       'https://sportivo.dipeshsapkota7.com.np/',
       'https://github.com/dszae/sportivo',
     ],
-  };
+  }, {
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name: 'Sportivo Live Sports Platform Demo',
+    description: 'A product demonstration of Sportivo, a live sports platform created by Dipesh Sapkota for scores, fixtures, match discovery, and sports news.',
+    thumbnailUrl: 'https://www.dipeshsapkota7.com.np/sportivo-preview.jpg',
+    contentUrl: 'https://www.dipeshsapkota7.com.np/sportivo-launch.mp4',
+    embedUrl: 'https://www.dipeshsapkota7.com.np/projects/sportivo',
+    uploadDate: '2026-10-12T00:00:00+05:45',
+    author: { '@type': 'Person', name: 'Dipesh Sapkota', url: 'https://www.dipeshsapkota7.com.np/' },
+    publisher: { '@type': 'Person', name: 'Dipesh Sapkota', url: 'https://www.dipeshsapkota7.com.np/' },
+    inLanguage: 'en',
+    isFamilyFriendly: true,
+  }];
 
   return (
     <SiteLayout>
@@ -173,6 +186,7 @@ export default function SportivoProjectPage() {
                 controls
                 playsInline
                 preload="metadata"
+                poster="/sportivo-preview.jpg"
                 aria-label="Sportivo product launch demonstration"
               >
                 <source src="/sportivo-launch.mp4" type="video/mp4" />

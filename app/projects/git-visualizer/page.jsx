@@ -23,7 +23,7 @@ export const metadata = {
 };
 
 export default function GitVisualizerProjectPage() {
-  const jsonLd = {
+  const jsonLd = [{
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name: 'Git Visualizer',
@@ -36,7 +36,20 @@ export default function GitVisualizerProjectPage() {
       url: 'https://www.dipeshsapkota7.com.np/',
     },
     sameAs: 'https://github.com/dszae/git-visualizer',
-  };
+  }, {
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name: 'Git Visualizer Interactive Demo',
+    description: 'A product demonstration of Git Visualizer, an interactive version-control learning tool created by Dipesh Sapkota.',
+    thumbnailUrl: 'https://www.dipeshsapkota7.com.np/git-preview.jpg',
+    contentUrl: 'https://www.dipeshsapkota7.com.np/git-visualizer-launch.mp4',
+    embedUrl: 'https://www.dipeshsapkota7.com.np/projects/git-visualizer',
+    uploadDate: '2026-10-12T00:00:00+05:45',
+    author: { '@type': 'Person', name: 'Dipesh Sapkota', url: 'https://www.dipeshsapkota7.com.np/' },
+    publisher: { '@type': 'Person', name: 'Dipesh Sapkota', url: 'https://www.dipeshsapkota7.com.np/' },
+    inLanguage: 'en',
+    isFamilyFriendly: true,
+  }];
 
   return (
     <SiteLayout>
@@ -165,6 +178,7 @@ export default function GitVisualizerProjectPage() {
                 controls
                 playsInline
                 preload="metadata"
+                poster="/git-preview.jpg"
                 aria-label="Git Visualizer product launch demonstration"
               >
                 <source src="/git-visualizer-launch.mp4" type="video/mp4" />

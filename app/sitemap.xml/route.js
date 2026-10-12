@@ -3,8 +3,7 @@ export const dynamic = 'force-static';
 
 const image = (path, title) => ({ path, title });
 const portrait = image('/dipesh-sapkota.jpg', 'Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus');
-const currentDate = '2026-10-11';
-
+const currentDate = '2026-10-12';
 const pages = [
   // Primary Homepage
   {
@@ -89,18 +88,21 @@ const pages = [
     priority: '0.95',
     changefreq: 'monthly',
     images: [image('/sportivo-preview.jpg', 'Sportivo project preview')],
+    videos: [{ title: 'Sportivo Live Sports Platform Demo', description: 'A product demonstration of Sportivo, a live sports platform created by Dipesh Sapkota.', thumbnail: '/sportivo-preview.jpg', content: '/sportivo-launch.mp4' }],
   },
   {
     path: '/projects/ioe-admission-guide',
     priority: '0.85',
     changefreq: 'monthly',
     images: [image('/ioe-preview.jpg', 'IOE Admission Guide project preview')],
+    videos: [{ title: 'IOE Admission Guide Demo', description: 'A product demonstration of the IOE Admission Guide created by Dipesh Sapkota.', thumbnail: '/ioe-preview.jpg', content: '/ioe-demo.mp4' }],
   },
   {
     path: '/projects/git-visualizer',
     priority: '0.85',
     changefreq: 'monthly',
     images: [image('/git-preview.jpg', 'Git Visualizer project preview')],
+    videos: [{ title: 'Git Visualizer Interactive Demo', description: 'A product demonstration of Git Visualizer, an interactive version-control learning tool created by Dipesh Sapkota.', thumbnail: '/git-preview.jpg', content: '/git-visualizer-launch.mp4' }],
   },
   {
     path: '/projects/555-flasher',
@@ -158,21 +160,24 @@ const escapeXml = (value) => value
   .replaceAll("'", '&apos;');
 
 export async function GET() {
-  const entries = pages.map(({ path, priority = '0.7', changefreq = 'weekly', images = [] }) => {
+  const entries = pages.map(({ path, priority = '0.7', changefreq = 'weekly', images = [], videos = [] }) => {
     const imageEntries = images
       .map(({ path: imagePath, title }) => (
         `<image:image><image:loc>${escapeXml(`${siteUrl}${imagePath}`)}</image:loc><image:title>${escapeXml(title)}</image:title></image:image>`
       ))
       .join('');
+    const videoEntries = videos.map(({ title, description, thumbnail, content }) => (
+      `<video:video><video:thumbnail_loc>${escapeXml(`${siteUrl}${thumbnail}`)}</video:thumbnail_loc><video:title>${escapeXml(title)}</video:title><video:description>${escapeXml(description)}</video:description><video:content_loc>${escapeXml(`${siteUrl}${content}`)}</video:content_loc><video:publication_date>${currentDate}T00:00:00+05:45</video:publication_date></video:video>`
+    )).join('');
 
-    return `<url><loc>${escapeXml(`${siteUrl}${path}`)}</loc><lastmod>${currentDate}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority>${imageEntries}</url>`;
+    return `<url><loc>${escapeXml(`${siteUrl}${path}`)}</loc><lastmod>${currentDate}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority>${imageEntries}${videoEntries}</url>`;
   }).join('');
 
   const externalEntries = externalPages.map(({ url, priority = '0.7', changefreq = 'weekly' }) =>
     `<url><loc>${escapeXml(url)}</loc><lastmod>${currentDate}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`
   ).join('');
 
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">${entries}${externalEntries}</urlset>`;
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">${entries}${externalEntries}</urlset>`;
 
   return new Response(sitemap, {
     headers: {
