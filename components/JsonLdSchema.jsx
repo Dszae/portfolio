@@ -55,7 +55,6 @@ export const person = {
     'https://x.com/DszAe18',
     'https://instagram.com/dsz.ae',
     'https://facebook.com/dsz.ae',
-    'https://tiktok.com/@dsz_ae',
     'https://www.threads.net/@dsz.ae',
   ],
   knowsAbout: [

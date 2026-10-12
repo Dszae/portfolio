@@ -183,7 +183,7 @@ export default function AstableMultivibratorPage() {
 
           <div className="mt-16">
             <PagePagination
-              prev={{ label: 'Sports Motion Reels', path: '/projects/sports-reels' }}
+              prev={{ label: 'All Projects', path: '/projects' }}
               next={{ label: 'Electrical Machinery Modeling', path: '/projects/motor-modeling' }}
             />
           </div>

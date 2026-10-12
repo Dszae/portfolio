@@ -133,26 +133,17 @@ const FEATURED_PROJECTS = [
     detailUrl: "/projects/ioe-admission-guide"
   },
   {
-    id: "sports-reels",
-    title: "Sports Highlight Motion Reels",
+    id: "social-media",
+    title: "Social Media Video Content",
     category: "media",
     categoryLabel: "Creative Media",
-    label: "Featured Project",
-    type: "Motion Graphics & Video Editing",
-    description: "High-impact short-form sports highlight edits created for commercial clients and athletics tournaments. Incorporates beat-matched cut sequencing, 120fps optical-flow speed ramping, custom multi-layered stadium sound design (-14 LUFS standard), and cinematic color grading in DaVinci Resolve.",
-    image: null,
-    tech: ["Premiere Pro", "After Effects", "DaVinci Resolve", "Sound Design"],
-    detailUrl: "/projects/sports-reels",
-    modalDetails: {
-      overview: "Commercial sports motion edits designed for multi-platform short-form distribution. Combines dynamic speed ramps, beat-matched cut points, and cinematic color transformation.",
-      architecture: [
-        "Optical flow frame interpolation for artifact-free 120fps slow-motion deceleration.",
-        "Multi-layer sound design including turf impacts, ball strikes, whooshes, and stadium crowd reverb.",
-        "Color grading in DaVinci Resolve utilizing custom tone curves and Rec.709 color transformation.",
-        "Framing architecture with dual export optimization for vertical 9:16 and widescreen 16:9 formats."
-      ],
-      metrics: "Over 50+ delivered video assets for sports academies, tournaments, and creative clients."
-    }
+    label: "Featured Work",
+    type: "Instagram Video Collection",
+    description: "I upload quality content about awareness, educational videos, and sports edits using After Effects.",
+    image: "/instagram-videos.png",
+    tech: ["After Effects", "Instagram", "Motion Design"],
+    liveUrl: "https://instagram.com/dsz.ae",
+    detailUrl: "https://instagram.com/dsz.ae"
   }
 ];
 

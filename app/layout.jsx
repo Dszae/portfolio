@@ -1,11 +1,10 @@
 import React from 'react';
-import { Inter } from 'next/font/google';
-import { GeistMono } from 'geist/font/mono';
+import { Manrope } from 'next/font/google';
 
-const inter = Inter({
+const manrope = Manrope({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
-  variable: '--font-inter',
+  variable: '--font-manrope',
   display: 'swap',
 });
 
@@ -130,7 +129,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`scroll-smooth ${inter.variable} ${GeistMono.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`scroll-smooth ${manrope.variable}`} suppressHydrationWarning>
       <head>
         <link rel="alternate" type="text/markdown" href="/.well-known/llms.txt" title="AI-readable site information" />
         <script

@@ -591,11 +591,6 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
                   </Link>
                 </li>
                 <li>
-                  <Link href="/projects/sports-reels" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors inline-block">
-                    Sports Motion Graphics Reels
-                  </Link>
-                </li>
-                <li>
                   <Link href="/projects/555-flasher" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors inline-block">
                     NE555 Timer Circuit Prototype
                   </Link>
@@ -638,9 +633,6 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
                   <a href="https://facebook.com/dsz.ae" target="_blank" rel="me noopener noreferrer" aria-label="Dipesh Sapkota on Facebook (dsz.ae)" className="w-9 h-9 rounded-lg border border-[#CBD5E1] dark:border-[#222933] flex items-center justify-center text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors" title="Dipesh Sapkota on Facebook (dsz.ae)">
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
                   </a>
-                  <a href="https://tiktok.com/@dsz_ae" target="_blank" rel="me noopener noreferrer" aria-label="Dipesh Sapkota on TikTok (dsz_ae)" className="w-9 h-9 rounded-lg border border-[#CBD5E1] dark:border-[#222933] flex items-center justify-center text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors" title="Dipesh Sapkota on TikTok (dsz_ae)">
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.59-1.01V14.5c0 1.95-.53 3.91-1.63 5.49-1.61 2.31-4.32 3.82-7.16 3.99-2.03.12-4.11-.43-5.78-1.66-2.19-1.61-3.48-4.24-3.35-6.99.11-2.45 1.3-4.83 3.23-6.28 1.79-1.35 4.15-1.87 6.37-1.44v4.18c-1.16-.36-2.46-.3-3.56.24-.95.46-1.68 1.36-1.88 2.4-.33 1.72.76 3.5 2.44 3.96 1.48.41 3.16-.16 4.02-1.44.42-.62.62-1.38.62-2.14V.02z"/></svg>
-                  </a>
                 </div>
               </div>
             </div>
@@ -649,11 +641,8 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
 
           {/* Bottom Bar */}
           <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#64748B] dark:text-[#94A3B8]">
-            <p className="font-medium text-center sm:text-left">
+            <p className="font-medium text-center w-full">
               &copy; {new Date().getFullYear()} <span className="font-semibold text-[#0F172A] dark:text-[#F9FAFB]">Dipesh Sapkota<span className="site-wordmark-dot">.</span></span> All rights reserved.
-            </p>
-            <p className="text-center sm:text-right font-mono text-[11px] text-[#64748B] dark:text-[#94A3B8]">
-              IOE Thapathali Campus &middot; Kathmandu, Nepal
             </p>
           </div>
         </div>
