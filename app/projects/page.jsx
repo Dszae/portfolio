@@ -139,11 +139,10 @@ const FEATURED_PROJECTS = [
     categoryLabel: "Creative Media",
     label: "Featured Work",
     type: "Instagram Video Collection",
-    description: "I upload quality content about awareness, educational videos, and sports edits using After Effects.",
+    description: "A curated portfolio of polished short-form video content focused on public awareness, educational storytelling, and high-energy sports edits. I use Adobe After Effects to shape clear visual narratives, precise motion graphics, and engaging edits designed for modern social audiences.",
     image: "/instagram-videos.png",
     tech: ["After Effects", "Instagram", "Motion Design"],
-    liveUrl: "https://instagram.com/dsz.ae",
-    detailUrl: "https://instagram.com/dsz.ae"
+    liveUrl: "https://instagram.com/dsz.ae"
   }
 ];
 
@@ -328,9 +327,11 @@ export default function ProjectsPage() {
                           }`}
                         >
                           <Link
-                            href={project.detailUrl}
+                            href={project.detailUrl || project.liveUrl}
+                            target={project.detailUrl ? undefined : '_blank'}
+                            rel={project.detailUrl ? undefined : 'noopener noreferrer'}
                             className="group block relative rounded-2xl overflow-hidden border border-slate-200 dark:border-[#222933] bg-slate-100 dark:bg-[#0F1216] shadow-sm hover:border-[#065F46]/60 dark:hover:border-[#34D399]/60 transition-colors focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399]"
-                            aria-label={`View ${project.title} case study`}
+                            aria-label={project.detailUrl ? `View ${project.title} case study` : `View ${project.title} on Instagram`}
                           >
                             {project.image ? (
                               <div className="relative aspect-[16/10] w-full overflow-hidden">
@@ -365,7 +366,9 @@ export default function ProjectsPage() {
                           {/* Project Title */}
                           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0F172A] dark:text-[#F9FAFB] mb-3">
                             <Link
-                              href={project.detailUrl}
+                              href={project.detailUrl || project.liveUrl}
+                              target={project.detailUrl ? undefined : '_blank'}
+                              rel={project.detailUrl ? undefined : 'noopener noreferrer'}
                               className="hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399]"
                             >
                               {project.title}
@@ -394,15 +397,29 @@ export default function ProjectsPage() {
                               isEven ? 'justify-start' : 'lg:justify-end justify-start'
                             }`}
                           >
-                            <Link
-                              href={project.detailUrl}
-                              className="font-bold text-[#065F46] dark:text-[#34D399] hover:underline flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399] group"
-                            >
-                              <span>Case Study</span>
-                              <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                              </svg>
-                            </Link>
+                            {project.detailUrl ? (
+                              <Link
+                                href={project.detailUrl}
+                                className="font-bold text-[#065F46] dark:text-[#34D399] hover:underline flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399] group"
+                              >
+                                <span>Case Study</span>
+                                <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                              </Link>
+                            ) : (
+                              <a
+                                href={project.liveUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="font-bold text-[#065F46] dark:text-[#34D399] hover:underline flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399] group"
+                              >
+                                <span>View on Instagram</span>
+                                <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                              </a>
+                            )}
 
                             {project.liveUrl && (
                               <a
