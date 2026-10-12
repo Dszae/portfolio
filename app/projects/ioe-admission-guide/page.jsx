@@ -148,14 +148,14 @@ export default function IoeAdmissionProjectPage() {
             </div>
 
             {/* High-res Image Preview */}
-            <div className="relative aspect-[16/10] w-full bg-black">
+            <div className="project-preview-viewport relative aspect-[16/10] w-full bg-black">
               <Image
                 src="/ioe-preview.jpg"
                 alt="IOE Admission Guide interface showing rank predictor, campus selection, and cutoff analytics"
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 980px"
-                className="object-cover object-top"
+                className="project-preview-image-scroll-ioe"
               />
             </div>
           </div>

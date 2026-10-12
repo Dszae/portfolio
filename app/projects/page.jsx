@@ -334,14 +334,14 @@ export default function ProjectsPage() {
                             aria-label={project.detailUrl ? `View ${project.title} case study` : `View ${project.title} on Instagram`}
                           >
                             {project.image ? (
-                              <div className="relative aspect-[16/10] w-full overflow-hidden">
+                              <div className="project-preview-viewport relative aspect-[16/10] w-full overflow-hidden">
                                 <Image
                                   src={project.image}
                                   alt={`${project.title} interface preview`}
                                   fill
                                   priority={idx === 0}
                                   sizes="(max-width: 1024px) 100vw, 58vw"
-                                  className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02] motion-reduce:transform-none"
+                                  className={`project-preview-image ${project.id === 'sportivo' ? 'project-preview-image-scroll-sportivo' : project.id === 'git-visualizer' ? 'project-preview-image-scroll-git' : project.id === 'ioe-admission' ? 'project-preview-image-scroll-ioe' : 'object-cover object-top'}`}
                                 />
                               </div>
                             ) : (

@@ -168,14 +168,14 @@ export default function SportivoProjectPage() {
             </div>
 
             {/* High-res Image Preview */}
-            <div className="relative aspect-[16/10] w-full bg-black">
+            <div className="project-preview-viewport relative aspect-[16/10] w-full bg-black">
               <Image
                 src="/sportivo-preview.jpg"
                 alt="Sportivo live sports streaming interface displaying fixtures, search bar, and stream player"
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 980px"
-                className="object-cover object-top"
+                className="project-preview-image-scroll-sportivo"
               />
             </div>
           </div>

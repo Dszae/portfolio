@@ -160,14 +160,14 @@ export default function GitVisualizerProjectPage() {
             </div>
 
             {/* High-res Image Preview */}
-            <div className="relative aspect-[16/10] w-full bg-black">
+            <div className="project-preview-viewport relative aspect-[16/10] w-full bg-black">
               <Image
                 src="/git-preview.jpg"
                 alt="Git Visualizer canvas showing interactive Git commit DAG nodes, branches, and terminal commands"
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 980px"
-                className="object-cover object-top"
+                className="project-preview-image-scroll-git"
               />
             </div>
           </div>
