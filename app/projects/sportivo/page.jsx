@@ -2,6 +2,7 @@ import Link from 'next/link';
 import SiteLayout from '@/components/SiteLayout';
 import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 import PagePagination from '@/components/PagePagination';
+import HoverVideo from '@/components/HoverVideo';
 
 export const metadata = {
   title: "Sportivo — Live Scores, Fixtures & Sports News",
@@ -184,7 +185,7 @@ export default function SportivoProjectPage() {
 
             {/* Product Launch Video */}
             <div className="relative aspect-[16/10] w-full bg-black">
-              <video
+              <HoverVideo
                 className="h-full w-full object-contain"
                 controls
                 playsInline
@@ -194,7 +195,7 @@ export default function SportivoProjectPage() {
               >
                 <source src="/sportivo-launch.mp4" type="video/mp4" />
                 Your browser does not support embedded video.
-              </video>
+              </HoverVideo>
             </div>
           </div>
         </section>

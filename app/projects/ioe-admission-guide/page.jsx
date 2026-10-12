@@ -2,6 +2,7 @@ import Link from 'next/link';
 import SiteLayout from '@/components/SiteLayout';
 import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 import PagePagination from '@/components/PagePagination';
+import HoverVideo from '@/components/HoverVideo';
 
 export const metadata = {
   title: "IOE Admission Guide: Engineering Entrance & Rank Predictor",
@@ -164,7 +165,7 @@ export default function IoeAdmissionProjectPage() {
 
             {/* Product Demo Video */}
             <div className="relative aspect-[16/10] w-full bg-black">
-              <video
+              <HoverVideo
                 className="h-full w-full object-contain"
                 controls
                 playsInline
@@ -174,7 +175,7 @@ export default function IoeAdmissionProjectPage() {
               >
                 <source src="/ioe-demo.mp4" type="video/mp4" />
                 Your browser does not support embedded video.
-              </video>
+              </HoverVideo>
             </div>
           </div>
         </section>
