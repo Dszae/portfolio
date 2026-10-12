@@ -661,7 +661,11 @@ button:hover .smooth-img-zoom {
   border-radius: var(--radius-card);
   background: var(--surface-secondary);
   box-shadow: var(--shadow-subtle);
-  transform: translateZ(0) rotateX(0deg) rotateY(0deg);
+  --portrait-rotate-x: 0deg;
+  --portrait-rotate-y: 0deg;
+  --portrait-light-x: 50%;
+  --portrait-light-y: 50%;
+  transform: translateY(0) rotateX(var(--portrait-rotate-x)) rotateY(var(--portrait-rotate-y)) scale(1.0);
   transform-style: preserve-3d;
   transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 520ms ease, border-color 320ms ease;
 }
@@ -677,11 +681,46 @@ button:hover .smooth-img-zoom {
   transition: transform 760ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.hero-portrait-focus {
+  position: absolute;
+  inset: 16px;
+  z-index: 2;
+  border: 1px solid rgb(255 255 255 / 0.16);
+  border-radius: calc(var(--radius-card) - 6px);
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.96);
+  box-shadow: inset 0 0 0 1px rgb(6 95 70 / 0.2);
+  transition: opacity 420ms ease, transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-portrait-focus::before,
+.hero-portrait-focus::after {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  content: '';
+  border-color: rgb(255 255 255 / 0.78);
+  border-style: solid;
+}
+
+.hero-portrait-focus::before {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+}
+
+.hero-portrait-focus::after {
+  right: -1px;
+  bottom: -1px;
+  border-width: 0 2px 2px 0;
+}
+
 .hero-portrait-wrap:hover .hero-portrait-frame,
 .hero-portrait-wrap:focus-within .hero-portrait-frame {
   border-color: var(--accent-primary);
   box-shadow: 0 26px 60px rgb(15 23 42 / 18%), 0 0 0 8px rgb(6 95 70 / 8%);
-  transform: translateY(-8px) rotateX(1.5deg) rotateY(-2deg) scale(1.012);
+  transform: translateY(-8px) rotateX(var(--portrait-rotate-x)) rotateY(var(--portrait-rotate-y)) scale(1.012);
 }
 
 .hero-portrait-wrap:hover .hero-portrait-frame::after,
@@ -701,6 +740,17 @@ button:hover .smooth-img-zoom {
   transform: scale(1.045);
 }
 
+.hero-portrait-wrap:hover .hero-portrait-frame::after,
+.hero-portrait-wrap:focus-within .hero-portrait-frame::after {
+  background: radial-gradient(circle at var(--portrait-light-x) var(--portrait-light-y), rgb(255 255 255 / 0.22), transparent 34%), linear-gradient(112deg, transparent 28%, rgb(255 255 255 / 0.2) 46%, transparent 64%);
+}
+
+.hero-portrait-wrap:hover .hero-portrait-focus,
+.hero-portrait-wrap:focus-within .hero-portrait-focus {
+  opacity: 1;
+  transform: scale(1);
+}
+
 .hero-portrait-wrap:hover .hero-portrait-accent,
 .hero-portrait-wrap:focus-within .hero-portrait-accent {
   opacity: 1;
@@ -712,7 +762,8 @@ button:hover .smooth-img-zoom {
   .hero-portrait-frame,
   .hero-portrait-frame::after,
   .hero-portrait-image,
-  .hero-portrait-accent {
+  .hero-portrait-accent,
+  .hero-portrait-focus {
     transition: none;
   }
 }

@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import SiteLayout from '../components/SiteLayout';
+import InteractivePortrait from '../components/InteractivePortrait';
 import { HomePageJsonLd } from '../components/JsonLdSchema';
 
 const SKILLS_PREVIEW = [
@@ -144,20 +145,7 @@ export default function Home() {
               {/* Desktop Right / Mobile Top */}
               <figure className="hero-portrait-wrap">
                 <div className="hero-portrait-accent" aria-hidden="true" />
-                <div className="hero-portrait-frame">
-                  <Image
-                    src="/dipesh-sapkota.jpg"
-                    id="primary-profile-image"
-                    itemProp="image"
-                    alt="Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal"
-                    fill
-                    sizes="(max-width: 680px) 88vw, (max-width: 899px) 38vw, 440px"
-                    loading="eager"
-                    priority
-                    fetchPriority="high"
-                    className="hero-portrait-image"
-                  />
-                </div>
+                <InteractivePortrait />
               </figure>
             </div>
           </section>
