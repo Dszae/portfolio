@@ -44,7 +44,7 @@ export default function GitVisualizerProjectPage() {
     '@type': 'VideoObject',
     name: 'Git Visualizer Interactive Demo',
     description: 'A product demonstration of Git Visualizer, an interactive version-control learning tool created by Dipesh Sapkota.',
-    thumbnailUrl: 'https://www.dipeshsapkota7.com.np/git-preview.jpg',
+    thumbnailUrl: 'https://www.dipeshsapkota7.com.np/git-visualizer-first-frame.jpg',
     contentUrl: 'https://www.dipeshsapkota7.com.np/git-visualizer-launch.mp4',
     embedUrl: 'https://www.dipeshsapkota7.com.np/projects/git-visualizer',
     uploadDate: '2026-10-12T00:00:00+05:45',
@@ -181,7 +181,7 @@ export default function GitVisualizerProjectPage() {
                 controls
                 playsInline
                 preload="metadata"
-                poster="/git-preview.jpg"
+                poster="/git-visualizer-first-frame.jpg"
                 aria-label="Git Visualizer product launch demonstration"
               >
                 <source src="/git-visualizer-launch.mp4" type="video/mp4" />

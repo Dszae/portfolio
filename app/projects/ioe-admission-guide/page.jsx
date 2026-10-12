@@ -44,7 +44,7 @@ export default function IoeAdmissionProjectPage() {
     '@type': 'VideoObject',
     name: 'IOE Admission Guide Demo',
     description: 'A product demonstration of the IOE Admission Guide, an engineering entrance and rank prediction tool created by Dipesh Sapkota.',
-    thumbnailUrl: 'https://www.dipeshsapkota7.com.np/ioe-preview.jpg',
+    thumbnailUrl: 'https://www.dipeshsapkota7.com.np/ioe-first-frame.jpg',
     contentUrl: 'https://www.dipeshsapkota7.com.np/ioe-demo.mp4',
     embedUrl: 'https://www.dipeshsapkota7.com.np/projects/ioe-admission-guide',
     uploadDate: '2026-10-12T00:00:00+05:45',
@@ -169,7 +169,7 @@ export default function IoeAdmissionProjectPage() {
                 controls
                 playsInline
                 preload="metadata"
-                poster="/ioe-preview.jpg"
+                poster="/ioe-first-frame.jpg"
                 aria-label="IOE Admission Guide product demonstration"
               >
                 <source src="/ioe-demo.mp4" type="video/mp4" />

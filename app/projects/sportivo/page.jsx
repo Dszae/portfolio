@@ -52,7 +52,7 @@ export default function SportivoProjectPage() {
     '@type': 'VideoObject',
     name: 'Sportivo Live Sports Platform Demo',
     description: 'A product demonstration of Sportivo, a live sports platform created by Dipesh Sapkota for scores, fixtures, match discovery, and sports news.',
-    thumbnailUrl: 'https://www.dipeshsapkota7.com.np/sportivo-preview.jpg',
+    thumbnailUrl: 'https://www.dipeshsapkota7.com.np/sportivo-first-frame.jpg',
     contentUrl: 'https://www.dipeshsapkota7.com.np/sportivo-launch.mp4',
     embedUrl: 'https://www.dipeshsapkota7.com.np/projects/sportivo',
     uploadDate: '2026-10-12T00:00:00+05:45',
@@ -189,7 +189,7 @@ export default function SportivoProjectPage() {
                 controls
                 playsInline
                 preload="metadata"
-                poster="/sportivo-preview.jpg"
+                poster="/sportivo-first-frame.jpg"
                 aria-label="Sportivo product launch demonstration"
               >
                 <source src="/sportivo-launch.mp4" type="video/mp4" />
