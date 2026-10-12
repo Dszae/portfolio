@@ -825,6 +825,7 @@ button:hover .smooth-img-zoom {
   object-fit: initial !important;
   object-position: top center !important;
   animation: project-preview-scroll 11s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite paused;
+  animation-fill-mode: both;
   will-change: transform;
 }
 
