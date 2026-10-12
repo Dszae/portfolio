@@ -341,7 +341,7 @@ export default function ProjectsPage() {
                                   fill
                                   priority={idx === 0}
                                   sizes="(max-width: 1024px) 100vw, 58vw"
-                                  className={`project-preview-image ${project.id === 'sportivo' ? 'project-preview-image-scroll-sportivo' : project.id === 'git-visualizer' ? 'project-preview-image-scroll-git' : project.id === 'ioe-admission' ? 'project-preview-image-scroll-ioe' : 'object-cover object-top'}`}
+                                  className={`project-preview-image ${project.id === 'sportivo' ? 'project-preview-image-scroll-sportivo' : project.id === 'git-visualizer' ? 'project-preview-image-scroll-git' : project.id === 'ioe-admission' ? 'project-preview-image-scroll-ioe' : project.id === 'social-media' ? 'project-preview-image-scroll-instagram' : 'object-cover object-top'}`}
                                 />
                               </div>
                             ) : (
