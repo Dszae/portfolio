@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import ScrollPreviewImage from '@/components/ScrollPreviewImage';
 import SiteLayout from '@/components/SiteLayout';
 import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 import PagePagination from '@/components/PagePagination';
@@ -167,16 +166,18 @@ export default function SportivoProjectPage() {
               </div>
             </div>
 
-            {/* High-res Image Preview */}
-            <div className="project-preview-viewport relative aspect-[16/10] w-full bg-black">
-              <ScrollPreviewImage
-                src="/sportivo-preview.jpg"
-                alt="Sportivo live sports streaming interface displaying fixtures, search bar, and stream player"
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 980px"
-                className="project-preview-image-scroll-sportivo"
-              />
+            {/* Product Launch Video */}
+            <div className="relative aspect-[16/10] w-full bg-black">
+              <video
+                className="h-full w-full object-contain"
+                controls
+                playsInline
+                preload="metadata"
+                aria-label="Sportivo product launch demonstration"
+              >
+                <source src="/sportivo-launch.mp4" type="video/mp4" />
+                Your browser does not support embedded video.
+              </video>
             </div>
           </div>
         </section>
