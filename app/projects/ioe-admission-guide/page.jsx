@@ -6,19 +6,22 @@ import PagePagination from '@/components/PagePagination';
 export const metadata = {
   title: "IOE Admission Guide: Engineering Entrance & Rank Predictor",
   description: "Technical case study of the IOE Admission Guide by Dipesh Sapkota (dszae): historical rank cutoff modeling, multi-campus counseling algorithms, and automated priority sheets.",
-  alternates: { canonical: '/projects/ioe-admission-guide' },
+  keywords: ['IOE Admission Guide', 'IOE rank predictor', 'TU engineering admission', 'IOE cutoff analytics', 'Dipesh Sapkota'],
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-video-preview': -1, 'max-image-preview': 'large', 'max-snippet': -1 } },
+  alternates: { canonical: '/projects/ioe-admission-guide', languages: { 'en-US': '/projects/ioe-admission-guide' } },
   openGraph: {
     type: 'website',
     title: 'IOE Admission Guide by Dipesh Sapkota',
     description: 'Engineering entrance rank prediction, historical cutoff analytics, and counseling workflows for Tribhuvan University applicants.',
     url: 'https://www.dipeshsapkota7.com.np/projects/ioe-admission-guide',
-    images: [{ url: '/ioe-preview.jpg', alt: 'IOE Admission Guide interface preview' }],
+    images: [{ url: '/ioe-preview.jpg', width: 993, height: 450, alt: 'IOE Admission Guide interface preview by Dipesh Sapkota' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'IOE Admission Guide by Dipesh Sapkota',
     description: 'Engineering admission tools created by Dipesh Sapkota, including rank prediction, cutoff analytics, and counseling workflows.',
     images: ['/ioe-preview.jpg'],
+    creator: '@DszAe18',
   },
 };
 

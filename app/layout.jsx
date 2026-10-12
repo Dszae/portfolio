@@ -20,6 +20,17 @@ export const metadata = {
     template: '%s | Dipesh Sapkota',
   },
   description: 'Official portfolio of Dipesh Sapkota featuring software projects including IOE Admission Hub and Git Visualizer, alongside technical engineering and creative work.',
+  keywords: [
+    'Dipesh Sapkota',
+    'Dipesh Sapkota portfolio',
+    'Computer Engineering student Nepal',
+    'AI/ML enthusiast',
+    'Video Editor',
+    'Motion Graphics Designer',
+    'Git Visualizer',
+    'IOE Admission Hub',
+    'Sportivo',
+  ],
   authors: [{ name: 'Dipesh Sapkota' }],
   creator: 'Dipesh Sapkota',
   publisher: 'Dipesh Sapkota',
@@ -96,6 +107,9 @@ export const metadata = {
   },
   alternates: {
     canonical: '/',
+    languages: {
+      'en-US': '/',
+    },
   },
   openGraph: {
     type: 'website',
@@ -127,10 +141,16 @@ export const metadata = {
   },
 };
 
+export const viewport = {
+  themeColor: '#090B0E',
+  colorScheme: 'light dark',
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`scroll-smooth ${manrope.variable}`} suppressHydrationWarning>
       <head>
+        <link rel="author" href="/" />
         <link rel="alternate" type="text/markdown" href="/.well-known/llms.txt" title="AI-readable site information" />
         <script
           dangerouslySetInnerHTML={{

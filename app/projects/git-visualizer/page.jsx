@@ -6,19 +6,22 @@ import PagePagination from '@/components/PagePagination';
 export const metadata = {
   title: "Git Visualizer: Interactive Version Control & DAG Case Study",
   description: "Technical case study of Git Visualizer by Dipesh Sapkota (dszae): interactive HTML5 Canvas engine, directed acyclic graph (DAG) mapping, and visual Git workflows.",
-  alternates: { canonical: '/projects/git-visualizer' },
+  keywords: ['Git Visualizer', 'interactive Git', 'Git commit graph', 'Git DAG', 'learn Git', 'Dipesh Sapkota'],
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-video-preview': -1, 'max-image-preview': 'large', 'max-snippet': -1 } },
+  alternates: { canonical: '/projects/git-visualizer', languages: { 'en-US': '/projects/git-visualizer' } },
   openGraph: {
     type: 'website',
     title: 'Git Visualizer Case Study by Dipesh Sapkota',
     description: 'An interactive canvas-driven tool for learning Git version control data structures, branches, and commit graphs.',
     url: 'https://www.dipeshsapkota7.com.np/projects/git-visualizer',
-    images: [{ url: '/git-preview.jpg', alt: 'Git Visualizer interactive interface preview' }],
+    images: [{ url: '/git-preview.jpg', width: 993, height: 450, alt: 'Git Visualizer interactive interface preview by Dipesh Sapkota' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Git Visualizer Case Study by Dipesh Sapkota',
     description: 'An interactive Git learning tool and DAG canvas engine built by Dipesh Sapkota (dszae).',
     images: ['/git-preview.jpg'],
+    creator: '@DszAe18',
   },
 };
 

@@ -6,19 +6,22 @@ import PagePagination from '@/components/PagePagination';
 export const metadata = {
   title: "Sportivo — Live Scores, Fixtures & Sports News",
   description: "Sportivo is a focused real-time sports platform that brings live scores, upcoming fixtures, match discovery, and sports news into one responsive experience. Built by Dipesh Sapkota, it is designed to help football, cricket, and basketball fans scan updates quickly and move naturally from match information to available streams.",
-  alternates: { canonical: '/projects/sportivo' },
+  keywords: ['Sportivo', 'live sports scores', 'football fixtures', 'cricket fixtures', 'basketball fixtures', 'Dipesh Sapkota'],
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-video-preview': -1, 'max-image-preview': 'large', 'max-snippet': -1 } },
+  alternates: { canonical: '/projects/sportivo', languages: { 'en-US': '/projects/sportivo' } },
   openGraph: {
     type: 'website',
     title: 'Sportivo — Live Scores, Fixtures & Sports News | Dipesh Sapkota',
     description: 'Sportivo is a focused real-time sports platform that brings live scores, upcoming fixtures, match discovery, and sports news into one responsive experience for football, cricket, and basketball fans.',
     url: 'https://www.dipeshsapkota7.com.np/projects/sportivo',
-    images: [{ url: '/sportivo-preview.jpg', width: 993, height: 450, alt: 'Sportivo live sports platform preview' }],
+    images: [{ url: '/sportivo-preview.jpg', width: 993, height: 450, alt: 'Sportivo live sports platform preview by Dipesh Sapkota' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Sportivo — Live Scores, Fixtures & Sports News | Dipesh Sapkota',
     description: 'Explore Sportivo, a sports platform built by Dipesh Sapkota.',
     images: ['/sportivo-preview.jpg'],
+    creator: '@DszAe18',
   },
 };
 
