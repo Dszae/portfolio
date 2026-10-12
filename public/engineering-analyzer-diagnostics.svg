@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Automated analyzer diagnostics</title>
+  <desc id="desc">Original technical illustration of a clinical analyzer with sample carousel, probes, tubing, and pressure readout.</desc>
+  <defs>
+    <linearGradient id="lab" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#dfece8"/><stop offset="1" stop-color="#9fbab5"/></linearGradient>
+    <linearGradient id="machine" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f6faf8"/><stop offset="1" stop-color="#a7bcb8"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#18322f" flood-opacity=".32"/></filter>
+  </defs>
+  <rect width="1200" height="675" fill="url(#lab)"/>
+  <path d="M0 515h1200v160H0z" fill="#789792"/><path d="M0 515h1200" stroke="#d7e5df" stroke-width="4"/>
+  <g filter="url(#shadow)" transform="translate(135 92)">
+    <rect width="670" height="420" rx="24" fill="url(#machine)" stroke="#53716d" stroke-width="5"/>
+    <rect x="42" y="48" width="360" height="170" rx="14" fill="#173338" stroke="#75b8a8" stroke-width="4"/>
+    <path d="M70 170h300M70 140h230M70 110h165" stroke="#9be4c6" stroke-width="5" stroke-linecap="round" opacity=".8"/><circle cx="330" cy="90" r="13" fill="#55c99c"/><text x="70" y="82" font-family="sans-serif" font-size="18" fill="#d8f8ea" letter-spacing="2">DIAGNOSTIC RUN</text>
+    <ellipse cx="205" cy="325" rx="135" ry="45" fill="#b9cbc5" stroke="#526d69" stroke-width="4"/>
+    <ellipse cx="205" cy="315" rx="105" ry="28" fill="#1d3a3d" stroke="#8cb6a9" stroke-width="4"/>
+    <g fill="#d8b667" stroke="#775f32" stroke-width="2"><circle cx="140" cy="304" r="12"/><circle cx="176" cy="294" r="12"/><circle cx="214" cy="294" r="12"/><circle cx="250" cy="304" r="12"/><circle cx="158" cy="325" r="12"/><circle cx="195" cy="324" r="12"/><circle cx="232" cy="325" r="12"/></g>
+    <path d="M470 70v150M470 220c-32 45-32 80 0 110M520 70v120M520 190c-24 40-18 78 10 108" fill="none" stroke="#4b7770" stroke-width="14" stroke-linecap="round"/><path d="M470 68l0-42M520 68l0-42" stroke="#b44b4d" stroke-width="7"/><rect x="455" y="14" width="30" height="18" rx="4" fill="#d9e8e0"/><rect x="505" y="14" width="30" height="18" rx="4" fill="#d9e8e0"/>
+    <text x="505" y="374" text-anchor="middle" font-family="sans-serif" font-size="19" fill="#2f4a48" letter-spacing="3">AUTO IMMUNOASSAY PLATFORM</text>
+  </g>
+  <g transform="translate(865 130)"><rect width="250" height="175" rx="18" fill="#173338" stroke="#75b8a8" stroke-width="4"/><text x="125" y="42" text-anchor="middle" font-family="sans-serif" font-size="17" fill="#d8f8ea">VACUUM LINE</text><text x="125" y="112" text-anchor="middle" font-family="sans-serif" font-size="48" font-weight="700" fill="#9be4c6">-48</text><text x="125" y="145" text-anchor="middle" font-family="sans-serif" font-size="18" fill="#9be4c6">kPa / stable</text></g>
+  <text x="72" y="92" font-family="sans-serif" font-size="20" letter-spacing="4" fill="#365d58">INSTRUMENTATION / 03</text>
+  <text x="72" y="615" font-family="sans-serif" font-size="30" font-weight="700" fill="#173338">Electro-fluidic fault isolation</text>
+</svg>

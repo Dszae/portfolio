@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Electrical machinery modeling study</title>
+  <desc id="desc">Original technical illustration of an induction motor cross-section beside a torque speed plot.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#17262a"/><stop offset="1" stop-color="#081113"/></linearGradient>
+    <radialGradient id="metal"><stop stop-color="#e7e9e4"/><stop offset=".65" stop-color="#7f8b89"/><stop offset="1" stop-color="#344143"/></radialGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="15" stdDeviation="16" flood-color="#000" flood-opacity=".4"/></filter>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <g opacity=".16" stroke="#91b4aa"><path d="M0 120h1200M0 240h1200M0 360h1200M0 480h1200M0 600h1200"/><path d="M120 0v675M240 0v675M360 0v675M480 0v675M600 0v675M720 0v675M840 0v675M960 0v675M1080 0v675"/></g>
+  <g filter="url(#shadow)" transform="translate(105 150)">
+    <circle cx="285" cy="205" r="180" fill="#263437" stroke="#91aaa4" stroke-width="8"/>
+    <circle cx="285" cy="205" r="145" fill="url(#metal)" stroke="#c8d3cd" stroke-width="4"/>
+    <g fill="#465b5a" stroke="#c0cec8" stroke-width="3"> <path d="M285 80l24 85-24 25-24-25z"/><path d="M410 205l-85 24-25-24 25-24z"/><path d="M285 330l-24-85 24-25 24 25z"/><path d="M160 205l85-24 25 24-25 24z"/></g>
+    <circle cx="285" cy="205" r="72" fill="#182326" stroke="#d2ddd5" stroke-width="5"/>
+    <circle cx="285" cy="205" r="22" fill="#c8a35c"/><path d="M285 205L392 205" stroke="#d9bf78" stroke-width="10" stroke-linecap="round"/>
+    <text x="285" y="430" text-anchor="middle" font-family="sans-serif" font-size="20" letter-spacing="3" fill="#b8d3ca">3-PHASE INDUCTION MOTOR</text>
+  </g>
+  <g transform="translate(610 125)"><rect width="485" height="330" rx="16" fill="#0f1d20" stroke="#69847d" stroke-width="2"/><path d="M58 265H435M58 265V55" stroke="#b4c7c0" stroke-width="3"/><path d="M70 235C130 222 140 110 210 130S275 245 330 180 385 90 430 72" fill="none" stroke="#58c7a5" stroke-width="6"/><path d="M70 225C130 218 150 185 210 190S290 213 350 160 400 115 430 105" fill="none" stroke="#e0b96a" stroke-width="4" stroke-dasharray="10 8"/><text x="245" y="35" text-anchor="middle" font-family="sans-serif" font-size="20" fill="#eef7f2">TORQUE / SPEED RESPONSE</text><text x="245" y="305" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#91aaa4">slip -></text><text x="24" y="165" transform="rotate(-90 24 165)" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#91aaa4">torque</text><circle cx="210" cy="130" r="7" fill="#e0b96a"/><circle cx="330" cy="180" r="7" fill="#58c7a5"/></g>
+  <text x="72" y="92" font-family="sans-serif" font-size="20" letter-spacing="4" fill="#a7c7bd">MACHINE ANALYSIS / 02</text>
+  <text x="72" y="615" font-family="sans-serif" font-size="30" font-weight="700" fill="#eef7f2">Equivalent circuit and torque study</text>
+</svg>

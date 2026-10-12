@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">NE555 timer circuit prototype</title>
+  <desc id="desc">Original technical illustration of a breadboard timer circuit with LEDs, resistors, and measurement probes.</desc>
+  <defs>
+    <linearGradient id="bench" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#17212b"/><stop offset="1" stop-color="#071016"/></linearGradient>
+    <linearGradient id="board" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f4f0e8"/><stop offset="1" stop-color="#c8c1b4"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000" flood-opacity=".35"/></filter>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bench)"/>
+  <path d="M0 510C260 420 540 590 1200 430V675H0Z" fill="#0b1519"/>
+  <g filter="url(#shadow)" transform="translate(140 120) rotate(-4 460 210)">
+    <rect width="930" height="420" rx="18" fill="url(#board)"/>
+    <rect x="32" y="35" width="866" height="350" rx="10" fill="#e7e1d5" stroke="#a49c8d" stroke-width="3"/>
+    <g fill="#756f62" opacity=".7"> <circle cx="70" cy="78" r="4"/><circle cx="98" cy="78" r="4"/><circle cx="126" cy="78" r="4"/><circle cx="70" cy="108" r="4"/><circle cx="98" cy="108" r="4"/><circle cx="126" cy="108" r="4"/><circle cx="70" cy="138" r="4"/><circle cx="98" cy="138" r="4"/><circle cx="126" cy="138" r="4"/> </g>
+    <g stroke="#878071" stroke-width="3" opacity=".6"><path d="M180 65v290M210 65v290M240 65v290M270 65v290M300 65v290M330 65v290M360 65v290M390 65v290M420 65v290M450 65v290M480 65v290M510 65v290M540 65v290M570 65v290M600 65v290M630 65v290M660 65v290M690 65v290M720 65v290M750 65v290M780 65v290M810 65v290"/></g>
+    <rect x="400" y="145" width="145" height="105" rx="10" fill="#1c2329" stroke="#3a474a" stroke-width="4"/>
+    <text x="472" y="205" text-anchor="middle" font-family="sans-serif" font-size="26" font-weight="700" fill="#d4f7e7">NE555</text>
+    <g fill="none" stroke="#d35c42" stroke-width="9" stroke-linecap="round"><path d="M150 110C260 110 280 190 400 190"/><path d="M545 190C650 190 670 115 810 115"/><path d="M545 220C640 220 700 300 810 300"/></g>
+    <g fill="none" stroke="#2a8b72" stroke-width="9" stroke-linecap="round"><path d="M150 305C250 305 270 230 400 230"/><path d="M545 165C620 165 650 90 790 90"/></g>
+    <g transform="translate(685 70)"><rect width="70" height="35" rx="5" fill="#d4b25f"/><path d="M14 0v35M56 0v35" stroke="#805b2f" stroke-width="6"/><path d="M0 17h-38M70 17h38" stroke="#8b332e" stroke-width="5"/></g>
+    <g transform="translate(180 255)"><rect width="105" height="55" rx="8" fill="#d2a75e"/><path d="M24 0v55M53 0v55M82 0v55" stroke="#744f2b" stroke-width="6"/><path d="M0 27h-35M105 27h35" stroke="#a63f32" stroke-width="5"/></g>
+    <g transform="translate(725 250)"><circle cx="35" cy="35" r="28" fill="#dd4b3f"/><circle cx="35" cy="35" r="11" fill="#ffce72"/><path d="M35 0v-30M35 70v30" stroke="#c44238" stroke-width="7"/></g>
+  </g>
+  <text x="72" y="92" font-family="sans-serif" font-size="20" letter-spacing="4" fill="#a7c7bd">HARDWARE PROTOTYPE / 01</text>
+  <text x="72" y="615" font-family="sans-serif" font-size="30" font-weight="700" fill="#eef7f2">Astable multivibrator validation</text>
+</svg>
