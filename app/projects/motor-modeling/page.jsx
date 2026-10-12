@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import SiteLayout from '@/components/SiteLayout';
 import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
@@ -108,6 +109,20 @@ export default function MotorModelingPage() {
               </div>
             </div>
           </header>
+
+          <figure className="mb-12 overflow-hidden rounded-2xl border border-slate-200 dark:border-[#222933] bg-[#102022] shadow-lg">
+            <Image
+              src="/engineering-motor-model.svg"
+              alt="Project documentation illustration of an induction motor cross-section and torque-speed analysis plot"
+              width={1200}
+              height={675}
+              priority
+              className="h-auto w-full"
+            />
+            <figcaption className="border-t border-white/10 bg-[#0F1D20] px-5 py-3 text-xs text-[#B8D3CA] sm:px-6">
+              Analysis documentation: machine cross-section paired with the modeled torque-speed response.
+            </figcaption>
+          </figure>
 
           {/* Deep Technical Content */}
           <article className="space-y-12 text-[#1E293B] dark:text-[#CBD5E1]">

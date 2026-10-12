@@ -153,7 +153,6 @@ const NOTEWORTHY_PROJECTS = [
     category: "exp",
     categoryLabel: "Experiments",
     type: "Hardware Circuit Prototype",
-    image: "/engineering-555-flasher.svg",
     description: "Physical breadboard relaxation oscillator circuit built with the NE555 timer IC in an astable configuration. Calculates RC timing networks to generate stable square-wave switching pulses across complementary output LEDs.",
     tech: ["NE555 Timer IC", "Circuit Analysis", "Proteus ISIS", "Breadboard"],
     detailUrl: "/projects/555-flasher",
@@ -174,7 +173,6 @@ const NOTEWORTHY_PROJECTS = [
     category: "exp",
     categoryLabel: "Experiments",
     type: "Engineering Analysis",
-    image: "/engineering-motor-model.svg",
     description: "Steady-state mathematical modeling and parameter derivation for 3-phase squirrel cage induction machines and DC motors. Derives torque-speed curves from locked-rotor test data and solves complex stator/rotor phasor impedance networks.",
     tech: ["Electrical Machines", "Phasor Calculus", "Motor Analysis", "MATLAB"],
     detailUrl: "/projects/motor-modeling",
@@ -195,7 +193,6 @@ const NOTEWORTHY_PROJECTS = [
     category: "exp",
     categoryLabel: "Experiments",
     type: "Instrumentation Engineering",
-    image: "/engineering-analyzer-diagnostics.svg",
     description: "Diagnostic troubleshooting protocol and component analysis for automated clinical immunoassay and biochemical laboratory equipment. Analyzes negative pressure tolerances (-40 to -60 kPa), micro-stepping syringe probe calibrations, and electro-fluidic valve sequences.",
     tech: ["Biomedical Tech", "Fluidics", "Calibration Systems", "Instrumentation"],
     detailUrl: "/projects/analyzer-diag",
@@ -473,18 +470,9 @@ export default function ProjectsPage() {
                     {filteredNoteworthy.map((project) => (
                       <article
                         key={project.id}
-                        className="group flex flex-col justify-between overflow-hidden rounded-2xl bg-white dark:bg-[#0F1216] border border-slate-200 dark:border-[#222933] shadow-sm hover:-translate-y-0.5 hover:border-[#065F46]/60 dark:hover:border-[#34D399]/60 transition-all duration-200"
+                        className="group flex flex-col justify-between p-6 rounded-2xl bg-white dark:bg-[#0F1216] border border-slate-200 dark:border-[#222933] shadow-sm hover:-translate-y-0.5 hover:border-[#065F46]/60 dark:hover:border-[#34D399]/60 transition-all duration-200"
                       >
-                        <div className="p-6">
-                          <div className="relative -mx-6 -mt-6 mb-5 aspect-[16/9] overflow-hidden border-b border-slate-200 dark:border-[#222933] bg-[#102022]">
-                            <Image
-                              src={project.image}
-                              alt={`${project.title} original technical illustration`}
-                              fill
-                              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                              className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02] motion-reduce:transform-none"
-                            />
-                          </div>
+                        <div>
                           {/* Top Row: Technical Icon & External Action */}
                           <div className="flex items-center justify-between mb-4">
                             <span className="text-[#065F46] dark:text-[#34D399]" aria-hidden="true">
@@ -514,7 +502,7 @@ export default function ProjectsPage() {
                           </p>
                         </div>
 
-                        <div className="px-6 pb-6">
+                        <div>
                           {/* Tech Stack */}
                           <ul className="flex flex-wrap gap-x-3 gap-y-1 tech-tag pt-3 border-t border-slate-100 dark:border-[#222933] mb-3">
                             {project.tech.map((t) => (

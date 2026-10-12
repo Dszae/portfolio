@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import SiteLayout from '@/components/SiteLayout';
 import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
@@ -108,6 +109,20 @@ export default function AnalyzerDiagnosticsPage() {
               </div>
             </div>
           </header>
+
+          <figure className="mb-12 overflow-hidden rounded-2xl border border-slate-200 dark:border-[#222933] bg-[#173338] shadow-lg">
+            <Image
+              src="/engineering-analyzer-diagnostics.svg"
+              alt="Project documentation illustration of an automated clinical analyzer with sample carousel, probes, tubing, and vacuum readout"
+              width={1200}
+              height={675}
+              priority
+              className="h-auto w-full"
+            />
+            <figcaption className="border-t border-white/10 bg-[#173338] px-5 py-3 text-xs text-[#D8F8EA] sm:px-6">
+              Instrumentation documentation: sample carousel, probe path, fluidic tubing, and vacuum diagnostic readout.
+            </figcaption>
+          </figure>
 
           {/* Deep Technical Content */}
           <article className="space-y-12 text-[#1E293B] dark:text-[#CBD5E1]">

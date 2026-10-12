@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import SiteLayout from '@/components/SiteLayout';
 import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
@@ -108,6 +109,20 @@ export default function AstableMultivibratorPage() {
               </div>
             </div>
           </header>
+
+          <figure className="mb-12 overflow-hidden rounded-2xl border border-slate-200 dark:border-[#222933] bg-[#102022] shadow-lg">
+            <Image
+              src="/engineering-555-flasher.svg"
+              alt="Project documentation illustration of the NE555 breadboard prototype with timing components and LED output"
+              width={1200}
+              height={675}
+              priority
+              className="h-auto w-full"
+            />
+            <figcaption className="border-t border-white/10 bg-[#0F1D20] px-5 py-3 text-xs text-[#B8D3CA] sm:px-6">
+              Prototype documentation: timing network, NE555 package, LED output, and measured signal path.
+            </figcaption>
+          </figure>
 
           {/* Deep Technical Content */}
           <article className="space-y-12 text-[#1E293B] dark:text-[#CBD5E1]">
