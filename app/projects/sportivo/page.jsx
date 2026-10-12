@@ -6,7 +6,7 @@ import PagePagination from '@/components/PagePagination';
 export const metadata = {
   title: "Sportivo — Live Scores, Fixtures & Sports News",
   description: "Sportivo is a focused real-time sports platform that brings live scores, upcoming fixtures, match discovery, and sports news into one responsive experience. Built by Dipesh Sapkota, it is designed to help football, cricket, and basketball fans scan updates quickly and move naturally from match information to available streams.",
-  alternates: { canonical: '/projects/sportivo/' },
+  alternates: { canonical: '/projects/sportivo' },
   openGraph: {
     type: 'website',
     title: 'Sportivo — Live Scores, Fixtures & Sports News | Dipesh Sapkota',
@@ -66,7 +66,7 @@ export default function SportivoProjectPage() {
           items={[
             { name: 'Home', path: '/' },
             { name: 'Projects', path: '/projects' },
-            { name: 'Sportivo', path: '/projects/sportivo/' },
+            { name: 'Sportivo', path: '/projects/sportivo' },
           ]}
         />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
