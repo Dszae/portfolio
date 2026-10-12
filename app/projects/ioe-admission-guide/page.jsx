@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import ScrollPreviewImage from '@/components/ScrollPreviewImage';
 import SiteLayout from '@/components/SiteLayout';
 import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 import PagePagination from '@/components/PagePagination';
@@ -147,16 +146,19 @@ export default function IoeAdmissionProjectPage() {
               </div>
             </div>
 
-            {/* High-res Image Preview */}
-            <div className="project-preview-viewport relative aspect-[16/10] w-full bg-black">
-              <ScrollPreviewImage
-                src="/ioe-preview.jpg"
-                alt="IOE Admission Guide interface showing rank predictor, campus selection, and cutoff analytics"
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 980px"
-                className="project-preview-image-scroll-ioe"
-              />
+            {/* Product Demo Video */}
+            <div className="relative aspect-[16/10] w-full bg-black">
+              <video
+                className="h-full w-full object-contain"
+                controls
+                playsInline
+                preload="metadata"
+                poster="/ioe-preview.jpg"
+                aria-label="IOE Admission Guide product demonstration"
+              >
+                <source src="/ioe-demo.mp4" type="video/mp4" />
+                Your browser does not support embedded video.
+              </video>
             </div>
           </div>
         </section>
