@@ -820,8 +820,17 @@ button:hover .smooth-img-zoom {
   max-width: none !important;
   object-fit: initial !important;
   object-position: top center !important;
-  animation: project-preview-scroll 14s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  animation: project-preview-scroll 14s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite paused;
   will-change: transform;
+}
+
+.project-preview-viewport:hover .project-preview-image-scroll-sportivo,
+.project-preview-viewport:hover .project-preview-image-scroll-git,
+.project-preview-viewport:hover .project-preview-image-scroll-ioe,
+.project-preview-viewport:focus-within .project-preview-image-scroll-sportivo,
+.project-preview-viewport:focus-within .project-preview-image-scroll-git,
+.project-preview-viewport:focus-within .project-preview-image-scroll-ioe {
+  animation-play-state: running;
 }
 
 .project-preview-image-scroll-sportivo {
