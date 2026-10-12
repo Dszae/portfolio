@@ -55,7 +55,7 @@ const SKILLS_PREVIEW = [
 const FEATURED_PROJECTS = [
   {
     name: "Sportivo — Live Scores, Fixtures & Sports News",
-    description: "A sports platform built by Dipesh Sapkota for live scores, fixtures, and sports news.",
+    description: "A focused real-time sports platform that combines live scores, upcoming fixtures, match discovery, and sports news in one responsive experience for football, cricket, and basketball fans.",
     href: "/projects/sportivo",
     image: "/sportivo-preview.jpg",
     liveUrl: "https://sportivo.dipeshsapkota7.com.np/",

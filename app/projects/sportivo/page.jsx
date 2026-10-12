@@ -6,12 +6,12 @@ import PagePagination from '@/components/PagePagination';
 
 export const metadata = {
   title: "Sportivo — Live Scores, Fixtures & Sports News",
-  description: "Sportivo is a sports platform built by Dipesh Sapkota for live scores, fixtures, and sports news.",
+  description: "Sportivo is a focused real-time sports platform that brings live scores, upcoming fixtures, match discovery, and sports news into one responsive experience. Built by Dipesh Sapkota, it is designed to help football, cricket, and basketball fans scan updates quickly and move naturally from match information to available streams.",
   alternates: { canonical: '/projects/sportivo/' },
   openGraph: {
     type: 'website',
     title: 'Sportivo — Live Scores, Fixtures & Sports News | Dipesh Sapkota',
-    description: 'Sportivo is a sports platform built by Dipesh Sapkota for live scores, fixtures, and sports news.',
+    description: 'Sportivo is a focused real-time sports platform that brings live scores, upcoming fixtures, match discovery, and sports news into one responsive experience for football, cricket, and basketball fans.',
     url: 'https://www.dipeshsapkota7.com.np/projects/sportivo',
     images: [{ url: '/sportivo-preview.jpg', width: 993, height: 450, alt: 'Sportivo live sports platform preview' }],
   },
@@ -88,7 +88,7 @@ export default function SportivoProjectPage() {
           </h1>
 
           <p className="text-base sm:text-lg lg:text-xl text-[#334155] dark:text-[#CBD5E1] leading-relaxed max-w-3xl mb-8">
-            Sportivo is a sports platform built by Dipesh Sapkota. It brings live scores, fixtures, and sports news together in one accessible web experience.
+            Sportivo is a focused real-time sports platform built by Dipesh Sapkota to bring live scores, upcoming fixtures, match discovery, and sports news into one responsive experience. The interface is structured for fast scanning across football, cricket, and basketball, helping visitors move from a quick match update to deeper fixture information and available streams without unnecessary friction.
           </p>
 
           {/* Quick Meta Grid */}

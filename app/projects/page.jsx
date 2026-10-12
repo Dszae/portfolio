@@ -97,7 +97,7 @@ const FEATURED_PROJECTS = [
     categoryLabel: "Development",
     label: "Featured Project",
     type: "Live Sports Streaming Platform",
-    description: "A sports platform built by Dipesh Sapkota for live scores, fixtures, and sports news.",
+    description: "A focused real-time sports platform that brings live scores, upcoming fixtures, match discovery, and sports news into one responsive experience. Sportivo is designed for fast scanning across football, cricket, and basketball, with a clear interface that helps fans find the information and streams they need without unnecessary friction.",
     image: "/sportivo-preview.jpg",
     tech: ["Next.js", "React", "Node.js", "Tailwind CSS", "REST APIs"],
     liveUrl: "https://sportivo.dipeshsapkota7.com.np/",
