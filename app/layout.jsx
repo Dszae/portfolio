@@ -138,8 +138,7 @@ export default function RootLayout({ children }) {
               (function() {
                 try {
                   var stored = localStorage.getItem('theme');
-                  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                  var isDark = stored !== null ? stored === 'dark' : prefersDark;
+                  var isDark = stored !== null ? stored === 'dark' : false;
                   if (isDark) {
                     document.documentElement.classList.add('dark');
                   } else {

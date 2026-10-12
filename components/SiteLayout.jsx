@@ -642,7 +642,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
           {/* Bottom Bar */}
           <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#64748B] dark:text-[#94A3B8]">
             <p className="font-medium text-center w-full">
-              &copy; {new Date().getFullYear()} <span className="font-semibold text-[#0F172A] dark:text-[#F9FAFB]">Dipesh Sapkota<span className="site-wordmark-dot">.</span></span> All rights reserved.
+              &copy; {new Date().getFullYear()} <Link href="/" aria-label="Go to Dipesh Sapkota home page" className="font-semibold text-[#0F172A] dark:text-[#F9FAFB] no-underline hover:no-underline">Dipesh Sapkota<span className="site-wordmark-dot">.</span></Link> All rights reserved.
             </p>
           </div>
         </div>
