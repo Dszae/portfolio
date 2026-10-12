@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
+import ScrollPreviewImage from '../../components/ScrollPreviewImage';
 import SiteLayout from '../../components/SiteLayout';
 import FadeUp from '../../components/FadeUp';
 import BreadcrumbJsonLd from '../../components/BreadcrumbJsonLd';
@@ -335,7 +335,7 @@ export default function ProjectsPage() {
                           >
                             {project.image ? (
                               <div className="project-preview-viewport relative aspect-[16/10] w-full overflow-hidden">
-                                <Image
+                                <ScrollPreviewImage
                                   src={project.image}
                                   alt={`${project.title} interface preview`}
                                   fill

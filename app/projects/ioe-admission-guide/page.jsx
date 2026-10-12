@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import Link from 'next/link';
+import ScrollPreviewImage from '@/components/ScrollPreviewImage';
 import SiteLayout from '@/components/SiteLayout';
 import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 import PagePagination from '@/components/PagePagination';
@@ -149,7 +149,7 @@ export default function IoeAdmissionProjectPage() {
 
             {/* High-res Image Preview */}
             <div className="project-preview-viewport relative aspect-[16/10] w-full bg-black">
-              <Image
+              <ScrollPreviewImage
                 src="/ioe-preview.jpg"
                 alt="IOE Admission Guide interface showing rank predictor, campus selection, and cutoff analytics"
                 fill
