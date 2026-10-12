@@ -833,9 +833,18 @@ button:hover .smooth-img-zoom {
   will-change: transform;
 }
 
-.project-preview-observer.is-active .project-preview-image-scroll-sportivo,
-.project-preview-observer.is-active .project-preview-image-scroll-git,
-.project-preview-observer.is-active .project-preview-image-scroll-ioe {
+.project-preview-project:hover .project-preview-image-scroll-sportivo,
+.project-preview-project:hover .project-preview-image-scroll-git,
+.project-preview-project:hover .project-preview-image-scroll-ioe,
+.project-preview-project:focus-within .project-preview-image-scroll-sportivo,
+.project-preview-project:focus-within .project-preview-image-scroll-git,
+.project-preview-project:focus-within .project-preview-image-scroll-ioe,
+.project-preview-viewport:hover .project-preview-image-scroll-sportivo,
+.project-preview-viewport:hover .project-preview-image-scroll-git,
+.project-preview-viewport:hover .project-preview-image-scroll-ioe,
+.project-preview-viewport:focus-within .project-preview-image-scroll-sportivo,
+.project-preview-viewport:focus-within .project-preview-image-scroll-git,
+.project-preview-viewport:focus-within .project-preview-image-scroll-ioe {
   animation-play-state: running;
 }
 

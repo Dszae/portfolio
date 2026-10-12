@@ -318,7 +318,7 @@ export default function ProjectsPage() {
                     return (
                       <article
                         key={project.id}
-                        className="relative grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center"
+                        className="project-preview-project relative grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center"
                       >
                         {/* 1. Real Visual Preview (7 columns on desktop) */}
                         <div
