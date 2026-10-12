@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import SiteLayout from '@/components/SiteLayout';
 import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 import PagePagination from '@/components/PagePagination';
@@ -68,12 +67,14 @@ export default function BlogPage() {
                 </span>
                 <span className="card-meta">Full Case Study</span>
               </div>
-              <Link 
-                href="/projects/sportivo" 
+              <a
+                href="https://dev.to/dszae/building-sportivo-how-i-engineered-a-live-sports-streaming-web-app-4kh6"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="card-heading hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors block mb-3"
               >
                 Building Sportivo: Engineering a Real-Time Live Sports Streaming Web App &rarr;
-              </Link>
+              </a>
               <p className="card-description">
                 Comprehensive technical case study documenting multi-server stream switching, headless DOM parsing, schedule synchronization, and resilient fallback handling.
               </p>
@@ -87,14 +88,79 @@ export default function BlogPage() {
                 </span>
                 <span className="card-meta">Interactive Canvas</span>
               </div>
-              <Link 
-                href="/projects/git-visualizer" 
+              <a
+                href="https://dev.to/dszae/building-an-interactive-git-visualizer-to-master-version-control-4noa"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="card-heading hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors block mb-3"
               >
                 How I Built an Interactive Git Visualizer to Master Version Control &rarr;
-              </Link>
+              </a>
               <p className="card-description">
                 Deep dive into graph theory, directed acyclic graphs (DAG), Canvas rendering performance, and interactive state models for version control pedagogy.
+              </p>
+            </li>
+
+            {/* ESP32 Emergency Response Article */}
+            <li className="p-6 sm:p-8 rounded-2xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all shadow-sm">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="card-category-label">
+                  Embedded Systems
+                </span>
+                <span className="card-meta">IoT &amp; Hardware</span>
+              </div>
+              <a
+                href="https://dev.to/dszae/building-an-iot-emergency-response-system-with-esp32-2kgo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card-heading hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors block mb-3"
+              >
+                Building an IoT Emergency Response System with ESP32 &rarr;
+              </a>
+              <p className="card-description">
+                A practical embedded-systems build exploring ESP32-based sensing, emergency communication, and connected response workflows.
+              </p>
+            </li>
+
+            {/* Portfolio Launch Article */}
+            <li className="p-6 sm:p-8 rounded-2xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all shadow-sm">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="card-category-label">
+                  Portfolio Build
+                </span>
+                <span className="card-meta">Design &amp; Development</span>
+              </div>
+              <a
+                href="https://dev.to/dszae/launching-my-digital-portfolio-bridging-code-creative-media-bi6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card-heading hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors block mb-3"
+              >
+                Launching My Digital Portfolio: Bridging Code &amp; Creative Media &rarr;
+              </a>
+              <p className="card-description">
+                The story behind building a portfolio that brings software engineering, creative media, motion, and visual storytelling into one experience.
+              </p>
+            </li>
+
+            {/* IOE Admission Hub Article */}
+            <li className="p-6 sm:p-8 rounded-2xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all shadow-sm">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="card-category-label">
+                  Data &amp; Education
+                </span>
+                <span className="card-meta">Product Case Study</span>
+              </div>
+              <a
+                href="https://dev.to/dszae/ioe-admission-hub-building-a-rank-predictor-and-campus-explorer-for-nepal-1n1f"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card-heading hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors block mb-3"
+              >
+                IOE Admission Hub: Building a Rank Predictor and Campus Explorer for Nepal &rarr;
+              </a>
+              <p className="card-description">
+                How historical cutoff data, rank prediction, campus exploration, and counseling guidance became a practical admissions toolkit for Nepalese engineering applicants.
               </p>
             </li>
           </ul>
