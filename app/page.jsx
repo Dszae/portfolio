@@ -65,14 +65,14 @@ const FEATURED_PROJECTS = [
   {
     name: "IOE Admission Hub",
     description: "An admission toolkit for Institute of Engineering applicants featuring rank prediction, campus exploration, priority planning, CBT score calculation, and counseling guidance.",
-    href: "https://ioe-admission.dipeshsapkota7.com.np/",
+    href: "/projects/ioe-admission-guide",
     image: "/ioe-preview.jpg",
     linkLabel: "Explore IOE Admission Hub",
   },
   {
     name: "Git Visualizer",
     description: "An interactive Git learning platform featuring a live commit graph, deterministic Git command simulator, guided lessons, safe undo tools, command reference, and a visual explanation of how Git moves code between repository stages.",
-    href: "https://git-visualizer.dipeshsapkota7.com.np/",
+    href: "/projects/git-visualizer",
     image: "/git-preview.jpg",
     linkLabel: "Explore Git Visualizer",
   },
