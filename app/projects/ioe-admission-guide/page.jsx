@@ -153,7 +153,6 @@ export default function IoeAdmissionProjectPage() {
                 controls
                 playsInline
                 preload="metadata"
-                poster="/ioe-preview.jpg"
                 aria-label="IOE Admission Guide product demonstration"
               >
                 <source src="/ioe-demo.mp4" type="video/mp4" />
