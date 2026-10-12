@@ -258,6 +258,193 @@ html {
   color: var(--text-muted);
 }
 
+/* Project demo player */
+.project-video-shell {
+  isolation: isolate;
+  background: #071411;
+  color: #d1fae5;
+}
+
+.project-video-shell::before {
+  position: absolute;
+  inset: 0;
+  z-index: 11;
+  border: 1px solid rgb(110 231 183 / 20%);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 4%), inset 0 -80px 100px rgb(0 0 0 / 28%);
+  content: '';
+  pointer-events: none;
+}
+
+.project-video-grid,
+.project-video-scanline {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.project-video-grid {
+  z-index: 2;
+  opacity: 0.35;
+  background-image: linear-gradient(rgb(110 231 183 / 9%) 1px, transparent 1px), linear-gradient(90deg, rgb(110 231 183 / 9%) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(to bottom, black, transparent 72%);
+  transition: opacity 300ms ease, transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-video-shell.is-hovered .project-video-grid {
+  opacity: 0.62;
+  transform: scale(1.04);
+}
+
+.project-video-scanline {
+  z-index: 12;
+  opacity: 0.16;
+  background: repeating-linear-gradient(to bottom, transparent 0, transparent 3px, rgb(255 255 255 / 8%) 4px, transparent 5px);
+  mix-blend-mode: screen;
+}
+
+.project-video-hud {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  left: 22px;
+  z-index: 13;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-code);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  pointer-events: none;
+  transition: transform 300ms ease, opacity 300ms ease;
+}
+
+.project-video-kicker,
+.project-video-index {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border: 1px solid rgb(167 243 208 / 20%);
+  background: rgb(7 20 17 / 72%);
+  backdrop-filter: blur(8px);
+}
+
+.project-video-index {
+  color: rgb(209 250 229 / 65%);
+}
+
+.project-video-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #6ee7b7;
+  box-shadow: 0 0 0 4px rgb(110 231 183 / 12%), 0 0 14px #6ee7b7;
+  animation: project-video-pulse 1.8s ease-in-out infinite;
+}
+
+.project-video-corner {
+  position: absolute;
+  z-index: 13;
+  width: 34px;
+  height: 34px;
+  border-color: rgb(167 243 208 / 80%);
+  pointer-events: none;
+  transition: width 300ms ease, height 300ms ease;
+}
+
+.project-video-corner-tl {
+  top: 17px;
+  left: 17px;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+
+.project-video-corner-br {
+  right: 17px;
+  bottom: 17px;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+}
+
+.project-video-shell.is-hovered .project-video-corner {
+  width: 48px;
+  height: 48px;
+}
+
+.project-video-prompt {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 13;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 15px 11px 11px;
+  border: 1px solid rgb(167 243 208 / 28%);
+  border-radius: 999px;
+  background: rgb(7 20 17 / 78%);
+  color: #d1fae5;
+  font-family: var(--font-code);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translate(-50%, -42%) scale(0.9);
+  pointer-events: none;
+  transition: opacity 240ms ease, transform 240ms ease;
+  backdrop-filter: blur(10px);
+}
+
+.project-video-shell:not(.is-playing) .project-video-prompt {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.project-video-prompt-icon {
+  display: grid;
+  width: 25px;
+  height: 25px;
+  place-items: center;
+  border-radius: 50%;
+  background: #6ee7b7;
+  color: #071411;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.project-video-shell.is-playing .project-video-hud {
+  transform: translateY(-4px);
+}
+
+@keyframes project-video-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-video-pulse {
+    animation: none;
+  }
+
+  .project-video-grid,
+  .project-video-corner,
+  .project-video-hud,
+  .project-video-prompt {
+    transition: none;
+  }
+}
+
 .color-secondary {
   color: var(--text-secondary);
 }
