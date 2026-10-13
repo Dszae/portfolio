@@ -105,12 +105,6 @@ export const metadata = {
       'max-snippet': -1,
     },
   },
-  alternates: {
-    canonical: '/',
-    languages: {
-      'en-US': '/',
-    },
-  },
   openGraph: {
     type: 'website',
     url: 'https://www.dipeshsapkota7.com.np/',
