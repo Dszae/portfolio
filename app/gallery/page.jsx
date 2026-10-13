@@ -6,6 +6,7 @@ import SiteLayout from '../../components/SiteLayout';
 import FadeUp from '../../components/FadeUp';
 import BreadcrumbJsonLd from '../../components/BreadcrumbJsonLd';
 import PagePagination from '../../components/PagePagination';
+import { siteUrl } from '../../components/JsonLdSchema';
 
 const GALLERY_IMAGES = [
   { id: 1, title: "Participating in college cricket tournament", alt: "Students posing together outdoors with cricket bats", img: "/cricket.webp" },
@@ -16,6 +17,42 @@ const GALLERY_IMAGES = [
   { id: 6, title: "Nagdhunga Surung Marga", alt: "Dipesh standing by a roadside with hills in the background", img: "/nagdhunga surung marga.webp" }
 ];
 
+const galleryImageObjects = GALLERY_IMAGES.map((item) => ({
+  '@type': 'ImageObject',
+  '@id': `${siteUrl}${item.img}#image`,
+  url: `${siteUrl}${item.img}`,
+  contentUrl: `${siteUrl}${item.img}`,
+  name: item.title,
+  description: item.alt,
+  caption: item.title,
+  acquireLicensePage: `${siteUrl}/image-licensing`,
+  license: `${siteUrl}/image-licensing`,
+  copyrightNotice: '© 2026 Dipesh Sapkota. All rights reserved.',
+  creditText: 'Dipesh Sapkota',
+  creator: {
+    '@type': 'Person',
+    name: 'Dipesh Sapkota',
+    url: `${siteUrl}/about`,
+  },
+  width: 640,
+  height: 360,
+}));
+
+const gallerySchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ImageGallery',
+  '@id': `${siteUrl}/gallery#image-gallery`,
+  url: `${siteUrl}/gallery`,
+  name: 'Dipesh Sapkota Visual Archive',
+  description: 'Gallery archive of campus life, engineering events, creative work, and travel moments by Dipesh Sapkota.',
+  creator: {
+    '@type': 'Person',
+    name: 'Dipesh Sapkota',
+    url: `${siteUrl}/about`,
+  },
+  image: galleryImageObjects,
+};
+
 export default function GalleryPage() {
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -24,6 +61,10 @@ export default function GalleryPage() {
       {({ theme }) => (
         <>
           <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Gallery', path: '/gallery' }]} />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(gallerySchema) }}
+          />
 
           <FadeUp>
             <section id="gallery" className={`pt-28 sm:pt-32 pb-24 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
