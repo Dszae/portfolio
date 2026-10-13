@@ -1,234 +1,151 @@
-"use client";
+export default function Page() {
+  const xTicks = ['15/07/2026', '26/07/2026', '06/08/2026', '17/08/2026', '28/08/2026', '08/09/2026', '19/09/2026', '30/09/2026'];
 
-import Image from 'next/image';
-import Link from 'next/link';
-import SiteLayout from '../components/SiteLayout';
-import InteractivePortrait from '../components/InteractivePortrait';
-import { HomePageJsonLd } from '../components/JsonLdSchema';
-
-const SKILLS_PREVIEW = [
-  {
-    title: "Software & Web Development",
-    description: "C, C++, Python, React, Next.js, and practical full-stack system architecture.",
-    href: "/skills#development",
-    icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-      </svg>
-    ),
-    label: "Explore software development skills"
-  },
-  {
-    title: "Creative Media & Motion",
-    description: "Premiere Pro, After Effects, dynamic sports edits, and visual design assets.",
-    href: "/gallery",
-    icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-      </svg>
-    ),
-    label: "View creative media and editing work"
-  },
-  {
-    title: "AI & Intelligent Systems",
-    description: "Exploration of algorithms, models, and machine learning problem solving.",
-    href: "/about",
-    icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-      </svg>
-    ),
-    label: "Read about AI background"
-  },
-  {
-    title: "Hardware & Engineering",
-    description: "Circuit analysis, Proteus simulation models, and practical breadboard prototypes.",
-    href: "/projects",
-    icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-      </svg>
-    ),
-    label: "Explore hardware projects"
-  }
-];
-
-const FEATURED_PROJECTS = [
-  {
-    name: "Sportivo — Live Scores, Fixtures & Sports News",
-    description: "A focused real-time sports platform that combines live scores, upcoming fixtures, match discovery, and sports news in one responsive experience for football, cricket, and basketball fans.",
-    href: "/projects/sportivo",
-    image: "/sportivo-preview.jpg",
-    liveUrl: "https://sportivo.dipeshsapkota7.com.np/",
-    linkLabel: "Visit Sportivo",
-  },
-  {
-    name: "IOE Admission Hub",
-    description: "An admission toolkit for Institute of Engineering applicants featuring rank prediction, campus exploration, priority planning, CBT score calculation, and counseling guidance.",
-    href: "/projects/ioe-admission-guide",
-    image: "/ioe-preview.jpg",
-    linkLabel: "Explore IOE Admission Hub",
-  },
-  {
-    name: "Git Visualizer",
-    description: "An interactive Git learning platform featuring a live commit graph, deterministic Git command simulator, guided lessons, safe undo tools, command reference, and a visual explanation of how Git moves code between repository stages.",
-    href: "/projects/git-visualizer",
-    image: "/git-preview.jpg",
-    linkLabel: "Explore Git Visualizer",
-  },
-];
-
-export default function Home() {
   return (
-    <SiteLayout>
-      {() => (
-        <>
-          <HomePageJsonLd />
-
-          {/* ===================== HERO SECTION ===================== */}
-          <section id="home" className="home-hero">
-            <div className="home-hero-inner">
-              {/* Desktop Left / Mobile Below Image */}
-              <div className="hero-copy">
-                <p className="hero-eyebrow">Computer Engineering &middot; Creative Media</p>
-                <h1 className="hero-title">
-                  <span className="hero-name-badge block font-mono text-sm sm:text-base font-bold tracking-widest uppercase text-[#065F46] dark:text-[#34D399] mb-3">
-                    Dipesh Sapkota
-                  </span>
-                  Engineering logic.<br />
-                  <span>Creating experiences.</span>
-                </h1>
-                <p className="hero-description">
-                  I explore AI/ML, build software, and create visual stories through video and design.
-                </p>
-
-                <div className="hero-actions">
-                  <Link href="/projects" className="hero-button hero-button-primary">
-                    <span>View Projects</span>
-                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
-                    </svg>
-                  </Link>
-                  <Link href="/contact" className="hero-button hero-button-secondary">
-                    Contact Me
-                  </Link>
-                  <Link href="/resume" className="hero-cv-link">
-                    <span>View Resume</span>
-                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </Link>
-                </div>
-
-                <nav className="hero-socials" aria-label="Social profiles">
-                  <a href="https://github.com/dszae" target="_blank" rel="me noopener noreferrer" aria-label="My GitHub profile (dszae)" className="hero-social-link" title="My GitHub profile (dszae)">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.332-5.467-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
-                  </a>
-                  <a href="https://linkedin.com/in/dszae" target="_blank" rel="me noopener noreferrer" aria-label="My LinkedIn profile (dszae)" className="hero-social-link" title="My LinkedIn profile (dszae)">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
-                  </a>
-                  <a href="https://dev.to/dszae" target="_blank" rel="me noopener noreferrer" aria-label="My DEV Community profile (dszae)" className="hero-social-link" title="My DEV Community profile (dszae)">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.42 10.05c-.18-.16-.46-.23-.84-.23H5.34v4.36h1.22c.4 0 .69-.08.87-.25.18-.17.28-.46.28-.86v-2.16c0-.4-.1-.69-.29-.86zM20.5 2H3.5A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8.94 13.08c0 .73-.24 1.3-.72 1.7-.48.4-1.16.6-2.04.6H3.6V8.62h2.58c.88 0 1.56.2 2.04.6.48.4.72.97.72 1.7v2.16zm5.12-3.26h-2.58v1.65h2.2v1.18h-2.2v1.73h2.58v1.2H9.8V8.62h4.26v1.2zm6.34 0l-1.9 6.96h-1.38l-1.9-6.96h1.44l1.15 4.79 1.15-4.79h1.44z"/></svg>
-                  </a>
-                  <a href="https://x.com/DszAe18" target="_blank" rel="me noopener noreferrer" aria-label="My X profile (DszAe18)" className="hero-social-link" title="My X profile (DszAe18)">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                  </a>
-                  <a href="https://instagram.com/dsz.ae" target="_blank" rel="me noopener noreferrer" aria-label="My Instagram profile (dsz.ae)" className="hero-social-link" title="My Instagram profile (dsz.ae)">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" /></svg>
-                  </a>
-                  <a href="https://facebook.com/dsz.ae" target="_blank" rel="me noopener noreferrer" aria-label="My Facebook profile (dsz.ae)" className="hero-social-link" title="My Facebook profile (dsz.ae)">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" /></svg>
-                  </a>
-                </nav>
-              </div>
-
-              {/* Desktop Right / Mobile Top */}
-              <figure className="hero-portrait-wrap">
-                <div className="hero-portrait-accent" aria-hidden="true" />
-                <InteractivePortrait />
-              </figure>
+    <main className="min-h-screen bg-[#dfe3e5] px-4 py-8 sm:px-8 lg:px-12">
+      <div className="mx-auto max-w-[1180px] rounded-[28px] border border-[#d5d8d9] bg-[#f4f4f4] p-6 shadow-[0_10px_28px_rgba(15,23,42,0.06)]">
+        <div className="grid grid-cols-2 overflow-hidden rounded-[18px] border border-[#d8d8d8] bg-[#e8e8e8]">
+          <div className="border-r border-[#d8d8d8] bg-[#d9d9d9] px-5 pb-4 pt-3.5">
+            <div className="flex items-center gap-3 text-[#1d1d1d]">
+              <span className="flex h-5 w-5 items-center justify-center rounded-[4px] border border-[#5d5d5d] bg-[#f4f4f4] shadow-inner">
+                <svg viewBox="0 0 16 16" className="h-3.5 w-3.5 fill-none stroke-[#3a3a3a]" aria-hidden="true">
+                  <path d="M3.5 8.5l2.2 2.2 6.8-7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+              <span className="text-[16px] font-medium">Not indexed</span>
             </div>
-          </section>
+            <div className="mt-4 text-[52px] font-medium leading-none text-[#3a3a3a]">5</div>
+            <div className="mt-2 inline-flex items-center gap-1 text-[12px] text-[#4b4f52]">
+              <span>1 reason</span>
+              <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#bfc3c5] text-[11px] font-semibold text-[#4f565a]">?</span>
+            </div>
+          </div>
 
-          {/* ===================== SKILLS PREVIEW ===================== */}
-          <section id="skills" className="skills-preview" aria-labelledby="skills-preview-heading">
-            <div className="skills-preview-inner">
-              <div className="skills-preview-heading">
-                <h2 id="skills-preview-heading">Technical Skills & Disciplines</h2>
-                <Link href="/skills" className="inline-flex items-center gap-1.5 group">
-                  <span>View All Technical Skills</span>
-                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </Link>
-              </div>
-              <div className="skills-preview-grid">
-                {SKILLS_PREVIEW.map((skill) => (
-                  <Link key={skill.title} href={skill.href} aria-label={skill.label} className="skill-preview-card">
-                    <span className="skill-preview-icon">{skill.icon}</span>
-                    <h3>{skill.title}</h3>
-                    <p>{skill.description}</p>
-                    <span className="skill-preview-action" aria-hidden="true">
-                      <span>View details</span>
-                      <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                      </svg>
-                    </span>
-                  </Link>
+          <div className="bg-[#1ea86d] px-5 pb-4 pt-3.5 text-[#fff]">
+            <div className="flex items-center gap-3 text-[#ebfff4]">
+              <span className="flex h-5 w-5 items-center justify-center rounded-[4px] border border-[#0a7d4d] bg-[#1fa86f] shadow-inner">
+                <svg viewBox="0 0 16 16" className="h-3.5 w-3.5 fill-none stroke-[#e6fff0]" aria-hidden="true">
+                  <path d="M3.5 8.5l2.2 2.2 6.8-7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+              <span className="text-[16px] font-medium">Indexed</span>
+            </div>
+            <div className="mt-4 text-[52px] font-medium leading-none text-white">2</div>
+            <div className="mt-2 flex justify-end">
+              <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-[#7bddaa] bg-[#1f9f67]/60 text-[12px] font-semibold text-[#ebfff4]">?</span>
+            </div>
+          </div>
+        </div>
+
+        <section className="mt-7 rounded-[20px] border border-[#dfe1e2] bg-[#f5f5f5] px-3 pb-4 pt-2">
+          <div className="mb-4 flex items-center gap-3 pl-1 text-[#2d2f31]">
+            <span className="flex h-5 w-5 items-center justify-center rounded-[4px] border border-[#9ba0a3] bg-[#f6f6f6]">
+              <span className="h-2.5 w-2.5 rounded-[2px] border border-[#9aa0a4] bg-transparent" />
+            </span>
+            <span className="text-[18px] font-medium">Impressions</span>
+          </div>
+
+          <div className="rounded-[10px] border border-[#d9dde0] bg-[#f3f3f3] px-3 pb-2 pt-4">
+            <div className="relative h-[215px] overflow-hidden">
+              <div className="pointer-events-none absolute inset-0">
+                {[0, 1, 2, 3, 4].map((line) => (
+                  <div key={line} className="absolute inset-x-0 border-t border-[#c9ced2]" style={{ top: `${(line / 4) * 100}%` }} />
                 ))}
               </div>
-            </div>
-          </section>
 
-          <section id="featured-projects" className="px-6 py-16 sm:px-10 lg:px-16" aria-labelledby="featured-projects-heading">
-            <div className="mx-auto max-w-6xl">
-              <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
-                <div>
-                  <p className="section-eyebrow">Selected work from my practice</p>
-                  <h2 id="featured-projects-heading" className="mt-2 text-3xl font-bold tracking-tight text-[#0F172A] dark:text-white">
-                    Featured Engineering Projects
-                  </h2>
-                  <p className="mt-3 max-w-2xl text-[#475569] dark:text-[#A7B0BE]">
-                    Explore Sportivo, the IOE Admission Guide admission hub, and Git Visualizer from my engineering practice.
-                  </p>
-                </div>
-                <Link href="/projects" className="font-mono text-sm font-semibold text-[#065F46] hover:underline dark:text-[#34D399]">
-                  View all projects &rarr;
-                </Link>
-              </div>
-              <div className="grid gap-6 md:grid-cols-3">
-                {FEATURED_PROJECTS.map((project) => (
-                  <article
-                    key={project.name}
-                    className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:border-[#222933] dark:bg-[#0F1216]"
-                  >
-                    <Image
-                      src={project.image}
-                      alt={`${project.name} project preview`}
-                      width={993}
-                      height={450}
-                      className="h-40 w-full object-cover"
-                    />
-                    <div className="p-5">
-                      <h3 className="text-xl font-semibold text-[#0F172A] dark:text-white">
-                        <Link href={project.href} className="hover:text-[#065F46] dark:hover:text-[#34D399]">
-                          {project.name}
-                        </Link>
-                      </h3>
-                      <p className="mt-2 text-sm leading-6 text-[#475569] dark:text-[#A7B0BE]">{project.description}</p>
-                      {project.liveUrl && (
-                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex font-mono text-sm font-semibold text-[#065F46] hover:underline dark:text-[#34D399]">
-                          {project.linkLabel} &rarr;
-                        </a>
-                      )}
+              <div className="absolute inset-x-0 bottom-0 left-3 right-3 top-0">
+                <div className="absolute right-0 top-8 h-44 w-[180px] opacity-95">
+                  <div className="absolute inset-x-0 bottom-0 top-0">
+                    <div className="absolute bottom-0 left-0 right-0 h-[78%] rounded-[3px] bg-[#dfe3e5]" />
+                    <div className="absolute bottom-0 left-0 right-0 flex h-[80%] items-end justify-between gap-[4px] px-[3px] pb-[0px]">
+                      {[...Array(15)].map((_, i) => (
+                        <span key={i} className="w-[7px] rounded-[1.5px] bg-[#1ea86d]" style={{ height: `${22 + ((i * 11) % 18)}px` }} />
+                      ))}
                     </div>
-                  </article>
+                    <div className="absolute bottom-0 left-0 right-0 flex h-[38%] items-end justify-between gap-[4px] px-[3px] pb-[0px]">
+                      {[...Array(8)].map((_, i) => (
+                        <span key={i} className="w-[7px] rounded-[1.5px] bg-[#d7dbdd]" style={{ height: `${16 + ((i * 21) % 26)}px` }} />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="absolute inset-x-3 bottom-0 flex items-end justify-between text-[11px] text-[#6d7277]">
+                {xTicks.map((tick) => (
+                  <span key={tick} className="font-medium">{tick}</span>
                 ))}
               </div>
             </div>
-          </section>
-        </>
-      )}
-    </SiteLayout>
+          </div>
+
+          <button className="mt-5 flex w-full items-center justify-between rounded-[20px] border border-[#c8cbce] bg-[#f3f3f3] px-4 py-3 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] transition hover:bg-[#eef1f1]">
+            <span className="flex items-center gap-3">
+              <span className="flex h-7 w-7 items-center justify-center rounded-full border border-[#6d9d80] bg-[#dfeff0] text-[#1b8d66]">
+                <svg viewBox="0 0 18 18" className="h-4 w-4 fill-none stroke-current" aria-hidden="true">
+                  <path d="M5.2 9.4l2.7 2.8 6.1-7" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+              <span className="text-[16px] font-medium text-[#202426]">View data about indexed pages</span>
+            </span>
+            <span className="text-[26px] leading-none text-[#4f575b]">›</span>
+          </button>
+        </section>
+
+        <section className="mt-8 rounded-[22px] border border-[#d8d9d9] bg-[#f1f2f2] p-0 shadow-[0_8px_20px_rgba(148,163,184,0.08)]">
+          <div className="flex items-center justify-between border-b border-[#d5d7d8] px-5 py-4">
+            <div className="flex items-center gap-4">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#d8d9da] text-[20px] font-semibold text-[#4a4f54]">i</span>
+              <div>
+                <h2 className="text-[26px] font-medium tracking-[-0.02em] text-[#2d2f31]">Why pages aren&apos;t indexed</h2>
+                <p className="mt-1 text-[14px] text-[#5f656b]">Pages that aren&apos;t indexed can&apos;t be served on Google</p>
+              </div>
+            </div>
+            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[#d1d4d6] bg-[#e9ecec] text-[#5c6267]">
+              <svg viewBox="0 0 20 20" className="h-4 w-4 fill-current" aria-hidden="true">
+                <path d="M4 12.6h12v1.1H4zm0-3.8h12v1.1H4zm0-3.8h12v1.1H4z" />
+              </svg>
+            </div>
+          </div>
+
+          <div className="px-5 pb-4 pt-4">
+            <div className="grid grid-cols-[minmax(0,2.1fr)_minmax(120px,0.8fr)_minmax(120px,0.8fr)_minmax(120px,0.8fr)_80px] items-center gap-3 border-b border-[#d7d8d9] pb-3 text-[14px] font-medium text-[#4f565a]">
+              <div className="flex items-center gap-2">Reason</div>
+              <div className="flex items-center gap-1 justify-start">
+                <span>Source</span>
+                <span className="inline-flex h-4 w-4 items-center justify-center rounded-full border border-[#a5a9ad] text-[10px] leading-none text-[#636a70]">?</span>
+              </div>
+              <div className="text-right">Validation</div>
+              <div className="text-right">Trend</div>
+              <div className="text-right">Pages</div>
+            </div>
+
+            <div className="grid grid-cols-[minmax(0,2.1fr)_minmax(120px,0.8fr)_minmax(120px,0.8fr)_minmax(120px,0.8fr)_80px] items-center gap-3 pt-4 text-[14px] text-[#2e2f31]">
+              <div className="font-medium">Crawled - currently not indexed</div>
+              <div className="text-left text-[#5c6267]">Google systems</div>
+              <div className="flex items-center justify-center gap-2 text-[#2d2f31]">
+                <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#f7d2d2] text-[12px] font-semibold text-[#b12f2f]">!</span>
+                <span className="font-semibold">Not Started</span>
+              </div>
+              <div className="text-center text-[#5d6165]">—</div>
+              <div className="text-right font-medium">5</div>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-end gap-4 border-t border-[#d8d9db] px-5 py-3 text-[12px] text-[#4e5459]">
+            <span>Rows per page:</span>
+            <div className="flex items-center gap-2 rounded border border-[#c9cdd0] bg-[#f8f8f8] px-2 py-1">
+              <span>10</span>
+              <svg viewBox="0 0 12 12" className="h-3.5 w-3.5 fill-current" aria-hidden="true"><path d="M2 4.5 6 8l4-3.5z" /></svg>
+            </div>
+            <span className="px-2">1-1 of 1</span>
+            <div className="flex items-center gap-2 text-[#7d8185]">
+              <button className="h-7 w-7 rounded border border-[#cfd3d5] bg-[#f3f3f3] text-lg leading-none">‹</button>
+              <button className="h-7 w-7 rounded border border-[#cfd3d5] bg-[#f3f3f3] text-lg leading-none">›</button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
   );
 }
