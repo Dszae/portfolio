@@ -6,6 +6,24 @@ import SiteLayout from '../../components/SiteLayout';
 import FadeUp from '../../components/FadeUp';
 import BreadcrumbJsonLd from '../../components/BreadcrumbJsonLd';
 import PagePagination from '../../components/PagePagination';
+import { siteUrl, personId, websiteId } from '../../components/JsonLdSchema';
+
+const skillsPageJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': `${siteUrl}/skills#skillspage`,
+  url: `${siteUrl}/skills`,
+  name: 'Skills | Dipesh Sapkota',
+  description: 'Technical competencies of Dipesh Sapkota across programming (C/C++, Python, React, PHP), creative media (video editing, motion graphics, graphic design), and engineering (circuit analysis, Proteus).',
+  about: { '@id': personId },
+  isPartOf: {
+    '@type': 'WebSite',
+    '@id': websiteId,
+    name: 'Dipesh Sapkota',
+    url: `${siteUrl}/`,
+  },
+  inLanguage: 'en',
+};
 
 export default function SkillsPage() {
   return (
@@ -13,6 +31,10 @@ export default function SkillsPage() {
       {({ theme }) => (
         <>
           <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Skills', path: '/skills' }]} />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(skillsPageJsonLd) }}
+          />
 
           <FadeUp>
             <section id="skills" className={`pt-28 sm:pt-32 pb-24 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>

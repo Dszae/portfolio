@@ -7,6 +7,24 @@ import SiteLayout from '../../components/SiteLayout';
 import FadeUp from '../../components/FadeUp';
 import BreadcrumbJsonLd from '../../components/BreadcrumbJsonLd';
 import PagePagination from '../../components/PagePagination';
+import { siteUrl, personId, websiteId } from '../../components/JsonLdSchema';
+
+const projectsPageJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': `${siteUrl}/projects#projectspage`,
+  url: `${siteUrl}/projects`,
+  name: 'Projects | Dipesh Sapkota',
+  description: 'Featured web applications, interactive software tools, hardware simulations, and engineering projects created by Dipesh Sapkota, including Sportivo, IOE Admission Guide, and Git Visualizer.',
+  creator: { '@id': personId },
+  isPartOf: {
+    '@type': 'WebSite',
+    '@id': websiteId,
+    name: 'Dipesh Sapkota',
+    url: `${siteUrl}/`,
+  },
+  inLanguage: 'en',
+};
 
 function MotionReelsGraphic() {
   return (
@@ -234,6 +252,10 @@ export default function ProjectsPage() {
       {({ theme }) => (
         <>
           <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Projects', path: '/projects' }]} />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(projectsPageJsonLd) }}
+          />
 
           <FadeUp>
             <section id="projects" className={`pt-24 sm:pt-28 pb-32 px-4 sm:px-8 lg:px-16 max-w-6xl mx-auto w-full ${theme.bg}`}>

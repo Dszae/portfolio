@@ -8,10 +8,10 @@ import BreadcrumbJsonLd from '../../components/BreadcrumbJsonLd';
 import PagePagination from '../../components/PagePagination';
 import { person, portraitImage, siteUrl } from '../../components/JsonLdSchema';
 
-const profilePageJsonLd = {
+const aboutPageJsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'ProfilePage',
-  '@id': `${siteUrl}/about#profile-page`,
+  '@type': 'AboutPage',
+  '@id': `${siteUrl}/about#aboutpage`,
   url: `${siteUrl}/about`,
   name: 'About Dipesh Sapkota',
   description: 'Official biography and background of Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal.',
@@ -34,7 +34,7 @@ export default function AboutPage() {
           <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'About', path: '/about' }]} />
           <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageJsonLd) }}
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageJsonLd) }}
           />
 
           <FadeUp>

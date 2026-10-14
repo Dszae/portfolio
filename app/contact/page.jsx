@@ -5,6 +5,24 @@ import SiteLayout from '../../components/SiteLayout';
 import FadeUp from '../../components/FadeUp';
 import BreadcrumbJsonLd from '../../components/BreadcrumbJsonLd';
 import PagePagination from '../../components/PagePagination';
+import { siteUrl, personId, websiteId } from '../../components/JsonLdSchema';
+
+const contactPageJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  '@id': `${siteUrl}/contact#contactpage`,
+  url: `${siteUrl}/contact`,
+  name: 'Contact | Dipesh Sapkota',
+  description: 'Reach out to Dipesh Sapkota for freelance video editing, web development projects, or engineering collaborations in Kathmandu, Nepal.',
+  mainEntity: { '@id': personId },
+  isPartOf: {
+    '@type': 'WebSite',
+    '@id': websiteId,
+    name: 'Dipesh Sapkota',
+    url: `${siteUrl}/`,
+  },
+  inLanguage: 'en',
+};
 
 export default function ContactPage() {
   const [formStatus, setFormStatus] = useState("");
@@ -78,6 +96,10 @@ export default function ContactPage() {
       {({ theme }) => (
         <>
           <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact' }]} />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageJsonLd) }}
+          />
 
           <FadeUp>
             <section id="contact" className={`pt-28 sm:pt-32 pb-24 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>

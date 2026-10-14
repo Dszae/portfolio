@@ -1,6 +1,24 @@
 import SiteLayout from '@/components/SiteLayout';
 import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 import PagePagination from '@/components/PagePagination';
+import { siteUrl, personId, websiteId } from '@/components/JsonLdSchema';
+
+const articlesPageJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': `${siteUrl}/blog#articlespage`,
+  url: `${siteUrl}/blog`,
+  name: 'Articles | Dipesh Sapkota',
+  description: 'Technical write-ups, architecture case studies, and engineering articles authored by Dipesh Sapkota.',
+  creator: { '@id': personId },
+  isPartOf: {
+    '@type': 'WebSite',
+    '@id': websiteId,
+    name: 'Dipesh Sapkota',
+    url: `${siteUrl}/`,
+  },
+  inLanguage: 'en',
+};
 
 export const metadata = {
   title: "Articles",
@@ -29,6 +47,10 @@ export default function BlogPage() {
       <div className="w-full pt-28 sm:pt-32 pb-24 px-4 sm:px-8 lg:px-12">
         <div className="max-w-4xl mx-auto w-full">
           <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Articles', path: '/blog' }]} />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(articlesPageJsonLd) }}
+          />
           
           <h1 className="text-3xl sm:text-4xl font-bold mb-4 tracking-tight text-[#0F172A] dark:text-[#F9FAFB] flex items-center gap-3">
             <span className="text-[#065F46] dark:text-[#34D399]">/</span> Articles &amp; Write-Ups

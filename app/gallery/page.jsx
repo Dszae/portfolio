@@ -6,7 +6,7 @@ import SiteLayout from '../../components/SiteLayout';
 import FadeUp from '../../components/FadeUp';
 import BreadcrumbJsonLd from '../../components/BreadcrumbJsonLd';
 import PagePagination from '../../components/PagePagination';
-import { siteUrl } from '../../components/JsonLdSchema';
+import { siteUrl, personId, websiteId } from '../../components/JsonLdSchema';
 
 const GALLERY_IMAGES = [
   { id: 1, title: "Participating in college cricket tournament", alt: "Students posing together outdoors with cricket bats", img: "/cricket.webp" },
@@ -29,11 +29,7 @@ const galleryImageObjects = GALLERY_IMAGES.map((item) => ({
   license: `${siteUrl}/image-licensing`,
   copyrightNotice: '© 2026 Dipesh Sapkota. All rights reserved.',
   creditText: 'Dipesh Sapkota',
-  creator: {
-    '@type': 'Person',
-    name: 'Dipesh Sapkota',
-    url: `${siteUrl}/about`,
-  },
+  creator: { '@id': personId },
   width: 640,
   height: 360,
 }));
@@ -41,16 +37,19 @@ const galleryImageObjects = GALLERY_IMAGES.map((item) => ({
 const gallerySchema = {
   '@context': 'https://schema.org',
   '@type': 'ImageGallery',
-  '@id': `${siteUrl}/gallery#image-gallery`,
+  '@id': `${siteUrl}/gallery#gallerypage`,
   url: `${siteUrl}/gallery`,
-  name: 'Dipesh Sapkota Visual Archive',
-  description: 'Gallery archive of campus life, engineering events, creative work, and travel moments by Dipesh Sapkota.',
-  creator: {
-    '@type': 'Person',
+  name: 'Gallery | Dipesh Sapkota',
+  description: 'Curated photo archive and visual moments documenting campus life at IOE Thapathali, tech exhibitions, and creative projects by Dipesh Sapkota.',
+  creator: { '@id': personId },
+  isPartOf: {
+    '@type': 'WebSite',
+    '@id': websiteId,
     name: 'Dipesh Sapkota',
-    url: `${siteUrl}/about`,
+    url: `${siteUrl}/`,
   },
   image: galleryImageObjects,
+  inLanguage: 'en',
 };
 
 export default function GalleryPage() {

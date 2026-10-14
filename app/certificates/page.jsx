@@ -6,6 +6,24 @@ import SiteLayout from '../../components/SiteLayout';
 import FadeUp from '../../components/FadeUp';
 import BreadcrumbJsonLd from '../../components/BreadcrumbJsonLd';
 import PagePagination from '../../components/PagePagination';
+import { siteUrl, personId, websiteId } from '../../components/JsonLdSchema';
+
+const certificatesPageJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': `${siteUrl}/certificates#certificatespage`,
+  url: `${siteUrl}/certificates`,
+  name: 'Certificates | Dipesh Sapkota',
+  description: 'Verified professional certifications of Dipesh Sapkota from Udemy, Blackmagic Design, and EDUCBA in Graphic Design, Motion Design, Color Correction, Premiere Pro, and Web Development.',
+  about: { '@id': personId },
+  isPartOf: {
+    '@type': 'WebSite',
+    '@id': websiteId,
+    name: 'Dipesh Sapkota',
+    url: `${siteUrl}/`,
+  },
+  inLanguage: 'en',
+};
 
 const CERTIFICATES = [
   { id: 1, title: "Graphic Design Masterclass", org: "Udemy", img: "/graphic-design.webp" },
@@ -26,6 +44,10 @@ export default function CertificatesPage() {
       {({ theme, isDark }) => (
         <>
           <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Certificates', path: '/certificates' }]} />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(certificatesPageJsonLd) }}
+          />
 
           <FadeUp>
             <section id="certificates" className={`pt-28 sm:pt-32 pb-24 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>

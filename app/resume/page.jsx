@@ -6,6 +6,24 @@ import SiteLayout from '../../components/SiteLayout';
 import FadeUp from '../../components/FadeUp';
 import BreadcrumbJsonLd from '../../components/BreadcrumbJsonLd';
 import PagePagination from '../../components/PagePagination';
+import { siteUrl, personId, websiteId } from '../../components/JsonLdSchema';
+
+const resumePageJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': `${siteUrl}/resume#resumepage`,
+  url: `${siteUrl}/resume`,
+  name: 'Resume | Dipesh Sapkota',
+  description: 'Career journey, work experience, and educational background of Dipesh Sapkota (dszae) at IOE Thapathali Campus and Clamphook Academy. Download full CV.',
+  about: { '@id': personId },
+  isPartOf: {
+    '@type': 'WebSite',
+    '@id': websiteId,
+    name: 'Dipesh Sapkota',
+    url: `${siteUrl}/`,
+  },
+  inLanguage: 'en',
+};
 
 const EXPERIENCE = [
   { 
@@ -61,6 +79,10 @@ export default function ResumePage() {
       {({ theme }) => (
         <>
           <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Resume', path: '/resume' }]} />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(resumePageJsonLd) }}
+          />
 
           <FadeUp>
             <section id="resume" className={`pt-28 sm:pt-32 pb-24 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>

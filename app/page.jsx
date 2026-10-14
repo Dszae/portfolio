@@ -10,7 +10,7 @@ const SKILLS_PREVIEW = [
   {
     title: "Software & Web Development",
     description: "C, C++, Python, React, Next.js, and practical full-stack system architecture.",
-    href: "/skills#development",
+    href: "/skills",
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
