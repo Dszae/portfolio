@@ -72,10 +72,12 @@ function LightboxModal({ image, onClose }) {
   const touchStartX = useRef(null);
   const touchStartY = useRef(null);
 
-  useEffect(() => {
+  const [prevSrc, setPrevSrc] = useState(currentItem?.src);
+  if (currentItem?.src !== prevSrc) {
+    setPrevSrc(currentItem?.src);
     setImageLoaded(false);
     setIsZoomed(false);
-  }, [currentItem?.src]);
+  }
 
   const handlePrev = (e) => {
     if (e) e.stopPropagation();
