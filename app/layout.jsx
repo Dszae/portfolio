@@ -45,50 +45,50 @@ export const metadata = {
   icons: {
     icon: [
       {
-        url: '/icon-48x48.png',
+        url: '/icon-48x48.png?v=3',
         type: 'image/png',
         sizes: '48x48',
       },
       {
-        url: '/favicon-48x48.png',
+        url: '/favicon-48x48.png?v=3',
         type: 'image/png',
         sizes: '48x48',
       },
       {
-        url: '/icon-96x96.png',
+        url: '/icon-96x96.png?v=3',
         type: 'image/png',
         sizes: '96x96',
       },
       {
-        url: '/favicon-96x96.png',
+        url: '/favicon-96x96.png?v=3',
         type: 'image/png',
         sizes: '96x96',
       },
       {
-        url: '/icon-192x192.png',
+        url: '/icon-192x192.png?v=3',
         type: 'image/png',
         sizes: '192x192',
       },
       {
-        url: '/favicon-192x192.png',
+        url: '/favicon-192x192.png?v=3',
         type: 'image/png',
         sizes: '192x192',
       },
       {
-        url: '/favicon.svg',
+        url: '/favicon.svg?v=3',
         type: 'image/svg+xml',
         sizes: 'any',
       },
       {
-        url: '/favicon.ico',
+        url: '/favicon.ico?v=3',
         type: 'image/x-icon',
         sizes: '48x48',
       },
     ],
-    shortcut: '/favicon.ico',
+    shortcut: '/favicon.ico?v=3',
     apple: [
       {
-        url: '/apple-touch-icon.png',
+        url: '/apple-touch-icon.png?v=3',
         sizes: '180x180',
         type: 'image/png',
       },
