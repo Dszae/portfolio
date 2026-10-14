@@ -87,7 +87,7 @@ export default function ResumePage() {
           <FadeUp>
             <section id="resume" className={`pt-28 sm:pt-32 pb-24 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
               <div className="max-w-7xl mx-auto w-full">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-16">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-8">
                   <h1 className="text-3xl sm:text-4xl font-bold flex items-center gap-4 text-[#0F172A] dark:text-[#F9FAFB]">
                     <span className="text-[#065F46] dark:text-[#34D399]">/</span> Resume
                   </h1>
@@ -101,6 +101,10 @@ export default function ResumePage() {
                     <span>Download CV <span className="text-xs font-mono font-normal opacity-85">(PDF)</span></span>
                   </a>
                 </div>
+
+                <p className="text-base sm:text-lg text-[#1E293B] dark:text-[#A7B0BE] mb-14 max-w-3xl leading-relaxed">
+                  Academic trajectory, technical experience, and creative production history of Dipesh Sapkota. Currently studying Computer Engineering at IOE Thapathali Campus in Kathmandu while developing software tools and leading creative media projects.
+                </p>
 
                 <div className="grid lg:grid-cols-2 gap-16">
 

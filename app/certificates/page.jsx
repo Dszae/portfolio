@@ -52,9 +52,14 @@ export default function CertificatesPage() {
           <FadeUp>
             <section id="certificates" className={`pt-28 sm:pt-32 pb-24 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
               <div className="max-w-7xl mx-auto w-full">
-                <h1 className="text-3xl sm:text-4xl font-bold mb-12 flex items-center gap-4 text-[#0F172A] dark:text-[#F9FAFB]">
-                  <span className="text-[#065F46] dark:text-[#34D399]">/</span> Certificates
-                </h1>
+                <div className="mb-10 max-w-3xl">
+                  <h1 className="text-3xl sm:text-4xl font-bold mb-4 flex items-center gap-4 text-[#0F172A] dark:text-[#F9FAFB]">
+                    <span className="text-[#065F46] dark:text-[#34D399]">/</span> Certificates
+                  </h1>
+                  <p className="text-base sm:text-lg text-[#1E293B] dark:text-[#A7B0BE] leading-relaxed">
+                    Verified technical certifications, masterclasses, and specialized credentials completed by Dipesh Sapkota across graphic design, motion graphics, DaVinci Resolve color science, and modern full-stack web engineering.
+                  </p>
+                </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                   {CERTIFICATES.map((cert, idx) => (
                     <button 

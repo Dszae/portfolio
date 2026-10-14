@@ -68,10 +68,14 @@ export default function GalleryPage() {
           <FadeUp>
             <section id="gallery" className={`pt-28 sm:pt-32 pb-24 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
               <div className="max-w-7xl mx-auto w-full">
-                <h1 className="text-3xl sm:text-4xl font-bold mb-4 flex items-center gap-4 text-[#0F172A] dark:text-[#F9FAFB]">
-                  <span className="text-[#065F46] dark:text-[#34D399]">/</span> Gallery
-                </h1>
-                <p className="mb-12 text-base sm:text-lg text-[#1E293B] dark:text-[#A7B0BE] font-medium">A curated space for campus memories, event leadership, and engineering moments.</p>
+                <div className="mb-10 max-w-3xl">
+                  <h1 className="text-3xl sm:text-4xl font-bold mb-4 flex items-center gap-4 text-[#0F172A] dark:text-[#F9FAFB]">
+                    <span className="text-[#065F46] dark:text-[#34D399]">/</span> Gallery
+                  </h1>
+                  <p className="text-base sm:text-lg text-[#1E293B] dark:text-[#A7B0BE] leading-relaxed">
+                    A visual archive documenting campus moments, student leadership, technical exhibitions like Yathartha, and creative engineering milestones at IOE Thapathali Campus in Kathmandu, Nepal.
+                  </p>
+                </div>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
                   {GALLERY_IMAGES.map((item, idx) => (

@@ -3,7 +3,7 @@ export const dynamic = 'force-static';
 
 const image = (path, title) => ({ path, title });
 const portrait = image('/dipesh-sapkota.jpg', 'Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus');
-const currentDate = '2026-10-12';
+const currentDate = '2026-10-14';
 const pages = [
   // Primary Homepage
   {
