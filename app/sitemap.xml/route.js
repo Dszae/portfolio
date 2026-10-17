@@ -3,7 +3,7 @@ export const dynamic = 'force-static';
 
 const image = (path, title) => ({ path, title });
 const portrait = image('/dipesh-sapkota.jpg', 'Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus');
-const currentDate = '2026-10-14';
+const currentDate = '2026-10-17';
 const pages = [
   // Primary Homepage
   {
@@ -132,26 +132,6 @@ const pages = [
   },
 ];
 
-// External project subdomains — included so Google associates them with this site
-// and may show them as sitelinks for dipeshsapkota7.com.np
-const externalPages = [
-  {
-    url: 'https://sportivo.dipeshsapkota7.com.np/',
-    priority: '0.9',
-    changefreq: 'weekly',
-  },
-  {
-    url: 'https://ioe-admission.dipeshsapkota7.com.np/',
-    priority: '0.9',
-    changefreq: 'weekly',
-  },
-  {
-    url: 'https://git-visualizer.dipeshsapkota7.com.np/',
-    priority: '0.9',
-    changefreq: 'weekly',
-  },
-];
-
 const escapeXml = (value) => value
   .replaceAll('&', '&amp;')
   .replaceAll('<', '&lt;')
@@ -173,11 +153,7 @@ export async function GET() {
     return `<url><loc>${escapeXml(`${siteUrl}${path}`)}</loc><lastmod>${currentDate}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority>${imageEntries}${videoEntries}</url>`;
   }).join('');
 
-  const externalEntries = externalPages.map(({ url, priority = '0.7', changefreq = 'weekly' }) =>
-    `<url><loc>${escapeXml(url)}</loc><lastmod>${currentDate}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`
-  ).join('');
-
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">${entries}${externalEntries}</urlset>`;
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">${entries}</urlset>`;
 
   return new Response(sitemap, {
     headers: {
