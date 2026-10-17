@@ -97,9 +97,17 @@ export default function BlogPage() {
               >
                 Building Sportivo: Engineering a Real-Time Live Sports Streaming Web App &rarr;
               </a>
-              <p className="card-description">
+              <p className="card-description mb-4">
                 Comprehensive technical case study documenting multi-server stream switching, headless DOM parsing, schedule synchronization, and resilient fallback handling.
               </p>
+              <div className="flex items-center gap-4 text-xs font-mono">
+                <a href="/projects/sportivo" className="text-[#065F46] dark:text-[#34D399] font-semibold hover:underline">
+                  Read Local Case Study &rarr;
+                </a>
+                <a href="https://sportivo.dipeshsapkota7.com.np/" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-slate-700 dark:hover:text-slate-300">
+                  Live Platform &rarr;
+                </a>
+              </div>
             </li>
 
             {/* Git Visualizer Technical Article */}
@@ -118,9 +126,118 @@ export default function BlogPage() {
               >
                 How I Built an Interactive Git Visualizer to Master Version Control &rarr;
               </a>
-              <p className="card-description">
+              <p className="card-description mb-4">
                 Deep dive into graph theory, directed acyclic graphs (DAG), Canvas rendering performance, and interactive state models for version control pedagogy.
               </p>
+              <div className="flex items-center gap-4 text-xs font-mono">
+                <a href="/projects/git-visualizer" className="text-[#065F46] dark:text-[#34D399] font-semibold hover:underline">
+                  Read Local Case Study &rarr;
+                </a>
+                <a href="https://git-visualizer.dipeshsapkota7.com.np/" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-slate-700 dark:hover:text-slate-300">
+                  Live Application &rarr;
+                </a>
+              </div>
+            </li>
+
+            {/* IOE Admission Hub Article */}
+            <li className="p-6 sm:p-8 rounded-2xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all shadow-sm">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="card-category-label">
+                  Data &amp; Education
+                </span>
+                <span className="card-meta">Product Case Study</span>
+              </div>
+              <a
+                href="https://dev.to/dszae/ioe-admission-hub-building-a-rank-predictor-and-campus-explorer-for-nepal-1n1f"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card-heading hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors block mb-3"
+              >
+                IOE Admission Hub: Building a Rank Predictor and Campus Explorer for Nepal &rarr;
+              </a>
+              <p className="card-description mb-4">
+                How historical cutoff data, rank prediction, campus exploration, and counseling guidance became a practical admissions toolkit for Nepalese engineering applicants.
+              </p>
+              <div className="flex items-center gap-4 text-xs font-mono">
+                <a href="/projects/ioe-admission-guide" className="text-[#065F46] dark:text-[#34D399] font-semibold hover:underline">
+                  Read Local Case Study &rarr;
+                </a>
+                <a href="https://ioe-admission.dipeshsapkota7.com.np/" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-slate-700 dark:hover:text-slate-300">
+                  Live Portal &rarr;
+                </a>
+              </div>
+            </li>
+
+            {/* NE555 Hardware Prototype Case Study */}
+            <li className="p-6 sm:p-8 rounded-2xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all shadow-sm">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="card-category-label">
+                  Hardware Engineering
+                </span>
+                <span className="card-meta">Circuit Prototype</span>
+              </div>
+              <a
+                href="/projects/555-flasher"
+                className="card-heading hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors block mb-3"
+              >
+                Astable Multivibrator LED Flasher: Hardware Circuit Case Study &rarr;
+              </a>
+              <p className="card-description mb-4">
+                Physical breadboard relaxation oscillator circuit built with the NE555 timer IC in an astable configuration, with RC timing calculations and Proteus ISIS transient simulation.
+              </p>
+              <div className="flex items-center gap-4 text-xs font-mono">
+                <a href="/projects/555-flasher" className="text-[#065F46] dark:text-[#34D399] font-semibold hover:underline">
+                  Read Circuit Analysis &rarr;
+                </a>
+              </div>
+            </li>
+
+            {/* Electrical Machinery Modeling Case Study */}
+            <li className="p-6 sm:p-8 rounded-2xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all shadow-sm">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="card-category-label">
+                  Electromechanical Modeling
+                </span>
+                <span className="card-meta">MATLAB &amp; Phasor Calculus</span>
+              </div>
+              <a
+                href="/projects/motor-modeling"
+                className="card-heading hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors block mb-3"
+              >
+                Electrical Machinery Modeling: Induction &amp; DC Machine Analysis &rarr;
+              </a>
+              <p className="card-description mb-4">
+                Steady-state mathematical modeling and parameter derivation for 3-phase squirrel cage induction machines, locked-rotor analysis, and MATLAB torque-speed simulations.
+              </p>
+              <div className="flex items-center gap-4 text-xs font-mono">
+                <a href="/projects/motor-modeling" className="text-[#065F46] dark:text-[#34D399] font-semibold hover:underline">
+                  Read Machine Analysis &rarr;
+                </a>
+              </div>
+            </li>
+
+            {/* Automated Analyzer Diagnostics Case Study */}
+            <li className="p-6 sm:p-8 rounded-2xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all shadow-sm">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="card-category-label">
+                  Instrumentation Engineering
+                </span>
+                <span className="card-meta">Fluidics &amp; Diagnostics</span>
+              </div>
+              <a
+                href="/projects/analyzer-diag"
+                className="card-heading hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors block mb-3"
+              >
+                Automated Clinical Analyzer Diagnostics &amp; Calibration Protocol &rarr;
+              </a>
+              <p className="card-description mb-4">
+                Diagnostic troubleshooting protocol for automated clinical immunoassay and biochemical instruments: negative pressure tolerances (-40 to -60 kPa) and micro-stepping syringe probe calibrations.
+              </p>
+              <div className="flex items-center gap-4 text-xs font-mono">
+                <a href="/projects/analyzer-diag" className="text-[#065F46] dark:text-[#34D399] font-semibold hover:underline">
+                  Read Diagnostic Protocol &rarr;
+                </a>
+              </div>
             </li>
 
             {/* ESP32 Emergency Response Article */}
@@ -162,27 +279,6 @@ export default function BlogPage() {
               </a>
               <p className="card-description">
                 The story behind building a portfolio that brings software engineering, creative media, motion, and visual storytelling into one experience.
-              </p>
-            </li>
-
-            {/* IOE Admission Hub Article */}
-            <li className="p-6 sm:p-8 rounded-2xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all shadow-sm">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="card-category-label">
-                  Data &amp; Education
-                </span>
-                <span className="card-meta">Product Case Study</span>
-              </div>
-              <a
-                href="https://dev.to/dszae/ioe-admission-hub-building-a-rank-predictor-and-campus-explorer-for-nepal-1n1f"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="card-heading hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors block mb-3"
-              >
-                IOE Admission Hub: Building a Rank Predictor and Campus Explorer for Nepal &rarr;
-              </a>
-              <p className="card-description">
-                How historical cutoff data, rank prediction, campus exploration, and counseling guidance became a practical admissions toolkit for Nepalese engineering applicants.
               </p>
             </li>
           </ul>
