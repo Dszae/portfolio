@@ -160,7 +160,8 @@ const FEATURED_PROJECTS = [
     description: "A curated portfolio of polished short-form video content focused on public awareness, educational storytelling, and high-energy sports edits. I use Adobe After Effects to shape clear visual narratives, precise motion graphics, and engaging edits designed for modern social audiences.",
     image: "/instagram-videos.png",
     tech: ["After Effects", "Instagram", "Motion Design"],
-    liveUrl: "https://instagram.com/dsz.ae"
+    liveUrl: "https://instagram.com/dsz.ae",
+    detailUrl: "/projects/sports-reels"
   }
 ];
 

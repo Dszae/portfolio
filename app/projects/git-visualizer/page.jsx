@@ -31,7 +31,7 @@ export default function GitVisualizerProjectPage() {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name: 'Git Visualizer',
-    url: 'https://www.dipeshsapkota7.com.np/projects/git-visualizer',
+    url: 'https://git-visualizer.dipeshsapkota7.com.np/',
     description: 'An interactive visual learning tool for Git commands and version-control workflows created by Dipesh Sapkota.',
     applicationCategory: 'DeveloperApplication',
     creator: {
@@ -39,7 +39,10 @@ export default function GitVisualizerProjectPage() {
       name: 'Dipesh Sapkota',
       url: 'https://www.dipeshsapkota7.com.np/',
     },
-    sameAs: 'https://github.com/dszae/git-visualizer',
+    sameAs: [
+      'https://git-visualizer.dipeshsapkota7.com.np/',
+      'https://github.com/dszae/git-visualizer',
+    ],
   }, {
     '@context': 'https://schema.org',
     '@type': 'VideoObject',

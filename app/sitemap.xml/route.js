@@ -105,6 +105,12 @@ const pages = [
     videos: [{ title: 'Git Visualizer Interactive Demo', description: 'A product demonstration of Git Visualizer, an interactive version-control learning tool created by Dipesh Sapkota.', thumbnail: '/git-visualizer-first-frame.jpg', content: '/git-visualizer-launch.mp4' }],
   },
   {
+    path: '/projects/sports-reels',
+    priority: '0.85',
+    changefreq: 'monthly',
+    images: [image('/instagram-videos.png', 'Sports Reels and Motion Design by Dipesh Sapkota')],
+  },
+  {
     path: '/projects/555-flasher',
     priority: '0.8',
     changefreq: 'monthly',
