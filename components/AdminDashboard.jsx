@@ -1866,7 +1866,7 @@ const chartPoints = useMemo(() => {
                   <div key={exp.id || exp.title} className="bg-[#0F1422] border border-slate-800/80 p-4 rounded-xl flex items-start justify-between gap-3 hover:border-slate-700 transition-colors">
                     <div className="flex items-start gap-3 flex-1 min-w-0">
                       {(exp.logo || exp.img || exp.image) ? (
-                        <div className="relative w-10 h-10 rounded-lg overflow-hidden bg-slate-900 border border-slate-800 shrink-0">
+                        <div className="relative w-10 h-10 rounded-full overflow-hidden bg-slate-900 border border-slate-800 shrink-0">
                           <Image
                             src={exp.logo || exp.img || exp.image}
                             alt={exp.organization || exp.title}
@@ -1876,7 +1876,7 @@ const chartPoints = useMemo(() => {
                           />
                         </div>
                       ) : (
-                        <div className="w-10 h-10 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-[9px] text-slate-500 font-mono shrink-0">
+                        <div className="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-[9px] text-slate-500 font-mono shrink-0">
                           LOGO
                         </div>
                       )}
