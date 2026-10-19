@@ -157,6 +157,17 @@ Ask me anything about his software engineering projects, computer engineering ba
                 } else if (eventType === 'done') {
                   setIsStreaming(false);
                   setActiveTool(null);
+                  setMessages(prev => {
+                    const updated = [...prev];
+                    if (updated[assistantIndex]) {
+                      updated[assistantIndex] = {
+                        ...updated[assistantIndex],
+                        engine: data.engine || 'google_gemini_flash',
+                        model: data.model || 'gemini-3.8-flash'
+                      };
+                    }
+                    return updated;
+                  });
                 } else if (eventType === 'error') {
                   setMessages(prev => {
                     const updated = [...prev];
@@ -317,9 +328,19 @@ Ask me anything about his software engineering projects, computer engineering ba
 
                     <MarkdownRenderer content={m.content} />
 
-                    {/* Copy Button */}
+                    {/* Message Footer: Engine Indicator & Copy */}
                     {m.content && (
-                      <div className="pt-2 flex justify-end">
+                      <div className="pt-2 flex items-center justify-between border-t border-slate-800/40 mt-2">
+                        <span className="text-[10px] font-mono text-emerald-400/80 flex items-center gap-1">
+                          <span className="text-emerald-400">⚡</span>
+                          <span>
+                            {m.engine === 'google_gemini_flash' || m.model
+                              ? `Gemini Flash (${m.model || 'gemini-3.8-flash'})`
+                              : m.engine === 'groq_llama_3.3_70b'
+                              ? `Groq Llama 3.3`
+                              : 'Portfolio Knowledge Engine'}
+                          </span>
+                        </span>
                         <button
                           type="button"
                           onClick={() => copyToClipboard(m.content, idx)}
