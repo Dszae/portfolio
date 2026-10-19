@@ -335,7 +335,17 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
   const pathname = usePathname();
   const [isDark, setIsDark] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [hasAnnouncement, setHasAnnouncement] = useState(false);
+  const [hasAnnouncement, setHasAnnouncement] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    try {
+      const cached = localStorage.getItem('site_features_announcement');
+      if (cached) {
+        const ann = JSON.parse(cached);
+        return Boolean(ann?.is_active && ann?.message);
+      }
+    } catch {}
+    return false;
+  });
   const menuToggleRef = useRef(null);
 
   useEffect(() => {

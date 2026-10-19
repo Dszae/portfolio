@@ -5,8 +5,26 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function PortfolioEntryPopup() {
-  const [popup, setPopup] = useState(null);
-  const [isOpen, setIsOpen] = useState(false);
+  const [popup, setPopup] = useState(() => {
+    if (typeof window === 'undefined') return null;
+    try {
+      const cached = localStorage.getItem('site_features_popup');
+      if (cached) return JSON.parse(cached);
+    } catch {}
+    return null;
+  });
+
+  const [isOpen, setIsOpen] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    try {
+      const cached = localStorage.getItem('site_features_popup');
+      if (cached) {
+        const p = JSON.parse(cached);
+        return Boolean(p?.is_active && p?.image_url);
+      }
+    } catch {}
+    return false;
+  });
 
   useEffect(() => {
     let mounted = true;
@@ -17,19 +35,17 @@ export default function PortfolioEntryPopup() {
         const data = await res.json();
         const p = data.popup;
 
-        if (mounted && p?.is_active && p?.image_url) {
-          // Check session storage if configured to show once per session
-          if (p.show_once_per_session !== false) {
-            const hasSeen = sessionStorage.getItem('has_seen_entry_popup');
-            if (hasSeen) return;
-          }
-
+        if (mounted && p) {
           setPopup(p);
-          // Slight delay (600ms) for pleasant entry animation after initial page load
-          const timer = setTimeout(() => {
-            if (mounted) setIsOpen(true);
-          }, 600);
-          return () => clearTimeout(timer);
+          try {
+            localStorage.setItem('site_features_popup', JSON.stringify(p));
+          } catch {}
+
+          if (p.is_active && p.image_url) {
+            setIsOpen(true);
+          } else {
+            setIsOpen(false);
+          }
         }
       } catch {
         // Silently catch network errors
@@ -42,13 +58,6 @@ export default function PortfolioEntryPopup() {
 
   const handleClose = () => {
     setIsOpen(false);
-    if (popup?.show_once_per_session !== false) {
-      try {
-        sessionStorage.setItem('has_seen_entry_popup', 'true');
-      } catch {
-        // Ignore storage exceptions
-      }
-    }
   };
 
   useEffect(() => {

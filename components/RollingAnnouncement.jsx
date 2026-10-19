@@ -4,19 +4,39 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 export default function RollingAnnouncement({ onVisibilityChange }) {
-  const [feature, setFeature] = useState(null);
+  const [feature, setFeature] = useState(() => {
+    if (typeof window === 'undefined') return null;
+    try {
+      const cached = localStorage.getItem('site_features_announcement');
+      if (cached) return JSON.parse(cached);
+    } catch {}
+    return null;
+  });
   const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
+    // Notify visibility immediately if feature is already cached and active
+    if (feature?.is_active && feature?.message && onVisibilityChange) {
+      onVisibilityChange(true);
+    }
+
     let mounted = true;
     async function loadFeatures() {
       try {
-        const res = await fetch('/api/site-features', { cache: 'no-store' });
+        const res = await fetch('/api/site-features');
         if (res.ok) {
           const data = await res.json();
-          if (mounted && data.announcement?.is_active && data.announcement?.message) {
-            setFeature(data.announcement);
-            if (onVisibilityChange) onVisibilityChange(true);
+          const ann = data.announcement;
+          if (mounted && ann) {
+            setFeature(ann);
+            try {
+              localStorage.setItem('site_features_announcement', JSON.stringify(ann));
+            } catch {}
+            if (ann.is_active && ann.message) {
+              if (onVisibilityChange) onVisibilityChange(true);
+            } else {
+              if (onVisibilityChange) onVisibilityChange(false);
+            }
           }
         }
       } catch {
