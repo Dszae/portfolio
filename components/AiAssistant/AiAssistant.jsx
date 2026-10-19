@@ -230,10 +230,16 @@ You can ask about his software projects, computer engineering background at **IO
           aria-label={isOpen ? "Close portfolio assistant" : "Open portfolio assistant"}
           className="group relative flex items-center justify-center sm:gap-2.5 w-12 h-12 sm:w-auto sm:h-auto sm:px-4 sm:py-2.5 rounded-full bg-white/95 dark:bg-[#0F1216]/95 border border-slate-200/90 dark:border-[#222933] text-slate-800 dark:text-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.5)] hover:border-[#065F46]/60 dark:hover:border-[#34D399]/40 hover:shadow-lg transition-all duration-200 active:scale-[0.95]"
         >
-          {/* Status dot in dark green (badge in mobile, inline in desktop) */}
-          <span className="absolute -top-0.5 -right-0.5 sm:static flex h-2.5 w-2.5 sm:h-2 sm:w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#065F46] dark:bg-[#34D399] opacity-60"></span>
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 sm:h-2 sm:w-2 bg-[#065F46] dark:bg-[#34D399] ring-2 ring-white dark:ring-[#0F1216] sm:ring-0"></span>
+          {/* Status dot in dark green: desktop inline dot */}
+          <span className="hidden sm:inline-flex relative h-2 w-2 shrink-0">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#065F46] dark:bg-[#34D399] opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#065F46] dark:bg-[#34D399]"></span>
+          </span>
+
+          {/* Status dot in dark green: mobile corner badge */}
+          <span className="sm:hidden absolute -top-0.5 -right-0.5 flex h-2.5 w-2.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#065F46] dark:bg-[#34D399] opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#065F46] dark:bg-[#34D399] ring-2 ring-white dark:ring-[#0F1216]"></span>
           </span>
 
           {/* Clean minimal message icon */}
