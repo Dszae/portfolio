@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
-import { revalidatePath } from 'next/cache';
 import { isAuthenticated } from '@/lib/adminAuth';
 import { supabaseAdmin } from '@/lib/supabaseAdmin';
 import { getCertificates } from '@/lib/dataService';
+import { revalidateResource } from '@/lib/revalidationEngine';
 
 export async function GET() {
   const isAuth = await isAuthenticated();
@@ -41,9 +41,7 @@ export async function POST(req) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    revalidatePath('/certificates');
-    revalidatePath('/');
-    revalidatePath('/sitemap.xml');
+    await revalidateResource('certificates', [], 'create');
 
     return NextResponse.json({ success: true, data, certificate: data });
   } catch (err) {
@@ -82,9 +80,7 @@ export async function PUT(req) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    revalidatePath('/certificates');
-    revalidatePath('/');
-    revalidatePath('/sitemap.xml');
+    await revalidateResource('certificates', [], 'update');
 
     return NextResponse.json({ success: true, data, certificate: data });
   } catch (err) {
@@ -115,9 +111,7 @@ export async function DELETE(req) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    revalidatePath('/certificates');
-    revalidatePath('/');
-    revalidatePath('/sitemap.xml');
+    await revalidateResource('certificates', [], 'delete');
 
     return NextResponse.json({ success: true });
   } catch (err) {

@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
-import { revalidatePath } from 'next/cache';
 import { supabaseAdmin } from '@/lib/supabaseAdmin';
 import { isAuthenticated } from '@/lib/adminAuth';
 import { getSkills } from '@/lib/dataService';
+import { revalidateResource } from '@/lib/revalidationEngine';
 
 export async function GET() {
   const isAuth = await isAuthenticated();
@@ -37,7 +37,7 @@ export async function POST(request) {
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
-    revalidatePath('/skills');
+    await revalidateResource('skills', [], 'create');
     return NextResponse.json({ success: true, data });
   } catch (err) {
     return NextResponse.json({ error: err.message || 'Server error' }, { status: 500 });
@@ -69,7 +69,7 @@ export async function PUT(request) {
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
-    revalidatePath('/skills');
+    await revalidateResource('skills', [], 'update');
     return NextResponse.json({ success: true, data });
   } catch (err) {
     return NextResponse.json({ error: err.message || 'Server error' }, { status: 500 });
@@ -88,7 +88,7 @@ export async function DELETE(request) {
     const { error } = await supabaseAdmin.from('skills').delete().eq('id', id);
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
-    revalidatePath('/skills');
+    await revalidateResource('skills', [], 'delete');
     return NextResponse.json({ success: true });
   } catch (err) {
     return NextResponse.json({ error: err.message || 'Server error' }, { status: 500 });

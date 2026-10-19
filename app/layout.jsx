@@ -15,127 +15,101 @@ import { getSiteSettings } from '@/lib/dataService';
 import 'katex/dist/katex.min.css';
 import './globals.css';
 
-export const metadata = {
-  metadataBase: new URL('https://www.dipeshsapkota7.com.np'),
-  title: {
-    default: 'Dipesh Sapkota | Computer Engineering Student & AI/ML Enthusiast',
-    template: '%s | Dipesh Sapkota',
-  },
-  description: 'Official portfolio of Dipesh Sapkota featuring software projects including IOE Admission Hub and Git Visualizer, alongside technical engineering and creative work.',
-  keywords: [
-    'Dipesh Sapkota',
-    'Dipesh Sapkota portfolio',
-    'Computer Engineering student Nepal',
-    'AI/ML enthusiast',
-    'Video Editor',
-    'Motion Graphics Designer',
-    'Git Visualizer',
-    'IOE Admission Hub',
-    'Sportivo',
-  ],
-  authors: [{ name: 'Dipesh Sapkota' }],
-  creator: 'Dipesh Sapkota',
-  publisher: 'Dipesh Sapkota',
-  applicationName: 'Dipesh Sapkota Portfolio',
-  category: 'portfolio',
-  referrer: 'strict-origin-when-cross-origin',
-  formatDetection: {
-    email: true,
-    address: true,
-    telephone: true,
-  },
-  icons: {
-    icon: [
-      {
-        url: '/icon-48x48.png?v=3',
-        type: 'image/png',
-        sizes: '48x48',
-      },
-      {
-        url: '/favicon-48x48.png?v=3',
-        type: 'image/png',
-        sizes: '48x48',
-      },
-      {
-        url: '/icon-96x96.png?v=3',
-        type: 'image/png',
-        sizes: '96x96',
-      },
-      {
-        url: '/favicon-96x96.png?v=3',
-        type: 'image/png',
-        sizes: '96x96',
-      },
-      {
-        url: '/icon-192x192.png?v=3',
-        type: 'image/png',
-        sizes: '192x192',
-      },
-      {
-        url: '/favicon-192x192.png?v=3',
-        type: 'image/png',
-        sizes: '192x192',
-      },
-      {
-        url: '/favicon.svg?v=3',
-        type: 'image/svg+xml',
-        sizes: 'any',
-      },
-      {
-        url: '/favicon.ico?v=3',
-        type: 'image/x-icon',
-        sizes: '48x48',
-      },
+export async function generateMetadata() {
+  const settings = await getSiteSettings();
+  const profile = settings?.profile || {};
+  const seo = settings?.seo || {};
+
+  const name = profile.name || 'Dipesh Sapkota';
+  const rawTitle = seo.title || `${name} | Computer Engineering Student & AI/ML Enthusiast`;
+  const description = seo.description || profile.bio || 'Official portfolio of Dipesh Sapkota featuring software engineering projects, AI/ML tools, and creative media work.';
+  const ogImage = seo.og_image || profile.avatar_url || '/dipesh-sapkota.jpg';
+  const twitterHandle = (seo.twitter_handle || '@dszae').replace(/^@?/, '@');
+
+  return {
+    metadataBase: new URL('https://www.dipeshsapkota7.com.np'),
+    title: {
+      default: rawTitle,
+      template: `%s | ${name}`,
+    },
+    description,
+    keywords: [
+      name,
+      `${name} portfolio`,
+      'Computer Engineering student Nepal',
+      'AI/ML enthusiast',
+      'Video Editor',
+      'Motion Graphics Designer',
+      'Git Visualizer',
+      'IOE Admission Hub',
+      'Sportivo',
     ],
-    shortcut: '/favicon.ico?v=3',
-    apple: [
-      {
-        url: '/apple-touch-icon.png?v=3',
-        sizes: '180x180',
-        type: 'image/png',
-      },
-    ],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+    authors: [{ name }],
+    creator: name,
+    publisher: name,
+    applicationName: `${name} Portfolio`,
+    category: 'portfolio',
+    referrer: 'strict-origin-when-cross-origin',
+    formatDetection: {
+      email: true,
+      address: true,
+      telephone: true,
+    },
+    icons: {
+      icon: [
+        { url: '/icon-48x48.png?v=3', type: 'image/png', sizes: '48x48' },
+        { url: '/favicon-48x48.png?v=3', type: 'image/png', sizes: '48x48' },
+        { url: '/icon-96x96.png?v=3', type: 'image/png', sizes: '96x96' },
+        { url: '/favicon-96x96.png?v=3', type: 'image/png', sizes: '96x96' },
+        { url: '/icon-192x192.png?v=3', type: 'image/png', sizes: '192x192' },
+        { url: '/favicon-192x192.png?v=3', type: 'image/png', sizes: '192x192' },
+        { url: '/favicon.svg?v=3', type: 'image/svg+xml', sizes: 'any' },
+        { url: '/favicon.ico?v=3', type: 'image/x-icon', sizes: '48x48' },
+      ],
+      shortcut: '/favicon.ico?v=3',
+      apple: [{ url: '/apple-touch-icon.png?v=3', sizes: '180x180', type: 'image/png' }],
+    },
+    robots: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  openGraph: {
-    type: 'website',
-    url: 'https://www.dipeshsapkota7.com.np/',
-    siteName: 'Dipesh Sapkota',
-    locale: 'en_US',
-    title: 'Dipesh Sapkota | Computer Engineering Student & AI/ML Enthusiast',
-    description: 'Official portfolio of Dipesh Sapkota featuring software projects including IOE Admission Hub and Git Visualizer, alongside technical engineering and creative work.',
-    images: [
-      {
-        url: 'https://www.dipeshsapkota7.com.np/dipesh-sapkota.jpg',
-        width: 627,
-        height: 627,
-        alt: 'Portrait of Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal',
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
       },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    url: 'https://www.dipeshsapkota7.com.np/',
-    title: 'Dipesh Sapkota | IOE Admission Hub & Git Visualizer',
-    description: 'Official portfolio of Dipesh Sapkota featuring software projects including IOE Admission Hub and Git Visualizer, alongside technical engineering and creative work.',
-    images: ['https://www.dipeshsapkota7.com.np/dipesh-sapkota.jpg'],
-    creator: '@DszAe18',
-    site: '@DszAe18',
-  },
-  verification: {
-    google: 'E6jJLG4IQhyyDHiocZ2ca38GtjN1bOMrQGIctSGJvZ8',
-  },
-};
+    },
+    openGraph: {
+      type: 'website',
+      url: 'https://www.dipeshsapkota7.com.np/',
+      siteName: `${name} Portfolio`,
+      locale: 'en_US',
+      title: rawTitle,
+      description,
+      images: [
+        {
+          url: ogImage.startsWith('http') ? ogImage : `https://www.dipeshsapkota7.com.np${ogImage.startsWith('/') ? ogImage : `/${ogImage}`}`,
+          width: 1200,
+          height: 630,
+          alt: `Portrait of ${name}`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      url: 'https://www.dipeshsapkota7.com.np/',
+      title: rawTitle,
+      description,
+      images: [ogImage.startsWith('http') ? ogImage : `https://www.dipeshsapkota7.com.np${ogImage.startsWith('/') ? ogImage : `/${ogImage}`}`],
+      creator: twitterHandle,
+      site: twitterHandle,
+    },
+    verification: {
+      google: 'E6jJLG4IQhyyDHiocZ2ca38GtjN1bOMrQGIctSGJvZ8',
+    },
+  };
+}
 
 export const viewport = {
   themeColor: '#F8FAFC',
@@ -174,7 +148,7 @@ export default async function RootLayout({ children }) {
         />
       </head>
       <body className="theme-page font-sans antialiased m-0 p-0 w-full min-h-screen overflow-x-hidden">
-        <JsonLdSchema />
+        <JsonLdSchema settings={settings} />
         <WebMCPInitializer />
         <AnalyticsTracker />
         {children}

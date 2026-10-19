@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabaseAdmin';
 import { isAuthenticated } from '@/lib/adminAuth';
 import { getTestimonials } from '@/lib/dataService';
+import { revalidateResource } from '@/lib/revalidationEngine';
 
 export async function GET() {
   const isAuth = await isAuthenticated();
@@ -37,6 +38,8 @@ export async function POST(request) {
       .single();
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+
+    await revalidateResource('testimonials', ['/'], 'create');
     return NextResponse.json({ success: true, data });
   } catch (err) {
     return NextResponse.json({ error: err.message || 'Server error' }, { status: 500 });
@@ -69,6 +72,8 @@ export async function PUT(request) {
       .single();
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+
+    await revalidateResource('testimonials', ['/'], 'update');
     return NextResponse.json({ success: true, data });
   } catch (err) {
     return NextResponse.json({ error: err.message || 'Server error' }, { status: 500 });
@@ -86,6 +91,8 @@ export async function DELETE(request) {
 
     const { error } = await supabaseAdmin.from('testimonials').delete().eq('id', id);
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+
+    await revalidateResource('testimonials', ['/'], 'delete');
     return NextResponse.json({ success: true });
   } catch (err) {
     return NextResponse.json({ error: err.message || 'Server error' }, { status: 500 });

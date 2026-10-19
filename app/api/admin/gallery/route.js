@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
-import { revalidatePath } from 'next/cache';
 import { isAuthenticated } from '@/lib/adminAuth';
 import { supabaseAdmin } from '@/lib/supabaseAdmin';
 import { getGalleryImages } from '@/lib/dataService';
+import { revalidateResource } from '@/lib/revalidationEngine';
 
 export async function GET() {
   const isAuth = await isAuthenticated();
@@ -40,9 +40,7 @@ export async function POST(req) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    revalidatePath('/gallery');
-    revalidatePath('/');
-    revalidatePath('/sitemap.xml');
+    await revalidateResource('gallery', [], 'create');
 
     return NextResponse.json({ success: true, data, image: data });
   } catch (err) {
@@ -80,9 +78,7 @@ export async function PUT(req) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    revalidatePath('/gallery');
-    revalidatePath('/');
-    revalidatePath('/sitemap.xml');
+    await revalidateResource('gallery', [], 'update');
 
     return NextResponse.json({ success: true, data, image: data });
   } catch (err) {
@@ -113,9 +109,7 @@ export async function DELETE(req) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    revalidatePath('/gallery');
-    revalidatePath('/');
-    revalidatePath('/sitemap.xml');
+    await revalidateResource('gallery', [], 'delete');
 
     return NextResponse.json({ success: true });
   } catch (err) {

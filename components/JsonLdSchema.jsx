@@ -1,3 +1,5 @@
+import { buildPersonJsonLd, buildWebSiteJsonLd } from '@/lib/seoEngine';
+
 export const siteUrl = 'https://www.dipeshsapkota7.com.np';
 export const personId = `${siteUrl}/#author`;
 export const websiteId = `${siteUrl}/#website`;
@@ -349,7 +351,18 @@ function JsonLdScript({ id, data }) {
   );
 }
 
-export default function JsonLdSchema() {
+export default function JsonLdSchema({ settings }) {
+  if (settings?.profile || settings?.seo) {
+    const dynamicPerson = buildPersonJsonLd(settings);
+    const dynamicWebSite = buildWebSiteJsonLd(settings);
+    const dynamicGraph = siteSchema['@graph'].map((item) => {
+      if (item['@id'] === personId) return dynamicPerson;
+      if (item['@id'] === websiteId) return dynamicWebSite;
+      return item;
+    });
+
+    return <JsonLdScript id="json-ld-schema" data={{ ...siteSchema, '@graph': dynamicGraph }} />;
+  }
   return <JsonLdScript id="json-ld-schema" data={siteSchema} />;
 }
 

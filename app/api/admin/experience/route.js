@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
-import { revalidatePath } from 'next/cache';
 import { supabaseAdmin } from '@/lib/supabaseAdmin';
 import { isAuthenticated } from '@/lib/adminAuth';
 import { getExperiences } from '@/lib/dataService';
+import { revalidateResource } from '@/lib/revalidationEngine';
 
 export async function GET() {
   const isAuth = await isAuthenticated();
@@ -67,8 +67,7 @@ export async function POST(request) {
       }
     }
 
-    revalidatePath('/resume');
-    revalidatePath('/about');
+    await revalidateResource('experience', [], 'create');
     return NextResponse.json({ success: true, data: { ...data, logo } });
   } catch (err) {
     return NextResponse.json({ error: err.message || 'Server error' }, { status: 500 });
@@ -137,8 +136,7 @@ export async function PUT(request) {
       }
     }
 
-    revalidatePath('/resume');
-    revalidatePath('/about');
+    await revalidateResource('experience', [], 'update');
     return NextResponse.json({ success: true, data: { ...data, logo } });
   } catch (err) {
     return NextResponse.json({ error: err.message || 'Server error' }, { status: 500 });
@@ -166,8 +164,7 @@ export async function DELETE(request) {
       }
     } catch {}
 
-    revalidatePath('/resume');
-    revalidatePath('/about');
+    await revalidateResource('experience', [], 'delete');
     return NextResponse.json({ success: true });
   } catch (err) {
     return NextResponse.json({ error: err.message || 'Server error' }, { status: 500 });

@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
-import { revalidatePath } from 'next/cache';
 import { supabaseAdmin } from '@/lib/supabaseAdmin';
 import { isAuthenticated } from '@/lib/adminAuth';
 import { getProjects } from '@/lib/dataService';
+import { revalidateResource } from '@/lib/revalidationEngine';
 
 export async function GET() {
   const isAuth = await isAuthenticated();
@@ -50,8 +50,7 @@ export async function POST(request) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    revalidatePath('/projects');
-    revalidatePath('/');
+    await revalidateResource('projects', [`/projects/${finalSlug}`], 'create');
     return NextResponse.json({ success: true, data });
   } catch (err) {
     return NextResponse.json({ error: err.message || 'Server error' }, { status: 500 });
@@ -97,8 +96,8 @@ export async function PUT(request) {
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
-    revalidatePath('/projects');
-    revalidatePath('/');
+    const affectedSlug = data?.slug || slug;
+    await revalidateResource('projects', affectedSlug ? [`/projects/${affectedSlug}`] : [], 'update');
     return NextResponse.json({ success: true, data });
   } catch (err) {
     return NextResponse.json({ error: err.message || 'Server error' }, { status: 500 });
@@ -125,8 +124,7 @@ export async function DELETE(request) {
     const { error } = await query;
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
-    revalidatePath('/projects');
-    revalidatePath('/');
+    await revalidateResource('projects', slug ? [`/projects/${slug}`] : [], 'delete');
     return NextResponse.json({ success: true });
   } catch (err) {
     return NextResponse.json({ error: err.message || 'Server error' }, { status: 500 });

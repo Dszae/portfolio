@@ -58,11 +58,6 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/profile',
-        destination: '/about',
-        permanent: true,
-      },
-      {
         source: '/security.txt',
         destination: '/.well-known/security.txt',
         permanent: true,

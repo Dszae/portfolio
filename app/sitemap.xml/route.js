@@ -1,164 +1,17 @@
-const siteUrl = 'https://www.dipeshsapkota7.com.np';
-export const dynamic = 'force-static';
+import { 
+  getProjects, 
+  getArticles, 
+  getCertificates, 
+  getGalleryImages, 
+  getExperiences, 
+  getSiteSettings 
+} from '@/lib/dataService';
+import { SITE_URL, toAbsoluteUrl } from '@/lib/seoEngine';
 
-const image = (path, title) => ({ path, title });
-const portrait = image('/dipesh-sapkota.jpg', 'Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus');
-const currentDate = '2026-10-17';
-const pages = [
-  // Primary Homepage
-  {
-    path: '/',
-    priority: '1.0',
-    changefreq: 'daily',
-    images: [portrait],
-  },
-  // Core Sitelinks (Primary Navigation Pages)
-  {
-    path: '/about',
-    priority: '0.95',
-    changefreq: 'weekly',
-    images: [portrait],
-  },
-  {
-    path: '/skills',
-    priority: '0.95',
-    changefreq: 'weekly',
-  },
-  {
-    path: '/projects',
-    priority: '0.95',
-    changefreq: 'weekly',
-    images: [
-      image('/sportivo-preview.jpg', 'Sportivo project preview'),
-      image('/ioe-preview.jpg', 'IOE Admission Guide project preview'),
-      image('/git-preview.jpg', 'Git Visualizer project preview'),
-    ],
-  },
-  {
-    path: '/certificates',
-    priority: '0.95',
-    changefreq: 'weekly',
-    images: [
-      image('/graphic-design.webp', 'Graphic Design Masterclass certificate'),
-      image('/motion-design.webp', 'Motion Design with Figma certificate'),
-      image('/after-effects.webp', 'Adobe After Effects certificate'),
-      image('/davinci-resolve.webp', 'DaVinci Resolve 16 Color Correction certificate'),
-      image('/premiere-pro.webp', 'Adobe Premiere Pro CC Masterclass certificate'),
-      image('/web-development.webp', 'Web Development Masterclass certificate'),
-      image('/google-adwords.webp', 'Google Adwords certificate'),
-      image('/design-principles.webp', 'Design Principles, Typography & Color Theory certificate'),
-    ],
-  },
-  {
-    path: '/resume',
-    priority: '0.95',
-    changefreq: 'weekly',
-    images: [
-      portrait,
-      image('/clamphook_.webp', 'Clamphook Academy logo'),
-      image('/campus.webp', 'College Programs logo'),
-      image('/freelance.webp', 'Freelance work logo'),
-      image('/thapathali.webp', 'Thapathali Campus logo'),
-      image('/janak.webp', 'Janak Model Secondary School logo'),
-      image('/mahendra.webp', 'Mahendra Adarsha Secondary School logo'),
-    ],
-  },
-  {
-    path: '/gallery',
-    priority: '0.95',
-    changefreq: 'weekly',
-    images: [
-      image('/cricket.webp', 'Participating in college cricket tournament'),
-      image('/yathartha.webp', 'Successfully conducted Yathartha Tech Exhibition'),
-      image('/clamphook.webp', 'Celebrating academic results with Clamphook team'),
-      image('/lecture.webp', 'Engineering lectures at IOE Thapathali'),
-      image('/exploring.webp', 'Creative video editing and focus'),
-      image('/nagdhunga%20surung%20marga.webp', 'Nagdhunga tunnel roadside field visit'),
-    ],
-  },
-  {
-    path: '/contact',
-    priority: '0.95',
-    changefreq: 'monthly',
-    images: [portrait],
-  },
-  // Sub-pages, Case Studies, and Secondary Resources
-  {
-    path: '/projects/sportivo',
-    priority: '0.95',
-    changefreq: 'monthly',
-    images: [image('/sportivo-preview.jpg', 'Sportivo project preview')],
-    videos: [{ title: 'Sportivo Live Sports Platform Demo', description: 'A product demonstration of Sportivo, a live sports platform created by Dipesh Sapkota.', thumbnail: '/sportivo-first-frame.jpg', content: '/sportivo-launch.mp4' }],
-  },
-  {
-    path: '/projects/ioe-admission-guide',
-    priority: '0.85',
-    changefreq: 'monthly',
-    images: [image('/ioe-preview.jpg', 'IOE Admission Guide project preview')],
-    videos: [{ title: 'IOE Admission Guide Demo', description: 'A product demonstration of the IOE Admission Guide created by Dipesh Sapkota.', thumbnail: '/ioe-first-frame.jpg', content: '/ioe-demo.mp4' }],
-  },
-  {
-    path: '/projects/git-visualizer',
-    priority: '0.85',
-    changefreq: 'monthly',
-    images: [image('/git-preview.jpg', 'Git Visualizer project preview')],
-    videos: [{ title: 'Git Visualizer Interactive Demo', description: 'A product demonstration of Git Visualizer, an interactive version-control learning tool created by Dipesh Sapkota.', thumbnail: '/git-visualizer-first-frame.jpg', content: '/git-visualizer-launch.mp4' }],
-  },
-  {
-    path: '/projects/sports-reels',
-    priority: '0.85',
-    changefreq: 'monthly',
-    images: [image('/instagram-videos.png', 'Sports Reels and Motion Design by Dipesh Sapkota')],
-  },
-  {
-    path: '/projects/555-flasher',
-    priority: '0.8',
-    changefreq: 'monthly',
-  },
-  {
-    path: '/projects/motor-modeling',
-    priority: '0.8',
-    changefreq: 'monthly',
-  },
-  {
-    path: '/projects/analyzer-diag',
-    priority: '0.8',
-    changefreq: 'monthly',
-  },
-  {
-    path: '/blog',
-    priority: '0.85',
-    changefreq: 'weekly',
-    images: [portrait],
-  },
-  {
-    path: '/image-licensing',
-    priority: '0.6',
-    changefreq: 'monthly',
-  },
-];
+export const dynamic = 'force-dynamic';
+export const revalidate = 3600;
 
-// External project subdomains — included so Google associates them with this site
-// and may show them as sitelinks for dipeshsapkota7.com.np
-const externalPages = [
-  {
-    url: 'https://sportivo.dipeshsapkota7.com.np/',
-    priority: '0.9',
-    changefreq: 'weekly',
-  },
-  {
-    url: 'https://ioe-admission.dipeshsapkota7.com.np/',
-    priority: '0.9',
-    changefreq: 'weekly',
-  },
-  {
-    url: 'https://git-visualizer.dipeshsapkota7.com.np/',
-    priority: '0.9',
-    changefreq: 'weekly',
-  },
-];
-
-const escapeXml = (value) => value
+const escapeXml = (value = '') => String(value)
   .replaceAll('&', '&amp;')
   .replaceAll('<', '&lt;')
   .replaceAll('>', '&gt;')
@@ -166,29 +19,161 @@ const escapeXml = (value) => value
   .replaceAll("'", '&apos;');
 
 export async function GET() {
-  const entries = pages.map(({ path, priority = '0.7', changefreq = 'weekly', images = [], videos = [] }) => {
-    const imageEntries = images
-      .map(({ path: imagePath, title }) => (
-        `<image:image><image:loc>${escapeXml(`${siteUrl}${imagePath}`)}</image:loc><image:title>${escapeXml(title)}</image:title></image:image>`
-      ))
-      .join('');
-    const videoEntries = videos.map(({ title, description, thumbnail, content }) => (
-      `<video:video><video:thumbnail_loc>${escapeXml(`${siteUrl}${thumbnail}`)}</video:thumbnail_loc><video:title>${escapeXml(title)}</video:title><video:description>${escapeXml(description)}</video:description><video:content_loc>${escapeXml(`${siteUrl}${content}`)}</video:content_loc><video:publication_date>${currentDate}T00:00:00+05:45</video:publication_date></video:video>`
-    )).join('');
+  const [projects, articles, certificates, gallery, experiences, settings] = await Promise.all([
+    getProjects().catch(() => []),
+    getArticles().catch(() => []),
+    getCertificates().catch(() => []),
+    getGalleryImages().catch(() => []),
+    getExperiences().catch(() => []),
+    getSiteSettings().catch(() => ({})),
+  ]);
 
-    return `<url><loc>${escapeXml(`${siteUrl}${path}`)}</loc><lastmod>${currentDate}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority>${imageEntries}${videoEntries}</url>`;
+  const profile = settings?.profile || {};
+  const today = new Date().toISOString().split('T')[0];
+
+  const portraitImage = {
+    path: toAbsoluteUrl(profile.avatar_url || '/dipesh-sapkota.jpg'),
+    title: `Official portrait of ${profile.name || 'Dipesh Sapkota'}`,
+  };
+
+  // 1. Core Primary Navigation Pages
+  const corePages = [
+    {
+      loc: `${SITE_URL}/`,
+      priority: '1.0',
+      changefreq: 'daily',
+      lastmod: today,
+      images: [portraitImage],
+    },
+    {
+      loc: `${SITE_URL}/about`,
+      priority: '0.95',
+      changefreq: 'weekly',
+      lastmod: today,
+      images: [portraitImage],
+    },
+    {
+      loc: `${SITE_URL}/skills`,
+      priority: '0.95',
+      changefreq: 'weekly',
+      lastmod: today,
+      images: [],
+    },
+    {
+      loc: `${SITE_URL}/projects`,
+      priority: '0.95',
+      changefreq: 'weekly',
+      lastmod: today,
+      images: projects.slice(0, 5).map(p => ({
+        path: toAbsoluteUrl(p.img),
+        title: p.title || 'Project Preview',
+      })),
+    },
+    {
+      loc: `${SITE_URL}/blog`,
+      priority: '0.90',
+      changefreq: 'weekly',
+      lastmod: today,
+      images: articles.slice(0, 5).map(a => ({
+        path: toAbsoluteUrl(a.cover_image),
+        title: a.title || 'Article Cover',
+      })),
+    },
+    {
+      loc: `${SITE_URL}/certificates`,
+      priority: '0.90',
+      changefreq: 'monthly',
+      lastmod: today,
+      images: certificates.map(c => ({
+        path: toAbsoluteUrl(c.img),
+        title: `${c.title} by ${c.org}`,
+      })),
+    },
+    {
+      loc: `${SITE_URL}/resume`,
+      priority: '0.95',
+      changefreq: 'weekly',
+      lastmod: today,
+      images: [
+        portraitImage,
+        ...experiences.filter(e => e.logo).map(e => ({
+          path: toAbsoluteUrl(e.logo),
+          title: `${e.organization || e.company} Logo`,
+        }))
+      ],
+    },
+    {
+      loc: `${SITE_URL}/gallery`,
+      priority: '0.85',
+      changefreq: 'weekly',
+      lastmod: today,
+      images: gallery.map(g => ({
+        path: toAbsoluteUrl(g.img),
+        title: g.title || g.alt || 'Gallery photo',
+      })),
+    },
+    {
+      loc: `${SITE_URL}/contact`,
+      priority: '0.85',
+      changefreq: 'monthly',
+      lastmod: today,
+      images: [],
+    },
+    {
+      loc: `${SITE_URL}/image-licensing`,
+      priority: '0.50',
+      changefreq: 'yearly',
+      lastmod: today,
+      images: [],
+    },
+  ];
+
+  // 2. Dynamic Project Pages from Database
+  const projectPages = projects
+    .filter(p => p.status === 'published' || !p.status)
+    .map(p => ({
+      loc: `${SITE_URL}/projects/${p.slug || p.id}`,
+      priority: p.featured ? '0.90' : '0.80',
+      changefreq: 'monthly',
+      lastmod: (p.updated_at || p.created_at || today).split('T')[0],
+      images: p.img ? [{ path: toAbsoluteUrl(p.img), title: p.title }] : [],
+    }));
+
+  // 3. Dynamic Article Pages from Database
+  const articlePages = articles
+    .filter(a => a.status === 'published' || !a.status)
+    .map(a => ({
+      loc: `${SITE_URL}/blog/${a.slug || a.id}`,
+      priority: '0.85',
+      changefreq: 'monthly',
+      lastmod: (a.updated_at || a.published_at || today).split('T')[0],
+      images: a.cover_image ? [{ path: toAbsoluteUrl(a.cover_image), title: a.title }] : [],
+    }));
+
+  // 4. External Live Deployments associated with the portfolio
+  const externalSubdomains = [
+    { loc: 'https://sportivo.dipeshsapkota7.com.np/', priority: '0.90', changefreq: 'weekly', lastmod: today, images: [] },
+    { loc: 'https://ioe-admission.dipeshsapkota7.com.np/', priority: '0.90', changefreq: 'weekly', lastmod: today, images: [] },
+    { loc: 'https://git-visualizer.dipeshsapkota7.com.np/', priority: '0.90', changefreq: 'weekly', lastmod: today, images: [] },
+  ];
+
+  const allUrls = [...corePages, ...projectPages, ...articlePages, ...externalSubdomains];
+
+  const xmlEntries = allUrls.map(({ loc, priority, changefreq, lastmod, images = [] }) => {
+    const imageTags = images
+      .filter(img => img.path)
+      .map(img => `<image:image><image:loc>${escapeXml(img.path)}</image:loc><image:title>${escapeXml(img.title || 'Image')}</image:title></image:image>`)
+      .join('');
+
+    return `<url><loc>${escapeXml(loc)}</loc><lastmod>${lastmod || today}</lastmod><changefreq>${changefreq || 'weekly'}</changefreq><priority>${priority || '0.7'}</priority>${imageTags}</url>`;
   }).join('');
 
-  const externalEntries = externalPages.map(({ url, priority = '0.7', changefreq = 'weekly' }) =>
-    `<url><loc>${escapeXml(url)}</loc><lastmod>${currentDate}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`
-  ).join('');
+  const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">${xmlEntries}</urlset>`;
 
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">${entries}${externalEntries}</urlset>`;
-
-  return new Response(sitemap, {
+  return new Response(sitemapXml, {
     headers: {
       'Content-Type': 'application/xml; charset=utf-8',
-      'Cache-Control': 'public, max-age=3600, s-maxage=3600',
+      'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
     },
   });
 }

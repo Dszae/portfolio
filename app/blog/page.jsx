@@ -23,26 +23,15 @@ const articlesPageJsonLd = {
   inLanguage: 'en',
 };
 
-export const metadata = {
-  title: "Articles",
-  description: "Technical write-ups and engineering articles authored by Dipesh Sapkota (dszae).",
-  alternates: { canonical: '/blog' },
-  openGraph: {
-    type: 'website',
-    title: 'Blog & Articles - Dipesh Sapkota',
-    description: 'Technical write-ups and engineering articles authored by Dipesh Sapkota.',
-    url: 'https://www.dipeshsapkota7.com.np/blog',
-    images: [{ url: '/dipesh-sapkota.jpg', width: 627, height: 627, alt: 'Portrait of Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal' }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Articles by Dipesh Sapkota',
-    description: 'Engineering, AI/ML, and intelligent systems articles written by Dipesh Sapkota (dszae).',
-    images: ['/dipesh-sapkota.jpg'],
-    creator: '@DszAe18',
-    site: '@DszAe18',
-  },
-};
+import { generatePageMetadata } from '@/lib/seoEngine';
+
+export async function generateMetadata() {
+  return await generatePageMetadata({
+    title: 'Articles & Write-Ups',
+    description: 'Technical write-ups, architecture case studies, and engineering articles authored by Dipesh Sapkota covering AI/ML, distributed systems, and modern web applications.',
+    path: '/blog',
+  });
+}
 
 export default async function BlogPage() {
   const articles = await getArticles();
