@@ -1,53 +1,42 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+const emptySubscribe = () => () => {};
+const getClientSnapshot = () => true;
+const getServerSnapshot = () => false;
+
 export default function PortfolioEntryPopup() {
   const pathname = usePathname();
-
-  const [popup, setPopup] = useState(() => {
-    if (typeof window !== 'undefined') {
-      if (window.__INITIAL_SITE_FEATURES__?.popup) {
-        return window.__INITIAL_SITE_FEATURES__.popup;
-      }
-      try {
-        const cached = localStorage.getItem('site_features_popup');
-        if (cached) return JSON.parse(cached);
-      } catch {}
-    }
-    return null;
-  });
-
-  const [isOpen, setIsOpen] = useState(() => {
-    if (typeof window === 'undefined') return false;
-    
-    if (window.location.pathname !== '/') return false;
-
-    try {
-      const p = window.__INITIAL_SITE_FEATURES__?.popup || (() => {
-        const cached = localStorage.getItem('site_features_popup');
-        return cached ? JSON.parse(cached) : null;
-      })();
-
-      if (p) {
-        const isOncePerSession = p?.frequency === 'once_per_session' || p?.show_once_per_session === true;
-        if (isOncePerSession && sessionStorage.getItem('portfolio_popup_seen') === 'true') {
-          return false;
-        }
-        return Boolean(p?.is_active && p?.image_url);
-      }
-    } catch {}
-    return false;
-  });
+  const isMounted = useSyncExternalStore(emptySubscribe, getClientSnapshot, getServerSnapshot);
+  const [popup, setPopup] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    
     if (pathname !== '/') return;
 
     let mounted = true;
+    const timer = setTimeout(() => {
+      try {
+        const p = window.__INITIAL_SITE_FEATURES__?.popup || (() => {
+          const cached = localStorage.getItem('site_features_popup');
+          return cached ? JSON.parse(cached) : null;
+        })();
+
+        if (mounted && p) {
+          setPopup(p);
+          const isOncePerSession = p?.frequency === 'once_per_session' || p?.show_once_per_session === true;
+          if (!isOncePerSession || sessionStorage.getItem('portfolio_popup_seen') !== 'true') {
+            if (p?.is_active && p?.image_url) {
+              setIsOpen(true);
+            }
+          }
+        }
+      } catch {}
+    }, 0);
     async function checkPopup() {
       try {
         const res = await fetch('/api/site-features');
@@ -83,7 +72,10 @@ export default function PortfolioEntryPopup() {
     }
 
     checkPopup();
-    return () => { mounted = false; };
+    return () => {
+      mounted = false;
+      clearTimeout(timer);
+    };
   }, [pathname]);
 
   const handleClose = useCallback(() => {
@@ -105,7 +97,7 @@ export default function PortfolioEntryPopup() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, handleClose]);
 
-if (pathname !== '/' || !isOpen || !popup || !popup.image_url) {
+  if (!isMounted || pathname !== '/' || !isOpen || !popup || !popup.image_url) {
     return null;
   }
 

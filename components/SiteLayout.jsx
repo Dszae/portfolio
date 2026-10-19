@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import RollingAnnouncement, { DEFAULT_ANNOUNCEMENT } from './RollingAnnouncement';
+import RollingAnnouncement from './RollingAnnouncement';
 import PortfolioEntryPopup from './PortfolioEntryPopup';
 import AiAssistant from './AiAssistant/AiAssistant';
 
@@ -324,43 +324,25 @@ if (Math.abs(deltaX) > 35 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) {
 
 export default function SiteLayout({ children, selectedImage, setSelectedImage }) {
   const pathname = usePathname();
-  const [isDark, setIsDark] = useState(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        return localStorage.getItem('theme') === 'dark';
-      } catch {}
-    }
-    return false;
-  });
+  const [isDark, setIsDark] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [hasAnnouncement, setHasAnnouncement] = useState(() => {
-    if (typeof window !== 'undefined') {
-      if (window.__INITIAL_SITE_FEATURES__?.announcement) {
-        const ann = window.__INITIAL_SITE_FEATURES__.announcement;
-        return Boolean(ann?.is_active && ann?.message);
-      }
-      try {
-        const cached = localStorage.getItem('site_features_announcement');
-        if (cached) {
-          const ann = JSON.parse(cached);
-          return Boolean(ann?.is_active && ann?.message);
-        }
-      } catch {}
-    }
-    return Boolean(DEFAULT_ANNOUNCEMENT.is_active && DEFAULT_ANNOUNCEMENT.message);
-  });
+  const [hasAnnouncement, setHasAnnouncement] = useState(false);
   const menuToggleRef = useRef(null);
 
   useEffect(() => {
     try {
       document.documentElement.style.removeProperty('background-color');
-      if (isDark) {
+      const stored = localStorage.getItem('theme');
+      const isDarkActive = stored === 'dark';
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setIsDark(isDarkActive);
+      if (isDarkActive) {
         document.documentElement.classList.add('dark');
       } else {
         document.documentElement.classList.remove('dark');
       }
     } catch {}
-  }, [isDark]);
+  }, []);
 
   const toggleTheme = () => {
     const nextDark = !isDark;
