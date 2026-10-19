@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import RollingAnnouncement from './RollingAnnouncement';
 import PortfolioEntryPopup from './PortfolioEntryPopup';
+import AiAssistant from './AiAssistant/AiAssistant';
 
 export const NAV_LINKS = [
   { path: '/', label: 'Home', id: 'home' },
@@ -51,7 +52,7 @@ function ScrollToTopButton() {
     <button
       onClick={scrollToTop}
       aria-label="Scroll to top of page"
-      className="site-icon-button fixed bottom-6 right-6 z-50 shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+      className="site-icon-button fixed bottom-6 left-6 z-40 shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer"
     >
       <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
         <path strokeLinecap="round" strokeLinejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
@@ -674,6 +675,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
       </footer>
 
       <ScrollToTopButton />
+      <AiAssistant />
 
       <AnimatePresence>
         {selectedImage && setSelectedImage && (
