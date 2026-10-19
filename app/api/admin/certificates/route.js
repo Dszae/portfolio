@@ -82,3 +82,4 @@ export async function DELETE(req) {
     return NextResponse.json({ error: 'Failed to delete certificate' }, { status: 500 });
   }
 }
+

@@ -541,3 +541,4 @@ CREATE POLICY "Service Role Storage All" ON storage.objects FOR ALL USING (bucke
     </div>
   );
 }
+

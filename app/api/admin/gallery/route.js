@@ -81,3 +81,4 @@ export async function DELETE(req) {
     return NextResponse.json({ error: 'Failed to delete gallery image' }, { status: 500 });
   }
 }
+

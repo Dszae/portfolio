@@ -61,3 +61,4 @@ INSERT INTO public.gallery_images (title, alt, img, category) VALUES
 ('Deep in focus and exploring concepts', 'Student wearing a headset in front of video-editing software', '/exploring.webp', 'Work'),
 ('Nagdhunga Surung Marga', 'Dipesh standing by a roadside with hills in the background', '/nagdhunga surung marga.webp', 'Field Visit')
 ON CONFLICT DO NOTHING;
+

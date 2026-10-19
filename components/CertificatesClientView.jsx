@@ -80,3 +80,4 @@ export default function CertificatesClientView({ certificates, jsonLd }) {
     </SiteLayout>
   );
 }
+

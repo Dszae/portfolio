@@ -23,3 +23,4 @@ export async function GET() {
   const authenticated = await isAuthenticated();
   return NextResponse.json({ authenticated });
 }
+

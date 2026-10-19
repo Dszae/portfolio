@@ -81,3 +81,4 @@ export default function GalleryClientView({ gallery, jsonLd }) {
     </SiteLayout>
   );
 }
+
