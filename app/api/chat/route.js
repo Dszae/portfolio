@@ -15,12 +15,18 @@ export const runtime = 'nodejs';
  * Health & Discovery GET endpoint
  */
 export async function GET() {
-  const hasKey = Boolean(process.env.OPENAI_API_KEY && !process.env.OPENAI_API_KEY.startsWith('sk-placeholder'));
+  const hasKey = Boolean(process.env.OPENAI_API_KEY && !process.env.OPENAI_API_KEY.startsWith('sk-placeholder') && process.env.OPENAI_API_KEY.length > 25);
+  const hasGemini = Boolean(process.env.GEMINI_API_KEY && process.env.GEMINI_API_KEY.trim().length > 15);
+  const hasGroq = Boolean(process.env.GROQ_API_KEY && process.env.GROQ_API_KEY.trim().length > 10);
+  
+  const engine = hasGroq ? 'groq_llama_3.3_70b' : hasGemini ? 'google_gemini_2.0_flash' : hasKey ? 'openai_tool_calling' : 'grounded_portfolio_engine';
+  const activeModel = hasGroq ? (process.env.GROQ_MODEL || 'llama-3.3-70b-versatile') : hasGemini ? (process.env.GEMINI_MODEL || 'gemini-2.0-flash') : AGENT_CONFIG.DEFAULT_MODEL;
+
   return NextResponse.json({
     service: 'Dipesh Sapkota Portfolio AI Agent',
     status: 'online',
-    model: AGENT_CONFIG.DEFAULT_MODEL,
-    engine: hasKey ? 'openai_tool_calling' : 'grounded_rag_fallback',
+    model: activeModel,
+    engine,
     tools_available: OPENAI_TOOLS.map(t => t.function.name),
     rate_limits: {
       max_requests: AGENT_CONFIG.RATE_LIMIT_MAX_REQUESTS,
