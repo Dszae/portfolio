@@ -132,7 +132,7 @@ function renderFormattedText(text) {
         <Link
           key={`lnk-${match.index}`}
           href={cleanPath}
-          className="text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-300 font-medium underline underline-offset-2 decoration-emerald-500/40 hover:decoration-emerald-500 transition-colors inline-flex items-center gap-0.5"
+          className="text-[#065F46] dark:text-[#34D399] hover:text-[#044E39] dark:hover:text-[#6EE7B7] font-medium underline underline-offset-2 decoration-[#065F46]/40 hover:decoration-[#065F46] dark:decoration-[#34D399]/40 dark:hover:decoration-[#34D399] transition-colors inline-flex items-center gap-0.5"
         >
           {label}
         </Link>
@@ -144,7 +144,7 @@ function renderFormattedText(text) {
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-300 font-medium underline underline-offset-2 decoration-emerald-500/40 hover:decoration-emerald-500 transition-colors inline-flex items-center gap-0.5"
+          className="text-[#065F46] dark:text-[#34D399] hover:text-[#044E39] dark:hover:text-[#6EE7B7] font-medium underline underline-offset-2 decoration-[#065F46]/40 hover:decoration-[#065F46] dark:decoration-[#34D399]/40 dark:hover:decoration-[#34D399] transition-colors inline-flex items-center gap-0.5"
         >
           <span>{label}</span>
           <svg className="w-3 h-3 opacity-60 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -170,7 +170,7 @@ function renderInlineStyles(str, baseKey) {
       return (
         <code
           key={`${baseKey}-${idx}`}
-          className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 text-emerald-800 dark:text-emerald-300 font-mono text-[11px]"
+          className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 text-[#065F46] dark:text-[#34D399] font-mono text-[11px]"
         >
           {tok.slice(1, -1)}
         </code>

@@ -228,17 +228,17 @@ You can ask about his software projects, computer engineering background at **IO
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
           aria-label={isOpen ? "Close portfolio assistant" : "Open portfolio assistant"}
-          className="group relative flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-white/95 dark:bg-[#0F1216]/95 border border-slate-200/90 dark:border-[#222933] text-slate-800 dark:text-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.4)] hover:border-emerald-600/50 dark:hover:border-emerald-400/50 hover:shadow-emerald-600/10 transition-all duration-200 active:scale-[0.98]"
+          className="group relative flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-white/95 dark:bg-[#0F1216]/95 border border-slate-200/90 dark:border-[#222933] text-slate-800 dark:text-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.4)] hover:border-[#065F46]/60 dark:hover:border-[#34D399]/40 hover:shadow-lg transition-all duration-200 active:scale-[0.98]"
         >
-          {/* Status dot */}
+          {/* Status dot in dark green */}
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-600 dark:bg-emerald-400 opacity-60"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600 dark:bg-emerald-400"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#065F46] dark:bg-[#34D399] opacity-60"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#065F46] dark:bg-[#34D399]"></span>
           </span>
 
           {/* Clean minimal message icon */}
           <svg
-            className="w-4 h-4 text-emerald-700 dark:text-emerald-400 transition-transform duration-200 group-hover:scale-105"
+            className="w-4 h-4 text-[#065F46] dark:text-[#34D399] transition-transform duration-200 group-hover:scale-105"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -265,13 +265,13 @@ You can ask about his software projects, computer engineering background at **IO
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3 border-b border-slate-200/80 dark:border-[#222933] bg-slate-50/80 dark:bg-[#090B0E]/80">
             <div className="flex items-center gap-2.5">
-              <div className="w-7 h-7 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200/70 dark:border-emerald-800/40 flex items-center justify-center text-emerald-800 dark:text-emerald-300 font-semibold text-xs tracking-tight">
+              <div className="w-7 h-7 rounded-lg bg-[#065F46]/10 dark:bg-[#065F46]/30 border border-[#065F46]/20 dark:border-[#065F46]/40 flex items-center justify-center text-[#065F46] dark:text-[#34D399] font-semibold text-xs tracking-tight">
                 DS
               </div>
               <div>
                 <h3 className="text-xs font-semibold text-slate-900 dark:text-slate-100 flex items-center gap-1.5">
                   <span>Dipesh Portfolio Assistant</span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#065F46] dark:bg-[#34D399]" />
                 </h3>
                 <p className="text-[10px] text-slate-500 dark:text-slate-400">Verified portfolio knowledge & work</p>
               </div>
@@ -308,9 +308,9 @@ You can ask about his software projects, computer engineering background at **IO
             {messages.map((m, idx) => (
               <div key={idx} className={`flex flex-col ${m.role === 'user' ? 'items-end' : 'items-start'}`}>
                 
-                {/* User Message */}
+                {/* User Message in dark green */}
                 {m.role === 'user' ? (
-                  <div className="max-w-[85%] px-3.5 py-2.5 rounded-2xl rounded-br-sm bg-emerald-600 text-white dark:bg-emerald-500 dark:text-[#090B0E] font-medium text-xs shadow-sm">
+                  <div className="max-w-[85%] px-3.5 py-2.5 rounded-2xl rounded-br-sm bg-[#065F46] dark:bg-[#065F46] text-white font-medium text-xs shadow-sm">
                     {m.content}
                   </div>
                 ) : (
@@ -325,7 +325,7 @@ You can ask about his software projects, computer engineering background at **IO
                             key={tIdx}
                             className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-white dark:bg-[#090B0E] text-slate-600 dark:text-slate-400 text-[10px] font-mono border border-slate-200/80 dark:border-slate-800"
                           >
-                            <span className="w-1 h-1 rounded-full bg-emerald-600 dark:bg-emerald-400" />
+                            <span className="w-1 h-1 rounded-full bg-[#065F46] dark:bg-[#34D399]" />
                             <span>{t.label || t.name}</span>
                           </span>
                         ))}
@@ -334,15 +334,13 @@ You can ask about his software projects, computer engineering background at **IO
 
                     <MarkdownRenderer content={m.content} />
 
-                    {/* Subtle Model & Grounding Tag (No copy button, no emoji) */}
+                    {/* Subtle Model & Grounding Tag (No copy button, no emojis, clean generic wording) */}
                     {m.content && (
                       <div className="pt-2 border-t border-slate-200/60 dark:border-slate-800/60 flex items-center justify-between text-[10px] text-slate-400 dark:text-slate-500 font-mono tracking-tight">
                         <span>
-                          {m.engine === 'google_gemini_flash' || m.model
-                            ? `Gemini ${m.model || '3.8 Flash'} • Portfolio Grounded`
-                            : m.engine === 'groq_llama_3.3_70b'
-                            ? 'Groq Llama 3.3 • Portfolio Grounded'
-                            : 'Portfolio Knowledge Engine'}
+                          {m.engine === 'grounded_portfolio_engine'
+                            ? 'Portfolio Knowledge Base'
+                            : 'Portfolio RAG • Grounded LLM'}
                         </span>
                       </div>
                     )}
@@ -354,7 +352,7 @@ You can ask about his software projects, computer engineering background at **IO
             {/* Live Tool Execution Status */}
             {activeTool && (
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-[#14181F] border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-[11px] font-mono w-fit">
-                <svg className="w-3 h-3 animate-spin text-emerald-600 dark:text-emerald-400" fill="none" viewBox="0 0 24 24">
+                <svg className="w-3 h-3 animate-spin text-[#065F46] dark:text-[#34D399]" fill="none" viewBox="0 0 24 24">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
@@ -365,7 +363,7 @@ You can ask about his software projects, computer engineering background at **IO
             {/* Subtle typing indicator while streaming */}
             {isStreaming && !activeTool && (
               <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-[#14181F] text-slate-500 dark:text-slate-400 text-[11px] w-fit">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400 animate-pulse" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#065F46] dark:bg-[#34D399] animate-pulse" />
                 <span className="text-[10px] font-mono">Generating response...</span>
               </div>
             )}
@@ -385,7 +383,7 @@ You can ask about his software projects, computer engineering background at **IO
                     key={pIdx}
                     type="button"
                     onClick={() => handleSend(prompt)}
-                    className="px-2.5 py-1 rounded-md bg-white dark:bg-[#14181F] hover:bg-slate-100 dark:hover:bg-[#181D24] border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-emerald-700 dark:hover:text-emerald-400 text-[11px] text-left transition-colors truncate max-w-full"
+                    className="px-2.5 py-1 rounded-md bg-white dark:bg-[#14181F] hover:bg-slate-100 dark:hover:bg-[#181D24] border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/40 dark:hover:border-[#34D399]/40 text-[11px] text-left transition-colors truncate max-w-full"
                   >
                     {prompt}
                   </button>
@@ -410,7 +408,7 @@ You can ask about his software projects, computer engineering background at **IO
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask about Dipesh's projects, skills, education..."
                 disabled={isStreaming}
-                className="flex-1 px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#14181F] border border-slate-300 dark:border-[#222933] text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 text-xs focus:outline-none focus:ring-2 focus:ring-emerald-600/20 dark:focus:ring-emerald-400/20 focus:border-emerald-600 dark:focus:border-emerald-400 transition-all"
+                className="flex-1 px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#14181F] border border-slate-300 dark:border-[#222933] text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 text-xs focus:outline-none focus:ring-2 focus:ring-[#065F46]/20 dark:focus:ring-[#34D399]/20 focus:border-[#065F46] dark:focus:border-[#34D399] transition-all"
               />
 
               {isStreaming ? (
@@ -427,7 +425,7 @@ You can ask about his software projects, computer engineering background at **IO
                   type="submit"
                   disabled={!input.trim()}
                   aria-label="Send message"
-                  className="p-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 disabled:opacity-40 disabled:hover:bg-emerald-600 text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-[#090B0E] transition-colors shrink-0"
+                  className="p-2.5 rounded-xl bg-[#065F46] hover:bg-[#044E39] disabled:opacity-40 disabled:hover:bg-[#065F46] text-white transition-colors shrink-0"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -436,7 +434,7 @@ You can ask about his software projects, computer engineering background at **IO
               )}
             </form>
             <div className="text-[10px] text-center text-slate-400 dark:text-slate-500 mt-1.5 font-mono">
-              Grounded in verified portfolio records & public repositories.
+              Verified Portfolio RAG • Grounded LLM Reasoning
             </div>
           </div>
         </div>
