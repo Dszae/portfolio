@@ -1389,3 +1389,41 @@ button:hover .smooth-img-zoom {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Continuous Top Rolling Announcement Marquee */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-ticker {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: marquee-scroll 28s linear infinite;
+  will-change: transform;
+}
+
+.animate-ticker-slow {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: marquee-scroll 45s linear infinite;
+  will-change: transform;
+}
+
+.animate-ticker-fast {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: marquee-scroll 16s linear infinite;
+  will-change: transform;
+}
+
+.animate-ticker:hover,
+.animate-ticker-slow:hover,
+.animate-ticker-fast:hover {
+  animation-play-state: paused;
+}
+

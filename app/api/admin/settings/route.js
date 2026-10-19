@@ -47,6 +47,7 @@ export async function PUT(request) {
     revalidatePath('/blog');
     revalidatePath('/certificates');
     revalidatePath('/gallery');
+    revalidatePath('/api/site-features');
     
     return NextResponse.json({ success: true, data });
   } catch (err) {
