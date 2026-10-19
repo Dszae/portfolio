@@ -19,7 +19,7 @@ export async function POST(req) {
     }
 
     const body = await req.json();
-    const { title, alt, img, category, type, video_url } = body;
+    const { title, alt, img, category } = body;
 
     if (!title || !img) {
       return NextResponse.json({ error: 'Title and image are required' }, { status: 400 });
@@ -32,8 +32,6 @@ export async function POST(req) {
         alt: alt || title,
         img,
         category: category || 'Campus',
-        type: type || 'image',
-        video_url: video_url || null,
       }])
       .select()
       .single();
