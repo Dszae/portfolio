@@ -4,13 +4,12 @@ import React from 'react';
 import Link from 'next/link';
 
 /**
- * Lightweight, safe markdown renderer tailored for chat messages.
- * Handles headers, bold, italics, code blocks, bullet lists, and links.
+ * Clean, accessible markdown renderer for chat messages.
+ * Automatically adapts between light and dark modes with high contrast.
  */
 export default function MarkdownRenderer({ content }) {
   if (!content) return null;
 
-  // Split lines
   const lines = content.split('\n');
   const elements = [];
   let inCodeBlock = false;
@@ -23,7 +22,10 @@ export default function MarkdownRenderer({ content }) {
     if (line.trim().startsWith('```')) {
       if (inCodeBlock) {
         elements.push(
-          <pre key={`code-${i}`} className="my-2 p-3 rounded-xl bg-slate-950/80 border border-slate-800 text-[11px] font-mono text-emerald-300 overflow-x-auto leading-relaxed">
+          <pre
+            key={`code-${i}`}
+            className="my-2 p-3 rounded-xl bg-slate-100 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 text-[11px] font-mono text-slate-800 dark:text-emerald-300 overflow-x-auto leading-relaxed"
+          >
             <code>{codeBuffer.join('\n')}</code>
           </pre>
         );
@@ -42,14 +44,16 @@ export default function MarkdownRenderer({ content }) {
 
     // Horizontal Rule
     if (line.trim() === '---' || line.trim() === '***') {
-      elements.push(<hr key={`hr-${i}`} className="my-3 border-slate-800 dark:border-slate-800" />);
+      elements.push(
+        <hr key={`hr-${i}`} className="my-3 border-slate-200 dark:border-slate-800" />
+      );
       continue;
     }
 
     // Headings
     if (line.startsWith('### ')) {
       elements.push(
-        <h4 key={`h4-${i}`} className="font-bold text-sm text-white mt-3 mb-1">
+        <h4 key={`h4-${i}`} className="font-semibold text-sm text-slate-900 dark:text-slate-100 mt-3 mb-1 tracking-tight">
           {renderFormattedText(line.replace('### ', ''))}
         </h4>
       );
@@ -57,7 +61,7 @@ export default function MarkdownRenderer({ content }) {
     }
     if (line.startsWith('## ')) {
       elements.push(
-        <h3 key={`h3-${i}`} className="font-bold text-base text-white mt-3.5 mb-1.5">
+        <h3 key={`h3-${i}`} className="font-semibold text-base text-slate-900 dark:text-slate-100 mt-3.5 mb-1.5 tracking-tight">
           {renderFormattedText(line.replace('## ', ''))}
         </h3>
       );
@@ -68,7 +72,7 @@ export default function MarkdownRenderer({ content }) {
     if (line.trim().startsWith('- ') || line.trim().startsWith('* ')) {
       const itemText = line.trim().replace(/^[-*]\s+/, '');
       elements.push(
-        <li key={`li-${i}`} className="ml-4 list-disc text-slate-300 my-0.5 leading-relaxed">
+        <li key={`li-${i}`} className="ml-4 list-disc text-slate-700 dark:text-slate-300 my-0.5 leading-relaxed">
           {renderFormattedText(itemText)}
         </li>
       );
@@ -83,7 +87,7 @@ export default function MarkdownRenderer({ content }) {
 
     // Standard paragraph
     elements.push(
-      <p key={`p-${i}`} className="my-1 text-slate-200 leading-relaxed text-xs sm:text-[13px]">
+      <p key={`p-${i}`} className="my-1 text-slate-700 dark:text-slate-300 leading-relaxed text-xs sm:text-[13px]">
         {renderFormattedText(line)}
       </p>
     );
@@ -91,7 +95,10 @@ export default function MarkdownRenderer({ content }) {
 
   if (inCodeBlock && codeBuffer.length > 0) {
     elements.push(
-      <pre key="code-dangling" className="my-2 p-3 rounded-xl bg-slate-950/80 border border-slate-800 text-[11px] font-mono text-emerald-300 overflow-x-auto">
+      <pre
+        key="code-dangling"
+        className="my-2 p-3 rounded-xl bg-slate-100 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 text-[11px] font-mono text-slate-800 dark:text-emerald-300 overflow-x-auto"
+      >
         <code>{codeBuffer.join('\n')}</code>
       </pre>
     );
@@ -106,7 +113,6 @@ export default function MarkdownRenderer({ content }) {
 function renderFormattedText(text) {
   if (!text) return '';
 
-  // Match markdown links [text](url)
   const parts = [];
   const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
   let lastIndex = 0;
@@ -126,7 +132,7 @@ function renderFormattedText(text) {
         <Link
           key={`lnk-${match.index}`}
           href={cleanPath}
-          className="text-emerald-400 hover:text-emerald-300 font-medium underline underline-offset-2 transition-colors inline-flex items-center gap-0.5"
+          className="text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-300 font-medium underline underline-offset-2 decoration-emerald-500/40 hover:decoration-emerald-500 transition-colors inline-flex items-center gap-0.5"
         >
           {label}
         </Link>
@@ -138,10 +144,12 @@ function renderFormattedText(text) {
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-emerald-400 hover:text-emerald-300 font-medium underline underline-offset-2 transition-colors inline-flex items-center gap-0.5"
+          className="text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-300 font-medium underline underline-offset-2 decoration-emerald-500/40 hover:decoration-emerald-500 transition-colors inline-flex items-center gap-0.5"
         >
           <span>{label}</span>
-          <span className="text-[10px] opacity-75">↗</span>
+          <svg className="w-3 h-3 opacity-60 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
         </a>
       );
     }
@@ -156,26 +164,28 @@ function renderFormattedText(text) {
 }
 
 function renderInlineStyles(str, baseKey) {
-  // Replace inline `code`, **bold**, *italic*
   const tokens = str.split(/(`[^`]+`|\*\*[^*]+\*\*|\*[^*]+\*)/g);
   return tokens.map((tok, idx) => {
     if (tok.startsWith('`') && tok.endsWith('`') && tok.length > 2) {
       return (
-        <code key={`${baseKey}-${idx}`} className="px-1.5 py-0.5 rounded bg-slate-800 text-emerald-300 font-mono text-[11px]">
+        <code
+          key={`${baseKey}-${idx}`}
+          className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 text-emerald-800 dark:text-emerald-300 font-mono text-[11px]"
+        >
           {tok.slice(1, -1)}
         </code>
       );
     }
     if (tok.startsWith('**') && tok.endsWith('**') && tok.length > 4) {
       return (
-        <strong key={`${baseKey}-${idx}`} className="font-bold text-white">
+        <strong key={`${baseKey}-${idx}`} className="font-semibold text-slate-900 dark:text-slate-100">
           {tok.slice(2, -2)}
         </strong>
       );
     }
     if (tok.startsWith('*') && tok.endsWith('*') && tok.length > 2) {
       return (
-        <em key={`${baseKey}-${idx}`} className="italic text-slate-300">
+        <em key={`${baseKey}-${idx}`} className="italic text-slate-600 dark:text-slate-300">
           {tok.slice(1, -1)}
         </em>
       );
@@ -183,4 +193,3 @@ function renderInlineStyles(str, baseKey) {
     return tok;
   });
 }
-

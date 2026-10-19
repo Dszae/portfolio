@@ -7,9 +7,9 @@ const SUGGESTED_PROMPTS = [
   "What is Git Visualizer and how does it work?",
   "Show me projects built with Next.js or React",
   "What are Dipesh's technical skills & tools?",
+  "Tell me about his video editing & motion graphics work",
   "Where can I find live project demos and GitHub repos?",
-  "Tell me about his video editing & motion graphics experience",
-  "How can I contact or hire Dipesh?"
+  "How can I contact Dipesh?"
 ];
 
 export default function AiAssistant() {
@@ -17,22 +17,20 @@ export default function AiAssistant() {
   const [messages, setMessages] = useState([
     {
       role: 'assistant',
-      content: `Hello! I'm the AI assistant for **Dipesh Sapkota's** portfolio. 
+      content: `Hello. I am the portfolio assistant for **Dipesh Sapkota**.
 
-Ask me anything about his software engineering projects, computer engineering background at **IOE Thapathali Campus**, video editing and motion graphics, or how to get in touch!`,
+You can ask about his software projects, computer engineering background at **IOE Thapathali Campus**, video editing and motion graphics, or how to get in touch.`,
       tools: []
     }
   ]);
   const [input, setInput] = useState('');
   const [isStreaming, setIsStreaming] = useState(false);
   const [activeTool, setActiveTool] = useState(null);
-  const [copiedIndex, setCopiedIndex] = useState(null);
 
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
   const abortControllerRef = useRef(null);
 
-  // Auto-scroll to bottom of messages
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -44,7 +42,6 @@ Ask me anything about his software engineering projects, computer engineering ba
     }
   }, [isOpen, messages, activeTool]);
 
-  // Handle ESC key to close
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape' && isOpen) {
@@ -68,7 +65,6 @@ Ask me anything about his software engineering projects, computer engineering ba
     setIsStreaming(true);
     setActiveTool(null);
 
-    // Placeholder for assistant stream
     const assistantIndex = newMessages.length;
     setMessages(prev => [
       ...prev,
@@ -88,7 +84,7 @@ Ask me anything about his software engineering projects, computer engineering ba
       });
 
       if (!res.ok) {
-        let errMessage = 'Failed to connect to assistant';
+        let errMessage = 'Unable to complete request';
         try {
           const errData = await res.json();
           errMessage = errData.error || errMessage;
@@ -97,7 +93,7 @@ Ask me anything about his software engineering projects, computer engineering ba
           const updated = [...prev];
           updated[assistantIndex] = {
             role: 'assistant',
-            content: `⚠️ **Error**: ${errMessage}. Please try again shortly.`,
+            content: `**Error**: ${errMessage}. Please try again shortly.`,
             tools: []
           };
           return updated;
@@ -131,7 +127,7 @@ Ask me anything about his software engineering projects, computer engineering ba
                 const data = JSON.parse(nextLine.replace('data: ', ''));
 
                 if (eventType === 'tool_call') {
-                  setActiveTool(data.label || `Calling ${data.name}...`);
+                  setActiveTool(data.label || `Querying ${data.name}...`);
                   setMessages(prev => {
                     const updated = [...prev];
                     const currentTools = updated[assistantIndex]?.tools || [];
@@ -142,7 +138,6 @@ Ask me anything about his software engineering projects, computer engineering ba
                     return updated;
                   });
                 } else if (eventType === 'tool_result') {
-                  // Tool finished
                   setActiveTool(null);
                 } else if (eventType === 'delta') {
                   setMessages(prev => {
@@ -180,7 +175,7 @@ Ask me anything about his software engineering projects, computer engineering ba
                   });
                 }
               } catch (err) {
-                console.error('SSE JSON parse error:', err);
+                console.error('SSE parse error:', err);
               }
             }
           }
@@ -190,12 +185,11 @@ Ask me anything about his software engineering projects, computer engineering ba
       if (err.name !== 'AbortError') {
         setMessages(prev => {
           const updated = [...prev];
+          const current = updated[assistantIndex]?.content || '';
           updated[assistantIndex] = {
             role: 'assistant',
-            content: updated[assistantIndex]?.content 
-              ? updated[assistantIndex].content + `\n\n*(Connection interrupted)*`
-              : `⚠️ **Connection error**: Could not reach assistant server.`,
-            tools: []
+            content: current ? current + '\n\n*(Connection interrupted)*' : 'Connection interrupted. Please try again.',
+            tools: updated[assistantIndex]?.tools || []
           };
           return updated;
         });
@@ -225,12 +219,6 @@ Ask me anything about his software engineering projects, computer engineering ba
     ]);
   };
 
-  const copyToClipboard = (text, index) => {
-    navigator.clipboard.writeText(text);
-    setCopiedIndex(index);
-    setTimeout(() => setCopiedIndex(null), 2000);
-  };
-
   return (
     <>
       {/* 1. FLOATING LAUNCHER BUTTON */}
@@ -239,87 +227,105 @@ Ask me anything about his software engineering projects, computer engineering ba
           type="button"
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
-          aria-label={isOpen ? "Close AI Assistant" : "Open Dipesh's Portfolio AI Assistant"}
-          className="group relative flex items-center gap-2.5 px-4 py-3 rounded-full bg-slate-900 border border-emerald-500/40 text-white shadow-2xl hover:border-emerald-400 hover:shadow-emerald-500/20 hover:scale-[1.03] active:scale-[0.98] transition-all duration-200"
+          aria-label={isOpen ? "Close portfolio assistant" : "Open portfolio assistant"}
+          className="group relative flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-white/95 dark:bg-[#0F1216]/95 border border-slate-200/90 dark:border-[#222933] text-slate-800 dark:text-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.4)] hover:border-emerald-600/50 dark:hover:border-emerald-400/50 hover:shadow-emerald-600/10 transition-all duration-200 active:scale-[0.98]"
         >
-          {/* Animated pulsing emerald ring */}
-          <span className="relative flex h-3 w-3">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+          {/* Status dot */}
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-600 dark:bg-emerald-400 opacity-60"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600 dark:bg-emerald-400"></span>
           </span>
 
-          <svg className="w-5 h-5 text-emerald-400 transition-transform group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+          {/* Clean minimal message icon */}
+          <svg
+            className="w-4 h-4 text-emerald-700 dark:text-emerald-400 transition-transform duration-200 group-hover:scale-105"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+            />
           </svg>
 
-          <span className="font-semibold text-xs sm:text-sm tracking-tight text-slate-100">
-            {isOpen ? 'Close Assistant' : 'Ask Portfolio AI'}
+          <span className="font-medium text-xs tracking-tight text-slate-800 dark:text-slate-200">
+            {isOpen ? 'Close' : 'Ask Assistant'}
           </span>
         </button>
       </div>
 
       {/* 2. CHAT DRAWER / PANEL */}
       {isOpen && (
-        <div className="fixed bottom-20 right-4 sm:right-6 z-50 w-[calc(100vw-32px)] sm:w-[460px] h-[580px] max-h-[85vh] flex flex-col rounded-2xl bg-[#090D16]/95 backdrop-blur-xl border border-slate-700/80 shadow-2xl overflow-hidden animate-fade-in font-sans">
+        <div className="fixed bottom-20 right-4 sm:right-6 z-50 w-[calc(100vw-32px)] sm:w-[440px] h-[580px] max-h-[85vh] flex flex-col rounded-2xl bg-white/98 dark:bg-[#0F1216]/98 backdrop-blur-xl border border-slate-200/90 dark:border-[#222933] shadow-[0_20px_50px_rgba(15,23,42,0.12)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden font-sans">
           
           {/* Header */}
-          <div className="flex items-center justify-between px-4 py-3 border-b border-slate-800 bg-[#070A0F]/90">
+          <div className="flex items-center justify-between px-4 py-3 border-b border-slate-200/80 dark:border-[#222933] bg-slate-50/80 dark:bg-[#090B0E]/80">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-full bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold text-xs">
+              <div className="w-7 h-7 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200/70 dark:border-emerald-800/40 flex items-center justify-center text-emerald-800 dark:text-emerald-300 font-semibold text-xs tracking-tight">
                 DS
               </div>
               <div>
-                <h3 className="text-xs font-bold text-white flex items-center gap-1.5">
-                  <span>Dipesh Portfolio AI</span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <h3 className="text-xs font-semibold text-slate-900 dark:text-slate-100 flex items-center gap-1.5">
+                  <span>Dipesh Portfolio Assistant</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400" />
                 </h3>
-                <p className="text-[10px] text-slate-400 font-mono">Grounded in verified portfolio & code</p>
+                <p className="text-[10px] text-slate-500 dark:text-slate-400">Verified portfolio knowledge & work</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-1">
               <button
                 type="button"
                 onClick={handleClear}
-                title="Clear conversation"
-                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800 transition-colors text-xs"
+                title="Reset conversation"
+                aria-label="Reset conversation"
+                className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-200/60 dark:hover:bg-[#181D24] transition-colors"
               >
-                ↻ Clear
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
               </button>
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
-                title="Close chat"
-                className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors text-sm font-bold"
+                title="Close assistant"
+                aria-label="Close assistant"
+                className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-200/60 dark:hover:bg-[#181D24] transition-colors"
               >
-                ✕
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
               </button>
             </div>
           </div>
 
           {/* Conversation Stream */}
-          <div className="flex-1 p-4 overflow-y-auto space-y-4 text-xs leading-relaxed">
+          <div className="flex-1 p-4 overflow-y-auto space-y-3.5 text-xs leading-relaxed">
             {messages.map((m, idx) => (
               <div key={idx} className={`flex flex-col ${m.role === 'user' ? 'items-end' : 'items-start'}`}>
                 
                 {/* User Message */}
                 {m.role === 'user' ? (
-                  <div className="max-w-[85%] px-3.5 py-2.5 rounded-2xl rounded-br-none bg-emerald-500 text-slate-950 font-medium text-xs shadow-md">
+                  <div className="max-w-[85%] px-3.5 py-2.5 rounded-2xl rounded-br-sm bg-emerald-600 text-white dark:bg-emerald-500 dark:text-[#090B0E] font-medium text-xs shadow-sm">
                     {m.content}
                   </div>
                 ) : (
                   /* Assistant Message */
-                  <div className="max-w-[95%] w-full bg-[#0E131F] border border-slate-800/90 rounded-2xl rounded-tl-none p-3.5 space-y-2 shadow-sm text-slate-200">
+                  <div className="max-w-[95%] w-full bg-slate-50 dark:bg-[#14181F] border border-slate-200/80 dark:border-[#222933] rounded-2xl rounded-tl-sm p-3.5 space-y-2 text-slate-800 dark:text-slate-200 shadow-sm">
                     
                     {/* Tool Badges executed for this message */}
                     {m.tools && m.tools.length > 0 && (
-                      <div className="flex flex-wrap gap-1.5 pb-1 border-b border-slate-800/60 mb-2">
+                      <div className="flex flex-wrap gap-1.5 pb-1 border-b border-slate-200/60 dark:border-slate-800/60 mb-2">
                         {m.tools.map((t, tIdx) => (
                           <span
                             key={tIdx}
-                            className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-800/80 text-emerald-400 text-[10px] font-mono border border-emerald-500/20"
+                            className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-white dark:bg-[#090B0E] text-slate-600 dark:text-slate-400 text-[10px] font-mono border border-slate-200/80 dark:border-slate-800"
                           >
-                            <span className="text-[9px]">⚡</span>
+                            <span className="w-1 h-1 rounded-full bg-emerald-600 dark:bg-emerald-400" />
                             <span>{t.label || t.name}</span>
                           </span>
                         ))}
@@ -328,36 +334,16 @@ Ask me anything about his software engineering projects, computer engineering ba
 
                     <MarkdownRenderer content={m.content} />
 
-                    {/* Message Footer: Engine Indicator & Copy */}
+                    {/* Subtle Model & Grounding Tag (No copy button, no emoji) */}
                     {m.content && (
-                      <div className="pt-2 flex items-center justify-between border-t border-slate-800/40 mt-2">
-                        <span className="text-[10px] font-mono text-emerald-400/80 flex items-center gap-1">
-                          <span className="text-emerald-400">⚡</span>
-                          <span>
-                            {m.engine === 'google_gemini_flash' || m.model
-                              ? `Gemini Flash (${m.model || 'gemini-3.8-flash'})`
-                              : m.engine === 'groq_llama_3.3_70b'
-                              ? `Groq Llama 3.3`
-                              : 'Portfolio Knowledge Engine'}
-                          </span>
+                      <div className="pt-2 border-t border-slate-200/60 dark:border-slate-800/60 flex items-center justify-between text-[10px] text-slate-400 dark:text-slate-500 font-mono tracking-tight">
+                        <span>
+                          {m.engine === 'google_gemini_flash' || m.model
+                            ? `Gemini ${m.model || '3.8 Flash'} • Portfolio Grounded`
+                            : m.engine === 'groq_llama_3.3_70b'
+                            ? 'Groq Llama 3.3 • Portfolio Grounded'
+                            : 'Portfolio Knowledge Engine'}
                         </span>
-                        <button
-                          type="button"
-                          onClick={() => copyToClipboard(m.content, idx)}
-                          className="text-[10px] font-mono text-slate-500 hover:text-emerald-400 transition-colors flex items-center gap-1"
-                        >
-                          {copiedIndex === idx ? (
-                            <>
-                              <span className="text-emerald-400">✓</span>
-                              <span>Copied!</span>
-                            </>
-                          ) : (
-                            <>
-                              <span>📋</span>
-                              <span>Copy</span>
-                            </>
-                          )}
-                        </button>
                       </div>
                     )}
                   </div>
@@ -367,28 +353,31 @@ Ask me anything about his software engineering projects, computer engineering ba
 
             {/* Live Tool Execution Status */}
             {activeTool && (
-              <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-900 border border-emerald-500/30 text-emerald-400 text-[11px] font-mono animate-pulse w-fit">
-                <span className="animate-spin text-xs">⚙</span>
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-[#14181F] border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-[11px] font-mono w-fit">
+                <svg className="w-3 h-3 animate-spin text-emerald-600 dark:text-emerald-400" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
                 <span>{activeTool}</span>
               </div>
             )}
 
-            {/* Blinking cursor while streaming without tool */}
+            {/* Subtle typing indicator while streaming */}
             {isStreaming && !activeTool && (
-              <div className="text-emerald-400 font-mono text-xs animate-pulse flex items-center gap-1">
-                <span className="w-1.5 h-3 bg-emerald-400 inline-block" />
-                <span className="text-[10px] text-slate-400">Generating response...</span>
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-[#14181F] text-slate-500 dark:text-slate-400 text-[11px] w-fit">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400 animate-pulse" />
+                <span className="text-[10px] font-mono">Generating response...</span>
               </div>
             )}
 
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Suggested Prompts (when only 1 or 2 messages exist) */}
+          {/* Suggested Prompts */}
           {messages.length <= 2 && !isStreaming && (
-            <div className="px-4 py-2 border-t border-slate-800/60 bg-[#070A0F]/60">
-              <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block mb-1.5">
-                Suggested exploration:
+            <div className="px-4 py-2.5 border-t border-slate-200/80 dark:border-[#222933] bg-slate-50/60 dark:bg-[#090B0E]/60">
+              <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider block mb-1.5 font-medium">
+                Suggested exploration
               </span>
               <div className="flex flex-wrap gap-1.5 max-h-24 overflow-y-auto">
                 {SUGGESTED_PROMPTS.map((prompt, pIdx) => (
@@ -396,7 +385,7 @@ Ask me anything about his software engineering projects, computer engineering ba
                     key={pIdx}
                     type="button"
                     onClick={() => handleSend(prompt)}
-                    className="px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700/80 text-slate-300 hover:text-emerald-300 text-[11px] text-left transition-colors truncate max-w-full"
+                    className="px-2.5 py-1 rounded-md bg-white dark:bg-[#14181F] hover:bg-slate-100 dark:hover:bg-[#181D24] border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-emerald-700 dark:hover:text-emerald-400 text-[11px] text-left transition-colors truncate max-w-full"
                   >
                     {prompt}
                   </button>
@@ -406,7 +395,7 @@ Ask me anything about his software engineering projects, computer engineering ba
           )}
 
           {/* Footer Input Form */}
-          <div className="p-3 border-t border-slate-800 bg-[#070A0F]">
+          <div className="p-3 border-t border-slate-200/80 dark:border-[#222933] bg-slate-50/80 dark:bg-[#090B0E]/80">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -421,30 +410,33 @@ Ask me anything about his software engineering projects, computer engineering ba
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask about Dipesh's projects, skills, education..."
                 disabled={isStreaming}
-                className="flex-1 px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-100 placeholder:text-slate-500 text-xs focus:outline-none focus:border-emerald-500 transition-colors"
+                className="flex-1 px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#14181F] border border-slate-300 dark:border-[#222933] text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 text-xs focus:outline-none focus:ring-2 focus:ring-emerald-600/20 dark:focus:ring-emerald-400/20 focus:border-emerald-600 dark:focus:border-emerald-400 transition-all"
               />
 
               {isStreaming ? (
                 <button
                   type="button"
                   onClick={handleStop}
-                  className="px-3.5 py-2.5 rounded-xl bg-rose-500 hover:bg-rose-400 text-white font-bold text-xs transition-colors shrink-0 flex items-center gap-1"
+                  className="px-3.5 py-2.5 rounded-xl bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-medium text-xs transition-colors shrink-0 flex items-center gap-1.5"
                 >
-                  <span>⏹</span>
+                  <span className="w-2 h-2 rounded-sm bg-slate-700 dark:bg-slate-300" />
                   <span>Stop</span>
                 </button>
               ) : (
                 <button
                   type="submit"
                   disabled={!input.trim()}
-                  className="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 disabled:opacity-40 disabled:hover:bg-emerald-500 text-slate-950 font-bold text-xs transition-colors shrink-0"
+                  aria-label="Send message"
+                  className="p-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 disabled:opacity-40 disabled:hover:bg-emerald-600 text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-[#090B0E] transition-colors shrink-0"
                 >
-                  Send
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
                 </button>
               )}
             </form>
-            <div className="text-[10px] text-center text-slate-500 mt-1.5">
-              Grounded in verified portfolio data & GitHub public repositories.
+            <div className="text-[10px] text-center text-slate-400 dark:text-slate-500 mt-1.5 font-mono">
+              Grounded in verified portfolio records & public repositories.
             </div>
           </div>
         </div>
@@ -452,4 +444,3 @@ Ask me anything about his software engineering projects, computer engineering ba
     </>
   );
 }
-
