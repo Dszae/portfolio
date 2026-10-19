@@ -36,4 +36,10 @@ jobs:
         run: npm run lint
 
       - name: Build application
+        env:
+          SUPABASE_URL: https://tihkvcybdvvovmnvkdrx.supabase.co
+          SUPABASE_ANON_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRpaGt2Y3liZHZ2b3ZtbnZrZHJ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI0MTUyODMsImV4cCI6MjEwNzk5MTI4M30.uyorIqosjVLDQKd7H46YKY_z7BhRTKkRHfIA4NBqfiw
+          SUPABASE_SERVICE_ROLE_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRpaGt2Y3liZHZ2b3ZtbnZrZHJ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI0MTUyODMsImV4cCI6MjEwNzk5MTI4M30.uyorIqosjVLDQKd7H46YKY_z7BhRTKkRHfIA4NBqfiw
+          ADMIN_PASSWORD: DipeshAdmin2026!
+          ADMIN_SESSION_SECRET: e9a2b847c13d8f50b2f6e917d05cae1837a4c9b2e1f582736184920475184920
         run: npm run build
