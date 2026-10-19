@@ -12,10 +12,10 @@ export async function GET() {
       popup: settings.popup || { is_active: false, image_url: '' }
     }, {
       headers: {
-        'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
+        'Cache-Control': 'public, s-maxage=30, stale-while-revalidate=120',
       }
     });
-  } catch (err) {
+  } catch {
     return NextResponse.json({
       announcement: { is_active: false, message: '' },
       popup: { is_active: false, image_url: '' }

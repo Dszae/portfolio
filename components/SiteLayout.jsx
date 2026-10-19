@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import RollingAnnouncement from './RollingAnnouncement';
+import RollingAnnouncement, { DEFAULT_ANNOUNCEMENT } from './RollingAnnouncement';
 import PortfolioEntryPopup from './PortfolioEntryPopup';
 import AiAssistant from './AiAssistant/AiAssistant';
 
@@ -336,15 +336,20 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
   const [isDark, setIsDark] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasAnnouncement, setHasAnnouncement] = useState(() => {
-    if (typeof window === 'undefined') return false;
-    try {
-      const cached = localStorage.getItem('site_features_announcement');
-      if (cached) {
-        const ann = JSON.parse(cached);
+    if (typeof window !== 'undefined') {
+      if (window.__INITIAL_SITE_FEATURES__?.announcement) {
+        const ann = window.__INITIAL_SITE_FEATURES__.announcement;
         return Boolean(ann?.is_active && ann?.message);
       }
-    } catch {}
-    return false;
+      try {
+        const cached = localStorage.getItem('site_features_announcement');
+        if (cached) {
+          const ann = JSON.parse(cached);
+          return Boolean(ann?.is_active && ann?.message);
+        }
+      } catch {}
+    }
+    return Boolean(DEFAULT_ANNOUNCEMENT.is_active && DEFAULT_ANNOUNCEMENT.message);
   });
   const menuToggleRef = useRef(null);
 

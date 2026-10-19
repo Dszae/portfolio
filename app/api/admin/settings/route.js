@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
 import { supabaseAdmin } from '@/lib/supabaseAdmin';
 import { isAuthenticated } from '@/lib/adminAuth';
-import { getSiteSettings } from '@/lib/dataService';
+import { getSiteSettings, invalidateSiteSettingsCache } from '@/lib/dataService';
 
 export async function GET() {
   const isAuth = await isAuthenticated();
@@ -38,6 +38,7 @@ export async function PUT(request) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
+    invalidateSiteSettingsCache();
     revalidatePath('/');
     revalidatePath('/about');
     revalidatePath('/contact');

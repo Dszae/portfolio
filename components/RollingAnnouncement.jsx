@@ -3,25 +3,38 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
-export default function RollingAnnouncement({ onVisibilityChange }) {
-  const [feature, setFeature] = useState(() => {
-    if (typeof window === 'undefined') return null;
+export const DEFAULT_ANNOUNCEMENT = {
+  is_active: true,
+  message: "Wishing you and your loved ones a happy Dashain filled with love, laughter, and beautiful moments. शुभ विजयादशमी!",
+  link: "",
+  link_text: "",
+  speed: "normal",
+  badge: ""
+};
+
+export function getClientInitialAnnouncement() {
+  if (typeof window !== 'undefined') {
+    if (window.__INITIAL_SITE_FEATURES__?.announcement) {
+      return window.__INITIAL_SITE_FEATURES__.announcement;
+    }
     try {
       const cached = localStorage.getItem('site_features_announcement');
-      if (cached) return JSON.parse(cached);
+      if (cached) {
+        const parsed = JSON.parse(cached);
+        if (parsed && typeof parsed === 'object') return parsed;
+      }
     } catch {}
-    return null;
-  });
+  }
+  return DEFAULT_ANNOUNCEMENT;
+}
+
+export default function RollingAnnouncement({ onVisibilityChange }) {
+  const [feature, setFeature] = useState(getClientInitialAnnouncement);
   const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
-    // Notify visibility immediately if feature is already cached and active
-    if (feature?.is_active && feature?.message && onVisibilityChange) {
-      onVisibilityChange(true);
-    }
-
     let mounted = true;
-    async function loadFeatures() {
+    async function syncFeatures() {
       try {
         const res = await fetch('/api/site-features');
         if (res.ok) {
@@ -40,10 +53,10 @@ export default function RollingAnnouncement({ onVisibilityChange }) {
           }
         }
       } catch {
-        // Silently fail if endpoint is unreachable
+        // Silently keep using initial announcement
       }
     }
-    loadFeatures();
+    syncFeatures();
     return () => { mounted = false; };
   }, [onVisibilityChange]);
 

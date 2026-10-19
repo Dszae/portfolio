@@ -11,6 +11,7 @@ const manrope = Manrope({
 import JsonLdSchema from '@/components/JsonLdSchema';
 import WebMCPInitializer from '@/components/WebMCPInitializer';
 import AnalyticsTracker from '@/components/AnalyticsTracker';
+import { getSiteSettings } from '@/lib/dataService';
 import 'katex/dist/katex.min.css';
 import './globals.css';
 
@@ -141,7 +142,13 @@ export const viewport = {
   colorScheme: 'light dark',
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const settings = await getSiteSettings();
+  const safeFeaturesJson = JSON.stringify({
+    announcement: settings.announcement || null,
+    popup: settings.popup || null,
+  }).replace(/</g, '\\u003c');
+
   return (
     <html lang="en" className={`scroll-smooth ${manrope.variable}`} suppressHydrationWarning>
       <head>
@@ -161,6 +168,7 @@ export default function RootLayout({ children }) {
                   }
                 } catch (e) {}
               })();
+              window.__INITIAL_SITE_FEATURES__ = ${safeFeaturesJson};
             `,
           }}
         />

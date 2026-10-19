@@ -56,6 +56,17 @@ export async function POST(request) {
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
+    if (data?.id && logo) {
+      try {
+        const { data: existing } = await supabaseAdmin.from('site_settings').select('value').eq('id', 'experience_logos').single();
+        const map = (existing?.value && typeof existing.value === 'object') ? existing.value : {};
+        map[data.id] = logo;
+        await supabaseAdmin.from('site_settings').upsert({ id: 'experience_logos', value: map, updated_at: new Date().toISOString() });
+      } catch (saveErr) {
+        console.error('Logo map save error:', saveErr);
+      }
+    }
+
     revalidatePath('/resume');
     revalidatePath('/about');
     return NextResponse.json({ success: true, data: { ...data, logo } });
@@ -111,6 +122,21 @@ export async function PUT(request) {
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
+    if (typeof body.logo !== 'undefined' || typeof body.img !== 'undefined') {
+      try {
+        const { data: existing } = await supabaseAdmin.from('site_settings').select('value').eq('id', 'experience_logos').single();
+        const map = (existing?.value && typeof existing.value === 'object') ? existing.value : {};
+        if (logo) {
+          map[id] = logo;
+        } else {
+          delete map[id];
+        }
+        await supabaseAdmin.from('site_settings').upsert({ id: 'experience_logos', value: map, updated_at: new Date().toISOString() });
+      } catch (saveErr) {
+        console.error('Logo map update error:', saveErr);
+      }
+    }
+
     revalidatePath('/resume');
     revalidatePath('/about');
     return NextResponse.json({ success: true, data: { ...data, logo } });
@@ -130,6 +156,15 @@ export async function DELETE(request) {
 
     const { error } = await supabaseAdmin.from('experiences').delete().eq('id', id);
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+
+    try {
+      const { data: existing } = await supabaseAdmin.from('site_settings').select('value').eq('id', 'experience_logos').single();
+      if (existing?.value && typeof existing.value === 'object' && existing.value[id]) {
+        const map = { ...existing.value };
+        delete map[id];
+        await supabaseAdmin.from('site_settings').upsert({ id: 'experience_logos', value: map, updated_at: new Date().toISOString() });
+      }
+    } catch {}
 
     revalidatePath('/resume');
     revalidatePath('/about');

@@ -73,7 +73,7 @@ export default function ResumeClientView({ experiences = [], siteSettings = {}, 
                                     height="48"
                                     loading="lazy"
                                     decoding="async"
-                                    unoptimized={Boolean((exp.logo || exp.img || exp.image)?.startsWith('http'))}
+                                    unoptimized={true}
                                     className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl object-contain bg-white/5 p-1 border border-slate-200 dark:border-slate-800" 
                                     onError={(e) => { e.target.style.display = 'none'; }}
                                   />
@@ -119,7 +119,7 @@ export default function ResumeClientView({ experiences = [], siteSettings = {}, 
                                     height="48"
                                     loading="lazy"
                                     decoding="async"
-                                    unoptimized={Boolean((edu.logo || edu.img || edu.image)?.startsWith('http'))}
+                                    unoptimized={true}
                                     className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl object-contain bg-white/5 p-1 border border-slate-200 dark:border-slate-800" 
                                     onError={(e) => { e.target.style.display = 'none'; }}
                                   />

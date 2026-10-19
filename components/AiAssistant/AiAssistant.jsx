@@ -30,6 +30,8 @@ You can ask about his software projects, computer engineering background at **IO
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
   const abortControllerRef = useRef(null);
+  const chatboxRef = useRef(null);
+  const launcherButtonRef = useRef(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -41,6 +43,37 @@ You can ask about his software projects, computer engineering background at **IO
       setTimeout(() => inputRef.current?.focus(), 150);
     }
   }, [isOpen, messages, activeTool]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleClickOutside = (event) => {
+      if (
+        chatboxRef.current && 
+        !chatboxRef.current.contains(event.target) &&
+        launcherButtonRef.current && 
+        !launcherButtonRef.current.contains(event.target)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -224,6 +257,7 @@ You can ask about his software projects, computer engineering background at **IO
       {/* 1. FLOATING LAUNCHER BUTTON */}
       <div className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40">
         <button
+          ref={launcherButtonRef}
           type="button"
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
@@ -265,14 +299,17 @@ You can ask about his software projects, computer engineering background at **IO
       {/* 2. CHAT DRAWER / PANEL */}
       {isOpen && (
         <>
-          {/* Mobile backdrop to close on outside tap and prevent navbar overlap */}
+          {/* Backdrop to close on outside tap / click anywhere on screen */}
           <div
-            className="sm:hidden fixed inset-0 z-[70] bg-black/40 backdrop-blur-[2px]"
+            className="fixed inset-0 z-[70] bg-black/30 sm:bg-black/15 backdrop-blur-[1px] sm:backdrop-blur-none cursor-pointer transition-opacity"
             aria-hidden="true"
             onClick={() => setIsOpen(false)}
           />
 
-          <div className="fixed inset-x-3 bottom-3 sm:inset-x-auto sm:bottom-20 sm:right-6 z-[75] w-auto sm:w-[440px] h-[calc(100dvh-5.5rem)] sm:h-[580px] max-h-[640px] flex flex-col rounded-2xl bg-white/98 dark:bg-[#0F1216]/98 backdrop-blur-xl border border-slate-200/90 dark:border-[#222933] shadow-[0_20px_50px_rgba(15,23,42,0.18)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.6)] overflow-hidden font-sans text-slate-900 dark:text-slate-100">
+          <div 
+            ref={chatboxRef}
+            className="fixed inset-x-3 bottom-3 sm:inset-x-auto sm:bottom-20 sm:right-6 z-[75] w-auto sm:w-[440px] h-[calc(100dvh-5.5rem)] sm:h-[580px] max-h-[640px] flex flex-col rounded-2xl bg-white/98 dark:bg-[#0F1216]/98 backdrop-blur-xl border border-slate-200/90 dark:border-[#222933] shadow-[0_20px_50px_rgba(15,23,42,0.18)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.6)] overflow-hidden font-sans text-slate-900 dark:text-slate-100"
+          >
           
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3 border-b border-slate-200/80 dark:border-[#222933] bg-slate-50/80 dark:bg-[#090B0E]/80">

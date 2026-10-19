@@ -9,11 +9,15 @@ export default function PortfolioEntryPopup() {
   const pathname = usePathname();
 
   const [popup, setPopup] = useState(() => {
-    if (typeof window === 'undefined') return null;
-    try {
-      const cached = localStorage.getItem('site_features_popup');
-      if (cached) return JSON.parse(cached);
-    } catch {}
+    if (typeof window !== 'undefined') {
+      if (window.__INITIAL_SITE_FEATURES__?.popup) {
+        return window.__INITIAL_SITE_FEATURES__.popup;
+      }
+      try {
+        const cached = localStorage.getItem('site_features_popup');
+        if (cached) return JSON.parse(cached);
+      } catch {}
+    }
     return null;
   });
 
@@ -23,9 +27,12 @@ export default function PortfolioEntryPopup() {
     if (window.location.pathname !== '/') return false;
 
     try {
-      const cached = localStorage.getItem('site_features_popup');
-      if (cached) {
-        const p = JSON.parse(cached);
+      const p = window.__INITIAL_SITE_FEATURES__?.popup || (() => {
+        const cached = localStorage.getItem('site_features_popup');
+        return cached ? JSON.parse(cached) : null;
+      })();
+
+      if (p) {
         const isOncePerSession = p?.frequency === 'once_per_session' || p?.show_once_per_session === true;
         if (isOncePerSession && sessionStorage.getItem('portfolio_popup_seen') === 'true') {
           return false;
@@ -38,10 +45,7 @@ export default function PortfolioEntryPopup() {
 
   useEffect(() => {
     // Strictly only check and show on the homepage ('/')
-    if (pathname !== '/') {
-      setIsOpen(false);
-      return;
-    }
+    if (pathname !== '/') return;
 
     let mounted = true;
     async function checkPopup() {
