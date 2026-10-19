@@ -24,7 +24,8 @@ export async function GET(request) {
     if (!geminiKey) {
       return NextResponse.json({ diag: true, error: 'No GEMINI_API_KEY or GOOGLE_API_KEY found in process.env' });
     }
-    const testUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${geminiKey}`;
+    const testModel = urlObj.searchParams.get('model') || process.env.GEMINI_MODEL || 'gemini-3.8-flash';
+    const testUrl = `https://generativelanguage.googleapis.com/v1beta/models/${testModel}:generateContent?key=${geminiKey}`;
     try {
       const testRes = await fetch(testUrl, {
         method: 'POST',
@@ -34,6 +35,7 @@ export async function GET(request) {
       const data = await testRes.json();
       return NextResponse.json({
         diag: true,
+        modelTested: testModel,
         status: testRes.status,
         ok: testRes.ok,
         keyLength: geminiKey.length,
@@ -49,8 +51,8 @@ export async function GET(request) {
   const hasGemini = Boolean(geminiKey && geminiKey.length > 15);
   const hasGroq = Boolean(groqKey && groqKey.length > 10);
   
-  const engine = hasGemini ? 'google_gemini_2.0_flash' : hasGroq ? 'groq_llama_3.3_70b' : hasKey ? 'openai_tool_calling' : 'grounded_portfolio_engine';
-  const activeModel = hasGemini ? (process.env.GEMINI_MODEL || 'gemini-2.0-flash') : hasGroq ? (process.env.GROQ_MODEL || 'llama-3.3-70b-versatile') : AGENT_CONFIG.DEFAULT_MODEL;
+  const engine = hasGemini ? 'google_gemini_flash' : hasGroq ? 'groq_llama_3.3_70b' : hasKey ? 'openai_tool_calling' : 'grounded_portfolio_engine';
+  const activeModel = hasGemini ? (process.env.GEMINI_MODEL || 'gemini-3.8-flash') : hasGroq ? (process.env.GROQ_MODEL || 'llama-3.3-70b-versatile') : AGENT_CONFIG.DEFAULT_MODEL;
 
   return NextResponse.json({
     service: 'Dipesh Sapkota Portfolio AI Agent',
