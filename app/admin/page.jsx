@@ -12,7 +12,8 @@ import {
   getSiteSettings,
   getContactMessages,
   getSubscribers,
-  getActivityLogs
+  getActivityLogs,
+  getVisitorAnalytics
 } from '@/lib/dataService';
 import AdminDashboard from '@/components/AdminDashboard';
 
@@ -42,7 +43,8 @@ export default async function AdminPage() {
     settings,
     messages,
     subscribers,
-    activityLogs
+    activityLogs,
+    analytics
   ] = await Promise.all([
     getCertificates(),
     getGalleryImages(),
@@ -55,7 +57,8 @@ export default async function AdminPage() {
     getSiteSettings(),
     getContactMessages(),
     getSubscribers(),
-    getActivityLogs()
+    getActivityLogs(),
+    getVisitorAnalytics('30d')
   ]);
 
   return (
@@ -72,6 +75,7 @@ export default async function AdminPage() {
       initialMessages={messages}
       initialSubscribers={subscribers}
       initialActivityLogs={activityLogs}
+      initialAnalytics={analytics}
     />
   );
 }

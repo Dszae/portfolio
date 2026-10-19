@@ -10,6 +10,7 @@ const manrope = Manrope({
 
 import JsonLdSchema from '@/components/JsonLdSchema';
 import WebMCPInitializer from '@/components/WebMCPInitializer';
+import AnalyticsTracker from '@/components/AnalyticsTracker';
 import 'katex/dist/katex.min.css';
 import './globals.css';
 
@@ -167,6 +168,7 @@ export default function RootLayout({ children }) {
       <body className="theme-page font-sans antialiased m-0 p-0 w-full min-h-screen overflow-x-hidden">
         <JsonLdSchema />
         <WebMCPInitializer />
+        <AnalyticsTracker />
         {children}
       </body>
     </html>

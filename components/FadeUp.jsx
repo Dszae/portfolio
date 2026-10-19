@@ -1,15 +1,13 @@
 "use client";
-import { useState, useEffect } from 'react';
+import { useSyncExternalStore } from 'react';
 import { motion } from 'framer-motion';
 
+const emptySubscribe = () => () => {};
+
 export default function FadeUp({ children }) {
-  const [mounted, setMounted] = useState(false);
+  const isClient = useSyncExternalStore(emptySubscribe, () => true, () => false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
+  if (!isClient) {
     return <div>{children}</div>;
   }
 
