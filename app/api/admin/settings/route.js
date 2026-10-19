@@ -19,7 +19,7 @@ export async function PUT(request) {
     const body = await request.json();
     const { key, value } = body;
 
-    if (!key || !value) {
+    if (!key || value === undefined || value === null) {
       return NextResponse.json({ error: 'Key and value are required' }, { status: 400 });
     }
 
@@ -33,14 +33,24 @@ export async function PUT(request) {
       .select()
       .single();
 
-    if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+    if (error) {
+      console.error('Settings save error in DB:', error.message);
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
 
     revalidatePath('/');
     revalidatePath('/about');
     revalidatePath('/contact');
+    revalidatePath('/resume');
+    revalidatePath('/projects');
+    revalidatePath('/skills');
+    revalidatePath('/blog');
+    revalidatePath('/certificates');
+    revalidatePath('/gallery');
+    
     return NextResponse.json({ success: true, data });
   } catch (err) {
+    console.error('Settings route error:', err);
     return NextResponse.json({ error: err.message || 'Server error' }, { status: 500 });
   }
 }
-

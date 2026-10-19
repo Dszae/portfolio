@@ -17,24 +17,28 @@ export async function POST(request) {
 
   try {
     const body = await request.json();
-    const { title, slug, category, category_label, description, img, tech, live_url, github_url, video_url, featured, status } = body;
+    const { title, slug, category, category_label, description, img, image, tech, live_url, liveUrl, github_url, githubUrl, video_url, featured, status } = body;
 
-    if (!title || !slug || !img) {
-      return NextResponse.json({ error: 'Title, slug, and image are required.' }, { status: 400 });
+    if (!title) {
+      return NextResponse.json({ error: 'Title is required.' }, { status: 400 });
     }
+
+    const finalSlug = (slug || title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''));
+    const finalImg = img || image || '/sportivo-preview.jpg';
+    const finalTech = Array.isArray(tech) ? tech : (typeof tech === 'string' ? tech.split(',').map(s => s.trim()).filter(Boolean) : []);
 
     const { data, error } = await supabaseAdmin
       .from('projects')
       .insert([{
         title,
-        slug,
+        slug: finalSlug,
         category: category || 'dev',
-        category_label: category_label || 'Development',
+        category_label: category_label || (category === 'dev' ? 'Development' : category === 'media' ? 'Creative Media' : 'Experiments'),
         description: description || '',
-        img,
-        tech: Array.isArray(tech) ? tech : (typeof tech === 'string' ? tech.split(',').map(s => s.trim()) : []),
-        live_url: live_url || '',
-        github_url: github_url || '',
+        img: finalImg,
+        tech: finalTech,
+        live_url: live_url || liveUrl || '',
+        github_url: github_url || githubUrl || '',
         video_url: video_url || '',
         featured: Boolean(featured),
         status: status || 'published'
@@ -60,30 +64,36 @@ export async function PUT(request) {
 
   try {
     const body = await request.json();
-    const { id, title, slug, category, category_label, description, img, tech, live_url, github_url, video_url, featured, status } = body;
+    const { id, title, slug, category, category_label, description, img, image, tech, live_url, liveUrl, github_url, githubUrl, video_url, featured, status } = body;
 
-    if (!id) return NextResponse.json({ error: 'ID is required' }, { status: 400 });
+    if (!id && !slug) return NextResponse.json({ error: 'ID or slug is required' }, { status: 400 });
 
-    const { data, error } = await supabaseAdmin
-      .from('projects')
-      .update({
-        title,
-        slug,
-        category,
-        category_label,
-        description,
-        img,
-        tech: Array.isArray(tech) ? tech : (typeof tech === 'string' ? tech.split(',').map(s => s.trim()) : []),
-        live_url,
-        github_url,
-        video_url,
-        featured: Boolean(featured),
-        status,
-        updated_at: new Date().toISOString()
-      })
-      .eq('id', id)
-      .select()
-      .single();
+    const finalTech = Array.isArray(tech) ? tech : (typeof tech === 'string' ? tech.split(',').map(s => s.trim()).filter(Boolean) : []);
+
+    const updatePayload = {
+      updated_at: new Date().toISOString()
+    };
+    if (title !== undefined) updatePayload.title = title;
+    if (slug !== undefined) updatePayload.slug = slug;
+    if (category !== undefined) updatePayload.category = category;
+    if (category_label !== undefined) updatePayload.category_label = category_label;
+    if (description !== undefined) updatePayload.description = description;
+    if (img || image) updatePayload.img = img || image;
+    if (tech !== undefined) updatePayload.tech = finalTech;
+    if (live_url !== undefined || liveUrl !== undefined) updatePayload.live_url = live_url || liveUrl || '';
+    if (github_url !== undefined || githubUrl !== undefined) updatePayload.github_url = github_url || githubUrl || '';
+    if (video_url !== undefined) updatePayload.video_url = video_url;
+    if (featured !== undefined) updatePayload.featured = Boolean(featured);
+    if (status !== undefined) updatePayload.status = status;
+
+    let query = supabaseAdmin.from('projects').update(updatePayload);
+    if (id) {
+      query = query.eq('id', id);
+    } else {
+      query = query.eq('slug', slug);
+    }
+
+    const { data, error } = await query.select().single();
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
@@ -102,9 +112,17 @@ export async function DELETE(request) {
   try {
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
-    if (!id) return NextResponse.json({ error: 'ID is required' }, { status: 400 });
+    const slug = searchParams.get('slug');
+    if (!id && !slug) return NextResponse.json({ error: 'ID or slug is required' }, { status: 400 });
 
-    const { error } = await supabaseAdmin.from('projects').delete().eq('id', id);
+    let query = supabaseAdmin.from('projects').delete();
+    if (id) {
+      query = query.eq('id', id);
+    } else {
+      query = query.eq('slug', slug);
+    }
+
+    const { error } = await query;
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
     revalidatePath('/projects');
@@ -114,4 +132,3 @@ export async function DELETE(request) {
     return NextResponse.json({ error: err.message || 'Server error' }, { status: 500 });
   }
 }
-

@@ -51,6 +51,47 @@ export async function POST(req) {
   }
 }
 
+export async function PUT(req) {
+  try {
+    const auth = await isAuthenticated();
+    if (!auth) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const body = await req.json();
+    const { id, title, org, img, category, credential_url } = body;
+
+    if (!id) {
+      return NextResponse.json({ error: 'Certificate ID is required' }, { status: 400 });
+    }
+
+    const { data, error } = await supabaseAdmin
+      .from('certificates')
+      .update({
+        title,
+        org,
+        img,
+        category,
+        credential_url: credential_url || null,
+      })
+      .eq('id', id)
+      .select()
+      .single();
+
+    if (error) {
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+
+    revalidatePath('/certificates');
+    revalidatePath('/');
+    revalidatePath('/sitemap.xml');
+
+    return NextResponse.json({ success: true, data, certificate: data });
+  } catch (err) {
+    return NextResponse.json({ error: err.message || 'Failed to update certificate' }, { status: 500 });
+  }
+}
+
 export async function DELETE(req) {
   try {
     const auth = await isAuthenticated();

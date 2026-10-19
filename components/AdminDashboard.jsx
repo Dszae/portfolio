@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -13,16 +13,13 @@ export default function AdminDashboard({
   initialSkills = [],
   initialExperiences = [],
   initialSettings = {},
-  initialMessages = [],
-  initialSubscribers = [],
-  initialActivityLogs = []
+  initialMessages = []
 }) {
   const router = useRouter();
 
   // Active view state
   const [activeTab, setActiveTab] = useState('overview');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
 
   // Global Notification Banner
   const [notification, setNotification] = useState({ text: '', type: '' });
@@ -43,11 +40,11 @@ export default function AdminDashboard({
   const [mediaLoading, setMediaLoading] = useState(false);
   const [uploadingMedia, setUploadingMedia] = useState(false);
 
-  // Form states for modals/drawers
+  // Form states for modals
   const [editingItem, setEditingItem] = useState(null);
   const [editModalOpen, setEditModalOpen] = useState(false);
 
-  // Health and Link Checker state
+  // Health audit state
   const [linkCheckStatus, setLinkCheckStatus] = useState({ running: false, results: [] });
 
   const notify = (text, type = 'success') => {
@@ -113,35 +110,10 @@ export default function AdminDashboard({
         throw new Error(data.error || 'Failed to save settings');
       }
       setSettings(prev => ({ ...prev, [key]: value }));
-      notify(`${key.charAt(0).toUpperCase() + key.slice(1)} settings updated on live website!`);
+      notify(`${key.charAt(0).toUpperCase() + key.slice(1)} settings saved to live portfolio!`);
     } catch (err) {
       notify(err.message, 'error');
     }
-  };
-
-  // Run Link Health Audit Simulation
-  const runLinkCheck = () => {
-    setLinkCheckStatus({ running: true, results: [] });
-    setTimeout(() => {
-      setLinkCheckStatus({
-        running: false,
-        results: [
-          { url: 'https://www.dipeshsapkota7.com.np/', status: 200, label: 'Homepage', healthy: true },
-          { url: 'https://www.dipeshsapkota7.com.np/projects', status: 200, label: 'Projects Showcase', healthy: true },
-          { url: 'https://www.dipeshsapkota7.com.np/certificates', status: 200, label: 'Certificates Page', healthy: true },
-          { url: 'https://www.dipeshsapkota7.com.np/gallery', status: 200, label: 'Gallery Page', healthy: true },
-          { url: 'https://www.dipeshsapkota7.com.np/skills', status: 200, label: 'Skills Competencies', healthy: true },
-          { url: 'https://www.dipeshsapkota7.com.np/resume', status: 200, label: 'Resume & CV', healthy: true },
-          { url: 'https://www.dipeshsapkota7.com.np/contact', status: 200, label: 'Contact Form', healthy: true },
-          { url: 'https://www.dipeshsapkota7.com.np/sitemap.xml', status: 200, label: 'XML Sitemap', healthy: true },
-          { url: 'https://www.dipeshsapkota7.com.np/robots.txt', status: 200, label: 'Robots.txt', healthy: true },
-          { url: 'https://www.dipeshsapkota7.com.np/.well-known/llms.txt', status: 200, label: 'AI Search Manifest', healthy: true },
-          { url: 'https://sportivo.dipeshsapkota7.com.np/', status: 200, label: 'Sportivo App Subdomain', healthy: true },
-          { url: 'https://git-visualizer.dipeshsapkota7.com.np/', status: 200, label: 'Git Visualizer Subdomain', healthy: true }
-        ]
-      });
-      notify('Link health audit passed: all 12 live endpoints return HTTP 200 OK!');
-    }, 800);
   };
 
   // 1-Click JSON Backup Export
@@ -177,7 +149,7 @@ export default function AdminDashboard({
             : 'bg-emerald-500/90 text-slate-950 border border-emerald-300'
         }`}>
           <span>{notification.text}</span>
-          <button onClick={() => setNotification({ text: '', type: '' })} className="opacity-80 hover:opacity-100">✕</button>
+          <button onClick={() => setNotification({ text: '', type: '' })} className="opacity-80 hover:opacity-100 font-bold ml-2">✕</button>
         </div>
       )}
 
@@ -250,16 +222,14 @@ export default function AdminDashboard({
         </div>
       </header>
 
-      {/* Layout: Sidebar + Main Workspace */}
       <div className="flex-1 flex overflow-hidden">
-
-        {/* Sidebar Navigation */}
-        <aside className={`fixed inset-y-16 left-0 z-30 w-72 bg-[#0B0F19] border-r border-slate-800/80 flex flex-col justify-between overflow-y-auto transform transition-transform duration-200 ease-in-out lg:static lg:translate-x-0 ${
+        {/* Left Sidebar */}
+        <aside className={`fixed inset-y-0 left-0 z-30 w-64 bg-[#090D15] border-r border-slate-800/80 pt-16 lg:pt-0 transform lg:translate-x-0 transition-transform duration-200 ease-in-out lg:static ${
           mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}>
-          <div className="p-4 space-y-1">
-            <div className="px-3 py-2 text-[10px] font-mono font-bold tracking-wider text-slate-500 uppercase">
-              WEBSITE SECTIONS & CONTENT
+          <div className="p-4 space-y-1 overflow-y-auto max-h-[calc(100vh-4rem)]">
+            <div className="px-3 py-2 text-[10px] font-mono uppercase tracking-wider text-slate-500 font-semibold">
+              Site Management
             </div>
             {navItems.map((item) => {
               const isActive = activeTab === item.id;
@@ -272,57 +242,38 @@ export default function AdminDashboard({
                   }}
                   className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-medium transition-all ${
                     isActive
-                      ? 'bg-emerald-500 text-slate-950 font-bold shadow-md shadow-emerald-500/20'
-                      : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                      ? 'bg-emerald-500 text-slate-950 font-bold shadow-lg shadow-emerald-500/20'
+                      : 'text-slate-400 hover:text-slate-100 hover:bg-slate-800/50'
                   }`}
                 >
-                  <div className="flex items-center gap-2.5 truncate">
+                  <div className="flex items-center gap-3 truncate">
                     <svg className={`w-4 h-4 flex-shrink-0 ${isActive ? 'text-slate-950' : 'text-slate-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d={item.icon} />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={item.icon} />
                     </svg>
                     <span className="truncate">{item.label}</span>
                   </div>
-                  <div className="flex items-center gap-1.5 ml-2">
-                    {typeof item.count !== 'undefined' && (
-                      <span className={`px-1.5 py-0.5 rounded text-[10px] font-mono ${
-                        isActive
-                          ? 'bg-slate-950/20 text-slate-950 font-bold'
-                          : item.highlight && item.count > 0
-                            ? 'bg-rose-500 text-white font-bold animate-pulse'
-                            : 'bg-slate-800 text-slate-400'
-                      }`}>
-                        {item.count}
-                      </span>
-                    )}
-                    {item.badge && (
-                      <span className={`px-1.5 py-0.5 rounded text-[9px] font-mono uppercase ${
-                        isActive ? 'bg-slate-950/20 text-slate-950 font-bold' : 'bg-emerald-500/10 text-emerald-400'
-                      }`}>
-                        {item.badge}
-                      </span>
-                    )}
-                  </div>
+                  {item.count !== undefined && (
+                    <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-mono ${
+                      isActive ? 'bg-slate-950/20 text-slate-950' : 'bg-slate-800 text-slate-300'
+                    }`}>
+                      {item.count}
+                    </span>
+                  )}
+                  {item.badge && (
+                    <span className={`text-[9px] px-1.5 py-0.2 rounded font-mono ${
+                      isActive ? 'bg-slate-950 text-white' : 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+                    }`}>
+                      {item.badge}
+                    </span>
+                  )}
                 </button>
               );
             })}
           </div>
-
-          <div className="p-4 border-t border-slate-800/80 bg-[#080B12] text-xs space-y-1.5">
-            <div className="flex items-center justify-between text-slate-400 text-[11px]">
-              <span className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-                <span>Supabase Live DB</span>
-              </span>
-              <span className="text-emerald-400 font-mono">Connected</span>
-            </div>
-            <div className="text-[11px] text-slate-500 truncate">
-              dipeshsapkota7.com.np
-            </div>
-          </div>
         </aside>
 
-        {/* Content Container */}
-        <main className="flex-1 overflow-y-auto p-4 sm:p-8 lg:p-10 max-w-6xl mx-auto w-full space-y-8">
+        {/* Main Content Area */}
+        <main className="flex-1 overflow-y-auto p-4 sm:p-8">
 
           {/* ============================================================== */}
           {/* TAB 1: EXECUTIVE OVERVIEW */}
@@ -331,20 +282,21 @@ export default function AdminDashboard({
             <div className="space-y-6 animate-fade-in">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800">
                 <div>
-                  <h1 className="text-2xl font-bold text-white tracking-tight">Portfolio Control Center</h1>
-                  <p className="text-xs text-slate-400 mt-1">Live management dashboard for <strong className="text-slate-200">www.dipeshsapkota7.com.np</strong>.</p>
+                  <h1 className="text-2xl font-bold text-white tracking-tight">Portfolio Operations & Content Hub</h1>
+                  <p className="text-xs text-slate-400 mt-1">Manage content, media, credentials, and settings across dipeshsapkota7.com.np.</p>
                 </div>
-                <div className="flex items-center gap-2">
-                  <button onClick={handleExportBackup} className="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-2 border border-slate-700 transition-colors">
-                    <span>Export JSON Backup</span>
-                  </button>
-                  <button onClick={runLinkCheck} className="px-3.5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold transition-all shadow-md shadow-emerald-500/20">
-                    Verify Live Link Health
+                <div className="flex gap-2">
+                  <a href="https://tihkvcybdvvovmnvkdrx.supabase.co" target="_blank" rel="noreferrer" className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-emerald-400 text-xs font-mono font-semibold flex items-center gap-1.5 border border-emerald-500/20">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Supabase Live</span>
+                  </a>
+                  <button onClick={handleExportBackup} className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold">
+                    Backup JSON
                   </button>
                 </div>
               </div>
 
-              {/* Real Content Counters Matching All Sections */}
+              {/* 6 Quick Metric Cards */}
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
                 <div onClick={() => setActiveTab('projects')} className="bg-[#0E131F] border border-slate-800 p-3.5 rounded-2xl hover:border-emerald-500/40 cursor-pointer transition-all">
                   <div className="text-[11px] text-slate-400 font-medium truncate">Projects</div>
@@ -393,7 +345,7 @@ export default function AdminDashboard({
                   <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800/80 space-y-1">
                     <span className="text-slate-400 font-mono text-[10px] uppercase">Revalidation</span>
                     <h4 className="font-bold text-white text-sm">On-Demand revalidatePath</h4>
-                    <p className="text-slate-400 text-[11px]">Whenever you upload a photo or certificate, Next.js instantly purges the cache and regenerates the page.</p>
+                    <p className="text-slate-400 text-[11px]">Whenever you make an update, Next.js instantly purges the cache and regenerates the page.</p>
                   </div>
                   <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800/80 space-y-1">
                     <span className="text-slate-400 font-mono text-[10px] uppercase">Database Security</span>
@@ -440,9 +392,12 @@ export default function AdminDashboard({
                         <p className="text-[11px] text-slate-400 mt-0.5">{cert.org}</p>
                       </div>
                       <div className="pt-3 border-t border-slate-800 mt-3 flex items-center justify-between text-xs">
-                        {cert.credential_url ? (
-                          <a href={cert.credential_url} target="_blank" rel="noreferrer" className="text-emerald-400 hover:underline text-[11px]">Verify ↗</a>
-                        ) : <span className="text-slate-500 text-[11px]">Direct File</span>}
+                        <button
+                          onClick={() => { setEditingItem(cert); setEditModalOpen(true); }}
+                          className="text-emerald-400 hover:underline text-[11px]"
+                        >
+                          Edit
+                        </button>
                         <button
                           onClick={() => {
                             setConfirmModal({
@@ -464,124 +419,6 @@ export default function AdminDashboard({
                     </div>
                   </div>
                 ))}
-              </div>
-            </div>
-          )}
-
-          {/* Certificate Add Modal */}
-          {editModalOpen && activeTab === 'certificates' && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-              <div className="bg-[#0E131F] border border-slate-700 rounded-2xl max-w-lg w-full p-6 shadow-2xl">
-                <div className="flex items-center justify-between pb-3 border-b border-slate-800 mb-4">
-                  <h3 className="text-sm font-bold text-white">Add New Certificate to Live Site</h3>
-                  <button onClick={() => setEditModalOpen(false)} className="text-slate-400 hover:text-white">✕</button>
-                </div>
-                <form onSubmit={async (e) => {
-                  e.preventDefault();
-                  const res = await fetch('/api/admin/certificates', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(editingItem)
-                  });
-                  const data = await res.json();
-                  if (!res.ok) {
-                    notify(data.error || 'Failed to save certificate', 'error');
-                    return;
-                  }
-                  const added = data.data || data.certificate || editingItem;
-                  setCertificates(prev => [added, ...prev]);
-                  setEditModalOpen(false);
-                  notify('Certificate published to /certificates!');
-                }} className="space-y-4 text-xs">
-                  <div>
-                    <label className="block text-slate-400 mb-1">Certificate Title</label>
-                    <input
-                      type="text"
-                      required
-                      value={editingItem?.title || ''}
-                      onChange={(e) => setEditingItem(prev => ({ ...prev, title: e.target.value }))}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none focus:border-emerald-500"
-                      placeholder="e.g. Advanced Motion Design Masterclass"
-                    />
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-slate-400 mb-1">Issuer / Organization</label>
-                      <input
-                        type="text"
-                        required
-                        value={editingItem?.org || ''}
-                        onChange={(e) => setEditingItem(prev => ({ ...prev, org: e.target.value }))}
-                        className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
-                        placeholder="Udemy / Coursera / Harvard"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-slate-400 mb-1">Category</label>
-                      <select
-                        value={editingItem?.category || 'Design'}
-                        onChange={(e) => setEditingItem(prev => ({ ...prev, category: e.target.value }))}
-                        className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
-                      >
-                        <option value="Design">Design</option>
-                        <option value="Motion">Motion</option>
-                        <option value="Video">Video</option>
-                        <option value="Development">Development</option>
-                        <option value="Marketing">Marketing</option>
-                        <option value="Engineering">Engineering</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-slate-400 mb-1">Certificate Image</label>
-                    <div className="flex gap-2">
-                      <input
-                        type="text"
-                        required
-                        value={editingItem?.img || ''}
-                        onChange={(e) => setEditingItem(prev => ({ ...prev, img: e.target.value }))}
-                        className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
-                        placeholder="/graphic-design.webp"
-                      />
-                      <label className="px-3 py-2 bg-slate-800 hover:bg-slate-700 rounded-xl cursor-pointer text-slate-200 font-semibold flex items-center whitespace-nowrap">
-                        <span>{uploadingMedia ? 'Uploading...' : 'Upload Image'}</span>
-                        <input
-                          type="file"
-                          accept="image/*"
-                          disabled={uploadingMedia}
-                          className="hidden"
-                          onChange={async (e) => {
-                            const f = e.target.files?.[0];
-                            if (f) {
-                              try {
-                                notify('Uploading to Supabase Storage...');
-                                const url = await uploadFile(f);
-                                setEditingItem(prev => ({ ...prev, img: url }));
-                                notify('Image uploaded!');
-                              } catch (err) {
-                                notify(err.message, 'error');
-                              }
-                            }
-                          }}
-                        />
-                      </label>
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-slate-400 mb-1">Credential URL (Optional)</label>
-                    <input
-                      type="url"
-                      value={editingItem?.credential_url || ''}
-                      onChange={(e) => setEditingItem(prev => ({ ...prev, credential_url: e.target.value }))}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
-                      placeholder="https://..."
-                    />
-                  </div>
-                  <div className="flex justify-end gap-3 pt-3 border-t border-slate-800">
-                    <button type="button" onClick={() => setEditModalOpen(false)} className="px-4 py-2 rounded-xl bg-slate-800 text-slate-300">Cancel</button>
-                    <button type="submit" className="px-5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold">Publish Certificate</button>
-                  </div>
-                </form>
               </div>
             </div>
           )}
@@ -623,7 +460,12 @@ export default function AdminDashboard({
                         <p className="text-[11px] text-slate-400 mt-1 line-clamp-1">Alt: {item.alt}</p>
                       </div>
                       <div className="pt-3 border-t border-slate-800 mt-3 flex items-center justify-between text-xs">
-                        <span className="text-[10px] text-slate-500 font-mono">ID #{item.id}</span>
+                        <button
+                          onClick={() => { setEditingItem(item); setEditModalOpen(true); }}
+                          className="text-emerald-400 hover:underline text-[11px]"
+                        >
+                          Edit
+                        </button>
                         <button
                           onClick={() => {
                             setConfirmModal({
@@ -649,112 +491,6 @@ export default function AdminDashboard({
             </div>
           )}
 
-          {/* Gallery Add Modal */}
-          {editModalOpen && activeTab === 'gallery' && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-              <div className="bg-[#0E131F] border border-slate-700 rounded-2xl max-w-lg w-full p-6 shadow-2xl">
-                <div className="flex items-center justify-between pb-3 border-b border-slate-800 mb-4">
-                  <h3 className="text-sm font-bold text-white">Add Photo to Live Gallery</h3>
-                  <button onClick={() => setEditModalOpen(false)} className="text-slate-400 hover:text-white">✕</button>
-                </div>
-                <form onSubmit={async (e) => {
-                  e.preventDefault();
-                  const res = await fetch('/api/admin/gallery', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(editingItem)
-                  });
-                  const data = await res.json();
-                  if (!res.ok) {
-                    notify(data.error || 'Failed to save media', 'error');
-                    return;
-                  }
-                  const added = data.data || data.image || editingItem;
-                  setGallery(prev => [added, ...prev]);
-                  setEditModalOpen(false);
-                  notify('Photo published to /gallery!');
-                }} className="space-y-4 text-xs">
-                  <div>
-                    <label className="block text-slate-400 mb-1">Caption / Title</label>
-                    <input
-                      type="text"
-                      required
-                      value={editingItem?.title || ''}
-                      onChange={(e) => setEditingItem(prev => ({ ...prev, title: e.target.value }))}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none focus:border-emerald-500"
-                      placeholder="e.g. Participating in college cricket tournament"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-slate-400 mb-1">Image Alt Text (Crucial for Google Image SEO)</label>
-                    <input
-                      type="text"
-                      required
-                      value={editingItem?.alt || ''}
-                      onChange={(e) => setEditingItem(prev => ({ ...prev, alt: e.target.value }))}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
-                      placeholder="Students posing together outdoors with cricket bats..."
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-slate-400 mb-1">Category</label>
-                    <select
-                      value={editingItem?.category || 'Campus'}
-                      onChange={(e) => setEditingItem(prev => ({ ...prev, category: e.target.value }))}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
-                    >
-                      <option value="Sports">Sports</option>
-                      <option value="Events">Events</option>
-                      <option value="Team">Team</option>
-                      <option value="Campus">Campus</option>
-                      <option value="Work">Work</option>
-                      <option value="Field Visit">Field Visit</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-slate-400 mb-1">Image File or URL</label>
-                    <div className="flex gap-2">
-                      <input
-                        type="text"
-                        required
-                        value={editingItem?.img || ''}
-                        onChange={(e) => setEditingItem(prev => ({ ...prev, img: e.target.value }))}
-                        className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
-                        placeholder="/cricket.webp"
-                      />
-                      <label className="px-3 py-2 bg-slate-800 hover:bg-slate-700 rounded-xl cursor-pointer text-slate-200 font-semibold flex items-center whitespace-nowrap">
-                        <span>{uploadingMedia ? 'Uploading...' : 'Upload Image'}</span>
-                        <input
-                          type="file"
-                          accept="image/*"
-                          disabled={uploadingMedia}
-                          className="hidden"
-                          onChange={async (e) => {
-                            const f = e.target.files?.[0];
-                            if (f) {
-                              try {
-                                notify('Uploading to Supabase Storage...');
-                                const url = await uploadFile(f);
-                                setEditingItem(prev => ({ ...prev, img: url }));
-                                notify('Uploaded successfully!');
-                              } catch (err) {
-                                notify(err.message, 'error');
-                              }
-                            }
-                          }}
-                        />
-                      </label>
-                    </div>
-                  </div>
-                  <div className="flex justify-end gap-3 pt-3 border-t border-slate-800">
-                    <button type="button" onClick={() => setEditModalOpen(false)} className="px-4 py-2 rounded-xl bg-slate-800 text-slate-300">Cancel</button>
-                    <button type="submit" className="px-5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold">Add to Live Gallery</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          )}
-
           {/* ============================================================== */}
           {/* TAB 4: PROJECTS SHOWCASE */}
           {/* ============================================================== */}
@@ -766,7 +502,7 @@ export default function AdminDashboard({
                   <p className="text-xs text-slate-400 mt-1">Live showcase projects featured on <Link href="/projects" target="_blank" className="text-emerald-400 hover:underline">dipeshsapkota7.com.np/projects</Link>.</p>
                 </div>
                 <button
-                  onClick={() => { setEditingItem({ category: 'dev', status: 'published', featured: false, tech: [] }); setEditModalOpen(true); }}
+                  onClick={() => { setEditingItem({ category: 'dev', category_label: 'Development', status: 'published', featured: false, tech: [] }); setEditModalOpen(true); }}
                   className="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs shadow-md shadow-emerald-500/20"
                 >
                   + Add Project
@@ -803,6 +539,12 @@ export default function AdminDashboard({
                           {proj.featured ? <span className="text-emerald-400 font-bold">★ Yes</span> : 'No'}
                         </td>
                         <td className="p-4 text-right space-x-2">
+                          <button
+                            onClick={() => { setEditingItem(proj); setEditModalOpen(true); }}
+                            className="text-emerald-400 hover:text-emerald-300 px-2 py-1 rounded bg-slate-800 text-[11px]"
+                          >
+                            Edit
+                          </button>
                           {proj.live_url && (
                             <a href={proj.live_url} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white px-2 py-1 rounded bg-slate-800 text-[11px]">Demo ↗</a>
                           )}
@@ -833,7 +575,7 @@ export default function AdminDashboard({
           )}
 
           {/* ============================================================== */}
-          {/* TAB: ARTICLES & BLOG MANAGEMENT */}
+          {/* TAB 5: ARTICLES & BLOG MANAGEMENT */}
           {/* ============================================================== */}
           {activeTab === 'articles' && (
             <div className="space-y-6 animate-fade-in">
@@ -864,6 +606,12 @@ export default function AdminDashboard({
                       <div className="text-[11px] text-slate-500 font-mono">Slug: /blog/{art.slug}</div>
                     </div>
                     <div className="flex items-center gap-3">
+                      <button
+                        onClick={() => { setEditingItem(art); setEditModalOpen(true); }}
+                        className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-emerald-400 text-xs font-semibold"
+                      >
+                        Edit
+                      </button>
                       <Link
                         href="/blog"
                         target="_blank"
@@ -895,96 +643,8 @@ export default function AdminDashboard({
             </div>
           )}
 
-          {/* Article Add Modal */}
-          {editModalOpen && activeTab === 'articles' && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-              <div className="bg-[#0E131F] border border-slate-700 rounded-2xl max-w-lg w-full p-6 shadow-2xl">
-                <div className="flex items-center justify-between pb-3 border-b border-slate-800 mb-4">
-                  <h3 className="text-sm font-bold text-white">Publish New Article to /blog</h3>
-                  <button onClick={() => setEditModalOpen(false)} className="text-slate-400 hover:text-white">✕</button>
-                </div>
-                <form onSubmit={async (e) => {
-                  e.preventDefault();
-                  const res = await fetch('/api/admin/blog', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(editingItem)
-                  });
-                  const data = await res.json();
-                  if (!res.ok) {
-                    notify(data.error || 'Failed to save article', 'error');
-                    return;
-                  }
-                  const added = data.data || editingItem;
-                  setArticles(prev => [added, ...prev]);
-                  setEditModalOpen(false);
-                  notify('Article published to /blog!');
-                }} className="space-y-4 text-xs">
-                  <div>
-                    <label className="block text-slate-400 mb-1">Article Title</label>
-                    <input
-                      type="text"
-                      required
-                      value={editingItem?.title || ''}
-                      onChange={(e) => setEditingItem(prev => ({ ...prev, title: e.target.value }))}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none focus:border-emerald-500"
-                      placeholder="e.g. Building Scalable Web Apps with Next.js"
-                    />
-                  </div>
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-slate-400 mb-1">URL Slug</label>
-                      <input
-                        type="text"
-                        required
-                        value={editingItem?.slug || ''}
-                        onChange={(e) => setEditingItem(prev => ({ ...prev, slug: e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, '-') }))}
-                        className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
-                        placeholder="building-scalable-apps"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-slate-400 mb-1">Category</label>
-                      <input
-                        type="text"
-                        value={editingItem?.category || 'Engineering'}
-                        onChange={(e) => setEditingItem(prev => ({ ...prev, category: e.target.value }))}
-                        className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
-                        placeholder="Engineering / Design"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-slate-400 mb-1">Short Excerpt (Summary)</label>
-                    <textarea
-                      rows={2}
-                      value={editingItem?.excerpt || ''}
-                      onChange={(e) => setEditingItem(prev => ({ ...prev, excerpt: e.target.value }))}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
-                      placeholder="Brief overview displayed on article cards..."
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-slate-400 mb-1">Article Content (Markdown)</label>
-                    <textarea
-                      rows={5}
-                      value={editingItem?.content || ''}
-                      onChange={(e) => setEditingItem(prev => ({ ...prev, content: e.target.value }))}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
-                      placeholder="Full markdown article text..."
-                    />
-                  </div>
-                  <div className="flex justify-end gap-3 pt-3 border-t border-slate-800">
-                    <button type="button" onClick={() => setEditModalOpen(false)} className="px-4 py-2 rounded-xl bg-slate-800 text-slate-300">Cancel</button>
-                    <button type="submit" className="px-5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold">Publish Article</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          )}
-
           {/* ============================================================== */}
-          {/* TAB 5: SKILLS & TECHNICAL COMPETENCIES */}
+          {/* TAB 6: SKILLS & TECHNICAL COMPETENCIES */}
           {/* ============================================================== */}
           {activeTab === 'skills' && (
             <div className="space-y-6 animate-fade-in">
@@ -994,7 +654,7 @@ export default function AdminDashboard({
                   <p className="text-xs text-slate-400 mt-1">Manage competencies displayed on <Link href="/skills" target="_blank" className="text-emerald-400 hover:underline">dipeshsapkota7.com.np/skills</Link>.</p>
                 </div>
                 <button
-                  onClick={() => { setEditingItem({ category: 'Programming', proficiency: 90 }); setEditModalOpen(true); }}
+                  onClick={() => { setEditingItem({ category: 'Development', proficiency: 90, description: '' }); setEditModalOpen(true); }}
                   className="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs"
                 >
                   + Add Skill
@@ -1012,25 +672,36 @@ export default function AdminDashboard({
                       <div className="w-full h-1.5 rounded-full bg-slate-800 overflow-hidden">
                         <div className="h-full bg-emerald-500 rounded-full" style={{ width: `${s.proficiency}%` }} />
                       </div>
-                      <span className="text-[10px] text-slate-500 font-mono mt-1 block uppercase">{s.category}</span>
+                      <div className="flex items-center justify-between mt-1 text-[10px] text-slate-400 font-mono">
+                        <span className="uppercase text-slate-500">{s.category}</span>
+                        <span>{s.description}</span>
+                      </div>
                     </div>
-                    <button
-                      onClick={() => {
-                        setConfirmModal({
-                          open: true,
-                          title: 'Delete Skill',
-                          message: `Delete skill "${s.name}"?`,
-                          onConfirm: async () => {
-                            if (s.id) await fetch(`/api/admin/skills?id=${s.id}`, { method: 'DELETE' });
-                            setSkills(prev => prev.filter(item => item.name !== s.name));
-                            notify('Skill deleted.');
-                          }
-                        });
-                      }}
-                      className="px-2 py-1 bg-rose-500/10 text-rose-400 text-xs rounded hover:bg-rose-500/20"
-                    >
-                      ✕
-                    </button>
+                    <div className="flex items-center gap-1.5">
+                      <button
+                        onClick={() => { setEditingItem(s); setEditModalOpen(true); }}
+                        className="px-2 py-1 bg-slate-800 text-emerald-400 text-xs rounded hover:bg-slate-700 font-medium"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => {
+                          setConfirmModal({
+                            open: true,
+                            title: 'Delete Skill',
+                            message: `Delete skill "${s.name}"?`,
+                            onConfirm: async () => {
+                              if (s.id) await fetch(`/api/admin/skills?id=${s.id}`, { method: 'DELETE' });
+                              setSkills(prev => prev.filter(item => item.name !== s.name));
+                              notify('Skill deleted.');
+                            }
+                          });
+                        }}
+                        className="px-2 py-1 bg-rose-500/10 text-rose-400 text-xs rounded hover:bg-rose-500/20"
+                      >
+                        ✕
+                      </button>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -1038,7 +709,7 @@ export default function AdminDashboard({
           )}
 
           {/* ============================================================== */}
-          {/* TAB 6: EDUCATION & CAREER TIMELINE */}
+          {/* TAB 7: EDUCATION & CAREER TIMELINE */}
           {/* ============================================================== */}
           {activeTab === 'experience' && (
             <div className="space-y-6 animate-fade-in">
@@ -1047,11 +718,17 @@ export default function AdminDashboard({
                   <h1 className="text-2xl font-bold text-white">Education & Career Timeline</h1>
                   <p className="text-xs text-slate-400 mt-1">Timeline entries displayed on <Link href="/resume" target="_blank" className="text-emerald-400 hover:underline">dipeshsapkota7.com.np/resume</Link>.</p>
                 </div>
+                <button
+                  onClick={() => { setEditingItem({ type: 'experience', is_current: true }); setEditModalOpen(true); }}
+                  className="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs"
+                >
+                  + Add Timeline Entry
+                </button>
               </div>
 
               <div className="space-y-4">
                 {experiences.map((exp) => (
-                  <div key={exp.id || exp.title} className="bg-[#0E131F] border border-slate-800 p-5 rounded-2xl flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+                  <div key={exp.id || exp.title} className="bg-[#0E131F] border border-slate-800 p-5 rounded-2xl flex flex-col sm:flex-row sm:items-start justify-between gap-4 hover:border-emerald-500/40 transition-all">
                     <div>
                       <div className="flex items-center gap-2 mb-1">
                         <span className="px-2 py-0.5 rounded bg-slate-800 text-emerald-400 font-mono text-[10px] uppercase">{exp.type}</span>
@@ -1062,6 +739,31 @@ export default function AdminDashboard({
                       <p className="text-[11px] text-slate-500 font-mono mt-0.5">{exp.start_date} – {exp.end_date || 'Present'}</p>
                       <p className="text-xs text-slate-400 mt-2 max-w-2xl">{exp.description}</p>
                     </div>
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => { setEditingItem(exp); setEditModalOpen(true); }}
+                        className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-emerald-400 text-xs font-semibold"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => {
+                          setConfirmModal({
+                            open: true,
+                            title: 'Delete Timeline Entry',
+                            message: `Delete "${exp.title}"?`,
+                            onConfirm: async () => {
+                              if (exp.id) await fetch(`/api/admin/experience?id=${exp.id}`, { method: 'DELETE' });
+                              setExperiences(prev => prev.filter(e => e.id !== exp.id));
+                              notify('Timeline entry removed.');
+                            }
+                          });
+                        }}
+                        className="px-3 py-1.5 rounded-lg bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 text-xs font-medium"
+                      >
+                        Delete
+                      </button>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -1069,12 +771,12 @@ export default function AdminDashboard({
           )}
 
           {/* ============================================================== */}
-          {/* TAB 7: PROFILE & AVAILABILITY */}
+          {/* TAB 8: PROFILE & PERSONAL BRANDING */}
           {/* ============================================================== */}
           {activeTab === 'profile' && (
             <div className="space-y-6 animate-fade-in max-w-2xl">
               <div className="pb-4 border-b border-slate-800">
-                <h1 className="text-2xl font-bold text-white">Personal Profile & Availability Status</h1>
+                <h1 className="text-2xl font-bold text-white">Personal Profile & Personal Branding</h1>
                 <p className="text-xs text-slate-400 mt-1">Updates your live bio, tagline, and availability badge across the site.</p>
               </div>
 
@@ -1096,6 +798,53 @@ export default function AdminDashboard({
                     onChange={(e) => setSettings({ ...settings, profile: { ...settings.profile, tagline: e.target.value } })}
                     className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
                   />
+                </div>
+                <div>
+                  <label className="block text-slate-400 mb-1">About Headline</label>
+                  <input
+                    type="text"
+                    value={settings.profile?.headline || 'Bridging Logic and Visual Execution'}
+                    onChange={(e) => setSettings({ ...settings, profile: { ...settings.profile, headline: e.target.value } })}
+                    className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-slate-400 mb-1">Primary Bio</label>
+                  <textarea
+                    rows={4}
+                    value={settings.profile?.bio || ''}
+                    onChange={(e) => setSettings({ ...settings, profile: { ...settings.profile, bio: e.target.value } })}
+                    className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none leading-relaxed"
+                  />
+                </div>
+                <div>
+                  <label className="block text-slate-400 mb-1">Secondary Bio (Creative & Engineering Convergence)</label>
+                  <textarea
+                    rows={3}
+                    value={settings.profile?.secondary_bio || ''}
+                    onChange={(e) => setSettings({ ...settings, profile: { ...settings.profile, secondary_bio: e.target.value } })}
+                    className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none leading-relaxed"
+                  />
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-slate-400 mb-1">Years Experience Badge</label>
+                    <input
+                      type="text"
+                      value={settings.profile?.years_experience || '4+'}
+                      onChange={(e) => setSettings({ ...settings, profile: { ...settings.profile, years_experience: e.target.value } })}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-bold"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-slate-400 mb-1">Global Clients Badge</label>
+                    <input
+                      type="text"
+                      value={settings.profile?.clients_count || '50+'}
+                      onChange={(e) => setSettings({ ...settings, profile: { ...settings.profile, clients_count: e.target.value } })}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-bold"
+                    />
+                  </div>
                 </div>
                 <div>
                   <label className="block text-slate-400 mb-1">Professional Availability Status</label>
@@ -1121,7 +870,7 @@ export default function AdminDashboard({
                   <div className="flex gap-2">
                     <input
                       type="text"
-                      value={settings.profile?.resume_url || '/Dipesh_Sapkota_Resume.pdf'}
+                      value={settings.profile?.resume_url || '/my_cv.pdf'}
                       onChange={(e) => setSettings({ ...settings, profile: { ...settings.profile, resume_url: e.target.value } })}
                       className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
                     />
@@ -1163,7 +912,7 @@ export default function AdminDashboard({
           )}
 
           {/* ============================================================== */}
-          {/* TAB 8: CONTACT INBOX */}
+          {/* TAB 9: CONTACT INBOX */}
           {/* ============================================================== */}
           {activeTab === 'inbox' && (
             <div className="space-y-6 animate-fade-in">
@@ -1253,7 +1002,7 @@ export default function AdminDashboard({
           )}
 
           {/* ============================================================== */}
-          {/* TAB 9: MEDIA BUCKET */}
+          {/* TAB 10: MEDIA BUCKET */}
           {/* ============================================================== */}
           {activeTab === 'media' && (
             <div className="space-y-6 animate-fade-in">
@@ -1321,18 +1070,58 @@ export default function AdminDashboard({
           )}
 
           {/* ============================================================== */}
-          {/* TAB 10: SEO & GOOGLE SITELINKS */}
+          {/* TAB 11: SEO & GOOGLE SITELINKS */}
           {/* ============================================================== */}
           {activeTab === 'seo' && (
             <div className="space-y-6 animate-fade-in max-w-3xl">
               <div className="pb-4 border-b border-slate-800">
-                <h1 className="text-2xl font-bold text-white">Google SEO & Sitelinks Inspector</h1>
+                <h1 className="text-2xl font-bold text-white">Google SEO & Sitelinks Management</h1>
                 <p className="text-xs text-slate-400 mt-1">Live metadata, search snippet preview, and crawlers.</p>
+              </div>
+
+              {/* Editable SEO Settings */}
+              <div className="bg-[#0E131F] border border-slate-800 rounded-2xl p-6 space-y-4 text-xs">
+                <h3 className="text-sm font-bold text-white">Meta Tags Editor</h3>
+                <div>
+                  <label className="block text-slate-400 mb-1">Site Meta Title</label>
+                  <input
+                    type="text"
+                    value={settings.seo?.title || 'Dipesh Sapkota | Computer Engineering & Full-Stack Developer'}
+                    onChange={(e) => setSettings({ ...settings, seo: { ...settings.seo, title: e.target.value } })}
+                    className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-slate-400 mb-1">Meta Description</label>
+                  <textarea
+                    rows={3}
+                    value={settings.seo?.description || 'Official portfolio of Dipesh Sapkota, a Computer Engineering student, full-stack web developer, and motion designer based in Kathmandu, Nepal.'}
+                    onChange={(e) => setSettings({ ...settings, seo: { ...settings.seo, description: e.target.value } })}
+                    className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none leading-relaxed"
+                  />
+                </div>
+                <div>
+                  <label className="block text-slate-400 mb-1">Canonical URL</label>
+                  <input
+                    type="url"
+                    value={settings.seo?.canonical_url || 'https://www.dipeshsapkota7.com.np'}
+                    onChange={(e) => setSettings({ ...settings, seo: { ...settings.seo, canonical_url: e.target.value } })}
+                    className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
+                  />
+                </div>
+                <div className="pt-2 flex justify-end">
+                  <button
+                    onClick={() => saveSettingSection('seo', settings.seo)}
+                    className="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold"
+                  >
+                    Save SEO Settings
+                  </button>
+                </div>
               </div>
 
               {/* Real Google Result Mockup */}
               <div className="bg-[#0E131F] border border-slate-800 rounded-2xl p-6 space-y-3">
-                <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-wider block">Google Search Result Mockup</span>
+                <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-wider block">Google Search Result Preview</span>
                 <div className="p-4 rounded-xl bg-[#202124] border border-slate-700 max-w-xl font-sans text-left space-y-1">
                   <div className="text-xs text-slate-400 flex items-center gap-1.5">
                     <span className="w-4 h-4 rounded-full bg-emerald-500 flex items-center justify-center text-[9px] text-black font-bold">D</span>
@@ -1366,7 +1155,7 @@ export default function AdminDashboard({
           )}
 
           {/* ============================================================== */}
-          {/* TAB 11: DATABASE & BACKUP */}
+          {/* TAB 12: DATABASE & BACKUP */}
           {/* ============================================================== */}
           {activeTab === 'database' && (
             <div className="space-y-6 animate-fade-in max-w-3xl">
@@ -1416,6 +1205,721 @@ export default function AdminDashboard({
 
         </main>
       </div>
+
+      {/* ==================================================================== */}
+      {/* GLOBAL DYNAMIC EDIT / ADD MODAL (Handles all sections seamlessly) */}
+      {/* ==================================================================== */}
+      {editModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm overflow-y-auto">
+          <div className="bg-[#0E131F] border border-slate-700 rounded-2xl max-w-lg w-full p-6 shadow-2xl my-8">
+
+            {/* Modal Header */}
+            <div className="flex items-center justify-between pb-3 border-b border-slate-800 mb-4">
+              <h3 className="text-sm font-bold text-white">
+                {editingItem?.id ? 'Edit' : 'Add New'} {
+                  activeTab === 'certificates' ? 'Certificate' :
+                  activeTab === 'gallery' ? 'Gallery Photo' :
+                  activeTab === 'projects' ? 'Project' :
+                  activeTab === 'articles' ? 'Article' :
+                  activeTab === 'skills' ? 'Skill' :
+                  activeTab === 'experience' ? 'Timeline Entry' : 'Item'
+                }
+              </h3>
+              <button onClick={() => setEditModalOpen(false)} className="text-slate-400 hover:text-white font-bold">✕</button>
+            </div>
+
+            {/* 1. PROJECT FORM */}
+            {activeTab === 'projects' && (
+              <form onSubmit={async (e) => {
+                e.preventDefault();
+                const method = editingItem?.id ? 'PUT' : 'POST';
+                const res = await fetch('/api/admin/projects', {
+                  method,
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(editingItem)
+                });
+                const data = await res.json();
+                if (!res.ok) {
+                  notify(data.error || 'Failed to save project', 'error');
+                  return;
+                }
+                const saved = data.data || editingItem;
+                if (editingItem?.id) {
+                  setProjects(prev => prev.map(p => p.id === saved.id ? saved : p));
+                } else {
+                  setProjects(prev => [saved, ...prev]);
+                }
+                setEditModalOpen(false);
+                notify('Project saved successfully to /projects!');
+              }} className="space-y-4 text-xs">
+                <div>
+                  <label className="block text-slate-400 mb-1">Project Title</label>
+                  <input
+                    type="text"
+                    required
+                    value={editingItem?.title || ''}
+                    onChange={(e) => setEditingItem(prev => ({ ...prev, title: e.target.value }))}
+                    className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none focus:border-emerald-500"
+                    placeholder="e.g. Sportivo — Live Scores & Sports Platform"
+                  />
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-slate-400 mb-1">Slug (URL)</label>
+                    <input
+                      type="text"
+                      value={editingItem?.slug || ''}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, slug: e.target.value }))}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
+                      placeholder="sportivo"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-slate-400 mb-1">Category</label>
+                    <select
+                      value={editingItem?.category || 'dev'}
+                      onChange={(e) => {
+                        const cat = e.target.value;
+                        const catLabel = cat === 'dev' ? 'Development' : cat === 'media' ? 'Creative Media' : 'Experiments';
+                        setEditingItem(prev => ({ ...prev, category: cat, category_label: catLabel }));
+                      }}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
+                    >
+                      <option value="dev">Development</option>
+                      <option value="media">Creative Media</option>
+                      <option value="exp">Experiments</option>
+                    </select>
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-slate-400 mb-1">Project Subtitle / Type</label>
+                  <input
+                    type="text"
+                    value={editingItem?.type || ''}
+                    onChange={(e) => setEditingItem(prev => ({ ...prev, type: e.target.value }))}
+                    className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
+                    placeholder="e.g. Live Sports Streaming Platform"
+                  />
+                </div>
+                <div>
+                  <label className="block text-slate-400 mb-1">Description</label>
+                  <textarea
+                    rows={3}
+                    value={editingItem?.description || ''}
+                    onChange={(e) => setEditingItem(prev => ({ ...prev, description: e.target.value }))}
+                    className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none leading-relaxed"
+                    placeholder="Comprehensive overview of features and architecture..."
+                  />
+                </div>
+                <div>
+                  <label className="block text-slate-400 mb-1">Tech Stack (comma separated)</label>
+                  <input
+                    type="text"
+                    value={Array.isArray(editingItem?.tech) ? editingItem.tech.join(', ') : (editingItem?.tech || '')}
+                    onChange={(e) => setEditingItem(prev => ({ ...prev, tech: e.target.value.split(',').map(s => s.trim()).filter(Boolean) }))}
+                    className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
+                    placeholder="Next.js, React, Tailwind CSS, REST APIs"
+                  />
+                </div>
+                <div>
+                  <label className="block text-slate-400 mb-1">Preview Image URL</label>
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      value={editingItem?.img || ''}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, img: e.target.value }))}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
+                      placeholder="/sportivo-preview.jpg"
+                    />
+                    <label className="px-3 py-2 bg-slate-800 hover:bg-slate-700 rounded-xl cursor-pointer text-slate-200 font-semibold flex items-center whitespace-nowrap">
+                      <span>{uploadingMedia ? 'Uploading...' : 'Upload'}</span>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        disabled={uploadingMedia}
+                        className="hidden"
+                        onChange={async (e) => {
+                          const f = e.target.files?.[0];
+                          if (f) {
+                            try {
+                              notify('Uploading image...');
+                              const url = await uploadFile(f);
+                              setEditingItem(prev => ({ ...prev, img: url }));
+                              notify('Image uploaded!');
+                            } catch (err) {
+                              notify(err.message, 'error');
+                            }
+                          }
+                        }}
+                      />
+                    </label>
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-slate-400 mb-1">Live Demo URL</label>
+                    <input
+                      type="url"
+                      value={editingItem?.live_url || ''}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, live_url: e.target.value }))}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
+                      placeholder="https://sportivo.dipeshsapkota7.com.np/"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-slate-400 mb-1">GitHub Repo URL</label>
+                    <input
+                      type="url"
+                      value={editingItem?.github_url || ''}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, github_url: e.target.value }))}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
+                      placeholder="https://github.com/dszae/..."
+                    />
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 pt-2">
+                  <input
+                    type="checkbox"
+                    id="featured-checkbox"
+                    checked={Boolean(editingItem?.featured)}
+                    onChange={(e) => setEditingItem(prev => ({ ...prev, featured: e.target.checked }))}
+                    className="w-4 h-4 rounded text-emerald-500 bg-slate-900 border-slate-700"
+                  />
+                  <label htmlFor="featured-checkbox" className="text-slate-300 font-medium">Mark as Featured Showcase Project</label>
+                </div>
+                <div className="flex justify-end gap-3 pt-3 border-t border-slate-800">
+                  <button type="button" onClick={() => setEditModalOpen(false)} className="px-4 py-2 rounded-xl bg-slate-800 text-slate-300">Cancel</button>
+                  <button type="submit" className="px-5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold">Save Project</button>
+                </div>
+              </form>
+            )}
+
+            {/* 2. SKILL FORM */}
+            {activeTab === 'skills' && (
+              <form onSubmit={async (e) => {
+                e.preventDefault();
+                const method = editingItem?.id ? 'PUT' : 'POST';
+                const res = await fetch('/api/admin/skills', {
+                  method,
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(editingItem)
+                });
+                const data = await res.json();
+                if (!res.ok) {
+                  notify(data.error || 'Failed to save skill', 'error');
+                  return;
+                }
+                const saved = data.data || editingItem;
+                if (editingItem?.id) {
+                  setSkills(prev => prev.map(s => s.id === saved.id ? saved : s));
+                } else {
+                  setSkills(prev => [saved, ...prev]);
+                }
+                setEditModalOpen(false);
+                notify('Skill saved successfully to /skills!');
+              }} className="space-y-4 text-xs">
+                <div>
+                  <label className="block text-slate-400 mb-1">Skill Name</label>
+                  <input
+                    type="text"
+                    required
+                    value={editingItem?.name || ''}
+                    onChange={(e) => setEditingItem(prev => ({ ...prev, name: e.target.value }))}
+                    className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none focus:border-emerald-500"
+                    placeholder="e.g. Next.js, Python, Circuit Analysis"
+                  />
+                </div>
+                <div>
+                  <label className="block text-slate-400 mb-1">Category</label>
+                  <select
+                    value={editingItem?.category || 'Development'}
+                    onChange={(e) => setEditingItem(prev => ({ ...prev, category: e.target.value }))}
+                    className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
+                  >
+                    <option value="Development">Development</option>
+                    <option value="Creative Media">Creative Media</option>
+                    <option value="Hardware">Hardware & Engineering</option>
+                    <option value="AI & Data">AI & Data Science</option>
+                    <option value="Engineering">Engineering Tools</option>
+                  </select>
+                </div>
+                <div>
+                  <div className="flex justify-between items-center mb-1">
+                    <label className="text-slate-400">Proficiency Level</label>
+                    <span className="font-mono text-emerald-400 font-bold">{editingItem?.proficiency || 85}%</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="1"
+                    max="100"
+                    value={editingItem?.proficiency || 85}
+                    onChange={(e) => setEditingItem(prev => ({ ...prev, proficiency: parseInt(e.target.value, 10) }))}
+                    className="w-full accent-emerald-500"
+                  />
+                </div>
+                <div>
+                  <label className="block text-slate-400 mb-1">Subtext / Description</label>
+                  <input
+                    type="text"
+                    value={editingItem?.description || ''}
+                    onChange={(e) => setEditingItem(prev => ({ ...prev, description: e.target.value }))}
+                    className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
+                    placeholder="e.g. Component Architecture, Rhythm & pacing"
+                  />
+                </div>
+                <div className="flex justify-end gap-3 pt-3 border-t border-slate-800">
+                  <button type="button" onClick={() => setEditModalOpen(false)} className="px-4 py-2 rounded-xl bg-slate-800 text-slate-300">Cancel</button>
+                  <button type="submit" className="px-5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold">Save Skill</button>
+                </div>
+              </form>
+            )}
+
+            {/* 3. TIMELINE / EXPERIENCE FORM */}
+            {activeTab === 'experience' && (
+              <form onSubmit={async (e) => {
+                e.preventDefault();
+                const method = editingItem?.id ? 'PUT' : 'POST';
+                const res = await fetch('/api/admin/experience', {
+                  method,
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(editingItem)
+                });
+                const data = await res.json();
+                if (!res.ok) {
+                  notify(data.error || 'Failed to save timeline entry', 'error');
+                  return;
+                }
+                const saved = data.data || editingItem;
+                if (editingItem?.id) {
+                  setExperiences(prev => prev.map(exp => exp.id === saved.id ? saved : exp));
+                } else {
+                  setExperiences(prev => [saved, ...prev]);
+                }
+                setEditModalOpen(false);
+                notify('Timeline entry saved to /resume!');
+              }} className="space-y-4 text-xs">
+                <div>
+                  <label className="block text-slate-400 mb-1">Entry Type</label>
+                  <select
+                    value={editingItem?.type || 'experience'}
+                    onChange={(e) => setEditingItem(prev => ({ ...prev, type: e.target.value }))}
+                    className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
+                  >
+                    <option value="experience">Professional Experience</option>
+                    <option value="education">Academic Education</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-slate-400 mb-1">Title / Role / Degree</label>
+                  <input
+                    type="text"
+                    required
+                    value={editingItem?.title || ''}
+                    onChange={(e) => setEditingItem(prev => ({ ...prev, title: e.target.value }))}
+                    className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
+                    placeholder="e.g. Video Editor & Graphics Designer"
+                  />
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-slate-400 mb-1">Organization / Campus</label>
+                    <input
+                      type="text"
+                      required
+                      value={editingItem?.organization || ''}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, organization: e.target.value }))}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
+                      placeholder="e.g. Clamphook Academy"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-slate-400 mb-1">Location</label>
+                    <input
+                      type="text"
+                      value={editingItem?.location || 'Kathmandu, Nepal'}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, location: e.target.value }))}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
+                    />
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-slate-400 mb-1">Start Year / Date</label>
+                    <input
+                      type="text"
+                      value={editingItem?.start_date || ''}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, start_date: e.target.value }))}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
+                      placeholder="2026"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-slate-400 mb-1">End Year / Date</label>
+                    <input
+                      type="text"
+                      value={editingItem?.end_date || ''}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, end_date: e.target.value }))}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
+                      placeholder="Present"
+                    />
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 pt-1">
+                  <input
+                    type="checkbox"
+                    id="current-checkbox"
+                    checked={Boolean(editingItem?.is_current)}
+                    onChange={(e) => setEditingItem(prev => ({ ...prev, is_current: e.target.checked }))}
+                    className="w-4 h-4 rounded text-emerald-500 bg-slate-900 border-slate-700"
+                  />
+                  <label htmlFor="current-checkbox" className="text-slate-300 font-medium">Currently Active Position / Enrolled</label>
+                </div>
+                <div>
+                  <label className="block text-slate-400 mb-1">Description / Key Accomplishments</label>
+                  <textarea
+                    rows={3}
+                    value={editingItem?.description || ''}
+                    onChange={(e) => setEditingItem(prev => ({ ...prev, description: e.target.value }))}
+                    className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none leading-relaxed"
+                    placeholder="Details about responsibilities or GPA..."
+                  />
+                </div>
+                <div className="flex justify-end gap-3 pt-3 border-t border-slate-800">
+                  <button type="button" onClick={() => setEditModalOpen(false)} className="px-4 py-2 rounded-xl bg-slate-800 text-slate-300">Cancel</button>
+                  <button type="submit" className="px-5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold">Save Timeline Entry</button>
+                </div>
+              </form>
+            )}
+
+            {/* 4. CERTIFICATE FORM */}
+            {activeTab === 'certificates' && (
+              <form onSubmit={async (e) => {
+                e.preventDefault();
+                const method = editingItem?.id ? 'PUT' : 'POST';
+                const res = await fetch('/api/admin/certificates', {
+                  method,
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(editingItem)
+                });
+                const data = await res.json();
+                if (!res.ok) {
+                  notify(data.error || 'Failed to save certificate', 'error');
+                  return;
+                }
+                const saved = data.data || data.certificate || editingItem;
+                if (editingItem?.id) {
+                  setCertificates(prev => prev.map(c => c.id === saved.id ? saved : c));
+                } else {
+                  setCertificates(prev => [saved, ...prev]);
+                }
+                setEditModalOpen(false);
+                notify('Certificate published to /certificates!');
+              }} className="space-y-4 text-xs">
+                <div>
+                  <label className="block text-slate-400 mb-1">Certificate Title</label>
+                  <input
+                    type="text"
+                    required
+                    value={editingItem?.title || ''}
+                    onChange={(e) => setEditingItem(prev => ({ ...prev, title: e.target.value }))}
+                    className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none focus:border-emerald-500"
+                    placeholder="e.g. Advanced Motion Design Masterclass"
+                  />
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-slate-400 mb-1">Issuer / Organization</label>
+                    <input
+                      type="text"
+                      required
+                      value={editingItem?.org || ''}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, org: e.target.value }))}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
+                      placeholder="Udemy / Coursera / Harvard"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-slate-400 mb-1">Category</label>
+                    <select
+                      value={editingItem?.category || 'Design'}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, category: e.target.value }))}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
+                    >
+                      <option value="Design">Design</option>
+                      <option value="Motion">Motion</option>
+                      <option value="Video">Video</option>
+                      <option value="Development">Development</option>
+                      <option value="Marketing">Marketing</option>
+                      <option value="Engineering">Engineering</option>
+                    </select>
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-slate-400 mb-1">Certificate Image</label>
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      required
+                      value={editingItem?.img || ''}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, img: e.target.value }))}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
+                      placeholder="/graphic-design.webp"
+                    />
+                    <label className="px-3 py-2 bg-slate-800 hover:bg-slate-700 rounded-xl cursor-pointer text-slate-200 font-semibold flex items-center whitespace-nowrap">
+                      <span>{uploadingMedia ? 'Uploading...' : 'Upload Image'}</span>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        disabled={uploadingMedia}
+                        className="hidden"
+                        onChange={async (e) => {
+                          const f = e.target.files?.[0];
+                          if (f) {
+                            try {
+                              notify('Uploading to Supabase Storage...');
+                              const url = await uploadFile(f);
+                              setEditingItem(prev => ({ ...prev, img: url }));
+                              notify('Image uploaded!');
+                            } catch (err) {
+                              notify(err.message, 'error');
+                            }
+                          }
+                        }}
+                      />
+                    </label>
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-slate-400 mb-1">Credential Verification URL (Optional)</label>
+                  <input
+                    type="url"
+                    value={editingItem?.credential_url || ''}
+                    onChange={(e) => setEditingItem(prev => ({ ...prev, credential_url: e.target.value }))}
+                    className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
+                    placeholder="https://..."
+                  />
+                </div>
+                <div className="flex justify-end gap-3 pt-3 border-t border-slate-800">
+                  <button type="button" onClick={() => setEditModalOpen(false)} className="px-4 py-2 rounded-xl bg-slate-800 text-slate-300">Cancel</button>
+                  <button type="submit" className="px-5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold">Publish Certificate</button>
+                </div>
+              </form>
+            )}
+
+            {/* 5. GALLERY FORM */}
+            {activeTab === 'gallery' && (
+              <form onSubmit={async (e) => {
+                e.preventDefault();
+                const method = editingItem?.id ? 'PUT' : 'POST';
+                const res = await fetch('/api/admin/gallery', {
+                  method,
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(editingItem)
+                });
+                const data = await res.json();
+                if (!res.ok) {
+                  notify(data.error || 'Failed to save media', 'error');
+                  return;
+                }
+                const saved = data.data || data.image || editingItem;
+                if (editingItem?.id) {
+                  setGallery(prev => prev.map(g => g.id === saved.id ? saved : g));
+                } else {
+                  setGallery(prev => [saved, ...prev]);
+                }
+                setEditModalOpen(false);
+                notify('Photo published to /gallery!');
+              }} className="space-y-4 text-xs">
+                <div>
+                  <label className="block text-slate-400 mb-1">Caption / Title</label>
+                  <input
+                    type="text"
+                    required
+                    value={editingItem?.title || ''}
+                    onChange={(e) => setEditingItem(prev => ({ ...prev, title: e.target.value }))}
+                    className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none focus:border-emerald-500"
+                    placeholder="e.g. Participating in college cricket tournament"
+                  />
+                </div>
+                <div>
+                  <label className="block text-slate-400 mb-1">Image Alt Text (Crucial for Google Image SEO)</label>
+                  <input
+                    type="text"
+                    required
+                    value={editingItem?.alt || ''}
+                    onChange={(e) => setEditingItem(prev => ({ ...prev, alt: e.target.value }))}
+                    className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
+                    placeholder="Students posing together outdoors with cricket bats..."
+                  />
+                </div>
+                <div>
+                  <label className="block text-slate-400 mb-1">Category</label>
+                  <select
+                    value={editingItem?.category || 'Campus'}
+                    onChange={(e) => setEditingItem(prev => ({ ...prev, category: e.target.value }))}
+                    className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
+                  >
+                    <option value="Sports">Sports</option>
+                    <option value="Events">Events</option>
+                    <option value="Team">Team</option>
+                    <option value="Campus">Campus</option>
+                    <option value="Work">Work</option>
+                    <option value="Field Visit">Field Visit</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-slate-400 mb-1">Image File or URL</label>
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      required
+                      value={editingItem?.img || ''}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, img: e.target.value }))}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
+                      placeholder="/cricket.webp"
+                    />
+                    <label className="px-3 py-2 bg-slate-800 hover:bg-slate-700 rounded-xl cursor-pointer text-slate-200 font-semibold flex items-center whitespace-nowrap">
+                      <span>{uploadingMedia ? 'Uploading...' : 'Upload Image'}</span>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        disabled={uploadingMedia}
+                        className="hidden"
+                        onChange={async (e) => {
+                          const f = e.target.files?.[0];
+                          if (f) {
+                            try {
+                              notify('Uploading to Supabase Storage...');
+                              const url = await uploadFile(f);
+                              setEditingItem(prev => ({ ...prev, img: url }));
+                              notify('Uploaded successfully!');
+                            } catch (err) {
+                              notify(err.message, 'error');
+                            }
+                          }
+                        }}
+                      />
+                    </label>
+                  </div>
+                </div>
+                <div className="flex justify-end gap-3 pt-3 border-t border-slate-800">
+                  <button type="button" onClick={() => setEditModalOpen(false)} className="px-4 py-2 rounded-xl bg-slate-800 text-slate-300">Cancel</button>
+                  <button type="submit" className="px-5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold">Save Photo</button>
+                </div>
+              </form>
+            )}
+
+            {/* 6. ARTICLE FORM */}
+            {activeTab === 'articles' && (
+              <form onSubmit={async (e) => {
+                e.preventDefault();
+                const method = editingItem?.id ? 'PUT' : 'POST';
+                const res = await fetch('/api/admin/blog', {
+                  method,
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(editingItem)
+                });
+                const data = await res.json();
+                if (!res.ok) {
+                  notify(data.error || 'Failed to save article', 'error');
+                  return;
+                }
+                const saved = data.data || editingItem;
+                if (editingItem?.id) {
+                  setArticles(prev => prev.map(a => a.id === saved.id ? saved : a));
+                } else {
+                  setArticles(prev => [saved, ...prev]);
+                }
+                setEditModalOpen(false);
+                notify('Article saved to /blog!');
+              }} className="space-y-4 text-xs">
+                <div>
+                  <label className="block text-slate-400 mb-1">Article Title</label>
+                  <input
+                    type="text"
+                    required
+                    value={editingItem?.title || ''}
+                    onChange={(e) => setEditingItem(prev => ({ ...prev, title: e.target.value }))}
+                    className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none focus:border-emerald-500"
+                    placeholder="e.g. Building Sportivo: Engineering a Real-Time Live Sports Streaming App"
+                  />
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-slate-400 mb-1">Slug</label>
+                    <input
+                      type="text"
+                      required
+                      value={editingItem?.slug || ''}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, slug: e.target.value }))}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
+                      placeholder="building-sportivo"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-slate-400 mb-1">Category</label>
+                    <input
+                      type="text"
+                      value={editingItem?.category || 'Engineering'}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, category: e.target.value }))}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
+                      placeholder="Technical Architecture"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-slate-400 mb-1">Short Excerpt (Summary)</label>
+                  <textarea
+                    rows={2}
+                    value={editingItem?.excerpt || ''}
+                    onChange={(e) => setEditingItem(prev => ({ ...prev, excerpt: e.target.value }))}
+                    className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
+                    placeholder="Brief overview displayed on article cards..."
+                  />
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-slate-400 mb-1">Live Article / Dev.to Link</label>
+                    <input
+                      type="url"
+                      value={editingItem?.live_url || ''}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, live_url: e.target.value }))}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
+                      placeholder="https://dev.to/dszae/..."
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-slate-400 mb-1">Local Case Study Link</label>
+                    <input
+                      type="text"
+                      value={editingItem?.local_url || ''}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, local_url: e.target.value }))}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
+                      placeholder="/projects/sportivo"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-slate-400 mb-1">Full Article Content (Markdown)</label>
+                  <textarea
+                    rows={4}
+                    value={editingItem?.content || ''}
+                    onChange={(e) => setEditingItem(prev => ({ ...prev, content: e.target.value }))}
+                    className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
+                    placeholder="Article body content..."
+                  />
+                </div>
+                <div className="flex justify-end gap-3 pt-3 border-t border-slate-800">
+                  <button type="button" onClick={() => setEditModalOpen(false)} className="px-4 py-2 rounded-xl bg-slate-800 text-slate-300">Cancel</button>
+                  <button type="submit" className="px-5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold">Publish Article</button>
+                </div>
+              </form>
+            )}
+
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }
