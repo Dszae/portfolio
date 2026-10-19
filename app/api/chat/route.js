@@ -15,12 +15,16 @@ export const runtime = 'nodejs';
  * Health & Discovery GET endpoint
  */
 export async function GET() {
-  const hasKey = Boolean(process.env.OPENAI_API_KEY && !process.env.OPENAI_API_KEY.startsWith('sk-placeholder') && process.env.OPENAI_API_KEY.length > 25);
-  const hasGemini = Boolean(process.env.GEMINI_API_KEY && process.env.GEMINI_API_KEY.trim().length > 15);
-  const hasGroq = Boolean(process.env.GROQ_API_KEY && process.env.GROQ_API_KEY.trim().length > 10);
+  const openAiKey = (process.env.OPENAI_API_KEY || '').replace(/['"]/g, '').trim();
+  const geminiKey = (process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY || '').replace(/['"]/g, '').trim();
+  const groqKey = (process.env.GROQ_API_KEY || '').replace(/['"]/g, '').trim();
+
+  const hasKey = Boolean(openAiKey && !openAiKey.startsWith('sk-placeholder') && openAiKey.length > 25);
+  const hasGemini = Boolean(geminiKey && geminiKey.length > 15);
+  const hasGroq = Boolean(groqKey && groqKey.length > 10);
   
-  const engine = hasGroq ? 'groq_llama_3.3_70b' : hasGemini ? 'google_gemini_2.0_flash' : hasKey ? 'openai_tool_calling' : 'grounded_portfolio_engine';
-  const activeModel = hasGroq ? (process.env.GROQ_MODEL || 'llama-3.3-70b-versatile') : hasGemini ? (process.env.GEMINI_MODEL || 'gemini-2.0-flash') : AGENT_CONFIG.DEFAULT_MODEL;
+  const engine = hasGemini ? 'google_gemini_2.0_flash' : hasGroq ? 'groq_llama_3.3_70b' : hasKey ? 'openai_tool_calling' : 'grounded_portfolio_engine';
+  const activeModel = hasGemini ? (process.env.GEMINI_MODEL || 'gemini-2.0-flash') : hasGroq ? (process.env.GROQ_MODEL || 'llama-3.3-70b-versatile') : AGENT_CONFIG.DEFAULT_MODEL;
 
   return NextResponse.json({
     service: 'Dipesh Sapkota Portfolio AI Agent',
