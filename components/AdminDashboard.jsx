@@ -71,7 +71,7 @@ export default function AdminDashboard({
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Upload failed');
-      return data.url;
+      return data;
     } finally {
       setUploadingMedia(false);
     }
@@ -883,8 +883,8 @@ export default function AdminDashboard({
                           if (f) {
                             try {
                               notify('Uploading PDF...');
-                              const url = await uploadFile(f);
-                              setSettings(prev => ({ ...prev, profile: { ...prev.profile, resume_url: url } }));
+                              const uploadRes = await uploadFile(f);
+                              setSettings(prev => ({ ...prev, profile: { ...prev.profile, resume_url: uploadRes.url } }));
                               notify('Resume updated!');
                             } catch (err) {
                               notify(err.message, 'error');
@@ -1197,13 +1197,13 @@ export default function AdminDashboard({
                           const file = e.target.files?.[0];
                           if (file) {
                             try {
-                              notify('Uploading popup image to storage...');
-                              const url = await uploadFile(file);
+                              notify('Uploading popup image...');
+                              const uploadRes = await uploadFile(file);
                               setSettings(prev => ({
                                 ...prev,
-                                popup: { ...(prev.popup || {}), image_url: url }
+                                popup: { ...(prev.popup || {}), image_url: uploadRes.url }
                               }));
-                              notify('Image uploaded and set!');
+                              notify(uploadRes.isOptimized ? 'Popup image compressed to .webp & updated!' : 'Image uploaded and set!');
                             } catch (err) {
                               notify(err.message, 'error');
                             }
@@ -1358,8 +1358,14 @@ export default function AdminDashboard({
                         if (f) {
                           try {
                             notify('Uploading file...');
-                            await uploadFile(f);
-                            notify('Uploaded!');
+                            const uploadRes = await uploadFile(f);
+                            if (uploadRes.isOptimized && uploadRes.originalSize && uploadRes.optimizedSize) {
+                              const orig = Math.round(uploadRes.originalSize / 1024);
+                              const opt = Math.round(uploadRes.optimizedSize / 1024);
+                              notify(`Uploaded & compressed to .webp (${orig}KB → ${opt}KB)!`);
+                            } else {
+                              notify('Uploaded!');
+                            }
                             fetchMedia();
                           } catch (err) {
                             notify(err.message, 'error');
@@ -1677,9 +1683,9 @@ export default function AdminDashboard({
                           if (f) {
                             try {
                               notify('Uploading image...');
-                              const url = await uploadFile(f);
-                              setEditingItem(prev => ({ ...prev, img: url }));
-                              notify('Image uploaded!');
+                              const uploadRes = await uploadFile(f);
+                              setEditingItem(prev => ({ ...prev, img: uploadRes.url }));
+                              notify(uploadRes.isOptimized ? 'Image compressed to .webp & linked!' : 'Image uploaded!');
                             } catch (err) {
                               notify(err.message, 'error');
                             }
@@ -1996,10 +2002,16 @@ export default function AdminDashboard({
                           const f = e.target.files?.[0];
                           if (f) {
                             try {
-                              notify('Uploading to Supabase Storage...');
-                              const url = await uploadFile(f);
-                              setEditingItem(prev => ({ ...prev, img: url }));
-                              notify('Image uploaded!');
+                              notify('Optimizing & uploading to Supabase...');
+                              const uploadRes = await uploadFile(f);
+                              setEditingItem(prev => ({ ...prev, img: uploadRes.url }));
+                              if (uploadRes.isOptimized && uploadRes.originalSize && uploadRes.optimizedSize) {
+                                const orig = Math.round(uploadRes.originalSize / 1024);
+                                const opt = Math.round(uploadRes.optimizedSize / 1024);
+                                notify(`Certificate converted to .webp (${orig}KB → ${opt}KB)!`);
+                              } else {
+                                notify('Image uploaded!');
+                              }
                             } catch (err) {
                               notify(err.message, 'error');
                             }
@@ -2008,6 +2020,7 @@ export default function AdminDashboard({
                       />
                     </label>
                   </div>
+                  <p className="text-[11px] text-emerald-400/80 mt-1">⚡ Automatically compressed to lightweight .webp format for fast loading.</p>
                 </div>
                 <div>
                   <label className="block text-slate-400 mb-1">Credential Verification URL (Optional)</label>
@@ -2109,10 +2122,16 @@ export default function AdminDashboard({
                           const f = e.target.files?.[0];
                           if (f) {
                             try {
-                              notify('Uploading to Supabase Storage...');
-                              const url = await uploadFile(f);
-                              setEditingItem(prev => ({ ...prev, img: url }));
-                              notify('Uploaded successfully!');
+                              notify('Optimizing & uploading to Supabase...');
+                              const uploadRes = await uploadFile(f);
+                              setEditingItem(prev => ({ ...prev, img: uploadRes.url }));
+                              if (uploadRes.isOptimized && uploadRes.originalSize && uploadRes.optimizedSize) {
+                                const orig = Math.round(uploadRes.originalSize / 1024);
+                                const opt = Math.round(uploadRes.optimizedSize / 1024);
+                                notify(`Gallery photo compressed to .webp (${orig}KB → ${opt}KB)!`);
+                              } else {
+                                notify('Photo uploaded successfully!');
+                              }
                             } catch (err) {
                               notify(err.message, 'error');
                             }
@@ -2121,6 +2140,7 @@ export default function AdminDashboard({
                       />
                     </label>
                   </div>
+                  <p className="text-[11px] text-emerald-400/80 mt-1">⚡ Automatically compressed to lightweight .webp format for fast loading.</p>
                 </div>
                 <div className="flex justify-end gap-3 pt-3 border-t border-slate-800">
                   <button type="button" onClick={() => setEditModalOpen(false)} className="px-4 py-2 rounded-xl bg-slate-800 text-slate-300">Cancel</button>
