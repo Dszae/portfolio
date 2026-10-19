@@ -335,6 +335,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
   const pathname = usePathname();
   const [isDark, setIsDark] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hasAnnouncement, setHasAnnouncement] = useState(false);
   const menuToggleRef = useRef(null);
 
   useEffect(() => {
@@ -426,7 +427,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
   };
 
   return (
-    <div className={`site-shell min-h-screen font-sans relative w-full m-0 p-0 ${theme.bg}`}>
+    <div className={`site-shell min-h-screen font-sans relative w-full m-0 p-0 ${hasAnnouncement ? 'has-announcement' : ''} ${theme.bg}`}>
       {/* Portfolio Entry Modal Popup */}
       <PortfolioEntryPopup />
 
@@ -447,7 +448,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
 
       <nav aria-label="Main navigation" className="site-nav" itemScope itemType="https://schema.org/SiteNavigationElement">
         {/* Rolling Text Ticker at Very Top of Fixed Navigation Bar */}
-        <RollingAnnouncement />
+        <RollingAnnouncement onVisibilityChange={setHasAnnouncement} />
 
         <div className="site-nav-inner relative z-10">
           <Link href="/" className="site-wordmark" onClick={() => setIsMenuOpen(false)}>

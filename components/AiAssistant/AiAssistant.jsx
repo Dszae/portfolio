@@ -236,12 +236,6 @@ You can ask about his software projects, computer engineering background at **IO
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#065F46] dark:bg-[#34D399]"></span>
           </span>
 
-          {/* Status dot in dark green: mobile INSIDE the circular button */}
-          <span className="sm:hidden absolute top-2 right-2 flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#065F46] dark:bg-[#34D399] opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#065F46] dark:bg-[#34D399]"></span>
-          </span>
-
           {/* Clean minimal message icon */}
           <svg
             className="w-5 h-5 sm:w-4 sm:h-4 text-[#065F46] dark:text-[#34D399] transition-transform duration-200 group-hover:scale-105"
@@ -278,7 +272,7 @@ You can ask about his software projects, computer engineering background at **IO
             onClick={() => setIsOpen(false)}
           />
 
-          <div className="fixed inset-x-3 bottom-3 sm:inset-x-auto sm:bottom-20 sm:right-6 z-[75] w-auto sm:w-[440px] h-[calc(100dvh-5.5rem)] sm:h-[580px] max-h-[640px] flex flex-col rounded-2xl bg-white/98 dark:bg-[#0F1216]/98 backdrop-blur-xl border border-slate-200/90 dark:border-[#222933] shadow-[0_20px_50px_rgba(15,23,42,0.18)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.6)] overflow-hidden font-sans">
+          <div className="fixed inset-x-3 bottom-3 sm:inset-x-auto sm:bottom-20 sm:right-6 z-[75] w-auto sm:w-[440px] h-[calc(100dvh-5.5rem)] sm:h-[580px] max-h-[640px] flex flex-col rounded-2xl bg-white/98 dark:bg-[#0F1216]/98 backdrop-blur-xl border border-slate-200/90 dark:border-[#222933] shadow-[0_20px_50px_rgba(15,23,42,0.18)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.6)] overflow-hidden font-sans text-slate-900 dark:text-slate-100">
           
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3 border-b border-slate-200/80 dark:border-[#222933] bg-slate-50/80 dark:bg-[#090B0E]/80">
@@ -291,7 +285,7 @@ You can ask about his software projects, computer engineering background at **IO
                   <span>Dipesh Portfolio Assistant</span>
                   <span className="w-1.5 h-1.5 rounded-full bg-[#065F46] dark:bg-[#34D399]" />
                 </h3>
-                <p className="text-[10px] text-slate-500 dark:text-slate-400">Verified portfolio knowledge & work</p>
+                <p className="text-[10px] text-slate-600 dark:text-slate-400 font-medium">Verified portfolio knowledge & work</p>
               </div>
             </div>
 
@@ -301,7 +295,7 @@ You can ask about his software projects, computer engineering background at **IO
                 onClick={handleClear}
                 title="Reset conversation"
                 aria-label="Reset conversation"
-                className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-200/60 dark:hover:bg-[#181D24] transition-colors"
+                className="p-1.5 rounded-lg text-slate-600 hover:text-slate-950 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-200/60 dark:hover:bg-[#181D24] transition-colors"
               >
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -312,7 +306,7 @@ You can ask about his software projects, computer engineering background at **IO
                 onClick={() => setIsOpen(false)}
                 title="Close assistant"
                 aria-label="Close assistant"
-                className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-200/60 dark:hover:bg-[#181D24] transition-colors"
+                className="p-1.5 rounded-lg text-slate-600 hover:text-slate-950 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-200/60 dark:hover:bg-[#181D24] transition-colors"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
@@ -332,16 +326,16 @@ You can ask about his software projects, computer engineering background at **IO
                     {m.content}
                   </div>
                 ) : (
-                  /* Assistant Message */
-                  <div className="max-w-[95%] w-full bg-slate-50 dark:bg-[#14181F] border border-slate-200/80 dark:border-[#222933] rounded-2xl rounded-tl-sm p-3.5 space-y-2 text-slate-800 dark:text-slate-200 shadow-sm">
+                  /* Assistant Message with deep dark contrast in light mode */
+                  <div className="max-w-[95%] w-full bg-slate-100/90 dark:bg-[#14181F] border border-slate-200/90 dark:border-[#222933] rounded-2xl rounded-tl-sm p-3.5 space-y-2 text-slate-950 dark:text-slate-100 shadow-sm">
                     
                     {/* Tool Badges executed for this message */}
                     {m.tools && m.tools.length > 0 && (
-                      <div className="flex flex-wrap gap-1.5 pb-1 border-b border-slate-200/60 dark:border-slate-800/60 mb-2">
+                      <div className="flex flex-wrap gap-1.5 pb-1 border-b border-slate-200/80 dark:border-slate-800/60 mb-2">
                         {m.tools.map((t, tIdx) => (
                           <span
                             key={tIdx}
-                            className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-white dark:bg-[#090B0E] text-slate-600 dark:text-slate-400 text-[10px] font-mono border border-slate-200/80 dark:border-slate-800"
+                            className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-white dark:bg-[#090B0E] text-slate-800 dark:text-slate-200 text-[10px] font-mono border border-slate-300 dark:border-slate-800 font-medium"
                           >
                             <span className="w-1 h-1 rounded-full bg-[#065F46] dark:bg-[#34D399]" />
                             <span>{t.label || t.name}</span>
@@ -352,9 +346,9 @@ You can ask about his software projects, computer engineering background at **IO
 
                     <MarkdownRenderer content={m.content} />
 
-                    {/* Subtle Model & Grounding Tag (No copy button, no emojis, clean generic wording) */}
+                    {/* Subtle Model & Grounding Tag (high contrast in light mode) */}
                     {m.content && (
-                      <div className="pt-2 border-t border-slate-200/60 dark:border-slate-800/60 flex items-center justify-between text-[10px] text-slate-400 dark:text-slate-500 font-mono tracking-tight">
+                      <div className="pt-2 border-t border-slate-200/80 dark:border-slate-800/60 flex items-center justify-between text-[10px] text-slate-600 dark:text-slate-400 font-mono tracking-tight font-medium">
                         <span>
                           {m.engine === 'grounded_portfolio_engine'
                             ? 'Portfolio Knowledge Base'
@@ -369,7 +363,7 @@ You can ask about his software projects, computer engineering background at **IO
 
             {/* Live Tool Execution Status */}
             {activeTool && (
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-[#14181F] border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-[11px] font-mono w-fit">
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-[#14181F] border border-slate-300 dark:border-slate-800 text-slate-800 dark:text-slate-300 text-[11px] font-mono w-fit font-medium">
                 <svg className="w-3 h-3 animate-spin text-[#065F46] dark:text-[#34D399]" fill="none" viewBox="0 0 24 24">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -380,7 +374,7 @@ You can ask about his software projects, computer engineering background at **IO
 
             {/* Subtle typing indicator while streaming */}
             {isStreaming && !activeTool && (
-              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-[#14181F] text-slate-500 dark:text-slate-400 text-[11px] w-fit">
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-[#14181F] text-slate-700 dark:text-slate-300 text-[11px] w-fit font-medium">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#065F46] dark:bg-[#34D399] animate-pulse" />
                 <span className="text-[10px] font-mono">Generating response...</span>
               </div>
@@ -392,7 +386,7 @@ You can ask about his software projects, computer engineering background at **IO
           {/* Suggested Prompts */}
           {messages.length <= 2 && !isStreaming && (
             <div className="px-4 py-2.5 border-t border-slate-200/80 dark:border-[#222933] bg-slate-50/60 dark:bg-[#090B0E]/60">
-              <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider block mb-1.5 font-medium">
+              <span className="text-[10px] font-mono text-slate-700 dark:text-slate-400 uppercase tracking-wider block mb-1.5 font-semibold">
                 Suggested exploration
               </span>
               <div className="flex flex-wrap gap-1.5 max-h-24 overflow-y-auto">
@@ -401,7 +395,7 @@ You can ask about his software projects, computer engineering background at **IO
                     key={pIdx}
                     type="button"
                     onClick={() => handleSend(prompt)}
-                    className="px-2.5 py-1 rounded-md bg-white dark:bg-[#14181F] hover:bg-slate-100 dark:hover:bg-[#181D24] border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/40 dark:hover:border-[#34D399]/40 text-[11px] text-left transition-colors truncate max-w-full"
+                    className="px-2.5 py-1 rounded-md bg-white dark:bg-[#14181F] hover:bg-slate-100 dark:hover:bg-[#181D24] border border-slate-300 dark:border-slate-800 text-slate-800 dark:text-slate-200 hover:text-[#065F46] dark:hover:text-[#34D399] hover:border-[#065F46]/50 dark:hover:border-[#34D399]/40 text-[11px] text-left transition-colors truncate max-w-full font-medium"
                   >
                     {prompt}
                   </button>
@@ -426,16 +420,16 @@ You can ask about his software projects, computer engineering background at **IO
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask about Dipesh's projects, skills, education..."
                 disabled={isStreaming}
-                className="flex-1 px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#14181F] border border-slate-300 dark:border-[#222933] text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 text-xs focus:outline-none focus:ring-2 focus:ring-[#065F46]/20 dark:focus:ring-[#34D399]/20 focus:border-[#065F46] dark:focus:border-[#34D399] transition-all"
+                className="flex-1 px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#14181F] border border-slate-300 dark:border-[#222933] text-slate-950 dark:text-slate-100 placeholder:text-slate-500 dark:placeholder:text-slate-400 text-xs focus:outline-none focus:ring-2 focus:ring-[#065F46]/20 dark:focus:ring-[#34D399]/20 focus:border-[#065F46] dark:focus:border-[#34D399] transition-all font-medium"
               />
 
               {isStreaming ? (
                 <button
                   type="button"
                   onClick={handleStop}
-                  className="px-3.5 py-2.5 rounded-xl bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-medium text-xs transition-colors shrink-0 flex items-center gap-1.5"
+                  className="px-3.5 py-2.5 rounded-xl bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-semibold text-xs transition-colors shrink-0 flex items-center gap-1.5"
                 >
-                  <span className="w-2 h-2 rounded-sm bg-slate-700 dark:bg-slate-300" />
+                  <span className="w-2 h-2 rounded-sm bg-slate-800 dark:bg-slate-300" />
                   <span>Stop</span>
                 </button>
               ) : (
@@ -451,7 +445,7 @@ You can ask about his software projects, computer engineering background at **IO
                 </button>
               )}
             </form>
-            <div className="text-[10px] text-center text-slate-400 dark:text-slate-500 mt-1.5 font-mono">
+            <div className="text-[10px] text-center text-slate-600 dark:text-slate-400 mt-1.5 font-mono font-medium">
               Verified Portfolio RAG • Grounded LLM Reasoning
             </div>
           </div>

@@ -471,6 +471,20 @@ html {
   transition: background-color var(--duration-theme) ease, color var(--duration-theme) ease;
 }
 
+:root {
+  --announcement-height: 0px;
+  --nav-height: calc(72px + var(--announcement-height));
+}
+
+.site-shell.has-announcement {
+  --announcement-height: 38px;
+}
+
+.site-shell.has-announcement main#main-content {
+  padding-top: var(--announcement-height);
+  transition: padding-top 200ms ease;
+}
+
 .site-nav {
   position: fixed;
   z-index: 65;
@@ -571,7 +585,7 @@ html {
 
 .site-mobile-nav {
   position: fixed;
-  top: 72px;
+  top: var(--nav-height);
   right: 0;
   left: 0;
   z-index: 60;
@@ -583,11 +597,11 @@ html {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   opacity: 0;
-  transition: max-height 250ms ease, opacity 200ms ease, visibility 250ms;
+  transition: max-height 250ms ease, opacity 200ms ease, visibility 250ms, top 180ms ease;
 }
 
 .site-mobile-nav.is-open {
-  max-height: calc(100dvh - 72px);
+  max-height: calc(100dvh - var(--nav-height));
   visibility: visible;
   opacity: 1;
 }
@@ -613,10 +627,11 @@ html {
 .site-backdrop {
   position: fixed;
   z-index: 55;
-  inset: 72px 0 0;
+  inset: var(--nav-height) 0 0;
   background: rgb(0 0 0 / 70%);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+  transition: inset 180ms ease;
 }
 
 /* GPU-accelerated silky smooth card & image hover transitions */
@@ -1246,7 +1261,7 @@ button:hover .smooth-img-zoom {
   }
 
   .home-hero {
-    padding-top: 100px;
+    padding-top: 112px;
     padding-bottom: 48px;
   }
 
@@ -1281,7 +1296,7 @@ button:hover .smooth-img-zoom {
 
 @media (max-width: 680px) {
   .home-hero {
-    padding: 96px 20px 40px;
+    padding: 116px 20px 40px;
   }
 
   .home-hero-inner {

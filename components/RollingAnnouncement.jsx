@@ -8,14 +8,6 @@ export default function RollingAnnouncement({ onVisibilityChange }) {
   const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
-    // Check if dismissed in this session
-    try {
-      if (sessionStorage.getItem('dismissed_announcement') === 'true') {
-        setDismissed(true);
-        return;
-      }
-    } catch {}
-
     let mounted = true;
     async function loadFeatures() {
       try {
@@ -47,9 +39,6 @@ export default function RollingAnnouncement({ onVisibilityChange }) {
 
   const handleDismiss = () => {
     setDismissed(true);
-    try {
-      sessionStorage.setItem('dismissed_announcement', 'true');
-    } catch {}
     if (onVisibilityChange) onVisibilityChange(false);
   };
 

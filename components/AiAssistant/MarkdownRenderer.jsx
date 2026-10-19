@@ -53,7 +53,7 @@ export default function MarkdownRenderer({ content }) {
     // Headings
     if (line.startsWith('### ')) {
       elements.push(
-        <h4 key={`h4-${i}`} className="font-semibold text-sm text-slate-900 dark:text-slate-100 mt-3 mb-1 tracking-tight">
+        <h4 key={`h4-${i}`} className="font-bold text-sm text-slate-950 dark:text-slate-100 mt-3 mb-1 tracking-tight">
           {renderFormattedText(line.replace('### ', ''))}
         </h4>
       );
@@ -61,7 +61,7 @@ export default function MarkdownRenderer({ content }) {
     }
     if (line.startsWith('## ')) {
       elements.push(
-        <h3 key={`h3-${i}`} className="font-semibold text-base text-slate-900 dark:text-slate-100 mt-3.5 mb-1.5 tracking-tight">
+        <h3 key={`h3-${i}`} className="font-bold text-base text-slate-950 dark:text-slate-100 mt-3.5 mb-1.5 tracking-tight">
           {renderFormattedText(line.replace('## ', ''))}
         </h3>
       );
@@ -72,7 +72,7 @@ export default function MarkdownRenderer({ content }) {
     if (line.trim().startsWith('- ') || line.trim().startsWith('* ')) {
       const itemText = line.trim().replace(/^[-*]\s+/, '');
       elements.push(
-        <li key={`li-${i}`} className="ml-4 list-disc text-slate-700 dark:text-slate-300 my-0.5 leading-relaxed">
+        <li key={`li-${i}`} className="ml-4 list-disc text-slate-900 dark:text-slate-200 my-0.5 leading-relaxed font-normal">
           {renderFormattedText(itemText)}
         </li>
       );
@@ -87,7 +87,7 @@ export default function MarkdownRenderer({ content }) {
 
     // Standard paragraph
     elements.push(
-      <p key={`p-${i}`} className="my-1 text-slate-700 dark:text-slate-300 leading-relaxed text-xs sm:text-[13px]">
+      <p key={`p-${i}`} className="my-1 text-slate-900 dark:text-slate-200 leading-relaxed text-xs sm:text-[13px] font-normal">
         {renderFormattedText(line)}
       </p>
     );
@@ -97,7 +97,7 @@ export default function MarkdownRenderer({ content }) {
     elements.push(
       <pre
         key="code-dangling"
-        className="my-2 p-3 rounded-xl bg-slate-100 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 text-[11px] font-mono text-slate-800 dark:text-emerald-300 overflow-x-auto"
+        className="my-2 p-3 rounded-xl bg-slate-100 dark:bg-slate-900/90 border border-slate-300 dark:border-slate-800 text-[11px] font-mono text-slate-900 dark:text-emerald-300 overflow-x-auto"
       >
         <code>{codeBuffer.join('\n')}</code>
       </pre>
@@ -170,7 +170,7 @@ function renderInlineStyles(str, baseKey) {
       return (
         <code
           key={`${baseKey}-${idx}`}
-          className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 text-[#065F46] dark:text-[#34D399] font-mono text-[11px]"
+          className="px-1.5 py-0.5 rounded bg-slate-200/90 dark:bg-slate-800/90 border border-slate-300 dark:border-slate-700 text-[#065F46] dark:text-[#34D399] font-mono text-[11px] font-semibold"
         >
           {tok.slice(1, -1)}
         </code>
@@ -178,14 +178,14 @@ function renderInlineStyles(str, baseKey) {
     }
     if (tok.startsWith('**') && tok.endsWith('**') && tok.length > 4) {
       return (
-        <strong key={`${baseKey}-${idx}`} className="font-semibold text-slate-900 dark:text-slate-100">
+        <strong key={`${baseKey}-${idx}`} className="font-bold text-slate-950 dark:text-white">
           {tok.slice(2, -2)}
         </strong>
       );
     }
     if (tok.startsWith('*') && tok.endsWith('*') && tok.length > 2) {
       return (
-        <em key={`${baseKey}-${idx}`} className="italic text-slate-600 dark:text-slate-300">
+        <em key={`${baseKey}-${idx}`} className="italic text-slate-800 dark:text-slate-200">
           {tok.slice(1, -1)}
         </em>
       );
