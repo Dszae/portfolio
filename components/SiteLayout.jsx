@@ -657,22 +657,9 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
 
           {/* Bottom Bar */}
           <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#64748B] dark:text-[#94A3B8]">
-            <p className="font-medium text-left">
+            <p className="font-medium text-center w-full">
               &copy; {new Date().getFullYear()} <Link href="/" aria-label="Go to my home page" className="font-semibold text-[#0F172A] dark:text-[#F9FAFB] no-underline hover:no-underline">Dipesh Sapkota<span className="site-wordmark-dot">.</span></Link> All rights reserved.
             </p>
-            <div className="flex items-center gap-4 text-xs font-mono">
-              <Link href="/image-licensing" className="hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors">
-                Licensing
-              </Link>
-              <span>&middot;</span>
-              <a href="/sitemap.xml" className="hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors">
-                XML Sitemap
-              </a>
-              <span>&middot;</span>
-              <a href="/.well-known/llms.txt" className="hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors">
-                llms.txt
-              </a>
-            </div>
           </div>
         </div>
       </footer>
