@@ -120,3 +120,4 @@ node --env-file=.env.local tests/agent.test.js
 - Request payload schema validation with Zod.
 - Rate limiter sliding window and quota decrement.
 - Abusive request blocking when budget is exceeded.
+
