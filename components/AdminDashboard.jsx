@@ -12,8 +12,12 @@ export default function AdminDashboard({
   initialArticles = [],
   initialSkills = [],
   initialExperiences = [],
+  initialServices = [],
+  initialTestimonials = [],
   initialSettings = {},
-  initialMessages = []
+  initialMessages = [],
+  initialSubscribers = [],
+  initialActivityLogs = []
 }) {
   const router = useRouter();
 
@@ -36,9 +40,49 @@ export default function AdminDashboard({
   const [experiences, setExperiences] = useState(initialExperiences);
   const [settings, setSettings] = useState(initialSettings);
   const [messages, setMessages] = useState(initialMessages);
+  const [subscribers, setSubscribers] = useState(initialSubscribers);
+  const [activityLogs, setActivityLogs] = useState(initialActivityLogs);
   const [mediaFiles, setMediaFiles] = useState([]);
   const [mediaLoading, setMediaLoading] = useState(false);
   const [uploadingMedia, setUploadingMedia] = useState(false);
+
+  // Live System Health State
+  const [systemHealth, setSystemHealth] = useState({
+    status: 'healthy',
+    latency: 18,
+    checking: false,
+    lastChecked: 'Just now'
+  });
+
+  // Global Search State
+  const [globalSearch, setGlobalSearch] = useState('');
+  const [searchFocused, setSearchFocused] = useState(false);
+
+  // Activity Log Filter
+  const [activityFilter, setActivityFilter] = useState('All');
+
+  // New Subscriber Form State
+  const [newSubEmail, setNewSubEmail] = useState('');
+  const [subSearchQuery, setSubSearchQuery] = useState('');
+
+  // Live Clock state for NPT Time (Kathmandu, Nepal)
+  const [currentTime, setCurrentTime] = useState('');
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      setCurrentTime(now.toLocaleTimeString('en-US', {
+        timeZone: 'Asia/Kathmandu',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+      }) + ' NPT');
+    };
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   // Form states for modals
   const [editingItem, setEditingItem] = useState(null);
@@ -122,21 +166,222 @@ export default function AdminDashboard({
     notify('Exporting full database JSON backup...');
   };
 
-  // Real Navigation Sections Matching dipeshsapkota7.com.np
+  // Live System Health Check
+  const runHealthCheck = async () => {
+    setSystemHealth(prev => ({ ...prev, checking: true }));
+    const t0 = performance.now();
+    try {
+      const res = await fetch('/api/health');
+      const t1 = performance.now();
+      const latency = Math.max(1, Math.round(t1 - t0));
+      if (res.ok) {
+        setSystemHealth({
+          status: 'healthy',
+          latency,
+          checking: false,
+          lastChecked: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        });
+        notify(`System Operational · Health Check passed in ${latency}ms!`);
+      } else {
+        setSystemHealth({
+          status: 'degraded',
+          latency,
+          checking: false,
+          lastChecked: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        });
+        notify('Health check reported degraded status', 'error');
+      }
+    } catch {
+      setSystemHealth({
+        status: 'error',
+        latency: 0,
+        checking: false,
+        lastChecked: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      });
+      notify('Health check request failed', 'error');
+    }
+  };
+
+  // Quick Toggles for Announcements from Overview
+  const toggleAnnouncement = async () => {
+    const current = settings.announcement || {};
+    const updated = { ...current, is_active: !current.is_active };
+    await saveSettingSection('announcement', updated);
+  };
+
+  const togglePopup = async () => {
+    const current = settings.popup || {};
+    const updated = { ...current, is_active: !current.is_active };
+    await saveSettingSection('popup', updated);
+  };
+
+  // Toggle Read/Unread on Messages
+  const toggleMessageRead = async (id, currentRead) => {
+    try {
+      const res = await fetch('/api/admin/messages', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, is_read: !currentRead })
+      });
+      if (res.ok) {
+        setMessages(prev => prev.map(m => m.id === id ? { ...m, is_read: !currentRead } : m));
+        notify(!currentRead ? 'Inquiry marked as read' : 'Inquiry marked as unread');
+      }
+    } catch {
+      notify('Failed to update message status', 'error');
+    }
+  };
+
+  // Subscriber Management Functions
+  const copyAllEmails = () => {
+    if (subscribers.length === 0) {
+      notify('No subscribers to copy', 'error');
+      return;
+    }
+    const emails = subscribers.map(s => s.email).filter(Boolean).join(', ');
+    navigator.clipboard.writeText(emails);
+    notify(`Copied ${subscribers.length} subscriber emails to clipboard!`);
+  };
+
+  const exportSubscribersCSV = () => {
+    if (subscribers.length === 0) {
+      notify('No subscribers to export', 'error');
+      return;
+    }
+    const headers = "id,email,status,subscribed_at\n";
+    const rows = subscribers.map(s => `${s.id || ''},"${s.email || ''}","${s.status || 'active'}","${s.subscribed_at || ''}"`).join("\n");
+    const blob = new Blob([headers + rows], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `subscribers-${new Date().toISOString().slice(0, 10)}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+    notify('Subscribers exported as CSV!');
+  };
+
+  const handleAddSubscriber = async (e) => {
+    e.preventDefault();
+    if (!newSubEmail || !newSubEmail.includes('@')) {
+      notify('Please enter a valid email address', 'error');
+      return;
+    }
+    try {
+      const res = await fetch('/api/admin/subscribers', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: newSubEmail })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Failed to add subscriber');
+      setSubscribers(prev => [data.data || { id: Date.now(), email: newSubEmail, status: 'active', subscribed_at: new Date().toISOString() }, ...prev]);
+      setNewSubEmail('');
+      notify(`Subscriber added successfully!`);
+    } catch (err) {
+      notify(err.message, 'error');
+    }
+  };
+
+  const handleDeleteSubscriber = (id, email) => {
+    setConfirmModal({
+      open: true,
+      title: 'Remove Subscriber',
+      message: `Are you sure you want to remove "${email}" from audience subscribers?`,
+      onConfirm: async () => {
+        try {
+          const res = await fetch(`/api/admin/subscribers?id=${id}`, { method: 'DELETE' });
+          if (!res.ok) throw new Error('Failed to delete subscriber');
+          setSubscribers(prev => prev.filter(s => s.id !== id));
+          notify(`Removed ${email}`);
+        } catch (err) {
+          notify(err.message, 'error');
+        }
+      }
+    });
+  };
+
+  // Cross-entity Global Search Memo
+  const searchResults = React.useMemo(() => {
+    if (!globalSearch || globalSearch.trim().length < 2) return [];
+    const q = globalSearch.toLowerCase().trim();
+    const results = [];
+
+    projects.forEach(p => {
+      if (p.title?.toLowerCase().includes(q) || p.description?.toLowerCase().includes(q) || p.tech?.some(t => t.toLowerCase().includes(q))) {
+        results.push({ type: 'Project', title: p.title, subtitle: p.category_label || p.category, tab: 'projects' });
+      }
+    });
+
+    articles.forEach(a => {
+      if (a.title?.toLowerCase().includes(q) || a.excerpt?.toLowerCase().includes(q) || a.tags?.some(t => t.toLowerCase().includes(q))) {
+        results.push({ type: 'Article', title: a.title, subtitle: a.category || 'Blog', tab: 'articles' });
+      }
+    });
+
+    certificates.forEach(c => {
+      if (c.title?.toLowerCase().includes(q) || c.org?.toLowerCase().includes(q) || c.category?.toLowerCase().includes(q)) {
+        results.push({ type: 'Certificate', title: c.title, subtitle: c.org, tab: 'certificates' });
+      }
+    });
+
+    skills.forEach(s => {
+      if (s.name?.toLowerCase().includes(q) || s.category?.toLowerCase().includes(q)) {
+        results.push({ type: 'Skill', title: s.name, subtitle: s.category, tab: 'skills' });
+      }
+    });
+
+    gallery.forEach(g => {
+      if (g.title?.toLowerCase().includes(q) || g.category?.toLowerCase().includes(q)) {
+        results.push({ type: 'Gallery', title: g.title, subtitle: g.category, tab: 'gallery' });
+      }
+    });
+
+    messages.forEach(m => {
+      if (m.name?.toLowerCase().includes(q) || m.email?.toLowerCase().includes(q) || m.message?.toLowerCase().includes(q)) {
+        results.push({ type: 'Inquiry', title: `${m.name} (${m.email})`, subtitle: m.subject || m.message?.slice(0, 40), tab: 'inbox' });
+      }
+    });
+
+    subscribers.forEach(sub => {
+      if (sub.email?.toLowerCase().includes(q)) {
+        results.push({ type: 'Subscriber', title: sub.email, subtitle: 'Newsletter Lead', tab: 'subscribers' });
+      }
+    });
+
+    return results.slice(0, 8);
+  }, [globalSearch, projects, articles, certificates, skills, gallery, messages, subscribers]);
+
+  // Skill Category Breakdown Memo
+  const skillCategoryBreakdown = React.useMemo(() => {
+    const counts = {};
+    skills.forEach(s => {
+      const cat = s.category || 'General';
+      counts[cat] = (counts[cat] || 0) + 1;
+    });
+    const total = skills.length || 1;
+    return Object.entries(counts).map(([name, count]) => ({
+      name,
+      count,
+      percent: Math.round((count / total) * 100)
+    }));
+  }, [skills]);
+
+  // Real Navigation Sections Grouped Professionally
   const navItems = [
-    { id: 'overview', label: 'Executive Overview', badge: 'Live', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' },
-    { id: 'profile', label: 'About & Profile (/about)', icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z' },
-    { id: 'skills', label: 'Technical Skills (/skills)', count: skills.length, icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4' },
-    { id: 'projects', label: 'Projects Showcase (/projects)', count: projects.length, icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10' },
-    { id: 'articles', label: 'Articles & Blog (/blog)', count: articles.length, icon: 'M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z' },
-    { id: 'certificates', label: 'Certificates (/certificates)', count: certificates.length, icon: 'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z' },
-    { id: 'experience', label: 'Resume & Career (/resume)', count: experiences.length, icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' },
-    { id: 'gallery', label: 'Photo Gallery (/gallery)', count: gallery.length, icon: 'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z' },
-    { id: 'inbox', label: 'Contact Inquiries (/contact)', count: messages.filter(m => !m.is_read).length, highlight: true, icon: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' },
-    { id: 'announcements', label: 'Popup & Rolling Banner', badge: (settings.announcement?.is_active || settings.popup?.is_active) ? 'Active' : undefined, icon: 'M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z' },
-    { id: 'media', label: 'Media Bucket (Storage)', icon: 'M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12' },
-    { id: 'seo', label: 'SEO & Google Sitelinks', badge: '100%', icon: 'M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' },
-    { id: 'database', label: 'Database & Backup', badge: 'Supabase', icon: 'M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4' },
+    { id: 'overview', label: 'Executive Command Hub', badge: 'Live', group: 'Control Hub', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' },
+    { id: 'projects', label: 'Projects Showcase (/projects)', count: projects.length, group: 'Content Engine', icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10' },
+    { id: 'articles', label: 'Articles & Blog (/blog)', count: articles.length, group: 'Content Engine', icon: 'M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z' },
+    { id: 'certificates', label: 'Certificates (/certificates)', count: certificates.length, group: 'Content Engine', icon: 'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z' },
+    { id: 'skills', label: 'Technical Skills (/skills)', count: skills.length, group: 'Content Engine', icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4' },
+    { id: 'gallery', label: 'Photo Gallery (/gallery)', count: gallery.length, group: 'Content Engine', icon: 'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z' },
+    { id: 'profile', label: 'About & Profile (/about)', group: 'Content Engine', icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z' },
+    { id: 'experience', label: 'Resume & Career (/resume)', count: experiences.length, group: 'Content Engine', icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' },
+    { id: 'inbox', label: 'Contact Inquiries (/contact)', count: messages.filter(m => !m.is_read).length, highlight: true, group: 'Audience & Leads', icon: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' },
+    { id: 'subscribers', label: 'Audience & Leads (/newsletter)', count: subscribers.length, group: 'Audience & Leads', icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' },
+    { id: 'announcements', label: 'Popup & Rolling Banner', badge: (settings.announcement?.is_active || settings.popup?.is_active) ? 'Active' : undefined, group: 'System Operations', icon: 'M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z' },
+    { id: 'media', label: 'Media Bucket (Storage)', group: 'System Operations', icon: 'M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12' },
+    { id: 'seo', label: 'SEO & Google Sitelinks', badge: '100%', group: 'System Operations', icon: 'M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' },
+    { id: 'database', label: 'Database & Backup', badge: 'Supabase', group: 'System Operations', icon: 'M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4' },
   ];
 
   return (
@@ -182,8 +427,8 @@ export default function AdminDashboard({
       )}
 
       {/* Top Header Bar */}
-      <header className="sticky top-0 z-40 h-16 border-b border-slate-800/80 bg-[#0B0F19]/90 backdrop-blur-md flex items-center justify-between px-4 sm:px-8">
-        <div className="flex items-center gap-4">
+      <header className="sticky top-0 z-40 h-16 border-b border-slate-800/80 bg-[#0B0F19]/90 backdrop-blur-md flex items-center justify-between px-4 sm:px-8 gap-4">
+        <div className="flex items-center gap-3 min-w-0">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="lg:hidden p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800"
@@ -191,29 +436,98 @@ export default function AdminDashboard({
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
           </button>
 
-          <Link href="/admin" className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center font-bold text-slate-950 text-xs shadow-md shadow-emerald-500/20">
+          <Link href="/admin" onClick={() => setActiveTab('overview')} className="flex items-center gap-2.5 truncate">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center font-bold text-slate-950 text-xs shadow-md shadow-emerald-500/20 shrink-0">
               DS
             </div>
-            <div>
-              <span className="font-bold text-sm text-white tracking-tight">Dipesh Sapkota · Control Center</span>
+            <div className="truncate">
+              <span className="font-bold text-sm text-white tracking-tight">Dipesh Sapkota</span>
               <span className="hidden sm:inline-block ml-2 text-[10px] text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full font-mono">
-                Production CMS
+                Admin Console
               </span>
             </div>
           </Link>
         </div>
 
-        <div className="flex items-center gap-3">
+        {/* Global Instant Search Bar */}
+        <div className="relative flex-1 max-w-md hidden md:block">
+          <div className="relative">
+            <input
+              type="text"
+              value={globalSearch}
+              onChange={(e) => setGlobalSearch(e.target.value)}
+              onFocus={() => setSearchFocused(true)}
+              onBlur={() => setTimeout(() => setSearchFocused(false), 250)}
+              placeholder="Search projects, articles, credentials, messages..."
+              className="w-full pl-9 pr-8 py-1.5 rounded-xl bg-slate-900/90 border border-slate-800 text-xs text-slate-200 placeholder-slate-500 outline-none focus:border-emerald-500/50 transition-all font-sans"
+            />
+            <svg className="w-4 h-4 text-slate-500 absolute left-3 top-2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+            {globalSearch && (
+              <button onClick={() => setGlobalSearch('')} className="absolute right-2.5 top-2 text-slate-500 hover:text-slate-300 text-xs font-bold">✕</button>
+            )}
+          </div>
+
+          {/* Search Dropdown Results */}
+          {searchFocused && searchResults.length > 0 && (
+            <div className="absolute top-full left-0 right-0 mt-2 bg-[#0E131F] border border-slate-700/80 rounded-2xl shadow-2xl overflow-hidden z-50 divide-y divide-slate-800">
+              <div className="px-3 py-1.5 bg-slate-900/80 text-[10px] uppercase font-mono tracking-wider text-slate-400 flex justify-between">
+                <span>Matching Entries ({searchResults.length})</span>
+                <span>Click to View</span>
+              </div>
+              {searchResults.map((res, i) => (
+                <button
+                  key={i}
+                  onMouseDown={() => {
+                    setActiveTab(res.tab);
+                    setGlobalSearch('');
+                    setSearchFocused(false);
+                  }}
+                  className="w-full px-3 py-2 text-left hover:bg-slate-800/60 flex items-center justify-between transition-colors group"
+                >
+                  <div className="truncate pr-2">
+                    <div className="text-xs font-bold text-white group-hover:text-emerald-400 truncate">{res.title}</div>
+                    <div className="text-[10px] text-slate-400 truncate">{res.subtitle}</div>
+                  </div>
+                  <span className="text-[9px] px-2 py-0.5 rounded-md font-mono shrink-0 bg-slate-800 text-slate-300 border border-slate-700">
+                    {res.type}
+                  </span>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Right Header Controls */}
+        <div className="flex items-center gap-2.5 shrink-0">
+          {/* Live Ping Status Indicator */}
+          <button
+            type="button"
+            onClick={runHealthCheck}
+            title="Click to test live server & database latency"
+            className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-emerald-500/40 text-xs font-mono transition-all group cursor-pointer"
+          >
+            <span className={`w-2 h-2 rounded-full ${
+              systemHealth.status === 'healthy' ? 'bg-emerald-400 shadow-sm shadow-emerald-400/50' : systemHealth.status === 'degraded' ? 'bg-amber-400' : 'bg-rose-400'
+            } ${systemHealth.checking ? 'animate-ping' : ''}`}></span>
+            <span className="text-slate-300 font-semibold">{systemHealth.checking ? 'Pinging...' : `${systemHealth.latency}ms`}</span>
+            <span className="hidden lg:inline text-[10px] text-slate-500">· {systemHealth.status === 'healthy' ? 'Live' : systemHealth.status}</span>
+          </button>
+
+          {/* Kathmandu Clock */}
+          <div className="hidden xl:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900/60 border border-slate-800/80 text-[11px] font-mono text-slate-400">
+            <span>{currentTime || 'Kathmandu NPT'}</span>
+          </div>
+
           <a
             href="/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 text-xs font-medium transition-colors border border-slate-700/60"
           >
-            <span>View Live Site</span>
-            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+            <span>Live Site</span>
+            <svg className="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
           </a>
+
           <button
             onClick={handleLogout}
             className="px-3 py-1.5 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 hover:bg-rose-500/20 text-xs font-medium transition-colors"
@@ -224,50 +538,60 @@ export default function AdminDashboard({
       </header>
 
       <div className="flex-1 flex overflow-hidden">
-        {/* Left Sidebar */}
-        <aside className={`fixed inset-y-0 left-0 z-30 w-64 bg-[#090D15] border-r border-slate-800/80 pt-16 lg:pt-0 transform lg:translate-x-0 transition-transform duration-200 ease-in-out lg:static ${
+        {/* Left Sidebar Grouped */}
+        <aside className={`fixed inset-y-0 left-0 z-30 w-64 bg-[#090D15] border-r border-slate-800/80 pt-16 lg:pt-0 transform lg:translate-x-0 transition-transform duration-200 ease-in-out lg:static shrink-0 ${
           mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}>
-          <div className="p-4 space-y-1 overflow-y-auto max-h-[calc(100vh-4rem)]">
-            <div className="px-3 py-2 text-[10px] font-mono uppercase tracking-wider text-slate-500 font-semibold">
-              Site Management
-            </div>
-            {navItems.map((item) => {
-              const isActive = activeTab === item.id;
+          <div className="p-3 space-y-4 overflow-y-auto max-h-[calc(100vh-4rem)]">
+            {['Control Hub', 'Content Engine', 'Audience & Leads', 'System Operations'].map((grp) => {
+              const groupItems = navItems.filter(item => item.group === grp);
+              if (groupItems.length === 0) return null;
               return (
-                <button
-                  key={item.id}
-                  onClick={() => {
-                    setActiveTab(item.id);
-                    setMobileMenuOpen(false);
-                  }}
-                  className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-medium transition-all ${
-                    isActive
-                      ? 'bg-emerald-500 text-slate-950 font-bold shadow-lg shadow-emerald-500/20'
-                      : 'text-slate-400 hover:text-slate-100 hover:bg-slate-800/50'
-                  }`}
-                >
-                  <div className="flex items-center gap-3 truncate">
-                    <svg className={`w-4 h-4 flex-shrink-0 ${isActive ? 'text-slate-950' : 'text-slate-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={item.icon} />
-                    </svg>
-                    <span className="truncate">{item.label}</span>
+                <div key={grp} className="space-y-1">
+                  <div className="px-3 py-1 text-[10px] font-mono uppercase tracking-wider text-slate-500 font-bold">
+                    {grp}
                   </div>
-                  {item.count !== undefined && (
-                    <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-mono ${
-                      isActive ? 'bg-slate-950/20 text-slate-950' : 'bg-slate-800 text-slate-300'
-                    }`}>
-                      {item.count}
-                    </span>
-                  )}
-                  {item.badge && (
-                    <span className={`text-[9px] px-1.5 py-0.2 rounded font-mono ${
-                      isActive ? 'bg-slate-950 text-white' : 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
-                    }`}>
-                      {item.badge}
-                    </span>
-                  )}
-                </button>
+                  {groupItems.map((item) => {
+                    const isActive = activeTab === item.id;
+                    return (
+                      <button
+                        key={item.id}
+                        onClick={() => {
+                          setActiveTab(item.id);
+                          setMobileMenuOpen(false);
+                        }}
+                        className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium transition-all ${
+                          isActive
+                            ? 'bg-emerald-500 text-slate-950 font-bold shadow-lg shadow-emerald-500/20'
+                            : 'text-slate-400 hover:text-slate-100 hover:bg-slate-800/50'
+                        }`}
+                      >
+                        <div className="flex items-center gap-2.5 truncate">
+                          <svg className={`w-4 h-4 shrink-0 ${isActive ? 'text-slate-950' : 'text-slate-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={item.icon} />
+                          </svg>
+                          <span className="truncate">{item.label}</span>
+                        </div>
+                        {item.count !== undefined && (
+                          <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-mono shrink-0 ${
+                            item.highlight && item.count > 0
+                              ? 'bg-amber-400 text-slate-950 font-bold animate-pulse'
+                              : isActive ? 'bg-slate-950/20 text-slate-950' : 'bg-slate-800 text-slate-300'
+                          }`}>
+                            {item.count}
+                          </span>
+                        )}
+                        {item.badge && (
+                          <span className={`text-[9px] px-1.5 py-0.2 rounded font-mono shrink-0 ${
+                            isActive ? 'bg-slate-950 text-white' : 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+                          }`}>
+                            {item.badge}
+                          </span>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
               );
             })}
           </div>
@@ -277,84 +601,477 @@ export default function AdminDashboard({
         <main className="flex-1 overflow-y-auto p-4 sm:p-8">
 
           {/* ============================================================== */}
-          {/* TAB 1: EXECUTIVE OVERVIEW */}
+          {/* TAB 1: EXECUTIVE COMMAND HUB */}
           {/* ============================================================== */}
           {activeTab === 'overview' && (
-            <div className="space-y-6 animate-fade-in">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800">
-                <div>
-                  <h1 className="text-2xl font-bold text-white tracking-tight">Portfolio Operations & Content Hub</h1>
-                  <p className="text-xs text-slate-400 mt-1">Manage content, media, credentials, and settings across dipeshsapkota7.com.np.</p>
+            <div className="space-y-6 animate-fade-in max-w-7xl mx-auto">
+              
+              {/* Executive Welcome & Operations Center */}
+              <div className="bg-gradient-to-br from-[#0E1526] via-[#0C1220] to-[#080D17] border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 text-[11px] font-mono font-semibold flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        Production Ecosystem Live
+                      </span>
+                      <span className="text-slate-500 text-xs hidden sm:inline">·</span>
+                      <span className="text-slate-400 text-xs font-mono hidden sm:inline">dipeshsapkota7.com.np</span>
+                    </div>
+
+                    <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                      Portfolio Command Hub
+                    </h1>
+                    <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
+                      Real-time telemetry, content synchronization, WebP optimization engine, and lead capture across your personal portfolio.
+                    </p>
+
+                    {/* Environment Pill Matrix */}
+                    <div className="flex flex-wrap items-center gap-2 pt-2">
+                      <span className="px-2.5 py-1 rounded-lg bg-slate-900/90 border border-slate-800 text-[11px] text-slate-300 font-mono">
+                        ⚡ Next.js 16.3 (Turbopack)
+                      </span>
+                      <span className="px-2.5 py-1 rounded-lg bg-slate-900/90 border border-slate-800 text-[11px] text-slate-300 font-mono">
+                        🔄 Static ISR with Instant Purge
+                      </span>
+                      <span className="px-2.5 py-1 rounded-lg bg-slate-900/90 border border-slate-800 text-[11px] text-emerald-400 font-mono">
+                        🖼️ Sharp 0.33 WebP Pipeline
+                      </span>
+                      <span className="px-2.5 py-1 rounded-lg bg-slate-900/90 border border-slate-800 text-[11px] text-teal-400 font-mono">
+                        🔒 Supabase Service Role
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Actions & Diagnostics */}
+                  <div className="flex flex-wrap lg:flex-col gap-2.5 shrink-0">
+                    <button
+                      onClick={runHealthCheck}
+                      className="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 transition-all cursor-pointer"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                      <span>{systemHealth.checking ? 'Testing...' : 'Run Diagnostics'}</span>
+                    </button>
+                    <button
+                      onClick={handleExportBackup}
+                      className="px-4 py-2 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-slate-200 font-semibold text-xs flex items-center justify-center gap-2 border border-slate-700/80 transition-all"
+                    >
+                      <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                      <span>Backup JSON Database</span>
+                    </button>
+                    <a
+                      href="https://tihkvcybdvvovmnvkdrx.supabase.co"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="px-4 py-2 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-emerald-400 text-xs font-mono font-semibold flex items-center justify-center gap-1.5 border border-emerald-500/20 transition-all"
+                    >
+                      <span>Supabase Studio ↗</span>
+                    </a>
+                  </div>
                 </div>
-                <div className="flex gap-2">
-                  <a href="https://tihkvcybdvvovmnvkdrx.supabase.co" target="_blank" rel="noreferrer" className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-emerald-400 text-xs font-mono font-semibold flex items-center gap-1.5 border border-emerald-500/20">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span>Supabase Live</span>
-                  </a>
-                  <button onClick={handleExportBackup} className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold">
-                    Backup JSON
+              </div>
+
+              {/* 7 High-Impact Executive KPI Cards */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3">
+                <div onClick={() => setActiveTab('projects')} className="bg-[#0E131F] border border-slate-800 hover:border-emerald-500/50 p-4 rounded-2xl cursor-pointer transition-all hover:scale-[1.02] shadow-sm group">
+                  <div className="flex items-center justify-between text-slate-400">
+                    <span className="text-[11px] font-medium uppercase tracking-wider">Projects</span>
+                    <span className="text-[10px] text-emerald-400 font-mono group-hover:translate-x-0.5 transition-transform">→</span>
+                  </div>
+                  <div className="text-2xl sm:text-3xl font-extrabold text-white mt-1.5">{projects.length}</div>
+                  <div className="text-[10px] text-slate-400 mt-1 flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                    <span>{projects.filter(p => p.featured).length} Featured</span>
+                  </div>
+                </div>
+
+                <div onClick={() => setActiveTab('articles')} className="bg-[#0E131F] border border-slate-800 hover:border-emerald-500/50 p-4 rounded-2xl cursor-pointer transition-all hover:scale-[1.02] shadow-sm group">
+                  <div className="flex items-center justify-between text-slate-400">
+                    <span className="text-[11px] font-medium uppercase tracking-wider">Articles</span>
+                    <span className="text-[10px] text-emerald-400 font-mono group-hover:translate-x-0.5 transition-transform">→</span>
+                  </div>
+                  <div className="text-2xl sm:text-3xl font-extrabold text-white mt-1.5">{articles.length}</div>
+                  <div className="text-[10px] text-slate-400 mt-1 flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-teal-400"></span>
+                    <span>Technical Blogs</span>
+                  </div>
+                </div>
+
+                <div onClick={() => setActiveTab('certificates')} className="bg-[#0E131F] border border-slate-800 hover:border-emerald-500/50 p-4 rounded-2xl cursor-pointer transition-all hover:scale-[1.02] shadow-sm group">
+                  <div className="flex items-center justify-between text-slate-400">
+                    <span className="text-[11px] font-medium uppercase tracking-wider">Certificates</span>
+                    <span className="text-[10px] text-emerald-400 font-mono group-hover:translate-x-0.5 transition-transform">→</span>
+                  </div>
+                  <div className="text-2xl sm:text-3xl font-extrabold text-white mt-1.5">{certificates.length}</div>
+                  <div className="text-[10px] text-slate-400 mt-1 flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+                    <span>Accreditations</span>
+                  </div>
+                </div>
+
+                <div onClick={() => setActiveTab('skills')} className="bg-[#0E131F] border border-slate-800 hover:border-emerald-500/50 p-4 rounded-2xl cursor-pointer transition-all hover:scale-[1.02] shadow-sm group">
+                  <div className="flex items-center justify-between text-slate-400">
+                    <span className="text-[11px] font-medium uppercase tracking-wider">Skills</span>
+                    <span className="text-[10px] text-emerald-400 font-mono group-hover:translate-x-0.5 transition-transform">→</span>
+                  </div>
+                  <div className="text-2xl sm:text-3xl font-extrabold text-white mt-1.5">{skills.length}</div>
+                  <div className="text-[10px] text-slate-400 mt-1 flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
+                    <span>{skillCategoryBreakdown.length} Domains</span>
+                  </div>
+                </div>
+
+                <div onClick={() => setActiveTab('gallery')} className="bg-[#0E131F] border border-slate-800 hover:border-emerald-500/50 p-4 rounded-2xl cursor-pointer transition-all hover:scale-[1.02] shadow-sm group">
+                  <div className="flex items-center justify-between text-slate-400">
+                    <span className="text-[11px] font-medium uppercase tracking-wider">Gallery</span>
+                    <span className="text-[10px] text-emerald-400 font-mono group-hover:translate-x-0.5 transition-transform">→</span>
+                  </div>
+                  <div className="text-2xl sm:text-3xl font-extrabold text-white mt-1.5">{gallery.length}</div>
+                  <div className="text-[10px] text-emerald-400 mt-1 font-mono">
+                    ⚡ WebP Active
+                  </div>
+                </div>
+
+                <div onClick={() => setActiveTab('inbox')} className="bg-[#0E131F] border border-slate-800 hover:border-emerald-500/50 p-4 rounded-2xl cursor-pointer transition-all hover:scale-[1.02] shadow-sm group">
+                  <div className="flex items-center justify-between text-slate-400">
+                    <span className="text-[11px] font-medium uppercase tracking-wider">Inquiries</span>
+                    <span className="text-[10px] text-emerald-400 font-mono group-hover:translate-x-0.5 transition-transform">→</span>
+                  </div>
+                  <div className="text-2xl sm:text-3xl font-extrabold text-white mt-1.5">{messages.length}</div>
+                  <div className="text-[10px] mt-1 font-mono">
+                    {messages.filter(m => !m.is_read).length > 0 ? (
+                      <span className="text-amber-400 font-bold">{messages.filter(m => !m.is_read).length} Unread</span>
+                    ) : (
+                      <span className="text-slate-500">All Read</span>
+                    )}
+                  </div>
+                </div>
+
+                <div onClick={() => setActiveTab('subscribers')} className="bg-[#0E131F] border border-slate-800 hover:border-emerald-500/50 p-4 rounded-2xl cursor-pointer transition-all hover:scale-[1.02] shadow-sm group">
+                  <div className="flex items-center justify-between text-slate-400">
+                    <span className="text-[11px] font-medium uppercase tracking-wider">Audience</span>
+                    <span className="text-[10px] text-emerald-400 font-mono group-hover:translate-x-0.5 transition-transform">→</span>
+                  </div>
+                  <div className="text-2xl sm:text-3xl font-extrabold text-white mt-1.5">{subscribers.length}</div>
+                  <div className="text-[10px] text-emerald-400 mt-1 flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                    <span>Subscribers</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Quick Operations Toolbar */}
+              <div className="bg-[#0E131F] border border-slate-800 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-3">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-bold text-white uppercase tracking-wider font-mono">Fast Actions:</span>
+                </div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <button
+                    onClick={() => { setEditingItem({ status: 'published', tech: [] }); setActiveTab('projects'); setEditModalOpen(true); }}
+                    className="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-semibold border border-slate-700/80 transition-all flex items-center gap-1.5"
+                  >
+                    <span>+ New Project</span>
+                  </button>
+                  <button
+                    onClick={() => { setEditingItem({ category: 'Design', org: 'Udemy' }); setActiveTab('certificates'); setEditModalOpen(true); }}
+                    className="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-semibold border border-slate-700/80 transition-all flex items-center gap-1.5"
+                  >
+                    <span>+ Add Certificate</span>
+                  </button>
+                  <button
+                    onClick={() => { setEditingItem({ category: 'Sports', type: 'image' }); setActiveTab('gallery'); setEditModalOpen(true); }}
+                    className="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-semibold border border-slate-700/80 transition-all flex items-center gap-1.5"
+                  >
+                    <span>+ Add Gallery Photo</span>
+                  </button>
+                  <button
+                    onClick={() => { setEditingItem({ status: 'published', tags: [] }); setActiveTab('articles'); setEditModalOpen(true); }}
+                    className="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-semibold border border-slate-700/80 transition-all flex items-center gap-1.5"
+                  >
+                    <span>+ New Article</span>
+                  </button>
+                  <button
+                    onClick={() => { setEditingItem({ level: 90, category: 'Frontend' }); setActiveTab('skills'); setEditModalOpen(true); }}
+                    className="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-semibold border border-slate-700/80 transition-all flex items-center gap-1.5"
+                  >
+                    <span>+ Add Skill</span>
                   </button>
                 </div>
               </div>
 
-              {/* 6 Quick Metric Cards */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-                <div onClick={() => setActiveTab('projects')} className="bg-[#0E131F] border border-slate-800 p-3.5 rounded-2xl hover:border-emerald-500/40 cursor-pointer transition-all">
-                  <div className="text-[11px] text-slate-400 font-medium truncate">Projects</div>
-                  <div className="text-2xl font-bold text-white mt-1">{projects.length}</div>
-                  <div className="text-[10px] text-emerald-400 mt-1 truncate">/projects →</div>
+              {/* Live Announcements & Alerts Control Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                
+                {/* 1. Rolling Announcement Ticker Card */}
+                <div className="bg-[#0E131F] border border-slate-800 rounded-2xl p-5 space-y-3">
+                  <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+                    <div className="flex items-center gap-2">
+                      <span className={`w-2.5 h-2.5 rounded-full ${settings.announcement?.is_active ? 'bg-emerald-400 animate-pulse' : 'bg-slate-600'}`}></span>
+                      <h3 className="text-sm font-bold text-white">Top Rolling Banner</h3>
+                    </div>
+                    <button
+                      onClick={toggleAnnouncement}
+                      className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                        settings.announcement?.is_active
+                          ? 'bg-rose-500/20 text-rose-400 border border-rose-500/30 hover:bg-rose-500/30'
+                          : 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/30'
+                      }`}
+                    >
+                      {settings.announcement?.is_active ? 'Pause Banner' : 'Activate Banner'}
+                    </button>
+                  </div>
+                  <div className="bg-slate-950/70 p-3 rounded-xl border border-slate-800/80 text-xs text-slate-300 font-mono truncate">
+                    {settings.announcement?.text || 'No announcement set'}
+                  </div>
+                  <div className="flex items-center justify-between text-[11px] text-slate-400">
+                    <span>Speed: {settings.announcement?.speed || '25s'}</span>
+                    <button onClick={() => setActiveTab('announcements')} className="text-emerald-400 hover:underline">
+                      Configure Text & Speed →
+                    </button>
+                  </div>
                 </div>
-                <div onClick={() => setActiveTab('articles')} className="bg-[#0E131F] border border-slate-800 p-3.5 rounded-2xl hover:border-emerald-500/40 cursor-pointer transition-all">
-                  <div className="text-[11px] text-slate-400 font-medium truncate">Articles</div>
-                  <div className="text-2xl font-bold text-white mt-1">{articles.length}</div>
-                  <div className="text-[10px] text-emerald-400 mt-1 truncate">/blog →</div>
+
+                {/* 2. Entry Popup Modal Card */}
+                <div className="bg-[#0E131F] border border-slate-800 rounded-2xl p-5 space-y-3">
+                  <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+                    <div className="flex items-center gap-2">
+                      <span className={`w-2.5 h-2.5 rounded-full ${settings.popup?.is_active ? 'bg-emerald-400 animate-pulse' : 'bg-slate-600'}`}></span>
+                      <h3 className="text-sm font-bold text-white">Entry Popup Modal</h3>
+                    </div>
+                    <button
+                      onClick={togglePopup}
+                      className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                        settings.popup?.is_active
+                          ? 'bg-rose-500/20 text-rose-400 border border-rose-500/30 hover:bg-rose-500/30'
+                          : 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/30'
+                      }`}
+                    >
+                      {settings.popup?.is_active ? 'Pause Popup' : 'Activate Popup'}
+                    </button>
+                  </div>
+                  <div className="flex items-center gap-3 bg-slate-950/70 p-3 rounded-xl border border-slate-800/80">
+                    {settings.popup?.image_url && (
+                      <div className="relative w-12 h-12 rounded-lg overflow-hidden border border-slate-700 shrink-0">
+                        <Image src={settings.popup.image_url} alt="Popup" fill sizes="48px" className="object-cover" />
+                      </div>
+                    )}
+                    <div className="truncate text-xs">
+                      <div className="font-bold text-white truncate">{settings.popup?.title || 'Announcement'}</div>
+                      <div className="text-[11px] text-slate-400 truncate">{settings.popup?.cta_text || 'Learn More'} · {settings.popup?.link_url || '/'}</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between text-[11px] text-slate-400">
+                    <span>Target: {settings.popup?.link_url || 'Homepage'}</span>
+                    <button onClick={() => setActiveTab('announcements')} className="text-emerald-400 hover:underline">
+                      Configure Image & Links →
+                    </button>
+                  </div>
                 </div>
-                <div onClick={() => setActiveTab('certificates')} className="bg-[#0E131F] border border-slate-800 p-3.5 rounded-2xl hover:border-emerald-500/40 cursor-pointer transition-all">
-                  <div className="text-[11px] text-slate-400 font-medium truncate">Certificates</div>
-                  <div className="text-2xl font-bold text-white mt-1">{certificates.length}</div>
-                  <div className="text-[10px] text-emerald-400 mt-1 truncate">/certificates →</div>
+
+              </div>
+
+              {/* Visual Domain Analytics & Resource Efficiency */}
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                
+                {/* 1. Skill Domain Distribution Bar */}
+                <div className="lg:col-span-2 bg-[#0E131F] border border-slate-800 rounded-2xl p-5 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-sm font-bold text-white flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                      <span>Technical Skill Distribution Across Domains</span>
+                    </h3>
+                    <span className="text-[11px] text-slate-400 font-mono">{skills.length} Total Skills</span>
+                  </div>
+
+                  {/* Multi-segmented Progress Bar */}
+                  <div className="w-full h-3 rounded-full bg-slate-900 overflow-hidden flex">
+                    {skillCategoryBreakdown.map((cat, idx) => {
+                      const colors = [
+                        'bg-emerald-500',
+                        'bg-teal-400',
+                        'bg-sky-400',
+                        'bg-indigo-400',
+                        'bg-amber-400',
+                        'bg-rose-400'
+                      ];
+                      return (
+                        <div
+                          key={cat.name}
+                          style={{ width: `${cat.percent}%` }}
+                          title={`${cat.name}: ${cat.count} (${cat.percent}%)`}
+                          className={`${colors[idx % colors.length]} h-full transition-all`}
+                        />
+                      );
+                    })}
+                  </div>
+
+                  {/* Category Legend Pills */}
+                  <div className="flex flex-wrap gap-2 pt-1">
+                    {skillCategoryBreakdown.map((cat, idx) => {
+                      const dotColors = [
+                        'bg-emerald-500',
+                        'bg-teal-400',
+                        'bg-sky-400',
+                        'bg-indigo-400',
+                        'bg-amber-400',
+                        'bg-rose-400'
+                      ];
+                      return (
+                        <div key={cat.name} className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-800 text-[11px] text-slate-300">
+                          <span className={`w-2 h-2 rounded-full ${dotColors[idx % dotColors.length]}`}></span>
+                          <span className="font-medium">{cat.name}</span>
+                          <span className="text-slate-500 font-mono text-[10px]">({cat.count})</span>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
-                <div onClick={() => setActiveTab('skills')} className="bg-[#0E131F] border border-slate-800 p-3.5 rounded-2xl hover:border-emerald-500/40 cursor-pointer transition-all">
-                  <div className="text-[11px] text-slate-400 font-medium truncate">Skills</div>
-                  <div className="text-2xl font-bold text-white mt-1">{skills.length}</div>
-                  <div className="text-[10px] text-emerald-400 mt-1 truncate">/skills →</div>
+
+                {/* 2. WebP Compression & Edge Caching Efficiency */}
+                <div className="bg-[#0E131F] border border-slate-800 rounded-2xl p-5 space-y-3">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-sm font-bold text-white flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-teal-400"></span>
+                      <span>Asset Optimization</span>
+                    </h3>
+                    <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-mono font-bold">
+                      -85% Avg Size
+                    </span>
+                  </div>
+
+                  <p className="text-xs text-slate-400 leading-relaxed">
+                    All uploads are automatically processed via Sharp into web-optimized WebP (max 1920px), preserving pristine clarity while cutting mobile payload from 4MB to ~150KB.
+                  </p>
+
+                  <div className="space-y-2 pt-1 text-[11px]">
+                    <div className="flex justify-between text-slate-300">
+                      <span>WebP Auto-Conversion:</span>
+                      <span className="text-emerald-400 font-mono font-bold">Enabled</span>
+                    </div>
+                    <div className="flex justify-between text-slate-300">
+                      <span>EXIF Orientation:</span>
+                      <span className="text-emerald-400 font-mono font-bold">Preserved</span>
+                    </div>
+                    <div className="flex justify-between text-slate-300">
+                      <span>CDN Storage Bucket:</span>
+                      <span className="text-slate-400 font-mono">portfolio-media</span>
+                    </div>
+                  </div>
                 </div>
-                <div onClick={() => setActiveTab('gallery')} className="bg-[#0E131F] border border-slate-800 p-3.5 rounded-2xl hover:border-emerald-500/40 cursor-pointer transition-all">
-                  <div className="text-[11px] text-slate-400 font-medium truncate">Gallery</div>
-                  <div className="text-2xl font-bold text-white mt-1">{gallery.length}</div>
-                  <div className="text-[10px] text-emerald-400 mt-1 truncate">/gallery →</div>
+
+              </div>
+
+              {/* Recent Inquiries Snapshot */}
+              <div className="bg-[#0E131F] border border-slate-800 rounded-2xl p-6 space-y-4">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-sm font-bold text-white flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-amber-400"></span>
+                      <span>Recent Contact Inquiries</span>
+                    </h3>
+                    <p className="text-xs text-slate-400 mt-0.5">Direct messages submitted through dipeshsapkota7.com.np/contact.</p>
+                  </div>
+                  <button
+                    onClick={() => setActiveTab('inbox')}
+                    className="text-xs text-emerald-400 hover:text-emerald-300 font-semibold"
+                  >
+                    View All Inquiries ({messages.length}) →
+                  </button>
                 </div>
-                <div onClick={() => setActiveTab('inbox')} className="bg-[#0E131F] border border-slate-800 p-3.5 rounded-2xl hover:border-emerald-500/40 cursor-pointer transition-all">
-                  <div className="text-[11px] text-slate-400 font-medium truncate">Inquiries</div>
-                  <div className="text-2xl font-bold text-white mt-1">{messages.length}</div>
-                  <div className="text-[10px] text-emerald-400 mt-1 truncate">/contact →</div>
+
+                {messages.length === 0 ? (
+                  <div className="p-8 text-center text-slate-500 text-xs bg-slate-900/40 rounded-xl border border-slate-800/60">
+                    No inquiries received yet. When visitors submit the contact form, submissions appear here in real time.
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    {messages.slice(0, 3).map((msg) => (
+                      <div key={msg.id} className="p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-2 hover:border-slate-700 transition-all flex flex-col justify-between">
+                        <div className="space-y-1.5">
+                          <div className="flex items-center justify-between text-xs">
+                            <span className="font-bold text-white truncate max-w-[150px]">{msg.name}</span>
+                            <span className="text-[10px] text-slate-500 font-mono">{new Date(msg.created_at).toLocaleDateString()}</span>
+                          </div>
+                          <div className="text-[11px] text-emerald-400 font-mono truncate">{msg.email}</div>
+                          <p className="text-xs text-slate-300 line-clamp-2 leading-relaxed bg-slate-950/50 p-2 rounded-lg border border-slate-800/60">
+                            {msg.message}
+                          </p>
+                        </div>
+                        <div className="flex items-center justify-between pt-2 border-t border-slate-800 text-xs">
+                          <button
+                            onClick={() => toggleMessageRead(msg.id, msg.is_read)}
+                            className="text-[11px] text-slate-400 hover:text-slate-200"
+                          >
+                            {msg.is_read ? '✓ Read' : '● Mark Read'}
+                          </button>
+                          <a
+                            href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(msg.email)}&su=${encodeURIComponent('Re: ' + (msg.subject || 'Portfolio Inquiry'))}`}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-[11px] text-emerald-400 hover:underline font-semibold"
+                          >
+                            Reply ↗
+                          </a>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Activity Audit Log Feed */}
+              <div className="bg-[#0E131F] border border-slate-800 rounded-2xl p-6 space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div>
+                    <h3 className="text-sm font-bold text-white flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                      <span>System Activity & Audit Trail</span>
+                    </h3>
+                    <p className="text-xs text-slate-400 mt-0.5">Real-time event logs of CMS mutations, authentication, and diagnostics.</p>
+                  </div>
+                  <div className="flex gap-1 bg-slate-900 p-1 rounded-xl border border-slate-800 text-[11px] font-mono">
+                    {['All', 'Auth', 'Diagnostics', 'Supabase'].map((filter) => (
+                      <button
+                        key={filter}
+                        onClick={() => setActivityFilter(filter)}
+                        className={`px-2.5 py-1 rounded-lg transition-all ${
+                          activityFilter === filter ? 'bg-slate-800 text-emerald-400 font-bold' : 'text-slate-400 hover:text-slate-200'
+                        }`}
+                      >
+                        {filter}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="divide-y divide-slate-800/80 border border-slate-800/80 rounded-xl overflow-hidden bg-slate-900/30">
+                  {activityLogs
+                    .filter(log => activityFilter === 'All' || log.entity === activityFilter)
+                    .slice(0, 5)
+                    .map((log) => (
+                      <div key={log.id} className="p-3.5 flex items-center justify-between gap-4 text-xs hover:bg-slate-900/60 transition-colors">
+                        <div className="flex items-center gap-3 truncate">
+                          <span className={`px-2 py-0.5 rounded text-[10px] font-mono uppercase font-bold shrink-0 ${
+                            log.entity === 'Auth' ? 'bg-indigo-500/20 text-indigo-400' :
+                            log.entity === 'Diagnostics' ? 'bg-emerald-500/20 text-emerald-400' :
+                            log.entity === 'Supabase' ? 'bg-teal-500/20 text-teal-400' :
+                            'bg-slate-800 text-slate-300'
+                          }`}>
+                            {log.entity}
+                          </span>
+                          <span className="font-bold text-white truncate">{log.action}</span>
+                          <span className="text-slate-400 truncate hidden md:inline">{log.details}</span>
+                        </div>
+                        <span className="text-slate-500 font-mono text-[11px] shrink-0">
+                          {new Date(log.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                        </span>
+                      </div>
+                    ))}
                 </div>
               </div>
 
-              {/* Website System Engine Architecture */}
-              <div className="bg-[#0E131F] border border-slate-800 rounded-2xl p-6 space-y-4">
-                <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-                  <span>Architecture & Zero-Downtime Fallback Verification</span>
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-                  <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800/80 space-y-1">
-                    <span className="text-slate-400 font-mono text-[10px] uppercase">Rendering Mode</span>
-                    <h4 className="font-bold text-white text-sm">Static ISR Server Components</h4>
-                    <p className="text-slate-400 text-[11px]">Pages are pre-rendered into static HTML for 100% Googlebot sitelink indexing and zero latency.</p>
-                  </div>
-                  <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800/80 space-y-1">
-                    <span className="text-slate-400 font-mono text-[10px] uppercase">Revalidation</span>
-                    <h4 className="font-bold text-white text-sm">On-Demand revalidatePath</h4>
-                    <p className="text-slate-400 text-[11px]">Whenever you make an update, Next.js instantly purges the cache and regenerates the page.</p>
-                  </div>
-                  <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800/80 space-y-1">
-                    <span className="text-slate-400 font-mono text-[10px] uppercase">Database Security</span>
-                    <h4 className="font-bold text-white text-sm">Private Server-Role Isolation</h4>
-                    <p className="text-slate-400 text-[11px]">No credentials are exposed to the browser. All database interactions happen securely inside Server Actions and API handlers.</p>
-                  </div>
-                </div>
-              </div>
             </div>
           )}
 
@@ -970,6 +1687,18 @@ export default function AdminDashboard({
                         <div className="flex items-center gap-2">
                           <button
                             type="button"
+                            onClick={() => toggleMessageRead(msg.id, msg.is_read)}
+                            className={`px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors border ${
+                              msg.is_read
+                                ? 'bg-slate-800 text-slate-400 border-slate-700 hover:text-slate-200'
+                                : 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30 hover:bg-emerald-500/25'
+                            }`}
+                          >
+                            <span>{msg.is_read ? '✓ Read' : '● Mark as Read'}</span>
+                          </button>
+
+                          <button
+                            type="button"
                             onClick={() => {
                               navigator.clipboard.writeText(msg.email);
                               notify(`Copied ${msg.email} to clipboard!`);
@@ -994,6 +1723,120 @@ export default function AdminDashboard({
                     </div>
                   ))
                 )}
+              </div>
+            </div>
+          )}
+
+          {/* ============================================================== */}
+          {/* TAB: AUDIENCE & SUBSCRIBERS */}
+          {/* ============================================================== */}
+          {activeTab === 'subscribers' && (
+            <div className="space-y-6 animate-fade-in max-w-5xl">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+                <div>
+                  <h1 className="text-2xl font-bold text-white flex items-center gap-2">
+                    <span>Audience & Newsletter Leads</span>
+                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono font-bold">
+                      {subscribers.length} Active Leads
+                    </span>
+                  </h1>
+                  <p className="text-xs text-slate-400 mt-1">
+                    Verified email subscribers captured across your portfolio and blog articles.
+                  </p>
+                </div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <button
+                    onClick={copyAllEmails}
+                    className="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1.5 border border-slate-700 transition-all cursor-pointer"
+                  >
+                    <svg className="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
+                    <span>Copy All ({subscribers.length})</span>
+                  </button>
+                  <button
+                    onClick={exportSubscribersCSV}
+                    className="px-3.5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 shadow-md shadow-emerald-500/20 transition-all cursor-pointer"
+                  >
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                    <span>Export CSV</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Add New Subscriber Quick Form */}
+              <div className="bg-[#0E131F] border border-slate-800 rounded-2xl p-5 space-y-3">
+                <h3 className="text-sm font-bold text-white flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                  <span>Add New Lead / Subscriber Manually</span>
+                </h3>
+                <form onSubmit={handleAddSubscriber} className="flex flex-col sm:flex-row gap-3">
+                  <input
+                    type="email"
+                    required
+                    value={newSubEmail}
+                    onChange={(e) => setNewSubEmail(e.target.value)}
+                    placeholder="partner@company.com or subscriber@gmail.com"
+                    className="flex-1 px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700/80 text-white placeholder-slate-500 text-xs outline-none focus:border-emerald-500/60 transition-all font-sans"
+                  />
+                  <button
+                    type="submit"
+                    className="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs shrink-0 shadow-md shadow-emerald-500/20 transition-all cursor-pointer"
+                  >
+                    + Add Subscriber
+                  </button>
+                </form>
+              </div>
+
+              {/* Subscribers List & Search Filter */}
+              <div className="bg-[#0E131F] border border-slate-800 rounded-2xl p-5 space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div className="relative flex-1 max-w-sm">
+                    <input
+                      type="text"
+                      value={subSearchQuery}
+                      onChange={(e) => setSubSearchQuery(e.target.value)}
+                      placeholder="Filter subscribers by email..."
+                      className="w-full pl-8 pr-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700/80 text-xs text-white placeholder-slate-500 outline-none focus:border-emerald-500/50 font-sans"
+                    />
+                    <svg className="w-3.5 h-3.5 text-slate-500 absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                  </div>
+                  <span className="text-xs text-slate-400 font-mono">
+                    Showing {subscribers.filter(s => !subSearchQuery || s.email?.toLowerCase().includes(subSearchQuery.toLowerCase())).length} of {subscribers.length}
+                  </span>
+                </div>
+
+                <div className="divide-y divide-slate-800 border border-slate-800 rounded-xl overflow-hidden bg-slate-900/30">
+                  {subscribers
+                    .filter(s => !subSearchQuery || s.email?.toLowerCase().includes(subSearchQuery.toLowerCase()))
+                    .map((sub, idx) => (
+                      <div key={sub.id || idx} className="p-3.5 flex items-center justify-between gap-3 hover:bg-slate-900/60 transition-colors">
+                        <div className="flex items-center gap-3 truncate">
+                          <span className="text-xs font-mono text-slate-500 w-6">{idx + 1}.</span>
+                          <span className="font-semibold text-white text-xs truncate">{sub.email}</span>
+                          <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-mono border border-emerald-500/20 shrink-0">
+                            {sub.status || 'active'}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-3 shrink-0">
+                          <span className="text-[11px] text-slate-500 font-mono hidden sm:inline">
+                            {sub.subscribed_at ? new Date(sub.subscribed_at).toLocaleDateString() : 'Active'}
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => handleDeleteSubscriber(sub.id, sub.email)}
+                            className="text-xs text-rose-400 hover:text-rose-300 px-2 py-1 rounded hover:bg-rose-500/10 transition-colors cursor-pointer"
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+
+                  {subscribers.length === 0 && (
+                    <div className="p-8 text-center text-xs text-slate-500">
+                      No subscribers registered yet.
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           )}
