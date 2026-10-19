@@ -164,7 +164,7 @@ export default async function DynamicArticlePage({ params }) {
                   {profile.name || 'Dipesh Sapkota'}
                 </h3>
                 <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-2">
-                  {profile.tagline || 'Computer Engineering Student · Full-Stack Developer · Motion Designer'}
+                  {profile.tagline || 'Computer Engineering Student · AI/ML Enthusiast · Motion Designer'}
                 </p>
                 <div className="flex items-center gap-3 mt-1.5 text-xs font-mono">
                   <Link href="/about" className="text-[#065F46] dark:text-[#34D399] hover:underline">

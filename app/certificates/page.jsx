@@ -10,7 +10,7 @@ export const metadata = {
   openGraph: {
     type: 'website',
     title: 'Certificates & Credentials | Dipesh Sapkota',
-    description: 'Verified professional certifications of Dipesh Sapkota across graphic design, motion design, DaVinci Resolve color science, and modern full-stack web engineering.',
+    description: 'Verified professional certifications of Dipesh Sapkota across graphic design, motion design, DaVinci Resolve color science, and software engineering.',
     url: 'https://www.dipeshsapkota7.com.np/certificates',
     images: [{ url: '/dipesh-sapkota.jpg', width: 627, height: 627, alt: 'Certificates of Dipesh Sapkota' }],
   },
