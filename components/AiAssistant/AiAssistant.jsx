@@ -236,10 +236,10 @@ You can ask about his software projects, computer engineering background at **IO
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#065F46] dark:bg-[#34D399]"></span>
           </span>
 
-          {/* Status dot in dark green: mobile corner badge */}
-          <span className="sm:hidden absolute -top-0.5 -right-0.5 flex h-2.5 w-2.5">
+          {/* Status dot in dark green: mobile INSIDE the circular button */}
+          <span className="sm:hidden absolute top-2 right-2 flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#065F46] dark:bg-[#34D399] opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#065F46] dark:bg-[#34D399] ring-2 ring-white dark:ring-[#0F1216]"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#065F46] dark:bg-[#34D399]"></span>
           </span>
 
           {/* Clean minimal message icon */}
