@@ -14,10 +14,36 @@ export const runtime = 'nodejs';
 /**
  * Health & Discovery GET endpoint
  */
-export async function GET() {
+export async function GET(request) {
   const openAiKey = (process.env.OPENAI_API_KEY || '').replace(/['"]/g, '').trim();
   const geminiKey = (process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY || '').replace(/['"]/g, '').trim();
   const groqKey = (process.env.GROQ_API_KEY || '').replace(/['"]/g, '').trim();
+
+  const urlObj = new URL(request.url);
+  if (urlObj.searchParams.get('diag') === '1') {
+    if (!geminiKey) {
+      return NextResponse.json({ diag: true, error: 'No GEMINI_API_KEY or GOOGLE_API_KEY found in process.env' });
+    }
+    const testUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${geminiKey}`;
+    try {
+      const testRes = await fetch(testUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ contents: [{ role: 'user', parts: [{ text: 'Hello' }] }] })
+      });
+      const data = await testRes.json();
+      return NextResponse.json({
+        diag: true,
+        status: testRes.status,
+        ok: testRes.ok,
+        keyLength: geminiKey.length,
+        keyPrefix: geminiKey.slice(0, 6),
+        geminiResponse: data
+      });
+    } catch (e) {
+      return NextResponse.json({ diag: true, error: e.message });
+    }
+  }
 
   const hasKey = Boolean(openAiKey && !openAiKey.startsWith('sk-placeholder') && openAiKey.length > 25);
   const hasGemini = Boolean(geminiKey && geminiKey.length > 15);
