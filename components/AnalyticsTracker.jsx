@@ -8,12 +8,11 @@ export default function AnalyticsTracker() {
   const lastRecordedPath = useRef('');
 
   useEffect(() => {
-    // Avoid double recording same path
+    
     if (pathname === lastRecordedPath.current) return;
     lastRecordedPath.current = pathname;
 
-    // Do not record admin dashboard or API routes
-    if (!pathname || pathname.startsWith('/admin') || pathname.startsWith('/api')) {
+if (!pathname || pathname.startsWith('/admin') || pathname.startsWith('/api')) {
       return;
     }
 
@@ -23,8 +22,7 @@ export default function AnalyticsTracker() {
       screenWidth: typeof window !== 'undefined' ? window.innerWidth : 1200
     };
 
-    // Use sendBeacon if available, fallback to fetch
-    try {
+try {
       const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
       if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
         navigator.sendBeacon('/api/analytics', blob);
@@ -37,7 +35,6 @@ export default function AnalyticsTracker() {
         }).catch(() => {});
       }
     } catch {
-      // Non-blocking fail-safe
     }
   }, [pathname]);
 

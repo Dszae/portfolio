@@ -62,8 +62,7 @@ export default function SportsReelsProjectPage() {
         />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-        {/* Back link */}
-        <div className="mb-6">
+<div className="mb-6">
           <Link
             href="/projects"
             className="inline-flex items-center gap-2 text-xs sm:text-sm font-mono font-semibold text-[#065F46] dark:text-[#34D399] hover:underline"
@@ -75,8 +74,7 @@ export default function SportsReelsProjectPage() {
           </Link>
         </div>
 
-        {/* Editorial Header */}
-        <header className="mb-12">
+<header className="mb-12">
           <div className="flex flex-wrap items-center gap-2.5 mb-4">
             <span className="px-3 py-1 text-xs font-mono font-bold uppercase tracking-wider text-[#065F46] dark:text-[#34D399] bg-[#065F46]/10 dark:bg-[#34D399]/15 border border-[#065F46]/20 dark:border-[#34D399]/30 rounded-lg">
               Creative Production
@@ -94,8 +92,7 @@ export default function SportsReelsProjectPage() {
             A comprehensive look at my sports video editing practice: combining high-framerate sports footage, frame-accurate speed ramping, kinetic typography in Adobe After Effects, and filmic color grading in DaVinci Resolve into engaging visual narratives for social audiences.
           </p>
 
-          {/* Quick Meta Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] shadow-sm mb-8 font-mono text-xs">
+<div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] shadow-sm mb-8 font-mono text-xs">
             <div>
               <span className="text-[#64748B] dark:text-[#94A3B8] block mb-1">Editor / Designer</span>
               <strong className="text-[#0F172A] dark:text-[#F9FAFB]">Dipesh Sapkota</strong>
@@ -117,8 +114,7 @@ export default function SportsReelsProjectPage() {
           </div>
         </header>
 
-        {/* Media Preview Showcase */}
-        <section className="mb-14">
+<section className="mb-14">
           <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-[#222933] bg-slate-900 shadow-md">
             <Image
               src="/instagram-videos.png"
@@ -134,8 +130,7 @@ export default function SportsReelsProjectPage() {
           </p>
         </section>
 
-        {/* Editorial Body Content */}
-        <article className="space-y-12 text-[#1E293B] dark:text-[#CBD5E1] text-base sm:text-lg leading-relaxed">
+<article className="space-y-12 text-[#1E293B] dark:text-[#CBD5E1] text-base sm:text-lg leading-relaxed">
           <section className="space-y-4">
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0F172A] dark:text-[#F9FAFB]">
               1. The Philosophy of High-Energy Sports Editing
@@ -202,8 +197,7 @@ export default function SportsReelsProjectPage() {
             </ul>
           </section>
 
-          {/* Action Callout */}
-          <section className="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
+<section className="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
               <h3 className="text-lg font-bold text-[#0F172A] dark:text-[#F9FAFB] mb-1">
                 Explore Video Portfolio &amp; Motion Edits
@@ -231,8 +225,7 @@ export default function SportsReelsProjectPage() {
           </section>
         </article>
 
-        {/* Navigation Pagination */}
-        <div className="mt-16">
+<div className="mt-16">
           <PagePagination
             prev={{ label: 'IOE Admission Guide', path: '/projects/ioe-admission-guide' }}
             next={{ label: 'NE555 Multivibrator Flasher', path: '/projects/555-flasher' }}

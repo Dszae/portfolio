@@ -254,7 +254,7 @@ You can ask about his software projects, computer engineering background at **IO
 
   return (
     <>
-      {/* 1. FLOATING LAUNCHER BUTTON */}
+      
       <div className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40">
         <button
           ref={launcherButtonRef}
@@ -264,14 +264,13 @@ You can ask about his software projects, computer engineering background at **IO
           aria-label={isOpen ? "Close portfolio assistant" : "Open portfolio assistant"}
           className="group relative flex items-center justify-center sm:gap-2.5 w-12 h-12 sm:w-auto sm:h-auto sm:px-4 sm:py-2.5 rounded-full bg-white/95 dark:bg-[#0F1216]/95 border border-slate-200/90 dark:border-[#222933] text-slate-800 dark:text-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.5)] hover:border-[#065F46]/60 dark:hover:border-[#34D399]/40 hover:shadow-lg transition-all duration-200 active:scale-[0.95]"
         >
-          {/* Status dot in dark green: desktop inline dot */}
+          
           <span className="hidden sm:inline-flex relative h-2 w-2 shrink-0">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#065F46] dark:bg-[#34D399] opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#065F46] dark:bg-[#34D399]"></span>
           </span>
 
-          {/* Clean minimal message icon */}
-          <svg
+<svg
             className="w-5 h-5 sm:w-4 sm:h-4 text-[#065F46] dark:text-[#34D399] transition-transform duration-200 group-hover:scale-105"
             fill="none"
             stroke="currentColor"
@@ -296,10 +295,9 @@ You can ask about his software projects, computer engineering background at **IO
         </button>
       </div>
 
-      {/* 2. CHAT DRAWER / PANEL */}
-      {isOpen && (
+{isOpen && (
         <>
-          {/* Backdrop to close on outside tap / click anywhere on screen */}
+          
           <div
             className="fixed inset-0 z-[70] bg-black/30 sm:bg-black/15 backdrop-blur-[1px] sm:backdrop-blur-none cursor-pointer transition-opacity"
             aria-hidden="true"
@@ -310,9 +308,8 @@ You can ask about his software projects, computer engineering background at **IO
             ref={chatboxRef}
             className="fixed inset-x-3 bottom-3 sm:inset-x-auto sm:bottom-20 sm:right-6 z-[75] w-auto sm:w-[440px] h-[calc(100dvh-5.5rem)] sm:h-[580px] max-h-[640px] flex flex-col rounded-2xl bg-white/98 dark:bg-[#0F1216]/98 backdrop-blur-xl border border-slate-200/90 dark:border-[#222933] shadow-[0_20px_50px_rgba(15,23,42,0.18)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.6)] overflow-hidden font-sans text-slate-900 dark:text-slate-100"
           >
-          
-          {/* Header */}
-          <div className="flex items-center justify-between px-4 py-3 border-b border-slate-200/80 dark:border-[#222933] bg-slate-50/80 dark:bg-[#090B0E]/80">
+
+<div className="flex items-center justify-between px-4 py-3 border-b border-slate-200/80 dark:border-[#222933] bg-slate-50/80 dark:bg-[#090B0E]/80">
             <div className="flex items-center gap-2.5">
               <div className="w-7 h-7 rounded-lg bg-[#065F46]/10 dark:bg-[#065F46]/30 border border-[#065F46]/20 dark:border-[#065F46]/40 flex items-center justify-center text-[#065F46] dark:text-[#34D399] font-semibold text-xs tracking-tight">
                 DS
@@ -352,22 +349,19 @@ You can ask about his software projects, computer engineering background at **IO
             </div>
           </div>
 
-          {/* Conversation Stream */}
-          <div className="flex-1 p-4 overflow-y-auto space-y-3.5 text-xs leading-relaxed">
+<div className="flex-1 p-4 overflow-y-auto space-y-3.5 text-xs leading-relaxed">
             {messages.map((m, idx) => (
               <div key={idx} className={`flex flex-col ${m.role === 'user' ? 'items-end' : 'items-start'}`}>
-                
-                {/* User Message in dark green */}
-                {m.role === 'user' ? (
+
+{m.role === 'user' ? (
                   <div className="max-w-[85%] px-3.5 py-2.5 rounded-2xl rounded-br-sm bg-[#065F46] dark:bg-[#065F46] text-white font-medium text-xs shadow-sm">
                     {m.content}
                   </div>
                 ) : (
-                  /* Assistant Message with deep dark contrast in light mode */
+                  
                   <div className="max-w-[95%] w-full bg-slate-100/90 dark:bg-[#14181F] border border-slate-200/90 dark:border-[#222933] rounded-2xl rounded-tl-sm p-3.5 space-y-2 text-slate-950 dark:text-slate-100 shadow-sm">
-                    
-                    {/* Tool Badges executed for this message */}
-                    {m.tools && m.tools.length > 0 && (
+
+{m.tools && m.tools.length > 0 && (
                       <div className="flex flex-wrap gap-1.5 pb-1 border-b border-slate-200/80 dark:border-slate-800/60 mb-2">
                         {m.tools.map((t, tIdx) => (
                           <span
@@ -383,8 +377,7 @@ You can ask about his software projects, computer engineering background at **IO
 
                     <MarkdownRenderer content={m.content} />
 
-                    {/* Subtle Model & Grounding Tag (high contrast in light mode) */}
-                    {m.content && (
+{m.content && (
                       <div className="pt-2 border-t border-slate-200/80 dark:border-slate-800/60 flex items-center justify-between text-[10px] text-slate-600 dark:text-slate-400 font-mono tracking-tight font-medium">
                         <span>
                           {m.engine === 'grounded_portfolio_engine'
@@ -398,8 +391,7 @@ You can ask about his software projects, computer engineering background at **IO
               </div>
             ))}
 
-            {/* Live Tool Execution Status */}
-            {activeTool && (
+{activeTool && (
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-[#14181F] border border-slate-300 dark:border-slate-800 text-slate-800 dark:text-slate-300 text-[11px] font-mono w-fit font-medium">
                 <svg className="w-3 h-3 animate-spin text-[#065F46] dark:text-[#34D399]" fill="none" viewBox="0 0 24 24">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -409,8 +401,7 @@ You can ask about his software projects, computer engineering background at **IO
               </div>
             )}
 
-            {/* Subtle typing indicator while streaming */}
-            {isStreaming && !activeTool && (
+{isStreaming && !activeTool && (
               <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-[#14181F] text-slate-700 dark:text-slate-300 text-[11px] w-fit font-medium">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#065F46] dark:bg-[#34D399] animate-pulse" />
                 <span className="text-[10px] font-mono">Generating response...</span>
@@ -420,8 +411,7 @@ You can ask about his software projects, computer engineering background at **IO
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Suggested Prompts */}
-          {messages.length <= 2 && !isStreaming && (
+{messages.length <= 2 && !isStreaming && (
             <div className="px-4 py-2.5 border-t border-slate-200/80 dark:border-[#222933] bg-slate-50/60 dark:bg-[#090B0E]/60">
               <span className="text-[10px] font-mono text-slate-700 dark:text-slate-400 uppercase tracking-wider block mb-1.5 font-semibold">
                 Suggested exploration
@@ -441,8 +431,7 @@ You can ask about his software projects, computer engineering background at **IO
             </div>
           )}
 
-          {/* Footer Input Form */}
-          <div className="p-3 border-t border-slate-200/80 dark:border-[#222933] bg-slate-50/80 dark:bg-[#090B0E]/80">
+<div className="p-3 border-t border-slate-200/80 dark:border-[#222933] bg-slate-50/80 dark:bg-[#090B0E]/80">
             <form
               onSubmit={(e) => {
                 e.preventDefault();

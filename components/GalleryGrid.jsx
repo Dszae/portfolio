@@ -82,7 +82,7 @@ export default function GalleryGrid({ images }) {
 
   return (
     <div>
-      {/* Category Filter */}
+      
       <div className="flex flex-wrap gap-2 mb-8">
         {categories.map((cat) => (
           <button
@@ -103,8 +103,7 @@ export default function GalleryGrid({ images }) {
         ))}
       </div>
 
-      {/* Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredImages.map((item, idx) => (
           <article
             key={item.id}
@@ -155,8 +154,7 @@ export default function GalleryGrid({ images }) {
         ))}
       </div>
 
-      {/* Lightbox Modal */}
-      <AnimatePresence>
+<AnimatePresence>
         {activeImage && (
           <motion.div
             key="gallery-modal-backdrop"
@@ -179,7 +177,7 @@ export default function GalleryGrid({ images }) {
               className="relative w-full max-w-[98vw] sm:max-w-5xl lg:max-w-6xl max-h-[95vh] sm:max-h-[92vh] bg-slate-900 border border-slate-800 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl flex flex-col cursor-default select-none"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Modal Header */}
+              
               <div className="flex-shrink-0 flex items-center justify-between px-3.5 sm:px-6 py-2.5 sm:py-3.5 border-b border-slate-800 bg-slate-950/60 backdrop-blur-sm z-20">
                 <div className="flex items-center gap-2 sm:gap-3 min-w-0">
                   <span className="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-[#34D399] bg-[#34D399]/15 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded border border-[#34D399]/30 font-semibold truncate max-w-[130px] sm:max-w-none">
@@ -190,7 +188,7 @@ export default function GalleryGrid({ images }) {
                   </span>
                 </div>
                 <div className="flex items-center gap-1.5 sm:gap-2">
-                  {/* Zoom toggle button */}
+                  
                   <button
                     type="button"
                     onClick={(e) => { e.stopPropagation(); setIsZoomed((z) => !z); }}
@@ -239,8 +237,7 @@ export default function GalleryGrid({ images }) {
                 </div>
               </div>
 
-              {/* Modal Image - Strictly Fixed Geometry with Touch Swiping */}
-              <div 
+<div 
                 className={`relative w-full h-[50vh] sm:h-[60vh] md:h-[66vh] lg:h-[70vh] min-h-[240px] bg-black flex items-center justify-center select-none ${
                   isZoomed ? 'overflow-auto touch-pan-x touch-pan-y' : 'overflow-hidden touch-pan-y'
                 }`}
@@ -259,8 +256,7 @@ export default function GalleryGrid({ images }) {
                   }`}
                 />
 
-                {/* Desktop-only floating side arrows */}
-                <button
+<button
                   type="button"
                   onClick={handlePrev}
                   aria-label="Previous image"
@@ -282,15 +278,13 @@ export default function GalleryGrid({ images }) {
                 </button>
               </div>
 
-              {/* Caption Bar with Thumb-Friendly Controls */}
-              <div className="flex-shrink-0 px-4 sm:px-6 py-3 sm:py-3.5 bg-slate-900 border-t border-slate-800 flex items-center justify-between gap-3">
+<div className="flex-shrink-0 px-4 sm:px-6 py-3 sm:py-3.5 bg-slate-900 border-t border-slate-800 flex items-center justify-between gap-3">
                 <div className="min-w-0 flex-1">
                   <h3 className="text-sm sm:text-base md:text-xl font-bold text-white mb-0.5 line-clamp-1 sm:line-clamp-2 leading-snug">{activeImage.title}</h3>
                   <p className="text-xs sm:text-sm text-slate-300 leading-relaxed truncate">{activeImage.description}</p>
                 </div>
 
-                {/* Thumb-friendly mobile navigation */}
-                <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
+<div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
                   <button
                     type="button"
                     onClick={handlePrev}

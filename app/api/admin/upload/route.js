@@ -20,8 +20,7 @@ export async function POST(req) {
     const bytes = await file.arrayBuffer();
     const originalBuffer = Buffer.from(bytes);
 
-    // Generate safe clean filename base
-    const rawName = (file.name || 'file').toLowerCase().replace(/[^a-z0-9.]/g, '-');
+const rawName = (file.name || 'file').toLowerCase().replace(/[^a-z0-9.]/g, '-');
     const isSvg = file.type === 'image/svg+xml' || rawName.endsWith('.svg');
     const isImage = (file.type?.startsWith('image/') || /\.(jpe?g|png|webp|avif|heic|bmp|tiff)$/i.test(rawName)) && !isSvg;
 
@@ -30,11 +29,10 @@ export async function POST(req) {
     let filename = `${Date.now()}-${rawName}`;
     let isOptimized = false;
 
-    // Convert raster images into ultra-lightweight WebP without noticeable quality loss
-    if (isImage) {
+if (isImage) {
       try {
         finalBuffer = await sharp(originalBuffer)
-          .rotate() // Auto-orient images according to EXIF metadata
+          .rotate() 
           .resize({
             width: 1920,
             height: 1920,
@@ -56,14 +54,12 @@ export async function POST(req) {
       }
     }
 
-    // Ensure bucket exists
-    try {
+try {
       const { data: bucketData } = await supabaseAdmin.storage.getBucket('portfolio-media');
       if (!bucketData) {
         await supabaseAdmin.storage.createBucket('portfolio-media', { public: true });
       }
     } catch {
-      // Bucket might already exist
     }
 
     const { data, error } = await supabaseAdmin.storage

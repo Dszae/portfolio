@@ -23,7 +23,9 @@ export async function generateMetadata({ params }) {
 
   return await generatePageMetadata({
     title: article.title,
-    description: article.excerpt || article.description || article.content?.slice(0, 160),
+    description: article.excerpt || article.description,
+    content: article.content,
+    category: article.category,
     path: `/blog/${article.slug || resolvedParams.slug}`,
     image: article.cover_image || '/sportivo-preview.jpg',
     type: 'article',
@@ -77,7 +79,7 @@ export default async function DynamicArticlePage({ params }) {
           />
 
           <article className="space-y-8">
-            {/* Meta Badges */}
+            
             <div className="flex flex-wrap items-center gap-2.5 text-xs">
               <Link 
                 href="/blog" 
@@ -99,20 +101,17 @@ export default async function DynamicArticlePage({ params }) {
               )}
             </div>
 
-            {/* Article Headline */}
-            <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] leading-snug">
+<h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] leading-snug">
               {article.title}
             </h1>
 
-            {/* Excerpt / Lead */}
-            {article.excerpt && (
+{article.excerpt && (
               <p className="text-base sm:text-lg text-[#334155] dark:text-[#CBD5E1] leading-relaxed border-l-2 border-[#065F46] dark:border-[#34D399] pl-4 italic">
                 {article.excerpt}
               </p>
             )}
 
-            {/* Cover Image */}
-            {article.cover_image && (
+{article.cover_image && (
               <div className="relative w-full h-64 sm:h-96 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-900 shadow-md">
                 <Image
                   src={article.cover_image}
@@ -125,13 +124,11 @@ export default async function DynamicArticlePage({ params }) {
               </div>
             )}
 
-            {/* Article Body Content */}
-            <div className="prose dark:prose-invert max-w-none text-slate-800 dark:text-slate-200 text-sm sm:text-base leading-relaxed space-y-4 whitespace-pre-line">
+<div className="prose dark:prose-invert max-w-none text-slate-800 dark:text-slate-200 text-sm sm:text-base leading-relaxed space-y-4 whitespace-pre-line">
               {article.content || article.description || article.excerpt}
             </div>
 
-            {/* External Links if present */}
-            <div className="flex flex-wrap gap-3 pt-6 border-t border-slate-200 dark:border-slate-800">
+<div className="flex flex-wrap gap-3 pt-6 border-t border-slate-200 dark:border-slate-800">
               {article.live_url && (
                 <a
                   href={article.live_url}
@@ -152,8 +149,7 @@ export default async function DynamicArticlePage({ params }) {
               )}
             </div>
 
-            {/* Author Profile Card */}
-            <div className="p-5 sm:p-6 rounded-2xl bg-slate-50 dark:bg-[#141824] border border-slate-200 dark:border-slate-800 flex items-center gap-4 mt-12">
+<div className="p-5 sm:p-6 rounded-2xl bg-slate-50 dark:bg-[#141824] border border-slate-200 dark:border-slate-800 flex items-center gap-4 mt-12">
               <div className="relative w-14 h-14 rounded-full overflow-hidden shrink-0 border border-emerald-500/30">
                 <Image
                   src={profile.avatar_url || '/profile.webp'}
@@ -182,8 +178,7 @@ export default async function DynamicArticlePage({ params }) {
               </div>
             </div>
 
-            {/* Next / Prev Pagination */}
-            <PagePagination
+<PagePagination
               prev={prevArticle ? { label: prevArticle.title, path: `/blog/${prevArticle.slug || prevArticle.id}` } : { label: 'All Articles', path: '/blog' }}
               next={nextArticle ? { label: nextArticle.title, path: `/blog/${nextArticle.slug || nextArticle.id}` } : { label: 'Explore Projects', path: '/projects' }}
             />

@@ -71,8 +71,7 @@ function LightboxModal({ image, onClose }) {
   const currentItem = hasItems && items[activeIdx] ? items[activeIdx] : image;
   const totalCount = hasItems ? items.length : 1;
 
-  // Touch swipe gesture refs
-  const touchStartX = useRef(null);
+const touchStartX = useRef(null);
   const touchStartY = useRef(null);
 
   const [prevSrc, setPrevSrc] = useState(currentItem?.src);
@@ -112,15 +111,13 @@ function LightboxModal({ image, onClose }) {
     const deltaX = touchStartX.current - touch.clientX;
     const deltaY = touchStartY.current - touch.clientY;
 
-    // Horizontal swipe (left for next, right for prev)
-    if (Math.abs(deltaX) > 35 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) {
+if (Math.abs(deltaX) > 35 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) {
       if (deltaX > 0 && hasItems) {
         handleNext();
       } else if (deltaX < 0 && hasItems) {
         handlePrev();
       }
     }
-    // Vertical swipe down to close modal (only if not zoomed)
     else if (!isZoomed && deltaY < -75 && Math.abs(deltaY) > Math.abs(deltaX) * 1.5) {
       onClose();
     }
@@ -161,7 +158,7 @@ function LightboxModal({ image, onClose }) {
         onClick={(e) => e.stopPropagation()}
         className="relative w-full max-w-[98vw] sm:max-w-5xl lg:max-w-6xl max-h-[95vh] sm:max-h-[92vh] flex flex-col bg-[#090B0E] border border-white/15 dark:border-[#34D399]/30 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden cursor-default select-none"
       >
-        {/* Modal Top Toolbar */}
+        
         <div className="flex-shrink-0 flex items-center justify-between px-3.5 sm:px-6 py-2.5 sm:py-3 border-b border-white/10 dark:border-[#222933] bg-[#0F172A]/80 dark:bg-[#090B0E]/90 backdrop-blur-sm z-20">
           <div className="flex items-center gap-2 sm:gap-3 min-w-0">
             <span className="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-[#34D399] bg-[#34D399]/15 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded border border-[#34D399]/30 font-semibold truncate max-w-[130px] sm:max-w-none">
@@ -174,7 +171,7 @@ function LightboxModal({ image, onClose }) {
             )}
           </div>
           <div className="flex items-center gap-1.5 sm:gap-2">
-            {/* Zoom toggle button */}
+            
             <button
               type="button"
               onClick={(e) => { e.stopPropagation(); setIsZoomed((z) => !z); }}
@@ -196,8 +193,7 @@ function LightboxModal({ image, onClose }) {
               <span className="hidden sm:inline">{isZoomed ? 'Zoom Out' : 'Zoom In'}</span>
             </button>
 
-            {/* Open full resolution in new tab */}
-            <a
+<a
               href={currentItem?.src}
               target="_blank"
               rel="noreferrer"
@@ -211,8 +207,7 @@ function LightboxModal({ image, onClose }) {
               <span className="hidden sm:inline font-mono">Full Size</span>
             </a>
 
-            {/* Close button with large touch target */}
-            <button
+<button
               type="button"
               onClick={onClose}
               aria-label="Close modal"
@@ -225,8 +220,7 @@ function LightboxModal({ image, onClose }) {
           </div>
         </div>
 
-        {/* Image Box - Adaptive Height with Touch Swiping */}
-        <div 
+<div 
           className={`relative w-full h-[50vh] sm:h-[60vh] md:h-[66vh] lg:h-[70vh] min-h-[240px] flex items-center justify-center bg-black/80 select-none ${
             isZoomed ? 'overflow-auto touch-pan-x touch-pan-y' : 'overflow-hidden touch-pan-y'
           }`}
@@ -234,7 +228,7 @@ function LightboxModal({ image, onClose }) {
           onTouchEnd={handleTouchEnd}
           onDoubleClick={() => setIsZoomed((z) => !z)}
         >
-          {/* Skeleton loading state with spinner */}
+          
           {!imageLoaded && (
             <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#090B0E] z-10">
               <div className="w-10 h-10 border-2 border-[#34D399]/20 border-t-[#34D399] rounded-full animate-spin mb-3" />
@@ -257,8 +251,7 @@ function LightboxModal({ image, onClose }) {
             } ${isZoomed ? 'scale-[1.75] sm:scale-150 cursor-zoom-out' : 'scale-100 cursor-zoom-in'}`} 
           />
 
-          {/* Desktop-only floating side arrows (hidden on mobile so they don't cover content) */}
-          {hasItems && (
+{hasItems && (
             <>
               <button
                 type="button"
@@ -283,9 +276,8 @@ function LightboxModal({ image, onClose }) {
             </>
           )}
         </div>
-        
-        {/* Caption Bar with Thumb-Friendly Bottom Navigation on Mobile & Desktop */}
-        <div className="flex-shrink-0 px-4 sm:px-6 py-3 sm:py-3.5 bg-[#0F172A]/90 dark:bg-[#0F1216]/90 border-t border-white/10 dark:border-[#222933] flex items-center justify-between gap-3">
+
+<div className="flex-shrink-0 px-4 sm:px-6 py-3 sm:py-3.5 bg-[#0F172A]/90 dark:bg-[#0F1216]/90 border-t border-white/10 dark:border-[#222933] flex items-center justify-between gap-3">
           <div className="min-w-0 flex-1">
             <h3 className="text-sm sm:text-base md:text-xl font-semibold text-[#F5F7F5] line-clamp-1 sm:line-clamp-2 leading-snug">
               {currentItem?.title}
@@ -297,8 +289,7 @@ function LightboxModal({ image, onClose }) {
             )}
           </div>
 
-          {/* Thumb-friendly mobile navigation controls (always reachable with thumb) */}
-          {hasItems && (
+{hasItems && (
             <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
               <button
                 type="button"
@@ -333,7 +324,14 @@ function LightboxModal({ image, onClose }) {
 
 export default function SiteLayout({ children, selectedImage, setSelectedImage }) {
   const pathname = usePathname();
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        return localStorage.getItem('theme') === 'dark';
+      } catch {}
+    }
+    return false;
+  });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasAnnouncement, setHasAnnouncement] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -356,19 +354,13 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
   useEffect(() => {
     try {
       document.documentElement.style.removeProperty('background-color');
-      const stored = localStorage.getItem('theme');
-      const isDarkActive = stored === 'dark';
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setIsDark(isDarkActive);
-      if (isDarkActive) {
+      if (isDark) {
         document.documentElement.classList.add('dark');
       } else {
         document.documentElement.classList.remove('dark');
       }
-    } catch {
-      // Fallback
-    }
-  }, []);
+    } catch {}
+  }, [isDark]);
 
   const toggleTheme = () => {
     const nextDark = !isDark;
@@ -383,7 +375,6 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
         localStorage.setItem('theme', 'light');
       }
     } catch {
-      // Fallback
     }
   };
 
@@ -443,7 +434,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
 
   return (
     <div className={`site-shell min-h-screen font-sans relative w-full m-0 p-0 ${hasAnnouncement ? 'has-announcement' : ''} ${theme.bg}`}>
-      {/* Portfolio Entry Modal Popup */}
+      
       <PortfolioEntryPopup />
 
       <a
@@ -462,7 +453,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
       )}
 
       <nav aria-label="Main navigation" className="site-nav" itemScope itemType="https://schema.org/SiteNavigationElement">
-        {/* Rolling Text Ticker at Very Top of Fixed Navigation Bar */}
+        
         <RollingAnnouncement onVisibilityChange={setHasAnnouncement} />
 
         <div className="site-nav-inner relative z-10">
@@ -556,11 +547,10 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
 
       <footer className="theme-footer pt-16 pb-12 text-xs sm:text-sm border-t w-full" role="contentinfo">
         <div className="w-full max-w-7xl mx-auto px-6 sm:px-12">
-          {/* Main Footer 4-Column Grid */}
+          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 pb-12 border-b border-[#CBD5E1] dark:border-[#222933]">
-            
-            {/* Column 1: Identity & Profile */}
-            <div className="flex flex-col items-start text-left">
+
+<div className="flex flex-col items-start text-left">
               <Link href="/" className="site-wordmark text-lg font-bold mb-3">
                 Dipesh Sapkota<span className="site-wordmark-dot">.</span>
               </Link>
@@ -576,8 +566,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
               </p>
             </div>
 
-            {/* Column 2: Core Exploration Navigation */}
-            <nav aria-label="Footer primary navigation" className="text-left" itemScope itemType="https://schema.org/SiteNavigationElement">
+<nav aria-label="Footer primary navigation" className="text-left" itemScope itemType="https://schema.org/SiteNavigationElement">
               <h2 className="font-mono text-xs font-bold uppercase tracking-widest text-[#0F172A] dark:text-[#F8FAFC] mb-4">
                 Directory
               </h2>
@@ -605,8 +594,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
               </ul>
             </nav>
 
-            {/* Column 3: In-Depth Engineering Case Studies */}
-            <nav aria-label="Footer case studies and projects" className="text-left">
+<nav aria-label="Footer case studies and projects" className="text-left">
               <h2 className="font-mono text-xs font-bold uppercase tracking-widest text-[#0F172A] dark:text-[#F8FAFC] mb-4">
                 Case Studies
               </h2>
@@ -649,8 +637,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
               </ul>
             </nav>
 
-            {/* Column 4: Verified Profiles */}
-            <div className="text-left flex flex-col justify-start">
+<div className="text-left flex flex-col justify-start">
               <div>
                 <h2 className="font-mono text-xs font-bold uppercase tracking-widest text-[#0F172A] dark:text-[#F8FAFC] mb-4">
                   Verified Profiles
@@ -680,8 +667,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
 
           </div>
 
-          {/* Bottom Bar */}
-          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#64748B] dark:text-[#94A3B8]">
+<div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#64748B] dark:text-[#94A3B8]">
             <p className="font-medium text-center w-full">
               &copy; {new Date().getFullYear()} <Link href="/" aria-label="Go to my home page" className="font-semibold text-[#0F172A] dark:text-[#F9FAFB] no-underline hover:no-underline">Dipesh Sapkota<span className="site-wordmark-dot">.</span></Link> All rights reserved.
             </p>

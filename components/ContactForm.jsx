@@ -18,8 +18,7 @@ export default function ContactForm() {
     const form = event.target;
     const formData = new FormData(form);
 
-    // Honeypot spam filter
-    if (formData.get("botcheck")) {
+if (formData.get("botcheck")) {
       setFormStatus("Thank you! Your message has been sent.");
       setIsSuccess(true);
       form.reset();

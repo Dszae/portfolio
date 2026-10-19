@@ -36,7 +36,6 @@ export async function GET() {
     title: `Official portrait of ${profile.name || 'Dipesh Sapkota'}`,
   };
 
-  // 1. Core Primary Navigation Pages
   const corePages = [
     {
       loc: `${SITE_URL}/`,
@@ -47,6 +46,13 @@ export async function GET() {
     },
     {
       loc: `${SITE_URL}/about`,
+      priority: '0.95',
+      changefreq: 'weekly',
+      lastmod: today,
+      images: [portraitImage],
+    },
+    {
+      loc: `${SITE_URL}/profile`,
       priority: '0.95',
       changefreq: 'weekly',
       lastmod: today,
@@ -128,7 +134,6 @@ export async function GET() {
     },
   ];
 
-  // 2. Dynamic Project Pages from Database
   const projectPages = projects
     .filter(p => p.status === 'published' || !p.status)
     .map(p => ({
@@ -139,7 +144,6 @@ export async function GET() {
       images: p.img ? [{ path: toAbsoluteUrl(p.img), title: p.title }] : [],
     }));
 
-  // 3. Dynamic Article Pages from Database
   const articlePages = articles
     .filter(a => a.status === 'published' || !a.status)
     .map(a => ({
@@ -150,7 +154,6 @@ export async function GET() {
       images: a.cover_image ? [{ path: toAbsoluteUrl(a.cover_image), title: a.title }] : [],
     }));
 
-  // 4. External Live Deployments associated with the portfolio
   const externalSubdomains = [
     { loc: 'https://sportivo.dipeshsapkota7.com.np/', priority: '0.90', changefreq: 'weekly', lastmod: today, images: [] },
     { loc: 'https://ioe-admission.dipeshsapkota7.com.np/', priority: '0.90', changefreq: 'weekly', lastmod: today, images: [] },

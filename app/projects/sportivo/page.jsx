@@ -75,8 +75,7 @@ export default function SportivoProjectPage() {
         />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-        {/* Back link */}
-        <div className="mb-6">
+<div className="mb-6">
           <Link
             href="/projects"
             className="inline-flex items-center gap-2 text-xs sm:text-sm font-mono font-semibold text-[#065F46] dark:text-[#34D399] hover:underline"
@@ -88,8 +87,7 @@ export default function SportivoProjectPage() {
           </Link>
         </div>
 
-        {/* Editorial Header */}
-        <header className="mb-12">
+<header className="mb-12">
           <div className="flex flex-wrap items-center gap-2.5 mb-4">
             <span className="px-3 py-1 text-xs font-mono font-bold uppercase tracking-wider text-[#065F46] dark:text-[#34D399] bg-[#065F46]/10 dark:bg-[#34D399]/15 border border-[#065F46]/20 dark:border-[#34D399]/30 rounded-lg">
               Featured Case Study
@@ -107,8 +105,7 @@ export default function SportivoProjectPage() {
             I built Sportivo as a focused real-time sports platform for live scores, upcoming fixtures, match discovery, and sports news in one responsive experience. I structured it for fast scanning across football, cricket, and basketball, helping visitors move from a quick match update to deeper fixture information and available streams without unnecessary friction.
           </p>
 
-          {/* Quick Meta Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] shadow-sm mb-8 font-mono text-xs">
+<div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] shadow-sm mb-8 font-mono text-xs">
             <div>
               <span className="text-[#64748B] dark:text-[#94A3B8] block mb-1">Role</span>
               <strong className="text-[#0F172A] dark:text-[#F9FAFB]">Creator</strong>
@@ -127,8 +124,7 @@ export default function SportivoProjectPage() {
             </div>
           </div>
 
-          {/* Action Links */}
-          <div className="flex flex-wrap items-center gap-3">
+<div className="flex flex-wrap items-center gap-3">
             <a
               href="https://sportivo.dipeshsapkota7.com.np/"
               target="_blank"
@@ -165,10 +161,9 @@ export default function SportivoProjectPage() {
           </div>
         </header>
 
-        {/* Visual Showcase: Framed Browser Mockup */}
-        <section className="mb-16">
+<section className="mb-16">
           <div className="rounded-2xl border border-slate-200 dark:border-[#222933] bg-slate-900 overflow-hidden shadow-2xl">
-            {/* Window Chrome Header */}
+            
             <div className="flex items-center gap-3 px-4 py-3 bg-slate-950/80 border-b border-slate-800">
               <div className="flex items-center gap-1.5">
                 <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block" />
@@ -183,8 +178,7 @@ export default function SportivoProjectPage() {
               </div>
             </div>
 
-            {/* Product Launch Video */}
-            <div className="relative aspect-[16/10] w-full bg-black">
+<div className="relative aspect-[16/10] w-full bg-black">
               <HoverVideo
                 className="h-full w-full object-contain"
                 controls
@@ -200,8 +194,7 @@ export default function SportivoProjectPage() {
           </div>
         </section>
 
-        {/* Project Highlights Grid */}
-        <section className="mb-16">
+<section className="mb-16">
           <h2 className="text-2xl font-bold tracking-tight text-[#0F172A] dark:text-[#F9FAFB] mb-6 flex items-center gap-3">
             <span className="text-[#065F46] dark:text-[#34D399]">#</span> Sportivo Highlights
           </h2>
@@ -245,8 +238,7 @@ export default function SportivoProjectPage() {
           </div>
         </section>
 
-        {/* Project Overview */}
-        <section className="mb-16 space-y-8">
+<section className="mb-16 space-y-8">
           <div>
             <h2 className="text-2xl font-bold tracking-tight text-[#0F172A] dark:text-[#F9FAFB] mb-4 flex items-center gap-3">
               <span className="text-[#065F46] dark:text-[#34D399]">#</span> About Sportivo
@@ -309,8 +301,7 @@ export default function SportivoProjectPage() {
           </div>
         </section>
 
-        {/* Sequential Navigation */}
-        <PagePagination
+<PagePagination
           prev={{ label: 'Featured Projects Archive', path: '/projects' }}
           next={{ label: 'Case Study: IOE Admission Guide', path: '/projects/ioe-admission-guide' }}
         />

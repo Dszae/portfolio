@@ -3,10 +3,6 @@
 import React from 'react';
 import Link from 'next/link';
 
-/**
- * Clean, accessible markdown renderer for chat messages.
- * Automatically adapts between light and dark modes with high contrast.
- */
 export default function MarkdownRenderer({ content }) {
   if (!content) return null;
 
@@ -18,8 +14,7 @@ export default function MarkdownRenderer({ content }) {
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
 
-    // Code block toggle
-    if (line.trim().startsWith('```')) {
+if (line.trim().startsWith('```')) {
       if (inCodeBlock) {
         elements.push(
           <pre
@@ -42,16 +37,14 @@ export default function MarkdownRenderer({ content }) {
       continue;
     }
 
-    // Horizontal Rule
-    if (line.trim() === '---' || line.trim() === '***') {
+if (line.trim() === '---' || line.trim() === '***') {
       elements.push(
         <hr key={`hr-${i}`} className="my-3 border-slate-200 dark:border-slate-800" />
       );
       continue;
     }
 
-    // Headings
-    if (line.startsWith('### ')) {
+if (line.startsWith('### ')) {
       elements.push(
         <h4 key={`h4-${i}`} className="font-bold text-sm text-slate-950 dark:text-slate-100 mt-3 mb-1 tracking-tight">
           {renderFormattedText(line.replace('### ', ''))}
@@ -68,8 +61,7 @@ export default function MarkdownRenderer({ content }) {
       continue;
     }
 
-    // Bullet points
-    if (line.trim().startsWith('- ') || line.trim().startsWith('* ')) {
+if (line.trim().startsWith('- ') || line.trim().startsWith('* ')) {
       const itemText = line.trim().replace(/^[-*]\s+/, '');
       elements.push(
         <li key={`li-${i}`} className="ml-4 list-disc text-slate-900 dark:text-slate-200 my-0.5 leading-relaxed font-normal">
@@ -79,14 +71,12 @@ export default function MarkdownRenderer({ content }) {
       continue;
     }
 
-    // Empty lines
-    if (!line.trim()) {
+if (!line.trim()) {
       elements.push(<div key={`empty-${i}`} className="h-1.5" />);
       continue;
     }
 
-    // Standard paragraph
-    elements.push(
+elements.push(
       <p key={`p-${i}`} className="my-1 text-slate-900 dark:text-slate-200 leading-relaxed text-xs sm:text-[13px] font-normal">
         {renderFormattedText(line)}
       </p>
@@ -107,9 +97,6 @@ export default function MarkdownRenderer({ content }) {
   return <div className="space-y-1">{elements}</div>;
 }
 
-/**
- * Parses inline formatting: [link](url), **bold**, *italic*, `code`
- */
 function renderFormattedText(text) {
   if (!text) return '';
 

@@ -19,18 +19,14 @@ export default function AdminDashboard({
 }) {
   const router = useRouter();
 
-  // Active view state
-  const [activeTab, setActiveTab] = useState('analytics');
+const [activeTab, setActiveTab] = useState('analytics');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Global Notification Banner
-  const [notification, setNotification] = useState({ text: '', type: '' });
+const [notification, setNotification] = useState({ text: '', type: '' });
 
-  // Confirmation modal state for destructive actions
-  const [confirmModal, setConfirmModal] = useState({ open: false, title: '', message: '', onConfirm: null });
+const [confirmModal, setConfirmModal] = useState({ open: false, title: '', message: '', onConfirm: null });
 
-  // Real Entities State
-  const [certificates, setCertificates] = useState(initialCertificates);
+const [certificates, setCertificates] = useState(initialCertificates);
   const [gallery, setGallery] = useState(initialGallery);
   const [projects, setProjects] = useState(initialProjects);
   const [articles, setArticles] = useState(initialArticles);
@@ -43,30 +39,25 @@ export default function AdminDashboard({
   const [mediaLoading, setMediaLoading] = useState(false);
   const [uploadingMedia, setUploadingMedia] = useState(false);
 
-  // Analytics State
-  const [analytics, setAnalytics] = useState(initialAnalytics);
+const [analytics, setAnalytics] = useState(initialAnalytics);
   const [analyticsPeriod, setAnalyticsPeriod] = useState('30d');
   const [analyticsLoading, setAnalyticsLoading] = useState(false);
-  const [chartMetric, setChartMetric] = useState('both'); // 'both', 'visits', 'views'
+  const [chartMetric, setChartMetric] = useState('both'); 
   const [hoveredPoint, setHoveredPoint] = useState(null);
 
-  // Live System Health State
-  const [systemHealth, setSystemHealth] = useState({
+const [systemHealth, setSystemHealth] = useState({
     status: 'healthy',
     latency: 18,
     checking: false,
     lastChecked: 'Just now'
   });
 
-  // Global Search State
-  const [globalSearch, setGlobalSearch] = useState('');
+const [globalSearch, setGlobalSearch] = useState('');
   const [searchFocused, setSearchFocused] = useState(false);
 
-  // New Subscriber Form State
-  const [newSubEmail, setNewSubEmail] = useState('');
+const [newSubEmail, setNewSubEmail] = useState('');
 
-  // Live Clock state for NPT Time (Kathmandu, Nepal)
-  const [currentTime, setCurrentTime] = useState('');
+const [currentTime, setCurrentTime] = useState('');
 
   useEffect(() => {
     const updateTime = () => {
@@ -84,8 +75,7 @@ export default function AdminDashboard({
     return () => clearInterval(interval);
   }, []);
 
-  // Form states for modals
-  const [editingItem, setEditingItem] = useState(null);
+const [editingItem, setEditingItem] = useState(null);
   const [editModalOpen, setEditModalOpen] = useState(false);
 
   const notify = (text, type = 'success') => {
@@ -101,8 +91,7 @@ export default function AdminDashboard({
     router.refresh();
   };
 
-  // Fetch updated analytics when period changes
-  const handlePeriodChange = async (newPeriod) => {
+const handlePeriodChange = async (newPeriod) => {
     if (newPeriod === analyticsPeriod && analytics) return;
     setAnalyticsPeriod(newPeriod);
     setAnalyticsLoading(true);
@@ -136,8 +125,7 @@ export default function AdminDashboard({
     }
   };
 
-  // Fetch Media Library
-  const fetchMedia = async () => {
+const fetchMedia = async () => {
     setMediaLoading(true);
     try {
       const res = await fetch('/api/admin/media');
@@ -158,8 +146,7 @@ export default function AdminDashboard({
     }
   };
 
-  // Save Site-wide Settings
-  const saveSettingSection = async (key, value) => {
+const saveSettingSection = async (key, value) => {
     try {
       const res = await fetch('/api/admin/settings', {
         method: 'PUT',
@@ -177,14 +164,12 @@ export default function AdminDashboard({
     }
   };
 
-  // Backup Export
-  const handleExportBackup = () => {
+const handleExportBackup = () => {
     window.open('/api/admin/backup', '_blank');
     notify('Exporting full database JSON backup');
   };
 
-  // Live System Health Check
-  const runHealthCheck = async () => {
+const runHealthCheck = async () => {
     setSystemHealth(prev => ({ ...prev, checking: true }));
     const t0 = performance.now();
     try {
@@ -231,8 +216,7 @@ export default function AdminDashboard({
     await saveSettingSection('popup', updated);
   };
 
-  // Toggle Read/Unread on Messages
-  const toggleMessageRead = async (id, currentRead) => {
+const toggleMessageRead = async (id, currentRead) => {
     try {
       const res = await fetch('/api/admin/messages', {
         method: 'PUT',
@@ -248,8 +232,7 @@ export default function AdminDashboard({
     }
   };
 
-  // Subscriber Management Functions
-  const copyAllEmails = () => {
+const copyAllEmails = () => {
     if (subscribers.length === 0) {
       notify('No subscribers to copy', 'error');
       return;
@@ -316,8 +299,7 @@ export default function AdminDashboard({
     });
   };
 
-  // Cross-entity Search
-  const searchResults = useMemo(() => {
+const searchResults = useMemo(() => {
     if (!globalSearch || globalSearch.trim().length < 2) return [];
     const q = globalSearch.toLowerCase().trim();
     const results = [];
@@ -367,8 +349,7 @@ export default function AdminDashboard({
     return results.slice(0, 8);
   }, [globalSearch, projects, articles, certificates, skills, gallery, messages, subscribers]);
 
-  // Clean Navigation Structure (NO EMOJIS, grouped logically)
-  const navGroups = [
+const navGroups = [
     {
       group: 'Analytics',
       items: [
@@ -404,8 +385,7 @@ export default function AdminDashboard({
     }
   ];
 
-  // SVG Chart Calculation Helpers
-  const chartPoints = useMemo(() => {
+const chartPoints = useMemo(() => {
     if (!analytics || !analytics.timeseries || analytics.timeseries.length === 0) return [];
     return analytics.timeseries;
   }, [analytics]);
@@ -455,8 +435,7 @@ export default function AdminDashboard({
   return (
     <div className="min-h-screen bg-[#0A0E17] text-slate-100 font-sans flex flex-col antialiased selection:bg-emerald-500 selection:text-slate-950">
 
-      {/* Top Global Notification Toast */}
-      {notification.text && (
+{notification.text && (
         <div className={`fixed top-4 right-4 z-50 px-4 py-2.5 rounded-lg shadow-xl flex items-center gap-3 text-xs font-medium backdrop-blur-md transition-all ${
           notification.type === 'error'
             ? 'bg-rose-500/90 text-white border border-rose-400/40'
@@ -469,8 +448,7 @@ export default function AdminDashboard({
         </div>
       )}
 
-      {/* Confirmation Modal */}
-      {confirmModal.open && (
+{confirmModal.open && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-[#121826] border border-slate-800 rounded-xl p-5 max-w-sm w-full space-y-4 shadow-2xl">
             <div className="space-y-1">
@@ -501,8 +479,7 @@ export default function AdminDashboard({
         </div>
       )}
 
-      {/* Top Application Header */}
-      <header className="h-14 border-b border-slate-800/80 bg-[#0D121F]/90 backdrop-blur-md px-4 sm:px-6 flex items-center justify-between sticky top-0 z-40">
+<header className="h-14 border-b border-slate-800/80 bg-[#0D121F]/90 backdrop-blur-md px-4 sm:px-6 flex items-center justify-between sticky top-0 z-40">
         <div className="flex items-center gap-3">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -523,8 +500,7 @@ export default function AdminDashboard({
           </Link>
         </div>
 
-        {/* Global Instant Search Bar */}
-        <div className="relative flex-1 max-w-sm mx-4 hidden md:block">
+<div className="relative flex-1 max-w-sm mx-4 hidden md:block">
           <div className="relative">
             <input
               type="text"
@@ -543,8 +519,7 @@ export default function AdminDashboard({
             )}
           </div>
 
-          {/* Search Dropdown Results */}
-          {searchFocused && searchResults.length > 0 && (
+{searchFocused && searchResults.length > 0 && (
             <div className="absolute top-full left-0 right-0 mt-1.5 bg-[#121826] border border-slate-800 rounded-lg shadow-xl overflow-hidden z-50 divide-y divide-slate-800/60">
               {searchResults.map((res, i) => (
                 <button
@@ -569,8 +544,7 @@ export default function AdminDashboard({
           )}
         </div>
 
-        {/* Right Header Actions */}
-        <div className="flex items-center gap-2 shrink-0">
+<div className="flex items-center gap-2 shrink-0">
           <button
             type="button"
             onClick={runHealthCheck}
@@ -607,7 +581,7 @@ export default function AdminDashboard({
       </header>
 
       <div className="flex-1 flex overflow-hidden">
-        {/* Left Sidebar Grouped cleanly without clutter */}
+        
         <aside className={`fixed inset-y-0 left-0 z-30 w-56 bg-[#0B0F19] border-r border-slate-800/80 pt-16 lg:pt-0 transform lg:translate-x-0 transition-transform duration-150 ease-in-out lg:static shrink-0 ${
           mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}>
@@ -657,17 +631,12 @@ export default function AdminDashboard({
           </div>
         </aside>
 
-        {/* Main Content Area */}
-        <main className="flex-1 overflow-y-auto p-4 sm:p-7 bg-[#0A0E17]">
+<main className="flex-1 overflow-y-auto p-4 sm:p-7 bg-[#0A0E17]">
 
-          {/* ============================================================== */}
-          {/* TAB: VISITOR ANALYTICS & INSIGHTS (CLEAN MINIMAL UI, NO EMOJI) */}
-          {/* ============================================================== */}
-          {activeTab === 'analytics' && (
+{activeTab === 'analytics' && (
             <div className="space-y-6 max-w-6xl mx-auto">
-              
-              {/* Analytics Top Control Header */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800/80">
+
+<div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800/80">
                 <div>
                   <div className="flex items-center gap-2">
                     <h1 className="text-xl font-semibold text-white tracking-tight">Visitor Analytics</h1>
@@ -680,7 +649,7 @@ export default function AdminDashboard({
                 </div>
 
                 <div className="flex items-center gap-2">
-                  {/* Period Filter Buttons */}
+                  
                   <div className="flex items-center bg-slate-900 border border-slate-800 rounded-lg p-0.5 text-xs">
                     {[
                       { key: '7d', label: '7 Days' },
@@ -714,8 +683,7 @@ export default function AdminDashboard({
                 </div>
               </div>
 
-              {/* 4 Spacious Hero KPI Metric Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div className="bg-[#0F1422] border border-slate-800/80 p-4 rounded-xl space-y-1">
                   <div className="flex items-center justify-between text-slate-400 text-xs">
                     <span>Total Visits</span>
@@ -777,8 +745,7 @@ export default function AdminDashboard({
                 </div>
               </div>
 
-              {/* Interactive Vector Traffic Velocity Chart */}
-              <div className="bg-[#0F1422] border border-slate-800/80 p-5 rounded-xl space-y-4">
+<div className="bg-[#0F1422] border border-slate-800/80 p-5 rounded-xl space-y-4">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div>
                     <h3 className="text-sm font-semibold text-white">Traffic Velocity & Daily Trend</h3>
@@ -819,8 +786,7 @@ export default function AdminDashboard({
                   </div>
                 </div>
 
-                {/* SVG Line / Area Graph */}
-                <div className="relative w-full overflow-x-auto pt-2">
+<div className="relative w-full overflow-x-auto pt-2">
                   <svg
                     viewBox={`0 0 ${chartWidth} ${chartHeight}`}
                     className="w-full h-56 overflow-visible font-sans select-none"
@@ -836,8 +802,7 @@ export default function AdminDashboard({
                       </linearGradient>
                     </defs>
 
-                    {/* Horizontal Guideline Grids */}
-                    {[0.25, 0.5, 0.75, 1].map((pct, idx) => {
+{[0.25, 0.5, 0.75, 1].map((pct, idx) => {
                       const y = chartHeight - paddingY - pct * (chartHeight - paddingY * 2);
                       const labelVal = Math.round(maxVal * pct);
                       return (
@@ -865,8 +830,7 @@ export default function AdminDashboard({
                       );
                     })}
 
-                    {/* Views Area & Line */}
-                    {(chartMetric === 'both' || chartMetric === 'views') && (
+{(chartMetric === 'both' || chartMetric === 'views') && (
                       <>
                         <path d={viewsPath} fill="none" stroke="#38bdf8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         {chartPoints.map((p, i) => {
@@ -885,8 +849,7 @@ export default function AdminDashboard({
                       </>
                     )}
 
-                    {/* Visits Area & Line */}
-                    {(chartMetric === 'both' || chartMetric === 'visits') && (
+{(chartMetric === 'both' || chartMetric === 'visits') && (
                       <>
                         <path d={visitsArea} fill="url(#emeraldFade)" />
                         <path d={visitsPath} fill="none" stroke="#10b981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -906,8 +869,7 @@ export default function AdminDashboard({
                       </>
                     )}
 
-                    {/* X-axis labels & hover hit-areas */}
-                    {chartPoints.map((p, i) => {
+{chartPoints.map((p, i) => {
                       const { x } = getCoordinates(i, 0);
                       const isHovered = hoveredPoint === i;
                       return (
@@ -924,8 +886,7 @@ export default function AdminDashboard({
                             {p.label}
                           </text>
 
-                          {/* Invisible hover trigger column */}
-                          <rect
+<rect
                             x={x - (chartWidth / chartPoints.length) / 2}
                             y={paddingY}
                             width={chartWidth / chartPoints.length}
@@ -940,8 +901,7 @@ export default function AdminDashboard({
                     })}
                   </svg>
 
-                  {/* Active Point Floating Tooltip */}
-                  {hoveredPoint !== null && chartPoints[hoveredPoint] && (
+{hoveredPoint !== null && chartPoints[hoveredPoint] && (
                     <div
                       className="absolute top-4 left-1/2 -translate-x-1/2 bg-slate-900 border border-slate-700/80 px-3 py-1.5 rounded-lg shadow-xl text-xs flex items-center gap-3 font-mono pointer-events-none"
                     >
@@ -953,11 +913,9 @@ export default function AdminDashboard({
                 </div>
               </div>
 
-              {/* Two-Column Deep Insights Grid */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-                
-                {/* 1. Most Visited Portfolio Pages */}
-                <div className="bg-[#0F1422] border border-slate-800/80 p-5 rounded-xl space-y-4">
+<div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+
+<div className="bg-[#0F1422] border border-slate-800/80 p-5 rounded-xl space-y-4">
                   <div className="flex items-center justify-between">
                     <div>
                       <h3 className="text-sm font-semibold text-white">Top Visited Pages</h3>
@@ -990,8 +948,7 @@ export default function AdminDashboard({
                   </div>
                 </div>
 
-                {/* 2. Traffic Sources & Referrers */}
-                <div className="bg-[#0F1422] border border-slate-800/80 p-5 rounded-xl space-y-4">
+<div className="bg-[#0F1422] border border-slate-800/80 p-5 rounded-xl space-y-4">
                   <div className="flex items-center justify-between">
                     <div>
                       <h3 className="text-sm font-semibold text-white">Traffic Acquisition Channels</h3>
@@ -1021,8 +978,7 @@ export default function AdminDashboard({
                   </div>
                 </div>
 
-                {/* 3. Geographic Visitor Demographics */}
-                <div className="bg-[#0F1422] border border-slate-800/80 p-5 rounded-xl space-y-4">
+<div className="bg-[#0F1422] border border-slate-800/80 p-5 rounded-xl space-y-4">
                   <div className="flex items-center justify-between">
                     <div>
                       <h3 className="text-sm font-semibold text-white">Geographic Distribution</h3>
@@ -1055,15 +1011,13 @@ export default function AdminDashboard({
                   </div>
                 </div>
 
-                {/* 4. Devices, Browsers & Engagement Milestones */}
-                <div className="bg-[#0F1422] border border-slate-800/80 p-5 rounded-xl space-y-4">
+<div className="bg-[#0F1422] border border-slate-800/80 p-5 rounded-xl space-y-4">
                   <div>
                     <h3 className="text-sm font-semibold text-white">Devices & Browsers</h3>
                     <p className="text-xs text-slate-400">Hardware and browser market share</p>
                   </div>
 
-                  {/* Segmented Device Bar */}
-                  <div className="space-y-2">
+<div className="space-y-2">
                     <div className="flex justify-between text-xs text-slate-400">
                       <span>Device Types</span>
                       <span className="font-mono text-[11px]">Desktop 64% · Mobile 32% · Tablet 4%</span>
@@ -1075,8 +1029,7 @@ export default function AdminDashboard({
                     </div>
                   </div>
 
-                  {/* Browser Breakdown Grid */}
-                  <div className="pt-2 border-t border-slate-800/80 space-y-2">
+<div className="pt-2 border-t border-slate-800/80 space-y-2">
                     <span className="text-xs text-slate-400 block">Top Browsers</span>
                     <div className="grid grid-cols-2 gap-2 text-xs font-mono">
                       {(analytics?.browsers || []).map((b) => (
@@ -1088,8 +1041,7 @@ export default function AdminDashboard({
                     </div>
                   </div>
 
-                  {/* Key Milestone Counters */}
-                  <div className="pt-2 border-t border-slate-800/80 space-y-2">
+<div className="pt-2 border-t border-slate-800/80 space-y-2">
                     <span className="text-xs text-slate-400 block">Engagement Highlights</span>
                     <div className="grid grid-cols-2 gap-2 text-xs">
                       <div className="p-2 rounded-lg bg-slate-900/60 border border-slate-800/80">
@@ -1109,10 +1061,7 @@ export default function AdminDashboard({
             </div>
           )}
 
-          {/* ============================================================== */}
-          {/* TAB: PROJECTS SHOWCASE */}
-          {/* ============================================================== */}
-          {activeTab === 'projects' && (
+{activeTab === 'projects' && (
             <div className="space-y-5 max-w-6xl mx-auto">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
                 <div>
@@ -1192,10 +1141,7 @@ export default function AdminDashboard({
             </div>
           )}
 
-          {/* ============================================================== */}
-          {/* TAB: ARTICLES & BLOG */}
-          {/* ============================================================== */}
-          {activeTab === 'articles' && (
+{activeTab === 'articles' && (
             <div className="space-y-5 max-w-6xl mx-auto">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
                 <div>
@@ -1252,10 +1198,7 @@ export default function AdminDashboard({
             </div>
           )}
 
-          {/* ============================================================== */}
-          {/* TAB: CERTIFICATES */}
-          {/* ============================================================== */}
-          {activeTab === 'certificates' && (
+{activeTab === 'certificates' && (
             <div className="space-y-5 max-w-6xl mx-auto">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
                 <div>
@@ -1318,10 +1261,7 @@ export default function AdminDashboard({
             </div>
           )}
 
-          {/* ============================================================== */}
-          {/* TAB: SKILLS MATRIX */}
-          {/* ============================================================== */}
-          {activeTab === 'skills' && (
+{activeTab === 'skills' && (
             <div className="space-y-5 max-w-6xl mx-auto">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
                 <div>
@@ -1379,10 +1319,7 @@ export default function AdminDashboard({
             </div>
           )}
 
-          {/* ============================================================== */}
-          {/* TAB: PHOTO GALLERY */}
-          {/* ============================================================== */}
-          {activeTab === 'gallery' && (
+{activeTab === 'gallery' && (
             <div className="space-y-5 max-w-6xl mx-auto">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
                 <div>
@@ -1447,10 +1384,7 @@ export default function AdminDashboard({
             </div>
           )}
 
-          {/* ============================================================== */}
-          {/* TAB: INBOX (CONTACT INQUIRIES) */}
-          {/* ============================================================== */}
-          {activeTab === 'inbox' && (
+{activeTab === 'inbox' && (
             <div className="space-y-5 max-w-6xl mx-auto">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
                 <div>
@@ -1526,10 +1460,7 @@ export default function AdminDashboard({
             </div>
           )}
 
-          {/* ============================================================== */}
-          {/* TAB: SUBSCRIBERS */}
-          {/* ============================================================== */}
-          {activeTab === 'subscribers' && (
+{activeTab === 'subscribers' && (
             <div className="space-y-5 max-w-6xl mx-auto">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
                 <div>
@@ -1552,8 +1483,7 @@ export default function AdminDashboard({
                 </div>
               </div>
 
-              {/* Add Subscriber Form */}
-              <form onSubmit={handleAddSubscriber} className="flex gap-2 bg-[#0F1422] p-3 rounded-xl border border-slate-800/80">
+<form onSubmit={handleAddSubscriber} className="flex gap-2 bg-[#0F1422] p-3 rounded-xl border border-slate-800/80">
                 <input
                   type="email"
                   value={newSubEmail}
@@ -1607,10 +1537,7 @@ export default function AdminDashboard({
             </div>
           )}
 
-          {/* ============================================================== */}
-          {/* TAB: ANNOUNCEMENTS (BANNER & POPUP) */}
-          {/* ============================================================== */}
-          {activeTab === 'announcements' && (
+{activeTab === 'announcements' && (
             <div className="space-y-5 max-w-6xl mx-auto">
               <div className="pb-3 border-b border-slate-800">
                 <h1 className="text-lg font-semibold text-white">Banner & Popup Controls</h1>
@@ -1618,7 +1545,7 @@ export default function AdminDashboard({
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                {/* 1. Rolling Announcement Ticker */}
+                
                 <div className="bg-[#0F1422] border border-slate-800/80 rounded-xl p-5 space-y-4">
                   <div className="flex items-center justify-between pb-2 border-b border-slate-800">
                     <div className="flex items-center gap-2">
@@ -1673,8 +1600,7 @@ export default function AdminDashboard({
                   </div>
                 </div>
 
-                {/* 2. Entry Popup Modal */}
-                <div className="bg-[#0F1422] border border-slate-800/80 rounded-xl p-5 space-y-4">
+<div className="bg-[#0F1422] border border-slate-800/80 rounded-xl p-5 space-y-4">
                   <div className="flex items-center justify-between pb-2 border-b border-slate-800">
                     <div className="flex items-center gap-2">
                       <span className={`w-2 h-2 rounded-full ${settings.popup?.is_active ? 'bg-emerald-400' : 'bg-slate-600'}`}></span>
@@ -1694,7 +1620,7 @@ export default function AdminDashboard({
                   </div>
 
                   <div className="space-y-3 text-xs">
-                    {/* Display Frequency Option */}
+                    
                     <div>
                       <label className="block text-slate-400 mb-1">Display Frequency</label>
                       <select
@@ -1743,8 +1669,7 @@ export default function AdminDashboard({
                       />
                     </div>
 
-                    {/* Image with upload */}
-                    <div>
+<div>
                       <label className="block text-slate-400 mb-1">Popup Image (Auto-WebP)</label>
                       <div className="flex items-center gap-2">
                         <input
@@ -1826,10 +1751,7 @@ export default function AdminDashboard({
             </div>
           )}
 
-          {/* ============================================================== */}
-          {/* TAB: MEDIA STORAGE */}
-          {/* ============================================================== */}
-          {activeTab === 'media' && (
+{activeTab === 'media' && (
             <div className="space-y-5 max-w-6xl mx-auto">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
                 <div>
@@ -1890,10 +1812,7 @@ export default function AdminDashboard({
             </div>
           )}
 
-          {/* ============================================================== */}
-          {/* TAB: DATABASE BACKUP & RESTORE */}
-          {/* ============================================================== */}
-          {activeTab === 'database' && (
+{activeTab === 'database' && (
             <div className="space-y-5 max-w-6xl mx-auto">
               <div className="pb-3 border-b border-slate-800">
                 <h1 className="text-lg font-semibold text-white">Database Backup & Export</h1>
@@ -1927,10 +1846,7 @@ export default function AdminDashboard({
             </div>
           )}
 
-          {/* ============================================================== */}
-          {/* TAB: RESUME & TIMELINE */}
-          {/* ============================================================== */}
-          {activeTab === 'experience' && (
+{activeTab === 'experience' && (
             <div className="space-y-5 max-w-6xl mx-auto">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
                 <div>
@@ -2010,8 +1926,7 @@ export default function AdminDashboard({
         </main>
       </div>
 
-      {/* Generic Item Edit Modal */}
-      {editModalOpen && (
+{editModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-[#121826] border border-slate-800 rounded-xl max-w-lg w-full p-6 space-y-4 shadow-2xl max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between pb-3 border-b border-slate-800">
@@ -2026,8 +1941,7 @@ export default function AdminDashboard({
               </button>
             </div>
 
-            {/* Form Fields based on tab */}
-            {activeTab === 'projects' && (
+{activeTab === 'projects' && (
               <form onSubmit={async (e) => {
                 e.preventDefault();
                 const method = editingItem?.id ? 'PUT' : 'POST';
@@ -2436,8 +2350,7 @@ export default function AdminDashboard({
                   </div>
                 </div>
 
-                {/* Organization / Campus Image or Logo with Upload */}
-                <div>
+<div>
                   <label className="block text-slate-400 mb-1">Organization / Campus Logo</label>
                   <div className="flex items-center gap-2">
                     <input

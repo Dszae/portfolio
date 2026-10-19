@@ -7,8 +7,7 @@ export async function POST(request) {
     const body = await request.json();
     const { name, email, subject, message, botcheck } = body;
 
-    // Spam honeypot
-    if (botcheck) {
+if (botcheck) {
       return NextResponse.json({ success: true, message: 'Message sent successfully.' });
     }
 
@@ -30,8 +29,7 @@ export async function POST(request) {
       return NextResponse.json({ error: 'Please provide a message (up to 5,000 characters).' }, { status: 400 });
     }
 
-    // 1. Save to Supabase contact_messages table
-    const { data: dbData, error: dbError } = await supabaseAdmin
+const { data: dbData, error: dbError } = await supabaseAdmin
       .from('contact_messages')
       .insert({
         name: trimmedName,
@@ -48,8 +46,7 @@ export async function POST(request) {
       console.error('Failed to store contact message in database:', dbError.message);
     }
 
-    // 2. Also forward to Web3Forms for immediate email delivery to Dipesh
-    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || 'e6fd2e32-2b5c-4a3f-81d9-aa02f4dfcc76';
+const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || 'e6fd2e32-2b5c-4a3f-81d9-aa02f4dfcc76';
     try {
       const formData = new FormData();
       formData.set('access_key', accessKey);
@@ -67,8 +64,7 @@ export async function POST(request) {
       console.error('Web3Forms email delivery error:', emailErr);
     }
 
-    // Revalidate admin messages view
-    revalidatePath('/admin');
+revalidatePath('/admin');
 
     return NextResponse.json({
       success: true,

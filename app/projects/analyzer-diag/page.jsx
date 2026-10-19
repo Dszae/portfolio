@@ -57,8 +57,7 @@ export default function AnalyzerDiagnosticsPage() {
           />
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-          {/* Navigation link */}
-          <div className="mb-6">
+<div className="mb-6">
             <Link
               href="/projects"
               className="inline-flex items-center gap-2 text-xs sm:text-sm font-mono font-semibold text-[#065F46] dark:text-[#34D399] hover:underline"
@@ -70,8 +69,7 @@ export default function AnalyzerDiagnosticsPage() {
             </Link>
           </div>
 
-          {/* Editorial Header */}
-          <header className="mb-12">
+<header className="mb-12">
             <div className="flex flex-wrap items-center gap-2.5 mb-4">
               <span className="px-3 py-1 text-xs font-mono font-bold uppercase tracking-wider text-[#065F46] dark:text-[#34D399] bg-[#065F46]/10 dark:bg-[#34D399]/15 border border-[#065F46]/20 dark:border-[#34D399]/30 rounded-lg">
                 Instrumentation Engineering
@@ -89,8 +87,7 @@ export default function AnalyzerDiagnosticsPage() {
               A comprehensive technical analysis and diagnostic troubleshooting protocol engineered for automated clinical immunoassay and biochemical laboratory instruments. Analyzing micro-stepping syringe probe calibrations (±1.0 µL), negative pressure vacuum dynamics (-40 to -60 kPa), and capacitive liquid level sensing.
             </p>
 
-            {/* Quick Specs Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] shadow-sm mb-8 font-mono text-xs">
+<div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] shadow-sm mb-8 font-mono text-xs">
               <div>
                 <span className="text-[#64748B] dark:text-[#94A3B8] block mb-1">Vacuum Tolerance</span>
                 <strong className="text-[#0F172A] dark:text-[#F9FAFB]">-40 to -60 kPa Window</strong>
@@ -124,8 +121,7 @@ export default function AnalyzerDiagnosticsPage() {
             </figcaption>
           </figure>
 
-          {/* Deep Technical Content */}
-          <article className="space-y-12 text-[#1E293B] dark:text-[#CBD5E1]">
+<article className="space-y-12 text-[#1E293B] dark:text-[#CBD5E1]">
             <section className="space-y-4">
               <h2 className="text-2xl font-bold tracking-tight text-[#0F172A] dark:text-[#F9FAFB]">
                 1. Pneumatic &amp; Negative Pressure Fluidics Architecture

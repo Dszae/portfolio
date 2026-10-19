@@ -30,7 +30,6 @@ const SKILL_DESCRIPTIONS = {
   'Git & Version Control': 'DAGs & workflows'
 };
 
-// Helper icon selector based on skill name or category
 function SkillIcon({ name, category }) {
   const lower = (name || '').toLowerCase();
   
@@ -97,7 +96,7 @@ function SkillIcon({ name, category }) {
       </svg>
     );
   }
-  // Default code icon
+  
   return (
     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
@@ -106,7 +105,7 @@ function SkillIcon({ name, category }) {
 }
 
 export default function SkillsClientView({ initialSkills = [], jsonLd = null }) {
-  // Categorize skills
+  
   const devSkills = initialSkills.filter(s => 
     (s.category || '').toLowerCase() === 'development' || 
     (s.category || '').toLowerCase() === 'programming'
@@ -140,9 +139,8 @@ export default function SkillsClientView({ initialSkills = [], jsonLd = null }) 
           <FadeUp>
             <section id="skills" className={`pt-28 sm:pt-32 pb-24 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
               <div className="max-w-6xl mx-auto w-full">
-                
-                {/* Section Introduction */}
-                <header className="mb-12">
+
+<header className="mb-12">
                   <div className="flex items-center gap-2.5 mb-3 font-mono text-xs font-semibold uppercase tracking-wider text-[#065F46] dark:text-[#6EE7B7]">
                     <span className="w-6 h-0.5 bg-[#065F46] dark:bg-[#6EE7B7] rounded-full" aria-hidden="true"></span>
                     <span>WHAT I WORK WITH</span>
@@ -157,13 +155,11 @@ export default function SkillsClientView({ initialSkills = [], jsonLd = null }) 
                   </p>
                 </header>
 
-                {/* Asymmetrical Bento Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8">
+<div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8">
 
-                  {/* Card A: Development (~58% desktop width: md:col-span-7) */}
-                  <article id="development" className="md:col-span-7 bg-[#FFFFFF] dark:bg-[#0F1216] border border-[#CBD5E1] dark:border-[#222933] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-1 hover:border-[#065F46]/50 dark:hover:border-[#6EE7B7]/50 relative overflow-hidden flex flex-col justify-between group">
+<article id="development" className="md:col-span-7 bg-[#FFFFFF] dark:bg-[#0F1216] border border-[#CBD5E1] dark:border-[#222933] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-1 hover:border-[#065F46]/50 dark:hover:border-[#6EE7B7]/50 relative overflow-hidden flex flex-col justify-between group">
                     <div>
-                      {/* Card Header */}
+                      
                       <div className="flex items-center gap-4 mb-4">
                         <div className="w-12 h-12 rounded-xl bg-[#F1F5F9] dark:bg-[#181D24] border border-[#CBD5E1] dark:border-[#222933] text-[#065F46] dark:text-[#6EE7B7] flex items-center justify-center flex-shrink-0 group-hover:border-[#065F46]/50 dark:group-hover:border-[#34D399]/50 transition-colors duration-200">
                           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -184,8 +180,7 @@ export default function SkillsClientView({ initialSkills = [], jsonLd = null }) 
                         Turning logic into functional software.
                       </p>
 
-                      {/* Dynamic Development Skills Grid */}
-                      <ul role="list" className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+<ul role="list" className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
                         {devSkills.map((s) => (
                           <li key={s.id || s.name} className="p-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#222933] bg-[#F1F5F9] dark:bg-[#181D24] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#0F1216] hover:border-[#065F46]/40 dark:hover:border-[#6EE7B7]/40 transition-all duration-150 flex items-start gap-3">
                             <div className="w-7 h-7 rounded-lg bg-[#FFFFFF] dark:bg-[#0F1216] border border-[#CBD5E1] dark:border-[#222933] flex items-center justify-center text-[#065F46] dark:text-[#6EE7B7] flex-shrink-0 mt-0.5">
@@ -202,8 +197,7 @@ export default function SkillsClientView({ initialSkills = [], jsonLd = null }) 
                       </ul>
                     </div>
 
-                    {/* Card Footer: Real Project Connection */}
-                    <div className="pt-4 border-t border-[#CBD5E1] dark:border-[#222933] flex items-center justify-between flex-wrap gap-2 text-xs font-mono">
+<div className="pt-4 border-t border-[#CBD5E1] dark:border-[#222933] flex items-center justify-between flex-wrap gap-2 text-xs font-mono">
                       <span className="text-[#1E293B] dark:text-[#A7B0BE] font-semibold">Applied in real applications</span>
                       <Link 
                         href="/projects" 
@@ -217,10 +211,9 @@ export default function SkillsClientView({ initialSkills = [], jsonLd = null }) 
                     </div>
                   </article>
 
-                  {/* Card B: Creative Media (~42% desktop width: md:col-span-5) */}
-                  <article className="md:col-span-5 bg-[#FFFFFF] dark:bg-[#0F1216] border border-[#CBD5E1] dark:border-[#222933] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-1 hover:border-[#065F46]/50 dark:hover:border-[#6EE7B7]/50 relative overflow-hidden flex flex-col justify-between group">
+<article className="md:col-span-5 bg-[#FFFFFF] dark:bg-[#0F1216] border border-[#CBD5E1] dark:border-[#222933] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-1 hover:border-[#065F46]/50 dark:hover:border-[#6EE7B7]/50 relative overflow-hidden flex flex-col justify-between group">
                     <div>
-                      {/* Card Header */}
+                      
                       <div className="flex items-center gap-4 mb-4">
                         <div className="w-12 h-12 rounded-xl bg-[#F1F5F9] dark:bg-[#181D24] border border-[#CBD5E1] dark:border-[#222933] text-[#065F46] dark:text-[#6EE7B7] flex items-center justify-center flex-shrink-0 group-hover:border-[#065F46]/50 dark:group-hover:border-[#34D399]/50 transition-colors duration-200">
                           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -241,8 +234,7 @@ export default function SkillsClientView({ initialSkills = [], jsonLd = null }) 
                         Crafting visual stories through editing, motion, and design.
                       </p>
 
-                      {/* Showcase Items */}
-                      <ul role="list" className="space-y-3 mb-6">
+<ul role="list" className="space-y-3 mb-6">
                         {mediaSkills.map((s) => (
                           <li key={s.id || s.name} className="p-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#222933] bg-[#F1F5F9] dark:bg-[#181D24] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#0F1216] hover:border-[#065F46]/40 dark:hover:border-[#6EE7B7]/40 transition-all duration-150 flex items-start gap-3">
                             <div className="w-8 h-8 rounded-lg bg-[#FFFFFF] dark:bg-[#0F1216] border border-[#CBD5E1] dark:border-[#222933] flex items-center justify-center text-[#065F46] dark:text-[#6EE7B7] flex-shrink-0 mt-0.5">
@@ -259,8 +251,7 @@ export default function SkillsClientView({ initialSkills = [], jsonLd = null }) 
                       </ul>
                     </div>
 
-                    {/* Card Footer: Real Gallery Connection */}
-                    <div className="pt-4 border-t border-[#CBD5E1] dark:border-[#222933] flex items-center justify-between flex-wrap gap-2 text-xs font-mono">
+<div className="pt-4 border-t border-[#CBD5E1] dark:border-[#222933] flex items-center justify-between flex-wrap gap-2 text-xs font-mono">
                       <span className="text-[#1E293B] dark:text-[#A7B0BE] font-semibold">50+ client assets</span>
                       <Link 
                         href="/gallery" 
@@ -274,12 +265,10 @@ export default function SkillsClientView({ initialSkills = [], jsonLd = null }) 
                     </div>
                   </article>
 
-                  {/* Card C: Hardware & Engineering (100% width beneath: md:col-span-12) */}
-                  <article className="md:col-span-12 bg-[#FFFFFF] dark:bg-[#0F1216] border border-[#CBD5E1] dark:border-[#222933] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-1 hover:border-[#065F46]/50 dark:hover:border-[#6EE7B7]/50 relative overflow-hidden group">
+<article className="md:col-span-12 bg-[#FFFFFF] dark:bg-[#0F1216] border border-[#CBD5E1] dark:border-[#222933] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-1 hover:border-[#065F46]/50 dark:hover:border-[#6EE7B7]/50 relative overflow-hidden group">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                      
-                      {/* Left: Category Overview */}
-                      <div className="lg:col-span-5">
+
+<div className="lg:col-span-5">
                         <div className="flex items-center gap-4 mb-4">
                           <div className="w-12 h-12 rounded-xl bg-[#F1F5F9] dark:bg-[#181D24] border border-[#CBD5E1] dark:border-[#222933] text-[#065F46] dark:text-[#6EE7B7] flex items-center justify-center flex-shrink-0 group-hover:border-[#065F46]/50 dark:group-hover:border-[#34D399]/50 transition-colors duration-200">
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -311,8 +300,7 @@ export default function SkillsClientView({ initialSkills = [], jsonLd = null }) 
                         </Link>
                       </div>
 
-                      {/* Right: Compact Skills Chips */}
-                      <div className="lg:col-span-7">
+<div className="lg:col-span-7">
                         <ul role="list" className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
                           {hardwareSkills.map((s) => (
                             <li key={s.id || s.name} className="p-4 rounded-xl border border-[#CBD5E1] dark:border-[#222933] bg-[#F1F5F9] dark:bg-[#181D24] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#0F1216] hover:border-[#065F46]/40 dark:hover:border-[#6EE7B7]/40 transition-all duration-150 flex flex-col justify-between">

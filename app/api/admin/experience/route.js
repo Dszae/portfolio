@@ -42,8 +42,7 @@ export async function POST(request) {
       .select()
       .single();
 
-    // If logo column does not exist yet in Postgres, retry without logo to prevent blocking
-    if (error && error.message?.includes('column "logo"')) {
+if (error && error.message?.includes('column "logo"')) {
       delete insertPayload.logo;
       const fallback = await supabaseAdmin
         .from('experiences')
@@ -106,8 +105,7 @@ export async function PUT(request) {
       .select()
       .single();
 
-    // If logo column does not exist in Postgres, retry without logo
-    if (error && error.message?.includes('column "logo"')) {
+if (error && error.message?.includes('column "logo"')) {
       delete updatePayload.logo;
       const fallback = await supabaseAdmin
         .from('experiences')

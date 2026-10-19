@@ -23,7 +23,10 @@ export async function generateMetadata({ params }) {
 
   return await generatePageMetadata({
     title: project.title,
-    description: project.description || `Software and engineering project by Dipesh Sapkota: ${project.title}`,
+    description: project.description,
+    content: project.description,
+    category: project.category_label || project.category,
+    tech: project.tech,
     path: `/projects/${project.slug || resolvedParams.slug}`,
     image: project.img || '/sportivo-preview.jpg',
     keywords: Array.isArray(project.tech) ? project.tech : (project.tech ? [project.tech] : []),
@@ -32,7 +35,7 @@ export async function generateMetadata({ params }) {
 
 export async function generateStaticParams() {
   const projects = await getProjects();
-  // Filter out slugs that already have custom static folders in app/projects/
+  
   const hardcodedFolders = new Set([
     '555-flasher',
     'analyzer-diag',
@@ -91,7 +94,7 @@ export default async function DynamicProjectPage({ params }) {
           />
 
           <article className="space-y-8">
-            {/* Navigation & Category */}
+            
             <div className="flex flex-wrap items-center gap-2.5 text-xs">
               <Link 
                 href="/projects" 
@@ -108,13 +111,11 @@ export default async function DynamicProjectPage({ params }) {
               )}
             </div>
 
-            {/* Project Title */}
-            <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] leading-snug">
+<h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] leading-snug">
               {project.title}
             </h1>
 
-            {/* Primary Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3">
+<div className="flex flex-wrap items-center gap-3">
               {project.live_url && (
                 <a
                   href={project.live_url}
@@ -143,8 +144,7 @@ export default async function DynamicProjectPage({ params }) {
               )}
             </div>
 
-            {/* Project Preview Image */}
-            {project.img && (
+{project.img && (
               <div className="relative w-full h-72 sm:h-[420px] rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-900 shadow-lg">
                 <Image
                   src={project.img}
@@ -157,8 +157,7 @@ export default async function DynamicProjectPage({ params }) {
               </div>
             )}
 
-            {/* Tech Stack Badges */}
-            {techList.length > 0 && (
+{techList.length > 0 && (
               <div className="space-y-2 pt-2">
                 <h3 className="text-xs font-mono font-semibold uppercase tracking-wider text-slate-500">
                   Technologies & Architecture
@@ -176,13 +175,11 @@ export default async function DynamicProjectPage({ params }) {
               </div>
             )}
 
-            {/* Description */}
-            <div className="prose dark:prose-invert max-w-none text-slate-800 dark:text-slate-200 text-sm sm:text-base leading-relaxed space-y-4 whitespace-pre-line pt-2">
+<div className="prose dark:prose-invert max-w-none text-slate-800 dark:text-slate-200 text-sm sm:text-base leading-relaxed space-y-4 whitespace-pre-line pt-2">
               {project.description}
             </div>
 
-            {/* Author Profile Box */}
-            <div className="p-5 sm:p-6 rounded-2xl bg-slate-50 dark:bg-[#141824] border border-slate-200 dark:border-slate-800 flex items-center gap-4 mt-12">
+<div className="p-5 sm:p-6 rounded-2xl bg-slate-50 dark:bg-[#141824] border border-slate-200 dark:border-slate-800 flex items-center gap-4 mt-12">
               <div className="relative w-14 h-14 rounded-full overflow-hidden shrink-0 border border-emerald-500/30">
                 <Image
                   src={profile.avatar_url || '/profile.webp'}
@@ -211,8 +208,7 @@ export default async function DynamicProjectPage({ params }) {
               </div>
             </div>
 
-            {/* Pagination */}
-            <PagePagination
+<PagePagination
               prev={prevProject ? { label: prevProject.title, path: `/projects/${prevProject.slug || prevProject.id}` } : { label: 'All Projects', path: '/projects' }}
               next={nextProject ? { label: nextProject.title, path: `/projects/${nextProject.slug || nextProject.id}` } : { label: 'Explore Articles', path: '/blog' }}
             />

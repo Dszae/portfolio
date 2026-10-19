@@ -11,7 +11,7 @@ import PagePagination from './PagePagination';
 function MotionReelsGraphic() {
   return (
     <div className="relative aspect-[16/10] w-full bg-[#090B0E] text-slate-200 overflow-hidden select-none font-mono flex flex-col justify-between p-4 sm:p-5 border border-slate-200 dark:border-[#222933] rounded-xl">
-      {/* Top Monitor Status Bar */}
+      
       <div className="flex items-center justify-between text-[11px] pb-2 border-b border-[#222933]">
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
@@ -21,8 +21,7 @@ function MotionReelsGraphic() {
         <div className="text-[#34D399] font-bold">00:01:24:18</div>
       </div>
 
-      {/* Main Center Video Grading Scope & Motion Path Canvas */}
-      <div className="relative my-auto py-3 flex flex-col items-center justify-center">
+<div className="relative my-auto py-3 flex flex-col items-center justify-center">
         <div className="w-full relative h-20 flex items-center justify-center">
           <svg className="w-full h-full overflow-visible" viewBox="0 0 300 80" fill="none" aria-hidden="true" focusable="false">
             <line x1="0" y1="20" x2="300" y2="20" stroke="#1E293B" strokeDasharray="3 3" />
@@ -52,8 +51,7 @@ function MotionReelsGraphic() {
         </div>
       </div>
 
-      {/* Bottom DAW / NLE Multitrack Timeline */}
-      <div className="space-y-1.5 pt-2 border-t border-[#222933] text-[10px]">
+<div className="space-y-1.5 pt-2 border-t border-[#222933] text-[10px]">
         <div className="flex items-center gap-2">
           <span className="w-6 text-slate-400 font-semibold">V1</span>
           <div className="flex-1 h-4 rounded bg-[#181D24] border border-[#34D399]/30 flex items-center px-2 text-[#34D399] font-medium overflow-hidden">
@@ -81,8 +79,7 @@ function MotionReelsGraphic() {
 export default function ProjectsClientView({ initialProjects = [], jsonLd = null }) {
   const [filter, setFilter] = useState('all');
 
-  // Normalize project attributes
-  const normalizedProjects = initialProjects.map((p) => {
+const normalizedProjects = initialProjects.map((p) => {
     const slug = p.slug || p.id?.toString() || '';
     const image = p.image || p.img || '';
     const tech = Array.isArray(p.tech) ? p.tech : (typeof p.tech === 'string' ? p.tech.split(',').map(s => s.trim()) : []);
@@ -139,9 +136,8 @@ export default function ProjectsClientView({ initialProjects = [], jsonLd = null
 
           <FadeUp>
             <section id="projects" className={`pt-24 sm:pt-28 pb-32 px-4 sm:px-8 lg:px-16 max-w-6xl mx-auto w-full ${theme.bg}`}>
-              
-              {/* Clean Section Heading */}
-              <header className="mb-16 sm:mb-20">
+
+<header className="mb-16 sm:mb-20">
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-200 dark:border-[#222933] pb-8">
                   <div>
                     <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#0F172A] dark:text-[#F9FAFB] flex items-center gap-3">
@@ -153,8 +149,7 @@ export default function ProjectsClientView({ initialProjects = [], jsonLd = null
                     </p>
                   </div>
 
-                  {/* Category filter tabs */}
-                  <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs font-medium tracking-wide self-start md:self-auto" role="tablist" aria-label="Filter projects">
+<div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs font-medium tracking-wide self-start md:self-auto" role="tablist" aria-label="Filter projects">
                     <button
                       type="button"
                       role="tab"
@@ -211,8 +206,7 @@ export default function ProjectsClientView({ initialProjects = [], jsonLd = null
                 </div>
               </header>
 
-              {/* Featured Projects Alternating Presentation */}
-              {filteredFeatured.length > 0 && (
+{filteredFeatured.length > 0 && (
                 <div className="space-y-20 sm:space-y-28 mb-24">
                   {filteredFeatured.map((project, idx) => {
                     const isEven = idx % 2 === 0;
@@ -222,7 +216,7 @@ export default function ProjectsClientView({ initialProjects = [], jsonLd = null
                         key={project.id || project.slug}
                         className="project-preview-project relative grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center"
                       >
-                        {/* 1. Visual Preview */}
+                        
                         <div
                           className={`lg:col-span-7 ${
                             isEven ? 'lg:order-1' : 'lg:order-2'
@@ -254,8 +248,7 @@ export default function ProjectsClientView({ initialProjects = [], jsonLd = null
                           </Link>
                         </div>
 
-                        {/* 2. Structured Content */}
-                        <div
+<div
                           className={`lg:col-span-5 flex flex-col ${
                             isEven ? 'lg:order-2 lg:text-left' : 'lg:order-1 lg:text-right'
                           }`}
@@ -351,8 +344,7 @@ export default function ProjectsClientView({ initialProjects = [], jsonLd = null
                 </div>
               )}
 
-              {/* Noteworthy Engineering Projects */}
-              {filteredNoteworthy.length > 0 && (
+{filteredNoteworthy.length > 0 && (
                 <div className="pt-12 border-t border-slate-200 dark:border-[#222933]">
                   <div className="text-center mb-10">
                     <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F172A] dark:text-[#F9FAFB]">

@@ -1,7 +1,4 @@
-/**
- * API Route Handler: /api/chat
- * Handles streaming Server-Sent Events (SSE) for the Portfolio AI Agent.
- */
+
 import { NextResponse } from 'next/server';
 import { ChatRequestSchema, AGENT_CONFIG } from '@/lib/agent/types';
 import { checkRateLimit } from '@/lib/agent/rateLimiter';
@@ -11,9 +8,6 @@ import { OPENAI_TOOLS } from '@/lib/agent/tools';
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
 
-/**
- * Health & Discovery GET endpoint
- */
 export async function GET(request) {
   const openAiKey = (process.env.OPENAI_API_KEY || '').replace(/['"]/g, '').trim();
   const geminiKey = (process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY || '').replace(/['"]/g, '').trim();
@@ -39,11 +33,8 @@ export async function GET(request) {
   });
 }
 
-/**
- * Streaming POST endpoint
- */
 export async function POST(request) {
-  // 1. Client Identifier for Rate Limiting
+  
   const forwardedFor = request.headers.get('x-forwarded-for') || '';
   const clientIp = forwardedFor.split(',')[0].trim() || request.headers.get('x-real-ip') || '127.0.0.1';
 
@@ -70,8 +61,7 @@ export async function POST(request) {
     );
   }
 
-  // 2. Validate Request Body
-  let body;
+let body;
   try {
     body = await request.json();
   } catch {
@@ -88,8 +78,7 @@ export async function POST(request) {
 
   const { messages } = parseResult.data;
 
-  // 3. Setup Server-Sent Events (SSE) Stream
-  const responseStream = new TransformStream();
+const responseStream = new TransformStream();
   const writer = responseStream.writable.getWriter();
   const encoder = new TextEncoder();
 
@@ -104,8 +93,7 @@ export async function POST(request) {
     }
   };
 
-  // Run orchestration asynchronously into the stream
-  (async () => {
+(async () => {
     try {
       await runAgentOrchestration(messages, sseWriter);
     } catch (err) {

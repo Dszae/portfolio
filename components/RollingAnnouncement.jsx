@@ -53,7 +53,6 @@ export default function RollingAnnouncement({ onVisibilityChange }) {
           }
         }
       } catch {
-        // Silently keep using initial announcement
       }
     }
     syncFeatures();
@@ -83,7 +82,7 @@ export default function RollingAnnouncement({ onVisibilityChange }) {
       className="w-full overflow-hidden bg-[#070A0F] border-b border-emerald-500/20 text-slate-100 text-xs py-2 px-3 sm:px-4 shadow-sm select-none"
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
-        {/* Badge / Indicator */}
+        
         {hasBadgeText ? (
           <div className="shrink-0 flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-mono text-[10px] font-bold uppercase tracking-wider">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -95,8 +94,7 @@ export default function RollingAnnouncement({ onVisibilityChange }) {
           </div>
         )}
 
-        {/* Rolling marquee text track */}
-        <div className="flex-1 overflow-hidden relative whitespace-nowrap">
+<div className="flex-1 overflow-hidden relative whitespace-nowrap">
           <div className={`${speedClass} items-center gap-6 min-w-max`}>
             {[0, 1, 2, 3, 4, 5].map((idx) => (
               <span key={idx} className="inline-flex items-center gap-3 pr-6">
@@ -117,8 +115,7 @@ export default function RollingAnnouncement({ onVisibilityChange }) {
           </div>
         </div>
 
-        {/* Dismiss button */}
-        <button
+<button
           type="button"
           onClick={handleDismiss}
           aria-label="Dismiss banner"
