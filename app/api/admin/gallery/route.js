@@ -5,8 +5,10 @@ import { supabaseAdmin } from '@/lib/supabaseAdmin';
 import { getGalleryImages } from '@/lib/dataService';
 
 export async function GET() {
+  const isAuth = await isAuthenticated();
+  if (!isAuth) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   const data = await getGalleryImages();
-  return NextResponse.json(data);
+  return NextResponse.json({ data, images: data });
 }
 
 export async function POST(req) {
@@ -17,7 +19,7 @@ export async function POST(req) {
     }
 
     const body = await req.json();
-    const { title, alt, img, category } = body;
+    const { title, alt, img, category, type, video_url } = body;
 
     if (!title || !img) {
       return NextResponse.json({ error: 'Title and image are required' }, { status: 400 });
@@ -30,6 +32,8 @@ export async function POST(req) {
         alt: alt || title,
         img,
         category: category || 'Campus',
+        type: type || 'image',
+        video_url: video_url || null,
       }])
       .select()
       .single();
@@ -38,14 +42,13 @@ export async function POST(req) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    // On-Demand Revalidation: Instant live update with 100% static SEO preserved
     revalidatePath('/gallery');
     revalidatePath('/');
     revalidatePath('/sitemap.xml');
 
-    return NextResponse.json({ success: true, image: data });
+    return NextResponse.json({ success: true, data, image: data });
   } catch (err) {
-    return NextResponse.json({ error: 'Failed to add gallery image' }, { status: 500 });
+    return NextResponse.json({ error: err.message || 'Failed to add gallery image' }, { status: 500 });
   }
 }
 
@@ -60,7 +63,7 @@ export async function DELETE(req) {
     const id = searchParams.get('id');
 
     if (!id) {
-      return NextResponse.json({ error: 'Image ID is required' }, { status: 400 });
+      return NextResponse.json({ error: 'ID is required' }, { status: 400 });
     }
 
     const { error } = await supabaseAdmin
@@ -78,7 +81,6 @@ export async function DELETE(req) {
 
     return NextResponse.json({ success: true });
   } catch (err) {
-    return NextResponse.json({ error: 'Failed to delete gallery image' }, { status: 500 });
+    return NextResponse.json({ error: err.message || 'Failed to delete gallery image' }, { status: 500 });
   }
 }
-

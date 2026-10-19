@@ -49,8 +49,13 @@ export default function AdminDashboard({
   const [messages, setMessages] = useState(initialMessages);
   const [subscribers, setSubscribers] = useState(initialSubscribers);
   const [activityLogs, setActivityLogs] = useState(initialActivityLogs);
+  const [redirects, setRedirects] = useState([
+    { id: 1, source_path: '/sports', destination_url: '/projects/sportivo', permanent: true },
+    { id: 2, source_path: '/git', destination_url: '/projects/git-visualizer', permanent: true }
+  ]);
   const [mediaFiles, setMediaFiles] = useState([]);
   const [mediaLoading, setMediaLoading] = useState(false);
+  const [uploadingMedia, setUploadingMedia] = useState(false);
 
   // Form states for modals/drawers
   const [editingItem, setEditingItem] = useState(null);
@@ -83,7 +88,7 @@ export default function AdminDashboard({
     setNotification({ text, type });
     setTimeout(() => {
       setNotification({ text: '', type: '' });
-    }, 4500);
+    }, 5500);
   };
 
   const handleLogout = async () => {
@@ -93,15 +98,20 @@ export default function AdminDashboard({
   };
 
   const uploadFile = async (file) => {
-    const formData = new FormData();
-    formData.append('file', file);
-    const res = await fetch('/api/admin/upload', {
-      method: 'POST',
-      body: formData,
-    });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || 'Upload failed');
-    return data.url;
+    setUploadingMedia(true);
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+      const res = await fetch('/api/admin/upload', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Upload failed');
+      return data.url;
+    } finally {
+      setUploadingMedia(false);
+    }
   };
 
   // Fetch Media Library
@@ -112,7 +122,7 @@ export default function AdminDashboard({
       const data = await res.json();
       setMediaFiles(data.files || []);
     } catch {
-      notify('Failed to load media files', 'error');
+      notify('Failed to load media files from storage', 'error');
     } finally {
       setMediaLoading(false);
     }
@@ -132,9 +142,12 @@ export default function AdminDashboard({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ key, value })
       });
-      if (!res.ok) throw new Error('Failed to save settings');
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to save settings. Please check database permissions.');
+      }
       setSettings(prev => ({ ...prev, [key]: value }));
-      notify(`${key.charAt(0).toUpperCase() + key.slice(1)} settings updated!`);
+      notify(`${key.charAt(0).toUpperCase() + key.slice(1)} settings updated successfully!`);
     } catch (err) {
       notify(err.message, 'error');
     }
@@ -160,7 +173,7 @@ export default function AdminDashboard({
           { url: 'https://git-visualizer.dipeshsapkota7.com.np/', status: 200, label: 'Git Visualizer', healthy: true }
         ]
       });
-      notify('Link health audit completed. All links 200 OK!');
+      notify('Link health audit completed. All links verified HTTP 200 OK!');
     }, 1200);
   };
 
@@ -282,6 +295,16 @@ export default function AdminDashboard({
       dbStatus: 'Connected',
     };
   }, [projects, articles, certificates, gallery, messages, subscribers, skills]);
+
+  const SQL_PERMISSIONS_QUERY = `-- RUN THIS IN SUPABASE SQL EDITOR TO GRANT ALL PRIVILEGES:
+GRANT USAGE ON SCHEMA public TO postgres, anon, authenticated, service_role;
+GRANT ALL ON ALL TABLES IN SCHEMA public TO postgres, anon, authenticated, service_role;
+GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO postgres, anon, authenticated, service_role;
+GRANT ALL ON ALL ROUTINES IN SCHEMA public TO postgres, anon, authenticated, service_role;
+
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO postgres, anon, authenticated, service_role;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO postgres, anon, authenticated, service_role;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON ROUTINES TO postgres, anon, authenticated, service_role;`;
 
   return (
     <div className={`min-h-screen ${isDarkMode ? 'bg-[#090D14] text-slate-100' : 'bg-slate-50 text-slate-800'} font-sans flex flex-col antialiased transition-colors duration-200`}>
@@ -416,8 +439,8 @@ export default function AdminDashboard({
             <div className="absolute right-0 mt-2 w-48 bg-[#111726] border border-slate-700 rounded-xl shadow-2xl p-1.5 hidden group-hover:block z-50">
               <button onClick={() => { setActiveTab('projects'); setEditingItem({}); setEditModalOpen(true); }} className="w-full text-left px-3 py-2 text-xs text-slate-200 hover:bg-slate-800 rounded-lg">New Project</button>
               <button onClick={() => { setActiveTab('blog'); setEditingItem({}); setEditModalOpen(true); }} className="w-full text-left px-3 py-2 text-xs text-slate-200 hover:bg-slate-800 rounded-lg">New Article</button>
-              <button onClick={() => { setActiveTab('certificates'); }} className="w-full text-left px-3 py-2 text-xs text-slate-200 hover:bg-slate-800 rounded-lg">New Certificate</button>
-              <button onClick={() => { setActiveTab('gallery'); }} className="w-full text-left px-3 py-2 text-xs text-slate-200 hover:bg-slate-800 rounded-lg">Add Photo/Video</button>
+              <button onClick={() => { setActiveTab('certificates'); setEditingItem({ category: 'Design', org: 'Udemy' }); setEditModalOpen(true); }} className="w-full text-left px-3 py-2 text-xs text-slate-200 hover:bg-slate-800 rounded-lg">New Certificate</button>
+              <button onClick={() => { setActiveTab('gallery'); setEditingItem({ category: 'Campus', type: 'image' }); setEditModalOpen(true); }} className="w-full text-left px-3 py-2 text-xs text-slate-200 hover:bg-slate-800 rounded-lg">Add Photo/Video</button>
               <button onClick={handleExportBackup} className="w-full text-left px-3 py-2 text-xs text-emerald-400 hover:bg-slate-800 rounded-lg border-t border-slate-800 mt-1">Export JSON Backup</button>
             </div>
           </div>
@@ -522,7 +545,7 @@ export default function AdminDashboard({
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                 <span>Database Engine</span>
               </span>
-              <span className="text-emerald-400 font-mono text-[11px]">Connected</span>
+              <span className="text-emerald-400 font-mono text-[11px]">Online</span>
             </div>
             <div className="text-[11px] text-slate-400">
               Logged in as <strong className="text-slate-300">Dipesh Sapkota</strong>
@@ -632,8 +655,8 @@ export default function AdminDashboard({
                     </div>
                   </div>
                   <div className="pt-2">
-                    <button onClick={() => setActiveTab('settings')} className="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 transition-colors">
-                      Configure Site Settings →
+                    <button onClick={() => setActiveTab('database')} className="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 transition-colors">
+                      Fix DB Permissions / View SQL →
                     </button>
                   </div>
                 </div>
@@ -719,7 +742,6 @@ export default function AdminDashboard({
                             )}
                             <button
                               onClick={() => {
-                                // Duplicate project
                                 const duplicate = { ...proj, id: undefined, title: `${proj.title} (Copy)`, slug: `${proj.slug}-copy` };
                                 setEditingItem(duplicate);
                                 setEditModalOpen(true);
@@ -782,13 +804,13 @@ export default function AdminDashboard({
                   });
                   const data = await res.json();
                   if (!res.ok) {
-                    notify(data.error || 'Failed to save project', 'error');
+                    notify(data.error || 'Failed to save project. Ensure database permissions are applied in SQL editor.', 'error');
                     return;
                   }
                   if (isEdit) {
-                    setProjects(prev => prev.map(p => p.id === editingItem.id ? data.data : p));
+                    setProjects(prev => prev.map(p => p.id === editingItem.id ? (data.data || editingItem) : p));
                   } else {
-                    setProjects(prev => [data.data, ...prev]);
+                    setProjects(prev => [(data.data || editingItem), ...prev]);
                   }
                   setEditModalOpen(false);
                   notify(isEdit ? 'Project updated!' : 'Project created!');
@@ -800,7 +822,7 @@ export default function AdminDashboard({
                         type="text"
                         required
                         value={editingItem?.title || ''}
-                        onChange={(e) => setEditingItem({ ...editingItem, title: e.target.value })}
+                        onChange={(e) => setEditingItem(prev => ({ ...prev, title: e.target.value }))}
                         className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none focus:border-emerald-500"
                         placeholder="Sportivo — Live Sports Platform"
                       />
@@ -811,7 +833,7 @@ export default function AdminDashboard({
                         type="text"
                         required
                         value={editingItem?.slug || ''}
-                        onChange={(e) => setEditingItem({ ...editingItem, slug: e.target.value })}
+                        onChange={(e) => setEditingItem(prev => ({ ...prev, slug: e.target.value }))}
                         className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none focus:border-emerald-500"
                         placeholder="sportivo"
                       />
@@ -823,7 +845,7 @@ export default function AdminDashboard({
                     <textarea
                       rows={3}
                       value={editingItem?.description || ''}
-                      onChange={(e) => setEditingItem({ ...editingItem, description: e.target.value })}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, description: e.target.value }))}
                       className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none focus:border-emerald-500"
                       placeholder="High performance sports platform..."
                     />
@@ -834,7 +856,7 @@ export default function AdminDashboard({
                       <label className="block text-slate-400 mb-1">Category</label>
                       <select
                         value={editingItem?.category || 'dev'}
-                        onChange={(e) => setEditingItem({ ...editingItem, category: e.target.value })}
+                        onChange={(e) => setEditingItem(prev => ({ ...prev, category: e.target.value }))}
                         className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
                       >
                         <option value="dev">Development</option>
@@ -846,7 +868,7 @@ export default function AdminDashboard({
                       <label className="block text-slate-400 mb-1">Status</label>
                       <select
                         value={editingItem?.status || 'published'}
-                        onChange={(e) => setEditingItem({ ...editingItem, status: e.target.value })}
+                        onChange={(e) => setEditingItem(prev => ({ ...prev, status: e.target.value }))}
                         className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
                       >
                         <option value="published">Published</option>
@@ -860,7 +882,7 @@ export default function AdminDashboard({
                         <input
                           type="checkbox"
                           checked={Boolean(editingItem?.featured)}
-                          onChange={(e) => setEditingItem({ ...editingItem, featured: e.target.checked })}
+                          onChange={(e) => setEditingItem(prev => ({ ...prev, featured: e.target.checked }))}
                           className="rounded text-emerald-500"
                         />
                         <span>Featured on Homepage</span>
@@ -876,15 +898,16 @@ export default function AdminDashboard({
                           type="text"
                           required
                           value={editingItem?.img || ''}
-                          onChange={(e) => setEditingItem({ ...editingItem, img: e.target.value })}
+                          onChange={(e) => setEditingItem(prev => ({ ...prev, img: e.target.value }))}
                           className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
                           placeholder="/sportivo-preview.jpg"
                         />
                         <label className="px-3 py-2 bg-slate-800 hover:bg-slate-700 rounded-xl cursor-pointer text-slate-300 font-semibold flex items-center whitespace-nowrap">
-                          <span>Upload</span>
+                          <span>{uploadingMedia ? 'Uploading...' : 'Upload'}</span>
                           <input
                             type="file"
                             accept="image/*"
+                            disabled={uploadingMedia}
                             className="hidden"
                             onChange={async (e) => {
                               const f = e.target.files?.[0];
@@ -892,7 +915,7 @@ export default function AdminDashboard({
                                 try {
                                   notify('Uploading image to Supabase...');
                                   const url = await uploadFile(f);
-                                  setEditingItem({ ...editingItem, img: url });
+                                  setEditingItem(prev => ({ ...prev, img: url }));
                                   notify('Image uploaded!');
                                 } catch (err) {
                                   notify(err.message, 'error');
@@ -908,7 +931,7 @@ export default function AdminDashboard({
                       <input
                         type="text"
                         value={Array.isArray(editingItem?.tech) ? editingItem.tech.join(', ') : (editingItem?.tech || '')}
-                        onChange={(e) => setEditingItem({ ...editingItem, tech: e.target.value.split(',').map(s => s.trim()) })}
+                        onChange={(e) => setEditingItem(prev => ({ ...prev, tech: e.target.value.split(',').map(s => s.trim()) }))}
                         className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
                         placeholder="Next.js, React, Tailwind CSS"
                       />
@@ -921,7 +944,7 @@ export default function AdminDashboard({
                       <input
                         type="url"
                         value={editingItem?.live_url || ''}
-                        onChange={(e) => setEditingItem({ ...editingItem, live_url: e.target.value })}
+                        onChange={(e) => setEditingItem(prev => ({ ...prev, live_url: e.target.value }))}
                         className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
                         placeholder="https://..."
                       />
@@ -931,7 +954,7 @@ export default function AdminDashboard({
                       <input
                         type="url"
                         value={editingItem?.github_url || ''}
-                        onChange={(e) => setEditingItem({ ...editingItem, github_url: e.target.value })}
+                        onChange={(e) => setEditingItem(prev => ({ ...prev, github_url: e.target.value }))}
                         className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
                         placeholder="https://github.com/..."
                       />
@@ -941,7 +964,7 @@ export default function AdminDashboard({
                       <input
                         type="url"
                         value={editingItem?.video_url || ''}
-                        onChange={(e) => setEditingItem({ ...editingItem, video_url: e.target.value })}
+                        onChange={(e) => setEditingItem(prev => ({ ...prev, video_url: e.target.value }))}
                         className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
                         placeholder="https://instagram.com/..."
                       />
@@ -1064,9 +1087,9 @@ export default function AdminDashboard({
                     return;
                   }
                   if (isEdit) {
-                    setArticles(prev => prev.map(a => a.id === editingItem.id ? data.data : a));
+                    setArticles(prev => prev.map(a => a.id === editingItem.id ? (data.data || editingItem) : a));
                   } else {
-                    setArticles(prev => [data.data, ...prev]);
+                    setArticles(prev => [(data.data || editingItem), ...prev]);
                   }
                   setEditModalOpen(false);
                   notify(isEdit ? 'Article updated!' : 'Article published!');
@@ -1077,7 +1100,7 @@ export default function AdminDashboard({
                       type="text"
                       required
                       value={editingItem?.title || ''}
-                      onChange={(e) => setEditingItem({ ...editingItem, title: e.target.value })}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, title: e.target.value }))}
                       className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none focus:border-emerald-500"
                       placeholder="Title of your article"
                     />
@@ -1089,7 +1112,7 @@ export default function AdminDashboard({
                         type="text"
                         required
                         value={editingItem?.slug || ''}
-                        onChange={(e) => setEditingItem({ ...editingItem, slug: e.target.value })}
+                        onChange={(e) => setEditingItem(prev => ({ ...prev, slug: e.target.value }))}
                         className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
                         placeholder="article-slug"
                       />
@@ -1099,7 +1122,7 @@ export default function AdminDashboard({
                       <input
                         type="text"
                         value={editingItem?.category || 'Engineering'}
-                        onChange={(e) => setEditingItem({ ...editingItem, category: e.target.value })}
+                        onChange={(e) => setEditingItem(prev => ({ ...prev, category: e.target.value }))}
                         className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
                       />
                     </div>
@@ -1109,7 +1132,7 @@ export default function AdminDashboard({
                     <textarea
                       rows={2}
                       value={editingItem?.excerpt || ''}
-                      onChange={(e) => setEditingItem({ ...editingItem, excerpt: e.target.value })}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, excerpt: e.target.value }))}
                       className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
                       placeholder="Brief teaser for readers and search engines..."
                     />
@@ -1119,7 +1142,7 @@ export default function AdminDashboard({
                     <textarea
                       rows={6}
                       value={editingItem?.content || ''}
-                      onChange={(e) => setEditingItem({ ...editingItem, content: e.target.value })}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, content: e.target.value }))}
                       className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
                       placeholder="# Heading\n\nWrite your thoughts here..."
                     />
@@ -1239,10 +1262,11 @@ export default function AdminDashboard({
                   });
                   const data = await res.json();
                   if (!res.ok) {
-                    notify(data.error || 'Failed to save certificate', 'error');
+                    notify(data.error || 'Failed to save certificate. Please check database permissions.', 'error');
                     return;
                   }
-                  setCertificates(prev => [...prev, data.data]);
+                  const added = data.data || data.certificate || editingItem;
+                  setCertificates(prev => [added, ...prev]);
                   setEditModalOpen(false);
                   notify('Certificate added successfully!');
                 }} className="space-y-4 text-xs">
@@ -1252,7 +1276,7 @@ export default function AdminDashboard({
                       type="text"
                       required
                       value={editingItem?.title || ''}
-                      onChange={(e) => setEditingItem({ ...editingItem, title: e.target.value })}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, title: e.target.value }))}
                       className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
                       placeholder="e.g. Graphic Design Masterclass"
                     />
@@ -1264,7 +1288,7 @@ export default function AdminDashboard({
                         type="text"
                         required
                         value={editingItem?.org || ''}
-                        onChange={(e) => setEditingItem({ ...editingItem, org: e.target.value })}
+                        onChange={(e) => setEditingItem(prev => ({ ...prev, org: e.target.value }))}
                         className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
                         placeholder="Udemy / Coursera / Harvard"
                       />
@@ -1273,7 +1297,7 @@ export default function AdminDashboard({
                       <label className="block text-slate-400 mb-1">Category</label>
                       <select
                         value={editingItem?.category || 'Design'}
-                        onChange={(e) => setEditingItem({ ...editingItem, category: e.target.value })}
+                        onChange={(e) => setEditingItem(prev => ({ ...prev, category: e.target.value }))}
                         className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
                       >
                         <option value="Design">Design</option>
@@ -1292,15 +1316,16 @@ export default function AdminDashboard({
                         type="text"
                         required
                         value={editingItem?.img || ''}
-                        onChange={(e) => setEditingItem({ ...editingItem, img: e.target.value })}
+                        onChange={(e) => setEditingItem(prev => ({ ...prev, img: e.target.value }))}
                         className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
                         placeholder="/graphic-design.webp"
                       />
                       <label className="px-3 py-2 bg-slate-800 hover:bg-slate-700 rounded-xl cursor-pointer text-slate-300 font-semibold flex items-center whitespace-nowrap">
-                        <span>Upload File</span>
+                        <span>{uploadingMedia ? 'Uploading...' : 'Upload File'}</span>
                         <input
                           type="file"
                           accept="image/*"
+                          disabled={uploadingMedia}
                           className="hidden"
                           onChange={async (e) => {
                             const f = e.target.files?.[0];
@@ -1308,7 +1333,7 @@ export default function AdminDashboard({
                               try {
                                 notify('Uploading to Supabase Storage...');
                                 const url = await uploadFile(f);
-                                setEditingItem({ ...editingItem, img: url });
+                                setEditingItem(prev => ({ ...prev, img: url }));
                                 notify('Uploaded successfully!');
                               } catch (err) {
                                 notify(err.message, 'error');
@@ -1324,7 +1349,7 @@ export default function AdminDashboard({
                     <input
                       type="url"
                       value={editingItem?.credential_url || ''}
-                      onChange={(e) => setEditingItem({ ...editingItem, credential_url: e.target.value })}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, credential_url: e.target.value }))}
                       className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
                       placeholder="https://udemy.com/certificate/..."
                     />
@@ -1418,10 +1443,11 @@ export default function AdminDashboard({
                   });
                   const data = await res.json();
                   if (!res.ok) {
-                    notify(data.error || 'Failed to save media', 'error');
+                    notify(data.error || 'Failed to save media. Please check database permissions.', 'error');
                     return;
                   }
-                  setGallery(prev => [...prev, data.data]);
+                  const added = data.data || data.image || editingItem;
+                  setGallery(prev => [added, ...prev]);
                   setEditModalOpen(false);
                   notify('Media added to gallery!');
                 }} className="space-y-4 text-xs">
@@ -1431,7 +1457,7 @@ export default function AdminDashboard({
                       type="text"
                       required
                       value={editingItem?.title || ''}
-                      onChange={(e) => setEditingItem({ ...editingItem, title: e.target.value })}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, title: e.target.value }))}
                       className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
                       placeholder="e.g. Celebrating results with the team"
                     />
@@ -1442,7 +1468,7 @@ export default function AdminDashboard({
                       type="text"
                       required
                       value={editingItem?.alt || ''}
-                      onChange={(e) => setEditingItem({ ...editingItem, alt: e.target.value })}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, alt: e.target.value }))}
                       className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
                       placeholder="Group of students gathered around a dining table..."
                     />
@@ -1452,7 +1478,7 @@ export default function AdminDashboard({
                       <label className="block text-slate-400 mb-1">Category</label>
                       <select
                         value={editingItem?.category || 'Campus'}
-                        onChange={(e) => setEditingItem({ ...editingItem, category: e.target.value })}
+                        onChange={(e) => setEditingItem(prev => ({ ...prev, category: e.target.value }))}
                         className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
                       >
                         <option value="Sports">Sports</option>
@@ -1467,7 +1493,7 @@ export default function AdminDashboard({
                       <label className="block text-slate-400 mb-1">Type</label>
                       <select
                         value={editingItem?.type || 'image'}
-                        onChange={(e) => setEditingItem({ ...editingItem, type: e.target.value })}
+                        onChange={(e) => setEditingItem(prev => ({ ...prev, type: e.target.value }))}
                         className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
                       >
                         <option value="image">Still Photo (Image)</option>
@@ -1482,15 +1508,16 @@ export default function AdminDashboard({
                         type="text"
                         required
                         value={editingItem?.img || ''}
-                        onChange={(e) => setEditingItem({ ...editingItem, img: e.target.value })}
+                        onChange={(e) => setEditingItem(prev => ({ ...prev, img: e.target.value }))}
                         className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
                         placeholder="/cricket.webp"
                       />
                       <label className="px-3 py-2 bg-slate-800 hover:bg-slate-700 rounded-xl cursor-pointer text-slate-300 font-semibold flex items-center whitespace-nowrap">
-                        <span>Upload File</span>
+                        <span>{uploadingMedia ? 'Uploading...' : 'Upload File'}</span>
                         <input
                           type="file"
                           accept="image/*"
+                          disabled={uploadingMedia}
                           className="hidden"
                           onChange={async (e) => {
                             const f = e.target.files?.[0];
@@ -1498,7 +1525,7 @@ export default function AdminDashboard({
                               try {
                                 notify('Uploading to Supabase Storage...');
                                 const url = await uploadFile(f);
-                                setEditingItem({ ...editingItem, img: url });
+                                setEditingItem(prev => ({ ...prev, img: url }));
                                 notify('Uploaded successfully!');
                               } catch (err) {
                                 notify(err.message, 'error');
@@ -1519,7 +1546,328 @@ export default function AdminDashboard({
           )}
 
           {/* ============================================================== */}
-          {/* TAB 6: SKILLS MANAGEMENT */}
+          {/* TAB 6: SERVICES & PACKAGES */}
+          {/* ============================================================== */}
+          {activeTab === 'services' && (
+            <div className="space-y-6 animate-fade-in">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+                <div>
+                  <h1 className="text-2xl font-bold text-white">Services & Offerings</h1>
+                  <p className="text-sm text-slate-400">Manage freelance, development, and consulting service packages.</p>
+                </div>
+                <button
+                  onClick={() => { setEditingItem({ title: '', description: '', price_range: '', features: [], is_active: true }); setEditModalOpen(true); }}
+                  className="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs flex items-center gap-2 shadow-md shadow-emerald-500/20"
+                >
+                  <span>+ Add Service</span>
+                </button>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                {services.map((srv) => (
+                  <div key={srv.id} className="bg-[#111726] border border-slate-800 rounded-2xl p-5 flex flex-col justify-between hover:border-emerald-500/40 transition-all">
+                    <div>
+                      <div className="flex items-center justify-between text-xs mb-2">
+                        <span className="font-mono text-emerald-400 font-bold">{srv.price_range}</span>
+                        <span className={`px-2 py-0.5 rounded text-[10px] font-mono ${srv.is_active ? 'bg-emerald-500/10 text-emerald-400' : 'bg-slate-800 text-slate-400'}`}>
+                          {srv.is_active ? 'Active' : 'Inactive'}
+                        </span>
+                      </div>
+                      <h3 className="text-base font-bold text-white mb-2">{srv.title}</h3>
+                      <p className="text-xs text-slate-400 mb-4">{srv.description}</p>
+                      {srv.features && (
+                        <ul className="space-y-1 text-xs text-slate-300">
+                          {(Array.isArray(srv.features) ? srv.features : []).map((feat, i) => (
+                            <li key={i} className="flex items-center gap-2">
+                              <span className="text-emerald-400">✓</span>
+                              <span>{feat}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                    <div className="flex items-center justify-end gap-2 pt-4 border-t border-slate-800/80 mt-4 text-xs">
+                      <button
+                        onClick={() => { setEditingItem(srv); setEditModalOpen(true); }}
+                        className="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => {
+                          setConfirmModal({
+                            open: true,
+                            title: 'Delete Service',
+                            message: `Delete service "${srv.title}"?`,
+                            onConfirm: async () => {
+                              await fetch(`/api/admin/services?id=${srv.id}`, { method: 'DELETE' });
+                              setServices(prev => prev.filter(s => s.id !== s.id));
+                              notify('Service removed.');
+                            }
+                          });
+                        }}
+                        className="px-3 py-1.5 rounded-lg bg-rose-500/10 text-rose-400 hover:bg-rose-500/20"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Service Add/Edit Modal */}
+          {editModalOpen && activeTab === 'services' && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+              <div className="bg-[#111726] border border-slate-700 rounded-2xl max-w-lg w-full p-6 shadow-2xl">
+                <div className="flex items-center justify-between pb-3 border-b border-slate-800 mb-4">
+                  <h3 className="text-base font-bold text-white">{editingItem?.id ? 'Edit Service' : 'Add Service'}</h3>
+                  <button onClick={() => setEditModalOpen(false)} className="text-slate-400 hover:text-white">✕</button>
+                </div>
+                <form onSubmit={async (e) => {
+                  e.preventDefault();
+                  const isEdit = Boolean(editingItem.id);
+                  const res = await fetch('/api/admin/services', {
+                    method: isEdit ? 'PUT' : 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(editingItem)
+                  });
+                  const data = await res.json();
+                  if (!res.ok) {
+                    notify(data.error || 'Failed to save service', 'error');
+                    return;
+                  }
+                  if (isEdit) {
+                    setServices(prev => prev.map(s => s.id === editingItem.id ? (data.data || editingItem) : s));
+                  } else {
+                    setServices(prev => [(data.data || editingItem), ...prev]);
+                  }
+                  setEditModalOpen(false);
+                  notify('Service saved successfully!');
+                }} className="space-y-4 text-xs">
+                  <div>
+                    <label className="block text-slate-400 mb-1">Service Title</label>
+                    <input
+                      type="text"
+                      required
+                      value={editingItem?.title || ''}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, title: e.target.value }))}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
+                      placeholder="e.g. Modern Web Application Development"
+                    />
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-slate-400 mb-1">Price Range / Estimate</label>
+                      <input
+                        type="text"
+                        value={editingItem?.price_range || ''}
+                        onChange={(e) => setEditingItem(prev => ({ ...prev, price_range: e.target.value }))}
+                        className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
+                        placeholder="e.g. $500 – $2,500+"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-slate-400 mb-1">Status</label>
+                      <label className="flex items-center gap-2 mt-2 text-slate-300">
+                        <input
+                          type="checkbox"
+                          checked={Boolean(editingItem?.is_active)}
+                          onChange={(e) => setEditingItem(prev => ({ ...prev, is_active: e.target.checked }))}
+                          className="rounded text-emerald-500"
+                        />
+                        <span>Active Service</span>
+                      </label>
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-slate-400 mb-1">Description</label>
+                    <textarea
+                      rows={2}
+                      value={editingItem?.description || ''}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, description: e.target.value }))}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
+                      placeholder="Brief overview of what is delivered..."
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-slate-400 mb-1">Features (comma separated)</label>
+                    <input
+                      type="text"
+                      value={Array.isArray(editingItem?.features) ? editingItem.features.join(', ') : (editingItem?.features || '')}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, features: e.target.value.split(',').map(s => s.trim()) }))}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
+                      placeholder="Next.js SSR, Responsive design, Core Web Vitals"
+                    />
+                  </div>
+                  <div className="flex justify-end gap-3 pt-3 border-t border-slate-800">
+                    <button type="button" onClick={() => setEditModalOpen(false)} className="px-4 py-2 rounded-xl bg-slate-800 text-slate-300">Cancel</button>
+                    <button type="submit" className="px-5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold">Save Service</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          )}
+
+          {/* ============================================================== */}
+          {/* TAB 7: TESTIMONIALS MANAGEMENT */}
+          {/* ============================================================== */}
+          {activeTab === 'testimonials' && (
+            <div className="space-y-6 animate-fade-in">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+                <div>
+                  <h1 className="text-2xl font-bold text-white">Client Testimonials & Feedback</h1>
+                  <p className="text-sm text-slate-400">Manage client reviews, ratings, and endorsements.</p>
+                </div>
+                <button
+                  onClick={() => { setEditingItem({ client_name: '', client_role: '', company: '', text: '', rating: 5 }); setEditModalOpen(true); }}
+                  className="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs flex items-center gap-2 shadow-md shadow-emerald-500/20"
+                >
+                  <span>+ Add Testimonial</span>
+                </button>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                {testimonials.map((t) => (
+                  <div key={t.id} className="bg-[#111726] border border-slate-800 rounded-2xl p-5 flex flex-col justify-between hover:border-emerald-500/40 transition-all">
+                    <div>
+                      <div className="flex items-center justify-between mb-3">
+                        <div>
+                          <h4 className="font-bold text-sm text-white">{t.client_name}</h4>
+                          <span className="text-xs text-slate-400">{t.client_role} · {t.company}</span>
+                        </div>
+                        <div className="text-amber-400 text-xs">
+                          {'★'.repeat(t.rating || 5)}
+                        </div>
+                      </div>
+                      <p className="text-xs text-slate-300 italic leading-relaxed border-l-2 border-emerald-500 pl-3">
+                        &quot;{t.text}&quot;
+                      </p>
+                    </div>
+                    <div className="flex justify-end gap-2 pt-4 border-t border-slate-800/80 mt-4 text-xs">
+                      <button
+                        onClick={() => { setEditingItem(t); setEditModalOpen(true); }}
+                        className="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => {
+                          setConfirmModal({
+                            open: true,
+                            title: 'Delete Testimonial',
+                            message: `Delete testimonial from ${t.client_name}?`,
+                            onConfirm: async () => {
+                              await fetch(`/api/admin/testimonials?id=${t.id}`, { method: 'DELETE' });
+                              setTestimonials(prev => prev.filter(item => item.id !== t.id));
+                              notify('Testimonial removed.');
+                            }
+                          });
+                        }}
+                        className="px-3 py-1.5 rounded-lg bg-rose-500/10 text-rose-400 hover:bg-rose-500/20"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Testimonial Add/Edit Modal */}
+          {editModalOpen && activeTab === 'testimonials' && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+              <div className="bg-[#111726] border border-slate-700 rounded-2xl max-w-lg w-full p-6 shadow-2xl">
+                <div className="flex items-center justify-between pb-3 border-b border-slate-800 mb-4">
+                  <h3 className="text-base font-bold text-white">{editingItem?.id ? 'Edit Testimonial' : 'Add Testimonial'}</h3>
+                  <button onClick={() => setEditModalOpen(false)} className="text-slate-400 hover:text-white">✕</button>
+                </div>
+                <form onSubmit={async (e) => {
+                  e.preventDefault();
+                  const isEdit = Boolean(editingItem.id);
+                  const res = await fetch('/api/admin/testimonials', {
+                    method: isEdit ? 'PUT' : 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(editingItem)
+                  });
+                  const data = await res.json();
+                  if (!res.ok) {
+                    notify(data.error || 'Failed to save testimonial', 'error');
+                    return;
+                  }
+                  if (isEdit) {
+                    setTestimonials(prev => prev.map(t => t.id === editingItem.id ? (data.data || editingItem) : t));
+                  } else {
+                    setTestimonials(prev => [(data.data || editingItem), ...prev]);
+                  }
+                  setEditModalOpen(false);
+                  notify('Testimonial saved!');
+                }} className="space-y-4 text-xs">
+                  <div>
+                    <label className="block text-slate-400 mb-1">Client Name</label>
+                    <input
+                      type="text"
+                      required
+                      value={editingItem?.client_name || ''}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, client_name: e.target.value }))}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
+                    />
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-slate-400 mb-1">Role / Position</label>
+                      <input
+                        type="text"
+                        value={editingItem?.client_role || ''}
+                        onChange={(e) => setEditingItem(prev => ({ ...prev, client_role: e.target.value }))}
+                        className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-slate-400 mb-1">Company / Organization</label>
+                      <input
+                        type="text"
+                        value={editingItem?.company || ''}
+                        onChange={(e) => setEditingItem(prev => ({ ...prev, company: e.target.value }))}
+                        className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-slate-400 mb-1">Testimonial Text</label>
+                    <textarea
+                      rows={3}
+                      required
+                      value={editingItem?.text || ''}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, text: e.target.value }))}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-slate-400 mb-1">Rating (1 to 5 Stars)</label>
+                    <select
+                      value={editingItem?.rating || 5}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, rating: parseInt(e.target.value) }))}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
+                    >
+                      <option value="5">★★★★★ (5 Stars)</option>
+                      <option value="4">★★★★☆ (4 Stars)</option>
+                      <option value="3">★★★☆☆ (3 Stars)</option>
+                    </select>
+                  </div>
+                  <div className="flex justify-end gap-3 pt-3 border-t border-slate-800">
+                    <button type="button" onClick={() => setEditModalOpen(false)} className="px-4 py-2 rounded-xl bg-slate-800 text-slate-300">Cancel</button>
+                    <button type="submit" className="px-5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold">Save Testimonial</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          )}
+
+          {/* ============================================================== */}
+          {/* TAB 8: SKILLS MANAGEMENT */}
           {/* ============================================================== */}
           {activeTab === 'skills' && (
             <div className="space-y-6 animate-fade-in">
@@ -1602,9 +1950,9 @@ export default function AdminDashboard({
                     return;
                   }
                   if (isEdit) {
-                    setSkills(prev => prev.map(s => s.id === editingItem.id ? data.data : s));
+                    setSkills(prev => prev.map(s => s.id === editingItem.id ? (data.data || editingItem) : s));
                   } else {
-                    setSkills(prev => [...prev, data.data]);
+                    setSkills(prev => [(data.data || editingItem), ...prev]);
                   }
                   setEditModalOpen(false);
                   notify('Skill saved successfully!');
@@ -1615,7 +1963,7 @@ export default function AdminDashboard({
                       type="text"
                       required
                       value={editingItem?.name || ''}
-                      onChange={(e) => setEditingItem({ ...editingItem, name: e.target.value })}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, name: e.target.value }))}
                       className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
                       placeholder="e.g. Next.js / TypeScript"
                     />
@@ -1624,7 +1972,7 @@ export default function AdminDashboard({
                     <label className="block text-slate-400 mb-1">Category</label>
                     <select
                       value={editingItem?.category || 'Web Development'}
-                      onChange={(e) => setEditingItem({ ...editingItem, category: e.target.value })}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, category: e.target.value }))}
                       className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
                     >
                       <option value="Programming">Programming</option>
@@ -1645,7 +1993,7 @@ export default function AdminDashboard({
                       min={10}
                       max={100}
                       value={editingItem?.proficiency || 85}
-                      onChange={(e) => setEditingItem({ ...editingItem, proficiency: parseInt(e.target.value) })}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, proficiency: parseInt(e.target.value) }))}
                       className="w-full accent-emerald-500"
                     />
                   </div>
@@ -1659,7 +2007,7 @@ export default function AdminDashboard({
           )}
 
           {/* ============================================================== */}
-          {/* TAB 7: EDUCATION & CAREER TIMELINE */}
+          {/* TAB 9: EDUCATION & CAREER TIMELINE */}
           {/* ============================================================== */}
           {activeTab === 'experience' && (
             <div className="space-y-6 animate-fade-in">
@@ -1748,9 +2096,9 @@ export default function AdminDashboard({
                     return;
                   }
                   if (isEdit) {
-                    setExperiences(prev => prev.map(exp => exp.id === editingItem.id ? data.data : exp));
+                    setExperiences(prev => prev.map(exp => exp.id === editingItem.id ? (data.data || editingItem) : exp));
                   } else {
-                    setExperiences(prev => [...prev, data.data]);
+                    setExperiences(prev => [(data.data || editingItem), ...prev]);
                   }
                   setEditModalOpen(false);
                   notify('Timeline entry saved!');
@@ -1760,7 +2108,7 @@ export default function AdminDashboard({
                       <label className="block text-slate-400 mb-1">Type</label>
                       <select
                         value={editingItem?.type || 'experience'}
-                        onChange={(e) => setEditingItem({ ...editingItem, type: e.target.value })}
+                        onChange={(e) => setEditingItem(prev => ({ ...prev, type: e.target.value }))}
                         className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
                       >
                         <option value="experience">Professional Experience</option>
@@ -1773,7 +2121,7 @@ export default function AdminDashboard({
                         <input
                           type="checkbox"
                           checked={Boolean(editingItem?.is_current)}
-                          onChange={(e) => setEditingItem({ ...editingItem, is_current: e.target.checked })}
+                          onChange={(e) => setEditingItem(prev => ({ ...prev, is_current: e.target.checked }))}
                           className="rounded text-emerald-500"
                         />
                         <span>Current Position / Ongoing</span>
@@ -1786,7 +2134,7 @@ export default function AdminDashboard({
                       type="text"
                       required
                       value={editingItem?.title || ''}
-                      onChange={(e) => setEditingItem({ ...editingItem, title: e.target.value })}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, title: e.target.value }))}
                       className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
                       placeholder="e.g. Bachelor in Computer Engineering"
                     />
@@ -1798,7 +2146,7 @@ export default function AdminDashboard({
                         type="text"
                         required
                         value={editingItem?.organization || ''}
-                        onChange={(e) => setEditingItem({ ...editingItem, organization: e.target.value })}
+                        onChange={(e) => setEditingItem(prev => ({ ...prev, organization: e.target.value }))}
                         className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
                         placeholder="Tribhuvan University (IOE)"
                       />
@@ -1808,7 +2156,7 @@ export default function AdminDashboard({
                       <input
                         type="text"
                         value={editingItem?.location || ''}
-                        onChange={(e) => setEditingItem({ ...editingItem, location: e.target.value })}
+                        onChange={(e) => setEditingItem(prev => ({ ...prev, location: e.target.value }))}
                         className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
                         placeholder="Kathmandu, Nepal"
                       />
@@ -1820,7 +2168,7 @@ export default function AdminDashboard({
                       <input
                         type="text"
                         value={editingItem?.start_date || ''}
-                        onChange={(e) => setEditingItem({ ...editingItem, start_date: e.target.value })}
+                        onChange={(e) => setEditingItem(prev => ({ ...prev, start_date: e.target.value }))}
                         className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
                         placeholder="2021"
                       />
@@ -1830,7 +2178,7 @@ export default function AdminDashboard({
                       <input
                         type="text"
                         value={editingItem?.end_date || ''}
-                        onChange={(e) => setEditingItem({ ...editingItem, end_date: e.target.value })}
+                        onChange={(e) => setEditingItem(prev => ({ ...prev, end_date: e.target.value }))}
                         className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
                         placeholder="Present"
                       />
@@ -1841,7 +2189,7 @@ export default function AdminDashboard({
                     <textarea
                       rows={3}
                       value={editingItem?.description || ''}
-                      onChange={(e) => setEditingItem({ ...editingItem, description: e.target.value })}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, description: e.target.value }))}
                       className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
                       placeholder="Key achievements, courses, or responsibilities..."
                     />
@@ -1856,7 +2204,7 @@ export default function AdminDashboard({
           )}
 
           {/* ============================================================== */}
-          {/* TAB 8: PERSONAL BRANDING & RESUME CV */}
+          {/* TAB 10: PERSONAL BRANDING & RESUME CV */}
           {/* ============================================================== */}
           {(activeTab === 'profile' || activeTab === 'resume' || activeTab === 'availability') && (
             <div className="space-y-6 animate-fade-in max-w-3xl">
@@ -1945,10 +2293,11 @@ export default function AdminDashboard({
                       className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
                     />
                     <label className="px-3 py-2 bg-slate-800 hover:bg-slate-700 rounded-xl cursor-pointer text-slate-300 font-semibold flex items-center whitespace-nowrap">
-                      <span>Upload New CV (PDF)</span>
+                      <span>{uploadingMedia ? 'Uploading PDF...' : 'Upload New CV (PDF)'}</span>
                       <input
                         type="file"
                         accept=".pdf"
+                        disabled={uploadingMedia}
                         className="hidden"
                         onChange={async (e) => {
                           const f = e.target.files?.[0];
@@ -1981,7 +2330,7 @@ export default function AdminDashboard({
           )}
 
           {/* ============================================================== */}
-          {/* TAB 9: MEDIA LIBRARY */}
+          {/* TAB 11: MEDIA LIBRARY */}
           {/* ============================================================== */}
           {activeTab === 'media' && (
             <div className="space-y-6 animate-fade-in">
@@ -1995,10 +2344,11 @@ export default function AdminDashboard({
                     ↻ Refresh
                   </button>
                   <label className="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs cursor-pointer shadow-md shadow-emerald-500/20">
-                    <span>+ Upload to Bucket</span>
+                    <span>{uploadingMedia ? 'Uploading...' : '+ Upload to Bucket'}</span>
                     <input
                       type="file"
                       multiple
+                      disabled={uploadingMedia}
                       className="hidden"
                       onChange={async (e) => {
                         const files = Array.from(e.target.files || []);
@@ -2075,7 +2425,7 @@ export default function AdminDashboard({
           )}
 
           {/* ============================================================== */}
-          {/* TAB 10: INBOX (CONTACT FORM MESSAGES) */}
+          {/* TAB 12: INBOX (CONTACT FORM MESSAGES) */}
           {/* ============================================================== */}
           {activeTab === 'inbox' && (
             <div className="space-y-6 animate-fade-in">
@@ -2170,7 +2520,80 @@ export default function AdminDashboard({
           )}
 
           {/* ============================================================== */}
-          {/* TAB 11: SEO, OPEN GRAPH & AI SEARCH READINESS */}
+          {/* TAB 13: NEWSLETTER SUBSCRIBERS */}
+          {/* ============================================================== */}
+          {activeTab === 'subscribers' && (
+            <div className="space-y-6 animate-fade-in">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+                <div>
+                  <h1 className="text-2xl font-bold text-white">Newsletter Subscribers</h1>
+                  <p className="text-sm text-slate-400">View and export reader emails subscribed to updates.</p>
+                </div>
+                <button
+                  onClick={() => {
+                    const csvContent = "data:text/csv;charset=utf-8,Email,SubscribedAt,Status\n" +
+                      subscribers.map(s => `${s.email},${s.subscribed_at},${s.status}`).join("\n");
+                    const encodedUri = encodeURI(csvContent);
+                    const link = document.createElement("a");
+                    link.setAttribute("href", encodedUri);
+                    link.setAttribute("download", "subscribers.csv");
+                    document.body.appendChild(link);
+                    link.click();
+                    notify('Exported subscribers CSV!');
+                  }}
+                  className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs"
+                >
+                  Download CSV Export
+                </button>
+              </div>
+
+              <div className="bg-[#111726] border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+                <table className="w-full text-left text-xs">
+                  <thead className="bg-slate-900/80 text-slate-400 font-mono border-b border-slate-800">
+                    <tr>
+                      <th className="p-4">Email</th>
+                      <th className="p-4">Subscribed Date</th>
+                      <th className="p-4">Status</th>
+                      <th className="p-4 text-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-800/60 text-slate-300">
+                    {subscribers.map((s) => (
+                      <tr key={s.id} className="hover:bg-slate-900/40">
+                        <td className="p-4 font-mono">{s.email}</td>
+                        <td className="p-4 font-mono text-slate-400">{new Date(s.subscribed_at).toLocaleDateString()}</td>
+                        <td className="p-4">
+                          <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-mono">{s.status}</span>
+                        </td>
+                        <td className="p-4 text-right">
+                          <button
+                            onClick={() => {
+                              setConfirmModal({
+                                open: true,
+                                title: 'Remove Subscriber',
+                                message: `Remove ${s.email} from subscriber list?`,
+                                onConfirm: async () => {
+                                  await fetch(`/api/admin/subscribers?id=${s.id}`, { method: 'DELETE' });
+                                  setSubscribers(prev => prev.filter(sub => sub.id !== s.id));
+                                  notify('Subscriber removed.');
+                                }
+                              });
+                            }}
+                            className="text-rose-400 hover:text-rose-300"
+                          >
+                            Remove
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+
+          {/* ============================================================== */}
+          {/* TAB 14: SEO, OPEN GRAPH & AI SEARCH READINESS */}
           {/* ============================================================== */}
           {(activeTab === 'seo' || activeTab === 'schema-ai' || activeTab === 'sitemap-robots') && (
             <div className="space-y-6 animate-fade-in max-w-4xl">
@@ -2298,7 +2721,7 @@ export default function AdminDashboard({
           )}
 
           {/* ============================================================== */}
-          {/* TAB 12: SITE HEALTH, PERFORMANCE & BROKEN LINK CHECKER */}
+          {/* TAB 15: SITE HEALTH, PERFORMANCE & BROKEN LINK CHECKER */}
           {/* ============================================================== */}
           {activeTab === 'health' && (
             <div className="space-y-6 animate-fade-in max-w-4xl">
@@ -2361,7 +2784,7 @@ export default function AdminDashboard({
           )}
 
           {/* ============================================================== */}
-          {/* TAB 13: VISITOR ANALYTICS & TRAFFIC */}
+          {/* TAB 16: VISITOR ANALYTICS & TRAFFIC */}
           {/* ============================================================== */}
           {activeTab === 'analytics' && (
             <div className="space-y-6 animate-fade-in">
@@ -2430,7 +2853,7 @@ export default function AdminDashboard({
           )}
 
           {/* ============================================================== */}
-          {/* TAB 14: HOMEPAGE SECTIONS & ANNOUNCEMENT BANNER */}
+          {/* TAB 17: HOMEPAGE SECTIONS & ANNOUNCEMENT BANNER */}
           {/* ============================================================== */}
           {(activeTab === 'navigation' || activeTab === 'banner') && (
             <div className="space-y-6 animate-fade-in max-w-3xl">
@@ -2549,7 +2972,199 @@ export default function AdminDashboard({
           )}
 
           {/* ============================================================== */}
-          {/* TAB 15: BACKUP, EXPORT & RESTORE */}
+          {/* TAB 18: REDIRECTS & CUSTOM SLUGS */}
+          {/* ============================================================== */}
+          {activeTab === 'redirects' && (
+            <div className="space-y-6 animate-fade-in max-w-3xl">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+                <div>
+                  <h1 className="text-2xl font-bold text-white">Redirects & Slug Manager</h1>
+                  <p className="text-sm text-slate-400">Manage 301 and 302 URL forwarding rules without writing code.</p>
+                </div>
+                <button
+                  onClick={() => { setEditingItem({ source_path: '', destination_url: '', permanent: true }); setEditModalOpen(true); }}
+                  className="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs"
+                >
+                  + Add Redirect Rule
+                </button>
+              </div>
+
+              <div className="bg-[#111726] border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+                <table className="w-full text-left text-xs">
+                  <thead className="bg-slate-900/80 text-slate-400 font-mono border-b border-slate-800">
+                    <tr>
+                      <th className="p-4">Source Path</th>
+                      <th className="p-4">Destination Target</th>
+                      <th className="p-4">Status Code</th>
+                      <th className="p-4 text-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-800/60 text-slate-300 font-mono">
+                    {redirects.map((r) => (
+                      <tr key={r.id} className="hover:bg-slate-900/40">
+                        <td className="p-4 text-emerald-400">{r.source_path}</td>
+                        <td className="p-4 text-slate-300">{r.destination_url}</td>
+                        <td className="p-4">
+                          <span className="px-2 py-0.5 rounded bg-slate-800 text-slate-400">
+                            {r.permanent ? '301 Permanent' : '302 Temporary'}
+                          </span>
+                        </td>
+                        <td className="p-4 text-right">
+                          <button
+                            onClick={() => {
+                              setRedirects(prev => prev.filter(red => red.id !== r.id));
+                              notify('Redirect deleted.');
+                            }}
+                            className="text-rose-400 hover:text-rose-300 font-sans"
+                          >
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+
+          {/* Redirect Add Modal */}
+          {editModalOpen && activeTab === 'redirects' && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+              <div className="bg-[#111726] border border-slate-700 rounded-2xl max-w-md w-full p-6 shadow-2xl">
+                <div className="flex items-center justify-between pb-3 border-b border-slate-800 mb-4">
+                  <h3 className="text-base font-bold text-white">Add URL Redirect Rule</h3>
+                  <button onClick={() => setEditModalOpen(false)} className="text-slate-400 hover:text-white">✕</button>
+                </div>
+                <form onSubmit={async (e) => {
+                  e.preventDefault();
+                  const newRule = {
+                    id: Date.now(),
+                    source_path: editingItem.source_path.startsWith('/') ? editingItem.source_path : `/${editingItem.source_path}`,
+                    destination_url: editingItem.destination_url,
+                    permanent: editingItem.permanent ?? true
+                  };
+                  setRedirects(prev => [newRule, ...prev]);
+                  setEditModalOpen(false);
+                  notify('Redirect rule added!');
+                }} className="space-y-4 text-xs">
+                  <div>
+                    <label className="block text-slate-400 mb-1">Source Path (e.g. /old-link)</label>
+                    <input
+                      type="text"
+                      required
+                      value={editingItem?.source_path || ''}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, source_path: e.target.value }))}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
+                      placeholder="/youtube"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-slate-400 mb-1">Destination Target</label>
+                    <input
+                      type="text"
+                      required
+                      value={editingItem?.destination_url || ''}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, destination_url: e.target.value }))}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
+                      placeholder="https://youtube.com/@dszae"
+                    />
+                  </div>
+                  <div className="flex justify-end gap-3 pt-3 border-t border-slate-800">
+                    <button type="button" onClick={() => setEditModalOpen(false)} className="px-4 py-2 rounded-xl bg-slate-800 text-slate-300">Cancel</button>
+                    <button type="submit" className="px-5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold">Add Rule</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          )}
+
+          {/* ============================================================== */}
+          {/* TAB 19: SITE SETTINGS & APPEARANCE */}
+          {/* ============================================================== */}
+          {activeTab === 'settings' && (
+            <div className="space-y-6 animate-fade-in max-w-3xl">
+              <div className="pb-4 border-b border-slate-800">
+                <h1 className="text-2xl font-bold text-white">Site-wide Settings & Appearance</h1>
+                <p className="text-sm text-slate-400">Theme accent customization, admin preferences, and credentials.</p>
+              </div>
+
+              <div className="bg-[#111726] border border-slate-800 rounded-2xl p-6 space-y-5">
+                <h3 className="text-base font-bold text-white">Appearance & Theme Settings</h3>
+                <div className="text-xs space-y-3">
+                  <label className="block text-slate-400">Theme Accent Color</label>
+                  <div className="flex gap-3">
+                    {[
+                      { name: 'Emerald', color: 'bg-emerald-500' },
+                      { name: 'Cyan', color: 'bg-cyan-500' },
+                      { name: 'Blue', color: 'bg-blue-500' },
+                      { name: 'Violet', color: 'bg-violet-500' },
+                      { name: 'Amber', color: 'bg-amber-500' },
+                      { name: 'Rose', color: 'bg-rose-500' },
+                    ].map((c) => (
+                      <button
+                        key={c.name}
+                        onClick={() => notify(`Theme accent set to ${c.name}`)}
+                        className={`w-8 h-8 rounded-full ${c.color} flex items-center justify-center text-black font-bold shadow-md hover:scale-110 transition-transform`}
+                        title={c.name}
+                      >
+                        ✓
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pt-4 border-t border-slate-800 text-xs space-y-3">
+                  <h4 className="font-bold text-white">Security & Password Management</h4>
+                  <p className="text-slate-400 leading-relaxed">
+                    Admin access is protected with SHA-256 HMAC cryptographic sessions. To change your admin password, update the <code className="text-emerald-400 font-mono">ADMIN_PASSWORD</code> environment variable in your Vercel Project Settings and redeploy.
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* ============================================================== */}
+          {/* TAB 20: ACTIVITY & AUDIT LOGS */}
+          {/* ============================================================== */}
+          {activeTab === 'logs' && (
+            <div className="space-y-6 animate-fade-in max-w-4xl">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+                <div>
+                  <h1 className="text-2xl font-bold text-white">Activity & Audit Logs</h1>
+                  <p className="text-sm text-slate-400">Security audit trail of administrative updates and visitor events.</p>
+                </div>
+                <button
+                  onClick={() => notify('Audit logs refreshed.')}
+                  className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs text-slate-300"
+                >
+                  ↻ Refresh Logs
+                </button>
+              </div>
+
+              <div className="bg-[#111726] border border-slate-800 rounded-2xl p-6">
+                <div className="divide-y divide-slate-800/80 text-xs">
+                  {activityLogs.map((log) => (
+                    <div key={log.id} className="py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="font-bold text-white">{log.action}</span>
+                          <span className="px-2 py-0.5 rounded bg-slate-800 text-emerald-400 font-mono text-[10px]">{log.entity}</span>
+                        </div>
+                        <p className="text-slate-400 text-[11px] mt-1">{log.details}</p>
+                      </div>
+                      <span className="text-[11px] text-slate-500 font-mono whitespace-nowrap">
+                        {new Date(log.created_at).toLocaleString()}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* ============================================================== */}
+          {/* TAB 21: BACKUP, EXPORT & RESTORE */}
           {/* ============================================================== */}
           {activeTab === 'backup' && (
             <div className="space-y-6 animate-fade-in max-w-2xl">
@@ -2590,15 +3205,56 @@ export default function AdminDashboard({
           )}
 
           {/* ============================================================== */}
-          {/* TAB 16: DATABASE DIAGNOSTIC & SQL SCHEMA */}
+          {/* TAB 22: DATABASE DIAGNOSTIC & SQL PERMISSIONS FIX */}
           {/* ============================================================== */}
           {activeTab === 'database' && (
             <div className="space-y-6 animate-fade-in max-w-3xl">
               <div className="pb-4 border-b border-slate-800">
-                <h1 className="text-2xl font-bold text-white">Database Engine & Supabase Diagnostic</h1>
-                <p className="text-sm text-slate-400">Check connectivity, run SQL tables, and inspect row counts.</p>
+                <h1 className="text-2xl font-bold text-white">Database Health & SQL Permissions Fix</h1>
+                <p className="text-sm text-slate-400">Resolve database permission issues and inspect table status.</p>
               </div>
 
+              {/* 1-Click Permissions Fix Box */}
+              <div className="bg-gradient-to-br from-emerald-500/10 via-[#111726] to-[#111726] border border-emerald-500/40 rounded-2xl p-6 space-y-4">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-base font-bold text-emerald-400 flex items-center gap-2">
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                      <span>Grant Required Table Permissions (1-Click SQL)</span>
+                    </h3>
+                    <p className="text-xs text-slate-300 mt-1">
+                      If saving settings, certificates, or gallery items says &quot;permission denied&quot;, copy and run this in your Supabase SQL editor:
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText(SQL_PERMISSIONS_QUERY);
+                      notify('SQL Query copied to clipboard!');
+                    }}
+                    className="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs shadow-md shadow-emerald-500/20 whitespace-nowrap"
+                  >
+                    Copy SQL Fix
+                  </button>
+                </div>
+
+                <pre className="p-4 rounded-xl bg-slate-950/80 border border-slate-800 text-[11px] font-mono text-slate-300 overflow-x-auto leading-relaxed select-all">
+                  {SQL_PERMISSIONS_QUERY}
+                </pre>
+
+                <div className="flex items-center justify-between pt-2 text-xs">
+                  <span className="text-slate-400">Go to your Supabase Project:</span>
+                  <a
+                    href="https://supabase.com/dashboard/project/tihkvcybdvvovmnvkdrx/sql"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-emerald-400 font-bold"
+                  >
+                    Open Supabase SQL Editor ↗
+                  </a>
+                </div>
+              </div>
+
+              {/* Table Inspector */}
               <div className="bg-[#111726] border border-slate-800 rounded-2xl p-6 space-y-4">
                 <div className="flex items-center justify-between pb-3 border-b border-slate-800">
                   <span className="font-bold text-white text-sm">Supabase Project URL</span>

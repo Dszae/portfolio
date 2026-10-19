@@ -20,14 +20,24 @@ export async function POST(req) {
     const buffer = Buffer.from(bytes);
 
     // Generate safe clean filename with timestamp
-    const cleanName = file.name.toLowerCase().replace(/[^a-z0-9.]/g, '-');
+    const cleanName = (file.name || 'file').toLowerCase().replace(/[^a-z0-9.]/g, '-');
     const filename = `${Date.now()}-${cleanName}`;
+
+    // Ensure bucket exists
+    try {
+      const { data: bucketData } = await supabaseAdmin.storage.getBucket('portfolio-media');
+      if (!bucketData) {
+        await supabaseAdmin.storage.createBucket('portfolio-media', { public: true });
+      }
+    } catch {
+      // Bucket might already exist
+    }
 
     const { data, error } = await supabaseAdmin.storage
       .from('portfolio-media')
       .upload(filename, buffer, {
         contentType: file.type || 'image/webp',
-        upsert: false,
+        upsert: true,
       });
 
     if (error) {
@@ -39,11 +49,11 @@ export async function POST(req) {
       .getPublicUrl(filename);
 
     return NextResponse.json({
+      success: true,
       url: publicUrlData.publicUrl,
       filename,
     });
   } catch (err) {
-    return NextResponse.json({ error: 'Upload failed' }, { status: 500 });
+    return NextResponse.json({ error: err.message || 'Upload failed' }, { status: 500 });
   }
 }
-

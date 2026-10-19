@@ -5,8 +5,10 @@ import { supabaseAdmin } from '@/lib/supabaseAdmin';
 import { getCertificates } from '@/lib/dataService';
 
 export async function GET() {
+  const isAuth = await isAuthenticated();
+  if (!isAuth) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   const data = await getCertificates();
-  return NextResponse.json(data);
+  return NextResponse.json({ data, certificates: data });
 }
 
 export async function POST(req) {
@@ -39,14 +41,13 @@ export async function POST(req) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    // On-Demand Revalidation: Instant live update with 100% static SEO preserved
     revalidatePath('/certificates');
     revalidatePath('/');
     revalidatePath('/sitemap.xml');
 
-    return NextResponse.json({ success: true, certificate: data });
+    return NextResponse.json({ success: true, data, certificate: data });
   } catch (err) {
-    return NextResponse.json({ error: 'Failed to create certificate' }, { status: 500 });
+    return NextResponse.json({ error: err.message || 'Failed to create certificate' }, { status: 500 });
   }
 }
 
@@ -79,7 +80,6 @@ export async function DELETE(req) {
 
     return NextResponse.json({ success: true });
   } catch (err) {
-    return NextResponse.json({ error: 'Failed to delete certificate' }, { status: 500 });
+    return NextResponse.json({ error: err.message || 'Failed to delete certificate' }, { status: 500 });
   }
 }
-
