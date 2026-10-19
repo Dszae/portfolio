@@ -52,7 +52,7 @@ function ScrollToTopButton() {
     <button
       onClick={scrollToTop}
       aria-label="Scroll to top of page"
-      className="site-icon-button fixed bottom-6 left-6 z-40 shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+      className="site-icon-button fixed bottom-[78px] right-5 sm:bottom-[76px] sm:right-6 z-40 shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer rounded-full"
     >
       <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
         <path strokeLinecap="round" strokeLinejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />

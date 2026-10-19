@@ -222,37 +222,41 @@ You can ask about his software projects, computer engineering background at **IO
   return (
     <>
       {/* 1. FLOATING LAUNCHER BUTTON */}
-      <div className="fixed bottom-6 right-6 z-40">
+      <div className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40">
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
           aria-label={isOpen ? "Close portfolio assistant" : "Open portfolio assistant"}
-          className="group relative flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-white/95 dark:bg-[#0F1216]/95 border border-slate-200/90 dark:border-[#222933] text-slate-800 dark:text-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.4)] hover:border-[#065F46]/60 dark:hover:border-[#34D399]/40 hover:shadow-lg transition-all duration-200 active:scale-[0.98]"
+          className="group relative flex items-center justify-center sm:gap-2.5 w-12 h-12 sm:w-auto sm:h-auto sm:px-4 sm:py-2.5 rounded-full bg-white/95 dark:bg-[#0F1216]/95 border border-slate-200/90 dark:border-[#222933] text-slate-800 dark:text-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.5)] hover:border-[#065F46]/60 dark:hover:border-[#34D399]/40 hover:shadow-lg transition-all duration-200 active:scale-[0.95]"
         >
-          {/* Status dot in dark green */}
-          <span className="relative flex h-2 w-2">
+          {/* Status dot in dark green (badge in mobile, inline in desktop) */}
+          <span className="absolute -top-0.5 -right-0.5 sm:static flex h-2.5 w-2.5 sm:h-2 sm:w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#065F46] dark:bg-[#34D399] opacity-60"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#065F46] dark:bg-[#34D399]"></span>
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 sm:h-2 sm:w-2 bg-[#065F46] dark:bg-[#34D399] ring-2 ring-white dark:ring-[#0F1216] sm:ring-0"></span>
           </span>
 
           {/* Clean minimal message icon */}
           <svg
-            className="w-4 h-4 text-[#065F46] dark:text-[#34D399] transition-transform duration-200 group-hover:scale-105"
+            className="w-5 h-5 sm:w-4 sm:h-4 text-[#065F46] dark:text-[#34D399] transition-transform duration-200 group-hover:scale-105"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
             aria-hidden="true"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-            />
+            {isOpen ? (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+              />
+            )}
           </svg>
 
-          <span className="font-medium text-xs tracking-tight text-slate-800 dark:text-slate-200">
+          <span className="hidden sm:inline font-medium text-xs tracking-tight text-slate-800 dark:text-slate-200">
             {isOpen ? 'Close' : 'Ask Assistant'}
           </span>
         </button>
@@ -260,7 +264,15 @@ You can ask about his software projects, computer engineering background at **IO
 
       {/* 2. CHAT DRAWER / PANEL */}
       {isOpen && (
-        <div className="fixed bottom-20 right-4 sm:right-6 z-50 w-[calc(100vw-32px)] sm:w-[440px] h-[580px] max-h-[85vh] flex flex-col rounded-2xl bg-white/98 dark:bg-[#0F1216]/98 backdrop-blur-xl border border-slate-200/90 dark:border-[#222933] shadow-[0_20px_50px_rgba(15,23,42,0.12)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden font-sans">
+        <>
+          {/* Mobile backdrop to close on outside tap and prevent navbar overlap */}
+          <div
+            className="sm:hidden fixed inset-0 z-[70] bg-black/40 backdrop-blur-[2px]"
+            aria-hidden="true"
+            onClick={() => setIsOpen(false)}
+          />
+
+          <div className="fixed inset-x-3 bottom-3 sm:inset-x-auto sm:bottom-20 sm:right-6 z-[75] w-auto sm:w-[440px] h-[calc(100dvh-5.5rem)] sm:h-[580px] max-h-[640px] flex flex-col rounded-2xl bg-white/98 dark:bg-[#0F1216]/98 backdrop-blur-xl border border-slate-200/90 dark:border-[#222933] shadow-[0_20px_50px_rgba(15,23,42,0.18)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.6)] overflow-hidden font-sans">
           
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3 border-b border-slate-200/80 dark:border-[#222933] bg-slate-50/80 dark:bg-[#090B0E]/80">
@@ -438,6 +450,7 @@ You can ask about his software projects, computer engineering background at **IO
             </div>
           </div>
         </div>
+        </>
       )}
     </>
   );
