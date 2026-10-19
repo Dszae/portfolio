@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: 'OAI-SearchBot',
         allow: '/',
-        disallow: '/api/',
+        disallow: ['/api/', '/admin/'],
         other: {
           'Content-Signal': 'ai-train=no, search=yes, ai-input=yes',
         },
@@ -14,7 +14,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: 'GPTBot',
         allow: '/',
-        disallow: '/api/',
+        disallow: ['/api/', '/admin/'],
         other: {
           'Content-Signal': 'ai-train=no, search=yes, ai-input=no',
         },
@@ -22,7 +22,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: 'ChatGPT-User',
         allow: '/',
-        disallow: '/api/',
+        disallow: ['/api/', '/admin/'],
         other: {
           'Content-Signal': 'ai-train=no, search=yes, ai-input=yes',
         },
@@ -52,7 +52,7 @@ export default function robots(): MetadataRoute.Robots {
           'Omgilibot',
         ],
         allow: '/',
-        disallow: '/api/',
+        disallow: ['/api/', '/admin/'],
         other: {
           'Content-Signal': 'ai-train=no, search=yes, ai-input=yes',
         },
@@ -60,7 +60,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: 'Cloudflare-AI-Search',
         allow: '/',
-        disallow: '/api/',
+        disallow: ['/api/', '/admin/'],
         other: {
           'Content-Signal': 'ai-train=no, search=yes, ai-input=yes',
         },
@@ -68,7 +68,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: '/api/',
+        disallow: ['/api/', '/admin/'],
         other: {
           'Content-Signal': 'ai-train=no, search=yes, ai-input=no',
         },
