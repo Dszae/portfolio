@@ -102,3 +102,4 @@ export default function AboutClientView({ siteSettings = {}, jsonLd = null }) {
     </SiteLayout>
   );
 }
+

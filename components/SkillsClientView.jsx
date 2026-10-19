@@ -192,12 +192,7 @@ export default function SkillsClientView({ initialSkills = [], jsonLd = null }) 
                               <SkillIcon name={s.name} category={s.category} />
                             </div>
                             <div className="flex-1 min-w-0">
-                              <div className="flex items-center justify-between">
-                                <span className="font-bold text-sm block truncate">{s.name}</span>
-                                {s.proficiency && (
-                                  <span className="text-[10px] font-mono text-emerald-500 font-semibold">{s.proficiency}%</span>
-                                )}
-                              </div>
+                              <span className="font-bold text-sm block truncate">{s.name}</span>
                               <span className="text-[11px] font-mono text-[#334155] dark:text-[#A7B0BE] leading-tight block truncate">
                                 {s.description || SKILL_DESCRIPTIONS[s.name] || 'Core competency'}
                               </span>
@@ -254,12 +249,7 @@ export default function SkillsClientView({ initialSkills = [], jsonLd = null }) 
                               <SkillIcon name={s.name} category={s.category} />
                             </div>
                             <div className="flex-1 min-w-0">
-                              <div className="flex items-center justify-between">
-                                <span className="font-bold text-sm block truncate">{s.name}</span>
-                                {s.proficiency && (
-                                  <span className="text-[10px] font-mono text-emerald-500 font-semibold">{s.proficiency}%</span>
-                                )}
-                              </div>
+                              <span className="font-bold text-sm block truncate">{s.name}</span>
                               <span className="text-[11px] font-mono text-[#334155] dark:text-[#A7B0BE] leading-tight block truncate">
                                 {s.description || SKILL_DESCRIPTIONS[s.name] || 'Digital creation'}
                               </span>

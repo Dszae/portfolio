@@ -445,3 +445,4 @@ export default function ProjectsClientView({ initialProjects = [], jsonLd = null
     </SiteLayout>
   );
 }
+

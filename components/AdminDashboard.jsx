@@ -133,6 +133,7 @@ export default function AdminDashboard({
     { id: 'experience', label: 'Resume & Career (/resume)', count: experiences.length, icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' },
     { id: 'gallery', label: 'Photo Gallery (/gallery)', count: gallery.length, icon: 'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z' },
     { id: 'inbox', label: 'Contact Inquiries (/contact)', count: messages.filter(m => !m.is_read).length, highlight: true, icon: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' },
+    { id: 'announcements', label: 'Popup & Rolling Banner', badge: (settings.announcement?.is_active || settings.popup?.is_active) ? 'Active' : undefined, icon: 'M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z' },
     { id: 'media', label: 'Media Bucket (Storage)', icon: 'M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12' },
     { id: 'seo', label: 'SEO & Google Sitelinks', badge: '100%', icon: 'M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' },
     { id: 'database', label: 'Database & Backup', badge: 'Supabase', icon: 'M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4' },
@@ -654,33 +655,29 @@ export default function AdminDashboard({
                   <p className="text-xs text-slate-400 mt-1">Manage competencies displayed on <Link href="/skills" target="_blank" className="text-emerald-400 hover:underline">dipeshsapkota7.com.np/skills</Link>.</p>
                 </div>
                 <button
-                  onClick={() => { setEditingItem({ category: 'Development', proficiency: 90, description: '' }); setEditModalOpen(true); }}
+                  onClick={() => { setEditingItem({ category: 'Development', description: '' }); setEditModalOpen(true); }}
                   className="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs"
                 >
                   + Add Skill
                 </button>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                 {skills.map((s) => (
-                  <div key={s.id || s.name} className="bg-[#0E131F] border border-slate-800 p-4 rounded-2xl flex items-center justify-between hover:border-emerald-500/40 transition-all">
-                    <div className="flex-1 mr-4">
-                      <div className="flex items-center justify-between mb-1 text-xs">
-                        <span className="font-bold text-white">{s.name}</span>
-                        <span className="text-emerald-400 font-mono font-bold">{s.proficiency}%</span>
+                  <div key={s.id || s.name} className="bg-[#0E131F] border border-slate-800 p-4 rounded-xl flex items-center justify-between hover:border-emerald-500/40 transition-all">
+                    <div className="flex-1 min-w-0 mr-3">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="font-bold text-white text-xs truncate">{s.name}</span>
+                        <span className="px-1.5 py-0.5 rounded bg-slate-800 text-slate-400 text-[9px] uppercase font-mono">{s.category}</span>
                       </div>
-                      <div className="w-full h-1.5 rounded-full bg-slate-800 overflow-hidden">
-                        <div className="h-full bg-emerald-500 rounded-full" style={{ width: `${s.proficiency}%` }} />
-                      </div>
-                      <div className="flex items-center justify-between mt-1 text-[10px] text-slate-400 font-mono">
-                        <span className="uppercase text-slate-500">{s.category}</span>
-                        <span>{s.description}</span>
-                      </div>
+                      {s.description && (
+                        <p className="text-[11px] text-slate-400 truncate">{s.description}</p>
+                      )}
                     </div>
-                    <div className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-1.5 shrink-0">
                       <button
                         onClick={() => { setEditingItem(s); setEditModalOpen(true); }}
-                        className="px-2 py-1 bg-slate-800 text-emerald-400 text-xs rounded hover:bg-slate-700 font-medium"
+                        className="px-2.5 py-1 bg-slate-800 text-emerald-400 text-xs rounded hover:bg-slate-700 font-medium"
                       >
                         Edit
                       </button>
@@ -997,6 +994,343 @@ export default function AdminDashboard({
                     </div>
                   ))
                 )}
+              </div>
+            </div>
+          )}
+
+          {/* ============================================================== */}
+          {/* TAB: POPUP & ROLLING ANNOUNCEMENT BANNER */}
+          {/* ============================================================== */}
+          {activeTab === 'announcements' && (
+            <div className="space-y-8 animate-fade-in max-w-4xl">
+              <div className="pb-4 border-b border-slate-800">
+                <h1 className="text-2xl font-bold text-white">Popup & Rolling Announcement Banner</h1>
+                <p className="text-xs text-slate-400 mt-1">
+                  Manage the top rolling marquee ticker and the visitor entry image popup modal across your live portfolio.
+                </p>
+              </div>
+
+              {/* SECTION 1: ROLLING MARQUEE BANNER */}
+              <div className="bg-[#0E131F] border border-slate-800 rounded-2xl p-6 space-y-5 text-xs">
+                <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+                  <div>
+                    <h2 className="text-base font-bold text-white flex items-center gap-2">
+                      <span>Rolling Top Announcement Banner</span>
+                      {settings.announcement?.is_active ? (
+                        <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px] font-bold">Active on Site</span>
+                      ) : (
+                        <span className="px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 text-[10px]">Disabled</span>
+                      )}
+                    </h2>
+                    <p className="text-slate-400 text-[11px] mt-0.5">
+                      Smooth marquee banner that scrolls dynamically across the very top of your portfolio.
+                    </p>
+                  </div>
+                  <label className="relative inline-flex items-center cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={Boolean(settings.announcement?.is_active)}
+                      onChange={(e) => setSettings({
+                        ...settings,
+                        announcement: { ...(settings.announcement || {}), is_active: e.target.checked }
+                      })}
+                      className="sr-only peer"
+                    />
+                    <div className="w-11 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div>
+                  </label>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div>
+                    <label className="block text-slate-400 mb-1 font-medium">Badge Tag</label>
+                    <input
+                      type="text"
+                      value={settings.announcement?.badge || 'ANNOUNCEMENT'}
+                      onChange={(e) => setSettings({
+                        ...settings,
+                        announcement: { ...(settings.announcement || {}), badge: e.target.value }
+                      })}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
+                      placeholder="e.g. ANNOUNCEMENT, UPDATE, NEW"
+                    />
+                  </div>
+                  <div className="sm:col-span-2">
+                    <label className="block text-slate-400 mb-1 font-medium">Scrolling Announcement Message</label>
+                    <input
+                      type="text"
+                      value={settings.announcement?.message || ''}
+                      onChange={(e) => setSettings({
+                        ...settings,
+                        announcement: { ...(settings.announcement || {}), message: e.target.value }
+                      })}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
+                      placeholder="e.g. Welcome to my portfolio! Currently open for freelance software engineering opportunities."
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div>
+                    <label className="block text-slate-400 mb-1 font-medium">Link URL (Optional)</label>
+                    <input
+                      type="text"
+                      value={settings.announcement?.link || ''}
+                      onChange={(e) => setSettings({
+                        ...settings,
+                        announcement: { ...(settings.announcement || {}), link: e.target.value }
+                      })}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
+                      placeholder="e.g. /projects or /contact"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-slate-400 mb-1 font-medium">Link Button Label</label>
+                    <input
+                      type="text"
+                      value={settings.announcement?.link_text || ''}
+                      onChange={(e) => setSettings({
+                        ...settings,
+                        announcement: { ...(settings.announcement || {}), link_text: e.target.value }
+                      })}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
+                      placeholder="e.g. View Projects →"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-slate-400 mb-1 font-medium">Rolling Speed</label>
+                    <select
+                      value={settings.announcement?.speed || 'normal'}
+                      onChange={(e) => setSettings({
+                        ...settings,
+                        announcement: { ...(settings.announcement || {}), speed: e.target.value }
+                      })}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
+                    >
+                      <option value="slow">Slow & Steady (35s)</option>
+                      <option value="normal">Balanced Speed (22s)</option>
+                      <option value="fast">Brisk Pace (14s)</option>
+                    </select>
+                  </div>
+                </div>
+
+                {/* Live Preview of Rolling Announcement */}
+                <div className="pt-2">
+                  <div className="text-[10px] font-mono text-slate-400 uppercase tracking-wider mb-1.5">Live Marquee Preview</div>
+                  <div className="border border-slate-700/80 rounded-xl bg-slate-950/90 overflow-hidden py-2 px-3">
+                    <div className="flex items-center gap-3">
+                      <span className="shrink-0 px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-[10px] font-mono font-bold tracking-wider">
+                        {settings.announcement?.badge || 'ANNOUNCEMENT'}
+                      </span>
+                      <div className="overflow-hidden relative flex-1 text-xs text-slate-200">
+                        <span className="inline-block whitespace-nowrap animate-pulse">
+                          {settings.announcement?.message || 'Welcome to my official portfolio! Explore engineering projects, certificates, and articles.'}
+                          {settings.announcement?.link_text && (
+                            <span className="ml-2 text-emerald-400 underline font-medium">{settings.announcement.link_text}</span>
+                          )}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-2 flex justify-end">
+                  <button
+                    onClick={() => saveSettingSection('announcement', settings.announcement || {})}
+                    className="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs shadow-md shadow-emerald-500/20"
+                  >
+                    Save Rolling Banner
+                  </button>
+                </div>
+              </div>
+
+              {/* SECTION 2: ENTRY POPUP IMAGE MODAL */}
+              <div className="bg-[#0E131F] border border-slate-800 rounded-2xl p-6 space-y-5 text-xs">
+                <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+                  <div>
+                    <h2 className="text-base font-bold text-white flex items-center gap-2">
+                      <span>Portfolio Entry Popup Image Modal</span>
+                      {settings.popup?.is_active ? (
+                        <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px] font-bold">Active on Site</span>
+                      ) : (
+                        <span className="px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 text-[10px]">Disabled</span>
+                      )}
+                    </h2>
+                    <p className="text-slate-400 text-[11px] mt-0.5">
+                      Modal dialog with custom image, message, and call-to-action shown when a visitor opens your website.
+                    </p>
+                  </div>
+                  <label className="relative inline-flex items-center cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={Boolean(settings.popup?.is_active)}
+                      onChange={(e) => setSettings({
+                        ...settings,
+                        popup: { ...(settings.popup || {}), is_active: e.target.checked }
+                      })}
+                      className="sr-only peer"
+                    />
+                    <div className="w-11 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div>
+                  </label>
+                </div>
+
+                <div>
+                  <label className="block text-slate-400 mb-1 font-medium">Popup Image</label>
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      value={settings.popup?.image_url || ''}
+                      onChange={(e) => setSettings({
+                        ...settings,
+                        popup: { ...(settings.popup || {}), image_url: e.target.value }
+                      })}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
+                      placeholder="https://... or /gallery/photo.jpg"
+                    />
+                    <label className="px-3 py-2 bg-slate-800 hover:bg-slate-700 rounded-xl cursor-pointer text-slate-200 font-semibold flex items-center whitespace-nowrap">
+                      <span>{uploadingMedia ? 'Uploading...' : 'Upload Image'}</span>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        disabled={uploadingMedia}
+                        className="hidden"
+                        onChange={async (e) => {
+                          const file = e.target.files?.[0];
+                          if (file) {
+                            try {
+                              notify('Uploading popup image to storage...');
+                              const url = await uploadFile(file);
+                              setSettings(prev => ({
+                                ...prev,
+                                popup: { ...(prev.popup || {}), image_url: url }
+                              }));
+                              notify('Image uploaded and set!');
+                            } catch (err) {
+                              notify(err.message, 'error');
+                            }
+                          }
+                        }}
+                      />
+                    </label>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-slate-400 mb-1 font-medium">Popup Title</label>
+                  <input
+                    type="text"
+                    value={settings.popup?.title || ''}
+                    onChange={(e) => setSettings({
+                      ...settings,
+                      popup: { ...(settings.popup || {}), title: e.target.value }
+                    })}
+                    className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-bold"
+                    placeholder="e.g. Welcome to Dipesh Sapkota's Portfolio"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-slate-400 mb-1 font-medium">Popup Description / Caption</label>
+                  <textarea
+                    rows={3}
+                    value={settings.popup?.description || ''}
+                    onChange={(e) => setSettings({
+                      ...settings,
+                      popup: { ...(settings.popup || {}), description: e.target.value }
+                    })}
+                    className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none leading-relaxed"
+                    placeholder="e.g. Explore computer engineering projects, creative motion graphics, and verified certifications."
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-slate-400 mb-1 font-medium">Action Button URL</label>
+                    <input
+                      type="text"
+                      value={settings.popup?.link_url || ''}
+                      onChange={(e) => setSettings({
+                        ...settings,
+                        popup: { ...(settings.popup || {}), link_url: e.target.value }
+                      })}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
+                      placeholder="e.g. /projects or /certificates"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-slate-400 mb-1 font-medium">Action Button Text</label>
+                    <input
+                      type="text"
+                      value={settings.popup?.link_text || ''}
+                      onChange={(e) => setSettings({
+                        ...settings,
+                        popup: { ...(settings.popup || {}), link_text: e.target.value }
+                      })}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-bold"
+                      placeholder="e.g. Explore Projects →"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 pt-1">
+                  <input
+                    type="checkbox"
+                    id="session-check"
+                    checked={settings.popup?.show_once_per_session ?? true}
+                    onChange={(e) => setSettings({
+                      ...settings,
+                      popup: { ...(settings.popup || {}), show_once_per_session: e.target.checked }
+                    })}
+                    className="w-4 h-4 rounded text-emerald-500 bg-slate-900 border-slate-700 focus:ring-emerald-500"
+                  />
+                  <label htmlFor="session-check" className="text-slate-300 font-medium">
+                    Show once per visitor session (recommended to avoid bothering returning users on every page refresh)
+                  </label>
+                </div>
+
+                {/* Live Mockup Preview of Popup */}
+                <div className="pt-2">
+                  <div className="text-[10px] font-mono text-slate-400 uppercase tracking-wider mb-2">Live Popup Preview</div>
+                  <div className="p-4 rounded-2xl bg-black/60 border border-slate-800 flex justify-center">
+                    <div className="max-w-md w-full bg-[#0E131F] border border-slate-700 rounded-2xl overflow-hidden shadow-2xl">
+                      {settings.popup?.image_url && (
+                        <div className="relative aspect-video w-full bg-slate-900">
+                          <Image
+                            src={settings.popup.image_url}
+                            alt={settings.popup.title || 'Popup preview'}
+                            fill
+                            unoptimized={Boolean(settings.popup.image_url?.startsWith('http'))}
+                            className="object-cover"
+                          />
+                        </div>
+                      )}
+                      <div className="p-5 space-y-3">
+                        <h3 className="text-base font-bold text-white">
+                          {settings.popup?.title || 'Welcome to Dipesh Sapkota’s Portfolio'}
+                        </h3>
+                        <p className="text-xs text-slate-300 leading-relaxed">
+                          {settings.popup?.description || 'Explore computer engineering projects, creative motion graphics, and verified certifications.'}
+                        </p>
+                        <div className="pt-2 flex items-center justify-end gap-3">
+                          <span className="text-xs text-slate-400">Close</span>
+                          {settings.popup?.link_text && (
+                            <span className="px-4 py-2 rounded-xl bg-emerald-500 text-slate-950 font-bold text-xs">
+                              {settings.popup.link_text}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-2 flex justify-end">
+                  <button
+                    onClick={() => saveSettingSection('popup', settings.popup || {})}
+                    className="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs shadow-md shadow-emerald-500/20"
+                  >
+                    Save Popup Settings
+                  </button>
+                </div>
               </div>
             </div>
           )}
@@ -1442,20 +1776,6 @@ export default function AdminDashboard({
                     <option value="AI & Data">AI & Data Science</option>
                     <option value="Engineering">Engineering Tools</option>
                   </select>
-                </div>
-                <div>
-                  <div className="flex justify-between items-center mb-1">
-                    <label className="text-slate-400">Proficiency Level</label>
-                    <span className="font-mono text-emerald-400 font-bold">{editingItem?.proficiency || 85}%</span>
-                  </div>
-                  <input
-                    type="range"
-                    min="1"
-                    max="100"
-                    value={editingItem?.proficiency || 85}
-                    onChange={(e) => setEditingItem(prev => ({ ...prev, proficiency: parseInt(e.target.value, 10) }))}
-                    className="w-full accent-emerald-500"
-                  />
                 </div>
                 <div>
                   <label className="block text-slate-400 mb-1">Subtext / Description</label>

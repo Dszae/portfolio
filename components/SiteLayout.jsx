@@ -5,6 +5,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import RollingAnnouncement from './RollingAnnouncement';
+import PortfolioEntryPopup from './PortfolioEntryPopup';
 
 export const NAV_LINKS = [
   { path: '/', label: 'Home', id: 'home' },
@@ -425,6 +427,12 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
 
   return (
     <div className={`site-shell min-h-screen font-sans relative w-full m-0 p-0 ${theme.bg}`}>
+      {/* Rolling Text Ticker at Very Top */}
+      <RollingAnnouncement />
+
+      {/* Portfolio Entry Modal Popup */}
+      <PortfolioEntryPopup />
+
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:bg-[#065F46] focus:text-white dark:focus:bg-[#34D399] dark:focus:text-[#090B0E] focus:rounded-lg focus:font-semibold focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#065F46] dark:focus:ring-[#34D399]"
