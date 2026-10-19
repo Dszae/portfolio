@@ -18,31 +18,47 @@ export async function POST(request) {
   try {
     const body = await request.json();
     const { type, title, organization, location, start_date, end_date, is_current, description } = body;
+    const logo = body.logo || body.img || body.image || '';
 
     if (!title || !organization) {
       return NextResponse.json({ error: 'Title and organization are required' }, { status: 400 });
     }
 
-    const { data, error } = await supabaseAdmin
+    const insertPayload = {
+      type: type || 'experience',
+      title,
+      organization,
+      location: location || '',
+      start_date: start_date || '',
+      end_date: end_date || '',
+      is_current: Boolean(is_current),
+      description: description || ''
+    };
+    if (logo) insertPayload.logo = logo;
+
+    let { data, error } = await supabaseAdmin
       .from('experiences')
-      .insert([{
-        type: type || 'experience',
-        title,
-        organization,
-        location: location || '',
-        start_date: start_date || '',
-        end_date: end_date || '',
-        is_current: Boolean(is_current),
-        description: description || ''
-      }])
+      .insert([insertPayload])
       .select()
       .single();
+
+    // If logo column does not exist yet in Postgres, retry without logo to prevent blocking
+    if (error && error.message?.includes('column "logo"')) {
+      delete insertPayload.logo;
+      const fallback = await supabaseAdmin
+        .from('experiences')
+        .insert([insertPayload])
+        .select()
+        .single();
+      data = fallback.data;
+      error = fallback.error;
+    }
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
     revalidatePath('/resume');
     revalidatePath('/about');
-    return NextResponse.json({ success: true, data });
+    return NextResponse.json({ success: true, data: { ...data, logo } });
   } catch (err) {
     return NextResponse.json({ error: err.message || 'Server error' }, { status: 500 });
   }
@@ -55,30 +71,49 @@ export async function PUT(request) {
   try {
     const body = await request.json();
     const { id, type, title, organization, location, start_date, end_date, is_current, description } = body;
+    const logo = body.logo || body.img || body.image || '';
 
     if (!id) return NextResponse.json({ error: 'ID is required' }, { status: 400 });
 
-    const { data, error } = await supabaseAdmin
+    const updatePayload = {
+      type,
+      title,
+      organization,
+      location,
+      start_date,
+      end_date,
+      is_current: Boolean(is_current),
+      description
+    };
+    if (typeof body.logo !== 'undefined' || typeof body.img !== 'undefined') {
+      updatePayload.logo = logo;
+    }
+
+    let { data, error } = await supabaseAdmin
       .from('experiences')
-      .update({
-        type,
-        title,
-        organization,
-        location,
-        start_date,
-        end_date,
-        is_current: Boolean(is_current),
-        description
-      })
+      .update(updatePayload)
       .eq('id', id)
       .select()
       .single();
+
+    // If logo column does not exist in Postgres, retry without logo
+    if (error && error.message?.includes('column "logo"')) {
+      delete updatePayload.logo;
+      const fallback = await supabaseAdmin
+        .from('experiences')
+        .update(updatePayload)
+        .eq('id', id)
+        .select()
+        .single();
+      data = fallback.data;
+      error = fallback.error;
+    }
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
     revalidatePath('/resume');
     revalidatePath('/about');
-    return NextResponse.json({ success: true, data });
+    return NextResponse.json({ success: true, data: { ...data, logo } });
   } catch (err) {
     return NextResponse.json({ error: err.message || 'Server error' }, { status: 500 });
   }

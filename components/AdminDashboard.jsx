@@ -1679,6 +1679,7 @@ export default function AdminDashboard({
                     <div className="flex items-center gap-2">
                       <span className={`w-2 h-2 rounded-full ${settings.popup?.is_active ? 'bg-emerald-400' : 'bg-slate-600'}`}></span>
                       <h3 className="text-xs font-semibold text-white">Entry Popup Modal</h3>
+                      <span className="px-1.5 py-0.2 rounded bg-slate-800 text-[10px] font-mono text-slate-400">Homepage Only</span>
                     </div>
                     <button
                       onClick={togglePopup}
@@ -1693,6 +1694,27 @@ export default function AdminDashboard({
                   </div>
 
                   <div className="space-y-3 text-xs">
+                    {/* Display Frequency Option */}
+                    <div>
+                      <label className="block text-slate-400 mb-1">Display Frequency</label>
+                      <select
+                        value={settings.popup?.frequency || (settings.popup?.show_once_per_session !== false ? 'once_per_session' : 'every_refresh')}
+                        onChange={(e) => setSettings(prev => ({
+                          ...prev,
+                          popup: {
+                            ...prev.popup,
+                            frequency: e.target.value,
+                            show_once_per_session: e.target.value === 'once_per_session'
+                          }
+                        }))}
+                        className="w-full px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-white outline-none"
+                      >
+                        <option value="once_per_session">Once Per Session (Remembers visitor during their stay)</option>
+                        <option value="every_refresh">Every Refresh (Always appear on homepage reload)</option>
+                      </select>
+                      <p className="text-[10px] text-slate-500 mt-0.5">Strictly limited to the homepage (/) — will never interrupt visitors on articles, skills, or projects.</p>
+                    </div>
+
                     <div>
                       <label className="block text-slate-400 mb-1">Popup Title</label>
                       <input
@@ -1703,24 +1725,98 @@ export default function AdminDashboard({
                           popup: { ...prev.popup, title: e.target.value }
                         }))}
                         className="w-full px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-white outline-none"
+                        placeholder="Welcome to Dipesh Sapkota's Portfolio"
                       />
                     </div>
+
                     <div>
-                      <label className="block text-slate-400 mb-1">Image URL</label>
-                      <input
-                        type="text"
-                        value={settings.popup?.image_url || ''}
+                      <label className="block text-slate-400 mb-1">Description</label>
+                      <textarea
+                        rows={2}
+                        value={settings.popup?.description || ''}
                         onChange={(e) => setSettings(prev => ({
                           ...prev,
-                          popup: { ...prev.popup, image_url: e.target.value }
+                          popup: { ...prev.popup, description: e.target.value }
                         }))}
-                        className="w-full px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-white outline-none font-mono"
-                        placeholder="/popup-image.webp"
+                        className="w-full px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-white outline-none"
+                        placeholder="Explore my latest software engineering projects and tools..."
                       />
                     </div>
+
+                    {/* Image with upload */}
+                    <div>
+                      <label className="block text-slate-400 mb-1">Popup Image (Auto-WebP)</label>
+                      <div className="flex items-center gap-2">
+                        <input
+                          type="text"
+                          value={settings.popup?.image_url || ''}
+                          onChange={(e) => setSettings(prev => ({
+                            ...prev,
+                            popup: { ...prev.popup, image_url: e.target.value }
+                          }))}
+                          className="flex-1 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-white outline-none font-mono"
+                          placeholder="/popup-image.webp"
+                        />
+                        <label className="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-lg cursor-pointer text-slate-200 font-medium whitespace-nowrap border border-slate-700 text-xs">
+                          <span>{uploadingMedia ? 'Uploading...' : 'Upload Image'}</span>
+                          <input
+                            type="file"
+                            accept="image/*"
+                            disabled={uploadingMedia}
+                            className="hidden"
+                            onChange={async (e) => {
+                              const f = e.target.files?.[0];
+                              if (f) {
+                                try {
+                                  notify('Compressing image to WebP and uploading...');
+                                  const uploadRes = await uploadFile(f);
+                                  setSettings(prev => ({
+                                    ...prev,
+                                    popup: { ...prev.popup, image_url: uploadRes.url }
+                                  }));
+                                  notify('Popup image uploaded and compressed');
+                                } catch (err) {
+                                  notify(err.message, 'error');
+                                }
+                              }
+                            }}
+                          />
+                        </label>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-2">
+                      <div>
+                        <label className="block text-slate-400 mb-1">Action Link</label>
+                        <input
+                          type="text"
+                          value={settings.popup?.link_url || ''}
+                          onChange={(e) => setSettings(prev => ({
+                            ...prev,
+                            popup: { ...prev.popup, link_url: e.target.value }
+                          }))}
+                          className="w-full px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-white outline-none font-mono"
+                          placeholder="/projects"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-slate-400 mb-1">Button Text</label>
+                        <input
+                          type="text"
+                          value={settings.popup?.link_text || ''}
+                          onChange={(e) => setSettings(prev => ({
+                            ...prev,
+                            popup: { ...prev.popup, link_text: e.target.value }
+                          }))}
+                          className="w-full px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-white outline-none"
+                          placeholder="Explore Projects"
+                        />
+                      </div>
+                    </div>
+
                     <button
                       onClick={() => saveSettingSection('popup', settings.popup)}
-                      className="px-4 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-xs"
+                      className="px-4 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-xs mt-2"
                     >
                       Save Popup Settings
                     </button>
@@ -1851,21 +1947,60 @@ export default function AdminDashboard({
 
               <div className="space-y-3">
                 {experiences.map((exp) => (
-                  <div key={exp.id || exp.title} className="bg-[#0F1422] border border-slate-800/80 p-4 rounded-xl flex items-start justify-between gap-3">
-                    <div className="space-y-1">
-                      <div className="flex items-center gap-2">
-                        <span className="px-1.5 py-0.2 rounded bg-slate-800 font-mono text-[9px] uppercase text-slate-400">{exp.type}</span>
-                        <h3 className="text-xs font-semibold text-white">{exp.title}</h3>
-                        <span className="text-[11px] text-slate-500">at {exp.organization}</span>
+                  <div key={exp.id || exp.title} className="bg-[#0F1422] border border-slate-800/80 p-4 rounded-xl flex items-start justify-between gap-3 hover:border-slate-700 transition-colors">
+                    <div className="flex items-start gap-3 flex-1 min-w-0">
+                      {(exp.logo || exp.img || exp.image) ? (
+                        <div className="relative w-10 h-10 rounded-lg overflow-hidden bg-slate-900 border border-slate-800 shrink-0">
+                          <Image
+                            src={exp.logo || exp.img || exp.image}
+                            alt={exp.organization || exp.title}
+                            fill
+                            unoptimized={Boolean((exp.logo || exp.img || exp.image)?.startsWith('http'))}
+                            className="object-contain p-1"
+                          />
+                        </div>
+                      ) : (
+                        <div className="w-10 h-10 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-[9px] text-slate-500 font-mono shrink-0">
+                          LOGO
+                        </div>
+                      )}
+                      <div className="space-y-1 min-w-0 flex-1">
+                        <div className="flex items-center gap-2">
+                          <span className="px-1.5 py-0.2 rounded bg-slate-800 font-mono text-[9px] uppercase text-slate-400">{exp.type}</span>
+                          <h3 className="text-xs font-semibold text-white truncate">{exp.title}</h3>
+                          <span className="text-[11px] text-slate-500 truncate">at {exp.organization}</span>
+                        </div>
+                        <div className="text-[10px] text-slate-500 font-mono">
+                          {exp.start_date || 'N/A'} – {exp.end_date || (exp.is_current ? 'Present' : 'N/A')} {exp.location ? `· ${exp.location}` : ''}
+                        </div>
+                        <p className="text-xs text-slate-400 line-clamp-2">{exp.description}</p>
                       </div>
-                      <p className="text-xs text-slate-400">{exp.description}</p>
                     </div>
-                    <button
-                      onClick={() => { setEditingItem(exp); setEditModalOpen(true); }}
-                      className="px-2.5 py-1 rounded bg-slate-800 text-emerald-400 text-xs font-medium shrink-0"
-                    >
-                      Edit
-                    </button>
+                    <div className="flex items-center gap-2 shrink-0">
+                      <button
+                        onClick={() => { setEditingItem(exp); setEditModalOpen(true); }}
+                        className="px-2.5 py-1 rounded bg-slate-800 text-emerald-400 text-xs font-medium"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => {
+                          setConfirmModal({
+                            open: true,
+                            title: 'Delete Experience',
+                            message: `Delete "${exp.title}"?`,
+                            onConfirm: async () => {
+                              if (exp.id) await fetch(`/api/admin/experience?id=${exp.id}`, { method: 'DELETE' });
+                              setExperiences(prev => prev.filter(x => x.id !== exp.id));
+                              notify('Experience entry deleted');
+                            }
+                          });
+                        }}
+                        className="px-2 py-1 rounded bg-rose-500/10 text-rose-400 text-xs hover:bg-rose-500/20"
+                      >
+                        Delete
+                      </button>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -2272,8 +2407,10 @@ export default function AdminDashboard({
                     value={editingItem?.title || ''}
                     onChange={(e) => setEditingItem(prev => ({ ...prev, title: e.target.value }))}
                     className="w-full px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-white outline-none"
+                    placeholder="e.g. Bachelor in Computer Engineering or Frontend Engineer"
                   />
                 </div>
+
                 <div className="grid grid-cols-2 gap-3">
                   <div>
                     <label className="block text-slate-400 mb-1">Organization / Campus</label>
@@ -2283,6 +2420,7 @@ export default function AdminDashboard({
                       value={editingItem?.organization || ''}
                       onChange={(e) => setEditingItem(prev => ({ ...prev, organization: e.target.value }))}
                       className="w-full px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-white outline-none"
+                      placeholder="IOE Thapathali Campus"
                     />
                   </div>
                   <div>
@@ -2297,6 +2435,91 @@ export default function AdminDashboard({
                     </select>
                   </div>
                 </div>
+
+                {/* Organization / Campus Image or Logo with Upload */}
+                <div>
+                  <label className="block text-slate-400 mb-1">Organization / Campus Logo</label>
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="text"
+                      value={editingItem?.logo || editingItem?.img || ''}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, logo: e.target.value }))}
+                      className="flex-1 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-white outline-none font-mono"
+                      placeholder="/thapathali.webp or https://..."
+                    />
+                    <label className="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-lg cursor-pointer text-slate-200 font-medium whitespace-nowrap border border-slate-700 text-xs">
+                      <span>{uploadingMedia ? 'Uploading...' : 'Upload Logo'}</span>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        disabled={uploadingMedia}
+                        className="hidden"
+                        onChange={async (e) => {
+                          const f = e.target.files?.[0];
+                          if (f) {
+                            try {
+                              notify('Compressing logo to WebP and uploading...');
+                              const uploadRes = await uploadFile(f);
+                              setEditingItem(prev => ({ ...prev, logo: uploadRes.url }));
+                              notify('Logo uploaded and compressed to .webp');
+                            } catch (err) {
+                              notify(err.message, 'error');
+                            }
+                          }
+                        }}
+                      />
+                    </label>
+                  </div>
+                  {(editingItem?.logo || editingItem?.img) && (
+                    <div className="mt-2 flex items-center gap-2 bg-slate-900/60 p-1.5 rounded-lg border border-slate-800/80">
+                      <div className="relative w-8 h-8 rounded-lg overflow-hidden bg-slate-950 border border-slate-800">
+                        <Image
+                          src={editingItem.logo || editingItem.img}
+                          alt="Logo Preview"
+                          fill
+                          unoptimized
+                          className="object-contain p-0.5"
+                        />
+                      </div>
+                      <span className="text-[10px] text-slate-400 font-mono truncate">{editingItem.logo || editingItem.img}</span>
+                    </div>
+                  )}
+                  <p className="text-[10px] text-slate-500 mt-1">Image will be automatically converted to lightweight WebP format.</p>
+                </div>
+
+                <div className="grid grid-cols-3 gap-3">
+                  <div>
+                    <label className="block text-slate-400 mb-1">Start Date</label>
+                    <input
+                      type="text"
+                      value={editingItem?.start_date || ''}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, start_date: e.target.value }))}
+                      className="w-full px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-white outline-none font-mono"
+                      placeholder="2025"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-slate-400 mb-1">End Date</label>
+                    <input
+                      type="text"
+                      value={editingItem?.end_date || ''}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, end_date: e.target.value }))}
+                      className="w-full px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-white outline-none font-mono"
+                      placeholder="Present"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-slate-400 mb-1">Location</label>
+                    <input
+                      type="text"
+                      value={editingItem?.location || ''}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, location: e.target.value }))}
+                      className="w-full px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-white outline-none"
+                      placeholder="Kathmandu, Nepal"
+                    />
+                  </div>
+                </div>
+
                 <div>
                   <label className="block text-slate-400 mb-1">Description</label>
                   <textarea
@@ -2304,11 +2527,13 @@ export default function AdminDashboard({
                     value={editingItem?.description || ''}
                     onChange={(e) => setEditingItem(prev => ({ ...prev, description: e.target.value }))}
                     className="w-full px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-white outline-none"
+                    placeholder="Key highlights, coursework, GPA, achievements..."
                   />
                 </div>
+
                 <div className="flex justify-end gap-2 pt-2 border-t border-slate-800">
                   <button type="button" onClick={() => setEditModalOpen(false)} className="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300">Cancel</button>
-                  <button type="submit" className="px-4 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold">Save</button>
+                  <button type="submit" className="px-4 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold">Save Entry</button>
                 </div>
               </form>
             )}

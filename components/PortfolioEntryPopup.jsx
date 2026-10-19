@@ -1,10 +1,13 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function PortfolioEntryPopup() {
+  const pathname = usePathname();
+
   const [popup, setPopup] = useState(() => {
     if (typeof window === 'undefined') return null;
     try {
@@ -16,10 +19,17 @@ export default function PortfolioEntryPopup() {
 
   const [isOpen, setIsOpen] = useState(() => {
     if (typeof window === 'undefined') return false;
+    // Popup should strictly ONLY ever display on the homepage ('/')
+    if (window.location.pathname !== '/') return false;
+
     try {
       const cached = localStorage.getItem('site_features_popup');
       if (cached) {
         const p = JSON.parse(cached);
+        const isOncePerSession = p?.frequency === 'once_per_session' || p?.show_once_per_session === true;
+        if (isOncePerSession && sessionStorage.getItem('portfolio_popup_seen') === 'true') {
+          return false;
+        }
         return Boolean(p?.is_active && p?.image_url);
       }
     } catch {}
@@ -27,6 +37,12 @@ export default function PortfolioEntryPopup() {
   });
 
   useEffect(() => {
+    // Strictly only check and show on the homepage ('/')
+    if (pathname !== '/') {
+      setIsOpen(false);
+      return;
+    }
+
     let mounted = true;
     async function checkPopup() {
       try {
@@ -42,7 +58,18 @@ export default function PortfolioEntryPopup() {
           } catch {}
 
           if (p.is_active && p.image_url) {
-            setIsOpen(true);
+            const isOncePerSession = p.frequency === 'once_per_session' || p.show_once_per_session === true;
+            if (isOncePerSession) {
+              const alreadySeen = sessionStorage.getItem('portfolio_popup_seen') === 'true';
+              if (!alreadySeen) {
+                setIsOpen(true);
+              } else {
+                setIsOpen(false);
+              }
+            } else {
+              // 'every_refresh' option: show on every homepage reload
+              setIsOpen(true);
+            }
           } else {
             setIsOpen(false);
           }
@@ -54,11 +81,15 @@ export default function PortfolioEntryPopup() {
 
     checkPopup();
     return () => { mounted = false; };
-  }, []);
+  }, [pathname]);
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setIsOpen(false);
-  };
+    try {
+      // Record session dismissal
+      sessionStorage.setItem('portfolio_popup_seen', 'true');
+    } catch {}
+  }, []);
 
   useEffect(() => {
     if (!isOpen) return undefined;
@@ -69,9 +100,12 @@ export default function PortfolioEntryPopup() {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen]);
+  }, [isOpen, handleClose]);
 
-  if (!isOpen || !popup) return null;
+  // Strictly do not render if not on homepage or not open or missing popup
+  if (pathname !== '/' || !isOpen || !popup || !popup.image_url) {
+    return null;
+  }
 
   return (
     <div 
@@ -92,7 +126,7 @@ export default function PortfolioEntryPopup() {
           aria-label="Close announcement modal"
           className="absolute top-3.5 right-3.5 z-20 w-8 h-8 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center backdrop-blur transition-all border border-white/20 active:scale-95"
         >
-          ✕
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
         </button>
 
         {/* Featured Popup Image */}
@@ -148,4 +182,3 @@ export default function PortfolioEntryPopup() {
     </div>
   );
 }
-

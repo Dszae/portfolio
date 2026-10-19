@@ -64,17 +64,17 @@ export default function ResumeClientView({ experiences = [], siteSettings = {}, 
                           
                           <div className={`p-6 rounded-2xl transition-all duration-200 border group-hover:shadow-md ${theme.card}`}>
                             <div className="flex items-center gap-4">
-                              {exp.logo && (
+                              {(exp.logo || exp.img || exp.image) && (
                                 <div className="flex-shrink-0 flex items-center justify-center">
                                   <Image
-                                    src={exp.logo} 
+                                    src={exp.logo || exp.img || exp.image} 
                                     alt={`${exp.organization || exp.company} logo`} 
                                     width="48"
                                     height="48"
                                     loading="lazy"
                                     decoding="async"
-                                    unoptimized={Boolean(exp.logo?.startsWith('http'))}
-                                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover" 
+                                    unoptimized={Boolean((exp.logo || exp.img || exp.image)?.startsWith('http'))}
+                                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl object-contain bg-white/5 p-1 border border-slate-200 dark:border-slate-800" 
                                     onError={(e) => { e.target.style.display = 'none'; }}
                                   />
                                 </div>
@@ -110,17 +110,17 @@ export default function ResumeClientView({ experiences = [], siteSettings = {}, 
                           
                           <div className={`p-6 rounded-2xl transition-all duration-200 border group-hover:shadow-md ${theme.card}`}>
                             <div className="flex items-center gap-4">
-                              {edu.logo && (
+                              {(edu.logo || edu.img || edu.image) && (
                                 <div className="flex-shrink-0 flex items-center justify-center">
                                   <Image
-                                    src={edu.logo} 
+                                    src={edu.logo || edu.img || edu.image} 
                                     alt={`${edu.organization || edu.school} logo`} 
                                     width="48"
                                     height="48"
                                     loading="lazy"
                                     decoding="async"
-                                    unoptimized={Boolean(edu.logo?.startsWith('http'))}
-                                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover" 
+                                    unoptimized={Boolean((edu.logo || edu.img || edu.image)?.startsWith('http'))}
+                                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl object-contain bg-white/5 p-1 border border-slate-200 dark:border-slate-800" 
                                     onError={(e) => { e.target.style.display = 'none'; }}
                                   />
                                 </div>
