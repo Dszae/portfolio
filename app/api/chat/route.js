@@ -18,6 +18,15 @@ export async function GET(request) {
   const openAiKey = (process.env.OPENAI_API_KEY || '').replace(/['"]/g, '').trim();
   const geminiKey = (process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY || '').replace(/['"]/g, '').trim();
   const urlObj = new URL(request.url);
+  if (urlObj.searchParams.get('test') === 'list') {
+    try {
+      const listRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${geminiKey}`);
+      const listData = await listRes.json();
+      return NextResponse.json({ test: 'list', status: listRes.status, models: listData.models?.map(m => ({ name: m.name, supportedGenerationMethods: m.supportedGenerationMethods })) });
+    } catch (e) {
+      return NextResponse.json({ test: 'list', error: e.message });
+    }
+  }
   if (urlObj.searchParams.get('test') === '1') {
     const model = urlObj.searchParams.get('m') || 'gemini-3.8-flash';
     const unaryUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${geminiKey}`;
