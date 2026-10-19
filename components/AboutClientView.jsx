@@ -7,7 +7,7 @@ import FadeUp from './FadeUp';
 import BreadcrumbJsonLd from './BreadcrumbJsonLd';
 import PagePagination from './PagePagination';
 
-export default function AboutClientView({ siteSettings = {}, jsonLd = null }) {
+export default function AboutClientView({ siteSettings = {}, jsonLd = null, pageTitle = "About", breadcrumbItems = null }) {
   const profile = siteSettings.profile || {};
   const headline = profile.headline || "Bridging Logic and Visual Execution";
   const bio = profile.bio || "Hello! I am Dipesh Sapkota, a dedicated Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal. As an AI and ML enthusiast, I am deeply invested in exploring intelligent systems, analyzing algorithms, and architecting embedded hardware solutions. My technical foundation is built on rigorous academic training and a continuous drive to solve complex computational challenges.";
@@ -15,11 +15,16 @@ export default function AboutClientView({ siteSettings = {}, jsonLd = null }) {
   const yearsExp = profile.years_experience || "4+";
   const clientsCount = profile.clients_count || "50+";
 
+  const effectiveBreadcrumbs = breadcrumbItems || [
+    { name: 'Home', path: '/' },
+    { name: pageTitle, path: pageTitle.toLowerCase() === 'profile' ? '/profile' : '/about' }
+  ];
+
   return (
     <SiteLayout>
       {({ theme }) => (
         <>
-          <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'About', path: '/about' }]} />
+          <BreadcrumbJsonLd items={effectiveBreadcrumbs} />
           {jsonLd && (
             <script
               type="application/ld+json"
@@ -28,10 +33,10 @@ export default function AboutClientView({ siteSettings = {}, jsonLd = null }) {
           )}
 
           <FadeUp>
-            <section id="about" className={`pt-28 sm:pt-32 pb-24 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
+            <section id={pageTitle.toLowerCase() === 'profile' ? 'profile' : 'about'} className={`pt-28 sm:pt-32 pb-24 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
               <div className="max-w-7xl mx-auto w-full">
                 <h1 className="text-3xl sm:text-4xl font-bold mb-12 flex items-center gap-4 text-[#0F172A] dark:text-[#F9FAFB]">
-                  <span className="text-[#065F46] dark:text-[#34D399]">/</span> About
+                  <span className="text-[#065F46] dark:text-[#34D399]">/</span> {pageTitle}
                 </h1>
                 <div className="grid md:grid-cols-12 gap-8 items-center">
                   

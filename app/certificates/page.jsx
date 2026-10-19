@@ -1,26 +1,22 @@
 import React from 'react';
 import { siteUrl, personId, websiteId } from '@/components/JsonLdSchema';
-import { getCertificates } from '@/lib/dataService';
+import { getCertificates, getSiteSettings } from '@/lib/dataService';
 import CertificatesClientView from '@/components/CertificatesClientView';
+import { generatePageMetadata } from '@/lib/seoEngine';
 
-export const metadata = {
-  title: 'Certificates & Credentials',
-  description: 'Verified professional certifications of Dipesh Sapkota from Udemy, Blackmagic Design, and EDUCBA in Graphic Design, Motion Design, Color Correction, Premiere Pro, and Web Development.',
-  alternates: { canonical: '/certificates' },
-  openGraph: {
-    type: 'website',
-    title: 'Certificates & Credentials | Dipesh Sapkota',
-    description: 'Verified professional certifications of Dipesh Sapkota across graphic design, motion design, DaVinci Resolve color science, and software engineering.',
-    url: 'https://www.dipeshsapkota7.com.np/certificates',
-    images: [{ url: '/dipesh-sapkota.jpg', width: 627, height: 627, alt: 'Certificates of Dipesh Sapkota' }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Certificates & Credentials | Dipesh Sapkota',
-    description: 'Verified technical certifications in design, color science, and engineering by Dipesh Sapkota (dszae).',
-    images: ['/dipesh-sapkota.jpg'],
-  },
-};
+export const revalidate = 60;
+
+export async function generateMetadata() {
+  const siteSettings = await getSiteSettings();
+  const profile = siteSettings?.profile || {};
+  const name = profile.name || 'Dipesh Sapkota';
+
+  return await generatePageMetadata({
+    title: `Certificates & Credentials | ${name}`,
+    description: `Verified professional certifications of ${name} across graphic design, motion design, DaVinci Resolve color science, and software engineering.`,
+    path: '/certificates',
+  });
+}
 
 export default async function CertificatesPage() {
   const certificates = await getCertificates();
@@ -31,7 +27,7 @@ export default async function CertificatesPage() {
     '@id': `${siteUrl}/certificates#certificatespage`,
     url: `${siteUrl}/certificates`,
     name: 'Certificates | Dipesh Sapkota',
-    description: 'Verified professional certifications of Dipesh Sapkota from Udemy, Blackmagic Design, and EDUCBA in Graphic Design, Motion Design, Color Correction, Premiere Pro, and Web Development.',
+    description: 'Verified professional certifications of Dipesh Sapkota from Udemy, Blackmagic Design, and EDUCBA across Graphic Design, Motion Design, Color Correction, Premiere Pro, and Software Engineering.',
     about: { '@id': personId },
     isPartOf: {
       '@type': 'WebSite',

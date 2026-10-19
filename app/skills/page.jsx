@@ -1,29 +1,32 @@
-import { getSkills } from '@/lib/dataService';
+import { getSkills, getSiteSettings } from '@/lib/dataService';
 import SkillsClientView from '@/components/SkillsClientView';
 import { siteUrl, personId, websiteId } from '@/components/JsonLdSchema';
+import { generatePageMetadata } from '@/lib/seoEngine';
 
 export const revalidate = 60;
 
-export const metadata = {
-  title: "Skills",
-  description: "Technical competencies of Dipesh Sapkota across programming (C/C++, Python, React, PHP), creative media (video editing, motion graphics, graphic design), and engineering (circuit analysis, Proteus).",
-  alternates: { canonical: '/skills' },
-  openGraph: {
-    type: 'website',
-    title: 'Skills - Dipesh Sapkota',
-    description: 'Technical competencies of Dipesh Sapkota across programming, creative media, and engineering.',
-    url: 'https://www.dipeshsapkota7.com.np/skills',
-    images: [{ url: '/dipesh-sapkota.jpg', width: 627, height: 627, alt: 'Dipesh Sapkota' }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Skills - Dipesh Sapkota',
-    description: 'Technical competencies of Dipesh Sapkota across programming, creative media, and engineering.',
-    images: ['/dipesh-sapkota.jpg'],
-    creator: '@DszAe18',
-    site: '@DszAe18',
-  },
-};
+export async function generateMetadata() {
+  const siteSettings = await getSiteSettings();
+  const profile = siteSettings?.profile || {};
+  const name = profile.name || 'Dipesh Sapkota';
+
+  return await generatePageMetadata({
+    title: `Skills & Technical Competencies | ${name}`,
+    description: `Technical competencies of ${name} across Computer Engineering, AI/ML exploration, hardware simulation (Proteus), programming (Python, C/C++, React, PHP), and motion graphics.`,
+    path: '/skills',
+    keywords: [
+      'Computer Engineering Skills',
+      'AI ML Enthusiast',
+      'Python Programming',
+      'C C++',
+      'React Next.js',
+      'Proteus Circuit Simulation',
+      'Video Editing Motion Graphics',
+      'After Effects Premiere Pro',
+      'DaVinci Resolve',
+    ],
+  });
+}
 
 const skillsPageJsonLd = {
   '@context': 'https://schema.org',

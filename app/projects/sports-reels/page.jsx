@@ -48,6 +48,35 @@ export default function SportsReelsProjectPage() {
     datePublished: '2024-12-01T00:00:00+05:45',
     dateModified: '2026-10-17T00:00:00+05:45',
     sameAs: 'https://instagram.com/dsz.ae',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name: 'Sports Reels & Motion Design Showcase',
+    description: 'A showcase of high-energy sports edits, kinetic motion typography, and speed-ramp workflows by Dipesh Sapkota.',
+    thumbnailUrl: ['https://www.dipeshsapkota7.com.np/instagram-videos.png'],
+    uploadDate: '2024-12-01T00:00:00+05:45',
+    contentUrl: 'https://instagram.com/dsz.ae',
+    embedUrl: 'https://www.dipeshsapkota7.com.np/projects/sports-reels',
+    inLanguage: 'en',
+    author: {
+      '@type': 'Person',
+      name: 'Dipesh Sapkota',
+      url: 'https://www.dipeshsapkota7.com.np/',
+    },
+    creator: {
+      '@type': 'Person',
+      name: 'Dipesh Sapkota',
+      url: 'https://www.dipeshsapkota7.com.np/',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Dipesh Sapkota',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://www.dipeshsapkota7.com.np/dipesh-sapkota.jpg',
+      },
+    },
   }];
 
   return (

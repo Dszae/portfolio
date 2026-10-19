@@ -136,13 +136,23 @@ export async function GET() {
 
   const projectPages = projects
     .filter(p => p.status === 'published' || !p.status)
-    .map(p => ({
-      loc: `${SITE_URL}/projects/${p.slug || p.id}`,
-      priority: p.featured ? '0.90' : '0.80',
-      changefreq: 'monthly',
-      lastmod: (p.updated_at || p.created_at || today).split('T')[0],
-      images: p.img ? [{ path: toAbsoluteUrl(p.img), title: p.title }] : [],
-    }));
+    .map(p => {
+      const isVideoProject = p.slug === 'sports-reels' || (p.category || '').toLowerCase().includes('video') || (p.category_label || '').toLowerCase().includes('video');
+      return {
+        loc: `${SITE_URL}/projects/${p.slug || p.id}`,
+        priority: p.featured ? '0.90' : '0.80',
+        changefreq: 'monthly',
+        lastmod: (p.updated_at || p.created_at || today).split('T')[0],
+        images: p.img ? [{ path: toAbsoluteUrl(p.img), title: p.title }] : [],
+        videos: isVideoProject ? [{
+          thumbnail_loc: toAbsoluteUrl(p.img || '/instagram-videos.png'),
+          title: p.title || 'Sports Reels & Motion Design',
+          description: p.description || 'Short-form sports edits, kinetic motion typography, and video storytelling by Dipesh Sapkota.',
+          player_loc: `${SITE_URL}/projects/${p.slug || p.id}`,
+          publication_date: (p.created_at || '2024-12-01T00:00:00+05:45').split('T')[0],
+        }] : [],
+      };
+    });
 
   const articlePages = articles
     .filter(a => a.status === 'published' || !a.status)
@@ -162,16 +172,21 @@ export async function GET() {
 
   const allUrls = [...corePages, ...projectPages, ...articlePages, ...externalSubdomains];
 
-  const xmlEntries = allUrls.map(({ loc, priority, changefreq, lastmod, images = [] }) => {
+  const xmlEntries = allUrls.map(({ loc, priority, changefreq, lastmod, images = [], videos = [] }) => {
     const imageTags = images
       .filter(img => img.path)
       .map(img => `<image:image><image:loc>${escapeXml(img.path)}</image:loc><image:title>${escapeXml(img.title || 'Image')}</image:title></image:image>`)
       .join('');
 
-    return `<url><loc>${escapeXml(loc)}</loc><lastmod>${lastmod || today}</lastmod><changefreq>${changefreq || 'weekly'}</changefreq><priority>${priority || '0.7'}</priority>${imageTags}</url>`;
+    const videoTags = videos
+      .filter(v => v.thumbnail_loc)
+      .map(v => `<video:video><video:thumbnail_loc>${escapeXml(v.thumbnail_loc)}</video:thumbnail_loc><video:title>${escapeXml(v.title)}</video:title><video:description>${escapeXml(v.description)}</video:description><video:player_loc>${escapeXml(v.player_loc)}</video:player_loc><video:publication_date>${escapeXml(v.publication_date)}</video:publication_date><video:family_friendly>yes</video:family_friendly></video:video>`)
+      .join('');
+
+    return `<url><loc>${escapeXml(loc)}</loc><lastmod>${lastmod || today}</lastmod><changefreq>${changefreq || 'weekly'}</changefreq><priority>${priority || '0.7'}</priority>${imageTags}${videoTags}</url>`;
   }).join('');
 
-  const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">${xmlEntries}</urlset>`;
+  const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">${xmlEntries}</urlset>`;
 
   return new Response(sitemapXml, {
     headers: {

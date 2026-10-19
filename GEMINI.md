@@ -24,3 +24,4 @@
 ## Formatting Constraints
 - **Zero Emojis**: Never use emojis anywhere in UI text, notifications, meta content, commit messages, or assistant responses.
 - **Tone**: Concise, direct, technical, and objective.
+

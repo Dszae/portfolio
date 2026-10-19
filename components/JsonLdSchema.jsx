@@ -79,6 +79,14 @@ export const website = {
   image: portraitImage,
   publisher: person,
   inLanguage: 'en',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${siteUrl}/projects?q={search_term_string}`,
+    },
+    'query-input': 'required name=search_term_string',
+  },
   hasPart: [
     {
       '@type': 'WebPage',
@@ -86,6 +94,13 @@ export const website = {
       name: 'About',
       description: 'Academic background, journey, and technical focus of Dipesh Sapkota at IOE Thapathali Campus.',
       url: `${siteUrl}/about`,
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${siteUrl}/profile`,
+      name: 'Profile',
+      description: 'Verified public profile, credentials, and biographical records of Dipesh Sapkota.',
+      url: `${siteUrl}/profile`,
     },
     {
       '@type': 'WebPage',
@@ -165,6 +180,7 @@ export const homePageSchema = {
       name: 'Main portfolio navigation',
       hasPart: [
         { '@type': 'WebPage', name: 'About', description: 'Academic background, journey, and technical focus of Dipesh Sapkota.', url: `${siteUrl}/about` },
+        { '@type': 'WebPage', name: 'Profile', description: 'Verified public profile, credentials, and biographical records of Dipesh Sapkota.', url: `${siteUrl}/profile` },
         { '@type': 'WebPage', name: 'Skills', description: 'Programming languages, tools, frameworks, and engineering competencies.', url: `${siteUrl}/skills` },
         { '@type': 'WebPage', name: 'Projects', description: 'Featured software systems, open-source projects, and engineering tools.', url: `${siteUrl}/projects` },
         { '@type': 'WebPage', name: 'Articles', description: 'In-depth software engineering write-ups and architectural breakdowns.', url: `${siteUrl}/blog` },
@@ -195,6 +211,18 @@ export const homePageSchema = {
         {
           '@type': 'ListItem',
           position: 2,
+          name: 'Profile',
+          item: {
+            '@type': 'WebPage',
+            '@id': `${siteUrl}/profile`,
+            name: 'Profile',
+            url: `${siteUrl}/profile`,
+            description: 'Verified public profile, credentials, and biographical records of Dipesh Sapkota.',
+          },
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
           name: 'Skills',
           item: {
             '@type': 'WebPage',
@@ -206,7 +234,7 @@ export const homePageSchema = {
         },
         {
           '@type': 'ListItem',
-          position: 3,
+          position: 4,
           name: 'Projects',
           item: {
             '@type': 'WebPage',
@@ -218,7 +246,7 @@ export const homePageSchema = {
         },
         {
           '@type': 'ListItem',
-          position: 4,
+          position: 5,
           name: 'Articles',
           item: {
             '@type': 'WebPage',
@@ -230,7 +258,7 @@ export const homePageSchema = {
         },
         {
           '@type': 'ListItem',
-          position: 5,
+          position: 6,
           name: 'Certificates',
           item: {
             '@type': 'WebPage',
@@ -242,7 +270,7 @@ export const homePageSchema = {
         },
         {
           '@type': 'ListItem',
-          position: 6,
+          position: 7,
           name: 'Resume',
           item: {
             '@type': 'WebPage',
@@ -254,7 +282,7 @@ export const homePageSchema = {
         },
         {
           '@type': 'ListItem',
-          position: 7,
+          position: 8,
           name: 'Gallery',
           item: {
             '@type': 'WebPage',
@@ -266,7 +294,7 @@ export const homePageSchema = {
         },
         {
           '@type': 'ListItem',
-          position: 8,
+          position: 9,
           name: 'Contact',
           item: {
             '@type': 'WebPage',

@@ -25,7 +25,12 @@ export default async function ProfilePage() {
   return (
     <AboutClientView 
       siteSettings={siteSettings} 
-      jsonLd={jsonLd} 
+      jsonLd={jsonLd}
+      pageTitle="Profile"
+      breadcrumbItems={[
+        { name: 'Home', path: '/' },
+        { name: 'Profile', path: '/profile' }
+      ]}
     />
   );
 }

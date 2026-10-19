@@ -11,3 +11,4 @@ description: Strict persona, identity, and title guidelines for Dipesh Sapkota
   - This rule applies unconditionally to SEO, JSON-LD schemas, page copy, documentation, commit messages, and assistant dialogue.
 - **Approved Tagline**: `Computer Engineering Student · AI/ML Enthusiast · Motion Designer`
 - **Formatting**: Zero emojis in all outputs.
+

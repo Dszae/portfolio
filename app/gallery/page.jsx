@@ -1,26 +1,22 @@
 import React from 'react';
 import { siteUrl, personId, websiteId } from '@/components/JsonLdSchema';
-import { getGalleryImages } from '@/lib/dataService';
+import { getGalleryImages, getSiteSettings } from '@/lib/dataService';
 import GalleryClientView from '@/components/GalleryClientView';
+import { generatePageMetadata } from '@/lib/seoEngine';
 
-export const metadata = {
-  title: 'Gallery & Visual Archive',
-  description: 'Curated photo archive and visual moments documenting campus life at IOE Thapathali, tech exhibitions like Yathartha, and creative projects by Dipesh Sapkota.',
-  alternates: { canonical: '/gallery' },
-  openGraph: {
-    type: 'website',
-    title: 'Visual Archive & Photo Gallery | Dipesh Sapkota',
-    description: 'Campus life at IOE Thapathali, national tech exhibitions, cricket tournaments, and creative media moments by Dipesh Sapkota.',
-    url: 'https://www.dipeshsapkota7.com.np/gallery',
-    images: [{ url: '/dipesh-sapkota.jpg', width: 627, height: 627, alt: 'Dipesh Sapkota' }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Gallery | Dipesh Sapkota',
-    description: 'Campus moments, tech events, and visual storytelling by Dipesh Sapkota (dszae).',
-    images: ['/dipesh-sapkota.jpg'],
-  },
-};
+export const revalidate = 60;
+
+export async function generateMetadata() {
+  const siteSettings = await getSiteSettings();
+  const profile = siteSettings?.profile || {};
+  const name = profile.name || 'Dipesh Sapkota';
+
+  return await generatePageMetadata({
+    title: `Visual Archive & Photo Gallery | ${name}`,
+    description: `Curated photo archive and visual moments documenting campus life at IOE Thapathali, technical exhibitions like Yathartha, cricket tournaments, and creative media moments by ${name}.`,
+    path: '/gallery',
+  });
+}
 
 export default async function GalleryPage() {
   const gallery = await getGalleryImages();
