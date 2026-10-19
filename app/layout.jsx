@@ -136,7 +136,7 @@ export const metadata = {
 };
 
 export const viewport = {
-  themeColor: '#090B0E',
+  themeColor: '#F8FAFC',
   colorScheme: 'light dark',
 };
 
@@ -152,7 +152,7 @@ export default function RootLayout({ children }) {
               (function() {
                 try {
                   var stored = localStorage.getItem('theme');
-                  var isDark = stored !== null ? stored === 'dark' : false;
+                  var isDark = stored === 'dark';
                   if (isDark) {
                     document.documentElement.classList.add('dark');
                   } else {

@@ -74,10 +74,10 @@ export default function RollingAnnouncement({ onVisibilityChange }) {
         )}
 
         {/* Rolling marquee text track */}
-        <div className="flex-1 overflow-hidden relative group cursor-pointer whitespace-nowrap">
-          <div className={`${speedClass} items-center gap-6 group-hover:[animation-play-state:paused]`}>
-            {[0, 1, 2, 3].map((idx) => (
-              <span key={idx} className="inline-flex items-center gap-3">
+        <div className="flex-1 overflow-hidden relative whitespace-nowrap">
+          <div className={`${speedClass} items-center gap-6 min-w-max`}>
+            {[0, 1, 2, 3, 4, 5].map((idx) => (
+              <span key={idx} className="inline-flex items-center gap-3 pr-6">
                 <span className="font-medium tracking-wide text-slate-200">
                   {feature.message}
                 </span>

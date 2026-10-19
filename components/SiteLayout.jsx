@@ -341,8 +341,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
     try {
       document.documentElement.style.removeProperty('background-color');
       const stored = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const isDarkActive = stored !== null ? stored === 'dark' : prefersDark;
+      const isDarkActive = stored === 'dark';
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsDark(isDarkActive);
       if (isDarkActive) {

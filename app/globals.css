@@ -1380,9 +1380,9 @@ button:hover .smooth-img-zoom {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *:not(.animate-ticker):not(.animate-ticker-slow):not(.animate-ticker-fast),
+  *:not(.animate-ticker):not(.animate-ticker-slow):not(.animate-ticker-fast)::before,
+  *:not(.animate-ticker):not(.animate-ticker-slow):not(.animate-ticker-fast)::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
@@ -1391,18 +1391,32 @@ button:hover .smooth-img-zoom {
 }
 
 /* Continuous Top Rolling Announcement Marquee */
-@keyframes marquee-scroll {
+@-webkit-keyframes marquee-scroll {
   0% {
-    transform: translateX(0%);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    transform: translateX(-50%);
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes marquee-scroll {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
 .animate-ticker {
   display: inline-flex;
   white-space: nowrap;
+  -webkit-animation: marquee-scroll 28s linear infinite;
   animation: marquee-scroll 28s linear infinite;
   will-change: transform;
 }
@@ -1410,6 +1424,7 @@ button:hover .smooth-img-zoom {
 .animate-ticker-slow {
   display: inline-flex;
   white-space: nowrap;
+  -webkit-animation: marquee-scroll 45s linear infinite;
   animation: marquee-scroll 45s linear infinite;
   will-change: transform;
 }
@@ -1417,13 +1432,18 @@ button:hover .smooth-img-zoom {
 .animate-ticker-fast {
   display: inline-flex;
   white-space: nowrap;
+  -webkit-animation: marquee-scroll 16s linear infinite;
   animation: marquee-scroll 16s linear infinite;
   will-change: transform;
 }
 
-.animate-ticker:hover,
-.animate-ticker-slow:hover,
-.animate-ticker-fast:hover {
-  animation-play-state: paused;
+/* Only pause on hover when pointer is a fine mouse (desktop), not on mobile touch */
+@media (hover: hover) and (pointer: fine) {
+  .animate-ticker:hover,
+  .animate-ticker-slow:hover,
+  .animate-ticker-fast:hover {
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused;
+  }
 }
 
