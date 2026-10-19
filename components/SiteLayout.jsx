@@ -247,6 +247,7 @@ function LightboxModal({ image, onClose }) {
             sizes="(max-width: 640px) 98vw, (max-width: 1280px) 95vw, 1280px"
             loading="eager" 
             priority
+            unoptimized={Boolean(currentItem?.src?.startsWith('http'))}
             onLoad={() => setImageLoaded(true)}
             className={`object-contain p-2 sm:p-4 block transition-all duration-300 ease-out ${
               imageLoaded ? 'opacity-100' : 'opacity-0'

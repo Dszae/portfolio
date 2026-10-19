@@ -10,9 +10,9 @@ const contentSecurityPolicy = [
   `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === 'development' ? " 'unsafe-eval'" : ''} https://static.cloudflareinsights.com https://www.googletagmanager.com`,
   "script-src-attr 'none'",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob: https://www.google-analytics.com",
+  "img-src 'self' data: blob: https://www.google-analytics.com https://*.supabase.co https://tihkvcybdvvovmnvkdrx.supabase.co",
   "font-src 'self' data:",
-  "connect-src 'self' https://api.web3forms.com https://cloudflareinsights.com https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com",
+  "connect-src 'self' https://api.web3forms.com https://cloudflareinsights.com https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://*.supabase.co https://tihkvcybdvvovmnvkdrx.supabase.co",
   "manifest-src 'self'",
   "worker-src 'self' blob:",
   'upgrade-insecure-requests',
@@ -20,6 +20,14 @@ const contentSecurityPolicy = [
 
 const nextConfig = {
   trailingSlash: false,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.supabase.co',
+      },
+    ],
+  },
   turbopack: {
     root: path.resolve(process.cwd()),
   },

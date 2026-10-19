@@ -34,6 +34,7 @@ export default function AdminDashboard({
   const [certificates, setCertificates] = useState(initialCertificates);
   const [gallery, setGallery] = useState(initialGallery);
   const [projects, setProjects] = useState(initialProjects);
+  const [articles, setArticles] = useState(initialArticles);
   const [skills, setSkills] = useState(initialSkills);
   const [experiences, setExperiences] = useState(initialExperiences);
   const [settings, setSettings] = useState(initialSettings);
@@ -152,12 +153,13 @@ export default function AdminDashboard({
   // Real Navigation Sections Matching dipeshsapkota7.com.np
   const navItems = [
     { id: 'overview', label: 'Executive Overview', badge: 'Live', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' },
-    { id: 'certificates', label: 'Certificates (/certificates)', count: certificates.length, icon: 'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z' },
-    { id: 'gallery', label: 'Photo Gallery (/gallery)', count: gallery.length, icon: 'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z' },
-    { id: 'projects', label: 'Projects Showcase (/projects)', count: projects.length, icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10' },
+    { id: 'profile', label: 'About & Profile (/about)', icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z' },
     { id: 'skills', label: 'Technical Skills (/skills)', count: skills.length, icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4' },
-    { id: 'experience', label: 'Education & Career (/resume)', count: experiences.length, icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' },
-    { id: 'profile', label: 'Profile & Availability (/about)', icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z' },
+    { id: 'projects', label: 'Projects Showcase (/projects)', count: projects.length, icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10' },
+    { id: 'articles', label: 'Articles & Blog (/blog)', count: articles.length, icon: 'M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z' },
+    { id: 'certificates', label: 'Certificates (/certificates)', count: certificates.length, icon: 'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z' },
+    { id: 'experience', label: 'Resume & Career (/resume)', count: experiences.length, icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' },
+    { id: 'gallery', label: 'Photo Gallery (/gallery)', count: gallery.length, icon: 'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z' },
     { id: 'inbox', label: 'Contact Inquiries (/contact)', count: messages.filter(m => !m.is_read).length, highlight: true, icon: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' },
     { id: 'media', label: 'Media Bucket (Storage)', icon: 'M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12' },
     { id: 'seo', label: 'SEO & Google Sitelinks', badge: '100%', icon: 'M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' },
@@ -342,27 +344,37 @@ export default function AdminDashboard({
                 </div>
               </div>
 
-              {/* Real Content Counters */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                <div onClick={() => setActiveTab('certificates')} className="bg-[#0E131F] border border-slate-800 p-4 rounded-2xl hover:border-emerald-500/40 cursor-pointer transition-all">
-                  <div className="text-xs text-slate-400 font-medium">Certificates</div>
-                  <div className="text-3xl font-bold text-white mt-1">{certificates.length}</div>
-                  <div className="text-[11px] text-emerald-400 mt-1">Manage /certificates →</div>
+              {/* Real Content Counters Matching All Sections */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+                <div onClick={() => setActiveTab('projects')} className="bg-[#0E131F] border border-slate-800 p-3.5 rounded-2xl hover:border-emerald-500/40 cursor-pointer transition-all">
+                  <div className="text-[11px] text-slate-400 font-medium truncate">Projects</div>
+                  <div className="text-2xl font-bold text-white mt-1">{projects.length}</div>
+                  <div className="text-[10px] text-emerald-400 mt-1 truncate">/projects →</div>
                 </div>
-                <div onClick={() => setActiveTab('gallery')} className="bg-[#0E131F] border border-slate-800 p-4 rounded-2xl hover:border-emerald-500/40 cursor-pointer transition-all">
-                  <div className="text-xs text-slate-400 font-medium">Gallery Photos</div>
-                  <div className="text-3xl font-bold text-white mt-1">{gallery.length}</div>
-                  <div className="text-[11px] text-emerald-400 mt-1">Manage /gallery →</div>
+                <div onClick={() => setActiveTab('articles')} className="bg-[#0E131F] border border-slate-800 p-3.5 rounded-2xl hover:border-emerald-500/40 cursor-pointer transition-all">
+                  <div className="text-[11px] text-slate-400 font-medium truncate">Articles</div>
+                  <div className="text-2xl font-bold text-white mt-1">{articles.length}</div>
+                  <div className="text-[10px] text-emerald-400 mt-1 truncate">/blog →</div>
                 </div>
-                <div onClick={() => setActiveTab('projects')} className="bg-[#0E131F] border border-slate-800 p-4 rounded-2xl hover:border-emerald-500/40 cursor-pointer transition-all">
-                  <div className="text-xs text-slate-400 font-medium">Showcase Projects</div>
-                  <div className="text-3xl font-bold text-white mt-1">{projects.length}</div>
-                  <div className="text-[11px] text-emerald-400 mt-1">Manage /projects →</div>
+                <div onClick={() => setActiveTab('certificates')} className="bg-[#0E131F] border border-slate-800 p-3.5 rounded-2xl hover:border-emerald-500/40 cursor-pointer transition-all">
+                  <div className="text-[11px] text-slate-400 font-medium truncate">Certificates</div>
+                  <div className="text-2xl font-bold text-white mt-1">{certificates.length}</div>
+                  <div className="text-[10px] text-emerald-400 mt-1 truncate">/certificates →</div>
                 </div>
-                <div onClick={() => setActiveTab('skills')} className="bg-[#0E131F] border border-slate-800 p-4 rounded-2xl hover:border-emerald-500/40 cursor-pointer transition-all">
-                  <div className="text-xs text-slate-400 font-medium">Technical Skills</div>
-                  <div className="text-3xl font-bold text-white mt-1">{skills.length}</div>
-                  <div className="text-[11px] text-emerald-400 mt-1">Manage /skills →</div>
+                <div onClick={() => setActiveTab('skills')} className="bg-[#0E131F] border border-slate-800 p-3.5 rounded-2xl hover:border-emerald-500/40 cursor-pointer transition-all">
+                  <div className="text-[11px] text-slate-400 font-medium truncate">Skills</div>
+                  <div className="text-2xl font-bold text-white mt-1">{skills.length}</div>
+                  <div className="text-[10px] text-emerald-400 mt-1 truncate">/skills →</div>
+                </div>
+                <div onClick={() => setActiveTab('gallery')} className="bg-[#0E131F] border border-slate-800 p-3.5 rounded-2xl hover:border-emerald-500/40 cursor-pointer transition-all">
+                  <div className="text-[11px] text-slate-400 font-medium truncate">Gallery</div>
+                  <div className="text-2xl font-bold text-white mt-1">{gallery.length}</div>
+                  <div className="text-[10px] text-emerald-400 mt-1 truncate">/gallery →</div>
+                </div>
+                <div onClick={() => setActiveTab('inbox')} className="bg-[#0E131F] border border-slate-800 p-3.5 rounded-2xl hover:border-emerald-500/40 cursor-pointer transition-all">
+                  <div className="text-[11px] text-slate-400 font-medium truncate">Inquiries</div>
+                  <div className="text-2xl font-bold text-white mt-1">{messages.length}</div>
+                  <div className="text-[10px] text-emerald-400 mt-1 truncate">/contact →</div>
                 </div>
               </div>
 
@@ -416,7 +428,7 @@ export default function AdminDashboard({
                   <div key={cert.id} className="bg-[#0E131F] border border-slate-800 rounded-2xl overflow-hidden flex flex-col justify-between hover:border-emerald-500/40 transition-all">
                     <div className="relative aspect-video w-full bg-slate-900">
                       {cert.img ? (
-                        <Image src={cert.img} alt={cert.title} fill className="object-cover" />
+                        <Image src={cert.img} alt={cert.title} fill unoptimized={Boolean(cert.img?.startsWith('http'))} className="object-cover" />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center text-xs text-slate-500">No Image</div>
                       )}
@@ -597,7 +609,7 @@ export default function AdminDashboard({
                   <div key={item.id} className="bg-[#0E131F] border border-slate-800 rounded-2xl overflow-hidden hover:border-emerald-500/40 transition-all flex flex-col justify-between">
                     <div className="relative aspect-video w-full bg-slate-900">
                       {item.img ? (
-                        <Image src={item.img} alt={item.alt || item.title} fill className="object-cover" />
+                        <Image src={item.img} alt={item.alt || item.title} fill unoptimized={Boolean(item.img?.startsWith('http'))} className="object-cover" />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center text-xs text-slate-500">No Preview</div>
                       )}
@@ -821,6 +833,157 @@ export default function AdminDashboard({
           )}
 
           {/* ============================================================== */}
+          {/* TAB: ARTICLES & BLOG MANAGEMENT */}
+          {/* ============================================================== */}
+          {activeTab === 'articles' && (
+            <div className="space-y-6 animate-fade-in">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+                <div>
+                  <h1 className="text-2xl font-bold text-white">Engineering Articles & Blog</h1>
+                  <p className="text-xs text-slate-400 mt-1">Live articles published on <Link href="/blog" target="_blank" className="text-emerald-400 hover:underline">dipeshsapkota7.com.np/blog</Link>.</p>
+                </div>
+                <button
+                  onClick={() => { setEditingItem({ category: 'Engineering', read_time: '6 min read', status: 'published' }); setEditModalOpen(true); }}
+                  className="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs flex items-center gap-2 shadow-md shadow-emerald-500/20"
+                >
+                  <span>+ New Article</span>
+                </button>
+              </div>
+
+              <div className="space-y-4">
+                {articles.map((art) => (
+                  <div key={art.id || art.slug} className="bg-[#0E131F] border border-slate-800 rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-emerald-500/40 transition-all">
+                    <div className="space-y-1.5 flex-1 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <span className="px-2 py-0.5 rounded bg-slate-800 text-emerald-400 font-mono text-[10px] uppercase">{art.category}</span>
+                        <span className="text-[11px] text-slate-500 font-mono">{art.read_time}</span>
+                        <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-mono text-[10px]">{art.status}</span>
+                      </div>
+                      <h3 className="text-sm font-bold text-white truncate">{art.title}</h3>
+                      <p className="text-xs text-slate-400 line-clamp-2">{art.excerpt}</p>
+                      <div className="text-[11px] text-slate-500 font-mono">Slug: /blog/{art.slug}</div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <Link
+                        href="/blog"
+                        target="_blank"
+                        className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold"
+                      >
+                        View on Site ↗
+                      </Link>
+                      <button
+                        onClick={() => {
+                          setConfirmModal({
+                            open: true,
+                            title: 'Delete Article',
+                            message: `Delete article "${art.title}"?`,
+                            onConfirm: async () => {
+                              await fetch(`/api/admin/blog?id=${art.id}`, { method: 'DELETE' });
+                              setArticles(prev => prev.filter(a => a.id !== art.id));
+                              notify('Article removed from /blog.');
+                            }
+                          });
+                        }}
+                        className="text-rose-400 hover:text-rose-300 text-xs font-medium"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Article Add Modal */}
+          {editModalOpen && activeTab === 'articles' && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+              <div className="bg-[#0E131F] border border-slate-700 rounded-2xl max-w-lg w-full p-6 shadow-2xl">
+                <div className="flex items-center justify-between pb-3 border-b border-slate-800 mb-4">
+                  <h3 className="text-sm font-bold text-white">Publish New Article to /blog</h3>
+                  <button onClick={() => setEditModalOpen(false)} className="text-slate-400 hover:text-white">✕</button>
+                </div>
+                <form onSubmit={async (e) => {
+                  e.preventDefault();
+                  const res = await fetch('/api/admin/blog', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(editingItem)
+                  });
+                  const data = await res.json();
+                  if (!res.ok) {
+                    notify(data.error || 'Failed to save article', 'error');
+                    return;
+                  }
+                  const added = data.data || editingItem;
+                  setArticles(prev => [added, ...prev]);
+                  setEditModalOpen(false);
+                  notify('Article published to /blog!');
+                }} className="space-y-4 text-xs">
+                  <div>
+                    <label className="block text-slate-400 mb-1">Article Title</label>
+                    <input
+                      type="text"
+                      required
+                      value={editingItem?.title || ''}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, title: e.target.value }))}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none focus:border-emerald-500"
+                      placeholder="e.g. Building Scalable Web Apps with Next.js"
+                    />
+                  </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-slate-400 mb-1">URL Slug</label>
+                      <input
+                        type="text"
+                        required
+                        value={editingItem?.slug || ''}
+                        onChange={(e) => setEditingItem(prev => ({ ...prev, slug: e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, '-') }))}
+                        className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
+                        placeholder="building-scalable-apps"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-slate-400 mb-1">Category</label>
+                      <input
+                        type="text"
+                        value={editingItem?.category || 'Engineering'}
+                        onChange={(e) => setEditingItem(prev => ({ ...prev, category: e.target.value }))}
+                        className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
+                        placeholder="Engineering / Design"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-slate-400 mb-1">Short Excerpt (Summary)</label>
+                    <textarea
+                      rows={2}
+                      value={editingItem?.excerpt || ''}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, excerpt: e.target.value }))}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none"
+                      placeholder="Brief overview displayed on article cards..."
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-slate-400 mb-1">Article Content (Markdown)</label>
+                    <textarea
+                      rows={5}
+                      value={editingItem?.content || ''}
+                      onChange={(e) => setEditingItem(prev => ({ ...prev, content: e.target.value }))}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none font-mono"
+                      placeholder="Full markdown article text..."
+                    />
+                  </div>
+                  <div className="flex justify-end gap-3 pt-3 border-t border-slate-800">
+                    <button type="button" onClick={() => setEditModalOpen(false)} className="px-4 py-2 rounded-xl bg-slate-800 text-slate-300">Cancel</button>
+                    <button type="submit" className="px-5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold">Publish Article</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          )}
+
+          {/* ============================================================== */}
           {/* TAB 5: SKILLS & TECHNICAL COMPETENCIES */}
           {/* ============================================================== */}
           {activeTab === 'skills' && (
@@ -1011,25 +1174,76 @@ export default function AdminDashboard({
 
               <div className="space-y-4">
                 {messages.length === 0 ? (
-                  <div className="p-8 text-center bg-[#0E131F] border border-slate-800 rounded-2xl text-slate-400 text-xs">
-                    No inquiries yet. New submissions will appear here instantly.
+                  <div className="p-12 text-center bg-[#0E131F] border border-slate-800 rounded-2xl space-y-3">
+                    <div className="w-12 h-12 rounded-full bg-slate-800/80 text-emerald-400 flex items-center justify-center mx-auto">
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                    </div>
+                    <h3 className="text-sm font-bold text-white">Your Inbox is Clean</h3>
+                    <p className="text-xs text-slate-400 max-w-sm mx-auto leading-relaxed">
+                      No incoming inquiries yet. When a visitor submits the contact form on <Link href="/contact" target="_blank" className="text-emerald-400 hover:underline">dipeshsapkota7.com.np/contact</Link>, their submission will appear here in real time.
+                    </p>
                   </div>
                 ) : (
                   messages.map((msg) => (
-                    <div key={msg.id} className="bg-[#0E131F] border border-slate-800 rounded-2xl p-5 space-y-3">
-                      <div className="flex justify-between items-center text-xs pb-2 border-b border-slate-800">
-                        <span className="font-bold text-white">{msg.name} ({msg.email})</span>
-                        <span className="text-slate-500 font-mono text-[11px]">{new Date(msg.created_at).toLocaleDateString()}</span>
+                    <div key={msg.id} className="bg-[#0E131F] border border-slate-800 rounded-2xl p-5 space-y-3 hover:border-emerald-500/40 transition-all">
+                      <div className="flex justify-between items-center text-xs pb-3 border-b border-slate-800">
+                        <div>
+                          <span className="font-bold text-white text-sm">{msg.name}</span>
+                          <span className="text-emerald-400 font-mono text-xs ml-2">({msg.email})</span>
+                        </div>
+                        <span className="text-slate-500 font-mono text-[11px]">{new Date(msg.created_at).toLocaleString()}</span>
                       </div>
-                      <div className="text-xs text-slate-200 font-semibold">{msg.subject}</div>
-                      <p className="text-xs text-slate-300 leading-relaxed whitespace-pre-wrap">{msg.message}</p>
-                      <div className="flex justify-end pt-2 border-t border-slate-800">
-                        <a
-                          href={`mailto:${msg.email}?subject=Re: ${encodeURIComponent(msg.subject || 'Portfolio Inquiry')}`}
-                          className="px-3 py-1.5 rounded-lg bg-emerald-500 text-slate-950 font-bold text-xs"
+                      {msg.subject && (
+                        <div className="text-xs text-slate-200 font-bold bg-slate-900/60 px-3 py-1.5 rounded-lg border border-slate-800 inline-block">
+                          {msg.subject}
+                        </div>
+                      )}
+                      <p className="text-xs text-slate-300 leading-relaxed whitespace-pre-wrap bg-slate-900/30 p-4 rounded-xl border border-slate-800/60">
+                        {msg.message}
+                      </p>
+                      <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-slate-800">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setConfirmModal({
+                              open: true,
+                              title: 'Delete Inquiry',
+                              message: `Delete inquiry from "${msg.name}"?`,
+                              onConfirm: async () => {
+                                await fetch(`/api/admin/messages?id=${msg.id}`, { method: 'DELETE' });
+                                setMessages(prev => prev.filter(m => m.id !== msg.id));
+                                notify('Inquiry deleted from inbox.');
+                              }
+                            });
+                          }}
+                          className="px-3 py-1.5 rounded-xl text-rose-400 hover:bg-rose-500/10 text-xs font-medium transition-colors"
                         >
-                          Reply via Email ↗
-                        </a>
+                          Delete Message
+                        </button>
+
+                        <div className="flex items-center gap-2">
+                          <button
+                            type="button"
+                            onClick={() => {
+                              navigator.clipboard.writeText(msg.email);
+                              notify(`Copied ${msg.email} to clipboard!`);
+                            }}
+                            className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition-colors border border-slate-700"
+                          >
+                            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
+                            <span>Copy Email</span>
+                          </button>
+
+                          <a
+                            href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(msg.email)}&su=${encodeURIComponent('Re: ' + (msg.subject || 'Portfolio Inquiry'))}&body=${encodeURIComponent('\n\n--- In reply to inquiry from ' + msg.name + ' ---\n' + (msg.message || ''))}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-3.5 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 shadow-md shadow-emerald-500/20 transition-all"
+                          >
+                            <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            <span>Reply via Gmail ↗</span>
+                          </a>
+                        </div>
                       </div>
                     </div>
                   ))

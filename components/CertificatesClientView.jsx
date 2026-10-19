@@ -54,6 +54,7 @@ export default function CertificatesClientView({ certificates, jsonLd }) {
                           height="300"
                           loading="lazy"
                           decoding="async"
+                          unoptimized={Boolean(cert.img?.startsWith('http'))}
                           className="w-full h-full object-cover smooth-img-zoom" 
                         />
                         <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
