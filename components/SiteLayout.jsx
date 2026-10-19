@@ -568,6 +568,15 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <Link
+                    href="/image-licensing"
+                    itemProp="url"
+                    className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors inline-block"
+                  >
+                    <span itemProp="name">Image Licensing</span>
+                  </Link>
+                </li>
               </ul>
             </nav>
 
@@ -579,7 +588,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
               <ul className="space-y-2.5">
                 <li>
                   <Link href="/projects/sportivo" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors inline-block">
-                    Sportivo — Live Scores, Fixtures & Sports News
+                    Sportivo — Live Scores, Fixtures &amp; Sports News
                   </Link>
                 </li>
                 <li>
@@ -590,6 +599,11 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
                 <li>
                   <Link href="/projects/ioe-admission-guide" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors inline-block">
                     IOE Admission Guide Portal
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/projects/sports-reels" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors inline-block">
+                    Sports Reels &amp; Motion Design
                   </Link>
                 </li>
                 <li>
@@ -643,9 +657,22 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
 
           {/* Bottom Bar */}
           <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#64748B] dark:text-[#94A3B8]">
-            <p className="font-medium text-center w-full">
+            <p className="font-medium text-left">
               &copy; {new Date().getFullYear()} <Link href="/" aria-label="Go to my home page" className="font-semibold text-[#0F172A] dark:text-[#F9FAFB] no-underline hover:no-underline">Dipesh Sapkota<span className="site-wordmark-dot">.</span></Link> All rights reserved.
             </p>
+            <div className="flex items-center gap-4 text-xs font-mono">
+              <Link href="/image-licensing" className="hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors">
+                Licensing
+              </Link>
+              <span>&middot;</span>
+              <a href="/sitemap.xml" className="hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors">
+                XML Sitemap
+              </a>
+              <span>&middot;</span>
+              <a href="/.well-known/llms.txt" className="hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors">
+                llms.txt
+              </a>
+            </div>
           </div>
         </div>
       </footer>

@@ -1,21 +1,40 @@
 # Dipesh Sapkota | Portfolio & Web Applications
 
-> Official portfolio of Dipesh Sapkota, a Computer Engineering student at IOE Thapathali, AI/ML enthusiast, video editor, and motion graphics designer in Nepal.
+> Official portfolio of Dipesh Sapkota (dszae), Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal, AI/ML enthusiast, video editor, and motion graphics designer.
 
-## Canonical pages
-- [Homepage](https://www.dipeshsapkota7.com.np/): Professional background, skills, experience, projects, and contact details.
-- [About](https://www.dipeshsapkota7.com.np/about): Biography and professional focus.
-- [Contact](https://www.dipeshsapkota7.com.np/contact): Collaboration and freelance contact information.
+## Primary Profile & Identity
+- Name: Dipesh Sapkota
+- Alias / Handle: dszae / dsz.ae / DszAe18
+- Profession: Computer Engineering Student & Freelance Video Editor / Motion Graphics Designer
+- Campus: Institute of Engineering (IOE), Thapathali Campus, Kathmandu, Nepal
+- Primary Portrait Image: https://www.dipeshsapkota7.com.np/dipesh-sapkota.jpg
+- Official Website: https://www.dipeshsapkota7.com.np/
+- Profiles & Socials: GitHub (https://github.com/dszae), LinkedIn (https://linkedin.com/in/dszae), DEV Community (https://dev.to/dszae), X (https://x.com/DszAe18), Instagram (https://instagram.com/dsz.ae), Facebook (https://facebook.com/dsz.ae)
 
-## Projects
-- [Sportivo](https://sportivo.dipeshsapkota7.com.np/): Live sports platform with match schedules, search, and stream switching.
-- [IOE Entrance Preparation Portal](https://ioe-admission.dipeshsapkota7.com.np/): Engineering admission guides, cutoff analytics, and priority form tools.
-- [Git Visualizer](https://git-visualizer.dipeshsapkota7.com.np/): Interactive learning tool for Git commands and version-control data flow.
+## Canonical Pages & Dedicated Sitelinks
+- [Homepage](https://www.dipeshsapkota7.com.np/): System overview, primary hero section, downloadable curriculum vitae, and direct collaboration channels.
+- [About Me](https://www.dipeshsapkota7.com.np/about): Detailed personal biography, academic journey at IOE Thapathali, 4+ years of freelance experience, 50+ clients, and creative design philosophy.
+- [Technical Proficiency & Skills](https://www.dipeshsapkota7.com.np/skills): Core skills in C/C++, Python, React.js, PHP, video editing (Premiere Pro, DaVinci Resolve), motion graphics (After Effects), and engineering hardware (Proteus, circuit analysis).
+- [Resume & Journey](https://www.dipeshsapkota7.com.np/resume): Comprehensive work experience at Clamphook Academy and university programs, academic milestones (IOE Thapathali, Janak Model Secondary, Mahendra Adarsha), and downloadable PDF CV.
+- [Projects Archive](https://www.dipeshsapkota7.com.np/projects): Interactive live software and engineering projects, including Sportivo, IOE Admission Guide, Git Visualizer, and embedded circuit systems.
+- [Visual Archive & Gallery](https://www.dipeshsapkota7.com.np/gallery): High-resolution photo archive documenting campus life, Yathartha National Tech Exhibition, creative media sessions, and engineering field visits.
+- [Certifications](https://www.dipeshsapkota7.com.np/certificates): Verified certificates from Udemy, Blackmagic Design, and EDUCBA in Graphic Design, Color Correction, After Effects, and Web Development.
+- [Articles & Case Studies](https://www.dipeshsapkota7.com.np/blog): In-depth software engineering write-ups documenting Sportivo's streaming architecture, Git DAG visualizer graph internals, and technical articles.
+- [Image Licensing Policy](https://www.dipeshsapkota7.com.np/image-licensing): Copyright ownership and licensing permissions for photography and visual media assets.
+- [Contact](https://www.dipeshsapkota7.com.np/contact): Direct contact details (Kathmandu, Nepal; phone: +977 9764685307; email: dsz.ae18@gmail.com) and direct inquiry messaging.
 
-## Skills
-C, C++, Python, React, Next.js, embedded systems, circuit analysis, video editing, graphic design, and motion graphics.
+## Flagship Case Studies & Projects
+- [Sportivo Case Study](https://www.dipeshsapkota7.com.np/projects/sportivo): High-performance live sports streaming platform with real-time match schedule scraping and multi-server stream switching. Live: https://sportivo.dipeshsapkota7.com.np/
+- [IOE Admission Guide](https://www.dipeshsapkota7.com.np/projects/ioe-admission-guide): Engineering admission ecosystem for Tribhuvan University applicants with rank prediction and automated priority form generation. Live: https://ioe-admission.dipeshsapkota7.com.np/
+- [Git Visualizer](https://www.dipeshsapkota7.com.np/projects/git-visualizer): Interactive visual learning tool mapping Git version control commands and repository data flow. Live: https://git-visualizer.dipeshsapkota7.com.np/
+- [Sports Reels & Motion Design](https://www.dipeshsapkota7.com.np/projects/sports-reels): Technical case study of 120fps speed ramping, kinetic typography, and DaVinci Resolve color grading.
+- [NE555 Timer Circuit](https://www.dipeshsapkota7.com.np/projects/555-flasher): Relaxation oscillator circuit prototype in astable multivibrator configuration with Proteus transient analysis.
+- [Electrical Machinery Modeling](https://www.dipeshsapkota7.com.np/projects/motor-modeling): Steady-state mathematical analysis of 3-phase induction machines and DC motors.
+- [Automated Analyzer Diagnostics](https://www.dipeshsapkota7.com.np/projects/analyzer-diag): Clinical laboratory instrumentation engineering protocol covering micro-stepping syringe probes and fluidics.
 
-## Other machine-readable resources
-- [Portfolio markdown API](https://www.dipeshsapkota7.com.np/api/markdown)
-- [API catalog](https://www.dipeshsapkota7.com.np/.well-known/api-catalog)
-- [Agent card](https://www.dipeshsapkota7.com.np/.well-known/agent-card.json)
+## Machine-Readable Resources & Feeds
+- [XML Sitemap](https://www.dipeshsapkota7.com.np/sitemap.xml)
+- [Robots Policy](https://www.dipeshsapkota7.com.np/robots.txt)
+- [Portfolio Markdown API](https://www.dipeshsapkota7.com.np/api/markdown)
+- [API Catalog](https://www.dipeshsapkota7.com.np/.well-known/api-catalog)
+- [Agent Card](https://www.dipeshsapkota7.com.np/.well-known/agent-card.json)
