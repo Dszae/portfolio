@@ -262,6 +262,7 @@ DROP POLICY IF EXISTS "Public Insert Newsletter" ON public.newsletter_subscriber
 CREATE POLICY "Public Insert Newsletter" ON public.newsletter_subscribers FOR INSERT WITH CHECK (true);
 
 -- ==============================================================================
+-- ==============================================================================
 -- STORAGE BUCKET CONFIGURATION
 -- ==============================================================================
 INSERT INTO storage.buckets (id, name, public) 
@@ -274,66 +275,4 @@ CREATE POLICY "Public Storage Read" ON storage.objects FOR SELECT USING (bucket_
 DROP POLICY IF EXISTS "Service Role Storage All" ON storage.objects;
 CREATE POLICY "Service Role Storage All" ON storage.objects FOR ALL USING (bucket_id = 'portfolio-media');
 
--- ==============================================================================
--- SEED INITIAL DATA
--- ==============================================================================
-INSERT INTO public.certificates (title, org, img, category) VALUES
-('Graphic Design Masterclass', 'Udemy', '/graphic-design.webp', 'Design'),
-('Motion Design with Figma', 'Udemy', '/motion-design.webp', 'Motion'),
-('After Effects Course', 'EDUCBA', '/after-effects.webp', 'Video'),
-('DaVinci Resolve 16: Color Correction', 'Blackmagicdesign', '/davinci-resolve.webp', 'Video'),
-('Adobe Premiere Pro CC Masterclass', 'Udemy', '/premiere-pro.webp', 'Video'),
-('Web Development Masterclass', 'Udemy', '/web-development.webp', 'Development'),
-('Google Adwords Crash Course 2021', 'Udemy', '/google-adwords.webp', 'Marketing'),
-('Design Principles, Typography & Color Theory', 'Udemy', '/design-principles.webp', 'Design')
-ON CONFLICT DO NOTHING;
-
-INSERT INTO public.gallery_images (title, alt, img, category) VALUES
-('Participating in college cricket tournament', 'Students posing together outdoors with cricket bats', '/cricket.webp', 'Sports'),
-('Successfully conducted Yathartha', 'Yathartha event team posing on stage with medals and posters', '/yathartha.webp', 'Events'),
-('Celebrating incredible results of Clamphook with the team', 'Group gathered around a dining table under Nepal-themed wall art', '/clamphook.webp', 'Team'),
-('Attending boring lectures', 'Student sitting at a classroom desk during a lecture', '/lecture.webp', 'Campus'),
-('Deep in focus and exploring concepts', 'Student wearing a headset in front of video-editing software', '/exploring.webp', 'Work'),
-('Nagdhunga Surung Marga', 'Dipesh standing by a roadside with hills in the background', '/nagdhunga surung marga.webp', 'Field Visit')
-ON CONFLICT DO NOTHING;
-
-INSERT INTO public.site_settings (id, value) VALUES
-('profile', '{"name":"Dipesh Sapkota","tagline":"Computer Engineering Student · Full-Stack Developer · Motion Designer","bio":"Passionate computer engineering student combining engineering logic with visual aesthetics.","location":"Kathmandu, Nepal","email":"contact@dipeshsapkota7.com.np","availability_status":"Available for freelance projects & engineering roles","availability_badge":"Open to opportunities","avatar_url":"/profile.webp","resume_url":"/Dipesh_Sapkota_Resume.pdf"}'::jsonb),
-('seo', '{"title":"Dipesh Sapkota | Computer Engineering & Full-Stack Developer","description":"Official portfolio of Dipesh Sapkota, a Computer Engineering student, full-stack web developer, and motion designer based in Kathmandu, Nepal.","canonical_url":"https://www.dipeshsapkota7.com.np","og_image":"/og-image.jpg"}'::jsonb),
-('announcement', '{"is_active":true,"message":"🚀 Explore my latest project: Sportivo live sports platform!","link":"/projects/sportivo","link_text":"Check it out"}'::jsonb),
-('social', '{"github":"https://github.com/dszae","linkedin":"https://linkedin.com/in/dipesh-sapkota","instagram":"https://instagram.com/dsz.ae","twitter":"https://x.com/dszae"}'::jsonb)
-ON CONFLICT (id) DO NOTHING;
-
-DROP POLICY IF EXISTS "Service Role Storage All" ON storage.objects;
-CREATE POLICY "Service Role Storage All" ON storage.objects FOR ALL USING (bucket_id = 'portfolio-media');
-
--- ==============================================================================
--- SEED INITIAL DATA
--- ==============================================================================
-INSERT INTO public.certificates (title, org, img, category) VALUES
-('Graphic Design Masterclass', 'Udemy', '/graphic-design.webp', 'Design'),
-('Motion Design with Figma', 'Udemy', '/motion-design.webp', 'Motion'),
-('After Effects Course', 'EDUCBA', '/after-effects.webp', 'Video'),
-('DaVinci Resolve 16: Color Correction', 'Blackmagicdesign', '/davinci-resolve.webp', 'Video'),
-('Adobe Premiere Pro CC Masterclass', 'Udemy', '/premiere-pro.webp', 'Video'),
-('Web Development Masterclass', 'Udemy', '/web-development.webp', 'Development'),
-('Google Adwords Crash Course 2021', 'Udemy', '/google-adwords.webp', 'Marketing'),
-('Design Principles, Typography & Color Theory', 'Udemy', '/design-principles.webp', 'Design')
-ON CONFLICT DO NOTHING;
-
-INSERT INTO public.gallery_images (title, alt, img, category) VALUES
-('Participating in college cricket tournament', 'Students posing together outdoors with cricket bats', '/cricket.webp', 'Sports'),
-('Successfully conducted Yathartha', 'Yathartha event team posing on stage with medals and posters', '/yathartha.webp', 'Events'),
-('Celebrating incredible results of Clamphook with the team', 'Group gathered around a dining table under Nepal-themed wall art', '/clamphook.webp', 'Team'),
-('Attending boring lectures', 'Student sitting at a classroom desk during a lecture', '/lecture.webp', 'Campus'),
-('Deep in focus and exploring concepts', 'Student wearing a headset in front of video-editing software', '/exploring.webp', 'Work'),
-('Nagdhunga Surung Marga', 'Dipesh standing by a roadside with hills in the background', '/nagdhunga surung marga.webp', 'Field Visit')
-ON CONFLICT DO NOTHING;
-
-INSERT INTO public.site_settings (id, value) VALUES
-('profile', '{"name":"Dipesh Sapkota","tagline":"Computer Engineering Student · Full-Stack Developer · Motion Designer","bio":"Passionate computer engineering student combining engineering logic with visual aesthetics.","location":"Kathmandu, Nepal","email":"contact@dipeshsapkota7.com.np","availability_status":"Available for freelance projects & engineering roles","availability_badge":"Open to opportunities","avatar_url":"/profile.webp","resume_url":"/Dipesh_Sapkota_Resume.pdf"}'::jsonb),
-('seo', '{"title":"Dipesh Sapkota | Computer Engineering & Full-Stack Developer","description":"Official portfolio of Dipesh Sapkota, a Computer Engineering student, full-stack web developer, and motion designer based in Kathmandu, Nepal.","canonical_url":"https://www.dipeshsapkota7.com.np","og_image":"/og-image.jpg"}'::jsonb),
-('announcement', '{"is_active":true,"message":"🚀 Explore my latest project: Sportivo live sports platform!","link":"/projects/sportivo","link_text":"Check it out"}'::jsonb),
-('social', '{"github":"https://github.com/dszae","linkedin":"https://linkedin.com/in/dipesh-sapkota","instagram":"https://instagram.com/dsz.ae","twitter":"https://x.com/dszae"}'::jsonb)
-ON CONFLICT (id) DO NOTHING;
 
