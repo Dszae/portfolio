@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabaseAdmin';
 import { isAuthenticated } from '@/lib/adminAuth';
 import { getSiteSettings } from '@/lib/dataService';
+import { revalidateResource } from '@/lib/revalidationEngine';
 
 export async function GET() {
   const isAuth = await isAuthenticated();
