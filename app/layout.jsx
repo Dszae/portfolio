@@ -1,4 +1,5 @@
 import React from 'react';
+import { cookies } from 'next/headers';
 import { Manrope } from 'next/font/google';
 
 const manrope = Manrope({
@@ -120,6 +121,9 @@ export const viewport = {
 };
 
 export default async function RootLayout({ children }) {
+  const cookieStore = await cookies();
+  const themeCookie = cookieStore.get('theme')?.value;
+  const initialTheme = themeCookie === 'light' ? 'light' : 'dark';
   const settings = await getSiteSettings();
   const safeFeaturesJson = JSON.stringify({
     announcement: settings.announcement || null,
@@ -127,7 +131,7 @@ export default async function RootLayout({ children }) {
   }).replace(/</g, '\\u003c');
 
   return (
-    <html lang="en" className={`dark ${manrope.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${initialTheme} ${manrope.variable}`} suppressHydrationWarning>
       <head>
         <link rel="author" href="/" />
         <link rel="alternate" type="text/markdown" href="/.well-known/llms.txt" title="AI-readable site information" />
@@ -137,16 +141,20 @@ export default async function RootLayout({ children }) {
               (function() {
                 try {
                   var stored = localStorage.getItem('theme');
-                  var isLight = stored === 'light';
                   var d = document.documentElement;
-                  if (isLight) {
-                    d.classList.remove('dark');
-                    d.classList.add('light');
-                    d.style.colorScheme = 'light';
-                  } else {
-                    d.classList.remove('light');
-                    d.classList.add('dark');
-                    d.style.colorScheme = 'dark';
+                  if (stored === 'light' || stored === 'dark') {
+                    if (stored === 'light') {
+                      d.classList.remove('dark');
+                      d.classList.add('light');
+                      d.style.colorScheme = 'light';
+                    } else {
+                      d.classList.remove('light');
+                      d.classList.add('dark');
+                      d.style.colorScheme = 'dark';
+                    }
+                    if (document.cookie.indexOf('theme=' + stored) === -1) {
+                      document.cookie = 'theme=' + stored + '; path=/; max-age=31536000; SameSite=Lax';
+                    }
                   }
                 } catch (e) {}
               })();

@@ -334,7 +334,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
   useEffect(() => {
     try {
       const stored = localStorage.getItem('theme');
-      const isDarkActive = stored !== 'light';
+      const isDarkActive = stored ? stored === 'dark' : document.documentElement.classList.contains('dark');
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsDark(isDarkActive);
       const root = document.documentElement;
@@ -347,12 +347,16 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
         root.classList.add('light');
         root.style.colorScheme = 'light';
       }
+      if (stored) {
+        document.cookie = `theme=${stored}; path=/; max-age=31536000; SameSite=Lax`;
+      }
     } catch {}
   }, []);
 
   const toggleTheme = () => {
     const nextDark = !isDark;
     setIsDark(nextDark);
+    const themeName = nextDark ? 'dark' : 'light';
     try {
       const root = document.documentElement;
       root.classList.add('theme-transitioning');
@@ -360,13 +364,13 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
         root.classList.add('dark');
         root.classList.remove('light');
         root.style.colorScheme = 'dark';
-        localStorage.setItem('theme', 'dark');
       } else {
         root.classList.remove('dark');
         root.classList.add('light');
         root.style.colorScheme = 'light';
-        localStorage.setItem('theme', 'light');
       }
+      localStorage.setItem('theme', themeName);
+      document.cookie = `theme=${themeName}; path=/; max-age=31536000; SameSite=Lax`;
       setTimeout(() => {
         root.classList.remove('theme-transitioning');
       }, 400);
