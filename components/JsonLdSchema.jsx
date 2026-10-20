@@ -58,6 +58,7 @@ export const person = {
     'https://instagram.com/dsz.ae',
     'https://facebook.com/dsz.ae',
     'https://www.threads.net/@dsz.ae',
+    'https://wa.me/9779764685307',
   ],
   knowsAbout: [
     'Computer engineering',
