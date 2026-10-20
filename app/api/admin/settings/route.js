@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabaseAdmin';
 import { isAuthenticated } from '@/lib/adminAuth';
-import { getSiteSettings } from '@/lib/dataService';
+import { getSiteSettings, invalidateSiteSettingsCache } from '@/lib/dataService';
 import { revalidateResource } from '@/lib/revalidationEngine';
 
 export async function GET() {
@@ -17,10 +17,20 @@ export async function PUT(request) {
 
   try {
     const body = await request.json();
-    const { key, value } = body;
+    let { key, value } = body;
 
     if (!key || value === undefined || value === null) {
       return NextResponse.json({ error: 'Key and value are required' }, { status: 400 });
+    }
+
+    // Keep announcement text and message fields synchronized
+    if (key === 'announcement' && typeof value === 'object') {
+      const synchedText = (value.text || value.message || '').trim();
+      value = {
+        ...value,
+        text: synchedText,
+        message: synchedText
+      };
     }
 
     const { data, error } = await supabaseAdmin
@@ -38,6 +48,7 @@ export async function PUT(request) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
+    invalidateSiteSettingsCache();
     await revalidateResource('settings', ['/api/site-features']);
     
     return NextResponse.json({ success: true, data });

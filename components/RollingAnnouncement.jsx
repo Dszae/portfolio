@@ -15,13 +15,18 @@ export const DEFAULT_ANNOUNCEMENT = {
 export function getClientInitialAnnouncement() {
   if (typeof window !== 'undefined') {
     if (window.__INITIAL_SITE_FEATURES__?.announcement) {
-      return window.__INITIAL_SITE_FEATURES__.announcement;
+      const ann = window.__INITIAL_SITE_FEATURES__.announcement;
+      const txt = (ann.text || ann.message || '').trim();
+      return { ...ann, text: txt, message: txt };
     }
     try {
       const cached = localStorage.getItem('site_features_announcement');
       if (cached) {
         const parsed = JSON.parse(cached);
-        if (parsed && typeof parsed === 'object') return parsed;
+        if (parsed && typeof parsed === 'object') {
+          const txt = (parsed.text || parsed.message || '').trim();
+          return { ...parsed, text: txt, message: txt };
+        }
       }
     } catch {}
   }
@@ -36,16 +41,18 @@ export default function RollingAnnouncement({ onVisibilityChange }) {
     let mounted = true;
     async function syncFeatures() {
       try {
-        const res = await fetch('/api/site-features');
+        const res = await fetch('/api/site-features?t=' + Date.now(), { cache: 'no-store' });
         if (res.ok) {
           const data = await res.json();
           const ann = data.announcement;
           if (mounted && ann) {
-            setFeature(ann);
+            const txt = (ann.text || ann.message || '').trim();
+            const normalized = { ...ann, text: txt, message: txt };
+            setFeature(normalized);
             try {
-              localStorage.setItem('site_features_announcement', JSON.stringify(ann));
+              localStorage.setItem('site_features_announcement', JSON.stringify(normalized));
             } catch {}
-            if (ann.is_active && ann.message) {
+            if (normalized.is_active && txt) {
               if (onVisibilityChange) onVisibilityChange(true);
             } else {
               if (onVisibilityChange) onVisibilityChange(false);
@@ -56,10 +63,26 @@ export default function RollingAnnouncement({ onVisibilityChange }) {
       }
     }
     syncFeatures();
-    return () => { mounted = false; };
+
+    const handleStorageUpdate = (e) => {
+      if (e.key === 'site_features_announcement' && e.newValue) {
+        try {
+          const parsed = JSON.parse(e.newValue);
+          const txt = (parsed.text || parsed.message || '').trim();
+          setFeature({ ...parsed, text: txt, message: txt });
+        } catch {}
+      }
+    };
+    window.addEventListener('storage', handleStorageUpdate);
+    return () => {
+      mounted = false;
+      window.removeEventListener('storage', handleStorageUpdate);
+    };
   }, [onVisibilityChange]);
 
-  if (dismissed || !feature || !feature.is_active || !feature.message) {
+  const messageText = (feature?.text || feature?.message || '').trim();
+
+  if (dismissed || !feature || !feature.is_active || !messageText) {
     return null;
   }
 

@@ -148,16 +148,30 @@ const fetchMedia = async () => {
 
 const saveSettingSection = async (key, value) => {
     try {
+      let finalValue = value;
+      if (key === 'announcement' && typeof value === 'object') {
+        const textVal = (value.text || value.message || '').trim();
+        finalValue = { ...value, text: textVal, message: textVal };
+      }
       const res = await fetch('/api/admin/settings', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ key, value })
+        body: JSON.stringify({ key, value: finalValue })
       });
       const data = await res.json();
       if (!res.ok) {
         throw new Error(data.error || 'Failed to save settings');
       }
-      setSettings(prev => ({ ...prev, [key]: value }));
+      setSettings(prev => ({ ...prev, [key]: finalValue }));
+      if (key === 'announcement' && typeof window !== 'undefined') {
+        try {
+          localStorage.setItem('site_features_announcement', JSON.stringify({
+            ...finalValue,
+            timestamp: Date.now()
+          }));
+          window.dispatchEvent(new Event('storage'));
+        } catch {}
+      }
       notify(`${key.charAt(0).toUpperCase() + key.slice(1)} settings updated`);
     } catch (err) {
       notify(err.message, 'error');
@@ -206,7 +220,8 @@ const runHealthCheck = async () => {
 
   const toggleAnnouncement = async () => {
     const current = settings.announcement || {};
-    const updated = { ...current, is_active: !current.is_active };
+    const textVal = (current.text || current.message || '').trim();
+    const updated = { ...current, text: textVal, message: textVal, is_active: !current.is_active };
     await saveSettingSection('announcement', updated);
   };
 
@@ -1611,13 +1626,20 @@ const chartPoints = useMemo(() => {
                       <label className="block text-slate-400 mb-1">Announcement Text</label>
                       <input
                         type="text"
-                        value={settings.announcement?.text || ''}
-                        onChange={(e) => setSettings(prev => ({
-                          ...prev,
-                          announcement: { ...prev.announcement, text: e.target.value }
-                        }))}
+                        value={settings.announcement?.text || settings.announcement?.message || ''}
+                        onChange={(e) => {
+                          const val = e.target.value;
+                          setSettings(prev => ({
+                            ...prev,
+                            announcement: {
+                              ...prev.announcement,
+                              text: val,
+                              message: val
+                            }
+                          }));
+                        }}
                         className="w-full px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-white outline-none"
-                        placeholder="Open for Software Engineering internships & full-stack roles..."
+                        placeholder="Open for Computer Engineering opportunities & AI/ML research collaborations..."
                       />
                     </div>
                     <div>
@@ -1634,7 +1656,11 @@ const chartPoints = useMemo(() => {
                       />
                     </div>
                     <button
-                      onClick={() => saveSettingSection('announcement', settings.announcement)}
+                      onClick={() => {
+                        const current = settings.announcement || {};
+                        const textVal = (current.text || current.message || '').trim();
+                        saveSettingSection('announcement', { ...current, text: textVal, message: textVal });
+                      }}
                       className="px-4 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-xs"
                     >
                       Save Banner Settings
