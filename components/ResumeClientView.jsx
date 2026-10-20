@@ -59,9 +59,9 @@ export default function ResumeClientView({ experiences = [], siteSettings = {}, 
                           key={exp.id || index} 
                           className="relative pb-2 group cursor-default"
                         >
-                          <div className="absolute -left-[31px] top-5 w-3.5 h-3.5 bg-[#065F46] dark:bg-[#34D399] rounded-full border-4 border-white dark:border-[#090B0E] transition-transform duration-300 group-hover:scale-125"></div>
+                          <div className="absolute -left-[31px] top-5 w-3.5 h-3.5 bg-[#065F46] dark:bg-[#34D399] rounded-full border-4 border-white dark:border-[#090B0E] transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-125 group-hover:shadow-[0_0_12px_rgba(52,211,153,0.5)]"></div>
                           
-                          <div className={`relative overflow-hidden p-6 rounded-2xl transition-all duration-300 ease-out group-hover:translate-x-2.5 border group-hover:shadow-lg group-hover:border-[#065F46]/40 dark:group-hover:border-[#34D399]/40 ${theme.card}`}>
+                          <div className={`relative overflow-hidden p-6 rounded-2xl transform-gpu transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:translate-x-4 border group-hover:shadow-xl group-hover:border-[#065F46]/50 dark:group-hover:border-[#34D399]/50 ${theme.card}`}>
                             <div className="flex items-center gap-4">
                               {(exp.logo || exp.img || exp.image) && (
                                 <div className="flex-shrink-0 flex items-center justify-center">
@@ -87,7 +87,7 @@ export default function ResumeClientView({ experiences = [], siteSettings = {}, 
                                 <p className="text-sm leading-relaxed text-[#1E293B] dark:text-[#A7B0BE]">{exp.description || exp.desc}</p>
                               </div>
                             </div>
-                            <div className="absolute bottom-0 left-0 h-0.5 sm:h-1 bg-gradient-to-r from-[#065F46] to-[#059669] dark:from-[#34D399] dark:to-[#6EE7B7] w-0 group-hover:w-full transition-all duration-500 ease-out rounded-b-2xl pointer-events-none"></div>
+                            <div className="absolute bottom-0 left-0 h-0.5 sm:h-1 bg-gradient-to-r from-[#065F46] to-[#059669] dark:from-[#34D399] dark:to-[#6EE7B7] w-0 group-hover:w-full transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] rounded-b-2xl pointer-events-none"></div>
                           </div>
                         </div>
                       ))}
@@ -105,9 +105,9 @@ export default function ResumeClientView({ experiences = [], siteSettings = {}, 
                           key={edu.id || index} 
                           className="relative pb-2 group cursor-default"
                         >
-                          <div className="absolute -left-[31px] top-5 w-3.5 h-3.5 bg-[#065F46] dark:bg-[#34D399] rounded-full border-4 border-white dark:border-[#090B0E] transition-transform duration-300 group-hover:scale-125"></div>
+                          <div className="absolute -left-[31px] top-5 w-3.5 h-3.5 bg-[#065F46] dark:bg-[#34D399] rounded-full border-4 border-white dark:border-[#090B0E] transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-125 group-hover:shadow-[0_0_12px_rgba(52,211,153,0.5)]"></div>
                           
-                          <div className={`relative overflow-hidden p-6 rounded-2xl transition-all duration-300 ease-out group-hover:translate-x-2.5 border group-hover:shadow-lg group-hover:border-[#065F46]/40 dark:group-hover:border-[#34D399]/40 ${theme.card}`}>
+                          <div className={`relative overflow-hidden p-6 rounded-2xl transform-gpu transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:translate-x-4 border group-hover:shadow-xl group-hover:border-[#065F46]/50 dark:group-hover:border-[#34D399]/50 ${theme.card}`}>
                             <div className="flex items-center gap-4">
                               {(edu.logo || edu.img || edu.image) && (
                                 <div className="flex-shrink-0 flex items-center justify-center">
@@ -133,7 +133,7 @@ export default function ResumeClientView({ experiences = [], siteSettings = {}, 
                                 <p className="text-sm leading-relaxed text-[#1E293B] dark:text-[#A7B0BE]">{edu.description || edu.desc}</p>
                               </div>
                             </div>
-                            <div className="absolute bottom-0 left-0 h-0.5 sm:h-1 bg-gradient-to-r from-[#065F46] to-[#059669] dark:from-[#34D399] dark:to-[#6EE7B7] w-0 group-hover:w-full transition-all duration-500 ease-out rounded-b-2xl pointer-events-none"></div>
+                            <div className="absolute bottom-0 left-0 h-0.5 sm:h-1 bg-gradient-to-r from-[#065F46] to-[#059669] dark:from-[#34D399] dark:to-[#6EE7B7] w-0 group-hover:w-full transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] rounded-b-2xl pointer-events-none"></div>
                           </div>
                         </div>
                       ))}
