@@ -327,7 +327,20 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
   const [isDark, setIsDark] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasAnnouncement, setHasAnnouncement] = useState(true);
+  const [isPageTransitioning, setIsPageTransitioning] = useState(false);
+  const currentPathRef = useRef(pathname);
   const menuToggleRef = useRef(null);
+
+  useEffect(() => {
+    if (currentPathRef.current !== pathname) {
+      currentPathRef.current = pathname;
+      setIsPageTransitioning(true);
+      const timer = setTimeout(() => {
+        setIsPageTransitioning(false);
+      }, 350);
+      return () => clearTimeout(timer);
+    }
+  }, [pathname]);
 
   useEffect(() => {
     try {
@@ -530,7 +543,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
         tabIndex={-1} 
         className="relative z-10 w-full flex flex-col items-center outline-none"
       >
-        <div key={pathname} className="page-enter-up w-full flex flex-col items-center">
+        <div key={pathname} className={`w-full flex flex-col items-center ${isPageTransitioning ? 'page-enter-up' : ''}`}>
           {typeof children === 'function' ? children({ theme, isDark }) : children}
         </div>
       </main>
