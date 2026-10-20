@@ -112,7 +112,10 @@ export async function generateMetadata() {
 }
 
 export const viewport = {
-  themeColor: '#090B0E',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#F8FAFC' },
+    { media: '(prefers-color-scheme: dark)', color: '#090B0E' },
+  ],
   colorScheme: 'dark light',
 };
 
@@ -124,7 +127,7 @@ export default async function RootLayout({ children }) {
   }).replace(/</g, '\\u003c');
 
   return (
-    <html lang="en" className={`dark ${manrope.variable}`} style={{ backgroundColor: "#090B0E", colorScheme: "dark" }} suppressHydrationWarning>
+    <html lang="en" className={manrope.variable} suppressHydrationWarning>
       <head>
         <link rel="author" href="/" />
         <link rel="alternate" type="text/markdown" href="/.well-known/llms.txt" title="AI-readable site information" />
@@ -135,10 +138,17 @@ export default async function RootLayout({ children }) {
                 try {
                   var stored = localStorage.getItem('theme');
                   var isLight = stored === 'light';
-                  if (!isLight) {
-                    document.documentElement.classList.add('dark');
+                  var d = document.documentElement;
+                  if (isLight) {
+                    d.classList.remove('dark');
+                    d.classList.add('light');
+                    d.style.setProperty('color-scheme', 'light');
+                    d.style.setProperty('background-color', '#F8FAFC');
                   } else {
-                    document.documentElement.classList.remove('dark');
+                    d.classList.remove('light');
+                    d.classList.add('dark');
+                    d.style.setProperty('color-scheme', 'dark');
+                    d.style.setProperty('background-color', '#090B0E');
                   }
                 } catch (e) {}
               })();
@@ -147,7 +157,7 @@ export default async function RootLayout({ children }) {
           }}
         />
       </head>
-      <body className="theme-page font-sans antialiased m-0 p-0 w-full min-h-screen overflow-x-hidden" style={{ backgroundColor: "#090B0E" }}>
+      <body className="theme-page font-sans antialiased m-0 p-0 w-full min-h-screen overflow-x-hidden">
         <JsonLdSchema settings={settings} />
         <WebMCPInitializer />
         <AnalyticsTracker />

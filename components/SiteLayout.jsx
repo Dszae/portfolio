@@ -327,24 +327,12 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
   const [isDark, setIsDark] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasAnnouncement, setHasAnnouncement] = useState(true);
-  const [isPageTransitioning, setIsPageTransitioning] = useState(false);
-  const currentPathRef = useRef(pathname);
   const menuToggleRef = useRef(null);
 
-  useEffect(() => {
-    if (currentPathRef.current !== pathname) {
-      currentPathRef.current = pathname;
-      setIsPageTransitioning(true);
-      const timer = setTimeout(() => {
-        setIsPageTransitioning(false);
-      }, 350);
-      return () => clearTimeout(timer);
-    }
-  }, [pathname]);
+
 
   useEffect(() => {
     try {
-      document.documentElement.style.removeProperty('background-color');
       const stored = localStorage.getItem('theme');
       const isDarkActive = stored !== 'light';
       // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -352,9 +340,13 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
       if (isDarkActive) {
         document.documentElement.classList.add('dark');
         document.documentElement.classList.remove('light');
+        document.documentElement.style.setProperty('color-scheme', 'dark');
+        document.documentElement.style.setProperty('background-color', '#090B0E');
       } else {
         document.documentElement.classList.remove('dark');
         document.documentElement.classList.add('light');
+        document.documentElement.style.setProperty('color-scheme', 'light');
+        document.documentElement.style.setProperty('background-color', '#F8FAFC');
       }
     } catch {}
   }, []);
@@ -363,16 +355,20 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
     const nextDark = !isDark;
     setIsDark(nextDark);
     try {
-      document.documentElement.style.removeProperty('background-color');
       if (nextDark) {
         document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+        document.documentElement.style.setProperty('color-scheme', 'dark');
+        document.documentElement.style.setProperty('background-color', '#090B0E');
         localStorage.setItem('theme', 'dark');
       } else {
         document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+        document.documentElement.style.setProperty('color-scheme', 'light');
+        document.documentElement.style.setProperty('background-color', '#F8FAFC');
         localStorage.setItem('theme', 'light');
       }
-    } catch {
-    }
+    } catch {}
   };
 
   useEffect(() => {
@@ -543,7 +539,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
         tabIndex={-1} 
         className="relative z-10 w-full flex flex-col items-center outline-none"
       >
-        <div key={pathname} className={`w-full flex flex-col items-center ${isPageTransitioning ? 'page-enter-up' : ''}`}>
+        <div key={pathname} className="fade-down-to-up w-full flex flex-col items-center">
           {typeof children === 'function' ? children({ theme, isDark }) : children}
         </div>
       </main>

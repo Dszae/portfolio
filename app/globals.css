@@ -73,6 +73,20 @@ html.dark {
   --nav-surface: #090B0E;
 }
 
+html.dark,
+html.dark body {
+  background-color: #090B0E !important;
+  color: #F8FAFC !important;
+  color-scheme: dark;
+}
+
+html.light,
+html.light body {
+  background-color: #F8FAFC !important;
+  color: #0F172A !important;
+  color-scheme: light;
+}
+
 @layer base {
   html,
   body {
@@ -1164,10 +1178,10 @@ button:hover .smooth-img-zoom {
   color: var(--accent-strong);
 }
 
-@keyframes pageEnterUp {
+@keyframes fadeDownToUp {
   0% {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(18px);
   }
   100% {
     opacity: 1;
@@ -1175,16 +1189,15 @@ button:hover .smooth-img-zoom {
   }
 }
 
-.page-enter-up {
-  animation: pageEnterUp 340ms cubic-bezier(0.16, 1, 0.3, 1) both;
+.fade-down-to-up {
+  animation: fadeDownToUp 480ms cubic-bezier(0.16, 1, 0.3, 1) both;
   will-change: opacity, transform;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .page-enter-up {
-    opacity: 1 !important;
-    transform: none !important;
+  .fade-down-to-up {
     animation: none !important;
+    transform: none !important;
   }
 }
 
