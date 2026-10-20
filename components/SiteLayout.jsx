@@ -523,7 +523,12 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
         </div>
       </nav>
 
-      <main id="main-content" tabIndex={-1} className="relative z-10 w-full flex flex-col items-center outline-none">
+      <main 
+        key={pathname}
+        id="main-content" 
+        tabIndex={-1} 
+        className="relative z-10 w-full flex flex-col items-center outline-none fade-up-enter"
+      >
         {typeof children === 'function' ? children({ theme, isDark }) : children}
       </main>
 

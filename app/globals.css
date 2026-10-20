@@ -1150,10 +1150,10 @@ button:hover .smooth-img-zoom {
   color: var(--accent-strong);
 }
 
-@keyframes pageFadeInUp {
+@keyframes fadeUpBottomToTop {
   0% {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(32px);
   }
   100% {
     opacity: 1;
@@ -1161,13 +1161,13 @@ button:hover .smooth-img-zoom {
   }
 }
 
-.page-fade-in-up {
-  animation: pageFadeInUp 450ms cubic-bezier(0.16, 1, 0.3, 1) both;
+.fade-up-enter {
+  animation: fadeUpBottomToTop 550ms cubic-bezier(0.16, 1, 0.3, 1) both;
   will-change: opacity, transform;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .page-fade-in-up {
+  .fade-up-enter {
     animation: none !important;
     transform: none !important;
   }
