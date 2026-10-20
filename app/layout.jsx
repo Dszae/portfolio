@@ -124,7 +124,7 @@ export default async function RootLayout({ children }) {
   }).replace(/</g, '\\u003c');
 
   return (
-    <html lang="en" className={`scroll-smooth ${manrope.variable}`} suppressHydrationWarning>
+    <html lang="en" className={manrope.variable} suppressHydrationWarning>
       <head>
         <link rel="author" href="/" />
         <link rel="alternate" type="text/markdown" href="/.well-known/llms.txt" title="AI-readable site information" />

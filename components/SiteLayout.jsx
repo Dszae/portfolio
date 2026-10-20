@@ -524,12 +524,13 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
       </nav>
 
       <main 
-        key={pathname}
         id="main-content" 
         tabIndex={-1} 
-        className="relative z-10 w-full flex flex-col items-center outline-none fade-up-enter"
+        className="relative z-10 w-full flex flex-col items-center outline-none"
       >
-        {typeof children === 'function' ? children({ theme, isDark }) : children}
+        <div key={pathname} className="page-enter-up w-full flex flex-col items-center">
+          {typeof children === 'function' ? children({ theme, isDark }) : children}
+        </div>
       </main>
 
       <footer className="theme-footer pt-16 pb-12 text-xs sm:text-sm border-t w-full" role="contentinfo">
