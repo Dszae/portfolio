@@ -16,6 +16,7 @@
   --radius-image: 16px;
   --duration-fast: 160ms;
   --duration-theme: 220ms;
+  --hero-slide-dist: 36px;
 
   color-scheme: dark;
   --page-bg: #090B0E;
@@ -741,6 +742,7 @@ button:hover .smooth-img-zoom {
   width: 100%;
   padding: calc(var(--nav-height) + clamp(24px, 4vw, 40px)) 24px var(--space-section);
   background: var(--page-bg);
+  overflow-x: clip;
 }
 
 .home-hero-inner {
@@ -752,8 +754,32 @@ button:hover .smooth-img-zoom {
   gap: clamp(32px, 5vw, 76px);
 }
 
+@keyframes heroFadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translate3d(calc(-1 * var(--hero-slide-dist, 36px)), 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes heroFadeInRight {
+  0% {
+    opacity: 0;
+    transform: translate3d(var(--hero-slide-dist, 36px), 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 .hero-copy {
   min-width: 0;
+  animation: heroFadeInLeft 720ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: opacity, transform;
 }
 
 .hero-eyebrow {
@@ -901,6 +927,17 @@ button:hover .smooth-img-zoom {
   width: min(100%, 440px);
   justify-self: end;
   perspective: 1000px;
+  animation: heroFadeInRight 720ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: opacity, transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-copy,
+  .hero-portrait-wrap {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
 }
 
 .hero-portrait-accent {
@@ -1405,6 +1442,10 @@ html.theme-transitioning a {
 }
 
 @media (max-width: 680px) {
+  :root {
+    --hero-slide-dist: 20px;
+  }
+
   .home-hero {
     padding: calc(var(--nav-height) + 18px) 20px 40px;
   }
