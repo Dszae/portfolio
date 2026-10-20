@@ -46,7 +46,7 @@ export default function CertificatesClientView({ certificates, jsonLd }) {
                         index: idx,
                       })}
                     >
-                      <div className={`aspect-[4/3] overflow-hidden rounded-xl border flex items-center justify-center mb-6 transition-colors duration-200 relative ${isDark ? 'border-[#222933] bg-[#181D24] group-hover:border-[#34D399]/60' : 'border-[#CBD5E1] bg-[#F1F5F9] group-hover:border-[#065F46]/60'}`}>
+                      <div className="aspect-[4/3] overflow-hidden rounded-xl border border-[#CBD5E1] bg-[#F1F5F9] dark:border-[#222933] dark:bg-[#181D24] group-hover:border-[#065F46]/60 dark:group-hover:border-[#34D399]/60 flex items-center justify-center mb-6 transition-colors duration-200 relative">
                         <Image 
                           src={cert.img} 
                           alt={`Certificate for ${cert.title} issued by ${cert.org}`} 
