@@ -112,8 +112,8 @@ export async function generateMetadata() {
 }
 
 export const viewport = {
-  themeColor: '#F8FAFC',
-  colorScheme: 'light dark',
+  themeColor: '#090B0E',
+  colorScheme: 'dark light',
 };
 
 export default async function RootLayout({ children }) {
@@ -124,7 +124,7 @@ export default async function RootLayout({ children }) {
   }).replace(/</g, '\\u003c');
 
   return (
-    <html lang="en" className={manrope.variable} suppressHydrationWarning>
+    <html lang="en" className={`dark ${manrope.variable}`} style={{ backgroundColor: "#090B0E", colorScheme: "dark" }} suppressHydrationWarning>
       <head>
         <link rel="author" href="/" />
         <link rel="alternate" type="text/markdown" href="/.well-known/llms.txt" title="AI-readable site information" />
@@ -134,8 +134,8 @@ export default async function RootLayout({ children }) {
               (function() {
                 try {
                   var stored = localStorage.getItem('theme');
-                  var isDark = stored === 'dark';
-                  if (isDark) {
+                  var isLight = stored === 'light';
+                  if (!isLight) {
                     document.documentElement.classList.add('dark');
                   } else {
                     document.documentElement.classList.remove('dark');
@@ -147,7 +147,7 @@ export default async function RootLayout({ children }) {
           }}
         />
       </head>
-      <body className="theme-page font-sans antialiased m-0 p-0 w-full min-h-screen overflow-x-hidden">
+      <body className="theme-page font-sans antialiased m-0 p-0 w-full min-h-screen overflow-x-hidden" style={{ backgroundColor: "#090B0E" }}>
         <JsonLdSchema settings={settings} />
         <WebMCPInitializer />
         <AnalyticsTracker />

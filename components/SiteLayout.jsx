@@ -324,7 +324,7 @@ if (Math.abs(deltaX) > 35 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) {
 
 export default function SiteLayout({ children, selectedImage, setSelectedImage }) {
   const pathname = usePathname();
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasAnnouncement, setHasAnnouncement] = useState(true);
   const menuToggleRef = useRef(null);
@@ -333,13 +333,15 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
     try {
       document.documentElement.style.removeProperty('background-color');
       const stored = localStorage.getItem('theme');
-      const isDarkActive = stored === 'dark';
+      const isDarkActive = stored !== 'light';
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsDark(isDarkActive);
       if (isDarkActive) {
         document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
       } else {
         document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
       }
     } catch {}
   }, []);

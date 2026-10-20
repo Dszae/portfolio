@@ -17,6 +17,25 @@
   --duration-fast: 160ms;
   --duration-theme: 220ms;
 
+  color-scheme: dark;
+  --page-bg: #090B0E;
+  --surface-main: #0F1216;
+  --surface-elevated: #13171D;
+  --surface-secondary: #181D24;
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  --accent-primary: #10B981;
+  --accent-strong: #34D399;
+  --accent-bright: #6EE7B7;
+  --accent-on: #090B0E;
+  --border-default: #222933;
+  --focus-ring: #34D399;
+  --shadow-subtle: 0 16px 36px rgb(0 0 0 / 30%);
+  --nav-surface: #090B0E;
+}
+
+html.light {
   color-scheme: light;
   --page-bg: #F8FAFC;
   --surface-main: #FFFFFF;
@@ -219,7 +238,7 @@ html {
 .theme-page {
   background-color: var(--page-bg);
   color: var(--text-primary);
-  transition: background-color var(--duration-theme) ease, color var(--duration-theme) ease;
+  /* instant theme paint - no white flash */
 }
 
 .theme-nav {
@@ -480,9 +499,7 @@ html {
   --announcement-height: 38px;
 }
 
-.site-shell.has-announcement main#main-content {
-  padding-top: var(--announcement-height);
-}
+/* no dynamic padding-top shift */
 
 .site-nav {
   position: fixed;
