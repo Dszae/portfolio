@@ -1872,7 +1872,7 @@ const chartPoints = useMemo(() => {
                             alt={exp.organization || exp.title}
                             fill
                             unoptimized={Boolean((exp.logo || exp.img || exp.image)?.startsWith('http'))}
-                            className="object-contain p-1"
+                            className="object-cover"
                           />
                         </div>
                       ) : (
