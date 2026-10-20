@@ -127,7 +127,7 @@ export default async function RootLayout({ children }) {
   }).replace(/</g, '\\u003c');
 
   return (
-    <html lang="en" className={manrope.variable} suppressHydrationWarning>
+    <html lang="en" className={`dark ${manrope.variable}`} suppressHydrationWarning>
       <head>
         <link rel="author" href="/" />
         <link rel="alternate" type="text/markdown" href="/.well-known/llms.txt" title="AI-readable site information" />
@@ -142,13 +142,11 @@ export default async function RootLayout({ children }) {
                   if (isLight) {
                     d.classList.remove('dark');
                     d.classList.add('light');
-                    d.style.setProperty('color-scheme', 'light');
-                    d.style.setProperty('background-color', '#F8FAFC');
+                    d.style.colorScheme = 'light';
                   } else {
                     d.classList.remove('light');
                     d.classList.add('dark');
-                    d.style.setProperty('color-scheme', 'dark');
-                    d.style.setProperty('background-color', '#090B0E');
+                    d.style.colorScheme = 'dark';
                   }
                 } catch (e) {}
               })();

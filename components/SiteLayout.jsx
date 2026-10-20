@@ -337,16 +337,15 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
       const isDarkActive = stored !== 'light';
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsDark(isDarkActive);
+      const root = document.documentElement;
       if (isDarkActive) {
-        document.documentElement.classList.add('dark');
-        document.documentElement.classList.remove('light');
-        document.documentElement.style.setProperty('color-scheme', 'dark');
-        document.documentElement.style.setProperty('background-color', '#090B0E');
+        root.classList.add('dark');
+        root.classList.remove('light');
+        root.style.colorScheme = 'dark';
       } else {
-        document.documentElement.classList.remove('dark');
-        document.documentElement.classList.add('light');
-        document.documentElement.style.setProperty('color-scheme', 'light');
-        document.documentElement.style.setProperty('background-color', '#F8FAFC');
+        root.classList.remove('dark');
+        root.classList.add('light');
+        root.style.colorScheme = 'light';
       }
     } catch {}
   }, []);
@@ -355,19 +354,22 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
     const nextDark = !isDark;
     setIsDark(nextDark);
     try {
+      const root = document.documentElement;
+      root.classList.add('theme-transitioning');
       if (nextDark) {
-        document.documentElement.classList.add('dark');
-        document.documentElement.classList.remove('light');
-        document.documentElement.style.setProperty('color-scheme', 'dark');
-        document.documentElement.style.setProperty('background-color', '#090B0E');
+        root.classList.add('dark');
+        root.classList.remove('light');
+        root.style.colorScheme = 'dark';
         localStorage.setItem('theme', 'dark');
       } else {
-        document.documentElement.classList.remove('dark');
-        document.documentElement.classList.add('light');
-        document.documentElement.style.setProperty('color-scheme', 'light');
-        document.documentElement.style.setProperty('background-color', '#F8FAFC');
+        root.classList.remove('dark');
+        root.classList.add('light');
+        root.style.colorScheme = 'light';
         localStorage.setItem('theme', 'light');
       }
+      setTimeout(() => {
+        root.classList.remove('theme-transitioning');
+      }, 400);
     } catch {}
   };
 
@@ -539,7 +541,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
         tabIndex={-1} 
         className="relative z-10 w-full flex flex-col items-center outline-none"
       >
-        <div key={pathname} className="fade-down-to-up w-full flex flex-col items-center">
+        <div key={pathname} className={`w-full flex flex-col items-center ${pathname === '/' ? '' : 'fade-down-to-up'}`}>
           {typeof children === 'function' ? children({ theme, isDark }) : children}
         </div>
       </main>

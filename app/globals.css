@@ -73,17 +73,15 @@ html.dark {
   --nav-surface: #090B0E;
 }
 
-html.dark,
-html.dark body {
-  background-color: #090B0E !important;
-  color: #F8FAFC !important;
+html.dark {
+  background-color: #090B0E;
+  color: #F8FAFC;
   color-scheme: dark;
 }
 
-html.light,
-html.light body {
-  background-color: #F8FAFC !important;
-  color: #0F172A !important;
+html.light {
+  background-color: #F8FAFC;
+  color: #0F172A;
   color-scheme: light;
 }
 
@@ -266,7 +264,6 @@ html {
   background-color: var(--surface-elevated);
   border-color: var(--border-default);
   box-shadow: var(--shadow-subtle);
-  transition: background-color var(--duration-theme) ease, border-color var(--duration-theme) ease, color var(--duration-theme) ease;
 }
 
 .theme-card-elevated {
@@ -501,7 +498,6 @@ html {
 .site-shell {
   background-color: var(--page-bg);
   color: var(--text-primary);
-  transition: background-color var(--duration-theme) ease, color var(--duration-theme) ease;
 }
 
 :root {
@@ -521,7 +517,6 @@ html {
   inset: 0 0 auto;
   border-bottom: 1px solid var(--border-default);
   background-color: var(--nav-surface);
-  transition: background-color 180ms ease, border-color 180ms ease;
 }
 
 .site-nav-inner {
@@ -1199,6 +1194,33 @@ button:hover .smooth-img-zoom {
     animation: none !important;
     transform: none !important;
   }
+}
+
+/* Smooth, pleasing theme switch transition (active only while toggling) */
+html.theme-transitioning,
+html.theme-transitioning body,
+html.theme-transitioning .site-shell,
+html.theme-transitioning .site-nav,
+html.theme-transitioning .site-nav-inner,
+html.theme-transitioning .theme-nav,
+html.theme-transitioning .theme-page,
+html.theme-transitioning .theme-card,
+html.theme-transitioning .theme-card-elevated,
+html.theme-transitioning .theme-footer,
+html.theme-transitioning .home-hero,
+html.theme-transitioning main,
+html.theme-transitioning header,
+html.theme-transitioning footer,
+html.theme-transitioning h1,
+html.theme-transitioning h2,
+html.theme-transitioning h3,
+html.theme-transitioning p,
+html.theme-transitioning span,
+html.theme-transitioning a {
+  transition: background-color 360ms cubic-bezier(0.25, 1, 0.5, 1),
+              border-color 360ms cubic-bezier(0.25, 1, 0.5, 1),
+              color 300ms cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 360ms cubic-bezier(0.25, 1, 0.5, 1) !important;
 }
 
 @keyframes hero-enter {
