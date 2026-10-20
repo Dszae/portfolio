@@ -1150,9 +1150,32 @@ button:hover .smooth-img-zoom {
   color: var(--accent-strong);
 }
 
+@keyframes pageFadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-fade-in-up {
+  animation: pageFadeInUp 450ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: opacity, transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-fade-in-up {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
 @keyframes hero-enter {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes zoomIn {

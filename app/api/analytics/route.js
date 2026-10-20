@@ -26,28 +26,37 @@ export async function GET(request) {
 export async function POST(request) {
   try {
     const body = await request.json().catch(() => ({}));
-    const { path = '/', referrer = '', screenWidth = 0 } = body;
+    const { 
+      type = 'page_view', 
+      path = '/', 
+      referrer = '', 
+      screenWidth = 0,
+      visitorId = ''
+    } = body;
 
-if (!path || path.startsWith('/admin') || path.startsWith('/api') || path.includes('.')) {
+    if (!path || path.startsWith('/admin') || path.startsWith('/api') || path.includes('.')) {
       return NextResponse.json({ success: true, ignored: true });
     }
 
     const userAgent = request.headers.get('user-agent') || '';
+    if (/bot|crawler|spider|googlebot|bingbot|yandex|duckduckbot/i.test(userAgent)) {
+      return NextResponse.json({ success: true, bot: true });
+    }
 
-let deviceType = 'Desktop';
-    if (/mobile/i.test(userAgent) || screenWidth < 768) {
+    let deviceType = 'Desktop';
+    if (/mobile/i.test(userAgent) || (screenWidth > 0 && screenWidth < 768)) {
       deviceType = 'Mobile';
     } else if (/tablet|ipad/i.test(userAgent) || (screenWidth >= 768 && screenWidth <= 1024)) {
       deviceType = 'Tablet';
     }
 
-let browser = 'Other';
-    if (/chrome|crios/i.test(userAgent) && !/edg/i.test(userAgent)) browser = 'Chrome';
+    let browser = 'Other';
+    if (/edg/i.test(userAgent)) browser = 'Edge';
+    else if (/chrome|crios/i.test(userAgent)) browser = 'Chrome';
     else if (/safari/i.test(userAgent) && !/chrome/i.test(userAgent)) browser = 'Safari';
     else if (/firefox|fxios/i.test(userAgent)) browser = 'Firefox';
-    else if (/edg/i.test(userAgent)) browser = 'Edge';
 
-let source = 'Direct';
+    let source = 'Direct';
     if (referrer) {
       try {
         const refUrl = new URL(referrer);
@@ -58,25 +67,39 @@ let source = 'Direct';
         else if (host.includes('twitter') || host.includes('x.com')) source = 'Twitter / X';
         else if (host.includes('instagram')) source = 'Instagram';
         else if (host.includes('facebook')) source = 'Facebook';
-        else source = host.replace('www.', '');
+        else source = host.replace(/^www\./, '');
       } catch {
         source = 'External';
       }
     }
 
-try {
-      await supabaseAdmin.from('visitor_events').insert({
+    const country = request.headers.get('cf-ipcountry') || 
+                    request.headers.get('x-vercel-ip-country') || 
+                    'Nepal';
+
+    const clientIp = request.headers.get('cf-connecting-ip') || 
+                     request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 
+                     request.headers.get('x-real-ip') || 
+                     null;
+
+    await supabaseAdmin.from('activity_logs').insert({
+      action: type,
+      entity: 'visitor_event',
+      ip_address: clientIp,
+      details: JSON.stringify({
         path,
         referrer: source,
-        device_type: deviceType,
+        device: deviceType,
         browser,
-        created_at: new Date().toISOString()
-      });
-    } catch {
-    }
+        visitorId: visitorId || '',
+        country
+      }),
+      created_at: new Date().toISOString()
+    });
 
     return NextResponse.json({ success: true });
-  } catch {
+  } catch (err) {
+    console.error('Analytics record error:', err);
     return NextResponse.json({ success: true });
   }
 }

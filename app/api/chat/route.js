@@ -1,5 +1,6 @@
 
 import { NextResponse } from 'next/server';
+import { supabaseAdmin } from '@/lib/supabaseAdmin';
 import { ChatRequestSchema, AGENT_CONFIG } from '@/lib/agent/types';
 import { checkRateLimit } from '@/lib/agent/rateLimiter';
 import { runAgentOrchestration } from '@/lib/agent/orchestrator';
@@ -77,6 +78,18 @@ let body;
   }
 
   const { messages } = parseResult.data;
+
+  try {
+    const lastUserMsg = [...messages].reverse().find(m => m.role === 'user');
+    supabaseAdmin.from('activity_logs').insert({
+      action: 'ai_query',
+      entity: 'visitor_event',
+      details: JSON.stringify({
+        query: (lastUserMsg?.content || '').slice(0, 100)
+      }),
+      created_at: new Date().toISOString()
+    }).then(() => {}).catch(() => {});
+  } catch {}
 
 const responseStream = new TransformStream();
   const writer = responseStream.writable.getWriter();

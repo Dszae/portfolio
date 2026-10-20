@@ -688,11 +688,11 @@ const chartPoints = useMemo(() => {
                   <div className="flex items-center justify-between text-slate-400 text-xs">
                     <span>Total Visits</span>
                     <span className="text-[10px] text-emerald-400 font-mono bg-emerald-500/10 px-1.5 py-0.2 rounded border border-emerald-500/20">
-                      {analytics?.metrics?.trends?.visits || '+18.4%'}
+                      {analytics?.metrics?.trends?.visits ?? '0.0%'}
                     </span>
                   </div>
                   <div className="text-2xl font-bold text-white tracking-tight">
-                    {analytics?.metrics?.totalVisits?.toLocaleString() || '1,842'}
+                    {analytics?.metrics?.totalVisits !== undefined ? analytics.metrics.totalVisits.toLocaleString() : '0'}
                   </div>
                   <div className="text-[11px] text-slate-500">
                     Sessions across all pages
@@ -703,11 +703,11 @@ const chartPoints = useMemo(() => {
                   <div className="flex items-center justify-between text-slate-400 text-xs">
                     <span>Unique Visitors</span>
                     <span className="text-[10px] text-emerald-400 font-mono bg-emerald-500/10 px-1.5 py-0.2 rounded border border-emerald-500/20">
-                      {analytics?.metrics?.trends?.unique || '+14.2%'}
+                      {analytics?.metrics?.trends?.unique ?? '0.0%'}
                     </span>
                   </div>
                   <div className="text-2xl font-bold text-white tracking-tight">
-                    {analytics?.metrics?.uniqueVisitors?.toLocaleString() || '1,120'}
+                    {analytics?.metrics?.uniqueVisitors !== undefined ? analytics.metrics.uniqueVisitors.toLocaleString() : '0'}
                   </div>
                   <div className="text-[11px] text-slate-500">
                     Individual devices tracked
@@ -718,14 +718,16 @@ const chartPoints = useMemo(() => {
                   <div className="flex items-center justify-between text-slate-400 text-xs">
                     <span>Page Views</span>
                     <span className="text-[10px] text-emerald-400 font-mono bg-emerald-500/10 px-1.5 py-0.2 rounded border border-emerald-500/20">
-                      {analytics?.metrics?.trends?.views || '+22.8%'}
+                      {analytics?.metrics?.trends?.views ?? '0.0%'}
                     </span>
                   </div>
                   <div className="text-2xl font-bold text-white tracking-tight">
-                    {analytics?.metrics?.pageViews?.toLocaleString() || '4,390'}
+                    {analytics?.metrics?.pageViews !== undefined ? analytics.metrics.pageViews.toLocaleString() : '0'}
                   </div>
                   <div className="text-[11px] text-slate-500">
-                    ~2.4 views per visit session
+                    {analytics?.metrics?.totalVisits > 0 
+                      ? `~${(analytics.metrics.pageViews / analytics.metrics.totalVisits).toFixed(1)} views per session`
+                      : '0 views per session'}
                   </div>
                 </div>
 
@@ -733,14 +735,14 @@ const chartPoints = useMemo(() => {
                   <div className="flex items-center justify-between text-slate-400 text-xs">
                     <span>Avg. Session Duration</span>
                     <span className="text-[10px] text-emerald-400 font-mono bg-emerald-500/10 px-1.5 py-0.2 rounded border border-emerald-500/20">
-                      {analytics?.metrics?.trends?.duration || '+7.5%'}
+                      {analytics?.metrics?.trends?.duration ?? '0.0%'}
                     </span>
                   </div>
                   <div className="text-2xl font-bold text-white tracking-tight">
-                    {analytics?.metrics?.avgDuration || '2m 48s'}
+                    {analytics?.metrics?.avgDuration ?? '0s'}
                   </div>
                   <div className="text-[11px] text-slate-500">
-                    Bounce rate: {analytics?.metrics?.bounceRate || '34.2%'}
+                    Bounce rate: {analytics?.metrics?.bounceRate ?? '0.0%'}
                   </div>
                 </div>
               </div>
@@ -925,30 +927,36 @@ const chartPoints = useMemo(() => {
                   </div>
 
                   <div className="space-y-3">
-                    {(analytics?.topPages || []).map((page) => (
-                      <div key={page.path} className="space-y-1.5">
-                        <div className="flex items-center justify-between text-xs">
-                          <div className="flex items-center gap-2 truncate pr-2">
-                            <span className="font-mono text-slate-300 truncate">{page.path}</span>
-                            <span className="text-[10px] text-slate-500 truncate hidden sm:inline">· {page.title}</span>
+                    {(analytics?.topPages || []).length > 0 ? (
+                      analytics.topPages.map((page) => (
+                        <div key={page.path} className="space-y-1.5">
+                          <div className="flex items-center justify-between text-xs">
+                            <div className="flex items-center gap-2 truncate pr-2">
+                              <span className="font-mono text-slate-300 truncate">{page.path}</span>
+                              <span className="text-[10px] text-slate-500 truncate hidden sm:inline">· {page.title}</span>
+                            </div>
+                            <div className="flex items-center gap-3 shrink-0 font-mono text-[11px]">
+                              <span className="text-slate-400">{page.views.toLocaleString()}</span>
+                              <span className="text-emerald-400 font-semibold w-9 text-right">{page.percent}%</span>
+                            </div>
                           </div>
-                          <div className="flex items-center gap-3 shrink-0 font-mono text-[11px]">
-                            <span className="text-slate-400">{page.views.toLocaleString()}</span>
-                            <span className="text-emerald-400 font-semibold w-9 text-right">{page.percent}%</span>
+                          <div className="w-full h-1.5 bg-slate-800/80 rounded-full overflow-hidden">
+                            <div
+                              className="bg-emerald-500 h-full rounded-full transition-all duration-300"
+                              style={{ width: `${page.percent}%` }}
+                            />
                           </div>
                         </div>
-                        <div className="w-full h-1.5 bg-slate-800/80 rounded-full overflow-hidden">
-                          <div
-                            className="bg-emerald-500 h-full rounded-full transition-all duration-300"
-                            style={{ width: `${page.percent}%` }}
-                          />
-                        </div>
+                      ))
+                    ) : (
+                      <div className="py-8 text-center text-xs text-slate-500 font-mono">
+                        No visitor pageviews recorded yet. Live tracking active from 0.
                       </div>
-                    ))}
+                    )}
                   </div>
                 </div>
 
-<div className="bg-[#0F1422] border border-slate-800/80 p-5 rounded-xl space-y-4">
+                <div className="bg-[#0F1422] border border-slate-800/80 p-5 rounded-xl space-y-4">
                   <div className="flex items-center justify-between">
                     <div>
                       <h3 className="text-sm font-semibold text-white">Traffic Acquisition Channels</h3>
@@ -958,27 +966,33 @@ const chartPoints = useMemo(() => {
                   </div>
 
                   <div className="space-y-3">
-                    {(analytics?.referrers || []).map((ref) => (
-                      <div key={ref.source} className="space-y-1.5">
-                        <div className="flex items-center justify-between text-xs">
-                          <span className="text-slate-300 font-medium">{ref.source}</span>
-                          <div className="flex items-center gap-3 font-mono text-[11px]">
-                            <span className="text-slate-400">{ref.visits.toLocaleString()} visits</span>
-                            <span className="text-slate-200 font-semibold w-8 text-right">{ref.percent}%</span>
+                    {(analytics?.referrers || []).length > 0 ? (
+                      analytics.referrers.map((ref) => (
+                        <div key={ref.source} className="space-y-1.5">
+                          <div className="flex items-center justify-between text-xs">
+                            <span className="text-slate-300 font-medium">{ref.source}</span>
+                            <div className="flex items-center gap-3 font-mono text-[11px]">
+                              <span className="text-slate-400">{ref.visits.toLocaleString()} visits</span>
+                              <span className="text-slate-200 font-semibold w-8 text-right">{ref.percent}%</span>
+                            </div>
+                          </div>
+                          <div className="w-full h-1.5 bg-slate-800/80 rounded-full overflow-hidden">
+                            <div
+                              className="bg-sky-400 h-full rounded-full transition-all duration-300"
+                              style={{ width: `${ref.percent}%` }}
+                            />
                           </div>
                         </div>
-                        <div className="w-full h-1.5 bg-slate-800/80 rounded-full overflow-hidden">
-                          <div
-                            className="bg-sky-400 h-full rounded-full transition-all duration-300"
-                            style={{ width: `${ref.percent}%` }}
-                          />
-                        </div>
+                      ))
+                    ) : (
+                      <div className="py-8 text-center text-xs text-slate-500 font-mono">
+                        No referral sources recorded yet.
                       </div>
-                    ))}
+                    )}
                   </div>
                 </div>
 
-<div className="bg-[#0F1422] border border-slate-800/80 p-5 rounded-xl space-y-4">
+                <div className="bg-[#0F1422] border border-slate-800/80 p-5 rounded-xl space-y-4">
                   <div className="flex items-center justify-between">
                     <div>
                       <h3 className="text-sm font-semibold text-white">Geographic Distribution</h3>
@@ -988,69 +1002,97 @@ const chartPoints = useMemo(() => {
                   </div>
 
                   <div className="space-y-3">
-                    {(analytics?.countries || []).map((c) => (
-                      <div key={c.country} className="space-y-1.5">
-                        <div className="flex items-center justify-between text-xs">
-                          <div className="flex items-center gap-2">
-                            <span className="px-1.5 py-0.2 rounded bg-slate-800 font-mono text-[9px] text-slate-400">{c.code}</span>
-                            <span className="text-slate-300 font-medium">{c.country}</span>
+                    {(analytics?.countries || []).length > 0 ? (
+                      analytics.countries.map((c) => (
+                        <div key={c.country} className="space-y-1.5">
+                          <div className="flex items-center justify-between text-xs">
+                            <div className="flex items-center gap-2">
+                              <span className="px-1.5 py-0.2 rounded bg-slate-800 font-mono text-[9px] text-slate-400">{c.code}</span>
+                              <span className="text-slate-300 font-medium">{c.country}</span>
+                            </div>
+                            <div className="flex items-center gap-3 font-mono text-[11px]">
+                              <span className="text-slate-400">{c.visitors.toLocaleString()} visitors</span>
+                              <span className="text-emerald-400 font-semibold w-8 text-right">{c.percent}%</span>
+                            </div>
                           </div>
-                          <div className="flex items-center gap-3 font-mono text-[11px]">
-                            <span className="text-slate-400">{c.visitors.toLocaleString()} visitors</span>
-                            <span className="text-emerald-400 font-semibold w-8 text-right">{c.percent}%</span>
+                          <div className="w-full h-1.5 bg-slate-800/80 rounded-full overflow-hidden">
+                            <div
+                              className="bg-indigo-400 h-full rounded-full transition-all duration-300"
+                              style={{ width: `${c.percent}%` }}
+                            />
                           </div>
                         </div>
-                        <div className="w-full h-1.5 bg-slate-800/80 rounded-full overflow-hidden">
-                          <div
-                            className="bg-indigo-400 h-full rounded-full transition-all duration-300"
-                            style={{ width: `${c.percent}%` }}
-                          />
-                        </div>
+                      ))
+                    ) : (
+                      <div className="py-8 text-center text-xs text-slate-500 font-mono">
+                        No regional visitor data recorded yet.
                       </div>
-                    ))}
+                    )}
                   </div>
                 </div>
 
-<div className="bg-[#0F1422] border border-slate-800/80 p-5 rounded-xl space-y-4">
+                <div className="bg-[#0F1422] border border-slate-800/80 p-5 rounded-xl space-y-4">
                   <div>
                     <h3 className="text-sm font-semibold text-white">Devices & Browsers</h3>
                     <p className="text-xs text-slate-400">Hardware and browser market share</p>
                   </div>
 
-<div className="space-y-2">
+                  <div className="space-y-2">
                     <div className="flex justify-between text-xs text-slate-400">
                       <span>Device Types</span>
-                      <span className="font-mono text-[11px]">Desktop 64% · Mobile 32% · Tablet 4%</span>
+                      <span className="font-mono text-[11px]">
+                        {(analytics?.devices || []).length > 0
+                          ? analytics.devices.map(d => `${d.type} ${d.percent}%`).join(' · ')
+                          : 'No device events recorded yet'}
+                      </span>
                     </div>
                     <div className="w-full h-2 rounded-full bg-slate-800 overflow-hidden flex">
-                      <div style={{ width: '64%' }} className="bg-emerald-400 h-full" title="Desktop: 64%" />
-                      <div style={{ width: '32%' }} className="bg-sky-400 h-full" title="Mobile: 32%" />
-                      <div style={{ width: '4%' }} className="bg-amber-400 h-full" title="Tablet: 4%" />
+                      {(analytics?.devices || []).length > 0 ? (
+                        analytics.devices.map((d, idx) => {
+                          const colors = ['bg-emerald-400', 'bg-sky-400', 'bg-amber-400', 'bg-purple-400'];
+                          return (
+                            <div
+                              key={d.type}
+                              style={{ width: `${d.percent}%` }}
+                              className={`${colors[idx % colors.length]} h-full`}
+                              title={`${d.type}: ${d.percent}%`}
+                            />
+                          );
+                        })
+                      ) : (
+                        <div style={{ width: '0%' }} className="bg-emerald-400 h-full" />
+                      )}
                     </div>
                   </div>
 
-<div className="pt-2 border-t border-slate-800/80 space-y-2">
+                  <div className="pt-2 border-t border-slate-800/80 space-y-2">
                     <span className="text-xs text-slate-400 block">Top Browsers</span>
                     <div className="grid grid-cols-2 gap-2 text-xs font-mono">
-                      {(analytics?.browsers || []).map((b) => (
-                        <div key={b.name} className="p-2 rounded-lg bg-slate-900/60 border border-slate-800/80 flex items-center justify-between">
-                          <span className="text-slate-300 font-sans">{b.name}</span>
-                          <span className="text-emerald-400 font-semibold">{b.percent}%</span>
+                      {(analytics?.browsers || []).length > 0 ? (
+                        analytics.browsers.map((b) => (
+                          <div key={b.name} className="p-2 rounded-lg bg-slate-900/60 border border-slate-800/80 flex items-center justify-between">
+                            <span className="text-slate-300 font-sans">{b.name}</span>
+                            <span className="text-emerald-400 font-semibold">{b.percent}%</span>
+                          </div>
+                        ))
+                      ) : (
+                        <div className="col-span-2 py-4 text-center text-slate-500 font-sans text-xs">
+                          No browser telemetry recorded yet.
                         </div>
-                      ))}
+                      )}
                     </div>
                   </div>
 
-<div className="pt-2 border-t border-slate-800/80 space-y-2">
+                  <div className="pt-2 border-t border-slate-800/80 space-y-2">
                     <span className="text-xs text-slate-400 block">Engagement Highlights</span>
                     <div className="grid grid-cols-2 gap-2 text-xs">
                       <div className="p-2 rounded-lg bg-slate-900/60 border border-slate-800/80">
                         <div className="text-[10px] text-slate-500">Live Demo Clicks</div>
-                        <div className="text-sm font-bold text-white font-mono mt-0.5">{analytics?.engagement?.projectDemoLaunches || 482}</div>
+                        <div className="text-sm font-bold text-white font-mono mt-0.5">{analytics?.engagement?.projectDemoLaunches ?? 0}</div>
                       </div>
                       <div className="p-2 rounded-lg bg-slate-900/60 border border-slate-800/80">
                         <div className="text-[10px] text-slate-500">GitHub Code Links</div>
-                        <div className="text-sm font-bold text-white font-mono mt-0.5">{analytics?.engagement?.githubCodeClicks || 314}</div>
+                        <div className="text-sm font-bold text-white font-mono mt-0.5">{analytics?.engagement?.githubCodeClicks ?? 0}</div>
                       </div>
                     </div>
                   </div>
