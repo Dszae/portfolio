@@ -326,7 +326,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
   const pathname = usePathname();
   const [isDark, setIsDark] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [hasAnnouncement, setHasAnnouncement] = useState(false);
+  const [hasAnnouncement, setHasAnnouncement] = useState(true);
   const menuToggleRef = useRef(null);
 
   useEffect(() => {

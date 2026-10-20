@@ -472,7 +472,7 @@ html {
 }
 
 :root {
-  --announcement-height: 0px;
+  --announcement-height: 38px;
   --nav-height: calc(72px + var(--announcement-height));
 }
 
@@ -482,7 +482,6 @@ html {
 
 .site-shell.has-announcement main#main-content {
   padding-top: var(--announcement-height);
-  transition: padding-top 200ms ease;
 }
 
 .site-nav {
@@ -1150,19 +1149,19 @@ button:hover .smooth-img-zoom {
   color: var(--accent-strong);
 }
 
-@keyframes fadeUpBottomToTop {
-  0% {
+@keyframes fadeDownToUp {
+  from {
     opacity: 0;
-    transform: translateY(32px);
+    transform: translateY(20px);
   }
-  100% {
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
 .fade-up-enter {
-  animation: fadeUpBottomToTop 550ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: fadeDownToUp 450ms cubic-bezier(0.16, 1, 0.3, 1) both;
   will-change: opacity, transform;
 }
 
