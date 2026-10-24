@@ -63,6 +63,7 @@ function ScrollToTopButton() {
 
 function LightboxModal({ image, onClose }) {
   const [activeIdx, setActiveIdx] = useState(image?.index ?? 0);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const items = image?.items;
   const hasItems = Array.isArray(items) && items.length > 0;
@@ -70,6 +71,33 @@ function LightboxModal({ image, onClose }) {
 
   const touchStartX = useRef(null);
   const touchStartY = useRef(null);
+
+  // Monitor image load state
+  useEffect(() => {
+    if (!currentItem?.src) return;
+    setIsLoaded(false);
+    const img = new window.Image();
+    img.src = currentItem.src;
+    if (img.complete && img.naturalWidth > 0) {
+      setIsLoaded(true);
+    } else {
+      img.onload = () => setIsLoaded(true);
+      img.onerror = () => setIsLoaded(true);
+    }
+  }, [currentItem?.src]);
+
+  // Preload neighboring images in the set
+  useEffect(() => {
+    if (!hasItems || items.length <= 1) return;
+    const nextIdx = (activeIdx + 1) % items.length;
+    const prevIdx = (activeIdx - 1 + items.length) % items.length;
+    [items[nextIdx]?.src, items[prevIdx]?.src].forEach((src) => {
+      if (src) {
+        const pre = new window.Image();
+        pre.src = src;
+      }
+    });
+  }, [activeIdx, hasItems, items]);
 
   const handlePrev = (e) => {
     if (e) e.stopPropagation();
@@ -139,79 +167,118 @@ function LightboxModal({ image, onClose }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2, ease: 'easeOut' }}
-      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black/95 backdrop-blur-md p-4 sm:p-6 md:p-10 select-none cursor-pointer"
+      className="fixed inset-0 z-[100] flex flex-col justify-between bg-black/95 backdrop-blur-md select-none cursor-pointer overflow-hidden p-0"
       onClick={onClose}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
     >
-      {/* Top right clean close button */}
-      <button
-        type="button"
+      {/* Top Header Bar: Counter + Close Button */}
+      <div 
+        className="w-full shrink-0 h-14 sm:h-16 px-4 sm:px-6 flex items-center justify-between z-30"
+        onClick={(e) => {
+          if (e.target === e.currentTarget) onClose();
+        }}
+      >
+        <div>
+          {hasItems && items.length > 1 && (
+            <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs font-mono font-medium text-white/90 shadow-sm">
+              {activeIdx + 1} / {items.length}
+            </span>
+          )}
+        </div>
+
+        <button
+          type="button"
+          onClick={(e) => { e.stopPropagation(); onClose(); }}
+          aria-label="Close modal"
+          className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 backdrop-blur-md border border-white/15 text-white/90 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-md focus:outline-none"
+        >
+          <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      {/* Middle Stage: Image + Navigation Arrows */}
+      <div 
+        className="flex-1 min-h-0 w-full flex items-center justify-center relative px-2 sm:px-14 lg:px-20 overflow-hidden"
         onClick={onClose}
-        aria-label="Close modal"
-        className="fixed top-4 right-4 sm:top-6 sm:right-6 z-[120] p-2.5 text-white/80 hover:text-white hover:scale-110 active:scale-95 transition-all cursor-pointer focus:outline-none"
       >
-        <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-
-      {/* Floating Left Navigation Arrow */}
-      {hasItems && (
-        <button
-          type="button"
-          onClick={(e) => { e.stopPropagation(); handlePrev(e); }}
-          aria-label="Previous"
-          className="fixed left-2 sm:left-6 top-1/2 -translate-y-1/2 z-[120] p-2.5 sm:p-3 text-white/70 hover:text-white hover:scale-110 active:scale-95 transition-all cursor-pointer focus:outline-none"
-        >
-          <svg className="w-8 h-8 sm:w-10 sm:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-      )}
-
-      {/* Center Image Container - clicking only here prevents closing */}
-      <motion.div 
-        key={"image-card-" + (currentItem?.src || activeIdx)}
-        initial={{ opacity: 0, scale: 0.96, y: 6 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.96, y: 6 }}
-        transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
-        onClick={(e) => e.stopPropagation()}
-        className={"relative z-10 max-w-[92vw] sm:max-w-[85vw] lg:max-w-4xl max-h-[72vh] sm:max-h-[76vh] flex items-center justify-center rounded-2xl sm:rounded-3xl shadow-2xl cursor-default overflow-hidden " + (isCertificate ? 'bg-white p-2.5 sm:p-4' : 'bg-transparent p-0')}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-      >
-        <img 
-          src={currentItem?.src} 
-          alt={currentItem?.alt || currentItem?.title || 'Preview'} 
-          className={"max-h-[68vh] sm:max-h-[72vh] w-auto max-w-full block object-contain transition-transform duration-200 select-none " + (isCertificate ? 'rounded-xl' : 'rounded-2xl')}
-          loading="eager"
-        />
-      </motion.div>
-
-      {/* Floating Right Navigation Arrow */}
-      {hasItems && (
-        <button
-          type="button"
-          onClick={(e) => { e.stopPropagation(); handleNext(e); }}
-          aria-label="Next"
-          className="fixed right-2 sm:right-6 top-1/2 -translate-y-1/2 z-[120] p-2.5 sm:p-3 text-white/70 hover:text-white hover:scale-110 active:scale-95 transition-all cursor-pointer focus:outline-none"
-        >
-          <svg className="w-8 h-8 sm:w-10 sm:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-      )}
-
-      {/* Bottom Title & Subtitle - pointer-events-none so clicking here closes */}
-      <div className="mt-4 sm:mt-5 text-center max-w-2xl px-4 pointer-events-none select-none z-10">
-        <h3 className="text-white text-base sm:text-lg md:text-xl font-bold tracking-tight">
-          {currentItem?.title || currentItem?.alt || 'Certificate'}
-        </h3>
-        {(currentItem?.subtitle || currentItem?.desc) && (
-          <p className="mt-1 text-xs sm:text-sm text-slate-400 font-medium">
-            {currentItem?.subtitle || currentItem?.desc}
-          </p>
+        {/* Floating Left Navigation Arrow */}
+        {hasItems && items.length > 1 && (
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); handlePrev(e); }}
+            aria-label="Previous"
+            className="absolute left-2 sm:left-4 md:left-6 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/60 hover:bg-black/80 active:scale-90 backdrop-blur-md border border-white/20 text-white/90 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-xl focus:outline-none"
+          >
+            <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
         )}
+
+        {/* Center Image Container - clicking only here prevents closing */}
+        <motion.div 
+          key={"image-card-" + (currentItem?.src || activeIdx)}
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.98 }}
+          transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+          onClick={(e) => e.stopPropagation()}
+          className={"relative z-20 max-w-[94vw] sm:max-w-[86vw] lg:max-w-4xl max-h-[66vh] sm:max-h-[72vh] flex items-center justify-center rounded-xl sm:rounded-2xl shadow-2xl cursor-default " + (isCertificate ? 'bg-white p-2 sm:p-4' : 'bg-transparent p-0')}
+        >
+          {/* Subtle loading skeleton in stage to prevent any layout shift */}
+          {!isLoaded && (
+            <div className="absolute inset-0 flex items-center justify-center min-w-[240px] min-h-[180px] sm:min-w-[400px] sm:min-h-[300px] rounded-xl bg-white/5 animate-pulse">
+              <div className="w-8 h-8 rounded-full border-2 border-white/20 border-t-white animate-spin" />
+            </div>
+          )}
+
+          <img 
+            src={currentItem?.src} 
+            alt={currentItem?.alt || currentItem?.title || 'Preview'} 
+            onLoad={() => setIsLoaded(true)}
+            className={"max-h-[62vh] sm:max-h-[68vh] w-auto max-w-full block object-contain select-none transition-opacity duration-300 ease-out " + 
+              (isCertificate ? 'rounded-lg' : 'rounded-xl') + " " +
+              (isLoaded ? 'opacity-100' : 'opacity-0')}
+            loading="eager"
+            decoding="async"
+          />
+        </motion.div>
+
+        {/* Floating Right Navigation Arrow */}
+        {hasItems && items.length > 1 && (
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); handleNext(e); }}
+            aria-label="Next"
+            className="absolute right-2 sm:right-4 md:right-6 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/60 hover:bg-black/80 active:scale-90 backdrop-blur-md border border-white/20 text-white/90 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-xl focus:outline-none"
+          >
+            <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        )}
+      </div>
+
+      {/* Bottom Title & Subtitle - Permanently Anchored to Bottom */}
+      <div 
+        className="w-full shrink-0 min-h-[64px] sm:min-h-[72px] pb-4 pt-2 sm:pb-6 sm:pt-3 px-4 text-center z-30 flex flex-col items-center justify-center"
+        onClick={(e) => {
+          if (e.target === e.currentTarget) onClose();
+        }}
+      >
+        <div className="max-w-2xl px-2">
+          <h3 className="text-white text-sm sm:text-base md:text-lg font-bold tracking-tight line-clamp-1">
+            {currentItem?.title || currentItem?.alt || 'Certificate'}
+          </h3>
+          {(currentItem?.subtitle || currentItem?.desc) && (
+            <p className="mt-0.5 text-xs sm:text-sm text-slate-400 font-medium line-clamp-1">
+              {currentItem?.subtitle || currentItem?.desc}
+            </p>
+          )}
+        </div>
       </div>
     </motion.div>
   );

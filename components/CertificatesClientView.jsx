@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import SiteLayout from './SiteLayout';
 import FadeUp from './FadeUp';
@@ -9,6 +9,18 @@ import PagePagination from './PagePagination';
 
 export default function CertificatesClientView({ certificates, jsonLd }) {
   const [selectedImage, setSelectedImage] = useState(null);
+
+  // Background warm-up of certificate images into browser memory cache
+  useEffect(() => {
+    if (typeof window !== 'undefined' && Array.isArray(certificates)) {
+      certificates.forEach((cert) => {
+        if (cert.img) {
+          const img = new window.Image();
+          img.src = cert.img;
+        }
+      });
+    }
+  }, [certificates]);
 
   return (
     <SiteLayout selectedImage={selectedImage} setSelectedImage={setSelectedImage}>
@@ -62,7 +74,7 @@ export default function CertificatesClientView({ certificates, jsonLd }) {
                           height="300"
                           loading="lazy"
                           decoding="async"
-                          unoptimized={Boolean(cert.img?.startsWith('http'))}
+                          unoptimized={true}
                           className="w-full h-full object-cover smooth-img-zoom" 
                         />
                         <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">

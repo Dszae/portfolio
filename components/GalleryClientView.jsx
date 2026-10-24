@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import SiteLayout from './SiteLayout';
 import FadeUp from './FadeUp';
@@ -9,6 +9,18 @@ import PagePagination from './PagePagination';
 
 export default function GalleryClientView({ gallery, jsonLd }) {
   const [selectedImage, setSelectedImage] = useState(null);
+
+  // Background warm-up of gallery archive images into browser memory cache
+  useEffect(() => {
+    if (typeof window !== 'undefined' && Array.isArray(gallery)) {
+      gallery.forEach((item) => {
+        if (item.img) {
+          const img = new window.Image();
+          img.src = item.img;
+        }
+      });
+    }
+  }, [gallery]);
 
   return (
     <SiteLayout selectedImage={selectedImage} setSelectedImage={setSelectedImage}>
@@ -64,7 +76,7 @@ export default function GalleryClientView({ gallery, jsonLd }) {
                         height="360"
                         loading="lazy"
                         decoding="async"
-                        unoptimized={Boolean(item.img?.startsWith('http'))}
+                        unoptimized={true}
                         className="w-full h-full object-cover smooth-img-zoom"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col justify-between p-4 sm:p-6">
