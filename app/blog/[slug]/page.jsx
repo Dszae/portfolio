@@ -1,5 +1,5 @@
 import React from 'react';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import SiteLayout from '@/components/SiteLayout';
@@ -57,6 +57,10 @@ export default async function DynamicArticlePage({ params }) {
 
   if (!article) {
     notFound();
+  }
+
+  if (article.live_url) {
+    redirect(article.live_url);
   }
 
   const profile = siteSettings?.profile || {};
