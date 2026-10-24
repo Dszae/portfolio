@@ -27,7 +27,7 @@ import { generatePageMetadata } from '@/lib/seoEngine';
 
 export async function generateMetadata() {
   return await generatePageMetadata({
-    title: 'Articles & Write-Ups',
+    title: 'Articles',
     description: 'Technical write-ups, architecture case studies, and engineering articles authored by Dipesh Sapkota covering AI/ML, distributed systems, and modern web applications.',
     path: '/blog',
   });

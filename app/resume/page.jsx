@@ -13,7 +13,7 @@ export async function generateMetadata() {
   const name = profile.name || 'Dipesh Sapkota';
 
   return await generatePageMetadata({
-    title: `Resume & Career Journey | ${name}`,
+    title: 'Resume',
     description: `Career journey, work experience, and educational background of ${name} at IOE Thapathali Campus and beyond. Download verified CV.`,
     path: '/resume',
   });

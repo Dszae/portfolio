@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import ScrollPreviewImage from './ScrollPreviewImage';
 import SiteLayout from './SiteLayout';
 import FadeUp from './FadeUp';
@@ -78,8 +79,11 @@ function MotionReelsGraphic() {
 
 export default function ProjectsClientView({ initialProjects = [], jsonLd = null }) {
   const [filter, setFilter] = useState('all');
+  const searchParams = useSearchParams();
+  const queryParam = searchParams?.get('q') || searchParams?.get('search') || '';
+  const [searchQuery, setSearchQuery] = useState(queryParam);
 
-const normalizedProjects = initialProjects.map((p) => {
+  const normalizedProjects = initialProjects.map((p) => {
     const slug = p.slug || p.id?.toString() || '';
     const image = p.image || p.img || '';
     const tech = Array.isArray(p.tech) ? p.tech : (typeof p.tech === 'string' ? p.tech.split(',').map(s => s.trim()) : []);
@@ -104,18 +108,32 @@ const normalizedProjects = initialProjects.map((p) => {
     };
   });
 
+  const matchesSearch = (p) => {
+    if (!searchQuery.trim()) return true;
+    const q = searchQuery.toLowerCase().trim();
+    const title = (p.title || p.name || '').toLowerCase();
+    const desc = (p.description || '').toLowerCase();
+    const techMatch = Array.isArray(p.tech) && p.tech.some(t => t.toLowerCase().includes(q));
+    const catMatch = (p.categoryLabel || '').toLowerCase().includes(q);
+    return title.includes(q) || desc.includes(q) || techMatch || catMatch;
+  };
+
   const featuredProjects = normalizedProjects.filter(p => p.isFeatured);
   const noteworthyProjects = normalizedProjects.filter(p => !p.isFeatured);
 
-  const filteredFeatured = featuredProjects.filter((p) => {
-    if (filter === 'all') return true;
-    return p.category === filter;
-  });
+  const filteredFeatured = featuredProjects
+    .filter(matchesSearch)
+    .filter((p) => {
+      if (filter === 'all') return true;
+      return p.category === filter;
+    });
 
-  const filteredNoteworthy = noteworthyProjects.filter((p) => {
-    if (filter === 'all') return true;
-    return p.category === filter;
-  });
+  const filteredNoteworthy = noteworthyProjects
+    .filter(matchesSearch)
+    .filter((p) => {
+      if (filter === 'all') return true;
+      return p.category === filter;
+    });
 
   const totalCount = normalizedProjects.length;
   const devCount = normalizedProjects.filter((p) => p.category === 'dev').length;
@@ -149,7 +167,32 @@ const normalizedProjects = initialProjects.map((p) => {
                     </p>
                   </div>
 
-<div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs font-medium tracking-wide self-start md:self-auto" role="tablist" aria-label="Filter projects">
+<div className="flex flex-col sm:flex-row sm:items-center gap-4 w-full md:w-auto">
+                    <div className="relative w-full sm:w-64">
+                      <label htmlFor="project-search" className="sr-only">Search projects</label>
+                      <input
+                        id="project-search"
+                        type="search"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        placeholder="Search projects or tech..."
+                        className="w-full pl-9 pr-7 py-1.5 rounded-lg text-xs bg-slate-100 dark:bg-[#181D24] text-slate-900 dark:text-slate-100 border border-slate-300 dark:border-[#222933] focus:outline-none focus:ring-1 focus:ring-[#065F46] dark:focus:ring-[#34D399]"
+                      />
+                      <svg className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                      </svg>
+                      {searchQuery && (
+                        <button
+                          type="button"
+                          onClick={() => setSearchQuery('')}
+                          aria-label="Clear search"
+                          className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xs font-bold"
+                        >
+                          ×
+                        </button>
+                      )}
+                    </div>
+                    <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs font-medium tracking-wide self-start md:self-auto" role="tablist" aria-label="Filter projects">
                     <button
                       type="button"
                       role="tab"
@@ -203,10 +246,26 @@ const normalizedProjects = initialProjects.map((p) => {
                       Experiments [{expCount}]
                     </button>
                   </div>
+                  </div>
                 </div>
               </header>
 
-{filteredFeatured.length > 0 && (
+{filteredFeatured.length === 0 && filteredNoteworthy.length === 0 && (
+                <div className="text-center py-16 border border-dashed border-slate-300 dark:border-[#222933] rounded-2xl p-8 my-8">
+                  <p className="text-sm font-medium text-slate-600 dark:text-slate-300">
+                    No projects found matching &ldquo;{searchQuery}&rdquo;
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => { setSearchQuery(''); setFilter('all'); }}
+                    className="mt-3 text-xs font-mono font-semibold text-[#065F46] dark:text-[#34D399] hover:underline cursor-pointer"
+                  >
+                    Reset all filters
+                  </button>
+                </div>
+              )}
+
+              {filteredFeatured.length > 0 && (
                 <div className="space-y-20 sm:space-y-28 mb-24">
                   {filteredFeatured.map((project, idx) => {
                     const isEven = idx % 2 === 0;

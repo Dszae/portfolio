@@ -12,7 +12,7 @@ export async function generateMetadata() {
   const name = profile.name || 'Dipesh Sapkota';
 
   return await generatePageMetadata({
-    title: `Certificates & Credentials | ${name}`,
+    title: 'Certificates',
     description: `Verified professional certifications of ${name} across graphic design, motion design, DaVinci Resolve color science, and software engineering.`,
     path: '/certificates',
   });

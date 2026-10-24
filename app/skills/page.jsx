@@ -11,7 +11,7 @@ export async function generateMetadata() {
   const name = profile.name || 'Dipesh Sapkota';
 
   return await generatePageMetadata({
-    title: `Skills & Technical Competencies | ${name}`,
+    title: 'Skills',
     description: `Technical competencies of ${name} across Computer Engineering, AI/ML exploration, hardware simulation (Proteus), programming (Python, C/C++, React, PHP), and motion graphics.`,
     path: '/skills',
     keywords: [

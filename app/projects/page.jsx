@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { getProjects } from '@/lib/dataService';
 import ProjectsClientView from '@/components/ProjectsClientView';
 import { siteUrl, personId, websiteId } from '@/components/JsonLdSchema';
@@ -8,7 +9,7 @@ export const revalidate = 60;
 
 export async function generateMetadata() {
   return await generatePageMetadata({
-    title: 'Projects & Software Architecture',
+    title: 'Projects',
     description: 'Featured web applications, interactive software tools, hardware simulations, and engineering projects created by Dipesh Sapkota, including Sportivo, IOE Admission Guide, and Git Visualizer.',
     path: '/projects',
   });
@@ -35,9 +36,11 @@ export default async function ProjectsPage() {
   const projects = await getProjects();
 
   return (
-    <ProjectsClientView 
-      initialProjects={projects} 
-      jsonLd={projectsPageJsonLd} 
-    />
+    <Suspense fallback={null}>
+      <ProjectsClientView 
+        initialProjects={projects} 
+        jsonLd={projectsPageJsonLd} 
+      />
+    </Suspense>
   );
 }

@@ -10,7 +10,7 @@ export async function generateMetadata() {
   const name = profile.name || 'Dipesh Sapkota';
 
   return await generatePageMetadata({
-    title: `About ${name}`,
+    title: 'About',
     description: profile.bio || `Official biography and background of ${name}, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal.`,
     path: '/about',
     type: 'profile',

@@ -12,7 +12,7 @@ export async function generateMetadata() {
   const name = profile.name || 'Dipesh Sapkota';
 
   return await generatePageMetadata({
-    title: `Visual Archive & Photo Gallery | ${name}`,
+    title: 'Gallery',
     description: `Curated photo archive and visual moments documenting campus life at IOE Thapathali, technical exhibitions like Yathartha, cricket tournaments, and creative media moments by ${name}.`,
     path: '/gallery',
   });
