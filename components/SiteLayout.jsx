@@ -585,9 +585,14 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
                     <Link
                       href={link.path}
                       itemProp="url"
-                      className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors inline-block"
+                      className="footer-nav-link"
                     >
-                      <span itemProp="name">{link.label}</span>
+                      <span className="footer-link-arrow" aria-hidden="true">
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>
+                      </span>
+                      <span itemProp="name" className="footer-link-text">{link.label}</span>
                     </Link>
                   </li>
                 ))}
@@ -595,9 +600,14 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
                   <Link
                     href="/image-licensing"
                     itemProp="url"
-                    className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors inline-block"
+                    className="footer-nav-link"
                   >
-                    <span itemProp="name">Image Licensing</span>
+                    <span className="footer-link-arrow" aria-hidden="true">
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                      </svg>
+                    </span>
+                    <span itemProp="name" className="footer-link-text">Image Licensing</span>
                   </Link>
                 </li>
               </ul>
@@ -608,41 +618,26 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
                 Case Studies
               </h2>
               <ul className="space-y-2.5">
-                <li>
-                  <Link href="/projects/sportivo" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors inline-block">
-                    Sportivo — Live Scores, Fixtures &amp; Sports News
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/projects/git-visualizer" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors inline-block">
-                    Git Visualizer (DAG Internals)
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/projects/ioe-admission-guide" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors inline-block">
-                    IOE Admission Guide Portal
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/projects/sports-reels" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors inline-block">
-                    Sports Reels &amp; Motion Design
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/projects/555-flasher" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors inline-block">
-                    NE555 Timer Circuit Prototype
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/projects/motor-modeling" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors inline-block">
-                    Electrical Machinery Modeling
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/projects/analyzer-diag" className="text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors inline-block">
-                    Clinical Analyzer Diagnostics
-                  </Link>
-                </li>
+                {[
+                  { href: "/projects/sportivo", label: "Sportivo — Live Scores, Fixtures & Sports News" },
+                  { href: "/projects/git-visualizer", label: "Git Visualizer (DAG Internals)" },
+                  { href: "/projects/ioe-admission-guide", label: "IOE Admission Guide Portal" },
+                  { href: "/projects/sports-reels", label: "Sports Reels & Motion Design" },
+                  { href: "/projects/555-flasher", label: "NE555 Timer Circuit Prototype" },
+                  { href: "/projects/motor-modeling", label: "Electrical Machinery Modeling" },
+                  { href: "/projects/analyzer-diag", label: "Clinical Analyzer Diagnostics" },
+                ].map((item) => (
+                  <li key={item.href}>
+                    <Link href={item.href} className="footer-nav-link">
+                      <span className="footer-link-arrow" aria-hidden="true">
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>
+                      </span>
+                      <span className="footer-link-text">{item.label}</span>
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </nav>
 
