@@ -1,5 +1,6 @@
 import React from 'react';
 import katex from 'katex';
+import 'katex/dist/katex.min.css';
 
 export default function MathFormula({ math, block = false, className = '' }) {
   let html = '';

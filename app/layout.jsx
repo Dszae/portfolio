@@ -12,7 +12,6 @@ import JsonLdSchema from '@/components/JsonLdSchema';
 import WebMCPInitializer from '@/components/WebMCPInitializer';
 import AnalyticsTracker from '@/components/AnalyticsTracker';
 import { getSiteSettings } from '@/lib/dataService';
-import 'katex/dist/katex.min.css';
 import './globals.css';
 
 export const revalidate = 60;
@@ -164,7 +163,7 @@ export default async function RootLayout({ children }) {
           }}
         />
       </head>
-      <body className="theme-page font-sans antialiased m-0 p-0 w-full min-h-screen overflow-x-hidden">
+      <body className="theme-page font-sans antialiased m-0 p-0 w-full min-h-screen overflow-x-hidden" suppressHydrationWarning>
         <JsonLdSchema settings={settings} />
         <WebMCPInitializer />
         <AnalyticsTracker />

@@ -937,11 +937,21 @@ button:hover .smooth-img-zoom {
 }
 
 .hero-button-primary {
-  color: #FFFFFF;
-  background: var(--accent-primary);
+  color: var(--accent-on);
+  background: var(--accent-strong);
+  font-weight: 600;
 }
 
 .hero-button-primary:hover {
+  background: var(--accent-bright);
+}
+
+html.light .hero-button-primary {
+  color: var(--accent-on);
+  background: var(--accent-primary);
+}
+
+html.light .hero-button-primary:hover {
   background: var(--accent-strong);
 }
 

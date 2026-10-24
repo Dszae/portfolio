@@ -34,11 +34,20 @@ export function getClientInitialAnnouncement() {
 }
 
 export default function RollingAnnouncement({ onVisibilityChange }) {
-  const [feature, setFeature] = useState(getClientInitialAnnouncement);
+  const [feature, setFeature] = useState(DEFAULT_ANNOUNCEMENT);
+  const [mounted, setMounted] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
-    let mounted = true;
+    let active = true;
+    setMounted(true);
+    const clientInitial = getClientInitialAnnouncement();
+    if (clientInitial) {
+      setFeature(clientInitial);
+      if (clientInitial.is_active && (clientInitial.text || clientInitial.message) && onVisibilityChange) {
+        onVisibilityChange(true);
+      }
+    }
     async function syncFeatures() {
       try {
         const res = await fetch('/api/site-features?t=' + Date.now(), { cache: 'no-store' });
@@ -75,14 +84,14 @@ export default function RollingAnnouncement({ onVisibilityChange }) {
     };
     window.addEventListener('storage', handleStorageUpdate);
     return () => {
-      mounted = false;
+      active = false;
       window.removeEventListener('storage', handleStorageUpdate);
     };
   }, [onVisibilityChange]);
 
   const messageText = (feature?.text || feature?.message || '').trim();
 
-  if (dismissed || !feature || !feature.is_active || !messageText) {
+  if (!mounted || dismissed || !feature || !feature.is_active || !messageText) {
     return null;
   }
 
