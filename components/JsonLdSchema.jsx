@@ -121,7 +121,7 @@ export const website = {
       '@type': 'WebPage',
       '@id': `${siteUrl}/blog`,
       name: 'Articles',
-      description: 'In-depth software engineering articles and architectural breakdowns.',
+      description: 'Published technical articles, architectural case studies, and engineering write-ups by Dipesh Sapkota on DEV Community.',
       url: `${siteUrl}/blog`,
     },
     {
@@ -184,7 +184,7 @@ export const homePageSchema = {
         { '@type': 'WebPage', name: 'Profile', description: 'Verified public profile, credentials, and biographical records of Dipesh Sapkota.', url: `${siteUrl}/profile` },
         { '@type': 'WebPage', name: 'Skills', description: 'Programming languages, tools, frameworks, and engineering competencies.', url: `${siteUrl}/skills` },
         { '@type': 'WebPage', name: 'Projects', description: 'Featured software systems, open-source projects, and engineering tools.', url: `${siteUrl}/projects` },
-        { '@type': 'WebPage', name: 'Articles', description: 'In-depth software engineering write-ups and architectural breakdowns.', url: `${siteUrl}/blog` },
+        { '@type': 'WebPage', name: 'Articles', description: 'Published technical articles, architectural case studies, and engineering write-ups by Dipesh Sapkota on DEV Community.', url: `${siteUrl}/blog` },
         { '@type': 'WebPage', name: 'Certificates', description: 'Verified technical certifications from Udemy, EDUCBA, and Blackmagic Design.', url: `${siteUrl}/certificates` },
         { '@type': 'WebPage', name: 'Resume', description: 'Curriculum Vitae, academic history, roles, and downloadable PDF resume.', url: `${siteUrl}/resume` },
         { '@type': 'WebPage', name: 'Gallery', description: 'Campus memories, leadership events, and creative media visual archive.', url: `${siteUrl}/gallery` },
@@ -254,7 +254,7 @@ export const homePageSchema = {
             '@id': `${siteUrl}/blog`,
             name: 'Articles',
             url: `${siteUrl}/blog`,
-            description: 'In-depth software engineering write-ups and architectural breakdowns.',
+            description: 'Published technical articles, architectural case studies, and engineering write-ups by Dipesh Sapkota on DEV Community.',
           },
         },
         {

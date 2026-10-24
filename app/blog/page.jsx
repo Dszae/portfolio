@@ -12,7 +12,7 @@ const articlesPageJsonLd = {
   '@id': `${siteUrl}/blog#articlespage`,
   url: `${siteUrl}/blog`,
   name: 'Articles | Dipesh Sapkota',
-  description: 'Technical write-ups, architecture case studies, and engineering articles authored by Dipesh Sapkota.',
+  description: 'Published technical articles, architectural case studies, and engineering write-ups by Dipesh Sapkota on DEV Community.',
   creator: { '@id': personId },
   isPartOf: {
     '@type': 'WebSite',
@@ -21,6 +21,37 @@ const articlesPageJsonLd = {
     url: `${siteUrl}/`,
   },
   inLanguage: 'en',
+  mainEntity: {
+    '@type': 'ItemList',
+    name: 'Published Articles on DEV Community by Dipesh Sapkota',
+    numberOfItems: 4,
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'IOE Admission Hub: Building a Rank Predictor and Campus Explorer for Nepal',
+        url: 'https://dev.to/dszae/ioe-admission-hub-building-a-rank-predictor-and-campus-explorer-for-nepal-1n1f',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Building an ESP32-Based IoT Emergency Response System for the Elderly',
+        url: 'https://dev.to/dszae/building-an-iot-emergency-response-system-with-esp32-2kgo',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'Building Git Visualizer: Making Git Easier to Understand Through Interactive Visuals',
+        url: 'https://dev.to/dszae/building-an-interactive-git-visualizer-to-master-version-control-4noa',
+      },
+      {
+        '@type': 'ListItem',
+        position: 4,
+        name: 'Building Sportivo: A Live Sports Web App with React',
+        url: 'https://dev.to/dszae/building-sportivo-how-i-engineered-a-live-sports-streaming-web-app-4kh6',
+      },
+    ],
+  },
 };
 
 import { generatePageMetadata } from '@/lib/seoEngine';
@@ -28,7 +59,7 @@ import { generatePageMetadata } from '@/lib/seoEngine';
 export async function generateMetadata() {
   return await generatePageMetadata({
     title: 'Articles',
-    description: 'Technical write-ups, architecture case studies, and engineering articles authored by Dipesh Sapkota covering AI/ML, distributed systems, and modern web applications.',
+    description: 'Published technical articles, architectural case studies, and engineering write-ups by Dipesh Sapkota on DEV Community covering AI/ML, distributed systems, and real-time architectures.',
     path: '/blog',
   });
 }

@@ -62,6 +62,16 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/articles',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/article',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
         source: '/security.txt',
         destination: '/.well-known/security.txt',
         permanent: true,

@@ -154,17 +154,8 @@ export async function GET() {
       };
     });
 
-  const articlePages = articles
-    .filter(a => a.status === 'published' || !a.status)
-    .map(a => ({
-      loc: `${SITE_URL}/blog/${a.slug || a.id}`,
-      priority: '0.85',
-      changefreq: 'monthly',
-      lastmod: (a.updated_at || a.published_at || today).split('T')[0],
-      images: a.cover_image ? [{ path: toAbsoluteUrl(a.cover_image), title: a.title }] : [],
-    }));
-
-  const allUrls = [...corePages, ...projectPages, ...articlePages];
+  // External publications redirect to DEV Community, so the canonical indexable hub is ${SITE_URL}/blog.
+  const allUrls = [...corePages, ...projectPages];
 
   const xmlEntries = allUrls.map(({ loc, priority, changefreq, lastmod, images = [], videos = [] }) => {
     const imageTags = images
