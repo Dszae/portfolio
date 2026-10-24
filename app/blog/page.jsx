@@ -2,7 +2,7 @@ import SiteLayout from '@/components/SiteLayout';
 import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 import PagePagination from '@/components/PagePagination';
 import { siteUrl, personId, websiteId } from '@/components/JsonLdSchema';
-import { getArticles, ARTICLE_HIGHLIGHTS } from '@/lib/dataService';
+import { getArticles, ARTICLE_HIGHLIGHTS, DEV_ARTICLE_URLS } from '@/lib/dataService';
 
 export const revalidate = 60;
 
@@ -69,7 +69,7 @@ export default async function BlogPage() {
 
           <ul className="space-y-6">
             {publishedArticles.map((art) => {
-              const primaryLink = art.live_url;
+              const primaryLink = art.live_url || DEV_ARTICLE_URLS[art.slug] || 'https://dev.to/dszae';
               const highlights = art.highlights || ARTICLE_HIGHLIGHTS[art.slug] || [];
               const tags = Array.isArray(art.tags) ? art.tags : (art.tags ? [art.tags] : []);
               const publishedDate = art.published_at ? new Date(art.published_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : null;
@@ -154,7 +154,7 @@ export default async function BlogPage() {
 
                   <div className="flex items-center gap-4 text-xs font-mono mt-4 pt-3 border-t border-slate-100 dark:border-[#1a1f26]">
                     <a 
-                      href={art.live_url} 
+                      href={primaryLink} 
                       target="_blank" 
                       rel="noopener noreferrer" 
                       className="text-[#065F46] dark:text-[#34D399] font-semibold hover:underline inline-flex items-center gap-1.5"

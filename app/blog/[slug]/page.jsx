@@ -5,7 +5,7 @@ import Link from 'next/link';
 import SiteLayout from '@/components/SiteLayout';
 import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 import PagePagination from '@/components/PagePagination';
-import { getArticleBySlug, getArticles, getSiteSettings } from '@/lib/dataService';
+import { getArticleBySlug, getArticles, getSiteSettings, DEV_ARTICLE_URLS } from '@/lib/dataService';
 import { generatePageMetadata, buildArticleJsonLd } from '@/lib/seoEngine';
 
 export const revalidate = 60;
@@ -59,8 +59,9 @@ export default async function DynamicArticlePage({ params }) {
     notFound();
   }
 
-  if (article.live_url) {
-    redirect(article.live_url);
+  const targetUrl = article.live_url || DEV_ARTICLE_URLS[article.slug] || DEV_ARTICLE_URLS[resolvedParams.slug];
+  if (targetUrl) {
+    redirect(targetUrl);
   }
 
   const profile = siteSettings?.profile || {};
