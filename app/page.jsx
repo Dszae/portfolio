@@ -243,7 +243,7 @@ export default function Home() {
                   </p>
                 </div>
                 <Link href="/projects" className="font-mono text-sm font-semibold text-[#065F46] hover:underline dark:text-[#34D399]">
-                  View all projects &rarr;
+                  View all projects
                 </Link>
               </div>
               <div className="grid gap-6 md:grid-cols-3">
@@ -270,7 +270,7 @@ export default function Home() {
                       <p className="mt-2 text-sm leading-6 text-[#475569] dark:text-[#A7B0BE]">{project.description}</p>
                       {project.liveUrl && (
                         <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex font-mono text-sm font-semibold text-[#065F46] hover:underline dark:text-[#34D399]">
-                          {project.linkLabel} &rarr;
+                          {project.linkLabel}
                         </a>
                       )}
                     </div>

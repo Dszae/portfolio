@@ -138,7 +138,7 @@ if (formData.get("botcheck")) {
             <span>Sending...</span>
           </>
         ) : (
-          <span>Send Message &rarr;</span>
+          <span>Send Message</span>
         )}
       </button>
 

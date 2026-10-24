@@ -849,13 +849,13 @@ function App() {
 
               <div className="flex flex-wrap gap-4">
                 <a href="https://sportivo.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-xl transition-all flex items-center gap-2 shadow-sm">
-                  Launch Sportivo ↗
+                  Launch Sportivo
                 </a>
                 <a href="https://github.com/dszae/sportivo" target="_blank" rel="noreferrer" className={`px-6 py-3 text-sm font-bold rounded-xl transition-all flex items-center gap-2 border ${isDark ? 'bg-slate-800 hover:bg-slate-700 border-slate-700 text-white' : 'bg-slate-100 hover:bg-slate-200 border-slate-300 text-slate-800'}`}>
                   Source Code
                 </a>
                 <a href="https://dev.to/dszae" target="_blank" rel="noreferrer" className="px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white text-sm font-bold rounded-xl transition-all flex items-center gap-2 shadow-sm">
-                  Read Article ↗
+                  Read Article
                 </a>
               </div>
             </div>
@@ -912,7 +912,7 @@ function App() {
 
               <div className="flex flex-wrap gap-4">
                 <a href="https://ioe-admission.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-bold rounded-xl transition-all flex items-center gap-2 shadow-sm">
-                  Explore Guide ↗
+                  Explore Guide
                 </a>
                 <a href="https://github.com/dszae/ioe-admission-guide" target="_blank" rel="noreferrer" className={`px-6 py-3 text-sm font-bold rounded-xl transition-all flex items-center gap-2 border ${isDark ? 'bg-slate-800 hover:bg-slate-700 border-slate-700 text-white' : 'bg-slate-100 hover:bg-slate-200 border-slate-300 text-slate-800'}`}>
                   Source Code
@@ -968,13 +968,13 @@ function App() {
 
               <div className="flex flex-wrap gap-4">
                 <a href="https://git-visualizer.dipeshsapkota7.com.np/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-orange-600 hover:bg-orange-500 text-white text-sm font-bold rounded-xl transition-all flex items-center gap-2 shadow-sm">
-                  Explore Visualizer ↗
+                  Explore Visualizer
                 </a>
                 <a href="https://github.com/dszae/git-visualizer" target="_blank" rel="noreferrer" className={`px-6 py-3 text-sm font-bold rounded-xl transition-all flex items-center gap-2 border ${isDark ? 'bg-slate-800 hover:bg-slate-700 border-slate-700 text-white' : 'bg-slate-100 hover:bg-slate-200 border-slate-300 text-slate-800'}`}>
                   Source Code
                 </a>
                 <a href="https://dev.to/dszae" target="_blank" rel="noreferrer" className="px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white text-sm font-bold rounded-xl transition-all flex items-center gap-2 shadow-sm">
-                  Read Article ↗
+                  Read Article
                 </a>
               </div>
             </div>

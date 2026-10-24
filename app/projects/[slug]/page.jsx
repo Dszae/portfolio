@@ -100,7 +100,7 @@ export default async function DynamicProjectPage({ params }) {
                 href="/projects" 
                 className="text-[#065F46] dark:text-[#34D399] font-mono hover:underline inline-flex items-center gap-1"
               >
-                <span>&larr; All Projects</span>
+                <span>All Projects</span>
               </Link>
               <span className="text-slate-400">&bull;</span>
               <span className="card-category-label">

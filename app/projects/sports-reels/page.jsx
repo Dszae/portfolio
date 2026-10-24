@@ -137,7 +137,7 @@ export default function SportsReelsProjectPage() {
             <div>
               <span className="text-[#64748B] dark:text-[#94A3B8] block mb-1">Platform</span>
               <a href="https://instagram.com/dsz.ae" target="_blank" rel="noopener noreferrer" className="text-[#065F46] dark:text-[#34D399] font-bold hover:underline">
-                @dsz.ae &rarr;
+                @dsz.ae
               </a>
             </div>
           </div>
@@ -242,7 +242,7 @@ export default function SportsReelsProjectPage() {
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto px-5 py-2.5 rounded-xl text-center text-sm font-semibold bg-[#065F46] text-white hover:bg-[#065F46]/90 dark:bg-[#34D399] dark:text-slate-950 dark:hover:bg-[#34D399]/90 transition-colors shadow-sm"
               >
-                Instagram @dsz.ae &rarr;
+                Instagram @dsz.ae
               </a>
               <Link
                 href="/gallery"

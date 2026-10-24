@@ -138,7 +138,7 @@ export default function RollingAnnouncement({ onVisibilityChange }) {
                     href={feature.link}
                     className="inline-flex items-center gap-1 font-bold text-emerald-400 hover:text-emerald-300 underline underline-offset-2 ml-1"
                   >
-                    <span>{feature.link_text || 'Learn more →'}</span>
+                    <span>{feature.link_text || 'Learn more'}</span>
                   </Link>
                 )}
                 <span className="text-emerald-500/50 mx-3" aria-hidden="true">✦</span>

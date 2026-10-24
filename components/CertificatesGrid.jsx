@@ -162,7 +162,7 @@ export default function CertificatesGrid({ certificates }) {
                 onClick={() => setActiveCert(cert)}
                 className="text-xs font-semibold text-[#065F46] dark:text-[#34D399] hover:underline"
               >
-                View &rarr;
+                View Certificate
               </button>
             </div>
           </article>

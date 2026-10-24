@@ -85,7 +85,7 @@ export default async function DynamicArticlePage({ params }) {
                 href="/blog" 
                 className="text-[#065F46] dark:text-[#34D399] font-mono hover:underline inline-flex items-center gap-1"
               >
-                <span>&larr; All Articles</span>
+                <span>All Articles</span>
               </Link>
               <span className="text-slate-400">&bull;</span>
               <span className="card-category-label">
@@ -136,7 +136,7 @@ export default async function DynamicArticlePage({ params }) {
                   rel="noopener noreferrer"
                   className="px-4 py-2 rounded-xl bg-[#065F46] hover:bg-[#044E39] dark:bg-[#34D399] dark:hover:bg-[#6EE7B7] text-white dark:text-[#090B0E] font-semibold text-xs transition-colors inline-flex items-center gap-1.5"
                 >
-                  <span>Read on Original Publication &rarr;</span>
+                  <span>Read on Original Publication</span>
                 </a>
               )}
               {article.local_url && (

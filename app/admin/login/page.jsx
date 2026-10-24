@@ -85,7 +85,7 @@ export default function AdminLoginPage() {
 
         <div className="mt-8 pt-6 border-t border-[#222933] text-center">
           <Link href="/" className="text-xs font-mono text-slate-400 hover:text-[#34D399] transition-colors">
-            &larr; Return to Public Website
+            Return to Public Website
           </Link>
         </div>
       </div>

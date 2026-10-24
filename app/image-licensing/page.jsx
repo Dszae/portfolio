@@ -129,7 +129,7 @@ export default function ImageLicensingPage() {
             <div className="mt-10 pt-6 border-t border-slate-200 dark:border-[#222933] flex justify-between items-center text-xs font-mono text-[#64748B] dark:text-[#94A3B8]">
               <span>Last updated: October 2026</span>
               <Link href="/" className="hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors">
-                &larr; Return to Home
+                Return to Home
               </Link>
             </div>
           </div>

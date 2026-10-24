@@ -78,7 +78,7 @@ export default async function BlogPage() {
                     rel={isExternal ? "noopener noreferrer" : undefined}
                     className="card-heading hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors block mb-3"
                   >
-                    {art.title} &rarr;
+                    {art.title}
                   </a>
                   <p className="card-description mb-4">
                     {art.excerpt || art.description}
@@ -86,7 +86,7 @@ export default async function BlogPage() {
                   <div className="flex items-center gap-4 text-xs font-mono">
                     {art.local_url && (
                       <a href={art.local_url} className="text-[#065F46] dark:text-[#34D399] font-semibold hover:underline">
-                        Read Local Case Study &rarr;
+                        Read Local Case Study
                       </a>
                     )}
                     {art.live_url && art.local_url && (
@@ -96,7 +96,7 @@ export default async function BlogPage() {
                         rel="noopener noreferrer" 
                         className="text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"
                       >
-                        Live Publication &rarr;
+                        Live Publication
                       </a>
                     )}
                   </div>
