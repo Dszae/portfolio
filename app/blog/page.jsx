@@ -50,9 +50,22 @@ export default async function BlogPage() {
           <h1 className="text-3xl sm:text-4xl font-bold mb-4 tracking-tight text-[#0F172A] dark:text-[#F9FAFB] flex items-center gap-3">
             <span className="text-[#065F46] dark:text-[#34D399]">/</span> Articles &amp; Write-Ups
           </h1>
-          <p className="text-base sm:text-lg text-[#1E293B] dark:text-[#A7B0BE] mb-10 leading-relaxed max-w-2xl">
-            In-depth engineering articles, architectural case studies, and technical write-ups covering AI/ML, distributed systems, and modern web applications.
-          </p>
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-10">
+            <p className="text-base sm:text-lg text-[#1E293B] dark:text-[#A7B0BE] leading-relaxed max-w-2xl">
+              Published technical articles, architectural case studies, and engineering write-ups from my official DEV Community author profile.
+            </p>
+            <a
+              href="https://dev.to/dszae"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] text-xs font-mono font-medium text-slate-700 dark:text-slate-300 hover:border-[#065F46] dark:hover:border-[#34D399] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors shrink-0 shadow-sm"
+            >
+              <span>DEV: @dszae</span>
+              <svg className="w-3.5 h-3.5 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
 
           <ul className="space-y-6">
             {publishedArticles.map((art) => {
@@ -139,19 +152,22 @@ export default async function BlogPage() {
                   </div>
 
                   <div className="flex items-center gap-4 text-xs font-mono mt-4 pt-3 border-t border-slate-100 dark:border-[#1a1f26]">
-                    {art.local_url && (
-                      <a href={art.local_url} className="text-[#065F46] dark:text-[#34D399] font-semibold hover:underline">
-                        Read Local Case Study
-                      </a>
-                    )}
-                    {art.live_url && art.local_url && (
+                    {art.live_url && (
                       <a 
                         href={art.live_url} 
                         target="_blank" 
                         rel="noopener noreferrer" 
-                        className="text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-colors"
+                        className="text-[#065F46] dark:text-[#34D399] font-semibold hover:underline inline-flex items-center gap-1"
                       >
-                        Live Publication
+                        <span>Read on DEV Community</span>
+                        <svg className="w-3 h-3 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
+                    )}
+                    {art.local_url && art.local_url.startsWith('/projects') && (
+                      <a href={art.local_url} className="text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-colors">
+                        Project Overview
                       </a>
                     )}
                   </div>

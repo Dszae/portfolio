@@ -37,9 +37,14 @@ export async function generateMetadata({ params }) {
 
 export async function generateStaticParams() {
   const articles = await getArticles();
-  return articles
-    .filter(a => a.slug)
-    .map(a => ({ slug: a.slug }));
+  const slugs = new Set();
+  articles.forEach(a => {
+    if (a.slug) slugs.add(a.slug);
+    if (Array.isArray(a.aliases)) {
+      a.aliases.forEach(al => slugs.add(al));
+    }
+  });
+  return Array.from(slugs).map(slug => ({ slug }));
 }
 
 export default async function DynamicArticlePage({ params }) {
@@ -136,7 +141,7 @@ export default async function DynamicArticlePage({ params }) {
                   rel="noopener noreferrer"
                   className="px-4 py-2 rounded-xl bg-[#065F46] hover:bg-[#044E39] dark:bg-[#34D399] dark:hover:bg-[#6EE7B7] text-white dark:text-[#090B0E] font-semibold text-xs transition-colors inline-flex items-center gap-1.5"
                 >
-                  <span>Read on Original Publication</span>
+                  <span>Read on DEV Community</span>
                 </a>
               )}
               {article.local_url && (
