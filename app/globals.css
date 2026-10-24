@@ -1299,8 +1299,8 @@ button:hover .smooth-img-zoom {
 
 @keyframes fadeDownToUp {
   0% {
-    opacity: 0;
-    transform: translateY(18px);
+    opacity: 0.85;
+    transform: translateY(6px);
   }
   100% {
     opacity: 1;
@@ -1309,7 +1309,7 @@ button:hover .smooth-img-zoom {
 }
 
 .fade-down-to-up {
-  animation: fadeDownToUp 480ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: fadeDownToUp 180ms cubic-bezier(0.16, 1, 0.3, 1) both;
   will-change: opacity, transform;
 }
 

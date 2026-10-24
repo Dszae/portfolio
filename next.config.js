@@ -20,7 +20,11 @@ const contentSecurityPolicy = [
 
 const nextConfig = {
   trailingSlash: false,
+  compress: true,
+  poweredByHeader: false,
   images: {
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 31536000,
     remotePatterns: [
       {
         protocol: 'https',
@@ -113,6 +117,15 @@ const nextConfig = {
           {
             key: 'Origin-Agent-Cluster',
             value: '?1',
+          },
+        ],
+      },
+      {
+        source: '/(.*\\.(?:ico|png|jpg|jpeg|webp|avif|svg|woff2|woff))',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, stale-while-revalidate=86400',
           },
         ],
       },

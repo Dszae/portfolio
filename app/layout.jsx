@@ -1,5 +1,4 @@
 import React from 'react';
-import { cookies } from 'next/headers';
 import { Manrope } from 'next/font/google';
 
 const manrope = Manrope({
@@ -15,6 +14,8 @@ import AnalyticsTracker from '@/components/AnalyticsTracker';
 import { getSiteSettings } from '@/lib/dataService';
 import 'katex/dist/katex.min.css';
 import './globals.css';
+
+export const revalidate = 60;
 
 export async function generateMetadata() {
   const settings = await getSiteSettings();
@@ -121,9 +122,6 @@ export const viewport = {
 };
 
 export default async function RootLayout({ children }) {
-  const cookieStore = await cookies();
-  const themeCookie = cookieStore.get('theme')?.value;
-  const initialTheme = themeCookie === 'light' ? 'light' : 'dark';
   const settings = await getSiteSettings();
   const safeFeaturesJson = JSON.stringify({
     announcement: settings.announcement || null,
@@ -131,7 +129,7 @@ export default async function RootLayout({ children }) {
   }).replace(/</g, '\\u003c');
 
   return (
-    <html lang="en" className={`${initialTheme} ${manrope.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`dark ${manrope.variable}`} suppressHydrationWarning>
       <head>
         <link rel="author" href="/" />
         <link rel="alternate" type="text/markdown" href="/.well-known/llms.txt" title="AI-readable site information" />

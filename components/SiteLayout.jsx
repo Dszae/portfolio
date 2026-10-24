@@ -469,6 +469,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
                 <Link 
                   key={link.id} 
                   href={link.path} 
+                  prefetch={true}
                   itemProp="url"
                   aria-current={active ? 'page' : undefined}
                   className={`site-nav-link ${active ? 'is-active' : ''}`}
@@ -529,6 +530,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
               <Link
                 key={`mobile-${link.id}`}
                 href={link.path}
+                prefetch={true}
                 itemProp="url"
                 aria-current={active ? 'page' : undefined}
                 tabIndex={isMenuOpen ? 0 : -1}

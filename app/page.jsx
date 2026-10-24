@@ -152,16 +152,16 @@ export default function Home() {
                 </p>
 
                 <div className="hero-actions">
-                  <Link href="/projects" className="hero-button hero-button-primary">
+                  <Link href="/projects" prefetch={true} className="hero-button hero-button-primary">
                     <span>View Projects</span>
                     <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
                     </svg>
                   </Link>
-                  <Link href="/contact" className="hero-button hero-button-secondary">
+                  <Link href="/contact" prefetch={true} className="hero-button hero-button-secondary">
                     Contact Me
                   </Link>
-                  <Link href="/resume" className="hero-cv-link">
+                  <Link href="/resume" prefetch={true} className="hero-cv-link">
                     <span>View Resume</span>
                     <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -257,6 +257,8 @@ export default function Home() {
                       alt={`${project.name} project preview`}
                       width={993}
                       height={450}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 380px"
+                      loading="lazy"
                       className="h-40 w-full object-cover"
                     />
                     <div className="p-5">
@@ -295,6 +297,7 @@ export default function Home() {
                   <Link
                     key={section.href}
                     href={section.href}
+                    prefetch={true}
                     className="group flex flex-col justify-between p-5 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] shadow-sm hover:border-[#065F46]/60 dark:hover:border-[#34D399]/60 hover:-translate-y-0.5 transition-all"
                   >
                     <div>
