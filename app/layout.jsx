@@ -30,6 +30,9 @@ export async function generateMetadata() {
 
   return {
     metadataBase: new URL('https://www.dipeshsapkota7.com.np'),
+    alternates: {
+      canonical: 'https://www.dipeshsapkota7.com.np/',
+    },
     title: {
       default: rawTitle,
       template: `%s | ${name}`,

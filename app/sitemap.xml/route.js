@@ -164,13 +164,7 @@ export async function GET() {
       images: a.cover_image ? [{ path: toAbsoluteUrl(a.cover_image), title: a.title }] : [],
     }));
 
-  const externalSubdomains = [
-    { loc: 'https://sportivo.dipeshsapkota7.com.np/', priority: '0.90', changefreq: 'weekly', lastmod: today, images: [] },
-    { loc: 'https://ioe-admission.dipeshsapkota7.com.np/', priority: '0.90', changefreq: 'weekly', lastmod: today, images: [] },
-    { loc: 'https://git-visualizer.dipeshsapkota7.com.np/', priority: '0.90', changefreq: 'weekly', lastmod: today, images: [] },
-  ];
-
-  const allUrls = [...corePages, ...projectPages, ...articlePages, ...externalSubdomains];
+  const allUrls = [...corePages, ...projectPages, ...articlePages];
 
   const xmlEntries = allUrls.map(({ loc, priority, changefreq, lastmod, images = [], videos = [] }) => {
     const imageTags = images

@@ -2,6 +2,15 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function proxy(request: NextRequest) {
+  const host = request.headers.get('host') || '';
+  if (host === 'dipeshsapkota7.com.np') {
+    const url = request.nextUrl.clone();
+    url.host = 'www.dipeshsapkota7.com.np';
+    url.protocol = 'https:';
+    url.port = '';
+    return NextResponse.redirect(url, 301);
+  }
+
   const { pathname } = request.nextUrl;
 
   // Bypass API routes and internal Next.js requests
