@@ -84,9 +84,10 @@ async function runTestSuite() {
 
   await test('Tool get_contact_links returns email and social profiles', async () => {
     const res = await executeTool('get_contact_links', {});
-    assert.equal(res.email, 'contact@dipeshsapkota7.com.np');
+    assert.equal(res.email, 'dsz.ae18@gmail.com');
+    assert.ok(res.gmail_web_link.includes('mail.google.com'), 'Gmail web link missing');
     assert.ok(res.github.includes('dszae'), 'GitHub handle missing');
-    assert.ok(res.linkedin.includes('dipesh-sapkota'), 'LinkedIn missing');
+    assert.ok(res.linkedin.includes('dszae'), 'LinkedIn handle missing');
   });
 
   await test('Tool get_github_repository safely handles non-existent or rate-limited repo', async () => {

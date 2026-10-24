@@ -109,8 +109,23 @@ function renderFormattedText(text) {
     if (match.index > lastIndex) {
       parts.push(renderInlineStyles(text.substring(lastIndex, match.index), `sub-${lastIndex}`));
     }
-    const label = match[1];
-    const href = match[2];
+    let label = match[1];
+    let href = match[2];
+
+    // Guarantee email links open directly in web Gmail instead of triggering desktop mail clients (Outlook)
+    if (href.startsWith('mailto:')) {
+      const email = href.replace(/^mailto:/, '').split('?')[0];
+      href = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}`;
+    }
+
+    // Guarantee LinkedIn profile links route to verified handle dszae
+    if (href.includes('linkedin.com/in/dipesh-sapkota')) {
+      href = href.replace('linkedin.com/in/dipesh-sapkota', 'linkedin.com/in/dszae');
+    }
+    if (typeof label === 'string' && label.includes('dipesh-sapkota')) {
+      label = label.replace(/dipesh-sapkota/g, 'dszae');
+    }
+
     const isInternal = href.startsWith('/') || href.includes('dipeshsapkota7.com.np');
 
     if (isInternal) {
@@ -177,6 +192,32 @@ function renderInlineStyles(str, baseKey) {
         </em>
       );
     }
+
+    // Convert raw email text occurrences into direct web Gmail compose links
+    const emailRegex = /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g;
+    if (emailRegex.test(tok)) {
+      const subTokens = tok.split(emailRegex);
+      return subTokens.map((sub, sIdx) => {
+        if (/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(sub)) {
+          return (
+            <a
+              key={`${baseKey}-${idx}-em-${sIdx}`}
+              href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(sub)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#065F46] dark:text-[#34D399] hover:text-[#044E39] dark:hover:text-[#6EE7B7] font-medium underline underline-offset-2 decoration-[#065F46]/40 hover:decoration-[#065F46] dark:decoration-[#34D399]/40 dark:hover:decoration-[#34D399] transition-colors inline-flex items-center gap-0.5"
+            >
+              <span>{sub}</span>
+              <svg className="w-3 h-3 opacity-60 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          );
+        }
+        return sub;
+      });
+    }
+
     return tok;
   });
 }
