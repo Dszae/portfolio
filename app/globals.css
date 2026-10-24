@@ -1373,6 +1373,51 @@ html.dark .footer-nav-link .footer-link-arrow {
   transform: translateX(2px);
 }
 
+/* Article Card Interactive Hover & Smooth Scale */
+.article-interactive-card {
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 320ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 260ms ease,
+              background-color 260ms ease;
+  will-change: transform;
+}
+
+.article-interactive-card:hover {
+  transform: translateY(-4px) scale(1.012);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(6, 95, 70, 0.15);
+}
+
+html.dark .article-interactive-card:hover {
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(52, 211, 153, 0.2);
+}
+
+.article-expand-grid {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 340ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.article-interactive-card:hover .article-expand-grid,
+.article-interactive-card:focus-within .article-expand-grid {
+  grid-template-rows: 1fr;
+}
+
+.article-expand-content {
+  overflow: hidden;
+}
+
+.article-expand-inner {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 280ms ease 90ms, transform 280ms cubic-bezier(0.16, 1, 0.3, 1) 90ms;
+}
+
+.article-interactive-card:hover .article-expand-inner,
+.article-interactive-card:focus-within .article-expand-inner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @keyframes fadeDownToUp {
   0% {
     opacity: 0.85;
