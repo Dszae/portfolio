@@ -42,7 +42,15 @@ export default function CertificatesClientView({ certificates, jsonLd }) {
                         src: cert.img,
                         title: cert.title,
                         desc: `Issued by ${cert.org}`,
-                        items: certificates.map((c) => ({ src: c.img, title: c.title, desc: `Issued by ${c.org}` })),
+                        subtitle: `${cert.org} • ${cert.skills || cert.category || 'Verified Credential'}`,
+                        isCertificate: true,
+                        items: certificates.map((c) => ({
+                          src: c.img,
+                          title: c.title,
+                          desc: `Issued by ${c.org}`,
+                          subtitle: `${c.org} • ${c.skills || c.category || 'Verified Credential'}`,
+                          isCertificate: true,
+                        })),
                         index: idx,
                       })}
                     >

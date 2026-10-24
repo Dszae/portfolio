@@ -43,8 +43,17 @@ export default function GalleryClientView({ gallery, jsonLd }) {
                         src: item.img,
                         title: item.title,
                         alt: item.alt,
-                        desc: item.category || 'Visual Archive',
-                        items: gallery.map((g) => ({ src: g.img, title: g.title, alt: g.alt, desc: g.category || 'Visual Archive' })),
+                        desc: item.category ? `IOE Thapathali Campus • ${item.category}` : 'IOE Thapathali Campus',
+                        subtitle: item.category ? `IOE Thapathali Campus • ${item.category}` : 'IOE Thapathali Campus',
+                        isCertificate: false,
+                        items: gallery.map((g) => ({
+                          src: g.img,
+                          title: g.title,
+                          alt: g.alt,
+                          desc: g.category ? `IOE Thapathali Campus • ${g.category}` : 'IOE Thapathali Campus',
+                          subtitle: g.category ? `IOE Thapathali Campus • ${g.category}` : 'IOE Thapathali Campus',
+                          isCertificate: false,
+                        })),
                         index: idx,
                       })}
                     >
