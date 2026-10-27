@@ -488,7 +488,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
           {NAV_LINKS.map((link) => {
             const active = isCurrentPage(link.path);
             return (
-              <li key={`mobile-${link.id}`} itemScope itemType="https://schema.org/SiteNavigationElement">
+              <li key={`mobile-${link.id}`} className="w-full" itemScope itemType="https://schema.org/SiteNavigationElement">
                 <Link
                   href={link.path}
                   prefetch={true}
