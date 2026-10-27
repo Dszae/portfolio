@@ -25,7 +25,7 @@ export default function ResumeClientView({ experiences = [], siteSettings = {}, 
           )}
 
           <FadeUp>
-            <section id="resume" className={`pt-28 sm:pt-32 pb-24 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
+            <section id="resume" className={`pt-36 sm:pt-40 subpage-container pb-24 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
               <div className="max-w-7xl mx-auto w-full">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-8">
                   <h1 className="text-3xl sm:text-4xl font-bold flex items-center gap-4 text-[#0F172A] dark:text-[#F9FAFB]">

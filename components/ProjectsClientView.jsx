@@ -155,7 +155,7 @@ export default function ProjectsClientView({ initialProjects = [], jsonLd = null
           )}
 
           <FadeUp>
-            <section id="projects" className={`pt-24 sm:pt-28 pb-32 px-4 sm:px-8 lg:px-16 max-w-6xl mx-auto w-full ${theme.bg}`}>
+            <section id="projects" className={`pt-36 sm:pt-40 subpage-container pb-32 px-4 sm:px-8 lg:px-16 max-w-6xl mx-auto w-full ${theme.bg}`}>
 
 <header className="mb-16 sm:mb-20">
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-200 dark:border-[#222933] pb-8">

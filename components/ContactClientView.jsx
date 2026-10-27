@@ -112,7 +112,7 @@ export default function ContactClientView() {
           />
 
           <FadeUp>
-            <section id="contact" className={`pt-28 sm:pt-32 pb-24 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
+            <section id="contact" className={`pt-36 sm:pt-40 subpage-container pb-24 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
               <div className="max-w-7xl mx-auto w-full">
                 <div className={`p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl border backdrop-blur-md ${theme.card}`}>
                   <div className="grid lg:grid-cols-2 gap-12">

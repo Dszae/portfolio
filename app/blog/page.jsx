@@ -70,7 +70,7 @@ export default async function BlogPage() {
 
   return (
     <SiteLayout>
-      <div className="w-full pt-28 sm:pt-32 pb-24 px-4 sm:px-8 lg:px-12">
+      <div className="w-full pt-36 sm:pt-40 subpage-container pb-24 px-4 sm:px-8 lg:px-12">
         <div className="max-w-4xl mx-auto w-full">
           <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Articles', path: '/blog' }]} />
           <script

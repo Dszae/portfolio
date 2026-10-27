@@ -63,7 +63,7 @@ export default function IoeAdmissionProjectPage() {
 
   return (
     <SiteLayout>
-      <div className="w-full max-w-5xl mx-auto px-4 sm:px-8 lg:px-12 pt-28 sm:pt-32 pb-24">
+      <div className="w-full max-w-5xl mx-auto px-4 sm:px-8 lg:px-12 pt-36 sm:pt-40 subpage-container pb-24">
         <BreadcrumbJsonLd
           items={[
             { name: 'Home', path: '/' },
