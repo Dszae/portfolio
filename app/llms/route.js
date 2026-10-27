@@ -9,7 +9,7 @@ const content = `# Dipesh Sapkota | Portfolio & Web Applications
 - Campus: Institute of Engineering (IOE), Thapathali Campus, Kathmandu, Nepal
 - Primary Portrait Image: https://www.dipeshsapkota7.com.np/dipesh-sapkota.jpg
 - Official Website: https://www.dipeshsapkota7.com.np/
-- Profiles & Socials: GitHub (https://github.com/dszae), LinkedIn (https://linkedin.com/in/dszae), DEV Community (https://dev.to/dszae), X (https://x.com/DszAe18), Instagram (https://instagram.com/dsz.ae), Facebook (https://facebook.com/dsz.ae), WhatsApp (https://wa.me/9779764685307)
+- Profiles & Socials: Wikidata (https://www.wikidata.org/wiki/Q141595522), GitHub (https://github.com/dszae), LinkedIn (https://linkedin.com/in/dszae), DEV Community (https://dev.to/dszae), X (https://x.com/DszAe18), Instagram (https://instagram.com/dsz.ae), Facebook (https://facebook.com/dsz.ae), WhatsApp (https://wa.me/9779764685307)
 
 ## Canonical Pages & Dedicated Sitelinks
 - [Homepage](https://www.dipeshsapkota7.com.np/): System overview, primary hero section, downloadable curriculum vitae, and direct collaboration channels.
@@ -19,7 +19,7 @@ const content = `# Dipesh Sapkota | Portfolio & Web Applications
 - [Projects Archive](https://www.dipeshsapkota7.com.np/projects): Interactive live software and engineering projects, including Sportivo, IOE Admission Guide, Git Visualizer, and embedded circuit systems.
 - [Visual Archive & Gallery](https://www.dipeshsapkota7.com.np/gallery): High-resolution photo archive documenting campus life, Yathartha National Tech Exhibition, creative media sessions, and engineering field visits.
 - [Certifications](https://www.dipeshsapkota7.com.np/certificates): Verified certificates from Udemy, Blackmagic Design, and EDUCBA in Graphic Design, Color Correction, After Effects, and Web Development.
-- [Articles & Case Studies](https://www.dipeshsapkota7.com.np/blog): In-depth software engineering write-ups documenting Sportivo's streaming architecture, Git DAG visualizer graph internals, and technical articles.
+- [Articles & Case Studies](https://www.dipeshsapkota7.com.np/blog): In-depth engineering write-ups documenting Sportivo's streaming architecture, Git DAG visualizer graph internals, and technical articles.
 - [Image Licensing Policy](https://www.dipeshsapkota7.com.np/image-licensing): Copyright ownership and licensing permissions for photography and visual media assets.
 - [Contact](https://www.dipeshsapkota7.com.np/contact): Direct contact details (Kathmandu, Nepal; phone: +977 9764685307; email: dsz.ae18@gmail.com) and direct inquiry messaging.
 

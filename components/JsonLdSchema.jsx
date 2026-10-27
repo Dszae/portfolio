@@ -74,6 +74,7 @@ export const person = {
       url: 'https://tcioe.edu.np',
       sameAs: [
         'https://en.wikipedia.org/wiki/Thapathali_Campus',
+        'https://www.wikidata.org/wiki/Q7710687',
         'https://www.wikidata.org/wiki/Q7710714',
       ],
     },
@@ -98,6 +99,7 @@ export const person = {
       url: 'https://tcioe.edu.np',
       sameAs: [
         'https://en.wikipedia.org/wiki/Thapathali_Campus',
+        'https://www.wikidata.org/wiki/Q7710687',
         'https://www.wikidata.org/wiki/Q7710714',
       ],
     },
@@ -107,6 +109,7 @@ export const person = {
     name: 'Clamphook Academy',
   },
   sameAs: [
+    'https://www.wikidata.org/wiki/Q141595522',
     'https://github.com/dszae',
     'https://www.linkedin.com/in/dszae',
     'https://dev.to/dszae',
