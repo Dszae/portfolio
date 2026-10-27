@@ -207,14 +207,6 @@ export const website = {
   image: portraitImage,
   publisher: person,
   inLanguage: 'en',
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: {
-      '@type': 'EntryPoint',
-      urlTemplate: `${siteUrl}/projects?q={search_term_string}`,
-    },
-    'query-input': 'required name=search_term_string',
-  },
   hasPart: [
     {
       '@type': 'WebPage',
