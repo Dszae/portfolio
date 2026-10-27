@@ -110,6 +110,7 @@ export const person = {
   },
   sameAs: [
     'https://www.wikidata.org/wiki/Q141595522',
+    'https://www.wikidata.org/entity/Q141595522',
     'https://github.com/dszae',
     'https://www.linkedin.com/in/dszae',
     'https://dev.to/dszae',
