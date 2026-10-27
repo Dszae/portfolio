@@ -128,7 +128,7 @@ export async function GET() {
   ];
 
   const projectPages = projects
-    .filter(p => p.status === 'published' || !p.status)
+    .filter(p => (p.status === 'published' || !p.status) && p.slug !== 'sports-reels' && p.slug !== 'social-media')
     .map(p => {
       const isVideoProject = p.slug === 'sports-reels' || (p.category || '').toLowerCase().includes('video') || (p.category_label || '').toLowerCase().includes('video');
       return {

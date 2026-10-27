@@ -86,6 +86,11 @@ const nextConfig = {
         destination: '/',
         permanent: true,
       },
+      {
+        source: '/projects/sports-reels',
+        destination: 'https://instagram.com/dsz.ae',
+        permanent: true,
+      },
     ];
   },
   async headers() {

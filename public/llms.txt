@@ -26,7 +26,7 @@
 - [Sportivo Case Study](https://www.dipeshsapkota7.com.np/projects/sportivo): High-performance live sports streaming platform with real-time match schedule scraping and multi-server stream switching. Live: https://sportivo.dipeshsapkota7.com.np/
 - [IOE Admission Guide](https://www.dipeshsapkota7.com.np/projects/ioe-admission-guide): Engineering admission ecosystem for Tribhuvan University applicants with rank prediction and automated priority form generation. Live: https://ioe-admission.dipeshsapkota7.com.np/
 - [Git Visualizer](https://www.dipeshsapkota7.com.np/projects/git-visualizer): Interactive visual learning tool mapping Git version control commands and repository data flow. Live: https://git-visualizer.dipeshsapkota7.com.np/
-- [Sports Reels & Motion Design](https://www.dipeshsapkota7.com.np/projects/sports-reels): Technical case study of 120fps speed ramping, kinetic typography, and DaVinci Resolve color grading.
+- [Instagram Video Profile](https://instagram.com/dsz.ae): Portfolio of short-form video content, kinetic typography, and sports edits.
 - [NE555 Timer Circuit](https://www.dipeshsapkota7.com.np/projects/555-flasher): Relaxation oscillator circuit prototype in astable multivibrator configuration with Proteus transient analysis.
 - [Electrical Machinery Modeling](https://www.dipeshsapkota7.com.np/projects/motor-modeling): Steady-state mathematical analysis of 3-phase induction machines and DC motors.
 - [Automated Analyzer Diagnostics](https://www.dipeshsapkota7.com.np/projects/analyzer-diag): Clinical laboratory instrumentation engineering protocol covering micro-stepping syringe probes and fluidics.

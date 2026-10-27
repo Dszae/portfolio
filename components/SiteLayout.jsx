@@ -570,20 +570,31 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
                   { href: "/projects/sportivo", label: "Sportivo — Live Scores, Fixtures & Sports News" },
                   { href: "/projects/git-visualizer", label: "Git Visualizer (DAG Internals)" },
                   { href: "/projects/ioe-admission-guide", label: "IOE Admission Guide Portal" },
-                  { href: "/projects/sports-reels", label: "Sports Reels & Motion Design" },
+                  { href: "https://instagram.com/dsz.ae", label: "Sports Reels (Instagram)", external: true },
                   { href: "/projects/555-flasher", label: "NE555 Timer Circuit Prototype" },
                   { href: "/projects/motor-modeling", label: "Electrical Machinery Modeling" },
                   { href: "/projects/analyzer-diag", label: "Clinical Analyzer Diagnostics" },
                 ].map((item) => (
                   <li key={item.href}>
-                    <Link href={item.href} className="footer-nav-link">
-                      <span className="footer-link-arrow" aria-hidden="true">
-                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                        </svg>
-                      </span>
-                      <span className="footer-link-text">{item.label}</span>
-                    </Link>
+                    {item.external ? (
+                      <a href={item.href} target="_blank" rel="noopener noreferrer" className="footer-nav-link">
+                        <span className="footer-link-arrow" aria-hidden="true">
+                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                          </svg>
+                        </span>
+                        <span className="footer-link-text">{item.label}</span>
+                      </a>
+                    ) : (
+                      <Link href={item.href} className="footer-nav-link">
+                        <span className="footer-link-arrow" aria-hidden="true">
+                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                          </svg>
+                        </span>
+                        <span className="footer-link-text">{item.label}</span>
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>

@@ -89,7 +89,9 @@ export default function ProjectsClientView({ initialProjects = [], jsonLd = null
     const tech = Array.isArray(p.tech) ? p.tech : (typeof p.tech === 'string' ? p.tech.split(',').map(s => s.trim()) : []);
     const liveUrl = p.liveUrl || p.live_url || '';
     const githubUrl = p.githubUrl || p.github_url || '';
-    const detailUrl = p.detailUrl || (slug && !slug.startsWith('http') ? (slug.startsWith('/') ? slug : `/projects/${slug}`) : '');
+    const detailUrl = (slug === 'sports-reels' || slug === 'social-media')
+      ? ''
+      : (p.detailUrl || (slug && !slug.startsWith('http') ? (slug.startsWith('/') ? slug : `/projects/${slug}`) : ''));
     const isFeatured = p.featured === true || p.label === 'Featured Project' || p.label === 'Featured Work' || ['sportivo', 'git-visualizer', 'ioe-admission-guide', 'ioe-admission', 'sports-reels', 'social-media'].includes(slug);
     const category = p.category || 'dev';
     const categoryLabel = p.categoryLabel || p.category_label || (category === 'dev' ? 'Development' : category === 'media' ? 'Creative Media' : 'Experiments');
@@ -363,7 +365,7 @@ export default function ProjectsClientView({ initialProjects = [], jsonLd = null
                                 rel="noopener noreferrer"
                                 className="font-bold text-[#065F46] dark:text-[#34D399] hover:underline flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399] group"
                               >
-                                <span>Live Project</span>
+                                <span>{project.slug === 'sports-reels' || project.slug === 'social-media' ? 'View on Instagram' : 'Live Project'}</span>
                                 <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
                                   <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                                 </svg>
