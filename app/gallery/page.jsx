@@ -29,8 +29,6 @@ export default async function GalleryPage() {
     name: item.title,
     description: item.alt || item.title,
     caption: item.title,
-    acquireLicensePage: `${siteUrl}/image-licensing`,
-    license: `${siteUrl}/image-licensing`,
     copyrightNotice: '© 2026 Dipesh Sapkota. All rights reserved.',
     creditText: 'Dipesh Sapkota',
     creator: { '@id': personId },

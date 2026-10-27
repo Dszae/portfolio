@@ -125,13 +125,6 @@ export async function GET() {
       lastmod: today,
       images: [],
     },
-    {
-      loc: `${SITE_URL}/image-licensing`,
-      priority: '0.50',
-      changefreq: 'yearly',
-      lastmod: today,
-      images: [],
-    },
   ];
 
   const projectPages = projects

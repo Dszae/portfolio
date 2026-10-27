@@ -558,20 +558,6 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
                     </Link>
                   </li>
                 ))}
-                <li itemScope itemType="https://schema.org/SiteNavigationElement">
-                  <Link
-                    href="/image-licensing"
-                    itemProp="url"
-                    className="footer-nav-link"
-                  >
-                    <span className="footer-link-arrow" aria-hidden="true">
-                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                      </svg>
-                    </span>
-                    <span itemProp="name" className="footer-link-text">Image Licensing</span>
-                  </Link>
-                </li>
               </ul>
             </nav>
 

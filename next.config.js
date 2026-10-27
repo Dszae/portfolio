@@ -81,6 +81,11 @@ const nextConfig = {
         destination: '/sitemap.xml',
         permanent: true,
       },
+      {
+        source: '/image-licensing',
+        destination: '/',
+        permanent: true,
+      },
     ];
   },
   async headers() {

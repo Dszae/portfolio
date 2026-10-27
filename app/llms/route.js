@@ -20,7 +20,6 @@ const content = `# Dipesh Sapkota | Portfolio & Web Applications
 - [Visual Archive & Gallery](https://www.dipeshsapkota7.com.np/gallery): High-resolution photo archive documenting campus life, Yathartha National Tech Exhibition, creative media sessions, and engineering field visits.
 - [Certifications](https://www.dipeshsapkota7.com.np/certificates): Verified certificates from Udemy, Blackmagic Design, and EDUCBA in Graphic Design, Color Correction, After Effects, and Web Development.
 - [Articles & Case Studies](https://www.dipeshsapkota7.com.np/blog): In-depth engineering write-ups documenting Sportivo's streaming architecture, Git DAG visualizer graph internals, and technical articles.
-- [Image Licensing Policy](https://www.dipeshsapkota7.com.np/image-licensing): Copyright ownership and licensing permissions for photography and visual media assets.
 - [Contact](https://www.dipeshsapkota7.com.np/contact): Direct contact details (Kathmandu, Nepal; phone: +977 9764685307; email: dsz.ae18@gmail.com) and direct inquiry messaging.
 
 ## Flagship Projects
