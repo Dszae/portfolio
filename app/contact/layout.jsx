@@ -8,7 +8,7 @@ export async function generateMetadata() {
 
   return await generatePageMetadata({
     title: `Contact & Collaboration | ${name}`,
-    description: `Reach out to ${name} for software engineering collaborations, AI/ML exploration, or freelance video editing and motion graphics in Kathmandu, Nepal.`,
+    description: `Reach out to ${name} for engineering collaborations, AI/ML exploration, or freelance video editing and motion graphics in Kathmandu, Nepal.`,
     path: '/contact',
   });
 }

@@ -13,7 +13,7 @@ export async function generateMetadata() {
 
   return await generatePageMetadata({
     title: 'Certificates',
-    description: `Verified professional certifications of ${name} across graphic design, motion design, DaVinci Resolve color science, and software engineering.`,
+    description: `Verified professional certifications of ${name} across graphic design, motion design, DaVinci Resolve color science, and web development technologies.`,
     path: '/certificates',
   });
 }

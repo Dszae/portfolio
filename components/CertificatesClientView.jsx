@@ -40,7 +40,7 @@ export default function CertificatesClientView({ certificates, jsonLd }) {
                     <span className="text-[#065F46] dark:text-[#34D399]">/</span> Certificates
                   </h1>
                   <p className="text-base sm:text-lg text-[#1E293B] dark:text-[#A7B0BE] leading-relaxed">
-                    Verified technical certifications, masterclasses, and specialized credentials completed by Dipesh Sapkota across graphic design, motion graphics, DaVinci Resolve color science, and software engineering.
+                    Verified technical certifications, masterclasses, and specialized credentials completed by Dipesh Sapkota across graphic design, motion graphics, DaVinci Resolve color science, and web development technologies.
                   </p>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

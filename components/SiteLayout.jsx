@@ -415,7 +415,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
         />
       )}
 
-      <nav aria-label="Main navigation" className="site-nav" itemScope itemType="https://schema.org/SiteNavigationElement">
+      <nav aria-label="Main navigation" className="site-nav">
         
         <RollingAnnouncement onVisibilityChange={setHasAnnouncement} />
 
@@ -424,23 +424,24 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
             Dipesh Sapkota<span className="site-wordmark-dot">.</span>
           </Link>
           
-          <div className="site-desktop-nav">
+          <ul className="site-desktop-nav list-none p-0 m-0" role="list">
             {NAV_LINKS.filter((link) => link.id !== 'home').map((link) => {
               const active = isCurrentPage(link.path);
               return (
-                <Link 
-                  key={link.id} 
-                  href={link.path} 
-                  prefetch={true}
-                  itemProp="url"
-                  aria-current={active ? 'page' : undefined}
-                  className={`site-nav-link ${active ? 'is-active' : ''}`}
-                >
-                  <span itemProp="name">{link.label}</span>
-                </Link>
+                <li key={link.id} className="inline-flex items-center" itemScope itemType="https://schema.org/SiteNavigationElement">
+                  <Link 
+                    href={link.path} 
+                    prefetch={true}
+                    itemProp="url"
+                    aria-current={active ? 'page' : undefined}
+                    className={`site-nav-link ${active ? 'is-active' : ''}`}
+                  >
+                    <span itemProp="name">{link.label}</span>
+                  </Link>
+                </li>
               );
             })}
-          </div>
+          </ul>
 
           <div className="site-header-actions">
             <button
@@ -482,28 +483,27 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
         className={`site-mobile-nav ${isMenuOpen ? 'is-open' : ''}`}
         aria-hidden={!isMenuOpen}
         aria-label="Mobile navigation"
-        itemScope
-        itemType="https://schema.org/SiteNavigationElement"
       >
-        <div className="site-mobile-nav-list">
+        <ul className="site-mobile-nav-list list-none p-0 m-0" role="list">
           {NAV_LINKS.map((link) => {
             const active = isCurrentPage(link.path);
             return (
-              <Link
-                key={`mobile-${link.id}`}
-                href={link.path}
-                prefetch={true}
-                itemProp="url"
-                aria-current={active ? 'page' : undefined}
-                tabIndex={isMenuOpen ? 0 : -1}
-                onClick={() => setIsMenuOpen(false)}
-                className={`site-nav-link ${active ? 'is-active' : ''}`}
-              >
-                <span itemProp="name">{link.label}</span>
-              </Link>
+              <li key={`mobile-${link.id}`} itemScope itemType="https://schema.org/SiteNavigationElement">
+                <Link
+                  href={link.path}
+                  prefetch={true}
+                  itemProp="url"
+                  aria-current={active ? 'page' : undefined}
+                  tabIndex={isMenuOpen ? 0 : -1}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={`site-nav-link ${active ? 'is-active' : ''}`}
+                >
+                  <span itemProp="name">{link.label}</span>
+                </Link>
+              </li>
             );
           })}
-        </div>
+        </ul>
       </nav>
 
       <main 
@@ -537,13 +537,13 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
               </p>
             </div>
 
-<nav aria-label="Footer primary navigation" className="text-left" itemScope itemType="https://schema.org/SiteNavigationElement">
+<nav aria-label="Footer primary navigation" className="text-left">
               <h2 className="font-mono text-xs font-bold uppercase tracking-widest text-[#0F172A] dark:text-[#F8FAFC] mb-4">
                 Directory
               </h2>
               <ul className="space-y-2.5">
                 {NAV_LINKS.filter((link) => link.id !== 'home').map((link) => (
-                  <li key={`footer-${link.id}`}>
+                  <li key={`footer-${link.id}`} itemScope itemType="https://schema.org/SiteNavigationElement">
                     <Link
                       href={link.path}
                       itemProp="url"
@@ -558,7 +558,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
                     </Link>
                   </li>
                 ))}
-                <li>
+                <li itemScope itemType="https://schema.org/SiteNavigationElement">
                   <Link
                     href="/image-licensing"
                     itemProp="url"
