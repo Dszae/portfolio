@@ -34,6 +34,12 @@ export default function IoeAdmissionProjectPage() {
     url: 'https://www.dipeshsapkota7.com.np/projects/ioe-admission-guide',
     description: 'An engineering admission portal built by Dipesh Sapkota with rank prediction, cutoff analytics, and counseling tools.',
     applicationCategory: 'EducationalApplication',
+    operatingSystem: 'Any modern browser (Web Application)',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
     creator: {
       '@type': 'Person',
       name: 'Dipesh Sapkota',

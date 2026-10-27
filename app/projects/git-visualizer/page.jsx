@@ -34,6 +34,12 @@ export default function GitVisualizerProjectPage() {
     url: 'https://git-visualizer.dipeshsapkota7.com.np/',
     description: 'An interactive visual learning tool for Git commands and version-control workflows created by Dipesh Sapkota.',
     applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'Any modern browser (Web Application)',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
     creator: {
       '@type': 'Person',
       name: 'Dipesh Sapkota',

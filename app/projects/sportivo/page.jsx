@@ -34,6 +34,12 @@ export default function SportivoProjectPage() {
     url: 'https://sportivo.dipeshsapkota7.com.np/',
     description: 'Sportivo is a sports platform built by Dipesh Sapkota for live scores, fixtures, and sports news.',
     applicationCategory: 'SportsApplication',
+    operatingSystem: 'Any modern browser (Web Application)',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
     author: {
       '@type': 'Person',
       name: 'Dipesh Sapkota',

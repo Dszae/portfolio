@@ -195,26 +195,6 @@ export const person = {
       description: 'Motion designer and video editor with 4+ years of freelance experience for over 50 global clients.',
     },
   ],
-  creator: [
-    {
-      '@type': 'SoftwareApplication',
-      name: 'Sportivo',
-      description: 'Live sports scores and fixtures platform engineered by Dipesh Sapkota.',
-      url: 'https://sportivo.dipeshsapkota7.com.np/',
-    },
-    {
-      '@type': 'SoftwareApplication',
-      name: 'Git Visualizer',
-      description: 'Interactive educational Git commit graph simulator engineered by Dipesh Sapkota.',
-      url: 'https://git-visualizer.dipeshsapkota7.com.np/',
-    },
-    {
-      '@type': 'SoftwareApplication',
-      name: 'IOE Admission Hub',
-      description: 'Engineering entrance examination rank predictor and campus explorer for Nepal.',
-      url: 'https://ioe-admission.dipeshsapkota7.com.np/',
-    },
-  ],
 };
 
 export const website = {
@@ -509,6 +489,13 @@ export const homePageSchema = {
           description: 'Real-time live sports streaming and match schedule platform created by Dipesh Sapkota.',
           url: 'https://sportivo.dipeshsapkota7.com.np/',
           image: `${siteUrl}/sportivo-preview.jpg`,
+          applicationCategory: 'SportsApplication',
+          operatingSystem: 'Any modern browser (Web Application)',
+          offers: {
+            '@type': 'Offer',
+            price: '0',
+            priceCurrency: 'USD',
+          },
           author: { '@id': personId },
           creator: { '@id': personId },
           sameAs: [
@@ -523,6 +510,13 @@ export const homePageSchema = {
           description: 'Engineering admission portal with rank prediction, cutoff analytics, and counseling tools created by Dipesh Sapkota.',
           url: 'https://ioe-admission.dipeshsapkota7.com.np/',
           image: `${siteUrl}/ioe-preview.jpg`,
+          applicationCategory: 'EducationalApplication',
+          operatingSystem: 'Any modern browser (Web Application)',
+          offers: {
+            '@type': 'Offer',
+            price: '0',
+            priceCurrency: 'USD',
+          },
           author: { '@id': personId },
           creator: { '@id': personId },
         },
@@ -533,24 +527,13 @@ export const homePageSchema = {
           description: 'Interactive Git version-control and DAG learning tool created by Dipesh Sapkota.',
           url: 'https://git-visualizer.dipeshsapkota7.com.np/',
           image: `${siteUrl}/git-preview.jpg`,
-          author: { '@id': personId },
-          creator: { '@id': personId },
-        },
-        {
-          '@type': 'WebApplication',
-          '@id': 'https://ioe-admission.dipeshsapkota7.com.np/#app',
-          name: 'IOE Admission Hub',
-          description: 'An admission toolkit for Institute of Engineering applicants featuring rank prediction, campus exploration, priority planning, CBT score calculation, and counseling guidance.',
-          url: 'https://ioe-admission.dipeshsapkota7.com.np/',
-          author: { '@id': personId },
-          creator: { '@id': personId },
-        },
-        {
-          '@type': 'WebApplication',
-          '@id': 'https://git-visualizer.dipeshsapkota7.com.np/#app',
-          name: 'Git Visualizer',
-          description: 'An interactive Git learning platform featuring a live commit graph, deterministic Git command simulator, guided lessons, safe undo tools, command reference, and a visual explanation of how Git moves code between repository stages.',
-          url: 'https://git-visualizer.dipeshsapkota7.com.np/',
+          applicationCategory: 'DeveloperApplication',
+          operatingSystem: 'Any modern browser (Web Application)',
+          offers: {
+            '@type': 'Offer',
+            price: '0',
+            priceCurrency: 'USD',
+          },
           author: { '@id': personId },
           creator: { '@id': personId },
         },
