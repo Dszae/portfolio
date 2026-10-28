@@ -117,6 +117,7 @@ export const person = {
     'https://dev.to/dszae',
     'https://hashnode.com/@dszae',
     'https://huggingface.co/dszae',
+    'https://about.me/dipeshsapkota',
     'https://x.com/DszAe18',
     'https://instagram.com/dsz.ae',
     'https://facebook.com/dsz.ae',
