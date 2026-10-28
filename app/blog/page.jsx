@@ -24,7 +24,7 @@ const articlesPageJsonLd = {
   mainEntity: {
     '@type': 'ItemList',
     name: 'Published Articles on DEV Community by Dipesh Sapkota',
-    numberOfItems: 4,
+    numberOfItems: 6,
     itemListElement: [
       {
         '@type': 'ListItem',
@@ -49,6 +49,18 @@ const articlesPageJsonLd = {
         position: 4,
         name: 'Building Sportivo: A Live Sports Web App with React',
         url: 'https://dev.to/dszae/building-sportivo-how-i-engineered-a-live-sports-streaming-web-app-4kh6',
+      },
+      {
+        '@type': 'ListItem',
+        position: 5,
+        name: 'Understanding APIs by Building a Real Web Application: Lessons from Sportivo',
+        url: 'https://dev.to/dszae/understanding-apis-by-building-a-real-web-application-lessons-from-sportivo-2a7g',
+      },
+      {
+        '@type': 'ListItem',
+        position: 6,
+        name: 'Building BeatMarker: Automating After Effects Beat Detection with JavaScript',
+        url: 'https://dev.to/dszae/building-beatmarker-automating-after-effects-beat-detection-with-javascript-344h',
       },
     ],
   },
