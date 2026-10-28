@@ -42,9 +42,28 @@ export default function ResumeClientView({ experiences = [], siteSettings = {}, 
                   </a>
                 </div>
 
-                <p className="text-base sm:text-lg text-[#1E293B] dark:text-[#A7B0BE] mb-14 max-w-3xl leading-relaxed">
+                <p className="text-base sm:text-lg text-[#1E293B] dark:text-[#A7B0BE] mb-6 max-w-3xl leading-relaxed">
                   Academic trajectory, technical experience, and creative production history of Dipesh Sapkota. Currently studying Computer Engineering at IOE Thapathali Campus in Kathmandu while developing software tools and leading creative media projects.
                 </p>
+
+                <div className="flex flex-wrap items-center gap-3 mb-14">
+                  <a 
+                    href="https://orcid.org/0009-0001-7595-5114" 
+                    target="_blank" 
+                    rel="me noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-mono font-medium border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#11141A] text-[#0F172A] dark:text-[#F8FAFC] hover:border-[#065F46] dark:hover:border-[#34D399] transition-colors"
+                  >
+                    <svg className="w-4 h-4 text-[#A6CE39]" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"/></svg>
+                    <span>ORCID: 0009-0001-7595-5114</span>
+                  </a>
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-mono font-medium border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#11141A] text-[#475569] dark:text-[#A7B0BE]">
+                    <span className="w-2 h-2 rounded-full bg-[#065F46] dark:bg-[#34D399]"></span>
+                    <span>IOE Thapathali Campus &middot; Tribhuvan University</span>
+                  </span>
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-mono font-medium border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#11141A] text-[#475569] dark:text-[#A7B0BE]">
+                    <span>Kathmandu, Nepal (UTC+5:45)</span>
+                  </span>
+                </div>
 
                 <div className="grid lg:grid-cols-2 gap-16">
 

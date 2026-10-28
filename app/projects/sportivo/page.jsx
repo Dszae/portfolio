@@ -42,13 +42,29 @@ export default function SportivoProjectPage() {
     },
     author: {
       '@type': 'Person',
+      '@id': 'https://www.dipeshsapkota7.com.np/#author',
       name: 'Dipesh Sapkota',
       url: 'https://www.dipeshsapkota7.com.np/',
+      identifier: 'https://orcid.org/0009-0001-7595-5114',
+      sameAs: [
+        'https://orcid.org/0009-0001-7595-5114',
+        'https://www.wikidata.org/wiki/Q141595522',
+        'https://github.com/dszae',
+        'https://linkedin.com/in/dszae',
+      ],
     },
     creator: {
       '@type': 'Person',
+      '@id': 'https://www.dipeshsapkota7.com.np/#author',
       name: 'Dipesh Sapkota',
       url: 'https://www.dipeshsapkota7.com.np/',
+      identifier: 'https://orcid.org/0009-0001-7595-5114',
+      sameAs: [
+        'https://orcid.org/0009-0001-7595-5114',
+        'https://www.wikidata.org/wiki/Q141595522',
+        'https://github.com/dszae',
+        'https://linkedin.com/in/dszae',
+      ],
     },
     sameAs: [
       'https://sportivo.dipeshsapkota7.com.np/',
