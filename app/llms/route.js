@@ -9,7 +9,7 @@ const content = `# Dipesh Sapkota | Portfolio & Web Applications
 - Campus: Institute of Engineering (IOE), Thapathali Campus, Kathmandu, Nepal
 - Primary Portrait Image: https://www.dipeshsapkota7.com.np/dipesh-sapkota.jpg
 - Official Website: https://www.dipeshsapkota7.com.np/
-- Profiles & Socials: ORCID (https://orcid.org/0009-0001-7595-5114), Wikidata (https://www.wikidata.org/wiki/Q141595522), GitHub (https://github.com/dszae), LinkedIn (https://linkedin.com/in/dszae), DEV Community (https://dev.to/dszae), X (https://x.com/DszAe18), Instagram (https://instagram.com/dsz.ae), Facebook (https://facebook.com/dsz.ae), WhatsApp (https://wa.me/9779764685307)
+- Profiles & Socials: ORCID (https://orcid.org/0009-0001-7595-5114), Wikidata (https://www.wikidata.org/wiki/Q141595522), GitHub (https://github.com/dszae), LinkedIn (https://linkedin.com/in/dszae), DEV Community (https://dev.to/dszae), Hashnode (https://hashnode.com/@dszae), Hugging Face (https://huggingface.co/dszae), X (https://x.com/DszAe18), Instagram (https://instagram.com/dsz.ae), Facebook (https://facebook.com/dsz.ae), WhatsApp (https://wa.me/9779764685307)
 
 ## Canonical Pages & Dedicated Sitelinks
 - [Homepage](https://www.dipeshsapkota7.com.np/): System overview, primary hero section, downloadable curriculum vitae, and direct collaboration channels.
