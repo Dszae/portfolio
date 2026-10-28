@@ -107,7 +107,9 @@ export const person = {
     '@type': 'Organization',
     name: 'Clamphook Academy',
   },
+  identifier: 'https://orcid.org/0009-0001-7595-5114',
   sameAs: [
+    'https://orcid.org/0009-0001-7595-5114',
     'https://www.wikidata.org/wiki/Q141595522',
     'https://www.wikidata.org/entity/Q141595522',
     'https://github.com/dszae',
