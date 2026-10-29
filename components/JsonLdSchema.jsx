@@ -23,6 +23,7 @@ export const portraitImage = {
   width: 627,
   height: 627,
   representativeOfPage: true,
+  sameAs: 'https://commons.wikimedia.org/wiki/File:Dipesh_Sapkota.jpg',
 };
 
 export const person = {
