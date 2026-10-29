@@ -73,14 +73,26 @@ export default function GitVisualizerProjectPage() {
   }, {
     '@context': 'https://schema.org',
     '@type': 'VideoObject',
-    name: 'Git Visualizer Interactive Demo',
+    name: 'Git Visualizer Interactive Demo | Dipesh Sapkota',
     description: 'A product demonstration of Git Visualizer, an interactive version-control learning tool created by Dipesh Sapkota.',
     thumbnailUrl: 'https://www.dipeshsapkota7.com.np/git-visualizer-first-frame.jpg',
     contentUrl: 'https://www.dipeshsapkota7.com.np/git-visualizer-launch.mp4',
-    embedUrl: 'https://www.dipeshsapkota7.com.np/projects/git-visualizer',
+    embedUrl: 'https://www.youtube-nocookie.com/embed/7aW6RlTdnOQ',
+    sameAs: 'https://www.youtube.com/watch?v=7aW6RlTdnOQ',
     uploadDate: '2026-10-12T00:00:00+05:45',
-    author: { '@type': 'Person', name: 'Dipesh Sapkota', url: 'https://www.dipeshsapkota7.com.np/' },
-    publisher: { '@type': 'Person', name: 'Dipesh Sapkota', url: 'https://www.dipeshsapkota7.com.np/' },
+    author: { 
+      '@type': 'Person', 
+      '@id': 'https://www.dipeshsapkota7.com.np/#author',
+      name: 'Dipesh Sapkota', 
+      url: 'https://www.dipeshsapkota7.com.np/',
+      identifier: 'https://orcid.org/0009-0001-7595-5114' 
+    },
+    publisher: { 
+      '@type': 'Person', 
+      '@id': 'https://www.dipeshsapkota7.com.np/#author',
+      name: 'Dipesh Sapkota', 
+      url: 'https://www.dipeshsapkota7.com.np/' 
+    },
     inLanguage: 'en',
     isFamilyFriendly: true,
   }];

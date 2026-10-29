@@ -73,14 +73,26 @@ export default function SportivoProjectPage() {
   }, {
     '@context': 'https://schema.org',
     '@type': 'VideoObject',
-    name: 'Sportivo Live Sports Platform Demo',
+    name: 'Sportivo Live Sports Platform Demo | Dipesh Sapkota',
     description: 'A product demonstration of Sportivo, a live sports platform created by Dipesh Sapkota for scores, fixtures, match discovery, and sports news.',
     thumbnailUrl: 'https://www.dipeshsapkota7.com.np/sportivo-first-frame.jpg',
     contentUrl: 'https://www.dipeshsapkota7.com.np/sportivo-launch.mp4',
-    embedUrl: 'https://www.dipeshsapkota7.com.np/projects/sportivo',
+    embedUrl: 'https://www.youtube-nocookie.com/embed/rfxeT_Dl7pE',
+    sameAs: 'https://www.youtube.com/watch?v=rfxeT_Dl7pE',
     uploadDate: '2026-10-12T00:00:00+05:45',
-    author: { '@type': 'Person', name: 'Dipesh Sapkota', url: 'https://www.dipeshsapkota7.com.np/' },
-    publisher: { '@type': 'Person', name: 'Dipesh Sapkota', url: 'https://www.dipeshsapkota7.com.np/' },
+    author: { 
+      '@type': 'Person', 
+      '@id': 'https://www.dipeshsapkota7.com.np/#author',
+      name: 'Dipesh Sapkota', 
+      url: 'https://www.dipeshsapkota7.com.np/',
+      identifier: 'https://orcid.org/0009-0001-7595-5114' 
+    },
+    publisher: { 
+      '@type': 'Person', 
+      '@id': 'https://www.dipeshsapkota7.com.np/#author',
+      name: 'Dipesh Sapkota', 
+      url: 'https://www.dipeshsapkota7.com.np/' 
+    },
     inLanguage: 'en',
     isFamilyFriendly: true,
   }];

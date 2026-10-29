@@ -70,14 +70,26 @@ export default function IoeAdmissionProjectPage() {
   }, {
     '@context': 'https://schema.org',
     '@type': 'VideoObject',
-    name: 'IOE Admission Guide Demo',
+    name: 'IOE Admission Guide Demo | Dipesh Sapkota',
     description: 'A product demonstration of the IOE Admission Guide, an engineering entrance and rank prediction tool created by Dipesh Sapkota.',
     thumbnailUrl: 'https://www.dipeshsapkota7.com.np/ioe-first-frame.jpg',
     contentUrl: 'https://www.dipeshsapkota7.com.np/ioe-demo.mp4',
-    embedUrl: 'https://www.dipeshsapkota7.com.np/projects/ioe-admission-guide',
+    embedUrl: 'https://www.youtube-nocookie.com/embed/y7I_3Zvlj_Q',
+    sameAs: 'https://www.youtube.com/watch?v=y7I_3Zvlj_Q',
     uploadDate: '2026-10-12T00:00:00+05:45',
-    author: { '@type': 'Person', name: 'Dipesh Sapkota', url: 'https://www.dipeshsapkota7.com.np/' },
-    publisher: { '@type': 'Person', name: 'Dipesh Sapkota', url: 'https://www.dipeshsapkota7.com.np/' },
+    author: { 
+      '@type': 'Person', 
+      '@id': 'https://www.dipeshsapkota7.com.np/#author',
+      name: 'Dipesh Sapkota', 
+      url: 'https://www.dipeshsapkota7.com.np/',
+      identifier: 'https://orcid.org/0009-0001-7595-5114' 
+    },
+    publisher: { 
+      '@type': 'Person', 
+      '@id': 'https://www.dipeshsapkota7.com.np/#author',
+      name: 'Dipesh Sapkota', 
+      url: 'https://www.dipeshsapkota7.com.np/' 
+    },
     inLanguage: 'en',
     isFamilyFriendly: true,
   }];
