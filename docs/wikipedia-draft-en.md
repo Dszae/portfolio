@@ -1,9 +1,36 @@
 # English Wikipedia Draft: Dipesh Sapkota
 
-**Target Namespace:** `Draft:Dipesh_Sapkota` or `Wikipedia:Articles for creation`  
-**Standard Wikitext Format** (Copy and paste into Wikipedia AfC submission wizard)
+**Target Page:** `Draft:Dipesh Sapkota` on English Wikipedia ([Create Draft](https://en.wikipedia.org/wiki/Draft:Dipesh_Sapkota?action=edit))  
+**Namespace:** Articles for Creation (`WP:AfC`)  
+**COI Guideline:** Wikipedia Conflict of Interest (`WP:COI`) compliant
+
+---
+
+## 1. Conflict of Interest (COI) Disclosures
+
+Before submitting the draft, Wikipedia's terms of service require disclosing your connection to avoid accusations of undeclared promotional editing:
+
+### A. On your Wikipedia User Page (`User:Dszae`):
+```wikitext
+{{Userbox/COI|Dipesh Sapkota}}
+I have a conflict of interest regarding the subject [[Dipesh Sapkota]], as I am the subject of the article. In accordance with Wikipedia's [[WP:COI|Conflict of Interest policy]], I do not edit the article directly in mainspace and only submit draft proposals through the [[WP:AfC|Articles for Creation]] process.
+```
+
+### B. On the Draft Talk Page (`Draft talk:Dipesh Sapkota`):
+```wikitext
+{{connected contributor|User1=Dszae}}
+This draft is submitted through Articles for Creation by the subject of the article. All content has been written neutrally and sourced to independent publications.
+```
+
+---
+
+## 2. Draft Wikitext (`Draft:Dipesh Sapkota`)
+
+Copy and paste the entire block below into the edit window of `Draft:Dipesh Sapkota`:
 
 ```wikitext
+{{subst:submit}}
+
 {{Infobox person
 | name             = Dipesh Sapkota
 | native_name      = दिपेश सापकोटा
@@ -48,8 +75,6 @@ In addition to software and algorithm research, Sapkota has worked as a freelanc
 
 [[Category:Living people]]
 [[Category:People from Kathmandu]]
-[[Category:Institute of Engineering alumni]]
 [[Category:Tribhuvan University alumni]]
 [[Category:Nepalese engineers]]
 ```
-
