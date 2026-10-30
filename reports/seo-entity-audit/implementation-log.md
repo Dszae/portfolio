@@ -41,3 +41,4 @@
 - Person JSON-LD: No changes needed (comprehensive, correct)
 - sameAs profiles: No changes needed (all 14 return HTTP 200)
 - Wikidata entity: No changes needed (properties already set)
+

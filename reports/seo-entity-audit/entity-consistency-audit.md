@@ -65,3 +65,4 @@
 | GitHub profile website | github.com/dszae | Confirm portfolio URL in bio |
 | LinkedIn contact info website | linkedin.com/in/dszae | Confirm portfolio URL as Personal website |
 | worksFor Clamphook Academy | JsonLdSchema.jsx | Verify if still accurate |
+

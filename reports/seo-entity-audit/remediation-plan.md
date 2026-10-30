@@ -97,3 +97,4 @@
 ### P3-B: Add `maintainedBy` or `contributor` to project schemas
 - Explicitly linking project schemas back to the Person entity.
 - Already partially implemented via `author` and `creator`.
+
