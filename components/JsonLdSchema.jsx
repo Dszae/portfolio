@@ -295,7 +295,7 @@ export const homePageSchema = {
       name: 'Dipesh Sapkota | Computer Engineering Student & AI/ML Enthusiast',
       description: 'Official portfolio of Dipesh Sapkota, a Computer Engineering student and AI/ML enthusiast at IOE Thapathali Campus, Nepal. Explore AI/ML projects, technical engineering pursuits, and creative work.',
       dateCreated: '2025-01-01T00:00:00+05:45',
-      dateModified: '2026-10-11T00:00:00+05:45',
+      dateModified: new Date().toISOString(),
       mainEntity: person,
       primaryImageOfPage: portraitImage,
       isPartOf: { '@id': websiteId },

@@ -28,7 +28,7 @@ export async function generateMetadata() {
   const twitterHandle = (seo.twitter_handle || '@dszae').replace(/^@?/, '@');
 
   return {
-    metadataBase: new URL('https://www.dipeshsapkota7.com.np'),
+    metadataBase: new URL('https://www.dipeshsapkota7.com.np/'),
     alternates: {
       canonical: 'https://www.dipeshsapkota7.com.np/',
     },
