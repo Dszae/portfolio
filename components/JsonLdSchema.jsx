@@ -104,10 +104,6 @@ export const person = {
       ],
     },
   ],
-  worksFor: {
-    '@type': 'Organization',
-    name: 'Clamphook Academy',
-  },
   identifier: 'https://orcid.org/0009-0001-7595-5114',
   sameAs: [
     'https://orcid.org/0009-0001-7595-5114',
