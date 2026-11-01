@@ -71,7 +71,7 @@ In addition to software and algorithm research, Sapkota has worked as a freelanc
 == External links ==
 * {{Official website|https://www.dipeshsapkota7.com.np/}}
 * [https://github.com/dszae Dipesh Sapkota on GitHub]
-* [https://www.linkedin.com/in/dszae Dipesh Sapkota on LinkedIn]
+* [https://www.linkedin.com/in/dipeshsapkota7 Dipesh Sapkota on LinkedIn]
 
 [[Category:Living people]]
 [[Category:People from Kathmandu]]
