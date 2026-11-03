@@ -123,9 +123,54 @@ const CORE_SECTIONS = [
   },
   {
     title: "Contact & Inquiries",
-    description: "Direct contact channels for software development, video editing, and freelance consultations.",
+    description: "Direct contact channels for engineering collaborations, video editing, and consultations.",
     href: "/contact",
     cta: "Get in touch",
+  },
+];
+
+const INTERACTIVE_PROMPTS = [
+  {
+    id: "bio",
+    command: "query --identity",
+    label: "Who is Dipesh Sapkota?",
+    desc: "Undergraduate at IOE Thapathali & AI/ML enthusiast",
+    prompt: "Who is Dipesh Sapkota and what does he do?",
+  },
+  {
+    id: "projects",
+    command: "query --projects",
+    label: "Flagship Software Systems",
+    desc: "IOE Admission Hub, Git Visualizer & Sportivo",
+    prompt: "What are the main software projects built by Dipesh Sapkota?",
+  },
+  {
+    id: "skills",
+    command: "query --tech-stack",
+    label: "Technical Skills & Disciplines",
+    desc: "C/C++, Python, React, Next.js & embedded circuits",
+    prompt: "What are Dipesh Sapkota's core technical skills and areas of study?",
+  },
+  {
+    id: "motion",
+    command: "query --media",
+    label: "Motion Graphics & Editing",
+    desc: "4+ years freelance, Premiere Pro & After Effects",
+    prompt: "What is Dipesh Sapkota's background in motion graphics and video editing?",
+  },
+  {
+    id: "academic",
+    command: "query --education",
+    label: "Academic Affiliation",
+    desc: "IOE Thapathali Campus, Tribhuvan University",
+    prompt: "What is Dipesh Sapkota's academic background and university?",
+  },
+  {
+    id: "contact",
+    command: "query --contact",
+    label: "Direct Collaboration",
+    desc: "Email, telephone, LinkedIn & GitHub",
+    prompt: "How can I contact Dipesh Sapkota for collaboration?",
   },
 ];
 
@@ -322,88 +367,90 @@ export default function Home() {
               </div>
             </div>
           </section>
-          <section id="faq-section" className="px-6 py-16 sm:px-10 lg:px-16 border-t border-slate-200 dark:border-[#222933]" aria-labelledby="faq-heading">
-            <div className="mx-auto max-w-4xl">
-              <div className="mb-10 text-center">
-                <p className="section-eyebrow">Entity Information</p>
-                <h2 id="faq-heading" className="mt-2 text-3xl font-bold tracking-tight text-[#0F172A] dark:text-white">
-                  Frequently Asked Questions
-                </h2>
-                <p className="mt-2 text-sm sm:text-base text-[#475569] dark:text-[#A7B0BE]">
-                  Verified answers about Dipesh Sapkota, engineering pursuits, projects, and academic background.
-                </p>
-              </div>
+          <section id="portfolio-intelligence" className="px-6 py-16 sm:px-10 lg:px-16 border-t border-slate-200 dark:border-[#222933]" aria-labelledby="intelligence-heading">
+            <div className="mx-auto max-w-5xl">
+              <div className="rounded-3xl border border-slate-200/90 dark:border-[#222933] bg-gradient-to-br from-slate-50 via-white to-slate-100/60 dark:from-[#0B0E12] dark:via-[#0F1216] dark:to-[#090B0E] p-8 sm:p-10 shadow-sm relative overflow-hidden">
+                <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
+                  <div>
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium bg-[#065F46]/10 dark:bg-[#34D399]/10 text-[#065F46] dark:text-[#34D399] border border-[#065F46]/20 dark:border-[#34D399]/20">
+                      <span className="w-2 h-2 rounded-full bg-[#065F46] dark:bg-[#34D399] animate-pulse"></span>
+                      <span>Autonomous Portfolio Intelligence</span>
+                    </div>
+                    <h2 id="intelligence-heading" className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-[#0F172A] dark:text-white">
+                      Query System &amp; Entity Intelligence
+                    </h2>
+                    <p className="mt-2 text-sm text-[#475569] dark:text-[#A7B0BE] max-w-xl">
+                      Explore real-time telemetry on my computer engineering pursuits, software systems, and motion design via direct prompt queries.
+                    </p>
+                  </div>
 
-              <div className="space-y-4">
-                <details className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition dark:border-[#222933] dark:bg-[#0F1216]">
-                  <summary className="flex cursor-pointer items-center justify-between font-semibold text-lg text-[#0F172A] dark:text-white list-none">
-                    <span>Who is Dipesh Sapkota?</span>
-                    <span className="text-xl transition-transform group-open:rotate-45 text-[#065F46] dark:text-[#34D399]">+</span>
-                  </summary>
-                  <p className="mt-4 text-sm sm:text-base leading-relaxed text-[#475569] dark:text-[#A7B0BE]">
-                    Dipesh Sapkota is a Computer Engineering undergraduate student at IOE Thapathali Campus (Tribhuvan University) in Kathmandu, Nepal, an AI/ML enthusiast, and a freelance motion graphics designer and video editor. He is the creator of educational tools including the IOE Admission Hub, Git Visualizer, and Sportivo.
-                  </p>
-                </details>
+                  <div className="flex items-center gap-2 font-mono text-xs">
+                    <Link
+                      href="/llms.txt"
+                      prefetch={false}
+                      className="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#14181F] text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors"
+                      title="Inspect llms.txt standard"
+                    >
+                      llms.txt
+                    </Link>
+                    <Link
+                      href="/api/markdown"
+                      prefetch={false}
+                      className="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#14181F] text-[#475569] dark:text-[#A7B0BE] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors"
+                      title="Raw Markdown Context API"
+                    >
+                      markdown api
+                    </Link>
+                  </div>
+                </div>
 
-                <details className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition dark:border-[#222933] dark:bg-[#0F1216]">
-                  <summary className="flex cursor-pointer items-center justify-between font-semibold text-lg text-[#0F172A] dark:text-white list-none">
-                    <span>What is Dipesh Sapkota&apos;s academic background and university?</span>
-                    <span className="text-xl transition-transform group-open:rotate-45 text-[#065F46] dark:text-[#34D399]">+</span>
-                  </summary>
-                  <p className="mt-4 text-sm sm:text-base leading-relaxed text-[#475569] dark:text-[#A7B0BE]">
-                    Dipesh Sapkota is pursuing a Bachelor of Engineering (B.E.) in Computer Engineering at the Department of Electronics and Computer Engineering, Thapathali Campus, Institute of Engineering (IOE), Tribhuvan University, in Kathmandu, Nepal.
-                  </p>
-                </details>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {INTERACTIVE_PROMPTS.map((item) => (
+                    <button
+                      key={item.id}
+                      type="button"
+                      onClick={() => {
+                        if (typeof window !== 'undefined') {
+                          window.dispatchEvent(new CustomEvent('trigger-ai-assistant', { detail: { prompt: item.prompt } }));
+                        }
+                      }}
+                      className="group flex flex-col items-start p-4 rounded-xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#14181F] text-left hover:border-[#065F46]/60 dark:hover:border-[#34D399]/60 hover:-translate-y-0.5 transition-all cursor-pointer"
+                    >
+                      <div className="flex items-center justify-between w-full mb-1">
+                        <span className="font-mono text-[11px] font-semibold text-[#065F46] dark:text-[#34D399]">{item.command}</span>
+                        <svg className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#065F46] dark:group-hover:text-[#34D399] transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                      </div>
+                      <p className="text-xs font-medium text-[#0F172A] dark:text-[#F8FAFC] line-clamp-1">
+                        {item.label}
+                      </p>
+                      <span className="mt-1 text-[11px] text-[#64748B] dark:text-[#94A3B8]">
+                        {item.desc}
+                      </span>
+                    </button>
+                  ))}
+                </div>
 
-                <details className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition dark:border-[#222933] dark:bg-[#0F1216]">
-                  <summary className="flex cursor-pointer items-center justify-between font-semibold text-lg text-[#0F172A] dark:text-white list-none">
-                    <span>What software projects has Dipesh Sapkota built?</span>
-                    <span className="text-xl transition-transform group-open:rotate-45 text-[#065F46] dark:text-[#34D399]">+</span>
-                  </summary>
-                  <p className="mt-4 text-sm sm:text-base leading-relaxed text-[#475569] dark:text-[#A7B0BE]">
-                    His flagship engineering projects include the <a href="https://ioe-admission.dipeshsapkota7.com.np/" target="_blank" rel="noopener noreferrer" className="text-[#065F46] dark:text-[#34D399] underline">IOE Admission Hub</a> (historical entrance cutoff analyzer and rank predictor), <a href="https://git-visualizer.dipeshsapkota7.com.np/" target="_blank" rel="noopener noreferrer" className="text-[#065F46] dark:text-[#34D399] underline">Git Visualizer</a> (interactive DAG version-control simulator), and <a href="https://sportivo.dipeshsapkota7.com.np/" target="_blank" rel="noopener noreferrer" className="text-[#065F46] dark:text-[#34D399] underline">Sportivo</a> (live match tracker).
+                <div className="mt-6 flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-slate-200 dark:border-[#222933]">
+                  <p className="font-mono text-xs text-[#64748B] dark:text-[#94A3B8]">
+                    <span className="text-[#065F46] dark:text-[#34D399] font-bold">$</span> query-entity --target dipesh-sapkota --context verified
                   </p>
-                </details>
-
-                <details className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition dark:border-[#222933] dark:bg-[#0F1216]">
-                  <summary className="flex cursor-pointer items-center justify-between font-semibold text-lg text-[#0F172A] dark:text-white list-none">
-                    <span>What is the official website and portfolio of Dipesh Sapkota?</span>
-                    <span className="text-xl transition-transform group-open:rotate-45 text-[#065F46] dark:text-[#34D399]">+</span>
-                  </summary>
-                  <p className="mt-4 text-sm sm:text-base leading-relaxed text-[#475569] dark:text-[#A7B0BE]">
-                    The canonical official portfolio of Dipesh Sapkota is hosted at <a href="https://www.dipeshsapkota7.com.np/" className="text-[#065F46] dark:text-[#34D399] underline">https://www.dipeshsapkota7.com.np/</a>, providing direct links to verified academic records, downloadable CV, and project repositories.
-                  </p>
-                </details>
-
-                <details className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition dark:border-[#222933] dark:bg-[#0F1216]">
-                  <summary className="flex cursor-pointer items-center justify-between font-semibold text-lg text-[#0F172A] dark:text-white list-none">
-                    <span>What are Dipesh Sapkota&apos;s core technical skills and areas of study?</span>
-                    <span className="text-xl transition-transform group-open:rotate-45 text-[#065F46] dark:text-[#34D399]">+</span>
-                  </summary>
-                  <p className="mt-4 text-sm sm:text-base leading-relaxed text-[#475569] dark:text-[#A7B0BE]">
-                    Dipesh Sapkota specializes in Computer Engineering, Artificial Intelligence and Machine Learning (intelligent systems, neural network concepts), embedded systems and hardware modeling (C, C++, Python, ESP32, Proteus), and visual motion design.
-                  </p>
-                </details>
-
-                <details className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition dark:border-[#222933] dark:bg-[#0F1216]">
-                  <summary className="flex cursor-pointer items-center justify-between font-semibold text-lg text-[#0F172A] dark:text-white list-none">
-                    <span>What is Dipesh Sapkota&apos;s background in motion graphics and video editing?</span>
-                    <span className="text-xl transition-transform group-open:rotate-45 text-[#065F46] dark:text-[#34D399]">+</span>
-                  </summary>
-                  <p className="mt-4 text-sm sm:text-base leading-relaxed text-[#475569] dark:text-[#A7B0BE]">
-                    Dipesh Sapkota has over four years of freelance motion graphics and video editing experience, having delivered visual media for more than 50 clients worldwide utilizing Adobe Premiere Pro, After Effects, and DaVinci Resolve.
-                  </p>
-                </details>
-
-                <details className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition dark:border-[#222933] dark:bg-[#0F1216]">
-                  <summary className="flex cursor-pointer items-center justify-between font-semibold text-lg text-[#0F172A] dark:text-white list-none">
-                    <span>How can you contact Dipesh Sapkota?</span>
-                    <span className="text-xl transition-transform group-open:rotate-45 text-[#065F46] dark:text-[#34D399]">+</span>
-                  </summary>
-                  <p className="mt-4 text-sm sm:text-base leading-relaxed text-[#475569] dark:text-[#A7B0BE]">
-                    Dipesh Sapkota can be reached via email at <a href="mailto:dsz.ae18@gmail.com" className="text-[#065F46] dark:text-[#34D399] underline">dsz.ae18@gmail.com</a>, telephone at <a href="tel:+9779764685307" className="text-[#065F46] dark:text-[#34D399] underline">+977 9764685307</a>, his official <Link href="/contact" className="text-[#065F46] dark:text-[#34D399] underline">contact portal</Link>, or professional profiles on <a href="https://www.linkedin.com/in/dipeshsapkota7" target="_blank" rel="noopener noreferrer" className="text-[#065F46] dark:text-[#34D399] underline">LinkedIn</a> and <a href="https://github.com/Dszae" target="_blank" rel="noopener noreferrer" className="text-[#065F46] dark:text-[#34D399] underline">GitHub</a>.
-                  </p>
-                </details>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (typeof window !== 'undefined') {
+                        window.dispatchEvent(new CustomEvent('trigger-ai-assistant', { detail: {} }));
+                      }
+                    }}
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#065F46] dark:bg-[#34D399] text-white dark:text-[#090B0E] font-mono text-xs font-bold hover:opacity-90 active:scale-[0.98] transition-all cursor-pointer"
+                  >
+                    <span>Launch Prompt Assistant</span>
+                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
           </section>

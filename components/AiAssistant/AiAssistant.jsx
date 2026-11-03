@@ -85,6 +85,24 @@ You can ask about his software projects, computer engineering background at **IO
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen]);
 
+  const handleTriggerRef = useRef();
+  handleTriggerRef.current = (prompt) => {
+    setIsOpen(true);
+    if (prompt) {
+      setTimeout(() => {
+        handleSend(prompt);
+      }, 150);
+    }
+  };
+
+  useEffect(() => {
+    const handleTrigger = (e) => {
+      handleTriggerRef.current?.(e.detail?.prompt);
+    };
+    window.addEventListener('trigger-ai-assistant', handleTrigger);
+    return () => window.removeEventListener('trigger-ai-assistant', handleTrigger);
+  }, []);
+
   const handleSend = async (textToSend) => {
     const messageContent = (textToSend || input).trim();
     if (!messageContent || isStreaming) return;
