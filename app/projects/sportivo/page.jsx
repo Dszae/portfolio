@@ -50,7 +50,7 @@ export default function SportivoProjectPage() {
         'https://orcid.org/0009-0001-7595-5114',
         'https://www.wikidata.org/wiki/Q141595522',
         'https://github.com/dszae',
-        'https://linkedin.com/in/dszae',
+        'https://linkedin.com/in/dipeshsapkota7',
       ],
     },
     creator: {
@@ -63,7 +63,7 @@ export default function SportivoProjectPage() {
         'https://orcid.org/0009-0001-7595-5114',
         'https://www.wikidata.org/wiki/Q141595522',
         'https://github.com/dszae',
-        'https://linkedin.com/in/dszae',
+        'https://linkedin.com/in/dipeshsapkota7',
       ],
     },
     sameAs: [

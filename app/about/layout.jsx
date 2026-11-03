@@ -1,6 +1,6 @@
 export const metadata = {
   title: 'About',
-  description: 'Learn about Dipesh Sapkota (dszae), Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal with 4+ years of creative media experience.',
+  description: 'Learn about Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal with 4+ years of creative media experience.',
   alternates: { canonical: '/about' },
   openGraph: {
     type: 'profile',

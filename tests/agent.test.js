@@ -87,7 +87,7 @@ async function runTestSuite() {
     assert.equal(res.email, 'dsz.ae18@gmail.com');
     assert.ok(res.gmail_web_link.includes('mail.google.com'), 'Gmail web link missing');
     assert.ok(res.github.includes('dszae'), 'GitHub handle missing');
-    assert.ok(res.linkedin.includes('dszae'), 'LinkedIn handle missing');
+    assert.ok(res.linkedin.includes('dipeshsapkota7'), 'LinkedIn handle missing');
   });
 
   await test('Tool get_github_repository safely handles non-existent or rate-limited repo', async () => {
