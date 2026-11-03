@@ -28,8 +28,10 @@ const content = `# Dipesh Sapkota | Portfolio & Web Applications
 - [Git Visualizer](https://git-visualizer.dipeshsapkota7.com.np/): Interactive visual learning tool mapping Git version control commands and repository data flow.
 
 ## Machine-Readable Resources & Feeds
-- [Sitemap](https://www.dipeshsapkota7.com.np/sitemap.xml)
+- [Comprehensive Entity & AI Knowledge Dossier](https://www.dipeshsapkota7.com.np/llms-full.txt)
+- [XML Sitemap](https://www.dipeshsapkota7.com.np/sitemap.xml)
 - [Robots Policy](https://www.dipeshsapkota7.com.np/robots.txt)
+- [Portfolio Markdown API](https://www.dipeshsapkota7.com.np/api/markdown)
 - [API Catalog](https://www.dipeshsapkota7.com.np/.well-known/api-catalog)
 - [Agent Card](https://www.dipeshsapkota7.com.np/.well-known/agent-card.json)
 `;

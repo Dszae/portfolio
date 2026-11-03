@@ -374,6 +374,36 @@ export default function Home() {
                     The canonical official portfolio of Dipesh Sapkota is hosted at <a href="https://www.dipeshsapkota7.com.np/" className="text-[#065F46] dark:text-[#34D399] underline">https://www.dipeshsapkota7.com.np/</a>, providing direct links to verified academic records, downloadable CV, and project repositories.
                   </p>
                 </details>
+
+                <details className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition dark:border-[#222933] dark:bg-[#0F1216]">
+                  <summary className="flex cursor-pointer items-center justify-between font-semibold text-lg text-[#0F172A] dark:text-white list-none">
+                    <span>What are Dipesh Sapkota&apos;s core technical skills and areas of study?</span>
+                    <span className="text-xl transition-transform group-open:rotate-45 text-[#065F46] dark:text-[#34D399]">+</span>
+                  </summary>
+                  <p className="mt-4 text-sm sm:text-base leading-relaxed text-[#475569] dark:text-[#A7B0BE]">
+                    Dipesh Sapkota specializes in Computer Engineering, Artificial Intelligence and Machine Learning (intelligent systems, neural network concepts), embedded systems and hardware modeling (C, C++, Python, ESP32, Proteus), and visual motion design.
+                  </p>
+                </details>
+
+                <details className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition dark:border-[#222933] dark:bg-[#0F1216]">
+                  <summary className="flex cursor-pointer items-center justify-between font-semibold text-lg text-[#0F172A] dark:text-white list-none">
+                    <span>What is Dipesh Sapkota&apos;s background in motion graphics and video editing?</span>
+                    <span className="text-xl transition-transform group-open:rotate-45 text-[#065F46] dark:text-[#34D399]">+</span>
+                  </summary>
+                  <p className="mt-4 text-sm sm:text-base leading-relaxed text-[#475569] dark:text-[#A7B0BE]">
+                    Dipesh Sapkota has over four years of freelance motion graphics and video editing experience, having delivered visual media for more than 50 clients worldwide utilizing Adobe Premiere Pro, After Effects, and DaVinci Resolve.
+                  </p>
+                </details>
+
+                <details className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition dark:border-[#222933] dark:bg-[#0F1216]">
+                  <summary className="flex cursor-pointer items-center justify-between font-semibold text-lg text-[#0F172A] dark:text-white list-none">
+                    <span>How can you contact Dipesh Sapkota?</span>
+                    <span className="text-xl transition-transform group-open:rotate-45 text-[#065F46] dark:text-[#34D399]">+</span>
+                  </summary>
+                  <p className="mt-4 text-sm sm:text-base leading-relaxed text-[#475569] dark:text-[#A7B0BE]">
+                    Dipesh Sapkota can be reached via email at <a href="mailto:dsz.ae18@gmail.com" className="text-[#065F46] dark:text-[#34D399] underline">dsz.ae18@gmail.com</a>, telephone at <a href="tel:+9779764685307" className="text-[#065F46] dark:text-[#34D399] underline">+977 9764685307</a>, his official <Link href="/contact" className="text-[#065F46] dark:text-[#34D399] underline">contact portal</Link>, or professional profiles on <a href="https://www.linkedin.com/in/dipeshsapkota7" target="_blank" rel="noopener noreferrer" className="text-[#065F46] dark:text-[#34D399] underline">LinkedIn</a> and <a href="https://github.com/Dszae" target="_blank" rel="noopener noreferrer" className="text-[#065F46] dark:text-[#34D399] underline">GitHub</a>.
+                  </p>
+                </details>
               </div>
             </div>
           </section>

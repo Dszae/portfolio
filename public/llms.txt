@@ -32,6 +32,7 @@
 - [Automated Analyzer Diagnostics](https://www.dipeshsapkota7.com.np/projects/analyzer-diag): Clinical laboratory instrumentation engineering protocol covering micro-stepping syringe probes and fluidics.
 
 ## Machine-Readable Resources & Feeds
+- [Comprehensive Entity & AI Knowledge Dossier](https://www.dipeshsapkota7.com.np/llms-full.txt)
 - [XML Sitemap](https://www.dipeshsapkota7.com.np/sitemap.xml)
 - [Robots Policy](https://www.dipeshsapkota7.com.np/robots.txt)
 - [Portfolio Markdown API](https://www.dipeshsapkota7.com.np/api/markdown)

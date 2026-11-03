@@ -569,6 +569,30 @@ export const homePageSchema = {
             text: 'The official personal portfolio of Dipesh Sapkota is hosted at https://www.dipeshsapkota7.com.np/.',
           },
         },
+        {
+          '@type': 'Question',
+          name: 'What are Dipesh Sapkota\'s core technical skills and areas of study?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Dipesh Sapkota specializes in Computer Engineering, Artificial Intelligence and Machine Learning (intelligent systems, neural network concepts), embedded systems and hardware modeling (C, C++, Python, ESP32, Proteus), and visual motion design.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What is Dipesh Sapkota\'s background in motion graphics and video editing?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Dipesh Sapkota has over four years of freelance motion graphics and video editing experience, having delivered visual media for more than 50 clients worldwide utilizing Adobe Premiere Pro, After Effects, and DaVinci Resolve.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'How can you contact Dipesh Sapkota?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Dipesh Sapkota can be reached via email at dsz.ae18@gmail.com, telephone at +977 9764685307, his official contact portal at https://www.dipeshsapkota7.com.np/contact, or professional profiles on LinkedIn (https://www.linkedin.com/in/dipeshsapkota7) and GitHub (https://github.com/Dszae).',
+          },
+        },
       ],
     },
   ],

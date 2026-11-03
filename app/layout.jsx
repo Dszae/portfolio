@@ -134,7 +134,11 @@ export default async function RootLayout({ children }) {
     <html lang="en" className={`dark ${manrope.variable}`} suppressHydrationWarning>
       <head>
         <link rel="author" href="/" />
-        <link rel="alternate" type="text/markdown" href="/.well-known/llms.txt" title="AI-readable site information" />
+        <link rel="alternate" type="text/markdown" href="/llms.txt" title="AI Site Information (llms.txt)" />
+        <link rel="alternate" type="text/markdown" href="/llms-full.txt" title="Full Entity Knowledge Base (llms-full.txt)" />
+        <link rel="alternate" type="text/markdown" href="/.well-known/llms.txt" title="Well-Known LLMs Information" />
+        <link rel="alternate" type="text/markdown" href="/api/markdown" title="Raw Markdown Entity API" />
+        <link rel="help" href="/llms.txt" />
         <script
           dangerouslySetInnerHTML={{
             __html: `

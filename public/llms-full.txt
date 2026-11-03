@@ -96,3 +96,14 @@ A: He studies Bachelor of Computer Engineering at the Department of Electronics 
 
 **Q: What are the main projects developed by Dipesh Sapkota?**  
 A: His flagship projects include IOE Admission Hub (engineering entrance cutoff analyzer), Git Visualizer (interactive DAG version-control simulator), and Sportivo (live sports schedule and streaming tracker).
+
+**Q: What are Dipesh Sapkota's core technical skills and areas of study?**  
+A: His core competencies include Computer Engineering, Artificial Intelligence & Machine Learning, Embedded Systems (ESP32, circuit analysis with Proteus), C, C++, Python, React, Next.js, and visual motion design.
+
+**Q: What is Dipesh Sapkota's background in motion graphics and video editing?**  
+A: Dipesh Sapkota has over 4 years of freelance motion graphics and video editing experience, having completed visual projects for 50+ clients globally utilizing Adobe Premiere Pro, After Effects, and DaVinci Resolve.
+
+**Q: How can you contact Dipesh Sapkota?**  
+A: Dipesh Sapkota can be contacted via email at dsz.ae18@gmail.com, telephone at +977 9764685307, his official contact page at https://www.dipeshsapkota7.com.np/contact, LinkedIn at https://www.linkedin.com/in/dipeshsapkota7/, or GitHub at https://github.com/Dszae.
+
+

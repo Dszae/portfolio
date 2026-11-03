@@ -1,28 +1,31 @@
 import type { MetadataRoute } from 'next';
 
+const sharedAllow = ['/', '/api/markdown', '/llms.txt', '/llms-full.txt', '/.well-known/'];
+const sharedDisallow = ['/api/', '/admin/'];
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
         userAgent: 'OAI-SearchBot',
-        allow: '/',
-        disallow: ['/api/', '/admin/'],
+        allow: sharedAllow,
+        disallow: sharedDisallow,
         other: {
           'Content-Signal': 'ai-train=no, search=yes, ai-input=yes',
         },
       },
       {
         userAgent: 'GPTBot',
-        allow: '/',
-        disallow: ['/api/', '/admin/'],
+        allow: sharedAllow,
+        disallow: sharedDisallow,
         other: {
           'Content-Signal': 'ai-train=no, search=yes, ai-input=no',
         },
       },
       {
         userAgent: 'ChatGPT-User',
-        allow: '/',
-        disallow: ['/api/', '/admin/'],
+        allow: sharedAllow,
+        disallow: sharedDisallow,
         other: {
           'Content-Signal': 'ai-train=no, search=yes, ai-input=yes',
         },
@@ -51,24 +54,24 @@ export default function robots(): MetadataRoute.Robots {
           'cohere-ai',
           'Omgilibot',
         ],
-        allow: '/',
-        disallow: ['/api/', '/admin/'],
+        allow: sharedAllow,
+        disallow: sharedDisallow,
         other: {
           'Content-Signal': 'ai-train=no, search=yes, ai-input=yes',
         },
       },
       {
         userAgent: 'Cloudflare-AI-Search',
-        allow: '/',
-        disallow: ['/api/', '/admin/'],
+        allow: sharedAllow,
+        disallow: sharedDisallow,
         other: {
           'Content-Signal': 'ai-train=no, search=yes, ai-input=yes',
         },
       },
       {
         userAgent: '*',
-        allow: '/',
-        disallow: ['/api/', '/admin/'],
+        allow: sharedAllow,
+        disallow: sharedDisallow,
         other: {
           'Content-Signal': 'ai-train=no, search=yes, ai-input=no',
         },
@@ -77,4 +80,3 @@ export default function robots(): MetadataRoute.Robots {
     sitemap: 'https://www.dipeshsapkota7.com.np/sitemap.xml',
   };
 }
-
