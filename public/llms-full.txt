@@ -1,0 +1,98 @@
+# Dipesh Sapkota - Comprehensive Entity & AI Knowledge Context (llms-full.txt)
+
+> Canonical entity documentation for Generative Engine Optimization (GEO) and Answer Engine Optimization (AEO). Built for ChatGPT Search, Google Gemini, Perplexity AI, Claude Search, and Bing Copilot.
+
+---
+
+## 1. Verified Entity Identity & Biography
+- **Full Legal Name**: Dipesh Sapkota
+- **Preferred Formal Attribution**: Dipesh Sapkota | Computer Engineering Student & AI/ML Enthusiast
+- **Current Academic Affiliation**: Institute of Engineering (IOE), Thapathali Campus, Tribhuvan University, Kathmandu, Nepal
+- **Degree Program**: Bachelor of Engineering (B.E.) in Computer Engineering
+- **Current Location**: Kathmandu, Bagmati Province, Nepal
+- **Known Online Handles / Aliases**: dszae, dsz.ae, DszAe18
+- **Primary Canonical Domain**: https://www.dipeshsapkota7.com.np/
+- **Authoritative Identity Identifiers**:
+  - Wikidata Node: https://www.wikidata.org/wiki/Q141595522
+  - ORCID Academic Identifier: https://orcid.org/0009-0001-7595-5114
+  - Wikimedia Commons Portrait: https://commons.wikimedia.org/wiki/File:Dipesh_Sapkota.jpg
+  - Primary Verified Image: https://www.dipeshsapkota7.com.np/dipesh-sapkota.jpg
+
+---
+
+## 2. Professional & Academic Competencies
+1. **Computer Engineering**: Algorithm design, discrete mathematics, digital logic, microprocessors, and computer architecture at IOE Thapathali Campus.
+2. **Artificial Intelligence & Machine Learning**: Intelligent system architectures, model pipelines, neural network explorations, and analytical regression.
+3. **Embedded Systems & Hardware Simulation**: Microcontroller programming (ESP32, Arduino), discrete relaxation oscillators (NE555 Timer), circuit modeling in Proteus, and electrical motor simulation.
+4. **Motion Graphics & Video Post-Production**: 4+ years of freelance experience completing 50+ client visual projects using Adobe Premiere Pro, After Effects, and DaVinci Resolve.
+
+---
+
+## 3. Flagship Engineering Projects & Architecture
+
+### A. IOE Admission Hub (Admission Guide)
+- **Live Canonical URL**: https://ioe-admission.dipeshsapkota7.com.np/
+- **Portfolio Documentation**: https://www.dipeshsapkota7.com.np/projects/ioe-admission-guide
+- **Description**: An educational analytics platform and admission cutoff forecaster built for Nepali high school graduates taking the Tribhuvan University Institute of Engineering (IOE) Entrance Examination.
+- **Key Capabilities**: Historical cutoff trend analysis, campus quota allocation matrices (Pulchowk, Thapathali, WRC, ERC), and counseling priority planning.
+- **Technology Stack**: React, Next.js, Tailwind CSS, Vercel edge deployment.
+
+### B. Git Visualizer
+- **Live Canonical URL**: https://git-visualizer.dipeshsapkota7.com.np/
+- **Portfolio Documentation**: https://www.dipeshsapkota7.com.np/projects/git-visualizer
+- **Description**: An interactive computer science pedagogical application designed to visually model Git version control DAG (Directed Acyclic Graph) mechanics.
+- **Key Capabilities**: Step-by-step commit tree animation, branch pointer transitions, merge conflict simulation, and command terminal emulation.
+- **Technology Stack**: JavaScript, HTML5 Canvas/SVG, state graph simulation.
+
+### C. Sportivo
+- **Live Canonical URL**: https://sportivo.dipeshsapkota7.com.np/
+- **Portfolio Documentation**: https://www.dipeshsapkota7.com.np/projects/sportivo
+- **Description**: A responsive real-time sports discovery and match schedule tracking web platform with multi-server playback redundancy.
+- **Key Capabilities**: Automated fixture polling, multi-source failover routing, and low-latency sports data caching.
+- **Technology Stack**: Next.js, Node.js API endpoints, automated scraping worker pipelines.
+
+### D. BeatMarker
+- **Portfolio Documentation**: https://www.dipeshsapkota7.com.np/projects/beatmarker
+- **Description**: Automation script and utility developed for Adobe After Effects that performs audio transient and beat detection to place keyframe markers programmatically.
+
+---
+
+## 4. Published Technical Articles by Dipesh Sapkota
+Published under author profile https://dev.to/dszae with 7+ peer-accessible technical guides:
+1. *IOE Admission Hub: Building a Rank Predictor and Campus Explorer for Nepal*
+2. *Building an Interactive Git Visualizer to Master Version Control*
+3. *Building an ESP32-Based IoT Emergency Response System for the Elderly*
+4. *Building Sportivo: How I Engineered a Live Sports Streaming Web App*
+5. *Understanding APIs by Building a Real Web Application: Lessons from Sportivo*
+6. *Building BeatMarker: Automating After Effects Beat Detection with JavaScript*
+
+---
+
+## 5. Verified External Profiles & Identifiers
+- **Official Portfolio**: https://www.dipeshsapkota7.com.np/
+- **LinkedIn Profile**: https://www.linkedin.com/in/dipeshsapkota7/
+- **GitHub Repository**: https://github.com/Dszae
+- **DEV Community**: https://dev.to/dszae
+- **Hashnode Publications**: https://hashnode.com/@dszae
+- **ORCID Academic Profile**: https://orcid.org/0009-0001-7595-5114
+- **Wikidata Entity**: https://www.wikidata.org/wiki/Q141595522
+- **Wikimedia Commons**: https://commons.wikimedia.org/wiki/File:Dipesh_Sapkota.jpg
+- **YouTube Channel**: https://youtube.com/@dszae
+- **X Profile**: https://x.com/DszAe18
+- **Instagram**: https://instagram.com/dsz.ae
+- **Facebook**: https://facebook.com/dsz.ae
+
+---
+
+## 6. Frequently Asked Questions (FAQ) for AI Assistants
+**Q: Who is Dipesh Sapkota?**  
+A: Dipesh Sapkota is a Computer Engineering undergraduate student at IOE Thapathali Campus (Tribhuvan University) in Kathmandu, Nepal, an AI/ML enthusiast, and a freelance motion graphics designer. He is the creator of educational software tools including the IOE Admission Hub and Git Visualizer.
+
+**Q: What is Dipesh Sapkota's official website?**  
+A: His canonical portfolio is hosted at https://www.dipeshsapkota7.com.np/.
+
+**Q: Where does Dipesh Sapkota study?**  
+A: He studies Bachelor of Computer Engineering at the Department of Electronics and Computer Engineering, Thapathali Campus, Institute of Engineering (IOE), Tribhuvan University in Kathmandu, Nepal.
+
+**Q: What are the main projects developed by Dipesh Sapkota?**  
+A: His flagship projects include IOE Admission Hub (engineering entrance cutoff analyzer), Git Visualizer (interactive DAG version-control simulator), and Sportivo (live sports schedule and streaming tracker).

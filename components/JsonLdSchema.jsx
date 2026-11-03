@@ -533,6 +533,44 @@ export const homePageSchema = {
         },
       ],
     },
+    {
+      '@type': 'FAQPage',
+      '@id': `${siteUrl}/#faq`,
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'Who is Dipesh Sapkota?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Dipesh Sapkota is a Computer Engineering student at IOE Thapathali Campus (Tribhuvan University) in Kathmandu, Nepal, an AI/ML enthusiast, and a freelance motion graphics designer and video editor. He develops open-access educational and software tools including the IOE Admission Hub, Git Visualizer, and Sportivo.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What is Dipesh Sapkota\'s academic background and university?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Dipesh Sapkota is pursuing a Bachelor of Engineering (B.E.) in Computer Engineering at the Department of Electronics and Computer Engineering, Thapathali Campus, Institute of Engineering (IOE), Tribhuvan University, in Kathmandu, Nepal.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What software projects has Dipesh Sapkota built?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Dipesh Sapkota is the creator of the IOE Admission Hub (an entrance rank predictor and historical cutoff analytics portal for engineering aspirants in Nepal), Git Visualizer (an interactive tool modeling Git DAG commit trees), and Sportivo (a live match schedule tracking platform).',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What is the official website of Dipesh Sapkota?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'The official personal portfolio of Dipesh Sapkota is hosted at https://www.dipeshsapkota7.com.np/.',
+          },
+        },
+      ],
+    },
   ],
 };
 

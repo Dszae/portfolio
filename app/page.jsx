@@ -322,6 +322,61 @@ export default function Home() {
               </div>
             </div>
           </section>
+          <section id="faq-section" className="px-6 py-16 sm:px-10 lg:px-16 border-t border-slate-200 dark:border-[#222933]" aria-labelledby="faq-heading">
+            <div className="mx-auto max-w-4xl">
+              <div className="mb-10 text-center">
+                <p className="section-eyebrow">Entity Information</p>
+                <h2 id="faq-heading" className="mt-2 text-3xl font-bold tracking-tight text-[#0F172A] dark:text-white">
+                  Frequently Asked Questions
+                </h2>
+                <p className="mt-2 text-sm sm:text-base text-[#475569] dark:text-[#A7B0BE]">
+                  Verified answers about Dipesh Sapkota, engineering pursuits, projects, and academic background.
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                <details className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition dark:border-[#222933] dark:bg-[#0F1216]">
+                  <summary className="flex cursor-pointer items-center justify-between font-semibold text-lg text-[#0F172A] dark:text-white list-none">
+                    <span>Who is Dipesh Sapkota?</span>
+                    <span className="text-xl transition-transform group-open:rotate-45 text-[#065F46] dark:text-[#34D399]">+</span>
+                  </summary>
+                  <p className="mt-4 text-sm sm:text-base leading-relaxed text-[#475569] dark:text-[#A7B0BE]">
+                    Dipesh Sapkota is a Computer Engineering undergraduate student at IOE Thapathali Campus (Tribhuvan University) in Kathmandu, Nepal, an AI/ML enthusiast, and a freelance motion graphics designer and video editor. He is the creator of educational tools including the IOE Admission Hub, Git Visualizer, and Sportivo.
+                  </p>
+                </details>
+
+                <details className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition dark:border-[#222933] dark:bg-[#0F1216]">
+                  <summary className="flex cursor-pointer items-center justify-between font-semibold text-lg text-[#0F172A] dark:text-white list-none">
+                    <span>What is Dipesh Sapkota&apos;s academic background and university?</span>
+                    <span className="text-xl transition-transform group-open:rotate-45 text-[#065F46] dark:text-[#34D399]">+</span>
+                  </summary>
+                  <p className="mt-4 text-sm sm:text-base leading-relaxed text-[#475569] dark:text-[#A7B0BE]">
+                    Dipesh Sapkota is pursuing a Bachelor of Engineering (B.E.) in Computer Engineering at the Department of Electronics and Computer Engineering, Thapathali Campus, Institute of Engineering (IOE), Tribhuvan University, in Kathmandu, Nepal.
+                  </p>
+                </details>
+
+                <details className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition dark:border-[#222933] dark:bg-[#0F1216]">
+                  <summary className="flex cursor-pointer items-center justify-between font-semibold text-lg text-[#0F172A] dark:text-white list-none">
+                    <span>What software projects has Dipesh Sapkota built?</span>
+                    <span className="text-xl transition-transform group-open:rotate-45 text-[#065F46] dark:text-[#34D399]">+</span>
+                  </summary>
+                  <p className="mt-4 text-sm sm:text-base leading-relaxed text-[#475569] dark:text-[#A7B0BE]">
+                    His flagship engineering projects include the <a href="https://ioe-admission.dipeshsapkota7.com.np/" target="_blank" rel="noopener noreferrer" className="text-[#065F46] dark:text-[#34D399] underline">IOE Admission Hub</a> (historical entrance cutoff analyzer and rank predictor), <a href="https://git-visualizer.dipeshsapkota7.com.np/" target="_blank" rel="noopener noreferrer" className="text-[#065F46] dark:text-[#34D399] underline">Git Visualizer</a> (interactive DAG version-control simulator), and <a href="https://sportivo.dipeshsapkota7.com.np/" target="_blank" rel="noopener noreferrer" className="text-[#065F46] dark:text-[#34D399] underline">Sportivo</a> (live match tracker).
+                  </p>
+                </details>
+
+                <details className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition dark:border-[#222933] dark:bg-[#0F1216]">
+                  <summary className="flex cursor-pointer items-center justify-between font-semibold text-lg text-[#0F172A] dark:text-white list-none">
+                    <span>What is the official website and portfolio of Dipesh Sapkota?</span>
+                    <span className="text-xl transition-transform group-open:rotate-45 text-[#065F46] dark:text-[#34D399]">+</span>
+                  </summary>
+                  <p className="mt-4 text-sm sm:text-base leading-relaxed text-[#475569] dark:text-[#A7B0BE]">
+                    The canonical official portfolio of Dipesh Sapkota is hosted at <a href="https://www.dipeshsapkota7.com.np/" className="text-[#065F46] dark:text-[#34D399] underline">https://www.dipeshsapkota7.com.np/</a>, providing direct links to verified academic records, downloadable CV, and project repositories.
+                  </p>
+                </details>
+              </div>
+            </div>
+          </section>
         </>
       )}
     </SiteLayout>
