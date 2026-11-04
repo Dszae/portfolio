@@ -19,7 +19,7 @@ export async function GET(request) {
   const hasGroq = Boolean(groqKey && groqKey.length > 10);
   
   const engine = hasGemini ? 'google_gemini_flash' : hasGroq ? 'groq_llama_3.3_70b' : hasKey ? 'openai_tool_calling' : 'grounded_portfolio_engine';
-  const activeModel = hasGemini ? (process.env.GEMINI_MODEL || 'gemini-3.5-flash-lite') : hasGroq ? (process.env.GROQ_MODEL || 'llama-3.3-70b-versatile') : AGENT_CONFIG.DEFAULT_MODEL;
+  const activeModel = hasGemini ? (process.env.GEMINI_MODEL || 'gemini-2.5-flash') : hasGroq ? (process.env.GROQ_MODEL || 'llama-3.3-70b-versatile') : AGENT_CONFIG.DEFAULT_MODEL;
 
   return NextResponse.json({
     service: 'Dipesh Sapkota Portfolio AI Agent',

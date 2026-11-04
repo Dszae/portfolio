@@ -164,72 +164,79 @@ You can ask about his software projects, computer engineering background at **IO
         if (done) break;
 
         buffer += decoder.decode(value, { stream: true });
-        const lines = buffer.split('\n');
-        buffer = lines.pop() || '';
+        const events = buffer.split(/\r?\n\r?\n/);
+        buffer = events.pop() || '';
 
-        for (let i = 0; i < lines.length; i++) {
-          const line = lines[i].trim();
-          if (line.startsWith('event: ')) {
-            const eventType = line.replace('event: ', '').trim();
-            const nextLine = lines[i + 1]?.trim() || '';
+        for (const rawEvent of events) {
+          if (!rawEvent.trim()) continue;
+          const lines = rawEvent.split(/\r?\n/);
+          let eventType = 'delta';
+          let dataStr = '';
 
-            if (nextLine.startsWith('data: ')) {
-              i++;
-              try {
-                const data = JSON.parse(nextLine.replace('data: ', ''));
-
-                if (eventType === 'tool_call') {
-                  setActiveTool(data.label || `Querying ${data.name}...`);
-                  setMessages(prev => {
-                    const updated = [...prev];
-                    const currentTools = updated[assistantIndex]?.tools || [];
-                    updated[assistantIndex] = {
-                      ...updated[assistantIndex],
-                      tools: [...currentTools, { name: data.name, label: data.label }]
-                    };
-                    return updated;
-                  });
-                } else if (eventType === 'tool_result') {
-                  setActiveTool(null);
-                } else if (eventType === 'delta') {
-                  setMessages(prev => {
-                    const updated = [...prev];
-                    const current = updated[assistantIndex]?.content || '';
-                    updated[assistantIndex] = {
-                      ...updated[assistantIndex],
-                      content: current + (data.text || '')
-                    };
-                    return updated;
-                  });
-                } else if (eventType === 'done') {
-                  setIsStreaming(false);
-                  setActiveTool(null);
-                  setMessages(prev => {
-                    const updated = [...prev];
-                    if (updated[assistantIndex]) {
-                      updated[assistantIndex] = {
-                        ...updated[assistantIndex],
-                        engine: data.engine || 'google_gemini_flash',
-                        model: data.model || 'gemini-3.8-flash'
-                      };
-                    }
-                    return updated;
-                  });
-                } else if (eventType === 'error') {
-                  setMessages(prev => {
-                    const updated = [...prev];
-                    const current = updated[assistantIndex]?.content || '';
-                    updated[assistantIndex] = {
-                      ...updated[assistantIndex],
-                      content: current + `\n\n*(Error: ${data.message || 'Generation failed'})*`
-                    };
-                    return updated;
-                  });
-                }
-              } catch (err) {
-                console.error('SSE parse error:', err);
-              }
+          for (const line of lines) {
+            const trimmed = line.trim();
+            if (trimmed.startsWith('event:')) {
+              eventType = trimmed.slice(6).trim();
+            } else if (trimmed.startsWith('data:')) {
+              dataStr += (dataStr ? '\n' : '') + trimmed.slice(5).trim();
             }
+          }
+
+          if (!dataStr) continue;
+
+          try {
+            const data = JSON.parse(dataStr);
+
+            if (eventType === 'tool_call') {
+              setActiveTool(data.label || `Querying ${data.name}...`);
+              setMessages(prev => {
+                const updated = [...prev];
+                const currentTools = updated[assistantIndex]?.tools || [];
+                updated[assistantIndex] = {
+                  ...updated[assistantIndex],
+                  tools: [...currentTools, { name: data.name, label: data.label }]
+                };
+                return updated;
+              });
+            } else if (eventType === 'tool_result') {
+              setActiveTool(null);
+            } else if (eventType === 'delta') {
+              setMessages(prev => {
+                const updated = [...prev];
+                const current = updated[assistantIndex]?.content || '';
+                updated[assistantIndex] = {
+                  ...updated[assistantIndex],
+                  content: current + (data.text || '')
+                };
+                return updated;
+              });
+            } else if (eventType === 'done') {
+              setIsStreaming(false);
+              setActiveTool(null);
+              setMessages(prev => {
+                const updated = [...prev];
+                if (updated[assistantIndex]) {
+                  updated[assistantIndex] = {
+                    ...updated[assistantIndex],
+                    engine: data.engine || 'google_gemini_flash',
+                    model: data.model || 'gemini-2.5-flash'
+                  };
+                }
+                return updated;
+              });
+            } else if (eventType === 'error') {
+              setMessages(prev => {
+                const updated = [...prev];
+                const current = updated[assistantIndex]?.content || '';
+                updated[assistantIndex] = {
+                  ...updated[assistantIndex],
+                  content: current + `\n\n*(Error: ${data.message || 'Generation failed'})*`
+                };
+                return updated;
+              });
+            }
+          } catch (err) {
+            console.error('SSE parse error:', err);
           }
         }
       }
