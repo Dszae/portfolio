@@ -2,11 +2,12 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { withoutEmoji } from '@/lib/uiText';
 
 export default function MarkdownRenderer({ content }) {
   if (!content) return null;
 
-  const lines = content.split('\n');
+  const lines = withoutEmoji(content).split('\n');
   const elements = [];
   let inCodeBlock = false;
   let codeBuffer = [];

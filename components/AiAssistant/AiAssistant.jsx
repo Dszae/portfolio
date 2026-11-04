@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import MarkdownRenderer from './MarkdownRenderer';
+import { withoutEmoji } from '@/lib/uiText';
 
 const SUGGESTED_PROMPTS = [
   "What is Git Visualizer and how does it work?",
@@ -104,7 +105,7 @@ You can ask about his software projects, computer engineering background at **IO
   }, []);
 
   const handleSend = async (textToSend) => {
-    const messageContent = (textToSend || input).trim();
+    const messageContent = withoutEmoji(textToSend || input).trim();
     if (!messageContent || isStreaming) return;
 
     setInput('');
@@ -373,7 +374,7 @@ You can ask about his software projects, computer engineering background at **IO
 
 {m.role === 'user' ? (
                   <div className="max-w-[85%] px-3.5 py-2.5 rounded-2xl rounded-br-sm bg-[#065F46] dark:bg-[#065F46] text-white font-medium text-xs shadow-sm">
-                    {m.content}
+                    {withoutEmoji(m.content)}
                   </div>
                 ) : (
                   
@@ -387,7 +388,7 @@ You can ask about his software projects, computer engineering background at **IO
                             className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-white dark:bg-[#090B0E] text-slate-800 dark:text-slate-200 text-[10px] font-mono border border-slate-300 dark:border-slate-800 font-medium"
                           >
                             <span className="w-1 h-1 rounded-full bg-[#065F46] dark:bg-[#34D399]" />
-                            <span>{t.label || t.name}</span>
+                            <span>{withoutEmoji(t.label || t.name)}</span>
                           </span>
                         ))}
                       </div>
@@ -461,7 +462,7 @@ You can ask about his software projects, computer engineering background at **IO
                 ref={inputRef}
                 type="text"
                 value={input}
-                onChange={(e) => setInput(e.target.value)}
+                onChange={(e) => setInput(withoutEmoji(e.target.value))}
                 placeholder="Ask about Dipesh's projects, skills, education..."
                 disabled={isStreaming}
                 className="flex-1 px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#14181F] border border-slate-300 dark:border-[#222933] text-slate-950 dark:text-slate-100 placeholder:text-slate-500 dark:placeholder:text-slate-400 text-xs focus:outline-none focus:ring-2 focus:ring-[#065F46]/20 dark:focus:ring-[#34D399]/20 focus:border-[#065F46] dark:focus:border-[#34D399] transition-all font-medium"

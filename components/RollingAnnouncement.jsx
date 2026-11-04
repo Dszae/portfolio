@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { withoutEmoji } from '@/lib/uiText';
 
 export const DEFAULT_ANNOUNCEMENT = {
   is_active: true,
@@ -16,7 +17,7 @@ export function getClientInitialAnnouncement() {
   if (typeof window !== 'undefined') {
     if (window.__INITIAL_SITE_FEATURES__?.announcement) {
       const ann = window.__INITIAL_SITE_FEATURES__.announcement;
-      const txt = (ann.text || ann.message || '').trim();
+      const txt = withoutEmoji(ann.text || ann.message || '').trim();
       return { ...ann, text: txt, message: txt };
     }
     try {
@@ -24,7 +25,7 @@ export function getClientInitialAnnouncement() {
       if (cached) {
         const parsed = JSON.parse(cached);
         if (parsed && typeof parsed === 'object') {
-          const txt = (parsed.text || parsed.message || '').trim();
+          const txt = withoutEmoji(parsed.text || parsed.message || '').trim();
           return { ...parsed, text: txt, message: txt };
         }
       }
@@ -54,8 +55,8 @@ export default function RollingAnnouncement({ onVisibilityChange }) {
         if (res.ok) {
           const data = await res.json();
           const ann = data.announcement;
-          if (mounted && ann) {
-            const txt = (ann.text || ann.message || '').trim();
+          if (active && ann) {
+            const txt = withoutEmoji(ann.text || ann.message || '').trim();
             const normalized = { ...ann, text: txt, message: txt };
             setFeature(normalized);
             try {
@@ -77,7 +78,7 @@ export default function RollingAnnouncement({ onVisibilityChange }) {
       if (e.key === 'site_features_announcement' && e.newValue) {
         try {
           const parsed = JSON.parse(e.newValue);
-          const txt = (parsed.text || parsed.message || '').trim();
+          const txt = withoutEmoji(parsed.text || parsed.message || '').trim();
           setFeature({ ...parsed, text: txt, message: txt });
         } catch {}
       }
@@ -89,7 +90,7 @@ export default function RollingAnnouncement({ onVisibilityChange }) {
     };
   }, [onVisibilityChange]);
 
-  const messageText = (feature?.text || feature?.message || '').trim();
+  const messageText = withoutEmoji(feature?.text || feature?.message || '').trim();
 
   if (!mounted || dismissed || !feature || !feature.is_active || !messageText) {
     return null;
@@ -106,7 +107,8 @@ export default function RollingAnnouncement({ onVisibilityChange }) {
     if (onVisibilityChange) onVisibilityChange(false);
   };
 
-  const hasBadgeText = feature.badge && feature.badge.trim() !== '' && feature.badge.trim() !== '-';
+  const badgeText = withoutEmoji(feature.badge || '').trim();
+  const hasBadgeText = badgeText !== '' && badgeText !== '-';
 
   return (
     <aside 
@@ -118,7 +120,7 @@ export default function RollingAnnouncement({ onVisibilityChange }) {
         {hasBadgeText ? (
           <div className="shrink-0 flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-mono text-[10px] font-bold uppercase tracking-wider">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            <span>{feature.badge}</span>
+            <span>{badgeText}</span>
           </div>
         ) : (
           <div className="shrink-0 flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-mono text-[10px] font-bold">
@@ -131,17 +133,17 @@ export default function RollingAnnouncement({ onVisibilityChange }) {
             {[0, 1, 2, 3, 4, 5].map((idx) => (
               <span key={idx} className="inline-flex items-center gap-3 pr-6">
                 <span className="font-medium tracking-wide text-slate-200">
-                  {feature.message}
+                  {messageText}
                 </span>
                 {feature.link && (
                   <Link 
                     href={feature.link}
                     className="inline-flex items-center gap-1 font-bold text-emerald-400 hover:text-emerald-300 underline underline-offset-2 ml-1"
                   >
-                    <span>{feature.link_text || 'Learn more'}</span>
+                    <span>{withoutEmoji(feature.link_text || 'Learn more').trim()}</span>
                   </Link>
                 )}
-                <span className="text-emerald-500/50 mx-3" aria-hidden="true">✦</span>
+                <span className="text-emerald-500/50 mx-3" aria-hidden="true">·</span>
               </span>
             ))}
           </div>
@@ -153,7 +155,9 @@ export default function RollingAnnouncement({ onVisibilityChange }) {
           aria-label="Dismiss banner"
           className="shrink-0 text-slate-400 hover:text-white p-1 rounded hover:bg-slate-800 transition-colors text-xs font-bold"
         >
-          ✕
+          <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+            <path strokeLinecap="round" d="M6 6l12 12M18 6 6 18" />
+          </svg>
         </button>
       </div>
     </aside>
