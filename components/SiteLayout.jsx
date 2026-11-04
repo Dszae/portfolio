@@ -5,8 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import RollingAnnouncement from './RollingAnnouncement';
-import PortfolioEntryPopup from './PortfolioEntryPopup';
 import AiAssistant from './AiAssistant/AiAssistant';
 
 export const NAV_LINKS = [
@@ -288,7 +286,6 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
   const pathname = usePathname();
   const [isDark, setIsDark] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [hasAnnouncement, setHasAnnouncement] = useState(true);
   const menuToggleRef = useRef(null);
 
 
@@ -396,9 +393,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
   };
 
   return (
-    <div className={`site-shell min-h-screen font-sans relative w-full m-0 p-0 ${hasAnnouncement ? 'has-announcement' : ''} ${theme.bg}`}>
-      
-      <PortfolioEntryPopup />
+    <div className={`site-shell min-h-screen font-sans relative w-full m-0 p-0 ${theme.bg}`}>
 
       <a
         href="#main-content"
@@ -416,8 +411,6 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
       )}
 
       <nav aria-label="Main navigation" className="site-nav">
-        
-        <RollingAnnouncement onVisibilityChange={setHasAnnouncement} />
 
         <div className="site-nav-inner relative z-10">
           <Link href="/" className="site-wordmark" onClick={() => setIsMenuOpen(false)}>
