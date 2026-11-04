@@ -55,8 +55,8 @@ const SKILLS_PREVIEW = [
 
 const FEATURED_PROJECTS = [
   {
-    name: "Sportivo — Live Scores, Fixtures & Sports News",
-    description: "A focused real-time sports platform that combines live scores, upcoming fixtures, match discovery, and sports news in one responsive experience for football, cricket, and basketball fans.",
+    name: "Sportivo - Live Sports Platform",
+    description: "A real-time sports discovery platform combining live score telemetry, upcoming fixtures, and dynamic multi-server stream switching for football, cricket, and basketball.",
     href: "/projects/sportivo",
     image: "/sportivo-preview.webp",
     liveUrl: "https://sportivo.dipeshsapkota7.com.np/",
@@ -284,42 +284,28 @@ export default function Home() {
             </div>
           </section>
 
-          <section id="portfolio-directory" className="px-6 py-16 sm:px-10 lg:px-16 border-t border-slate-200 dark:border-[#222933]" aria-labelledby="portfolio-directory-heading">
-            <div className="mx-auto max-w-6xl">
-              <div className="mb-10">
-                <p className="section-eyebrow">Explore all sections</p>
-                <h2 id="portfolio-directory-heading" className="mt-2 text-3xl font-bold tracking-tight text-[#0F172A] dark:text-white">
-                  Portfolio Directory &amp; Navigation
-                </h2>
-                <p className="mt-2 text-sm sm:text-base text-[#475569] dark:text-[#A7B0BE] max-w-2xl">
-                  Quick access to my academic background, technical skills, software systems, articles, certifications, and direct contact channels.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                {CORE_SECTIONS.map((section) => (
-                  <Link
-                    key={section.href}
-                    href={section.href}
-                    prefetch={true}
-                    className="group flex flex-col justify-between p-5 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] shadow-sm hover:border-[#065F46]/60 dark:hover:border-[#34D399]/60 hover:-translate-y-0.5 transition-all"
-                  >
-                    <div>
-                      <h3 className="text-base font-bold text-[#0F172A] dark:text-[#F9FAFB] group-hover:text-[#065F46] dark:group-hover:text-[#34D399] transition-colors mb-2">
-                        {section.title}
-                      </h3>
-                      <p className="text-xs text-[#475569] dark:text-[#A7B0BE] leading-relaxed mb-4">
-                        {section.description}
-                      </p>
-                    </div>
-                    <span className="inline-flex items-center gap-1 text-xs font-mono font-semibold text-[#065F46] dark:text-[#34D399]">
-                      <span>{section.cta}</span>
-                      <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                      </svg>
-                    </span>
-                  </Link>
-                ))}
+          <section id="connect" className="px-6 py-20 sm:px-10 lg:px-16 border-t border-slate-200 dark:border-[#222933]">
+            <div className="mx-auto max-w-4xl text-center">
+              <p className="section-eyebrow">Collaboration &amp; Inquiries</p>
+              <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#0F172A] dark:text-white">
+                Let&apos;s build something meaningful.
+              </h2>
+              <p className="mt-3 text-sm sm:text-base text-[#475569] dark:text-[#A7B0BE] max-w-xl mx-auto leading-relaxed">
+                Open for software engineering projects, AI/ML research collaborations, and motion graphics commissions.
+              </p>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+                <Link
+                  href="/contact"
+                  className="px-6 py-3 rounded-xl bg-[#065F46] hover:bg-[#044E39] dark:bg-[#34D399] dark:hover:bg-[#6EE7B7] text-white dark:text-[#090B0E] font-semibold text-sm transition-all shadow-sm"
+                >
+                  Get in touch
+                </Link>
+                <a
+                  href="mailto:dsz.ae18@gmail.com"
+                  className="px-6 py-3 rounded-xl border border-slate-300 dark:border-[#222933] bg-white dark:bg-[#0F1216] text-[#0F172A] dark:text-[#F8FAFC] hover:border-[#065F46] dark:hover:border-[#34D399] font-mono text-sm transition-all"
+                >
+                  dsz.ae18@gmail.com
+                </a>
               </div>
             </div>
           </section>

@@ -5,21 +5,21 @@ import PagePagination from '@/components/PagePagination';
 import HoverVideo from '@/components/HoverVideo';
 
 export const metadata = {
-  title: "Sportivo — Live Scores, Fixtures & Sports News",
-  description: "Sportivo is a focused real-time sports platform that brings live scores, upcoming fixtures, match discovery, and sports news into one responsive experience. Built by Dipesh Sapkota, it is designed to help football, cricket, and basketball fans scan updates quickly and move naturally from match information to available streams.",
+  title: "Sportivo - Live Scores, Fixtures & Sports News",
+  description: "Sportivo - Live Scores, upcoming fixtures, match discovery, and sports news into one responsive experience. Built by Dipesh Sapkota, it is designed to help football, cricket, and basketball fans scan updates quickly and move naturally from match information to available streams.",
   keywords: ['Sportivo', 'live sports scores', 'football fixtures', 'cricket fixtures', 'basketball fixtures', 'Dipesh Sapkota'],
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-video-preview': -1, 'max-image-preview': 'large', 'max-snippet': -1 } },
   alternates: { canonical: '/projects/sportivo', languages: { 'en-US': '/projects/sportivo' } },
   openGraph: {
     type: 'website',
-    title: 'Sportivo — Live Scores, Fixtures & Sports News | Dipesh Sapkota',
-    description: 'Sportivo is a focused real-time sports platform that brings live scores, upcoming fixtures, match discovery, and sports news into one responsive experience for football, cricket, and basketball fans.',
+    title: 'Sportivo - Live Scores, Fixtures & Sports News | Dipesh Sapkota',
+    description: 'Sportivo - Live Scores, upcoming fixtures, match discovery, and sports news into one responsive experience for football, cricket, and basketball fans.',
     url: 'https://www.dipeshsapkota7.com.np/projects/sportivo',
     images: [{ url: '/sportivo-preview.jpg', width: 993, height: 450, alt: 'Sportivo live sports platform preview by Dipesh Sapkota' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Sportivo — Live Scores, Fixtures & Sports News | Dipesh Sapkota',
+    title: 'Sportivo - Live Scores, Fixtures & Sports News | Dipesh Sapkota',
     description: 'Explore Sportivo, a sports platform built by Dipesh Sapkota.',
     images: ['/sportivo-preview.jpg'],
     creator: '@DszAe18',
@@ -32,7 +32,7 @@ export default function SportivoProjectPage() {
     '@type': 'SoftwareApplication',
     name: 'Sportivo',
     url: 'https://sportivo.dipeshsapkota7.com.np/',
-    description: 'Sportivo is a sports platform built by Dipesh Sapkota for live scores, fixtures, and sports news.',
+    description: 'Sportivo - Live Scores, fixtures, and sports news.',
     applicationCategory: 'SportsApplication',
     operatingSystem: 'Any modern browser (Web Application)',
     offers: {
@@ -132,11 +132,11 @@ export default function SportivoProjectPage() {
           </div>
 
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0F172A] dark:text-[#F9FAFB] leading-tight mb-6">
-            Sportivo — Live Scores, Fixtures &amp; Sports News
+            Sportivo - Live Scores, Fixtures &amp; Sports News
           </h1>
 
           <p className="text-base sm:text-lg lg:text-xl text-[#334155] dark:text-[#CBD5E1] leading-relaxed max-w-3xl mb-8">
-            I built Sportivo as a focused real-time sports platform for live scores, upcoming fixtures, match discovery, and sports news in one responsive experience. I structured it for fast scanning across football, cricket, and basketball, helping visitors move from a quick match update to deeper fixture information and available streams without unnecessary friction.
+            I built Sportivo - Live Scores, upcoming fixtures, match discovery, and sports news in one responsive experience. I structured it for fast scanning across football, cricket, and basketball, helping visitors move from a quick match update to deeper fixture information and available streams without unnecessary friction.
           </p>
 
 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] shadow-sm mb-8 font-mono text-xs">
@@ -278,7 +278,7 @@ export default function SportivoProjectPage() {
               <span className="text-[#065F46] dark:text-[#34D399]">#</span> About Sportivo
             </h2>
             <p className="text-sm sm:text-base text-[#334155] dark:text-[#CBD5E1] leading-relaxed mb-6">
-              Sportivo is my independent sports platform. I bring live scores, fixtures, and sports news together in a responsive interface for people who want a focused sports destination.
+              Sportivo - Live Scores, fixtures, and sports news together in a responsive interface for people who want a focused sports destination.
             </p>
           </div>
 

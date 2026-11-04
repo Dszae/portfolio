@@ -10,8 +10,8 @@ import PagePagination from './PagePagination';
 export default function AboutClientView({ siteSettings = {}, jsonLd = null, pageTitle = "About", breadcrumbItems = null }) {
   const profile = siteSettings.profile || {};
   const headline = profile.headline || "Bridging Logic and Visual Execution";
-  const bio = profile.bio || "Hello! I am Dipesh Sapkota, a dedicated Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal. As an AI and ML enthusiast, I am deeply invested in exploring intelligent systems, analyzing algorithms, and architecting embedded hardware solutions. My technical foundation is built on rigorous academic training and a continuous drive to solve complex computational challenges.";
-  const secondaryBio = profile.secondary_bio || "Complementing my engineering background, I possess over 4 years of professional experience as a freelance Video Editor and Motion Graphics Designer. This unique convergence of analytical problem-solving and high-end creative design empowers me to bridge the gap between logical architecture and visually engaging digital execution.";
+  const bio = profile.bio || "I am a Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal. My technical focus centers on intelligent systems, algorithmic problem-solving, and embedded hardware modeling.";
+  const secondaryBio = profile.secondary_bio || "Alongside engineering, I have worked for more than four years as a freelance motion graphics designer and video editor with over 50 global clients, blending technical precision with visual craftsmanship.";
   const yearsExp = profile.years_experience || "4+";
   const clientsCount = profile.clients_count || "50+";
 
@@ -51,7 +51,7 @@ export default function AboutClientView({ siteSettings = {}, jsonLd = null, page
                       {secondaryBio}
                     </p>
                     <p className="mt-6 text-base sm:text-lg leading-relaxed text-[#1E293B] dark:text-[#A7B0BE]">
-                      I also build independent software projects, including <Link href="/projects/sportivo" className="font-semibold text-[#065F46] hover:underline dark:text-[#34D399]">Sportivo — Live Scores, Fixtures &amp; Sports News</Link>, a sports platform connected to its <a href="https://sportivo.dipeshsapkota7.com.np/" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#065F46] hover:underline dark:text-[#34D399]">live sports platform</a>.
+                      I also build independent software projects, including <Link href="/projects/sportivo" className="font-semibold text-[#065F46] hover:underline dark:text-[#34D399]">Sportivo - Live Sports Platform</Link>, a sports platform connected to its <a href="https://sportivo.dipeshsapkota7.com.np/" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#065F46] hover:underline dark:text-[#34D399]">live sports platform</a>.
                     </p>
                   </div>
                   

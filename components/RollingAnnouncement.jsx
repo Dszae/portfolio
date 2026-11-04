@@ -5,8 +5,8 @@ import Link from 'next/link';
 import { withoutEmoji } from '@/lib/uiText';
 
 export const DEFAULT_ANNOUNCEMENT = {
-  is_active: true,
-  message: "Wishing you and your loved ones a happy Dashain filled with love, laughter, and beautiful moments. शुभ विजयादशमी!",
+  is_active: false,
+  message: "",
   link: "",
   link_text: "",
   speed: "normal",
