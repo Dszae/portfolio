@@ -10,8 +10,8 @@ import PagePagination from './PagePagination';
 export default function AboutClientView({ siteSettings = {}, jsonLd = null, pageTitle = "About", breadcrumbItems = null }) {
   const profile = siteSettings.profile || {};
   const headline = profile.headline || "Bridging Logic and Visual Execution";
-  const bio = profile.bio || "I am a Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal. My technical focus centers on intelligent systems, algorithmic problem-solving, and embedded hardware modeling.";
-  const secondaryBio = profile.secondary_bio || "Alongside engineering, I have worked for more than four years as a freelance motion graphics designer and video editor with over 50 global clients, blending technical precision with visual craftsmanship.";
+  const bio = profile.bio || "I am a Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal. My core focus is Artificial Intelligence, Machine Learning, video editing, and motion graphics design.";
+  const secondaryBio = profile.secondary_bio || "Alongside engineering, I have worked for more than four years as a freelance motion graphics designer and video editor with over 50 global clients, producing dynamic visual media.";
   const yearsExp = profile.years_experience || "4+";
   const clientsCount = profile.clients_count || "50+";
 

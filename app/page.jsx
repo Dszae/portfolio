@@ -141,15 +141,17 @@ export default function Home() {
             <div className="home-hero-inner">
               <div className="hero-copy">
                 <p className="hero-eyebrow">Computer Engineering &middot; Motion Design</p>
-                <h1 className="hero-title">
-                  <span className="hero-name-badge block font-mono text-sm sm:text-base font-semibold text-[#065F46] dark:text-[#34D399] mb-3">
+                <div className="mb-3">
+                  <span className="hero-name-badge inline-block text-base sm:text-lg font-semibold text-[#065F46] dark:text-[#34D399]">
                     Dipesh Sapkota
                   </span>
+                </div>
+                <h1 className="hero-title">
                   Engineering logic.<br />
                   <span>Creating visual rhythm.</span>
                 </h1>
                 <p className="hero-description">
-                  Computer Engineering undergraduate at IOE Thapathali Campus in Kathmandu, Nepal. Exploring intelligent systems, embedded circuits, and visual motion design.
+                  Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal. Focused on Artificial Intelligence, Machine Learning, video editing, and motion graphics design.
                 </p>
 
                 <div className="hero-actions">

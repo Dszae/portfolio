@@ -526,7 +526,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
                 Dipesh Sapkota<span className="site-wordmark-dot">.</span>
               </Link>
               <p className="text-xs sm:text-sm text-[#475569] dark:text-[#A7B0BE] leading-relaxed mb-4">
-                Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal. Focusing on intelligent systems, embedded hardware, and visual motion design.
+                Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal. Focused on Artificial Intelligence, Machine Learning, video editing, and motion graphics design.
               </p>
               <div className="inline-flex items-center gap-2 text-xs font-mono font-medium text-[#065F46] dark:text-[#34D399] bg-[#065F46]/10 dark:bg-[#34D399]/10 px-3 py-1.5 rounded-lg mb-2">
                 <span className="w-2 h-2 rounded-full bg-[#065F46] dark:bg-[#34D399] animate-pulse"></span>

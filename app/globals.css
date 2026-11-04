@@ -935,6 +935,12 @@ button:hover .smooth-img-zoom {
   content: "";
 }
 
+.hero-name-badge {
+  letter-spacing: 0.02em;
+  font-family: var(--font-manrope), sans-serif;
+  line-height: 1.4;
+}
+
 .hero-title {
   margin: 0;
   color: var(--text-primary);
