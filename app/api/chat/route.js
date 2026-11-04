@@ -21,11 +21,27 @@ export async function GET(request) {
   const engine = hasGemini ? 'google_gemini_flash' : hasGroq ? 'groq_llama_3.3_70b' : hasKey ? 'openai_tool_calling' : 'grounded_portfolio_engine';
   const activeModel = hasGemini ? (process.env.GEMINI_MODEL || 'gemini-2.5-flash') : hasGroq ? (process.env.GROQ_MODEL || 'llama-3.3-70b-versatile') : AGENT_CONFIG.DEFAULT_MODEL;
 
+  let probe = null;
+  const urlObj = new URL(request.url);
+  if (urlObj.searchParams.get('probe') === '1' && hasGemini) {
+    try {
+      const pRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${geminiKey}`, { signal: AbortSignal.timeout(5000) });
+      const pData = await pRes.json();
+      probe = {
+        status: pRes.status,
+        models: pData.models ? pData.models.map(m => m.name.replace('models/', '')) : pData
+      };
+    } catch (err) {
+      probe = { error: err.message };
+    }
+  }
+
   return NextResponse.json({
     service: 'Dipesh Sapkota Portfolio AI Agent',
     status: 'online',
     model: activeModel,
     engine,
+    probe,
     tools_available: OPENAI_TOOLS.map(t => t.function.name),
     rate_limits: {
       max_requests: AGENT_CONFIG.RATE_LIMIT_MAX_REQUESTS,
