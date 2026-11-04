@@ -23,6 +23,29 @@ export async function GET(request) {
 
   let probe = null;
   const urlObj = new URL(request.url);
+    if (urlObj.searchParams.get('probe') === '2' && hasGemini) {
+    try {
+      const start = Date.now();
+      const testRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ role: 'user', parts: [{ text: 'What is 2+2? Answer in one word.' }] }]
+        }),
+        signal: AbortSignal.timeout(12000)
+      });
+      const tJson = await testRes.json();
+      return NextResponse.json({
+        probe: 2,
+        status: testRes.status,
+        elapsed: Date.now() - start,
+        response: tJson
+      });
+    } catch (err) {
+      return NextResponse.json({ probe: 2, error: err.message });
+    }
+  }
+
   if (urlObj.searchParams.get('probe') === '1' && hasGemini) {
     try {
       const pRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${geminiKey}`, { signal: AbortSignal.timeout(5000) });
