@@ -140,7 +140,6 @@ export default function Home() {
           <section id="home" className="home-hero">
             <div className="home-hero-inner">
               <div className="hero-copy">
-                <p className="hero-eyebrow">Computer Engineering &middot; Motion Design</p>
                 <div className="mb-3">
                   <span className="hero-name-badge inline-block text-base sm:text-lg font-semibold text-[#065F46] dark:text-[#34D399]">
                     Dipesh Sapkota

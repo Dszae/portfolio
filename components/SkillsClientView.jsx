@@ -141,11 +141,6 @@ export default function SkillsClientView({ initialSkills = [], jsonLd = null }) 
               <div className="max-w-6xl mx-auto w-full">
 
 <header className="mb-12">
-                  <div className="flex items-center gap-2.5 mb-3 font-mono text-xs font-semibold uppercase tracking-wider text-[#065F46] dark:text-[#6EE7B7]">
-                    <span className="w-6 h-0.5 bg-[#065F46] dark:bg-[#6EE7B7] rounded-full" aria-hidden="true"></span>
-                    <span>WHAT I WORK WITH</span>
-                  </div>
-
                   <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] leading-tight mb-4 flex items-center gap-3">
                     <span className="text-[#065F46] dark:text-[#34D399]">/</span> Skills
                   </h1>
