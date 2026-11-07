@@ -76,7 +76,7 @@ export default function GalleryGrid({ images }) {
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = '';
     };
   }, [activeImageIndex, handleClose, handlePrev, handleNext]);
 

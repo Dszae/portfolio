@@ -78,7 +78,7 @@ export default function CertificatesGrid({ certificates }) {
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = '';
     };
   }, [activeCert, handleClose, handlePrev, handleNext]);
 

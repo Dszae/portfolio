@@ -6,13 +6,29 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import AiAssistant from './AiAssistant/AiAssistant';
 
+function getScrollPosition() {
+  if (typeof window === 'undefined') return 0;
+  return (
+    window.pageYOffset ||
+    document.documentElement?.scrollTop ||
+    document.body?.scrollTop ||
+    window.scrollY ||
+    0
+  );
+}
+
 function subscribeScroll(callback) {
-  window.addEventListener('scroll', callback, { passive: true });
-  return () => window.removeEventListener('scroll', callback);
+  if (typeof window === 'undefined') return () => {};
+  window.addEventListener('scroll', callback, { passive: true, capture: true });
+  document.addEventListener('scroll', callback, { passive: true, capture: true });
+  return () => {
+    window.removeEventListener('scroll', callback, { capture: true });
+    document.removeEventListener('scroll', callback, { capture: true });
+  };
 }
 
 function getScrollSnapshot() {
-  return window.scrollY > 15;
+  return getScrollPosition() > 10;
 }
 
 function getScrollServerSnapshot() {
@@ -325,7 +341,23 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
   const pathname = usePathname();
   const [isDark, setIsDark] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const isScrolled = useSyncExternalStore(subscribeScroll, getScrollSnapshot, getScrollServerSnapshot);
+  const externalIsScrolled = useSyncExternalStore(subscribeScroll, getScrollSnapshot, getScrollServerSnapshot);
+  const [internalIsScrolled, setInternalIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setInternalIsScrolled(getScrollPosition() > 10);
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true, capture: true });
+    document.addEventListener('scroll', handleScroll, { passive: true, capture: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll, { capture: true });
+      document.removeEventListener('scroll', handleScroll, { capture: true });
+    };
+  }, []);
+
+  const isScrolled = externalIsScrolled || internalIsScrolled;
   const menuToggleRef = useRef(null);
 
 
@@ -382,8 +414,11 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
     if (selectedImage || isMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = '';
     }
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [selectedImage, isMenuOpen]);
 
   useEffect(() => {
