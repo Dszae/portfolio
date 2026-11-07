@@ -28,7 +28,7 @@ function subscribeScroll(callback) {
 }
 
 function getScrollSnapshot() {
-  return getScrollPosition() > 10;
+  return getScrollPosition() > 0;
 }
 
 function getScrollServerSnapshot() {
@@ -346,7 +346,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
 
   useEffect(() => {
     const handleScroll = () => {
-      setInternalIsScrolled(getScrollPosition() > 10);
+      setInternalIsScrolled(getScrollPosition() > 0);
     };
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true, capture: true });

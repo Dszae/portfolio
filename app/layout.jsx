@@ -168,7 +168,7 @@ export default async function RootLayout({ children }) {
           }}
         />
       </head>
-      <body className="theme-page font-sans antialiased m-0 p-0 w-full min-h-screen overflow-x-hidden" suppressHydrationWarning>
+      <body className="theme-page font-sans antialiased m-0 p-0 w-full min-h-screen overflow-x-clip" suppressHydrationWarning>
         <JsonLdSchema settings={settings} />
         <WebMCPInitializer />
         <AnalyticsTracker />
