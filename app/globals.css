@@ -18,13 +18,12 @@
   --duration-theme: 220ms;
 
   color-scheme: dark;
-  --page-bg: #0A0D12;
+  --page-bg: #07130F;
   --page-bg-gradient:
-    radial-gradient(ellipse 95% 58% at 50% -12%, rgba(16, 185, 129, 0.16) 0%, rgba(5, 150, 105, 0.07) 35%, transparent 72%),
-    radial-gradient(ellipse 70% 45% at 88% 22%, rgba(20, 184, 166, 0.09) 0%, rgba(13, 148, 136, 0.03) 40%, transparent 65%),
-    radial-gradient(ellipse 65% 40% at 12% 65%, rgba(56, 189, 248, 0.065) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 35% at 85% 85%, rgba(16, 185, 129, 0.045) 0%, transparent 55%),
-    linear-gradient(180deg, #0D1117 0%, #090C10 40%, #06080B 100%);
+    linear-gradient(135deg, rgba(16, 185, 129, 0.14) 0%, transparent 55%),
+    linear-gradient(225deg, rgba(20, 184, 166, 0.10) 0%, transparent 50%),
+    linear-gradient(315deg, rgba(16, 185, 129, 0.08) 0%, transparent 45%),
+    linear-gradient(155deg, #0A1C15 0%, #081711 35%, #05100C 70%, #030806 100%);
   --surface-main: #11151C;
   --surface-elevated: #151A22;
   --surface-secondary: #19202A;
@@ -60,13 +59,12 @@
 
 html.light {
   color-scheme: light;
-  --page-bg: #FAF8F2;
+  --page-bg: #F5F2EA;
   --page-bg-gradient:
-    radial-gradient(ellipse 95% 58% at 50% -12%, rgba(6, 95, 70, 0.10) 0%, rgba(16, 185, 129, 0.05) 35%, transparent 72%),
-    radial-gradient(ellipse 70% 45% at 88% 18%, rgba(245, 158, 11, 0.055) 0%, transparent 60%),
-    radial-gradient(ellipse 65% 40% at 12% 65%, rgba(16, 185, 129, 0.045) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 35% at 85% 85%, rgba(6, 95, 70, 0.035) 0%, transparent 50%),
-    linear-gradient(180deg, #FAF8F2 0%, #F5F1E6 42%, #ECE6D8 100%);
+    linear-gradient(135deg, rgba(6, 95, 70, 0.10) 0%, transparent 55%),
+    linear-gradient(225deg, rgba(217, 119, 6, 0.06) 0%, transparent 50%),
+    linear-gradient(315deg, rgba(16, 185, 129, 0.07) 0%, transparent 45%),
+    linear-gradient(155deg, #FAF7EE 0%, #EFEBE0 40%, #E3DDD0 100%);
   --surface-main: #FFFFFF;
   --surface-elevated: #FFFFFF;
   --surface-secondary: #F3F1E9;
@@ -102,13 +100,12 @@ html.light {
 
 html.dark {
   color-scheme: dark;
-  --page-bg: #0A0D12;
+  --page-bg: #07130F;
   --page-bg-gradient:
-    radial-gradient(ellipse 95% 58% at 50% -12%, rgba(16, 185, 129, 0.16) 0%, rgba(5, 150, 105, 0.07) 35%, transparent 72%),
-    radial-gradient(ellipse 70% 45% at 88% 22%, rgba(20, 184, 166, 0.09) 0%, rgba(13, 148, 136, 0.03) 40%, transparent 65%),
-    radial-gradient(ellipse 65% 40% at 12% 65%, rgba(56, 189, 248, 0.065) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 35% at 85% 85%, rgba(16, 185, 129, 0.045) 0%, transparent 55%),
-    linear-gradient(180deg, #0D1117 0%, #090C10 40%, #06080B 100%);
+    linear-gradient(135deg, rgba(16, 185, 129, 0.14) 0%, transparent 55%),
+    linear-gradient(225deg, rgba(20, 184, 166, 0.10) 0%, transparent 50%),
+    linear-gradient(315deg, rgba(16, 185, 129, 0.08) 0%, transparent 45%),
+    linear-gradient(155deg, #0A1C15 0%, #081711 35%, #05100C 70%, #030806 100%);
   --surface-main: #11151C;
   --surface-elevated: #151A22;
   --surface-secondary: #19202A;
@@ -143,13 +140,19 @@ html.dark {
 }
 
 html.dark {
-  background-color: #0A0D12;
+  background-color: var(--page-bg);
+  background-image: var(--page-bg-gradient);
+  background-attachment: fixed;
+  background-size: cover;
   color: #F8FAFC;
   color-scheme: dark;
 }
 
 html.light {
-  background-color: #FAF9F5;
+  background-color: var(--page-bg);
+  background-image: var(--page-bg-gradient);
+  background-attachment: fixed;
+  background-size: cover;
   color: #0F172A;
   color-scheme: light;
 }
@@ -168,11 +171,20 @@ html.light {
     font-family: var(--font-body);
   }
 
-  body {
+  html {
+    min-height: 100%;
     background-color: var(--page-bg);
     background-image: var(--page-bg-gradient);
     background-attachment: fixed;
-    background-size: 100% 100%;
+    background-size: cover;
+  }
+
+  body {
+    min-height: 100%;
+    background-color: var(--page-bg);
+    background-image: var(--page-bg-gradient);
+    background-attachment: fixed;
+    background-size: cover;
     color: var(--text-primary);
   }
 
@@ -913,16 +925,7 @@ button:hover .smooth-img-zoom {
 }
 
 .home-hero::before {
-  position: absolute;
-  top: 8%;
-  left: 14%;
-  width: min(800px, 85vw);
-  height: min(550px, 65vh);
-  background: radial-gradient(ellipse at center, var(--hero-spotlight) 0%, rgba(52, 211, 153, 0.06) 42%, transparent 72%);
-  pointer-events: none;
-  z-index: 0;
-  filter: blur(48px);
-  content: "";
+  display: none;
 }
 
 .home-hero-inner {
@@ -1113,7 +1116,6 @@ button:hover .smooth-img-zoom {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: var(--accent-strong);
-  filter: var(--hero-text-glow);
 }
 
 .hero-description {
@@ -1278,13 +1280,11 @@ html.dark .hero-cv-link:hover {
 html.dark .hero-portrait-accent {
   border: 1px solid rgba(52, 211, 153, 0.45);
   background: linear-gradient(135deg, rgba(16, 185, 129, 0.22) 0%, rgba(52, 211, 153, 0.08) 50%, rgba(14, 165, 233, 0.12) 100%);
-  box-shadow: 0 0 35px rgba(16, 185, 129, 0.22);
 }
 
 html.light .hero-portrait-accent {
   border: 1px solid rgba(6, 95, 70, 0.32);
   background: linear-gradient(135deg, rgba(6, 95, 70, 0.12) 0%, rgba(16, 185, 129, 0.05) 50%, rgba(6, 95, 70, 0.08) 100%);
-  box-shadow: 0 0 25px rgba(6, 95, 70, 0.12);
 }
 
 .hero-portrait-frame {
