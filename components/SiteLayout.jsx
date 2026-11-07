@@ -74,6 +74,7 @@ function ScrollToTopButton() {
 function LightboxModal({ image, onClose }) {
   const [activeIdx, setActiveIdx] = useState(image?.index ?? 0);
   const [loadedSrc, setLoadedSrc] = useState('');
+  const [isZoomed, setIsZoomed] = useState(false);
 
   const items = image?.items;
   const hasItems = Array.isArray(items) && items.length > 0;
@@ -108,12 +109,14 @@ function LightboxModal({ image, onClose }) {
   const handlePrev = (e) => {
     if (e) e.stopPropagation();
     if (!hasItems) return;
+    setIsZoomed(false);
     setActiveIdx((prev) => (prev > 0 ? prev - 1 : items.length - 1));
   };
 
   const handleNext = (e) => {
     if (e) e.stopPropagation();
     if (!hasItems) return;
+    setIsZoomed(false);
     setActiveIdx((prev) => (prev < items.length - 1 ? prev + 1 : 0));
   };
 
@@ -193,16 +196,36 @@ function LightboxModal({ image, onClose }) {
           )}
         </div>
 
-        <button
-          type="button"
-          onClick={(e) => { e.stopPropagation(); onClose(); }}
-          aria-label="Close modal"
-          className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 backdrop-blur-md border border-white/15 text-white/90 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-md focus:outline-none"
-        >
-          <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); setIsZoomed((prev) => !prev); }}
+            aria-label={isZoomed ? "Zoom out" : "Zoom in"}
+            title={isZoomed ? "Zoom out (1x)" : "Zoom in (1.5x)"}
+            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 backdrop-blur-md border border-white/15 text-white/90 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-md focus:outline-none"
+          >
+            {isZoomed ? (
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM13 10H7" />
+              </svg>
+            ) : (
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+              </svg>
+            )}
+          </button>
+
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); onClose(); }}
+            aria-label="Close modal"
+            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 backdrop-blur-md border border-white/15 text-white/90 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-md focus:outline-none"
+          >
+            <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
       </div>
 
       {/* Middle Stage: Image + Navigation Arrows */}
@@ -224,15 +247,23 @@ function LightboxModal({ image, onClose }) {
           </button>
         )}
 
-        {/* Center Image Container - clicking only here prevents closing */}
+        {/* Center Image Container - clicking only here toggles zoom or prevents closing */}
         <motion.div 
           key={"image-card-" + (currentItem?.src || activeIdx)}
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.98 }}
           transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-          onClick={(e) => e.stopPropagation()}
-          className={"relative z-20 max-w-[94vw] sm:max-w-[86vw] lg:max-w-4xl max-h-[66vh] sm:max-h-[72vh] flex items-center justify-center rounded-xl sm:rounded-2xl shadow-2xl cursor-default " + (isCertificate ? 'bg-white p-2 sm:p-4' : 'bg-transparent p-0')}
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsZoomed((prev) => !prev);
+          }}
+          className={"relative z-20 max-w-[96vw] sm:max-w-[90vw] lg:max-w-5xl max-h-[72vh] sm:max-h-[78vh] flex items-center justify-center rounded-xl sm:rounded-2xl shadow-2xl transition-all duration-300 " + 
+            (isZoomed ? 'cursor-zoom-out' : 'cursor-zoom-in') + " " +
+            (isCertificate ? 'bg-white p-2.5 sm:p-5' : 'bg-transparent p-0')}
+          style={{
+            transform: isZoomed ? 'scale(1.35)' : 'scale(1)',
+          }}
         >
           {/* Subtle loading skeleton in stage to prevent any layout shift */}
           {!isLoaded && (
@@ -245,7 +276,7 @@ function LightboxModal({ image, onClose }) {
             src={currentItem?.src} 
             alt={currentItem?.alt || currentItem?.title || 'Preview'} 
             onLoad={() => setLoadedSrc(currentItem?.src || '')}
-            className={"max-h-[62vh] sm:max-h-[68vh] w-auto max-w-full block object-contain select-none transition-opacity duration-300 ease-out " + 
+            className={"max-h-[66vh] sm:max-h-[72vh] w-auto max-w-full block object-contain select-none transition-opacity duration-300 ease-out " + 
               (isCertificate ? 'rounded-lg' : 'rounded-xl') + " " +
               (isLoaded ? 'opacity-100' : 'opacity-0')}
             loading="eager"
@@ -275,13 +306,13 @@ function LightboxModal({ image, onClose }) {
           if (e.target === e.currentTarget) onClose();
         }}
       >
-        <div className="max-w-2xl px-2">
-          <h3 className="text-white text-sm sm:text-base md:text-lg font-bold tracking-tight line-clamp-1">
-            {currentItem?.title || currentItem?.alt || 'Certificate'}
+        <div className="max-w-2xl px-3">
+          <h3 className="text-white text-base sm:text-lg md:text-xl font-bold tracking-tight line-clamp-1">
+            {currentItem?.title || currentItem?.alt || 'Certificate Preview'}
           </h3>
-          {(currentItem?.subtitle || currentItem?.desc) && (
-            <p className="mt-0.5 text-xs sm:text-sm text-slate-400 font-medium line-clamp-1">
-              {currentItem?.subtitle || currentItem?.desc}
+          {(currentItem?.org || currentItem?.subtitle || currentItem?.desc) && (
+            <p className="mt-1 text-xs sm:text-sm text-slate-300 dark:text-slate-400 font-medium line-clamp-1">
+              {currentItem?.org ? `Issued by ${currentItem.org}` : currentItem?.desc || currentItem?.subtitle}
             </p>
           )}
         </div>
