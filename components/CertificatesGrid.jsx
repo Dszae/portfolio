@@ -213,11 +213,14 @@ export default function CertificatesGrid({ certificates }) {
             <motion.div
               key={"cert-card-" + activeCert.id}
               initial={{ opacity: 0, scale: 0.96, y: 6 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
+              animate={{ opacity: 1, scale: isZoomed ? 1.45 : 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.96, y: 6 }}
               transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative z-10 bg-white p-2.5 sm:p-4 rounded-2xl sm:rounded-3xl shadow-2xl max-w-[92vw] sm:max-w-[85vw] lg:max-w-4xl max-h-[72vh] sm:max-h-[76vh] flex items-center justify-center cursor-default overflow-hidden"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsZoomed((prev) => !prev);
+              }}
+              className={`relative z-10 bg-white p-2.5 sm:p-4 rounded-2xl sm:rounded-3xl shadow-2xl max-w-[92vw] sm:max-w-[85vw] lg:max-w-4xl max-h-[72vh] sm:max-h-[76vh] flex items-center justify-center overflow-hidden ${isZoomed ? 'cursor-zoom-out' : 'cursor-zoom-in'}`}
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
             >

@@ -167,6 +167,7 @@ function LightboxModal({ image, onClose }) {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') onClose();
+      if (e.key === 'z' || e.key === 'Z') setIsZoomed((prev) => !prev);
       if (hasItems && e.key === 'ArrowLeft') handlePrev();
       if (hasItems && e.key === 'ArrowRight') handleNext();
     };
@@ -218,14 +219,18 @@ function LightboxModal({ image, onClose }) {
             onClick={(e) => { e.stopPropagation(); setIsZoomed((prev) => !prev); }}
             aria-label={isZoomed ? "Zoom out" : "Zoom in"}
             title={isZoomed ? "Zoom out (1x)" : "Zoom in (1.5x)"}
-            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 backdrop-blur-md border border-white/15 text-white/90 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-md focus:outline-none"
+            className={`w-10 h-10 sm:w-11 sm:h-11 rounded-full backdrop-blur-md border flex items-center justify-center transition-all cursor-pointer shadow-md focus:outline-none ${
+              isZoomed 
+                ? 'bg-[#065F46] dark:bg-[#34D399] border-[#065F46] dark:border-[#34D399] text-white dark:text-[#090B0E] ring-2 ring-white/30' 
+                : 'bg-white/10 hover:bg-white/20 border-white/15 text-white/90 hover:text-white active:scale-95'
+            }`}
           >
             {isZoomed ? (
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM13 10H7" />
               </svg>
             ) : (
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
               </svg>
             )}
@@ -267,19 +272,24 @@ function LightboxModal({ image, onClose }) {
         <motion.div 
           key={"image-card-" + (currentItem?.src || activeIdx)}
           initial={{ opacity: 0, scale: 0.98 }}
-          animate={{ opacity: 1, scale: 1 }}
+          animate={{ 
+            opacity: 1, 
+            scale: isZoomed ? 1.5 : 1,
+            x: isZoomed ? undefined : 0,
+            y: isZoomed ? undefined : 0
+          }}
           exit={{ opacity: 0, scale: 0.98 }}
-          transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+          drag={isZoomed}
+          dragConstraints={{ left: -260, right: 260, top: -180, bottom: 180 }}
+          dragElastic={0.12}
           onClick={(e) => {
             e.stopPropagation();
             setIsZoomed((prev) => !prev);
           }}
-          className={"relative z-20 max-w-[96vw] sm:max-w-[90vw] lg:max-w-5xl max-h-[72vh] sm:max-h-[78vh] flex items-center justify-center rounded-xl sm:rounded-2xl shadow-2xl transition-all duration-300 " + 
-            (isZoomed ? 'cursor-zoom-out' : 'cursor-zoom-in') + " " +
+          className={"relative z-20 max-w-[96vw] sm:max-w-[90vw] lg:max-w-5xl max-h-[72vh] sm:max-h-[78vh] flex items-center justify-center rounded-xl sm:rounded-2xl shadow-2xl transition-shadow duration-300 " + 
+            (isZoomed ? 'cursor-grab active:cursor-grabbing' : 'cursor-zoom-in') + " " +
             (isCertificate ? 'bg-white p-2.5 sm:p-5' : 'bg-transparent p-0')}
-          style={{
-            transform: isZoomed ? 'scale(1.35)' : 'scale(1)',
-          }}
         >
           {/* Subtle loading skeleton in stage to prevent any layout shift */}
           {!isLoaded && (
@@ -292,6 +302,10 @@ function LightboxModal({ image, onClose }) {
             src={currentItem?.src} 
             alt={currentItem?.alt || currentItem?.title || 'Preview'} 
             onLoad={() => setLoadedSrc(currentItem?.src || '')}
+            onDoubleClick={(e) => {
+              e.stopPropagation();
+              setIsZoomed((prev) => !prev);
+            }}
             className={"max-h-[66vh] sm:max-h-[72vh] w-auto max-w-full block object-contain select-none transition-opacity duration-300 ease-out " + 
               (isCertificate ? 'rounded-lg' : 'rounded-xl') + " " +
               (isLoaded ? 'opacity-100' : 'opacity-0')}
