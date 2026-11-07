@@ -587,10 +587,12 @@ html {
   border-bottom: 1px solid transparent;
   background: transparent;
   box-shadow: none;
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
   transition: background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              backdrop-filter 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              -webkit-backdrop-filter 0.25s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -598,6 +600,8 @@ html {
 .site-nav[data-scrolled="true"] {
   border-bottom: 1px solid var(--nav-border-scrolled);
   background: var(--nav-surface-scrolled);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(16px) saturate(180%);
   box-shadow: var(--nav-shadow);
 }
 
