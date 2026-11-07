@@ -1,6 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useSyncExternalStore } from 'react';
+
+const emptySubscribe = () => () => {};
 import Link from 'next/link';
 import { withoutEmoji } from '@/lib/uiText';
 
@@ -36,21 +38,20 @@ export function getClientInitialAnnouncement() {
 
 export default function RollingAnnouncement({ onVisibilityChange }) {
   const [feature, setFeature] = useState(DEFAULT_ANNOUNCEMENT);
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
   const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
     let active = true;
-    setMounted(true);
-    const clientInitial = getClientInitialAnnouncement();
-    if (clientInitial) {
-      setFeature(clientInitial);
-      if (clientInitial.is_active && (clientInitial.text || clientInitial.message) && onVisibilityChange) {
-        onVisibilityChange(true);
-      }
-    }
     async function syncFeatures() {
       try {
+        const clientInitial = getClientInitialAnnouncement();
+        if (active && clientInitial) {
+          setFeature(clientInitial);
+          if (clientInitial.is_active && (clientInitial.text || clientInitial.message) && onVisibilityChange) {
+            onVisibilityChange(true);
+          }
+        }
         const res = await fetch('/api/site-features?t=' + Date.now(), { cache: 'no-store' });
         if (res.ok) {
           const data = await res.json();

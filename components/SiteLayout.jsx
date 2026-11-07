@@ -61,11 +61,12 @@ function ScrollToTopButton() {
 
 function LightboxModal({ image, onClose }) {
   const [activeIdx, setActiveIdx] = useState(image?.index ?? 0);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [loadedSrc, setLoadedSrc] = useState('');
 
   const items = image?.items;
   const hasItems = Array.isArray(items) && items.length > 0;
   const currentItem = hasItems && items[activeIdx] ? items[activeIdx] : image;
+  const isLoaded = Boolean(currentItem?.src && loadedSrc === currentItem.src);
 
   const touchStartX = useRef(null);
   const touchStartY = useRef(null);
@@ -73,15 +74,10 @@ function LightboxModal({ image, onClose }) {
   // Monitor image load state
   useEffect(() => {
     if (!currentItem?.src) return;
-    setIsLoaded(false);
     const img = new window.Image();
+    img.onload = () => setLoadedSrc(currentItem.src);
+    img.onerror = () => setLoadedSrc(currentItem.src);
     img.src = currentItem.src;
-    if (img.complete && img.naturalWidth > 0) {
-      setIsLoaded(true);
-    } else {
-      img.onload = () => setIsLoaded(true);
-      img.onerror = () => setIsLoaded(true);
-    }
   }, [currentItem?.src]);
 
   // Preload neighboring images in the set
@@ -236,7 +232,7 @@ function LightboxModal({ image, onClose }) {
           <img 
             src={currentItem?.src} 
             alt={currentItem?.alt || currentItem?.title || 'Preview'} 
-            onLoad={() => setIsLoaded(true)}
+            onLoad={() => setLoadedSrc(currentItem?.src || '')}
             className={"max-h-[62vh] sm:max-h-[68vh] w-auto max-w-full block object-contain select-none transition-opacity duration-300 ease-out " + 
               (isCertificate ? 'rounded-lg' : 'rounded-xl') + " " +
               (isLoaded ? 'opacity-100' : 'opacity-0')}
