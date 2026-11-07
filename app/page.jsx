@@ -222,7 +222,7 @@ export default function Home() {
                 {FEATURED_PROJECTS.map((project) => (
                   <article
                     key={project.name}
-                    className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:border-[#222933] dark:bg-[#0F1216]"
+                    className="project-card group overflow-hidden rounded-2xl transition hover:-translate-y-1"
                   >
                     <Image
                       src={project.image}
@@ -264,13 +264,13 @@ export default function Home() {
               <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
                 <Link
                   href="/contact"
-                  className="px-6 py-3 rounded-xl bg-[#065F46] hover:bg-[#044E39] dark:bg-[#34D399] dark:hover:bg-[#6EE7B7] text-white dark:text-[#090B0E] font-semibold text-sm transition-all shadow-sm"
+                  className="hero-button hero-button-primary text-sm font-semibold"
                 >
                   Get in touch
                 </Link>
                 <a
                   href="mailto:dsz.ae18@gmail.com"
-                  className="px-6 py-3 rounded-xl border border-slate-300 dark:border-[#222933] bg-white dark:bg-[#0F1216] text-[#0F172A] dark:text-[#F8FAFC] hover:border-[#065F46] dark:hover:border-[#34D399] font-mono text-sm transition-all"
+                  className="hero-button hero-button-secondary font-mono text-sm"
                 >
                   dsz.ae18@gmail.com
                 </a>
