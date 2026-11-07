@@ -711,11 +711,15 @@ html {
   overflow-y: auto;
   visibility: hidden;
   border-bottom: 1px solid var(--border-default);
-  background: var(--nav-surface);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(6, 8, 11, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   opacity: 0;
-  transition: max-height 250ms ease, opacity 200ms ease, visibility 250ms, top 180ms ease;
+  transition: max-height 280ms cubic-bezier(0.16, 1, 0.3, 1), opacity 220ms ease, visibility 280ms;
+}
+
+html.light .site-mobile-nav {
+  background: rgba(250, 249, 245, 0.96);
 }
 
 .site-mobile-nav.is-open {
@@ -784,11 +788,16 @@ html.dark .site-mobile-nav .site-nav-link:active {
 .site-backdrop {
   position: fixed;
   z-index: 55;
-  inset: var(--nav-height) 0 0;
-  background: rgb(0 0 0 / 70%);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  transition: inset 180ms ease;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  touch-action: none;
+  cursor: pointer;
+}
+
+html.light .site-backdrop {
+  background: rgba(15, 23, 42, 0.65);
 }
 
 /* GPU-accelerated silky smooth card & image hover transitions */
@@ -1806,6 +1815,23 @@ html.theme-transitioning a {
 }
 
 @media (max-width: 899px) {
+  :root,
+  html.dark {
+    --page-bg-gradient:
+      radial-gradient(ellipse 300px 220px at 80% 8%, rgba(16, 185, 129, 0.10) 0%, rgba(5, 150, 105, 0.03) 50%, transparent 80%),
+      linear-gradient(180deg, #090C11 0%, #06080B 35%, #050608 100%);
+  }
+
+  html.light {
+    --page-bg-gradient:
+      radial-gradient(ellipse 300px 220px at 80% 8%, rgba(16, 185, 129, 0.025) 0%, rgba(52, 211, 153, 0.008) 50%, transparent 80%),
+      linear-gradient(180deg, #FAF9F5 0%, #F5F3EC 45%, #EFECE3 100%);
+  }
+
+  body {
+    background-attachment: scroll;
+  }
+
   .site-nav-inner {
     width: min(100% - 40px, 1280px);
   }
@@ -1855,6 +1881,19 @@ html.theme-transitioning a {
 }
 
 @media (max-width: 680px) {
+  :root,
+  html.dark {
+    --page-bg-gradient:
+      radial-gradient(ellipse 220px 160px at 78% 6%, rgba(16, 185, 129, 0.08) 0%, rgba(5, 150, 105, 0.02) 50%, transparent 80%),
+      linear-gradient(180deg, #090C11 0%, #06080B 35%, #050608 100%);
+  }
+
+  html.light {
+    --page-bg-gradient:
+      radial-gradient(ellipse 220px 160px at 78% 6%, rgba(16, 185, 129, 0.02) 0%, transparent 75%),
+      linear-gradient(180deg, #FAF9F5 0%, #F5F3EC 45%, #EFECE3 100%);
+  }
+
   .home-hero {
     min-height: calc(100vh - var(--nav-height));
     min-height: calc(100dvh - var(--nav-height));

@@ -413,11 +413,17 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
   useEffect(() => {
     if (selectedImage || isMenuOpen) {
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
     } else {
       document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+      document.body.style.touchAction = '';
     }
     return () => {
       document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+      document.body.style.touchAction = '';
     };
   }, [selectedImage, isMenuOpen]);
 
@@ -596,14 +602,14 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
       <main 
         id="main-content" 
         tabIndex={-1} 
-        className="relative z-10 w-full flex flex-col items-center outline-none"
+        className={`relative z-10 w-full flex flex-col items-center outline-none transition-opacity duration-300 ease-in-out ${isMenuOpen ? 'opacity-10 pointer-events-none select-none' : 'opacity-100'}`}
       >
         <div key={pathname} className={`w-full flex flex-col items-center ${pathname === '/' ? '' : 'fade-down-to-up'}`}>
           {typeof children === 'function' ? children({ theme, isDark }) : children}
         </div>
       </main>
 
-      <footer className="theme-footer pt-16 pb-12 text-xs sm:text-sm border-t w-full" role="contentinfo">
+      <footer className={`theme-footer pt-16 pb-12 text-xs sm:text-sm border-t w-full transition-opacity duration-300 ease-in-out ${isMenuOpen ? 'opacity-10 pointer-events-none select-none' : 'opacity-100'}`} role="contentinfo">
         <div className="w-full max-w-7xl mx-auto px-6 sm:px-12">
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 pb-12 border-b border-[#CBD5E1] dark:border-[#222933]">
