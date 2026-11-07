@@ -485,7 +485,11 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
         />
       )}
 
-      <nav aria-label="Main navigation" className={`site-nav ${isScrolled || isMenuOpen ? 'is-scrolled' : ''}`}>
+      <nav 
+        aria-label="Main navigation" 
+        data-scrolled={isScrolled ? "true" : "false"}
+        className={`site-nav ${isScrolled || isMenuOpen ? 'is-scrolled' : ''}`}
+      >
 
         <div className="site-nav-inner relative z-10">
           <Link href="/" className="site-wordmark" onClick={() => setIsMenuOpen(false)}>
