@@ -1,0 +1,65 @@
+name: CD Pipeline
+
+on:
+  workflow_run:
+    workflows: ["CI Pipeline"]
+    branches: [main]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      target_url:
+        description: 'Target deployment URL to verify'
+        required: false
+        default: 'https://www.dipeshsapkota7.com.np'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cd-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify-deployment:
+    name: Deployment Verification & Smoke Tests
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Wait for Vercel deployment propagation
+        if: ${{ github.event_name == 'workflow_run' }}
+        run: |
+          echo "Waiting 25 seconds for Vercel build and edge propagation..."
+          sleep 25
+
+      - name: Run production smoke tests
+        id: smoke_tests
+        env:
+          TARGET_URL: ${{ github.event.inputs.target_url || 'https://www.dipeshsapkota7.com.np' }}
+        run: |
+          echo "Executing smoke tests against: $TARGET_URL"
+          node scripts/smoke-test.js "$TARGET_URL"
+
+      - name: Report Deployment Summary
+        if: always()
+        run: |
+          TARGET="${{ github.event.inputs.target_url || 'https://www.dipeshsapkota7.com.np' }}"
+          STATUS="${{ steps.smoke_tests.outcome == 'success' && 'PASSED' || 'FAILED' }}"
+          echo "### Continuous Delivery Smoke Verification" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Parameter | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|---|---|" >> $GITHUB_STEP_SUMMARY
+          echo "| Target Host | $TARGET |" >> $GITHUB_STEP_SUMMARY
+          echo "| Verification Status | $STATUS |" >> $GITHUB_STEP_SUMMARY
+          echo "| Commit Ref | \`${{ github.sha }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| Trigger Event | ${{ github.event_name }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Timestamp | $(date -u +"%Y-%m-%d %H:%M:%S UTC") |" >> $GITHUB_STEP_SUMMARY
