@@ -146,7 +146,7 @@ export default function Home() {
                   </span>
                 </div>
                 <h1 className="hero-title">
-                  Engineering logic.<br />
+                  <span className="hero-title-lead">Engineering logic.</span><br />
                   <span>Creating visual rhythm.</span>
                 </h1>
                 <p className="hero-description">
