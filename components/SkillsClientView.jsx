@@ -152,7 +152,7 @@ export default function SkillsClientView({ initialSkills = [], jsonLd = null }) 
 
 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8">
 
-<article id="development" className="md:col-span-7 bg-[#FFFFFF] dark:bg-[#0F1216] border border-[#CBD5E1] dark:border-[#222933] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-1 hover:border-[#065F46]/50 dark:hover:border-[#6EE7B7]/50 relative overflow-hidden flex flex-col justify-between group">
+<article id="development" className="skill-pillar-card theme-card md:col-span-7 rounded-2xl p-6 sm:p-8 relative overflow-hidden flex flex-col justify-between group">
                     <div>
                       
                       <div className="flex items-center gap-4 mb-4">
@@ -206,7 +206,7 @@ export default function SkillsClientView({ initialSkills = [], jsonLd = null }) 
                     </div>
                   </article>
 
-<article className="md:col-span-5 bg-[#FFFFFF] dark:bg-[#0F1216] border border-[#CBD5E1] dark:border-[#222933] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-1 hover:border-[#065F46]/50 dark:hover:border-[#6EE7B7]/50 relative overflow-hidden flex flex-col justify-between group">
+<article className="skill-pillar-card theme-card md:col-span-5 rounded-2xl p-6 sm:p-8 relative overflow-hidden flex flex-col justify-between group">
                     <div>
                       
                       <div className="flex items-center gap-4 mb-4">
@@ -260,7 +260,7 @@ export default function SkillsClientView({ initialSkills = [], jsonLd = null }) 
                     </div>
                   </article>
 
-<article className="md:col-span-12 bg-[#FFFFFF] dark:bg-[#0F1216] border border-[#CBD5E1] dark:border-[#222933] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-1 hover:border-[#065F46]/50 dark:hover:border-[#6EE7B7]/50 relative overflow-hidden group">
+<article className="skill-pillar-card theme-card md:col-span-12 rounded-2xl p-6 sm:p-8 relative overflow-hidden group">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 
 <div className="lg:col-span-5">
