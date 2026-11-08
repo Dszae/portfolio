@@ -46,22 +46,24 @@ const { data: dbData, error: dbError } = await supabaseAdmin
       console.error('Failed to store contact message in database:', dbError.message);
     }
 
-const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || 'e6fd2e32-2b5c-4a3f-81d9-aa02f4dfcc76';
-    try {
-      const formData = new FormData();
-      formData.set('access_key', accessKey);
-      formData.set('name', trimmedName);
-      formData.set('email', trimmedEmail);
-      formData.set('subject', trimmedSubject);
-      formData.set('message', trimmedMessage);
-      formData.set('from_name', 'Dipesh Sapkota Portfolio Contact');
+    const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
+    if (accessKey) {
+      try {
+        const formData = new FormData();
+        formData.set('access_key', accessKey);
+        formData.set('name', trimmedName);
+        formData.set('email', trimmedEmail);
+        formData.set('subject', trimmedSubject);
+        formData.set('message', trimmedMessage);
+        formData.set('from_name', 'Dipesh Sapkota Portfolio Contact');
 
-      await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: formData
-      });
-    } catch (emailErr) {
-      console.error('Web3Forms email delivery error:', emailErr);
+        await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        });
+      } catch (emailErr) {
+        console.error('Web3Forms email delivery error:', emailErr);
+      }
     }
 
 revalidatePath('/admin');

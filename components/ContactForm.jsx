@@ -49,21 +49,19 @@ if (formData.get("botcheck")) {
       return;
     }
 
-    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "e6fd2e32-2b5c-4a3f-81d9-aa02f4dfcc76";
-    formData.set("access_key", accessKey);
-
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData,
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, subject, message, botcheck: formData.get("botcheck") })
       });
       const data = await response.json();
-      if (data.success) {
+      if (response.ok && data.success) {
         setFormStatus("Thank you! Your message has been sent successfully.");
         setIsSuccess(true);
         form.reset();
       } else {
-        setFormStatus("Something went wrong. Please try again or reach out via email.");
+        setFormStatus(data.error || "Something went wrong. Please try again or reach out via email.");
         setIsSuccess(false);
       }
     } catch {

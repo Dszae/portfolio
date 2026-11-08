@@ -82,20 +82,7 @@ export default function ContactClientView() {
         setFormStatus(data.error || "Something went wrong. Please try again.");
       }
     } catch {
-      try {
-        const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "e6fd2e32-2b5c-4a3f-81d9-aa02f4dfcc76";
-        formData.set("access_key", accessKey);
-        const fbRes = await fetch("https://api.web3forms.com/submit", { method: "POST", body: formData });
-        const fbData = await fbRes.json();
-        if (fbData.success) {
-          setFormStatus("Thank you! Your message has been sent.");
-          form.reset();
-        } else {
-          setFormStatus("Something went wrong. Please try again.");
-        }
-      } catch {
-        setFormStatus("Network error. Please try again later.");
-      }
+      setFormStatus("Network error. Please try again later.");
     } finally {
       setIsSubmitting(false);
     }

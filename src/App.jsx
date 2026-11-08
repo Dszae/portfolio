@@ -246,7 +246,10 @@ function App() {
     setFormStatus("Sending message...");
 
     const formData = new FormData(event.target);
-    formData.append("access_key", "e6fd2e32-2b5c-4a3f-81d9-aa02f4dfcc76");
+    const accessKey = import.meta.env?.VITE_WEB3FORMS_ACCESS_KEY || "";
+    if (accessKey) {
+      formData.append("access_key", accessKey);
+    }
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
