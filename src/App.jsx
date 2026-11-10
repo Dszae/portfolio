@@ -628,9 +628,9 @@ function App() {
             <h2 className="text-3xl sm:text-4xl font-black mb-12 flex items-center gap-4">
               <span className="text-blue-500">/</span> About Me
             </h2>
-            <div className="grid md:grid-cols-12 gap-8 items-center">
+            <div className="flex flex-col gap-8">
               
-              <div className={`md:col-span-7 p-6 sm:p-8 md:p-12 rounded-[2.5rem] border backdrop-blur-md ${theme.card}`}>
+              <div className={`w-full p-6 sm:p-8 md:p-12 rounded-[2.5rem] border backdrop-blur-md ${theme.card}`}>
                 <h3 className="text-2xl md:text-3xl font-bold mb-6 leading-tight">Bridging Logic and Visual Execution</h3>
                 <p className={`text-base sm:text-lg leading-relaxed mb-6 ${theme.muted}`}>
                   Hello! I am <strong>Dipesh Sapkota</strong>, a dedicated Computer Engineering student at IOE Thapathali in Kathmandu, Nepal. As an AI and ML enthusiast, I am deeply invested in exploring intelligent systems, analyzing algorithms, and architecting embedded hardware solutions. My technical foundation is built on rigorous academic training and a continuous drive to solve complex computational challenges.
@@ -640,43 +640,70 @@ function App() {
                 </p>
               </div>
               
-              <div className="md:col-span-5 flex flex-col gap-4 sm:gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                 
-                <div className={`p-5 sm:p-6 md:p-8 rounded-3xl border backdrop-blur-md flex items-center gap-4 sm:gap-6 transition-all duration-300 hover:-translate-y-1 ${theme.card}`}>
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0 border border-blue-500/20">
-                    <svg className="w-7 h-7 sm:w-8 sm:h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className={`p-5 sm:p-6 rounded-3xl border backdrop-blur-md flex flex-col justify-between transition-colors duration-200 ${theme.card}`}>
+                  <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0 border border-blue-500/20 mb-4">
+                    <svg className="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
                     </svg>
                   </div>
                   <div>
                     <h4 className="text-2xl sm:text-3xl font-black mb-1">4+</h4>
-                    <p className={`font-mono text-xs sm:text-sm uppercase font-bold tracking-wider ${theme.muted}`}>Years Experience</p>
+                    <p className={`font-mono text-xs uppercase font-bold tracking-wider ${theme.muted}`}>Years Experience</p>
+                    <p className="text-xs text-[#64748B] dark:text-[#8892B0] mt-1">Motion Graphics &amp; Video Editing</p>
                   </div>
                 </div>
                 
-                <div className={`p-5 sm:p-6 md:p-8 rounded-3xl border backdrop-blur-md flex items-center gap-4 sm:gap-6 transition-all duration-300 hover:-translate-y-1 ${theme.card}`}>
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0 border border-blue-500/20">
-                    <svg className="w-7 h-7 sm:w-8 sm:h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className={`p-5 sm:p-6 rounded-3xl border backdrop-blur-md flex flex-col justify-between transition-colors duration-200 ${theme.card}`}>
+                  <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0 border border-blue-500/20 mb-4">
+                    <svg className="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
                   </div>
                   <div>
                     <h4 className="text-2xl sm:text-3xl font-black mb-1">50+</h4>
-                    <p className={`font-mono text-xs sm:text-sm uppercase font-bold tracking-wider ${theme.muted}`}>Global Clients</p>
+                    <p className={`font-mono text-xs uppercase font-bold tracking-wider ${theme.muted}`}>Global Clients</p>
+                    <p className="text-xs text-[#64748B] dark:text-[#8892B0] mt-1">Commercial &amp; Educational Projects</p>
                   </div>
                 </div>
 
-                <div className={`p-5 sm:p-6 md:p-8 rounded-3xl border backdrop-blur-md flex items-center gap-4 sm:gap-6 transition-all duration-300 hover:-translate-y-1 ${theme.card}`}>
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0 border border-blue-500/20">
-                    <svg className="w-7 h-7 sm:w-8 sm:h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                <div className={`p-5 sm:p-6 rounded-3xl border backdrop-blur-md flex flex-col justify-between transition-colors duration-200 ${theme.card}`}>
+                  <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0 border border-blue-500/20 mb-4">
+                    <svg className="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                     </svg>
                   </div>
                   <div>
-                    <h4 className="text-2xl sm:text-3xl font-black mb-1">Creative</h4>
-                    <p className={`font-mono text-xs sm:text-sm uppercase font-bold tracking-wider ${theme.muted}`}>Design Focus</p>
+                    <h4 className="text-xl sm:text-2xl font-black mb-1">IOE Thapathali</h4>
+                    <p className={`font-mono text-xs uppercase font-bold tracking-wider ${theme.muted}`}>Campus Affiliation</p>
+                    <p className="text-xs text-[#64748B] dark:text-[#8892B0] mt-1">Tribhuvan University, Kathmandu</p>
                   </div>
                 </div>
+
+                <div className={`p-5 sm:p-6 rounded-3xl border backdrop-blur-md flex flex-col justify-between transition-colors duration-200 ${theme.card}`}>
+                  <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0 border border-blue-500/20 mb-4">
+                    <svg className="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-lg sm:text-xl font-bold mb-1">Connect &amp; Collaborate</h4>
+                    <p className={`text-xs leading-relaxed mt-1 ${theme.muted}`}>
+                      Open for AI/ML engineering collaborations, academic research, and motion design commissions.
+                    </p>
+                    <a
+                      href="/contact"
+                      className="mt-3 inline-flex items-center gap-1.5 text-xs font-mono font-bold text-blue-500 hover:underline"
+                    >
+                      <span>Send an inquiry</span>
+                      <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+
               </div>
 
             </div>
