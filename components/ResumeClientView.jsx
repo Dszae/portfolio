@@ -80,7 +80,7 @@ export default function ResumeClientView({ experiences = [], siteSettings = {}, 
                         >
                           <div className="absolute -left-[31px] top-5 w-3.5 h-3.5 bg-[#065F46] dark:bg-[#34D399] rounded-full border-4 border-white dark:border-[#090B0E] timeline-dot-pulse"></div>
                           
-                          <div className={`relative overflow-hidden p-6 rounded-2xl border transition-colors duration-200 group-hover:border-[#065F46]/50 dark:group-hover:border-[#34D399]/50 ${theme.card}`}>
+                          <div className={`relative overflow-hidden p-6 rounded-2xl timeline-card-shift border group-hover:shadow-xl group-hover:border-[#065F46]/50 dark:group-hover:border-[#34D399]/50 ${theme.card}`}>
                             <div className="flex items-center gap-4">
                               {(exp.logo || exp.img || exp.image) && (
                                 <div className="flex-shrink-0 flex items-center justify-center">
@@ -126,7 +126,7 @@ export default function ResumeClientView({ experiences = [], siteSettings = {}, 
                         >
                           <div className="absolute -left-[31px] top-5 w-3.5 h-3.5 bg-[#065F46] dark:bg-[#34D399] rounded-full border-4 border-white dark:border-[#090B0E] timeline-dot-pulse"></div>
                           
-                          <div className={`relative overflow-hidden p-6 rounded-2xl border transition-colors duration-200 group-hover:border-[#065F46]/50 dark:group-hover:border-[#34D399]/50 ${theme.card}`}>
+                          <div className={`relative overflow-hidden p-6 rounded-2xl timeline-card-shift border group-hover:shadow-xl group-hover:border-[#065F46]/50 dark:group-hover:border-[#34D399]/50 ${theme.card}`}>
                             <div className="flex items-center gap-4">
                               {(edu.logo || edu.img || edu.image) && (
                                 <div className="flex-shrink-0 flex items-center justify-center">

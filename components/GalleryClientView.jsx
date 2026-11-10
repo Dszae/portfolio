@@ -50,7 +50,7 @@ export default function GalleryClientView({ gallery, jsonLd }) {
                       type="button"
                       aria-label={`Open ${item.title}`}
                       key={item.id} 
-                      className="group relative w-full aspect-video rounded-xl overflow-hidden border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] shadow-sm cursor-pointer transition-colors duration-200 hover:border-[#065F46]/60 dark:hover:border-[#34D399]/50"
+                      className="group relative w-full aspect-video rounded-xl overflow-hidden border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] shadow-sm hover:shadow-md cursor-pointer smooth-card-hover hover:border-[#065F46]/60 dark:hover:border-[#34D399]/50"
                       onClick={() => setSelectedImage({
                         src: item.img,
                         title: item.title,

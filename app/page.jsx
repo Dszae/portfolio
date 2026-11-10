@@ -173,77 +173,6 @@ export default function Home() {
             </div>
           </section>
 
-          <section id="about" className="px-6 py-16 sm:px-10 lg:px-16 border-t border-slate-200 dark:border-[#222933]" aria-labelledby="about-preview-heading">
-            <div className="mx-auto max-w-6xl">
-              <div className="max-w-3xl">
-                <p className="section-eyebrow">About Dipesh Sapkota</p>
-                <h2 id="about-preview-heading" className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#0F172A] dark:text-white leading-tight">
-                  I am Dipesh Sapkota, a Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal.
-                </h2>
-                <p className="mt-4 text-base leading-relaxed text-[#475569] dark:text-[#A7B0BE]">
-                  My academic work focuses on Artificial Intelligence, Machine Learning, embedded systems, and algorithmic problem solving. Alongside engineering, I have worked for over four years as a freelance motion graphics designer and video editor with more than 50 global clients, producing dynamic video content and visual educational media.
-                </p>
-                <div className="mt-6 flex flex-wrap items-center gap-4">
-                  <Link href="/about" prefetch={true} className="inline-flex items-center gap-2 font-mono text-sm font-semibold text-[#065F46] hover:underline dark:text-[#34D399]">
-                    <span>Read full biography</span>
-                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Bottom Cards Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-10" aria-label="Key Statistics and Contact">
-                {/* Card 1: Experience */}
-                <div className="p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] flex flex-col justify-between">
-                  <div>
-                    <span className="text-2xl sm:text-3xl font-bold text-[#065F46] dark:text-[#34D399]">4+</span>
-                    <p className="font-mono text-xs uppercase tracking-wider text-[#334155] dark:text-[#A7B0BE] font-bold mt-1">Years Experience</p>
-                    <p className="text-xs text-[#64748B] dark:text-[#8892B0] mt-1">Motion Graphics &amp; Video Editing</p>
-                  </div>
-                </div>
-
-                {/* Card 2: Clients */}
-                <div className="p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] flex flex-col justify-between">
-                  <div>
-                    <span className="text-2xl sm:text-3xl font-bold text-[#065F46] dark:text-[#34D399]">50+</span>
-                    <p className="font-mono text-xs uppercase tracking-wider text-[#334155] dark:text-[#A7B0BE] font-bold mt-1">Global Clients</p>
-                    <p className="text-xs text-[#64748B] dark:text-[#8892B0] mt-1">Commercial &amp; Educational Projects</p>
-                  </div>
-                </div>
-
-                {/* Card 3: Affiliation */}
-                <div className="p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] flex flex-col justify-between">
-                  <div>
-                    <span className="text-xl sm:text-2xl font-bold text-[#0F172A] dark:text-white">IOE Thapathali</span>
-                    <p className="font-mono text-xs uppercase tracking-wider text-[#334155] dark:text-[#A7B0BE] font-bold mt-1">Campus Affiliation</p>
-                    <p className="text-xs text-[#64748B] dark:text-[#8892B0] mt-1">Tribhuvan University, Kathmandu</p>
-                  </div>
-                </div>
-
-                {/* Card 4: Connect & Collaborate */}
-                <div className="p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] flex flex-col justify-between">
-                  <div>
-                    <span className="text-lg sm:text-xl font-bold text-[#0F172A] dark:text-white">Connect &amp; Collaborate</span>
-                    <p className="text-xs text-[#475569] dark:text-[#A7B0BE] leading-relaxed mt-1">
-                      Open for AI/ML engineering collaborations, academic research, and motion design commissions.
-                    </p>
-                    <Link
-                      href="/contact"
-                      className="mt-3 inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#065F46] dark:text-[#34D399] hover:underline"
-                    >
-                      <span>Send an inquiry</span>
-                      <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
           <section id="skills" className="skills-preview" aria-labelledby="skills-preview-heading">
             <div className="skills-preview-inner">
               <div className="skills-preview-heading">
@@ -293,7 +222,7 @@ export default function Home() {
                 {FEATURED_PROJECTS.map((project) => (
                   <article
                     key={project.name}
-                    className="project-card group overflow-hidden rounded-2xl transition duration-200"
+                    className="project-card group overflow-hidden rounded-2xl transition hover:-translate-y-1"
                   >
                     <Image
                       src={project.image}
