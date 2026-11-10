@@ -420,7 +420,7 @@ export default function ProjectsClientView({ initialProjects = [], jsonLd = null
                     {filteredNoteworthy.map((project) => (
                       <article
                         key={project.id || project.slug}
-                        className="group flex flex-col justify-between p-6 rounded-2xl bg-white dark:bg-[#0F1216] border border-slate-200 dark:border-[#222933] shadow-sm hover:-translate-y-0.5 hover:border-[#065F46]/60 dark:hover:border-[#34D399]/60 transition-all duration-200"
+                        className="group flex flex-col justify-between p-6 rounded-2xl bg-white dark:bg-[#0F1216] border border-slate-200 dark:border-[#222933] shadow-sm hover:border-[#065F46]/60 dark:hover:border-[#34D399]/60 transition-colors duration-200"
                       >
                         <div>
                           <div className="flex items-center justify-between mb-4">

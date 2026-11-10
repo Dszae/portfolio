@@ -173,6 +173,50 @@ export default function Home() {
             </div>
           </section>
 
+          <section id="about" className="px-6 py-16 sm:px-10 lg:px-16 border-t border-slate-200 dark:border-[#222933]" aria-labelledby="about-preview-heading">
+            <div className="mx-auto max-w-6xl">
+              <div className="grid md:grid-cols-12 gap-8 items-center">
+                <div className="md:col-span-7">
+                  <p className="section-eyebrow">About Dipesh Sapkota</p>
+                  <h2 id="about-preview-heading" className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#0F172A] dark:text-white leading-tight">
+                    I am Dipesh Sapkota, a Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal.
+                  </h2>
+                  <p className="mt-4 text-base leading-relaxed text-[#475569] dark:text-[#A7B0BE]">
+                    My academic work focuses on Artificial Intelligence, Machine Learning, embedded systems, and algorithmic problem solving. Alongside engineering, I have worked for over four years as a freelance motion graphics designer and video editor with more than 50 global clients, producing dynamic video content and visual educational media.
+                  </p>
+                  <div className="mt-6 flex flex-wrap items-center gap-4">
+                    <Link href="/about" prefetch={true} className="inline-flex items-center gap-2 font-mono text-sm font-semibold text-[#065F46] hover:underline dark:text-[#34D399]">
+                      <span>Read full biography</span>
+                      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="md:col-span-5 grid grid-cols-2 gap-4">
+                  <div className="p-5 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216]">
+                    <span className="text-2xl sm:text-3xl font-bold text-[#065F46] dark:text-[#34D399]">4+</span>
+                    <p className="font-mono text-xs uppercase tracking-wider text-[#334155] dark:text-[#A7B0BE] font-bold mt-1">Years Experience</p>
+                    <p className="text-xs text-[#64748B] dark:text-[#8892B0] mt-0.5">Motion Graphics &amp; Video</p>
+                  </div>
+
+                  <div className="p-5 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216]">
+                    <span className="text-2xl sm:text-3xl font-bold text-[#065F46] dark:text-[#34D399]">50+</span>
+                    <p className="font-mono text-xs uppercase tracking-wider text-[#334155] dark:text-[#A7B0BE] font-bold mt-1">Global Clients</p>
+                    <p className="text-xs text-[#64748B] dark:text-[#8892B0] mt-0.5">Commercial &amp; Education</p>
+                  </div>
+
+                  <div className="col-span-2 p-5 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216]">
+                    <span className="text-base sm:text-lg font-bold text-[#0F172A] dark:text-white">IOE Thapathali Campus</span>
+                    <p className="font-mono text-xs uppercase tracking-wider text-[#065F46] dark:text-[#34D399] font-bold mt-0.5">Tribhuvan University</p>
+                    <p className="text-xs text-[#64748B] dark:text-[#8892B0] mt-0.5">B.E. Computer Engineering · Kathmandu, Nepal</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
           <section id="skills" className="skills-preview" aria-labelledby="skills-preview-heading">
             <div className="skills-preview-inner">
               <div className="skills-preview-heading">
@@ -222,7 +266,7 @@ export default function Home() {
                 {FEATURED_PROJECTS.map((project) => (
                   <article
                     key={project.name}
-                    className="project-card group overflow-hidden rounded-2xl transition hover:-translate-y-1"
+                    className="project-card group overflow-hidden rounded-2xl transition duration-200"
                   >
                     <Image
                       src={project.image}

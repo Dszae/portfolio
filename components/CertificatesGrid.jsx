@@ -109,7 +109,7 @@ export default function CertificatesGrid({ certificates }) {
         {filtered.map((cert) => (
           <article
             key={cert.id}
-            className="group rounded-2xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] p-5 backdrop-blur flex flex-col justify-between hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all duration-300 hover:-translate-y-1 shadow-sm"
+            className="group rounded-2xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] p-5 backdrop-blur flex flex-col justify-between hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-colors duration-200 shadow-sm"
           >
             <div>
               <button
@@ -123,7 +123,7 @@ export default function CertificatesGrid({ certificates }) {
                   alt={`Certificate for ${cert.title} issued by ${cert.org}`}
                   width={400}
                   height={300}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                  className="w-full h-full object-cover"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">

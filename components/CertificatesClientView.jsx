@@ -49,7 +49,7 @@ export default function CertificatesClientView({ certificates, jsonLd }) {
                       type="button"
                       aria-label={`Open certificate: ${cert.title}`}
                       key={cert.id} 
-                      className="group p-3.5 sm:p-4 rounded-2xl border border-slate-200/80 dark:border-white/10 bg-white/70 dark:bg-[#11151C]/70 backdrop-blur-md shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 hover:shadow-[0_12px_28px_-6px_rgba(16,185,129,0.18)] dark:hover:shadow-[0_12px_32px_-6px_rgba(16,185,129,0.22)] cursor-pointer text-left flex flex-col"
+                      className="group p-3.5 sm:p-4 rounded-2xl border border-slate-200/80 dark:border-white/10 bg-white/70 dark:bg-[#11151C]/70 backdrop-blur-md shadow-sm transition-colors duration-200 hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 cursor-pointer text-left flex flex-col"
                       onClick={() => setSelectedImage({
                         src: cert.img,
                         title: cert.title,
