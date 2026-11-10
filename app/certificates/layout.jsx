@@ -1,6 +1,6 @@
 export const metadata = {
   title: 'Certificates',
-  description: 'Verified professional certifications of Dipesh Sapkota from Udemy, Blackmagic Design, and EDUCBA in Graphic Design, Motion Design, Color Correction, Premiere Pro, and Web Development.',
+  description: 'Verified professional certifications of Dipesh Sapkota from Udemy, Blackmagic Design, and EDUCBA in Graphic Design, Motion Design, Color Correction, Premiere Pro, and technical systems.',
   alternates: { canonical: '/certificates' },
   openGraph: {
     title: 'Certificates | Dipesh Sapkota',

@@ -7,7 +7,7 @@ export async function generateMetadata() {
   const name = profile.name || 'Dipesh Sapkota';
 
   return await generatePageMetadata({
-    title: `Contact & Collaboration | ${name}`,
+    title: 'Contact',
     description: `Reach out to ${name} for engineering collaborations, AI/ML exploration, or freelance video editing and motion graphics in Kathmandu, Nepal.`,
     path: '/contact',
   });

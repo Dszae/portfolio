@@ -305,7 +305,7 @@ export const homePageSchema = {
       '@id': `${siteUrl}/#navigation-elements`,
       name: 'Main portfolio navigation',
       description: 'Primary sitelinks navigation elements for Google Search results',
-      numberOfItems: 7,
+      numberOfItems: 8,
       itemListElement: [
         {
           '@type': 'SiteNavigationElement',
@@ -317,23 +317,23 @@ export const homePageSchema = {
         {
           '@type': 'SiteNavigationElement',
           position: 2,
+          name: 'Skills',
+          description: 'Programming languages, tools, frameworks, and engineering competencies.',
+          url: `${siteUrl}/skills`,
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 3,
           name: 'Projects',
           description: 'Software applications, hardware simulations, and AI/ML projects created by Dipesh Sapkota.',
           url: `${siteUrl}/projects`,
         },
         {
           '@type': 'SiteNavigationElement',
-          position: 3,
+          position: 4,
           name: 'Articles',
           description: 'Published technical articles, architectural case studies, and engineering write-ups by Dipesh Sapkota on DEV Community.',
           url: `${siteUrl}/blog`,
-        },
-        {
-          '@type': 'SiteNavigationElement',
-          position: 4,
-          name: 'Skills',
-          description: 'Programming languages, tools, frameworks, and engineering competencies.',
-          url: `${siteUrl}/skills`,
         },
         {
           '@type': 'SiteNavigationElement',
@@ -352,6 +352,13 @@ export const homePageSchema = {
         {
           '@type': 'SiteNavigationElement',
           position: 7,
+          name: 'Gallery',
+          description: 'Campus memories, leadership events, and creative media visual archive.',
+          url: `${siteUrl}/gallery`,
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 8,
           name: 'Contact',
           description: 'Get in touch for engineering collaborations, freelance work, and inquiries.',
           url: `${siteUrl}/contact`,
@@ -363,6 +370,7 @@ export const homePageSchema = {
       '@id': `${siteUrl}/#sitelinks-list`,
       name: 'Dipesh Sapkota Sitelinks',
       description: 'Core sitelinks navigation list for Google Search results',
+      numberOfItems: 8,
       itemListElement: [
         {
           '@type': 'ListItem',
@@ -379,18 +387,6 @@ export const homePageSchema = {
         {
           '@type': 'ListItem',
           position: 2,
-          name: 'Profile',
-          item: {
-            '@type': 'WebPage',
-            '@id': `${siteUrl}/profile`,
-            name: 'Profile',
-            url: `${siteUrl}/profile`,
-            description: 'Verified public profile, credentials, and biographical records of Dipesh Sapkota.',
-          },
-        },
-        {
-          '@type': 'ListItem',
-          position: 3,
           name: 'Skills',
           item: {
             '@type': 'WebPage',
@@ -402,7 +398,7 @@ export const homePageSchema = {
         },
         {
           '@type': 'ListItem',
-          position: 4,
+          position: 3,
           name: 'Projects',
           item: {
             '@type': 'WebPage',
@@ -414,7 +410,7 @@ export const homePageSchema = {
         },
         {
           '@type': 'ListItem',
-          position: 5,
+          position: 4,
           name: 'Articles',
           item: {
             '@type': 'WebPage',
@@ -426,7 +422,7 @@ export const homePageSchema = {
         },
         {
           '@type': 'ListItem',
-          position: 6,
+          position: 5,
           name: 'Certificates',
           item: {
             '@type': 'WebPage',
@@ -438,7 +434,7 @@ export const homePageSchema = {
         },
         {
           '@type': 'ListItem',
-          position: 7,
+          position: 6,
           name: 'Resume',
           item: {
             '@type': 'WebPage',
@@ -450,7 +446,7 @@ export const homePageSchema = {
         },
         {
           '@type': 'ListItem',
-          position: 8,
+          position: 7,
           name: 'Gallery',
           item: {
             '@type': 'WebPage',
@@ -462,7 +458,7 @@ export const homePageSchema = {
         },
         {
           '@type': 'ListItem',
-          position: 9,
+          position: 8,
           name: 'Contact',
           item: {
             '@type': 'WebPage',
