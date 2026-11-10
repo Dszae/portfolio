@@ -159,7 +159,7 @@ Install command: npm install
 
 - **Website:** [dipeshsapkota7.com.np](https://www.dipeshsapkota7.com.np/)
 - **GitHub:** [@dszae](https://github.com/dszae)
-- **LinkedIn:** [Dipesh Sapkota](https://linkedin.com/in/dszae)
+- **LinkedIn:** [Dipesh Sapkota](https://linkedin.com/in/dipeshsapkota7)
 - **Email:** [dsz.ae18@gmail.com](https://mail.google.com/mail/?view=cm&fs=1&to=dsz.ae18@gmail.com)
 
 ## License

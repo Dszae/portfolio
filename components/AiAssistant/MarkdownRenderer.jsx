@@ -119,12 +119,12 @@ function renderFormattedText(text) {
       href = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}`;
     }
 
-    // Guarantee LinkedIn profile links route to verified handle dszae
-    if (href.includes('linkedin.com/in/dipesh-sapkota')) {
-      href = href.replace('linkedin.com/in/dipesh-sapkota', 'linkedin.com/in/dszae');
+    // Guarantee LinkedIn profile links route to verified handle dipeshsapkota7
+    if (href.includes('linkedin.com/in/dipesh-sapkota') || href.includes('linkedin.com/in/dszae')) {
+      href = href.replace(/linkedin\.com\/in\/(dipesh-sapkota|dszae)/, 'linkedin.com/in/dipeshsapkota7');
     }
-    if (typeof label === 'string' && label.includes('dipesh-sapkota')) {
-      label = label.replace(/dipesh-sapkota/g, 'dszae');
+    if (typeof label === 'string' && (label.includes('dipesh-sapkota') || label.includes('dszae'))) {
+      label = label.replace(/(dipesh-sapkota|dszae)/g, 'dipeshsapkota7');
     }
 
     const isInternal = href.startsWith('/') || href.includes('dipeshsapkota7.com.np');
