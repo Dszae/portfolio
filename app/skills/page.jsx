@@ -1,4 +1,4 @@
-import { getSkills, getSiteSettings } from '@/lib/dataService';
+import { getSkills, getProjects, getSiteSettings } from '@/lib/dataService';
 import SkillsClientView from '@/components/SkillsClientView';
 import { siteUrl, personId, websiteId } from '@/components/JsonLdSchema';
 import { generatePageMetadata } from '@/lib/seoEngine';
@@ -46,11 +46,12 @@ const skillsPageJsonLd = {
 };
 
 export default async function SkillsPage() {
-  const skills = await getSkills();
+  const [skills, projects] = await Promise.all([getSkills(), getProjects()]);
 
   return (
     <SkillsClientView 
-      initialSkills={skills} 
+      initialSkills={skills}
+      initialProjects={projects}
       jsonLd={skillsPageJsonLd} 
     />
   );

@@ -20,6 +20,8 @@ const contentSecurityPolicy = [
 ].join('; ');
 
 const nextConfig = {
+  // Dev only: lets the dev server's live-reload connection work on these hosts.
+  allowedDevOrigins: ['127.0.0.1'],
   trailingSlash: false,
   compress: true,
   poweredByHeader: false,

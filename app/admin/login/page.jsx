@@ -77,7 +77,7 @@ export default function AdminLoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 px-4 rounded-xl font-semibold text-sm bg-[#34D399] text-slate-950 hover:bg-[#6EE7B7] disabled:opacity-50 transition-all cursor-pointer shadow-lg shadow-[#34D399]/10"
+            className="w-full py-3 px-4 rounded-xl font-semibold text-sm bg-[#34D399] text-slate-950 hover:bg-[#6EE7B7] disabled:opacity-50 transition-all cursor-pointer shadow-lg"
           >
             {loading ? 'Authenticating...' : 'Access Dashboard'}
           </button>

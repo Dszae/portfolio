@@ -18,12 +18,11 @@
   --duration-theme: 220ms;
 
   color-scheme: dark;
-  --page-bg: #06080B;
+  --page-bg: #070605;
   --page-bg-gradient:
-    radial-gradient(ellipse 1000px 720px at 76% 12%, rgba(16, 185, 129, 0.16) 0%, rgba(5, 150, 105, 0.08) 45%, rgba(4, 120, 87, 0.015) 75%, transparent 100%),
-    radial-gradient(ellipse 750px 480px at 15% -2%, rgba(6, 95, 70, 0.10) 0%, transparent 60%),
-    radial-gradient(ellipse 900px 500px at 50% 65%, rgba(16, 185, 129, 0.02) 0%, transparent 70%),
-    linear-gradient(180deg, #090C11 0%, #06080B 45%, #050608 100%);
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 900' preserveAspectRatio='xMidYMin slice'%3E%3Cpolygon points='800.0,161.0 825.1,175.5 825.1,204.5 800.0,219.0 774.9,204.5 774.9,175.5' fill='rgb(226,178,118)' fill-opacity='0.070'/%3E%3Cpolygon points='855.4,161.0 880.5,175.5 880.5,204.5 855.4,219.0 830.3,204.5 830.3,175.5' fill='rgb(226,178,118)' fill-opacity='0.050'/%3E%3Cpolygon points='910.9,161.0 936.0,175.5 936.0,204.5 910.9,219.0 885.7,204.5 885.7,175.5' fill='rgb(226,178,118)' fill-opacity='0.030'/%3E%3Cpolygon points='772.3,209.0 797.4,223.5 797.4,252.5 772.3,267.0 747.2,252.5 747.2,223.5' fill='rgb(226,178,118)' fill-opacity='0.050'/%3E%3Cpolygon points='827.7,209.0 852.8,223.5 852.8,252.5 827.7,267.0 802.6,252.5 802.6,223.5' fill='rgb(226,178,118)' fill-opacity='0.090'/%3E%3Cpolygon points='883.1,209.0 908.3,223.5 908.3,252.5 883.1,267.0 858.0,252.5 858.0,223.5' fill='rgb(226,178,118)' fill-opacity='0.060'/%3E%3Cpolygon points='938.6,209.0 963.7,223.5 963.7,252.5 938.6,267.0 913.4,252.5 913.4,223.5' fill='rgb(226,178,118)' fill-opacity='0.040'/%3E%3Cpolygon points='800.0,257.0 825.1,271.5 825.1,300.5 800.0,315.0 774.9,300.5 774.9,271.5' fill='rgb(226,178,118)' fill-opacity='0.040'/%3E%3Cpolygon points='855.4,257.0 880.5,271.5 880.5,300.5 855.4,315.0 830.3,300.5 830.3,271.5' fill='rgb(226,178,118)' fill-opacity='0.070'/%3E%3Cpolygon points='910.9,257.0 936.0,271.5 936.0,300.5 910.9,315.0 885.7,300.5 885.7,271.5' fill='rgb(226,178,118)' fill-opacity='0.080'/%3E%3Cpolygon points='772.3,305.0 797.4,319.5 797.4,348.5 772.3,363.0 747.2,348.5 747.2,319.5' fill='rgb(226,178,118)' fill-opacity='0.030'/%3E%3Cpolygon points='883.1,305.0 908.3,319.5 908.3,348.5 883.1,363.0 858.0,348.5 858.0,319.5' fill='rgb(226,178,118)' fill-opacity='0.050'/%3E%3Cpolygon points='938.6,305.0 963.7,319.5 963.7,348.5 938.6,363.0 913.4,348.5 913.4,319.5' fill='rgb(226,178,118)' fill-opacity='0.060'/%3E%3Cpolygon points='716.9,113.0 742.0,127.5 742.0,156.5 716.9,171.0 691.7,156.5 691.7,127.5' fill='rgb(226,178,118)' fill-opacity='0.030'/%3E%3Cpolygon points='827.7,113.0 852.8,127.5 852.8,156.5 827.7,171.0 802.6,156.5 802.6,127.5' fill='rgb(226,178,118)' fill-opacity='0.040'/%3E%3Cpolygon points='938.6,113.0 963.7,127.5 963.7,156.5 938.6,171.0 913.4,156.5 913.4,127.5' fill='rgb(226,178,118)' fill-opacity='0.025'/%3E%3Cpolygon points='689.1,257.0 714.3,271.5 714.3,300.5 689.1,315.0 664.0,300.5 664.0,271.5' fill='rgb(226,178,118)' fill-opacity='0.020'/%3E%3Cpolygon points='855.4,65.0 880.5,79.5 880.5,108.5 855.4,123.0 830.3,108.5 830.3,79.5' fill='rgb(226,178,118)' fill-opacity='0.020'/%3E%3Cpolygon points='966.3,353.0 991.4,367.5 991.4,396.5 966.3,411.0 941.2,396.5 941.2,367.5' fill='rgb(226,178,118)' fill-opacity='0.030'/%3E%3Cpolygon points='22.0,301.0 47.1,315.5 47.1,344.5 22.0,359.0 -3.1,344.5 -3.1,315.5' fill='rgb(226,178,118)' fill-opacity='0.060'/%3E%3Cpolygon points='77.4,301.0 102.5,315.5 102.5,344.5 77.4,359.0 52.3,344.5 52.3,315.5' fill='rgb(226,178,118)' fill-opacity='0.040'/%3E%3Cpolygon points='-5.7,349.0 19.4,363.5 19.4,392.5 -5.7,407.0 -30.8,392.5 -30.8,363.5' fill='rgb(226,178,118)' fill-opacity='0.050'/%3E%3Cpolygon points='49.7,349.0 74.8,363.5 74.8,392.5 49.7,407.0 24.6,392.5 24.6,363.5' fill='rgb(226,178,118)' fill-opacity='0.070'/%3E%3Cpolygon points='22.0,397.0 47.1,411.5 47.1,440.5 22.0,455.0 -3.1,440.5 -3.1,411.5' fill='rgb(226,178,118)' fill-opacity='0.040'/%3E%3Cpolygon points='77.4,397.0 102.5,411.5 102.5,440.5 77.4,455.0 52.3,440.5 52.3,411.5' fill='rgb(226,178,118)' fill-opacity='0.050'/%3E%3Cpolygon points='-5.7,445.0 19.4,459.5 19.4,488.5 -5.7,503.0 -30.8,488.5 -30.8,459.5' fill='rgb(226,178,118)' fill-opacity='0.030'/%3E%3Cpolygon points='49.7,445.0 74.8,459.5 74.8,488.5 49.7,503.0 24.6,488.5 24.6,459.5' fill='rgb(226,178,118)' fill-opacity='0.040'/%3E%3Cpolygon points='49.7,541.0 74.8,555.5 74.8,584.5 49.7,599.0 24.6,584.5 24.6,555.5' fill='rgb(226,178,118)' fill-opacity='0.020'/%3E%3Cpolygon points='105.1,541.0 130.3,555.5 130.3,584.5 105.1,599.0 80.0,584.5 80.0,555.5' fill='rgb(226,178,118)' fill-opacity='0.030'/%3E%3Cpolygon points='22.0,493.0 47.1,507.5 47.1,536.5 22.0,551.0 -3.1,536.5 -3.1,507.5' fill='rgb(226,178,118)' fill-opacity='0.025'/%3E%3Cpolygon points='-5.7,253.0 19.4,267.5 19.4,296.5 -5.7,311.0 -30.8,296.5 -30.8,267.5' fill='rgb(226,178,118)' fill-opacity='0.030'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse 58% 82% at 72% -12%, rgba(214, 150, 72, 0.22) 0%, rgba(214, 150, 72, 0.09) 32%, rgba(214, 150, 72, 0.03) 58%, transparent 76%),
+    linear-gradient(180deg, #0B0908 0%, #070605 45%, #050404 100%);
   --surface-main: #11151C;
   --surface-elevated: #151A22;
   --surface-secondary: #19202A;
@@ -58,10 +57,9 @@ html.light {
   color-scheme: light;
   --page-bg: #FAF9F5;
   --page-bg-gradient:
-    radial-gradient(ellipse 1000px 720px at 76% 12%, rgba(16, 185, 129, 0.04) 0%, rgba(52, 211, 153, 0.018) 45%, transparent 75%),
-    radial-gradient(ellipse 750px 480px at 15% -2%, rgba(6, 95, 70, 0.018) 0%, transparent 60%),
-    radial-gradient(ellipse 900px 500px at 50% 65%, rgba(16, 185, 129, 0.008) 0%, transparent 70%),
-    linear-gradient(180deg, #FAF9F5 0%, #F5F3EC 45%, #EFECE3 100%);
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 900' preserveAspectRatio='xMidYMin slice'%3E%3Cpolygon points='800.0,161.0 825.1,175.5 825.1,204.5 800.0,219.0 774.9,204.5 774.9,175.5' fill='rgb(150,104,48)' fill-opacity='0.063'/%3E%3Cpolygon points='855.4,161.0 880.5,175.5 880.5,204.5 855.4,219.0 830.3,204.5 830.3,175.5' fill='rgb(150,104,48)' fill-opacity='0.045'/%3E%3Cpolygon points='910.9,161.0 936.0,175.5 936.0,204.5 910.9,219.0 885.7,204.5 885.7,175.5' fill='rgb(150,104,48)' fill-opacity='0.027'/%3E%3Cpolygon points='772.3,209.0 797.4,223.5 797.4,252.5 772.3,267.0 747.2,252.5 747.2,223.5' fill='rgb(150,104,48)' fill-opacity='0.045'/%3E%3Cpolygon points='827.7,209.0 852.8,223.5 852.8,252.5 827.7,267.0 802.6,252.5 802.6,223.5' fill='rgb(150,104,48)' fill-opacity='0.081'/%3E%3Cpolygon points='883.1,209.0 908.3,223.5 908.3,252.5 883.1,267.0 858.0,252.5 858.0,223.5' fill='rgb(150,104,48)' fill-opacity='0.054'/%3E%3Cpolygon points='938.6,209.0 963.7,223.5 963.7,252.5 938.6,267.0 913.4,252.5 913.4,223.5' fill='rgb(150,104,48)' fill-opacity='0.036'/%3E%3Cpolygon points='800.0,257.0 825.1,271.5 825.1,300.5 800.0,315.0 774.9,300.5 774.9,271.5' fill='rgb(150,104,48)' fill-opacity='0.036'/%3E%3Cpolygon points='855.4,257.0 880.5,271.5 880.5,300.5 855.4,315.0 830.3,300.5 830.3,271.5' fill='rgb(150,104,48)' fill-opacity='0.063'/%3E%3Cpolygon points='910.9,257.0 936.0,271.5 936.0,300.5 910.9,315.0 885.7,300.5 885.7,271.5' fill='rgb(150,104,48)' fill-opacity='0.072'/%3E%3Cpolygon points='772.3,305.0 797.4,319.5 797.4,348.5 772.3,363.0 747.2,348.5 747.2,319.5' fill='rgb(150,104,48)' fill-opacity='0.027'/%3E%3Cpolygon points='883.1,305.0 908.3,319.5 908.3,348.5 883.1,363.0 858.0,348.5 858.0,319.5' fill='rgb(150,104,48)' fill-opacity='0.045'/%3E%3Cpolygon points='938.6,305.0 963.7,319.5 963.7,348.5 938.6,363.0 913.4,348.5 913.4,319.5' fill='rgb(150,104,48)' fill-opacity='0.054'/%3E%3Cpolygon points='716.9,113.0 742.0,127.5 742.0,156.5 716.9,171.0 691.7,156.5 691.7,127.5' fill='rgb(150,104,48)' fill-opacity='0.027'/%3E%3Cpolygon points='827.7,113.0 852.8,127.5 852.8,156.5 827.7,171.0 802.6,156.5 802.6,127.5' fill='rgb(150,104,48)' fill-opacity='0.036'/%3E%3Cpolygon points='938.6,113.0 963.7,127.5 963.7,156.5 938.6,171.0 913.4,156.5 913.4,127.5' fill='rgb(150,104,48)' fill-opacity='0.023'/%3E%3Cpolygon points='689.1,257.0 714.3,271.5 714.3,300.5 689.1,315.0 664.0,300.5 664.0,271.5' fill='rgb(150,104,48)' fill-opacity='0.018'/%3E%3Cpolygon points='855.4,65.0 880.5,79.5 880.5,108.5 855.4,123.0 830.3,108.5 830.3,79.5' fill='rgb(150,104,48)' fill-opacity='0.018'/%3E%3Cpolygon points='966.3,353.0 991.4,367.5 991.4,396.5 966.3,411.0 941.2,396.5 941.2,367.5' fill='rgb(150,104,48)' fill-opacity='0.027'/%3E%3Cpolygon points='22.0,301.0 47.1,315.5 47.1,344.5 22.0,359.0 -3.1,344.5 -3.1,315.5' fill='rgb(150,104,48)' fill-opacity='0.054'/%3E%3Cpolygon points='77.4,301.0 102.5,315.5 102.5,344.5 77.4,359.0 52.3,344.5 52.3,315.5' fill='rgb(150,104,48)' fill-opacity='0.036'/%3E%3Cpolygon points='-5.7,349.0 19.4,363.5 19.4,392.5 -5.7,407.0 -30.8,392.5 -30.8,363.5' fill='rgb(150,104,48)' fill-opacity='0.045'/%3E%3Cpolygon points='49.7,349.0 74.8,363.5 74.8,392.5 49.7,407.0 24.6,392.5 24.6,363.5' fill='rgb(150,104,48)' fill-opacity='0.063'/%3E%3Cpolygon points='22.0,397.0 47.1,411.5 47.1,440.5 22.0,455.0 -3.1,440.5 -3.1,411.5' fill='rgb(150,104,48)' fill-opacity='0.036'/%3E%3Cpolygon points='77.4,397.0 102.5,411.5 102.5,440.5 77.4,455.0 52.3,440.5 52.3,411.5' fill='rgb(150,104,48)' fill-opacity='0.045'/%3E%3Cpolygon points='-5.7,445.0 19.4,459.5 19.4,488.5 -5.7,503.0 -30.8,488.5 -30.8,459.5' fill='rgb(150,104,48)' fill-opacity='0.027'/%3E%3Cpolygon points='49.7,445.0 74.8,459.5 74.8,488.5 49.7,503.0 24.6,488.5 24.6,459.5' fill='rgb(150,104,48)' fill-opacity='0.036'/%3E%3Cpolygon points='49.7,541.0 74.8,555.5 74.8,584.5 49.7,599.0 24.6,584.5 24.6,555.5' fill='rgb(150,104,48)' fill-opacity='0.018'/%3E%3Cpolygon points='105.1,541.0 130.3,555.5 130.3,584.5 105.1,599.0 80.0,584.5 80.0,555.5' fill='rgb(150,104,48)' fill-opacity='0.027'/%3E%3Cpolygon points='22.0,493.0 47.1,507.5 47.1,536.5 22.0,551.0 -3.1,536.5 -3.1,507.5' fill='rgb(150,104,48)' fill-opacity='0.023'/%3E%3Cpolygon points='-5.7,253.0 19.4,267.5 19.4,296.5 -5.7,311.0 -30.8,296.5 -30.8,267.5' fill='rgb(150,104,48)' fill-opacity='0.027'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse 58% 82% at 72% -12%, rgba(190, 128, 52, 0.12) 0%, rgba(190, 128, 52, 0.05) 36%, transparent 74%),
+    linear-gradient(180deg, #FCFAF6 0%, #F8F5EE 45%, #F3EFE6 100%);
   --surface-main: #FFFFFF;
   --surface-elevated: #FFFFFF;
   --surface-secondary: #F3F1E9;
@@ -94,12 +92,11 @@ html.light {
 
 html.dark {
   color-scheme: dark;
-  --page-bg: #06080B;
+  --page-bg: #070605;
   --page-bg-gradient:
-    radial-gradient(ellipse 1000px 720px at 76% 12%, rgba(16, 185, 129, 0.16) 0%, rgba(5, 150, 105, 0.08) 45%, rgba(4, 120, 87, 0.015) 75%, transparent 100%),
-    radial-gradient(ellipse 750px 480px at 15% -2%, rgba(6, 95, 70, 0.10) 0%, transparent 60%),
-    radial-gradient(ellipse 900px 500px at 50% 65%, rgba(16, 185, 129, 0.02) 0%, transparent 70%),
-    linear-gradient(180deg, #090C11 0%, #06080B 45%, #050608 100%);
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 900' preserveAspectRatio='xMidYMin slice'%3E%3Cpolygon points='800.0,161.0 825.1,175.5 825.1,204.5 800.0,219.0 774.9,204.5 774.9,175.5' fill='rgb(226,178,118)' fill-opacity='0.070'/%3E%3Cpolygon points='855.4,161.0 880.5,175.5 880.5,204.5 855.4,219.0 830.3,204.5 830.3,175.5' fill='rgb(226,178,118)' fill-opacity='0.050'/%3E%3Cpolygon points='910.9,161.0 936.0,175.5 936.0,204.5 910.9,219.0 885.7,204.5 885.7,175.5' fill='rgb(226,178,118)' fill-opacity='0.030'/%3E%3Cpolygon points='772.3,209.0 797.4,223.5 797.4,252.5 772.3,267.0 747.2,252.5 747.2,223.5' fill='rgb(226,178,118)' fill-opacity='0.050'/%3E%3Cpolygon points='827.7,209.0 852.8,223.5 852.8,252.5 827.7,267.0 802.6,252.5 802.6,223.5' fill='rgb(226,178,118)' fill-opacity='0.090'/%3E%3Cpolygon points='883.1,209.0 908.3,223.5 908.3,252.5 883.1,267.0 858.0,252.5 858.0,223.5' fill='rgb(226,178,118)' fill-opacity='0.060'/%3E%3Cpolygon points='938.6,209.0 963.7,223.5 963.7,252.5 938.6,267.0 913.4,252.5 913.4,223.5' fill='rgb(226,178,118)' fill-opacity='0.040'/%3E%3Cpolygon points='800.0,257.0 825.1,271.5 825.1,300.5 800.0,315.0 774.9,300.5 774.9,271.5' fill='rgb(226,178,118)' fill-opacity='0.040'/%3E%3Cpolygon points='855.4,257.0 880.5,271.5 880.5,300.5 855.4,315.0 830.3,300.5 830.3,271.5' fill='rgb(226,178,118)' fill-opacity='0.070'/%3E%3Cpolygon points='910.9,257.0 936.0,271.5 936.0,300.5 910.9,315.0 885.7,300.5 885.7,271.5' fill='rgb(226,178,118)' fill-opacity='0.080'/%3E%3Cpolygon points='772.3,305.0 797.4,319.5 797.4,348.5 772.3,363.0 747.2,348.5 747.2,319.5' fill='rgb(226,178,118)' fill-opacity='0.030'/%3E%3Cpolygon points='883.1,305.0 908.3,319.5 908.3,348.5 883.1,363.0 858.0,348.5 858.0,319.5' fill='rgb(226,178,118)' fill-opacity='0.050'/%3E%3Cpolygon points='938.6,305.0 963.7,319.5 963.7,348.5 938.6,363.0 913.4,348.5 913.4,319.5' fill='rgb(226,178,118)' fill-opacity='0.060'/%3E%3Cpolygon points='716.9,113.0 742.0,127.5 742.0,156.5 716.9,171.0 691.7,156.5 691.7,127.5' fill='rgb(226,178,118)' fill-opacity='0.030'/%3E%3Cpolygon points='827.7,113.0 852.8,127.5 852.8,156.5 827.7,171.0 802.6,156.5 802.6,127.5' fill='rgb(226,178,118)' fill-opacity='0.040'/%3E%3Cpolygon points='938.6,113.0 963.7,127.5 963.7,156.5 938.6,171.0 913.4,156.5 913.4,127.5' fill='rgb(226,178,118)' fill-opacity='0.025'/%3E%3Cpolygon points='689.1,257.0 714.3,271.5 714.3,300.5 689.1,315.0 664.0,300.5 664.0,271.5' fill='rgb(226,178,118)' fill-opacity='0.020'/%3E%3Cpolygon points='855.4,65.0 880.5,79.5 880.5,108.5 855.4,123.0 830.3,108.5 830.3,79.5' fill='rgb(226,178,118)' fill-opacity='0.020'/%3E%3Cpolygon points='966.3,353.0 991.4,367.5 991.4,396.5 966.3,411.0 941.2,396.5 941.2,367.5' fill='rgb(226,178,118)' fill-opacity='0.030'/%3E%3Cpolygon points='22.0,301.0 47.1,315.5 47.1,344.5 22.0,359.0 -3.1,344.5 -3.1,315.5' fill='rgb(226,178,118)' fill-opacity='0.060'/%3E%3Cpolygon points='77.4,301.0 102.5,315.5 102.5,344.5 77.4,359.0 52.3,344.5 52.3,315.5' fill='rgb(226,178,118)' fill-opacity='0.040'/%3E%3Cpolygon points='-5.7,349.0 19.4,363.5 19.4,392.5 -5.7,407.0 -30.8,392.5 -30.8,363.5' fill='rgb(226,178,118)' fill-opacity='0.050'/%3E%3Cpolygon points='49.7,349.0 74.8,363.5 74.8,392.5 49.7,407.0 24.6,392.5 24.6,363.5' fill='rgb(226,178,118)' fill-opacity='0.070'/%3E%3Cpolygon points='22.0,397.0 47.1,411.5 47.1,440.5 22.0,455.0 -3.1,440.5 -3.1,411.5' fill='rgb(226,178,118)' fill-opacity='0.040'/%3E%3Cpolygon points='77.4,397.0 102.5,411.5 102.5,440.5 77.4,455.0 52.3,440.5 52.3,411.5' fill='rgb(226,178,118)' fill-opacity='0.050'/%3E%3Cpolygon points='-5.7,445.0 19.4,459.5 19.4,488.5 -5.7,503.0 -30.8,488.5 -30.8,459.5' fill='rgb(226,178,118)' fill-opacity='0.030'/%3E%3Cpolygon points='49.7,445.0 74.8,459.5 74.8,488.5 49.7,503.0 24.6,488.5 24.6,459.5' fill='rgb(226,178,118)' fill-opacity='0.040'/%3E%3Cpolygon points='49.7,541.0 74.8,555.5 74.8,584.5 49.7,599.0 24.6,584.5 24.6,555.5' fill='rgb(226,178,118)' fill-opacity='0.020'/%3E%3Cpolygon points='105.1,541.0 130.3,555.5 130.3,584.5 105.1,599.0 80.0,584.5 80.0,555.5' fill='rgb(226,178,118)' fill-opacity='0.030'/%3E%3Cpolygon points='22.0,493.0 47.1,507.5 47.1,536.5 22.0,551.0 -3.1,536.5 -3.1,507.5' fill='rgb(226,178,118)' fill-opacity='0.025'/%3E%3Cpolygon points='-5.7,253.0 19.4,267.5 19.4,296.5 -5.7,311.0 -30.8,296.5 -30.8,267.5' fill='rgb(226,178,118)' fill-opacity='0.030'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse 58% 82% at 72% -12%, rgba(214, 150, 72, 0.22) 0%, rgba(214, 150, 72, 0.09) 32%, rgba(214, 150, 72, 0.03) 58%, transparent 76%),
+    linear-gradient(180deg, #0B0908 0%, #070605 45%, #050404 100%);
   --surface-main: #11151C;
   --surface-elevated: #151A22;
   --surface-secondary: #19202A;
@@ -1119,25 +1116,25 @@ button:hover .smooth-img-zoom {
   color: #090B0E;
   background: linear-gradient(180deg, #10B981 0%, #059669 100%);
   border: 1px solid rgba(52, 211, 153, 0.4);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 4px 14px rgba(16, 185, 129, 0.28);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28);
   font-weight: 600;
 }
 
 .hero-button-primary:hover {
   background: linear-gradient(180deg, #34D399 0%, #10B981 100%);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 6px 20px rgba(16, 185, 129, 0.4);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
 html.light .hero-button-primary {
   color: #FFFFFF;
   background: linear-gradient(180deg, #065F46 0%, #044E39 100%);
   border: 1px solid rgba(6, 95, 70, 0.3);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 4px 12px rgba(6, 95, 70, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
 
 html.light .hero-button-primary:hover {
   background: linear-gradient(180deg, #047857 0%, #065F46 100%);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 6px 18px rgba(6, 95, 70, 0.28);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .hero-button-secondary,
@@ -1821,18 +1818,23 @@ html.theme-transitioning a {
   :root,
   html.dark {
     --page-bg-gradient:
-      radial-gradient(ellipse 300px 220px at 80% 8%, rgba(16, 185, 129, 0.10) 0%, rgba(5, 150, 105, 0.03) 50%, transparent 80%),
-      linear-gradient(180deg, #090C11 0%, #06080B 35%, #050608 100%);
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 760'%3E%3Cpolygon points='418.0,72.5 438.4,84.3 438.4,107.8 418.0,119.5 397.6,107.8 397.6,84.3' fill='rgb(226,178,118)' fill-opacity='0.07'/%3E%3Cpolygon points='463.0,72.5 483.4,84.3 483.4,107.8 463.0,119.5 442.7,107.8 442.7,84.3' fill='rgb(226,178,118)' fill-opacity='0.05'/%3E%3Cpolygon points='395.5,111.5 415.8,123.3 415.8,146.8 395.5,158.5 375.1,146.8 375.1,123.3' fill='rgb(226,178,118)' fill-opacity='0.05'/%3E%3Cpolygon points='440.5,111.5 460.9,123.3 460.9,146.8 440.5,158.5 420.2,146.8 420.2,123.3' fill='rgb(226,178,118)' fill-opacity='0.08'/%3E%3Cpolygon points='485.5,111.5 505.9,123.3 505.9,146.8 485.5,158.5 465.2,146.8 465.2,123.3' fill='rgb(226,178,118)' fill-opacity='0.05'/%3E%3Cpolygon points='418.0,150.5 438.4,162.3 438.4,185.8 418.0,197.5 397.6,185.8 397.6,162.3' fill='rgb(226,178,118)' fill-opacity='0.04'/%3E%3Cpolygon points='463.0,150.5 483.4,162.3 483.4,185.8 463.0,197.5 442.7,185.8 442.7,162.3' fill='rgb(226,178,118)' fill-opacity='0.06'/%3E%3Cpolygon points='395.5,189.5 415.8,201.3 415.8,224.8 395.5,236.5 375.1,224.8 375.1,201.3' fill='rgb(226,178,118)' fill-opacity='0.03'/%3E%3Cpolygon points='485.5,189.5 505.9,201.3 505.9,224.8 485.5,236.5 465.2,224.8 465.2,201.3' fill='rgb(226,178,118)' fill-opacity='0.035'/%3E%3Cpolygon points='350.5,33.5 370.8,45.3 370.8,68.8 350.5,80.5 330.1,68.8 330.1,45.3' fill='rgb(226,178,118)' fill-opacity='0.03'/%3E%3Cpolygon points='440.5,33.5 460.9,45.3 460.9,68.8 440.5,80.5 420.2,68.8 420.2,45.3' fill='rgb(226,178,118)' fill-opacity='0.04'/%3E%3Cpolygon points='350.5,111.5 370.8,123.3 370.8,146.8 350.5,158.5 330.1,146.8 330.1,123.3' fill='rgb(226,178,118)' fill-opacity='0.025'/%3E%3Cpolygon points='14.0,496.5 34.4,508.3 34.4,531.8 14.0,543.5 -6.4,531.8 -6.4,508.3' fill='rgb(226,178,118)' fill-opacity='0.05'/%3E%3Cpolygon points='59.0,496.5 79.4,508.3 79.4,531.8 59.0,543.5 38.7,531.8 38.7,508.3' fill='rgb(226,178,118)' fill-opacity='0.03'/%3E%3Cpolygon points='-8.5,535.5 11.8,547.3 11.8,570.8 -8.5,582.5 -28.9,570.8 -28.9,547.3' fill='rgb(226,178,118)' fill-opacity='0.04'/%3E%3Cpolygon points='36.5,535.5 56.9,547.3 56.9,570.8 36.5,582.5 16.2,570.8 16.2,547.3' fill='rgb(226,178,118)' fill-opacity='0.06'/%3E%3Cpolygon points='14.0,574.5 34.4,586.3 34.4,609.8 14.0,621.5 -6.4,609.8 -6.4,586.3' fill='rgb(226,178,118)' fill-opacity='0.035'/%3E%3Cpolygon points='59.0,574.5 79.4,586.3 79.4,609.8 59.0,621.5 38.7,609.8 38.7,586.3' fill='rgb(226,178,118)' fill-opacity='0.04'/%3E%3Cpolygon points='-8.5,613.5 11.8,625.3 11.8,648.8 -8.5,660.5 -28.9,648.8 -28.9,625.3' fill='rgb(226,178,118)' fill-opacity='0.025'/%3E%3Cpolygon points='36.5,613.5 56.9,625.3 56.9,648.8 36.5,660.5 16.2,648.8 16.2,625.3' fill='rgb(226,178,118)' fill-opacity='0.03'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse 120% 78% at 88% -6%, rgba(214, 150, 72, 0.22) 0%, rgba(214, 150, 72, 0.09) 34%, rgba(214, 150, 72, 0.03) 58%, transparent 76%),
+    linear-gradient(180deg, #0B0908 0px, #070605 640px, #070605 100%);
   }
 
   html.light {
     --page-bg-gradient:
-      radial-gradient(ellipse 300px 220px at 80% 8%, rgba(16, 185, 129, 0.025) 0%, rgba(52, 211, 153, 0.008) 50%, transparent 80%),
-      linear-gradient(180deg, #FAF9F5 0%, #F5F3EC 45%, #EFECE3 100%);
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 760'%3E%3Cpolygon points='418.0,72.5 438.4,84.3 438.4,107.8 418.0,119.5 397.6,107.8 397.6,84.3' fill='rgb(150,104,48)' fill-opacity='0.07'/%3E%3Cpolygon points='463.0,72.5 483.4,84.3 483.4,107.8 463.0,119.5 442.7,107.8 442.7,84.3' fill='rgb(150,104,48)' fill-opacity='0.05'/%3E%3Cpolygon points='395.5,111.5 415.8,123.3 415.8,146.8 395.5,158.5 375.1,146.8 375.1,123.3' fill='rgb(150,104,48)' fill-opacity='0.05'/%3E%3Cpolygon points='440.5,111.5 460.9,123.3 460.9,146.8 440.5,158.5 420.2,146.8 420.2,123.3' fill='rgb(150,104,48)' fill-opacity='0.08'/%3E%3Cpolygon points='485.5,111.5 505.9,123.3 505.9,146.8 485.5,158.5 465.2,146.8 465.2,123.3' fill='rgb(150,104,48)' fill-opacity='0.05'/%3E%3Cpolygon points='418.0,150.5 438.4,162.3 438.4,185.8 418.0,197.5 397.6,185.8 397.6,162.3' fill='rgb(150,104,48)' fill-opacity='0.04'/%3E%3Cpolygon points='463.0,150.5 483.4,162.3 483.4,185.8 463.0,197.5 442.7,185.8 442.7,162.3' fill='rgb(150,104,48)' fill-opacity='0.06'/%3E%3Cpolygon points='395.5,189.5 415.8,201.3 415.8,224.8 395.5,236.5 375.1,224.8 375.1,201.3' fill='rgb(150,104,48)' fill-opacity='0.03'/%3E%3Cpolygon points='485.5,189.5 505.9,201.3 505.9,224.8 485.5,236.5 465.2,224.8 465.2,201.3' fill='rgb(150,104,48)' fill-opacity='0.035'/%3E%3Cpolygon points='350.5,33.5 370.8,45.3 370.8,68.8 350.5,80.5 330.1,68.8 330.1,45.3' fill='rgb(150,104,48)' fill-opacity='0.03'/%3E%3Cpolygon points='440.5,33.5 460.9,45.3 460.9,68.8 440.5,80.5 420.2,68.8 420.2,45.3' fill='rgb(150,104,48)' fill-opacity='0.04'/%3E%3Cpolygon points='350.5,111.5 370.8,123.3 370.8,146.8 350.5,158.5 330.1,146.8 330.1,123.3' fill='rgb(150,104,48)' fill-opacity='0.025'/%3E%3Cpolygon points='14.0,496.5 34.4,508.3 34.4,531.8 14.0,543.5 -6.4,531.8 -6.4,508.3' fill='rgb(150,104,48)' fill-opacity='0.05'/%3E%3Cpolygon points='59.0,496.5 79.4,508.3 79.4,531.8 59.0,543.5 38.7,531.8 38.7,508.3' fill='rgb(150,104,48)' fill-opacity='0.03'/%3E%3Cpolygon points='-8.5,535.5 11.8,547.3 11.8,570.8 -8.5,582.5 -28.9,570.8 -28.9,547.3' fill='rgb(150,104,48)' fill-opacity='0.04'/%3E%3Cpolygon points='36.5,535.5 56.9,547.3 56.9,570.8 36.5,582.5 16.2,570.8 16.2,547.3' fill='rgb(150,104,48)' fill-opacity='0.06'/%3E%3Cpolygon points='14.0,574.5 34.4,586.3 34.4,609.8 14.0,621.5 -6.4,609.8 -6.4,586.3' fill='rgb(150,104,48)' fill-opacity='0.035'/%3E%3Cpolygon points='59.0,574.5 79.4,586.3 79.4,609.8 59.0,621.5 38.7,609.8 38.7,586.3' fill='rgb(150,104,48)' fill-opacity='0.04'/%3E%3Cpolygon points='-8.5,613.5 11.8,625.3 11.8,648.8 -8.5,660.5 -28.9,648.8 -28.9,625.3' fill='rgb(150,104,48)' fill-opacity='0.025'/%3E%3Cpolygon points='36.5,613.5 56.9,625.3 56.9,648.8 36.5,660.5 16.2,648.8 16.2,625.3' fill='rgb(150,104,48)' fill-opacity='0.03'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse 120% 78% at 88% -6%, rgba(190, 128, 52, 0.12) 0%, rgba(190, 128, 52, 0.05) 36%, transparent 74%),
+    linear-gradient(180deg, #FCFAF6 0px, #F8F5EE 640px, #F8F5EE 100%);
   }
 
   body {
     background-attachment: scroll;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 100% auto, 100% 640px, 100% 100%;
   }
 
   .site-nav-inner {
@@ -1887,14 +1889,16 @@ html.theme-transitioning a {
   :root,
   html.dark {
     --page-bg-gradient:
-      radial-gradient(ellipse 220px 160px at 78% 6%, rgba(16, 185, 129, 0.08) 0%, rgba(5, 150, 105, 0.02) 50%, transparent 80%),
-      linear-gradient(180deg, #090C11 0%, #06080B 35%, #050608 100%);
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 760'%3E%3Cpolygon points='418.0,72.5 438.4,84.3 438.4,107.8 418.0,119.5 397.6,107.8 397.6,84.3' fill='rgb(226,178,118)' fill-opacity='0.07'/%3E%3Cpolygon points='463.0,72.5 483.4,84.3 483.4,107.8 463.0,119.5 442.7,107.8 442.7,84.3' fill='rgb(226,178,118)' fill-opacity='0.05'/%3E%3Cpolygon points='395.5,111.5 415.8,123.3 415.8,146.8 395.5,158.5 375.1,146.8 375.1,123.3' fill='rgb(226,178,118)' fill-opacity='0.05'/%3E%3Cpolygon points='440.5,111.5 460.9,123.3 460.9,146.8 440.5,158.5 420.2,146.8 420.2,123.3' fill='rgb(226,178,118)' fill-opacity='0.08'/%3E%3Cpolygon points='485.5,111.5 505.9,123.3 505.9,146.8 485.5,158.5 465.2,146.8 465.2,123.3' fill='rgb(226,178,118)' fill-opacity='0.05'/%3E%3Cpolygon points='418.0,150.5 438.4,162.3 438.4,185.8 418.0,197.5 397.6,185.8 397.6,162.3' fill='rgb(226,178,118)' fill-opacity='0.04'/%3E%3Cpolygon points='463.0,150.5 483.4,162.3 483.4,185.8 463.0,197.5 442.7,185.8 442.7,162.3' fill='rgb(226,178,118)' fill-opacity='0.06'/%3E%3Cpolygon points='395.5,189.5 415.8,201.3 415.8,224.8 395.5,236.5 375.1,224.8 375.1,201.3' fill='rgb(226,178,118)' fill-opacity='0.03'/%3E%3Cpolygon points='485.5,189.5 505.9,201.3 505.9,224.8 485.5,236.5 465.2,224.8 465.2,201.3' fill='rgb(226,178,118)' fill-opacity='0.035'/%3E%3Cpolygon points='350.5,33.5 370.8,45.3 370.8,68.8 350.5,80.5 330.1,68.8 330.1,45.3' fill='rgb(226,178,118)' fill-opacity='0.03'/%3E%3Cpolygon points='440.5,33.5 460.9,45.3 460.9,68.8 440.5,80.5 420.2,68.8 420.2,45.3' fill='rgb(226,178,118)' fill-opacity='0.04'/%3E%3Cpolygon points='350.5,111.5 370.8,123.3 370.8,146.8 350.5,158.5 330.1,146.8 330.1,123.3' fill='rgb(226,178,118)' fill-opacity='0.025'/%3E%3Cpolygon points='14.0,496.5 34.4,508.3 34.4,531.8 14.0,543.5 -6.4,531.8 -6.4,508.3' fill='rgb(226,178,118)' fill-opacity='0.05'/%3E%3Cpolygon points='59.0,496.5 79.4,508.3 79.4,531.8 59.0,543.5 38.7,531.8 38.7,508.3' fill='rgb(226,178,118)' fill-opacity='0.03'/%3E%3Cpolygon points='-8.5,535.5 11.8,547.3 11.8,570.8 -8.5,582.5 -28.9,570.8 -28.9,547.3' fill='rgb(226,178,118)' fill-opacity='0.04'/%3E%3Cpolygon points='36.5,535.5 56.9,547.3 56.9,570.8 36.5,582.5 16.2,570.8 16.2,547.3' fill='rgb(226,178,118)' fill-opacity='0.06'/%3E%3Cpolygon points='14.0,574.5 34.4,586.3 34.4,609.8 14.0,621.5 -6.4,609.8 -6.4,586.3' fill='rgb(226,178,118)' fill-opacity='0.035'/%3E%3Cpolygon points='59.0,574.5 79.4,586.3 79.4,609.8 59.0,621.5 38.7,609.8 38.7,586.3' fill='rgb(226,178,118)' fill-opacity='0.04'/%3E%3Cpolygon points='-8.5,613.5 11.8,625.3 11.8,648.8 -8.5,660.5 -28.9,648.8 -28.9,625.3' fill='rgb(226,178,118)' fill-opacity='0.025'/%3E%3Cpolygon points='36.5,613.5 56.9,625.3 56.9,648.8 36.5,660.5 16.2,648.8 16.2,625.3' fill='rgb(226,178,118)' fill-opacity='0.03'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse 120% 78% at 88% -6%, rgba(214, 150, 72, 0.22) 0%, rgba(214, 150, 72, 0.09) 34%, rgba(214, 150, 72, 0.03) 58%, transparent 76%),
+    linear-gradient(180deg, #0B0908 0px, #070605 640px, #070605 100%);
   }
 
   html.light {
     --page-bg-gradient:
-      radial-gradient(ellipse 220px 160px at 78% 6%, rgba(16, 185, 129, 0.02) 0%, transparent 75%),
-      linear-gradient(180deg, #FAF9F5 0%, #F5F3EC 45%, #EFECE3 100%);
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 760'%3E%3Cpolygon points='418.0,72.5 438.4,84.3 438.4,107.8 418.0,119.5 397.6,107.8 397.6,84.3' fill='rgb(150,104,48)' fill-opacity='0.07'/%3E%3Cpolygon points='463.0,72.5 483.4,84.3 483.4,107.8 463.0,119.5 442.7,107.8 442.7,84.3' fill='rgb(150,104,48)' fill-opacity='0.05'/%3E%3Cpolygon points='395.5,111.5 415.8,123.3 415.8,146.8 395.5,158.5 375.1,146.8 375.1,123.3' fill='rgb(150,104,48)' fill-opacity='0.05'/%3E%3Cpolygon points='440.5,111.5 460.9,123.3 460.9,146.8 440.5,158.5 420.2,146.8 420.2,123.3' fill='rgb(150,104,48)' fill-opacity='0.08'/%3E%3Cpolygon points='485.5,111.5 505.9,123.3 505.9,146.8 485.5,158.5 465.2,146.8 465.2,123.3' fill='rgb(150,104,48)' fill-opacity='0.05'/%3E%3Cpolygon points='418.0,150.5 438.4,162.3 438.4,185.8 418.0,197.5 397.6,185.8 397.6,162.3' fill='rgb(150,104,48)' fill-opacity='0.04'/%3E%3Cpolygon points='463.0,150.5 483.4,162.3 483.4,185.8 463.0,197.5 442.7,185.8 442.7,162.3' fill='rgb(150,104,48)' fill-opacity='0.06'/%3E%3Cpolygon points='395.5,189.5 415.8,201.3 415.8,224.8 395.5,236.5 375.1,224.8 375.1,201.3' fill='rgb(150,104,48)' fill-opacity='0.03'/%3E%3Cpolygon points='485.5,189.5 505.9,201.3 505.9,224.8 485.5,236.5 465.2,224.8 465.2,201.3' fill='rgb(150,104,48)' fill-opacity='0.035'/%3E%3Cpolygon points='350.5,33.5 370.8,45.3 370.8,68.8 350.5,80.5 330.1,68.8 330.1,45.3' fill='rgb(150,104,48)' fill-opacity='0.03'/%3E%3Cpolygon points='440.5,33.5 460.9,45.3 460.9,68.8 440.5,80.5 420.2,68.8 420.2,45.3' fill='rgb(150,104,48)' fill-opacity='0.04'/%3E%3Cpolygon points='350.5,111.5 370.8,123.3 370.8,146.8 350.5,158.5 330.1,146.8 330.1,123.3' fill='rgb(150,104,48)' fill-opacity='0.025'/%3E%3Cpolygon points='14.0,496.5 34.4,508.3 34.4,531.8 14.0,543.5 -6.4,531.8 -6.4,508.3' fill='rgb(150,104,48)' fill-opacity='0.05'/%3E%3Cpolygon points='59.0,496.5 79.4,508.3 79.4,531.8 59.0,543.5 38.7,531.8 38.7,508.3' fill='rgb(150,104,48)' fill-opacity='0.03'/%3E%3Cpolygon points='-8.5,535.5 11.8,547.3 11.8,570.8 -8.5,582.5 -28.9,570.8 -28.9,547.3' fill='rgb(150,104,48)' fill-opacity='0.04'/%3E%3Cpolygon points='36.5,535.5 56.9,547.3 56.9,570.8 36.5,582.5 16.2,570.8 16.2,547.3' fill='rgb(150,104,48)' fill-opacity='0.06'/%3E%3Cpolygon points='14.0,574.5 34.4,586.3 34.4,609.8 14.0,621.5 -6.4,609.8 -6.4,586.3' fill='rgb(150,104,48)' fill-opacity='0.035'/%3E%3Cpolygon points='59.0,574.5 79.4,586.3 79.4,609.8 59.0,621.5 38.7,609.8 38.7,586.3' fill='rgb(150,104,48)' fill-opacity='0.04'/%3E%3Cpolygon points='-8.5,613.5 11.8,625.3 11.8,648.8 -8.5,660.5 -28.9,648.8 -28.9,625.3' fill='rgb(150,104,48)' fill-opacity='0.025'/%3E%3Cpolygon points='36.5,613.5 56.9,625.3 56.9,648.8 36.5,660.5 16.2,648.8 16.2,625.3' fill='rgb(150,104,48)' fill-opacity='0.03'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse 120% 78% at 88% -6%, rgba(190, 128, 52, 0.12) 0%, rgba(190, 128, 52, 0.05) 36%, transparent 74%),
+    linear-gradient(180deg, #FCFAF6 0px, #F8F5EE 640px, #F8F5EE 100%);
   }
 
   .home-hero {
@@ -2066,3 +2070,223 @@ html.theme-transitioning a {
   }
 }
 
+
+/* Skills page: a spec sheet of rows instead of cards */
+.skill-sheet,
+.skill-sheet-summary {
+  --skill-mono: var(--font-geist-mono, "Geist Mono"), ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+.skill-sheet-summary {
+  margin: 24px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--skill-mono);
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.skill-sheet {
+  border-top: 1px solid var(--border-default);
+}
+
+.skill-sheet-group {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: 48px;
+  padding: 48px 0;
+  border-bottom: 1px solid var(--border-default);
+  scroll-margin-top: calc(var(--nav-height) + 16px);
+}
+
+.skill-sheet-path {
+  margin: 0 0 12px;
+  font-family: var(--skill-mono);
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--accent-strong);
+}
+
+.skill-sheet-title {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: clamp(1.5rem, 2.4vw, 1.875rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.skill-sheet-note {
+  margin: 12px 0 0;
+  max-width: 22rem;
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.skill-sheet-link {
+  margin-top: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  text-decoration: underline;
+  text-decoration-color: var(--border-default);
+  text-underline-offset: 4px;
+  transition: color var(--duration-fast) ease, text-decoration-color var(--duration-fast) ease;
+}
+
+.skill-sheet-link:hover {
+  color: var(--accent-strong);
+  text-decoration-color: currentColor;
+}
+
+.skill-sheet-arrow {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+}
+
+.skill-sheet-table {
+  min-width: 0;
+}
+
+.skill-sheet-head,
+.skill-sheet-row {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) minmax(0, 1.3fr) minmax(0, 0.9fr);
+  align-items: center;
+  column-gap: 16px;
+}
+
+.skill-sheet-head {
+  padding: 0 12px 12px;
+  border-bottom: 1px solid var(--border-default);
+  font-family: var(--skill-mono);
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-muted);
+}
+
+.skill-sheet-head > :last-child,
+.skill-sheet-used {
+  text-align: right;
+  justify-content: flex-end;
+}
+
+.skill-sheet-row {
+  min-height: 56px;
+  padding: 12px;
+  border-bottom: 1px solid var(--border-default);
+  transition: background-color var(--duration-fast) ease;
+}
+
+.skill-sheet-row:last-child {
+  border-bottom: 0;
+}
+
+.skill-sheet-row:hover {
+  background-color: color-mix(in srgb, var(--text-primary) 4%, transparent);
+}
+
+.skill-sheet-line {
+  font-family: var(--skill-mono);
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.skill-sheet-name {
+  min-width: 0;
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 24px;
+}
+
+.skill-sheet-focus {
+  min-width: 0;
+  font-family: var(--skill-mono);
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--text-secondary);
+}
+
+.skill-sheet-comment {
+  margin-right: 8px;
+  color: var(--text-muted);
+}
+
+.skill-sheet-used {
+  min-width: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  font-family: var(--skill-mono);
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.skill-sheet-used a {
+  color: var(--accent-strong);
+  text-decoration: none;
+}
+
+.skill-sheet-used a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.skill-sheet-none {
+  color: var(--text-muted);
+}
+
+@media (max-width: 899px) {
+  .skill-sheet-group {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    padding: 40px 0;
+  }
+
+  .skill-sheet-note {
+    max-width: 34rem;
+  }
+}
+
+@media (max-width: 680px) {
+  .skill-sheet-head {
+    display: none;
+  }
+
+  .skill-sheet-table {
+    border-top: 1px solid var(--border-default);
+  }
+
+  .skill-sheet-row {
+    grid-template-columns: 32px minmax(0, 1fr);
+    row-gap: 4px;
+    padding: 12px 4px;
+  }
+
+  .skill-sheet-focus,
+  .skill-sheet-used {
+    grid-column: 2;
+  }
+
+  .skill-sheet-used {
+    text-align: left;
+    justify-content: flex-start;
+  }
+
+  .skill-sheet-none {
+    display: none;
+  }
+}

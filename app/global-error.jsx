@@ -21,7 +21,7 @@ export default function GlobalError({ error, reset }) {
           <button
             type="button"
             onClick={() => reset()}
-            className="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-black font-semibold text-sm transition-all active:scale-95 shadow-lg shadow-emerald-500/20"
+            className="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-black font-semibold text-sm transition-all active:scale-95 shadow-lg"
           >
             Reload application
           </button>

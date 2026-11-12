@@ -1,10 +1,17 @@
 import React from 'react';
-import { Manrope } from 'next/font/google';
+import { Manrope, Geist_Mono } from 'next/font/google';
 
 const manrope = Manrope({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
   variable: '--font-manrope',
+  display: 'swap',
+});
+
+const geistMono = Geist_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-geist-mono',
   display: 'swap',
 });
 
@@ -132,7 +139,7 @@ export default async function RootLayout({ children }) {
   }).replace(/</g, '\\u003c');
 
   return (
-    <html lang="en" className={`dark ${manrope.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`dark ${manrope.variable} ${geistMono.variable}`} suppressHydrationWarning>
       <head>
         <link rel="author" href="/" />
         <link rel="alternate" type="text/markdown" href="/llms.txt" title="AI Site Information (llms.txt)" />

@@ -5,7 +5,10 @@ export function proxy(request: NextRequest) {
   const canonicalHost = 'www.dipeshsapkota7.com.np';
   const url = request.nextUrl.clone();
 
-  if (url.hostname.toLowerCase() !== canonicalHost || url.protocol !== 'https:') {
+  const hostname = url.hostname.toLowerCase();
+  const isLocal = hostname === 'localhost' || hostname === '127.0.0.1';
+
+  if (!isLocal && (hostname !== canonicalHost || url.protocol !== 'https:')) {
     url.hostname = canonicalHost;
     url.protocol = 'https:';
     url.port = '';
