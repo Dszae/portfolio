@@ -163,7 +163,6 @@ export default function Home() {
               </div>
 
               <figure className="hero-portrait-wrap">
-                <div className="hero-portrait-accent" aria-hidden="true" />
                 <InteractivePortrait />
               </figure>
             </div>
