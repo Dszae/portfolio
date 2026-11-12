@@ -107,7 +107,7 @@ export default function GalleryGrid({ images }) {
         {filteredImages.map((item, idx) => (
           <article
             key={item.id}
-            className="group rounded-2xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] overflow-hidden backdrop-blur flex flex-col hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all duration-300 hover:-translate-y-1 shadow-sm"
+            className="group rounded-2xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] overflow-hidden backdrop-blur flex flex-col transition-all duration-300 hover:-translate-y-1 shadow-sm"
           >
             <button
               type="button"

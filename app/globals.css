@@ -44,9 +44,9 @@
   --nav-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.35);
   --card-gradient: linear-gradient(180deg, rgba(22, 28, 36, 0.72) 0%, rgba(14, 18, 23, 0.88) 100%);
   --card-border: rgba(255, 255, 255, 0.08);
-  --card-border-hover: rgba(52, 211, 153, 0.38);
+  --card-border-hover: rgba(255, 255, 255, 0.08);
   --card-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 4px 20px rgba(0, 0, 0, 0.28);
-  --card-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 16px 36px -4px rgba(0, 0, 0, 0.5), 0 0 24px rgba(16, 185, 129, 0.08);
+  --card-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 16px 36px -4px rgba(0, 0, 0, 0.5);
   --hero-text-gradient: linear-gradient(135deg, #ECFDF5 0%, #6EE7B7 42%, #10B981 100%);
   --badge-gradient: linear-gradient(180deg, rgba(16, 185, 129, 0.14) 0%, rgba(16, 185, 129, 0.04) 100%);
   --badge-border: rgba(52, 211, 153, 0.28);
@@ -82,9 +82,9 @@ html.light {
   --nav-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06);
   --card-gradient: linear-gradient(180deg, #FFFFFF 0%, #FAFAF7 100%);
   --card-border: rgba(203, 213, 225, 0.75);
-  --card-border-hover: rgba(6, 95, 70, 0.35);
+  --card-border-hover: rgba(203, 213, 225, 0.75);
   --card-shadow: inset 0 1px 0 #FFFFFF, 0 2px 8px rgba(15, 23, 42, 0.03), 0 8px 20px -4px rgba(15, 23, 42, 0.04);
-  --card-shadow-hover: inset 0 1px 0 #FFFFFF, 0 14px 32px -4px rgba(6, 95, 70, 0.1);
+  --card-shadow-hover: inset 0 1px 0 #FFFFFF, 0 14px 32px -4px rgba(15, 23, 42, 0.06);
   --hero-text-gradient: linear-gradient(135deg, #022C22 0%, #065F46 45%, #047857 100%);
   --badge-gradient: linear-gradient(180deg, rgba(6, 95, 70, 0.08) 0%, rgba(6, 95, 70, 0.02) 100%);
   --badge-border: rgba(6, 95, 70, 0.2);
@@ -120,9 +120,9 @@ html.dark {
   --nav-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.35);
   --card-gradient: linear-gradient(180deg, rgba(22, 28, 36, 0.72) 0%, rgba(14, 18, 23, 0.88) 100%);
   --card-border: rgba(255, 255, 255, 0.08);
-  --card-border-hover: rgba(52, 211, 153, 0.38);
+  --card-border-hover: rgba(255, 255, 255, 0.08);
   --card-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 4px 20px rgba(0, 0, 0, 0.28);
-  --card-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 16px 36px -4px rgba(0, 0, 0, 0.5), 0 0 24px rgba(16, 185, 129, 0.08);
+  --card-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 16px 36px -4px rgba(0, 0, 0, 0.5);
   --hero-text-gradient: linear-gradient(135deg, #ECFDF5 0%, #6EE7B7 42%, #10B981 100%);
   --badge-gradient: linear-gradient(180deg, rgba(16, 185, 129, 0.14) 0%, rgba(16, 185, 129, 0.04) 100%);
   --badge-border: rgba(52, 211, 153, 0.28);
@@ -332,9 +332,9 @@ html {
 .theme-card:hover,
 .project-card:hover,
 .skill-pillar-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--card-border-hover);
-  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-2px);
+  border-color: var(--card-border);
+  box-shadow: var(--card-shadow);
 }
 
 .theme-card-elevated {
@@ -1326,9 +1326,9 @@ html.light .hero-portrait-accent {
 
 .hero-portrait-wrap:hover .hero-portrait-frame,
 .hero-portrait-wrap:focus-within .hero-portrait-frame {
-  border-color: var(--accent-primary);
-  box-shadow: 0 26px 60px rgb(15 23 42 / 18%), 0 0 0 8px rgb(6 95 70 / 8%);
-  transform: translateY(-8px) rotateX(var(--portrait-rotate-x)) rotateY(var(--portrait-rotate-y)) scale(1.012);
+  border-color: var(--border-default);
+  box-shadow: var(--shadow-subtle);
+  transform: translateY(-4px) rotateX(var(--portrait-rotate-x)) rotateY(var(--portrait-rotate-y));
 }
 
 .hero-portrait-wrap:hover .hero-portrait-frame::after,
@@ -1338,8 +1338,8 @@ html.light .hero-portrait-accent {
 
 .hero-portrait-wrap:hover .hero-portrait-frame::before,
 .hero-portrait-wrap:focus-within .hero-portrait-frame::before {
-  opacity: 0.9;
-  animation: portrait-scan 2.4s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  opacity: 0;
+  animation: none;
 }
 
 .hero-portrait-image {
@@ -1449,9 +1449,9 @@ html.light .hero-portrait-accent {
 }
 
 .skill-preview-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--card-border-hover);
-  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-2px);
+  border-color: var(--card-border);
+  box-shadow: var(--card-shadow);
 }
 
 .skill-preview-icon {
@@ -1590,12 +1590,12 @@ html.dark .footer-nav-link .footer-link-arrow {
 }
 
 .article-interactive-card:hover {
-  transform: translateY(-4px) scale(1.012);
-  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(6, 95, 70, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.08);
 }
 
 html.dark .article-interactive-card:hover {
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(52, 211, 153, 0.2);
+  box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.5);
 }
 
 .article-expand-grid {

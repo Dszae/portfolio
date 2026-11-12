@@ -7,6 +7,11 @@
     "nodejs_compat",
     "global_fetch_strictly_public"
   ],
+  "observability": {
+    "issues": {
+      "enabled": true
+    }
+  },
   "routes": [
     {
       "pattern": "dipeshsapkota7.com.np/*",

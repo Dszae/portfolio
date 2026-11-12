@@ -126,7 +126,7 @@ export default async function BlogPage() {
               return (
                 <li 
                   key={art.id || art.slug} 
-                  className="article-interactive-card group p-6 sm:p-8 rounded-2xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] hover:border-[#065F46]/60 dark:hover:border-[#34D399]/60 shadow-sm"
+                  className="article-interactive-card group p-6 sm:p-8 rounded-2xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] shadow-sm"
                 >
                   <div className="flex items-center gap-3 mb-4">
                     <span className="card-category-label">

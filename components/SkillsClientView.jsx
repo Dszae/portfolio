@@ -156,7 +156,7 @@ export default function SkillsClientView({ initialSkills = [], jsonLd = null }) 
                     <div>
                       
                       <div className="flex items-center gap-4 mb-4">
-                        <div className="w-12 h-12 rounded-xl bg-[#F1F5F9] dark:bg-[#181D24] border border-[#CBD5E1] dark:border-[#222933] text-[#065F46] dark:text-[#6EE7B7] flex items-center justify-center flex-shrink-0 group-hover:border-[#065F46]/50 dark:group-hover:border-[#34D399]/50 transition-colors duration-200">
+                        <div className="w-12 h-12 rounded-xl bg-[#F1F5F9] dark:bg-[#181D24] border border-[#CBD5E1] dark:border-[#222933] text-[#065F46] dark:text-[#6EE7B7] flex items-center justify-center flex-shrink-0 transition-colors duration-200">
                           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                           </svg>
@@ -177,7 +177,7 @@ export default function SkillsClientView({ initialSkills = [], jsonLd = null }) 
 
 <ul role="list" className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
                         {devSkills.map((s) => (
-                          <li key={s.id || s.name} className="p-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#222933] bg-[#F1F5F9] dark:bg-[#181D24] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#0F1216] hover:border-[#065F46]/40 dark:hover:border-[#6EE7B7]/40 transition-all duration-150 flex items-start gap-3">
+                          <li key={s.id || s.name} className="p-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#222933] bg-[#F1F5F9] dark:bg-[#181D24] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#0F1216] transition-all duration-150 flex items-start gap-3">
                             <div className="w-7 h-7 rounded-lg bg-[#FFFFFF] dark:bg-[#0F1216] border border-[#CBD5E1] dark:border-[#222933] flex items-center justify-center text-[#065F46] dark:text-[#6EE7B7] flex-shrink-0 mt-0.5">
                               <SkillIcon name={s.name} category={s.category} />
                             </div>
@@ -210,7 +210,7 @@ export default function SkillsClientView({ initialSkills = [], jsonLd = null }) 
                     <div>
                       
                       <div className="flex items-center gap-4 mb-4">
-                        <div className="w-12 h-12 rounded-xl bg-[#F1F5F9] dark:bg-[#181D24] border border-[#CBD5E1] dark:border-[#222933] text-[#065F46] dark:text-[#6EE7B7] flex items-center justify-center flex-shrink-0 group-hover:border-[#065F46]/50 dark:group-hover:border-[#34D399]/50 transition-colors duration-200">
+                        <div className="w-12 h-12 rounded-xl bg-[#F1F5F9] dark:bg-[#181D24] border border-[#CBD5E1] dark:border-[#222933] text-[#065F46] dark:text-[#6EE7B7] flex items-center justify-center flex-shrink-0 transition-colors duration-200">
                           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                           </svg>
@@ -231,7 +231,7 @@ export default function SkillsClientView({ initialSkills = [], jsonLd = null }) 
 
 <ul role="list" className="space-y-3 mb-6">
                         {mediaSkills.map((s) => (
-                          <li key={s.id || s.name} className="p-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#222933] bg-[#F1F5F9] dark:bg-[#181D24] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#0F1216] hover:border-[#065F46]/40 dark:hover:border-[#6EE7B7]/40 transition-all duration-150 flex items-start gap-3">
+                          <li key={s.id || s.name} className="p-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#222933] bg-[#F1F5F9] dark:bg-[#181D24] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#0F1216] transition-all duration-150 flex items-start gap-3">
                             <div className="w-8 h-8 rounded-lg bg-[#FFFFFF] dark:bg-[#0F1216] border border-[#CBD5E1] dark:border-[#222933] flex items-center justify-center text-[#065F46] dark:text-[#6EE7B7] flex-shrink-0 mt-0.5">
                               <SkillIcon name={s.name} category={s.category} />
                             </div>
@@ -265,7 +265,7 @@ export default function SkillsClientView({ initialSkills = [], jsonLd = null }) 
 
 <div className="lg:col-span-5">
                         <div className="flex items-center gap-4 mb-4">
-                          <div className="w-12 h-12 rounded-xl bg-[#F1F5F9] dark:bg-[#181D24] border border-[#CBD5E1] dark:border-[#222933] text-[#065F46] dark:text-[#6EE7B7] flex items-center justify-center flex-shrink-0 group-hover:border-[#065F46]/50 dark:group-hover:border-[#34D399]/50 transition-colors duration-200">
+                          <div className="w-12 h-12 rounded-xl bg-[#F1F5F9] dark:bg-[#181D24] border border-[#CBD5E1] dark:border-[#222933] text-[#065F46] dark:text-[#6EE7B7] flex items-center justify-center flex-shrink-0 transition-colors duration-200">
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
                             </svg>
@@ -298,7 +298,7 @@ export default function SkillsClientView({ initialSkills = [], jsonLd = null }) 
 <div className="lg:col-span-7">
                         <ul role="list" className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
                           {hardwareSkills.map((s) => (
-                            <li key={s.id || s.name} className="p-4 rounded-xl border border-[#CBD5E1] dark:border-[#222933] bg-[#F1F5F9] dark:bg-[#181D24] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#0F1216] hover:border-[#065F46]/40 dark:hover:border-[#6EE7B7]/40 transition-all duration-150 flex flex-col justify-between">
+                            <li key={s.id || s.name} className="p-4 rounded-xl border border-[#CBD5E1] dark:border-[#222933] bg-[#F1F5F9] dark:bg-[#181D24] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#E2E8F0] dark:hover:bg-[#0F1216] transition-all duration-150 flex flex-col justify-between">
                               <div className="w-8 h-8 rounded-lg bg-[#FFFFFF] dark:bg-[#0F1216] border border-[#CBD5E1] dark:border-[#222933] flex items-center justify-center text-[#065F46] dark:text-[#6EE7B7] mb-3">
                                 <SkillIcon name={s.name} category={s.category} />
                               </div>

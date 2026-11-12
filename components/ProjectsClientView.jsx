@@ -287,7 +287,7 @@ export default function ProjectsClientView({ initialProjects = [], jsonLd = null
                             href={project.detailUrl || project.liveUrl || '#'}
                             target={project.detailUrl ? undefined : '_blank'}
                             rel={project.detailUrl ? undefined : 'noopener noreferrer'}
-                            className="group block relative rounded-2xl overflow-hidden border border-slate-200 dark:border-[#222933] bg-slate-100 dark:bg-[#0F1216] shadow-sm hover:border-[#065F46]/60 dark:hover:border-[#34D399]/60 transition-colors focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399]"
+                            className="group block relative rounded-2xl overflow-hidden border border-slate-200 dark:border-[#222933] bg-slate-100 dark:bg-[#0F1216] shadow-sm transition-colors focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399]"
                             aria-label={project.detailUrl ? `View ${project.title} case study` : `View ${project.title}`}
                           >
                             {project.image ? (
@@ -420,7 +420,7 @@ export default function ProjectsClientView({ initialProjects = [], jsonLd = null
                     {filteredNoteworthy.map((project) => (
                       <article
                         key={project.id || project.slug}
-                        className="group flex flex-col justify-between p-6 rounded-2xl bg-white dark:bg-[#0F1216] border border-slate-200 dark:border-[#222933] shadow-sm hover:-translate-y-0.5 hover:border-[#065F46]/60 dark:hover:border-[#34D399]/60 transition-all duration-200"
+                        className="group flex flex-col justify-between p-6 rounded-2xl bg-white dark:bg-[#0F1216] border border-slate-200 dark:border-[#222933] shadow-sm hover:-translate-y-0.5 transition-all duration-200"
                       >
                         <div>
                           <div className="flex items-center justify-between mb-4">

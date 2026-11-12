@@ -109,13 +109,13 @@ export default function CertificatesGrid({ certificates }) {
         {filtered.map((cert) => (
           <article
             key={cert.id}
-            className="group rounded-2xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] p-5 backdrop-blur flex flex-col justify-between hover:border-[#065F46]/50 dark:hover:border-[#34D399]/50 transition-all duration-300 hover:-translate-y-1 shadow-sm"
+            className="group rounded-2xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] p-5 backdrop-blur flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 shadow-sm"
           >
             <div>
               <button
                 type="button"
                 onClick={() => setActiveCert(cert)}
-                className="w-full aspect-[4/3] rounded-xl overflow-hidden border border-[#CBD5E1] dark:border-[#222933] bg-slate-900 relative mb-4 group-hover:border-[#065F46]/50 dark:group-hover:border-[#34D399]/50 transition-colors cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-[#065F46] dark:focus:ring-[#34D399]"
+                className="w-full aspect-[4/3] rounded-xl overflow-hidden border border-[#CBD5E1] dark:border-[#222933] bg-slate-900 relative mb-4 transition-colors cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-[#065F46] dark:focus:ring-[#34D399]"
                 aria-label={`Inspect certificate: ${cert.title}`}
               >
                 <Image

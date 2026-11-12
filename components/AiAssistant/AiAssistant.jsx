@@ -290,7 +290,7 @@ You can ask about his software projects, computer engineering background at **IO
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
           aria-label={isOpen ? 'Close' : 'Ask Assistant'}
-          className="group relative flex items-center justify-center sm:gap-2.5 w-12 h-12 sm:w-auto sm:h-auto sm:px-4 sm:py-2.5 rounded-full bg-white/95 dark:bg-[#0F1216]/95 border border-slate-200/90 dark:border-[#222933] text-slate-800 dark:text-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.5)] hover:border-[#065F46]/60 dark:hover:border-[#34D399]/40 hover:shadow-lg transition-all duration-200 active:scale-[0.95]"
+          className="group relative flex items-center justify-center sm:gap-2.5 w-12 h-12 sm:w-auto sm:h-auto sm:px-4 sm:py-2.5 rounded-full bg-white/95 dark:bg-[#0F1216]/95 border border-slate-200/90 dark:border-[#222933] text-slate-800 dark:text-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.5)] hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-lg transition-all duration-200 active:scale-[0.95]"
         >
           
           <span className="hidden sm:inline-flex relative h-2 w-2 shrink-0">
