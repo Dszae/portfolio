@@ -29,8 +29,6 @@ export async function GET() {
   ]);
 
   const profile = settings?.profile || {};
-  const today = new Date().toISOString().split('T')[0];
-
   const portraitImage = {
     path: toAbsoluteUrl(profile.avatar_url || '/dipesh-sapkota.jpg'),
     title: `Official portrait of ${profile.name || 'Dipesh Sapkota'}`,
@@ -41,35 +39,30 @@ export async function GET() {
       loc: `${SITE_URL}/`,
       priority: '1.0',
       changefreq: 'daily',
-      lastmod: today,
       images: [portraitImage],
     },
     {
       loc: `${SITE_URL}/about`,
       priority: '0.95',
       changefreq: 'weekly',
-      lastmod: today,
       images: [portraitImage],
     },
     {
       loc: `${SITE_URL}/profile`,
       priority: '0.95',
       changefreq: 'weekly',
-      lastmod: today,
       images: [portraitImage],
     },
     {
       loc: `${SITE_URL}/skills`,
       priority: '0.95',
       changefreq: 'weekly',
-      lastmod: today,
       images: [],
     },
     {
       loc: `${SITE_URL}/projects`,
       priority: '0.95',
       changefreq: 'weekly',
-      lastmod: today,
       images: projects.slice(0, 5).map(p => ({
         path: toAbsoluteUrl(p.img),
         title: p.title || 'Project Preview',
@@ -79,7 +72,6 @@ export async function GET() {
       loc: `${SITE_URL}/blog`,
       priority: '0.90',
       changefreq: 'weekly',
-      lastmod: today,
       images: articles.slice(0, 5).map(a => ({
         path: toAbsoluteUrl(a.cover_image),
         title: a.title || 'Article Cover',
@@ -89,7 +81,6 @@ export async function GET() {
       loc: `${SITE_URL}/certificates`,
       priority: '0.90',
       changefreq: 'monthly',
-      lastmod: today,
       images: certificates.map(c => ({
         path: toAbsoluteUrl(c.img),
         title: `${c.title} by ${c.org}`,
@@ -99,7 +90,6 @@ export async function GET() {
       loc: `${SITE_URL}/resume`,
       priority: '0.95',
       changefreq: 'weekly',
-      lastmod: today,
       images: [
         portraitImage,
         ...experiences.filter(e => e.logo).map(e => ({
@@ -112,7 +102,6 @@ export async function GET() {
       loc: `${SITE_URL}/gallery`,
       priority: '0.85',
       changefreq: 'weekly',
-      lastmod: today,
       images: gallery.map(g => ({
         path: toAbsoluteUrl(g.img),
         title: g.title || g.alt || 'Gallery photo',
@@ -122,7 +111,6 @@ export async function GET() {
       loc: `${SITE_URL}/contact`,
       priority: '0.85',
       changefreq: 'monthly',
-      lastmod: today,
       images: [],
     },
   ];
@@ -135,7 +123,9 @@ export async function GET() {
         loc: `${SITE_URL}/projects/${p.slug || p.id}`,
         priority: p.featured ? '0.90' : '0.80',
         changefreq: 'monthly',
-        lastmod: (p.updated_at || p.created_at || today).split('T')[0],
+        lastmod: p.updated_at || p.created_at
+          ? (p.updated_at || p.created_at).split('T')[0]
+          : undefined,
         images: p.img ? [{ path: toAbsoluteUrl(p.img), title: p.title }] : [],
         videos: isVideoProject ? [{
           thumbnail_loc: toAbsoluteUrl(p.img || '/instagram-videos.png'),
@@ -151,6 +141,7 @@ export async function GET() {
   const allUrls = [...corePages, ...projectPages];
 
   const xmlEntries = allUrls.map(({ loc, priority, changefreq, lastmod, images = [], videos = [] }) => {
+    const lastmodTag = lastmod ? `<lastmod>${escapeXml(lastmod)}</lastmod>` : '';
     const imageTags = images
       .filter(img => img.path)
       .map(img => `<image:image><image:loc>${escapeXml(img.path)}</image:loc><image:title>${escapeXml(img.title || 'Image')}</image:title></image:image>`)
@@ -161,7 +152,7 @@ export async function GET() {
       .map(v => `<video:video><video:thumbnail_loc>${escapeXml(v.thumbnail_loc)}</video:thumbnail_loc><video:title>${escapeXml(v.title)}</video:title><video:description>${escapeXml(v.description)}</video:description><video:player_loc>${escapeXml(v.player_loc)}</video:player_loc><video:publication_date>${escapeXml(v.publication_date)}</video:publication_date><video:family_friendly>yes</video:family_friendly></video:video>`)
       .join('');
 
-    return `<url><loc>${escapeXml(loc)}</loc><lastmod>${lastmod || today}</lastmod><changefreq>${changefreq || 'weekly'}</changefreq><priority>${priority || '0.7'}</priority>${imageTags}${videoTags}</url>`;
+    return `<url><loc>${escapeXml(loc)}</loc>${lastmodTag}<changefreq>${changefreq || 'weekly'}</changefreq><priority>${priority || '0.7'}</priority>${imageTags}${videoTags}</url>`;
   }).join('');
 
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">${xmlEntries}</urlset>`;

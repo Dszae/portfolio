@@ -2,10 +2,11 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function proxy(request: NextRequest) {
-  const host = request.headers.get('host') || '';
-  if (host === 'dipeshsapkota7.com.np') {
-    const url = request.nextUrl.clone();
-    url.host = 'www.dipeshsapkota7.com.np';
+  const canonicalHost = 'www.dipeshsapkota7.com.np';
+  const url = request.nextUrl.clone();
+
+  if (url.hostname.toLowerCase() !== canonicalHost || url.protocol !== 'https:') {
+    url.hostname = canonicalHost;
     url.protocol = 'https:';
     url.port = '';
     return NextResponse.redirect(url, 301);
@@ -13,8 +14,13 @@ export function proxy(request: NextRequest) {
 
   const { pathname } = request.nextUrl;
 
-  // Bypass API routes and internal Next.js requests
-  if (pathname.startsWith('/api') || pathname.startsWith('/_next')) {
+  // Keep API and Next.js internal requests out of the markdown negotiation path.
+  if (pathname.startsWith('/api/') || pathname.startsWith('/_next/')) {
+    return NextResponse.next();
+  }
+
+  // Static resources and metadata files should keep their native content types.
+  if (pathname.includes('.')) {
     return NextResponse.next();
   }
 
@@ -30,14 +36,6 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    /*
-     * Match all request paths except:
-     * - api routes
-     * - _next/static, _next/image
-     * - metadata files (favicon, sitemap, robots, security.txt)
-     * - static files with extensions (e.g. .jpg, .png, .pdf, .svg)
-     */
-    '/((?!api|_next/static|_next/image|favicon\\.ico|sitemap\\.xml|robots\\.txt|\\.well-known/security\\.txt|.*\\..*).*)',
-  ],
+  // Canonical redirects must cover HTML, API, and static asset URLs alike.
+  matcher: '/:path*',
 };

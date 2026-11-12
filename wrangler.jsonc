@@ -7,6 +7,16 @@
     "nodejs_compat",
     "global_fetch_strictly_public"
   ],
+  "routes": [
+    {
+      "pattern": "dipeshsapkota7.com.np/*",
+      "zone_name": "dipeshsapkota7.com.np"
+    },
+    {
+      "pattern": "www.dipeshsapkota7.com.np/*",
+      "zone_name": "dipeshsapkota7.com.np"
+    }
+  ],
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
