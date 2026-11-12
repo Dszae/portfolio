@@ -9,17 +9,51 @@ import { OPENAI_TOOLS } from '@/lib/agent/tools';
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
 
+async function getRuntimeEnv() {
+  let cfEnv = {};
+  try {
+    const { getCloudflareContext } = await import('@opennextjs/cloudflare');
+    const ctx = await getCloudflareContext({ async: true });
+    if (ctx && ctx.env) {
+      cfEnv = ctx.env;
+    }
+  } catch {
+    // Local Node or non-Cloudflare environment
+  }
+  return {
+    ...process.env,
+    ...cfEnv,
+    AI: cfEnv.AI || (typeof globalThis !== 'undefined' && globalThis.__env__ && globalThis.__env__.AI)
+  };
+}
+
 export async function GET(request) {
-  const openAiKey = (process.env.OPENAI_API_KEY || '').replace(/['"]/g, '').trim();
-  const geminiKey = (process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY || '').replace(/['"]/g, '').trim();
-  const groqKey = (process.env.GROQ_API_KEY || '').replace(/['"]/g, '').trim();
+  const env = await getRuntimeEnv();
+  const openAiKey = (env.OPENAI_API_KEY || '').replace(/['"]/g, '').trim();
+  const geminiKey = (env.GEMINI_API_KEY || env.GOOGLE_API_KEY || '').replace(/['"]/g, '').trim();
+  const groqKey = (env.GROQ_API_KEY || '').replace(/['"]/g, '').trim();
+  const hasWorkersAi = Boolean(env.AI);
 
   const hasKey = Boolean(openAiKey && !openAiKey.startsWith('sk-placeholder') && openAiKey.length > 25);
   const hasGemini = Boolean(geminiKey && geminiKey.length > 15);
   const hasGroq = Boolean(groqKey && groqKey.length > 10);
   
-  const engine = hasGemini ? 'google_gemini_flash' : hasGroq ? 'groq_llama_3.3_70b' : hasKey ? 'openai_tool_calling' : 'grounded_portfolio_engine';
-  const activeModel = hasGemini ? (process.env.GEMINI_MODEL || 'gemini-2.5-flash') : hasGroq ? (process.env.GROQ_MODEL || 'llama-3.3-70b-versatile') : AGENT_CONFIG.DEFAULT_MODEL;
+  const engine = hasWorkersAi
+    ? 'cloudflare_workers_ai'
+    : hasGemini
+      ? 'google_gemini_flash'
+      : hasGroq
+        ? 'groq_llama_3.3_70b'
+        : hasKey
+          ? 'openai_tool_calling'
+          : 'grounded_portfolio_engine';
+  const activeModel = hasWorkersAi
+    ? '@cf/meta/llama-3.1-8b-instruct-fp8'
+    : hasGemini
+      ? (env.GEMINI_MODEL || 'gemini-2.5-flash')
+      : hasGroq
+        ? (env.GROQ_MODEL || 'llama-3.3-70b-versatile')
+        : AGENT_CONFIG.DEFAULT_MODEL;
 
   let probe = null;
   const urlObj = new URL(request.url);
@@ -112,7 +146,8 @@ const responseStream = new TransformStream();
 
 (async () => {
     try {
-      await runAgentOrchestration(messages, sseWriter);
+      const env = await getRuntimeEnv();
+      await runAgentOrchestration(messages, sseWriter, env);
     } catch (err) {
       console.error('Orchestration top-level error:', err);
       sseWriter.sendEvent('error', { message: err.message || 'An unexpected error occurred.' });
