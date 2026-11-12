@@ -30,4 +30,4 @@ Do not use the Pages command `wrangler pages deploy dist`. The OpenNext deploy c
 
 Add the runtime variables and secrets used by the app in the Worker settings under **Settings > Variables and Secrets**. Values in `.env.local` are not automatically copied to Cloudflare. The app reads `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_ANON_KEY`, `ADMIN_PASSWORD`, `ADMIN_SESSION_SECRET`, `OPENAI_API_KEY`, `GEMINI_API_KEY` (or `GOOGLE_API_KEY`), `GROQ_API_KEY`, and `WEB3FORMS_ACCESS_KEY`. The AI model name variables are optional. Set any variables required during static generation as build variables as well.
 
-After the first Worker deployment, attach the existing domain to the Worker in Cloudflare. The Worker name configured in `wrangler.jsonc` is `next-portfolio`.
+After the first Worker deployment, attach the existing domain to the Worker in Cloudflare. The Worker name configured in `wrangler.jsonc` is `portfolio`.

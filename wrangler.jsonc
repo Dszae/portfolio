@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "next-portfolio",
+  "name": "portfolio",
   "main": ".open-next/worker.js",
   "compatibility_date": "2026-11-12",
   "compatibility_flags": [
@@ -14,7 +14,7 @@
   "services": [
     {
       "binding": "WORKER_SELF_REFERENCE",
-      "service": "next-portfolio"
+      "service": "portfolio"
     }
   ],
   "r2_buckets": [
