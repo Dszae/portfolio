@@ -11,6 +11,8 @@
 # tests and generated output
 /coverage
 /.next/
+/.open-next/
+/.wrangler/
 /out/
 /build/
 /dist/
@@ -27,6 +29,7 @@ yarn-error.log*
 
 # environment and Vercel configuration
 .env*
+.dev.vars
 .vercel
 
 # editors and operating system files

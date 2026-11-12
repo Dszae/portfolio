@@ -1,4 +1,5 @@
 import path from 'path';
+import { initOpenNextCloudflareForDev } from '@opennextjs/cloudflare';
 
 const contentSecurityPolicy = [
   "default-src 'self'",
@@ -170,5 +171,7 @@ const nextConfig = {
     ];
   },
 };
+
+initOpenNextCloudflareForDev();
 
 export default nextConfig;

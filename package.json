@@ -6,16 +6,20 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:cloudflare": "opennextjs-cloudflare build",
+    "deploy:cloudflare": "opennextjs-cloudflare deploy",
+    "preview:cloudflare": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "start": "next start",
     "lint": "eslint .",
     "test": "node tests/agent.test.js",
     "smoke-test": "node scripts/smoke-test.js"
   },
   "dependencies": {
+    "@opennextjs/cloudflare": "^1.20.16",
     "@supabase/supabase-js": "^2.118.0",
     "framer-motion": "^13.5.1",
     "katex": "^0.19.0",
-    "next": "16.3.8",
+    "next": "16.4.6",
     "openai": "^7.39.0",
     "react": "19.2.8",
     "react-dom": "19.2.8",
@@ -29,9 +33,10 @@
     "@types/react-dom": "^19",
     "autoprefixer": "^10.6.1",
     "eslint": "^9",
-    "eslint-config-next": "16.3.8",
+    "eslint-config-next": "16.4.6",
     "postcss": "^8.5.28",
     "tailwindcss": "^4.3.3",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "^4.160.1"
   }
 }
