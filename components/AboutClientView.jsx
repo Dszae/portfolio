@@ -57,14 +57,14 @@ export default function AboutClientView({ siteSettings = {}, jsonLd = null, page
                   
                   {/* Left Column: Authentic Portrait + Quick Specs */}
                   <div className="lg:col-span-5 flex flex-col gap-6">
-                    <div className="relative aspect-[4/5] w-full overflow-hidden rounded-lg bg-[#E2E8F0] dark:bg-[#1E293B] border border-[#CBD5E1] dark:border-[#334155]">
+                    <div className="group relative aspect-[4/5] w-full overflow-hidden rounded-lg bg-[#E2E8F0] dark:bg-[#1E293B] border border-[#CBD5E1] dark:border-[#334155] cursor-pointer">
                       <Image
-                        src="/dipesh-sapkota.jpg"
-                        alt="Dipesh Sapkota portrait"
+                        src="/dipeshsapkota_2.png"
+                        alt="Dipesh Sapkota - Computer Engineering Student at IOE Thapathali Campus and AI/ML Enthusiast"
                         fill
                         priority
                         sizes="(max-width: 1024px) 100vw, 420px"
-                        className="object-cover object-top"
+                        className="object-cover object-top filter grayscale contrast-105 group-hover:grayscale-0 group-hover:contrast-100 transition-all duration-700 ease-out"
                       />
                     </div>
 
@@ -87,40 +87,6 @@ export default function AboutClientView({ siteSettings = {}, jsonLd = null, page
                         <dd className="mt-1 font-bold text-[#065F46] dark:text-[#34D399]">Available for Projects</dd>
                       </div>
                     </dl>
-
-                    {/* Direct Text Channels */}
-                    <div className="flex flex-wrap gap-4 pt-4 border-t border-[#CBD5E1] dark:border-[#334155] font-mono text-xs">
-                      <a 
-                        href="https://github.com/dszae" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-[#0F172A] dark:text-[#F8FAFC] font-semibold hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors underline underline-offset-4"
-                      >
-                        GitHub
-                      </a>
-                      <a 
-                        href="https://linkedin.com/in/dipeshsapkota7" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-[#0F172A] dark:text-[#F8FAFC] font-semibold hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors underline underline-offset-4"
-                      >
-                        LinkedIn
-                      </a>
-                      <a 
-                        href="https://instagram.com/dsz.ae" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-[#0F172A] dark:text-[#F8FAFC] font-semibold hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors underline underline-offset-4"
-                      >
-                        Instagram
-                      </a>
-                      <Link 
-                        href="/contact"
-                        className="text-[#065F46] dark:text-[#34D399] font-bold hover:underline underline-offset-4"
-                      >
-                        Direct Inquiry →
-                      </Link>
-                    </div>
                   </div>
 
                   {/* Right Column: Editorial Prose */}
