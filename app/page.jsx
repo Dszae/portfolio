@@ -16,7 +16,6 @@ const SKILLS_PREVIEW = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
       </svg>
     ),
-    label: "Explore software development skills"
   },
   {
     title: "Creative Media & Motion",
@@ -27,7 +26,6 @@ const SKILLS_PREVIEW = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
       </svg>
     ),
-    label: "View creative media and editing work"
   },
   {
     title: "AI & Intelligent Systems",
@@ -38,7 +36,6 @@ const SKILLS_PREVIEW = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
       </svg>
     ),
-    label: "Read about AI background"
   },
   {
     title: "Hardware & Engineering",
@@ -49,7 +46,6 @@ const SKILLS_PREVIEW = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
       </svg>
     ),
-    label: "Explore hardware projects"
   }
 ];
 
@@ -186,7 +182,7 @@ export default function Home() {
               </div>
               <div className="skills-preview-grid">
                 {SKILLS_PREVIEW.map((skill) => (
-                  <Link key={skill.title} href={skill.href} aria-label={skill.label} className="skill-preview-card">
+                  <Link key={skill.title} href={skill.href} className="skill-preview-card">
                     <span className="skill-preview-icon">{skill.icon}</span>
                     <h3>{skill.title}</h3>
                     <p>{skill.description}</p>
