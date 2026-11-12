@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import SiteLayout from './SiteLayout';
 import FadeUp from './FadeUp';
 import BreadcrumbJsonLd from './BreadcrumbJsonLd';
@@ -9,9 +10,9 @@ import PagePagination from './PagePagination';
 
 export default function AboutClientView({ siteSettings = {}, jsonLd = null, pageTitle = "About", breadcrumbItems = null }) {
   const profile = siteSettings.profile || {};
-  const headline = profile.headline || "Bridging Logic and Visual Execution";
-  const bio = profile.bio || "I am a Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal. My core focus is Artificial Intelligence, Machine Learning, video editing, and motion graphics design.";
-  const secondaryBio = profile.secondary_bio || "Alongside engineering, I have worked for more than four years as a freelance motion graphics designer and video editor with over 50 global clients, producing dynamic visual media.";
+  const headline = profile.headline || "Bridging Analytical Logic and Visual Execution";
+  const bio = profile.bio || "I am a Computer Engineering undergraduate student at the Institute of Engineering (IOE), Thapathali Campus in Kathmandu, Nepal. My work spans Artificial Intelligence, Machine Learning algorithms, intelligent systems, and hardware simulations.";
+  const secondaryBio = profile.secondary_bio || "Alongside engineering studies, I have accumulated over 4+ years of professional freelance experience as a video editor and motion graphics designer, collaborating with 50+ clients internationally to deliver high-impact visual media.";
   const yearsExp = profile.years_experience || "4+";
   const clientsCount = profile.clients_count || "50+";
 
@@ -33,72 +34,265 @@ export default function AboutClientView({ siteSettings = {}, jsonLd = null, page
           )}
 
           <FadeUp>
-            <section id={pageTitle.toLowerCase() === 'profile' ? 'profile' : 'about'} className={`pt-36 sm:pt-40 subpage-container pb-24 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
-              <div className="max-w-7xl mx-auto w-full">
-                <h1 className="text-3xl sm:text-4xl font-bold mb-12 flex items-center gap-4 text-[#0F172A] dark:text-[#F9FAFB]">
-                  <span className="text-[#065F46] dark:text-[#34D399]">/</span> {pageTitle}
-                </h1>
-                <div className="grid md:grid-cols-12 gap-8 items-center">
-                  
-                  <div className={`md:col-span-7 p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl border border-[#CBD5E1] dark:border-[#222933] backdrop-blur-md ${theme.card}`}>
-                    <h2 className="text-2xl md:text-3xl font-bold mb-6 leading-tight text-[#0F172A] dark:text-[#F8FAFC]">
-                      {headline}
-                    </h2>
-                    <p className="text-base sm:text-lg leading-relaxed mb-6 text-[#1E293B] dark:text-[#A7B0BE]">
-                      {bio}
-                    </p>
-                    <p className="text-base sm:text-lg leading-relaxed text-[#1E293B] dark:text-[#A7B0BE]">
-                      {secondaryBio}
-                    </p>
-                    <p className="mt-6 text-base sm:text-lg leading-relaxed text-[#1E293B] dark:text-[#A7B0BE]">
-                      I also build independent software projects, including <Link href="/projects/sportivo" className="font-semibold text-[#065F46] hover:underline dark:text-[#34D399]">Sportivo - Live Sports Platform</Link>, a sports platform connected to its <a href="https://sportivo.dipeshsapkota7.com.np/" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#065F46] hover:underline dark:text-[#34D399]">live sports platform</a>.
-                    </p>
+            <section id={pageTitle.toLowerCase() === 'profile' ? 'profile' : 'about'} className={`pt-36 sm:pt-44 subpage-container pb-28 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
+              <div className="max-w-6xl mx-auto w-full">
+                
+                {/* 1. Page Header (Editorial Monograph Style) */}
+                <header className="mb-16 sm:mb-24">
+                  <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-[#065F46] dark:text-[#34D399] font-bold mb-4">
+                    <span>01</span>
+                    <span className="w-8 h-[1px] bg-current opacity-60"></span>
+                    <span>Identity & Profile</span>
                   </div>
+                  <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] leading-[1.1]">
+                    Dipesh Sapkota
+                  </h1>
+                  <p className="mt-4 text-lg sm:text-xl font-mono font-medium text-[#1E293B] dark:text-[#CBD5E1]">
+                    Computer Engineering Student · AI/ML Enthusiast · Motion Designer
+                  </p>
+                </header>
+
+                {/* 2. Hero Editorial Split (Portrait + Bio) - No card wrappers */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start pb-20 border-b border-[#CBD5E1] dark:border-[#334155]">
                   
-                  <div className="md:col-span-5 flex flex-col gap-4 sm:gap-6">
-                    
-                    <div className={`p-5 sm:p-6 md:p-8 rounded-2xl border border-[#CBD5E1] dark:border-[#222933] backdrop-blur-md flex items-center gap-4 sm:gap-6 cursor-default ${theme.card}`}>
-                      <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-[#F1F5F9] dark:bg-[#181D24] border border-[#CBD5E1] dark:border-[#222933] flex items-center justify-center flex-shrink-0">
-                        <svg className="w-7 h-7 sm:w-8 sm:h-8 text-[#065F46] dark:text-[#34D399]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
-                        </svg>
-                      </div>
-                      <div>
-                        <h3 className="text-2xl sm:text-3xl font-bold mb-1 text-[#0F172A] dark:text-[#F8FAFC]">{yearsExp}</h3>
-                        <p className="font-mono text-xs sm:text-sm uppercase tracking-wider text-[#334155] dark:text-[#A7B0BE] font-bold">Years Experience</p>
-                      </div>
+                  {/* Left Column: Authentic Portrait + Quick Specs */}
+                  <div className="lg:col-span-5 flex flex-col gap-6">
+                    <div className="relative aspect-[4/5] w-full overflow-hidden rounded-lg bg-[#E2E8F0] dark:bg-[#1E293B] border border-[#CBD5E1] dark:border-[#334155]">
+                      <Image
+                        src="/dipesh-sapkota.jpg"
+                        alt="Dipesh Sapkota portrait"
+                        fill
+                        priority
+                        sizes="(max-width: 1024px) 100vw, 420px"
+                        className="object-cover object-top"
+                      />
                     </div>
-                    
-                    <div className={`p-5 sm:p-6 md:p-8 rounded-2xl border border-[#CBD5E1] dark:border-[#222933] backdrop-blur-md flex items-center gap-4 sm:gap-6 cursor-default ${theme.card}`}>
-                      <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-[#F1F5F9] dark:bg-[#181D24] border border-[#CBD5E1] dark:border-[#222933] flex items-center justify-center flex-shrink-0">
-                        <svg className="w-7 h-7 sm:w-8 sm:h-8 text-[#065F46] dark:text-[#34D399]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
+
+                    {/* Metadata Ledger */}
+                    <dl className="grid grid-cols-2 gap-y-4 pt-2 font-mono text-xs">
+                      <div>
+                        <dt className="uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-semibold">Location</dt>
+                        <dd className="mt-1 font-bold text-[#0F172A] dark:text-[#F8FAFC]">Kathmandu, Nepal</dd>
                       </div>
                       <div>
-                        <h3 className="text-2xl sm:text-3xl font-bold mb-1 text-[#0F172A] dark:text-[#F8FAFC]">{clientsCount}</h3>
-                        <p className="font-mono text-xs sm:text-sm uppercase tracking-wider text-[#334155] dark:text-[#A7B0BE] font-bold">Global Clients</p>
+                        <dt className="uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-semibold">Institution</dt>
+                        <dd className="mt-1 font-bold text-[#0F172A] dark:text-[#F8FAFC]">IOE Thapathali</dd>
+                      </div>
+                      <div>
+                        <dt className="uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-semibold">Degree</dt>
+                        <dd className="mt-1 font-bold text-[#0F172A] dark:text-[#F8FAFC]">B.E. Computer Eng.</dd>
+                      </div>
+                      <div>
+                        <dt className="uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-semibold">Status</dt>
+                        <dd className="mt-1 font-bold text-[#065F46] dark:text-[#34D399]">Available for Projects</dd>
+                      </div>
+                    </dl>
+
+                    {/* Direct Text Channels */}
+                    <div className="flex flex-wrap gap-4 pt-4 border-t border-[#CBD5E1] dark:border-[#334155] font-mono text-xs">
+                      <a 
+                        href="https://github.com/dszae" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-[#0F172A] dark:text-[#F8FAFC] font-semibold hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors underline underline-offset-4"
+                      >
+                        GitHub
+                      </a>
+                      <a 
+                        href="https://linkedin.com/in/dipeshsapkota7" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-[#0F172A] dark:text-[#F8FAFC] font-semibold hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors underline underline-offset-4"
+                      >
+                        LinkedIn
+                      </a>
+                      <a 
+                        href="https://instagram.com/dsz.ae" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-[#0F172A] dark:text-[#F8FAFC] font-semibold hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors underline underline-offset-4"
+                      >
+                        Instagram
+                      </a>
+                      <Link 
+                        href="/contact"
+                        className="text-[#065F46] dark:text-[#34D399] font-bold hover:underline underline-offset-4"
+                      >
+                        Direct Inquiry →
+                      </Link>
+                    </div>
+                  </div>
+
+                  {/* Right Column: Editorial Prose */}
+                  <div className="lg:col-span-7 flex flex-col justify-between">
+                    <div>
+                      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] leading-[1.25] mb-8">
+                        {headline}
+                      </h2>
+                      
+                      <div className="space-y-6 text-base sm:text-lg leading-relaxed text-[#0F172A] dark:text-[#E2E8F0]">
+                        <p>{bio}</p>
+                        <p>{secondaryBio}</p>
+                        <p>
+                          My engineering workflow prioritizes algorithmic structure, systems reliability, and hands-on simulation. I engineer tools that demystify technical abstractions, including{' '}
+                          <Link href="/projects/git-visualizer" className="text-[#065F46] dark:text-[#34D399] font-bold underline underline-offset-4 hover:opacity-80">
+                            Git Visualizer
+                          </Link>{' '}
+                          (an interactive DAG commit simulator),{' '}
+                          <Link href="/projects/sportivo" className="text-[#065F46] dark:text-[#34D399] font-bold underline underline-offset-4 hover:opacity-80">
+                            Sportivo
+                          </Link>{' '}
+                          (a live sports fixture platform), and{' '}
+                          <Link href="/projects/ioe-admission-guide" className="text-[#065F46] dark:text-[#34D399] font-bold underline underline-offset-4 hover:opacity-80">
+                            IOE Admission Hub
+                          </Link>{' '}
+                          (an admission analytics tool for TU applicants).
+                        </p>
                       </div>
                     </div>
 
-                    <div className={`p-5 sm:p-6 md:p-8 rounded-2xl border border-[#CBD5E1] dark:border-[#222933] backdrop-blur-md flex items-center gap-4 sm:gap-6 cursor-default ${theme.card}`}>
-                      <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-[#F1F5F9] dark:bg-[#181D24] border border-[#CBD5E1] dark:border-[#222933] flex items-center justify-center flex-shrink-0">
-                        <svg className="w-7 h-7 sm:w-8 sm:h-8 text-[#065F46] dark:text-[#34D399]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
+                    <div className="mt-12 pt-8 border-t border-[#CBD5E1] dark:border-[#334155]">
+                      <blockquote className="text-base font-medium text-[#1E293B] dark:text-[#CBD5E1] border-l-2 border-[#065F46] dark:border-[#34D399] pl-4 italic">
+                        &ldquo;Software architecture is at its best when analytical rigor meets clear visual communication.&rdquo;
+                      </blockquote>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3. Typographic Metrics Ticker (No Icon Cards) */}
+                <div className="py-16 sm:py-20 border-b border-[#CBD5E1] dark:border-[#334155]">
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12">
+                    <div>
+                      <div className="text-4xl sm:text-5xl font-mono font-bold text-[#0F172A] dark:text-[#F8FAFC] tracking-tight">
+                        {yearsExp}
                       </div>
-                      <div>
-                        <h3 className="text-2xl sm:text-3xl font-bold mb-1 text-[#0F172A] dark:text-[#F8FAFC]">Creative</h3>
-                        <p className="font-mono text-xs sm:text-sm uppercase tracking-wider text-[#334155] dark:text-[#A7B0BE] font-bold">Design Focus</p>
+                      <div className="mt-2 font-mono text-xs uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-semibold">
+                        Years Motion Design
+                      </div>
+                    </div>
+
+                    <div>
+                      <div className="text-4xl sm:text-5xl font-mono font-bold text-[#0F172A] dark:text-[#F8FAFC] tracking-tight">
+                        {clientsCount}
+                      </div>
+                      <div className="mt-2 font-mono text-xs uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-semibold">
+                        Global Clients Served
+                      </div>
+                    </div>
+
+                    <div>
+                      <div className="text-4xl sm:text-5xl font-mono font-bold text-[#065F46] dark:text-[#34D399] tracking-tight">
+                        IOE
+                      </div>
+                      <div className="mt-2 font-mono text-xs uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-semibold">
+                        Thapathali Campus (TU)
+                      </div>
+                    </div>
+
+                    <div>
+                      <div className="text-4xl sm:text-5xl font-mono font-bold text-[#0F172A] dark:text-[#F8FAFC] tracking-tight">
+                        2026
+                      </div>
+                      <div className="mt-2 font-mono text-xs uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-semibold">
+                        B.E. Cohort Graduation
                       </div>
                     </div>
                   </div>
+                </div>
 
+                {/* 4. Structured Ledger / Index Rows (Cardless) */}
+                <div className="py-16 sm:py-20">
+                  <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-[#065F46] dark:text-[#34D399] font-bold mb-12">
+                    <span>02</span>
+                    <span className="w-8 h-[1px] bg-current opacity-60"></span>
+                    <span>Core Competencies & Record</span>
+                  </div>
+
+                  <div className="divide-y divide-[#CBD5E1] dark:divide-[#334155]">
+                    
+                    {/* Row 1: Academic Foundation */}
+                    <div className="py-8 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline">
+                      <div className="md:col-span-4 font-mono text-xs uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-bold">
+                        01 / Formal Education
+                      </div>
+                      <div className="md:col-span-8">
+                        <h3 className="text-xl font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                          Bachelor of Computer Engineering (B.E.)
+                        </h3>
+                        <p className="mt-1 text-sm font-semibold text-[#1E293B] dark:text-[#CBD5E1]">
+                          Institute of Engineering (IOE), Thapathali Campus · Tribhuvan University, Kathmandu, Nepal
+                        </p>
+                        <p className="mt-3 text-sm sm:text-base text-[#1E293B] dark:text-[#E2E8F0] leading-relaxed">
+                          Rigorous curriculum covering computer architecture, discrete mathematics, object-oriented programming, data structures & algorithms, operating systems, digital logic, and communication networks.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Row 2: AI & Computing */}
+                    <div className="py-8 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline">
+                      <div className="md:col-span-4 font-mono text-xs uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-bold">
+                        02 / Computing & Intelligence
+                      </div>
+                      <div className="md:col-span-8">
+                        <h3 className="text-xl font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                          Artificial Intelligence & Machine Learning
+                        </h3>
+                        <p className="mt-1 text-sm font-semibold text-[#1E293B] dark:text-[#CBD5E1]">
+                          Supervised models, neural patterns, computational simulations, and algorithms
+                        </p>
+                        <p className="mt-3 text-sm sm:text-base text-[#1E293B] dark:text-[#E2E8F0] leading-relaxed">
+                          Exploring algorithms that extract patterns from raw data, mathematical modeling, and applying ML techniques to real-world datasets alongside web application backends.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Row 3: Hardware Simulation */}
+                    <div className="py-8 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline">
+                      <div className="md:col-span-4 font-mono text-xs uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-bold">
+                        03 / Hardware & Simulation
+                      </div>
+                      <div className="md:col-span-8">
+                        <h3 className="text-xl font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                          Circuits, Breadboards & Simulation
+                        </h3>
+                        <p className="mt-1 text-sm font-semibold text-[#1E293B] dark:text-[#CBD5E1]">
+                          NE555 Timer Networks, Proteus Prototyping, and MATLAB DC Motor Control
+                        </p>
+                        <p className="mt-3 text-sm sm:text-base text-[#1E293B] dark:text-[#E2E8F0] leading-relaxed">
+                          Designing relaxation oscillators, analog-to-digital clock transitions, and simulating closed-loop electromechanical DC motor control with step response characterization.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Row 4: Motion Design */}
+                    <div className="py-8 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline">
+                      <div className="md:col-span-4 font-mono text-xs uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-bold">
+                        04 / Creative Direction
+                      </div>
+                      <div className="md:col-span-8">
+                        <h3 className="text-xl font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                          Motion Graphics & High-Impact Video Editing
+                        </h3>
+                        <p className="mt-1 text-sm font-semibold text-[#1E293B] dark:text-[#CBD5E1]">
+                          Adobe Premiere Pro, Adobe After Effects, DaVinci Resolve, dynamic typography, and sound design
+                        </p>
+                        <p className="mt-3 text-sm sm:text-base text-[#1E293B] dark:text-[#E2E8F0] leading-relaxed">
+                          4+ years producing high-energy sports edits, technical motion explainers, and commercial video assets for over 50 global creators and agencies.
+                        </p>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                {/* 5. Navigation Pagination */}
+                <div className="pt-12 border-t border-[#CBD5E1] dark:border-[#334155]">
                   <PagePagination 
                     prev={{ label: 'Home Page', path: '/' }} 
                     next={{ label: 'Technical Skills', path: '/skills' }} 
                   />
                 </div>
+
               </div>
             </section>
           </FadeUp>
@@ -107,4 +301,5 @@ export default function AboutClientView({ siteSettings = {}, jsonLd = null, page
     </SiteLayout>
   );
 }
+
 
