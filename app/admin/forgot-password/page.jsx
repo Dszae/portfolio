@@ -18,12 +18,11 @@ const STEPS = [
   },
   {
     title: 'Save the hash where the site reads it',
-    body: 'Paste the printed ADMIN_PASSWORD_HASH line into .env.local, then store the same value as a Worker secret',
-    command: 'npx wrangler secret put ADMIN_PASSWORD_HASH',
+    body: 'Replace the ADMIN_PASSWORD_HASH line in .env.local with the printed one',
   },
   {
     title: 'Deploy and sign in',
-    body: 'The new password works as soon as the deploy finishes. Every older session is signed out',
+    body: 'The deploy carries .env.local to the live site, so the new password works as soon as it finishes. Every older session is signed out',
     command: 'npm run deploy:cloudflare',
   },
 ];
@@ -42,9 +41,11 @@ function DeploymentSteps() {
           <div className="min-w-0 flex-1">
             <h3 className="text-sm font-medium leading-6 text-[#ededed]">{step.title}</h3>
             <p className="mt-1 text-[13px] leading-5 text-[#a1a1a6]">{step.body}</p>
-            <code className="mt-3 block overflow-x-auto rounded-lg border border-white/[0.08] bg-[#0f0f10] px-3 py-2 font-[family-name:var(--font-geist-mono),ui-monospace,monospace] text-[13px] leading-5 text-[#ededed]">
-              {step.command}
-            </code>
+            {step.command && (
+              <code className="mt-3 block overflow-x-auto rounded-lg border border-white/[0.08] bg-[#0f0f10] px-3 py-2 font-[family-name:var(--font-geist-mono),ui-monospace,monospace] text-[13px] leading-5 text-[#ededed]">
+                {step.command}
+              </code>
+            )}
           </div>
         </li>
       ))}

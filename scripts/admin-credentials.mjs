@@ -4,8 +4,8 @@
  *   npm run admin:credentials
  *
  * Asks for a username and password, then prints ADMIN_USERNAME and
- * ADMIN_PASSWORD_HASH. Put them in .env.local for local work and in the Cloudflare
- * Worker secrets for production. The password itself is never written anywhere.
+ * ADMIN_PASSWORD_HASH. Put them in .env.local, then deploy: the deploy bundles
+ * .env.local into the Worker. The password itself is never written anywhere.
  */
 import { createInterface } from 'node:readline/promises';
 import { randomBytes } from 'node:crypto';
@@ -31,7 +31,7 @@ if (password.length < MIN_LENGTH) {
   exit(1);
 }
 
-console.log('\nAdd these to .env.local and to the Cloudflare Worker secrets:\n');
+console.log('\nPut these in .env.local, then run npm run deploy:cloudflare:\n');
 console.log(`ADMIN_USERNAME=${username.toLowerCase()}`);
 console.log(`ADMIN_PASSWORD_HASH=${await hashPassword(password)}`);
 
