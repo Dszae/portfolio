@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Admin Dashboard | Dipesh Sapkota',
+  title: { absolute: 'Admin | Dipesh Sapkota' },
   robots: {
     index: false,
     follow: false,

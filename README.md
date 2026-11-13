@@ -32,7 +32,8 @@ The platform includes a real-time portfolio experience, an administrative conten
 - **Dynamic Routing:** Supports both static custom showcases and dynamic database-driven detail routes (`/blog/[slug]` and `/projects/[slug]`).
 
 ### 4. Hardened Security Architecture
-- **Cryptographic Authentication:** Protected admin endpoints backed by HMAC-SHA256 session verification stored in `HttpOnly`, `Secure`, `SameSite=Lax` cookies.
+- **Cryptographic Authentication:** Username and PBKDF2-hashed password sign-in. Sessions are HMAC-SHA256 signed, expire after 12 hours, and are stored in `HttpOnly`, `Secure`, `SameSite=Strict` cookies. Changing the password signs out every session.
+- **Brute-Force Protection:** Five failed sign-in attempts lock a client out for 15 minutes. Attempts are counted in memory and in Supabase `activity_logs`, so the limit holds across Worker isolates.
 - **Strict Browser Headers:** Configured in `next.config.js` with Content Security Policy (CSP), HSTS preload (`max-age=63072000`), `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, and restricted permissions.
 - **Zero Client Secret Leakage:** Service-role privileges remain strictly server-side.
 
@@ -81,7 +82,12 @@ lib/
   seoEngine.js                 # Content analyzer and Schema.org generator
   revalidationEngine.js        # Automated cache and route revalidator
   dataService.js               # Supabase data access layer with in-memory caching
-  adminAuth.js                 # HMAC session authentication utilities
+  adminAuth.js                 # Credential check and signed session cookies
+  adminPassword.js             # PBKDF2 password hashing (Web Crypto)
+  loginRateLimit.js            # Sign-in attempt limiting
+  adminPasswordReset.js        # Email reset: token, mail, new password
+  adminCredentialStore.js      # Private Supabase row for the reset password
+  adminMailer.js               # Owner-only mail through Resend or Web3Forms
   supabaseAdmin.js             # Privileged server-side Supabase client
 next.config.js                 # Security headers, rewrites, and image patterns
 ```
@@ -111,9 +117,21 @@ Create a `.env.local` file in the project root:
 NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
-ADMIN_PASSWORD=your-secure-admin-password
+ADMIN_USERNAME=your-admin-username
+ADMIN_PASSWORD_HASH=pbkdf2:100000:salt:hash
 ADMIN_SESSION_SECRET=your-random-64-character-hex-string
 ```
+
+Generate `ADMIN_USERNAME` and `ADMIN_PASSWORD_HASH` with `npm run admin:credentials`. The password is never stored in plain text or in the repository. `ADMIN_EMAIL` is optional and lets the admin sign in with an email address instead of the username. `ADMIN_SESSION_SECRET` must be at least 32 characters; sign-in is refused without it.
+
+#### Password reset by email
+
+The "Forgot password" link emails a single-use reset link to the site owner. It needs two things:
+
+1. The private `admin_credentials` table. Run `scripts/admin-credentials.sql` once in the Supabase SQL editor.
+2. A mail provider. Either set `RESEND_API_KEY` together with `ADMIN_EMAIL` (the recipient; `ADMIN_MAIL_FROM` is optional), or set `WEB3FORMS_ACCESS_KEY`.
+
+The link expires after 15 minutes. Saving a new password signs out every session. Until both pieces are in place the reset page shows how to change the password from the deployment instead. A password set by email stays in force until `ADMIN_PASSWORD_HASH` itself is changed, so whichever was set last wins.
 
 ### Development Server
 

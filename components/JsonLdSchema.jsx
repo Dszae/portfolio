@@ -1,11 +1,13 @@
-import { buildPersonJsonLd, buildWebSiteJsonLd, buildPortraitImageObject, buildPersonImages } from '@/lib/seoEngine';
+import { buildPersonJsonLd, buildWebSiteJsonLd, buildPortraitImageObject, buildHomePortraitImageObject, buildPersonImages } from '@/lib/seoEngine';
 
 export const siteUrl = 'https://www.dipeshsapkota7.com.np';
 export const personId = `${siteUrl}/#author`;
 export const websiteId = `${siteUrl}/#website`;
 export const imageId = `${siteUrl}/#primary-image`;
+export const homeImageId = `${siteUrl}/#home-portrait`;
 
 export const portraitImage = buildPortraitImageObject();
+export const homePortraitImage = buildHomePortraitImageObject();
 
 export const person = {
   '@type': 'Person',
@@ -270,8 +272,12 @@ export const homePageSchema = {
       name: 'Dipesh Sapkota | Computer Engineering Student & AI/ML Enthusiast',
       description: 'Official portfolio of Dipesh Sapkota, a Computer Engineering student and AI/ML enthusiast at IOE Thapathali Campus, Nepal. Explore AI/ML projects, technical engineering pursuits, and creative work.',
       dateCreated: '2025-01-01T00:00:00+05:45',
+      dateModified: '2026-11-14T00:00:00+05:45',
+      inLanguage: 'en',
       mainEntity: person,
-      primaryImageOfPage: { '@id': imageId },
+      about: { '@id': personId },
+      primaryImageOfPage: { '@id': homeImageId },
+      image: [{ '@id': homeImageId }, { '@id': imageId }],
       isPartOf: { '@id': websiteId },
     },
     {

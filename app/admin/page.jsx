@@ -18,7 +18,7 @@ import {
 import AdminDashboard from '@/components/AdminDashboard';
 
 export const metadata = {
-  title: 'Portfolio Control Center | Dipesh Sapkota',
+  title: { absolute: 'Dashboard | Dipesh Sapkota Admin' },
   robots: {
     index: false,
     follow: false,

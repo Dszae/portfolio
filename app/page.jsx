@@ -162,9 +162,10 @@ export default function Home() {
                 </div>
               </div>
 
-              <figure className="hero-portrait-wrap">
+              <figure className="hero-portrait-wrap" aria-labelledby="hero-portrait-caption">
+                <div className="hero-portrait-accent" aria-hidden="true" />
                 <InteractivePortrait />
-                <figcaption className="sr-only">Dipesh Sapkota, Computer Engineering student and AI/ML enthusiast at IOE Thapathali Campus, Kathmandu, Nepal</figcaption>
+                <figcaption id="hero-portrait-caption" className="sr-only">Dipesh Sapkota, Computer Engineering student and AI/ML enthusiast at IOE Thapathali Campus, Kathmandu, Nepal</figcaption>
               </figure>
             </div>
           </section>

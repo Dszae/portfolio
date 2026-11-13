@@ -33,7 +33,7 @@ export async function GET() {
   const portraitImages = [
     { path: toAbsoluteUrl(PORTRAIT.square), title: `${portraitName}, Computer Engineering student at IOE Thapathali Campus` },
     { path: toAbsoluteUrl(PORTRAIT.landscape43), title: `Official portrait of ${portraitName}` },
-    { path: toAbsoluteUrl(PORTRAIT.transparent), title: `${portraitName} portrait` },
+    { path: toAbsoluteUrl(PORTRAIT.home), title: `${portraitName}, Computer Engineering student and AI/ML enthusiast from Kathmandu, Nepal` },
   ];
 
   const corePages = [

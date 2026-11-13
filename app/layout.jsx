@@ -20,7 +20,7 @@ import WebMCPInitializer from '@/components/WebMCPInitializer';
 import AnalyticsTracker from '@/components/AnalyticsTracker';
 import { getSiteSettings } from '@/lib/dataService';
 import { withoutEmoji } from '@/lib/uiText';
-import { resolvePortrait } from '@/lib/seoEngine';
+import { resolvePortrait, socialImageSize } from '@/lib/seoEngine';
 import './globals.css';
 
 export const revalidate = 60;
@@ -103,8 +103,7 @@ export async function generateMetadata() {
       images: [
         {
           url: ogImage.startsWith('http') ? ogImage : `https://www.dipeshsapkota7.com.np${ogImage.startsWith('/') ? ogImage : `/${ogImage}`}`,
-          width: 1200,
-          height: 675,
+          ...socialImageSize(ogImage),
           alt: `${name}, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal`,
         },
       ],
