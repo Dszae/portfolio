@@ -6,7 +6,7 @@ import {
   getExperiences, 
   getSiteSettings 
 } from '@/lib/dataService';
-import { SITE_URL, toAbsoluteUrl } from '@/lib/seoEngine';
+import { SITE_URL, toAbsoluteUrl, PORTRAIT } from '@/lib/seoEngine';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 3600;
@@ -29,29 +29,25 @@ export async function GET() {
   ]);
 
   const profile = settings?.profile || {};
-  const portraitImage = {
-    path: toAbsoluteUrl(profile.avatar_url || '/dipesh-sapkota.jpg'),
-    title: `Official portrait of ${profile.name || 'Dipesh Sapkota'}`,
-  };
+  const portraitName = profile.name || 'Dipesh Sapkota';
+  const portraitImages = [
+    { path: toAbsoluteUrl(PORTRAIT.square), title: `${portraitName}, Computer Engineering student at IOE Thapathali Campus` },
+    { path: toAbsoluteUrl(PORTRAIT.landscape43), title: `Official portrait of ${portraitName}` },
+    { path: toAbsoluteUrl(PORTRAIT.transparent), title: `${portraitName} portrait` },
+  ];
 
   const corePages = [
     {
       loc: `${SITE_URL}/`,
       priority: '1.0',
       changefreq: 'daily',
-      images: [portraitImage],
+      images: portraitImages,
     },
     {
       loc: `${SITE_URL}/about`,
       priority: '0.95',
       changefreq: 'weekly',
-      images: [portraitImage],
-    },
-    {
-      loc: `${SITE_URL}/profile`,
-      priority: '0.95',
-      changefreq: 'weekly',
-      images: [portraitImage],
+      images: portraitImages,
     },
     {
       loc: `${SITE_URL}/skills`,
@@ -91,7 +87,7 @@ export async function GET() {
       priority: '0.95',
       changefreq: 'weekly',
       images: [
-        portraitImage,
+        portraitImages[0],
         ...experiences.filter(e => e.logo).map(e => ({
           path: toAbsoluteUrl(e.logo),
           title: `${e.organization || e.company} Logo`,

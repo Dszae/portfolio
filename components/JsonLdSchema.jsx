@@ -1,30 +1,11 @@
-import { buildPersonJsonLd, buildWebSiteJsonLd } from '@/lib/seoEngine';
+import { buildPersonJsonLd, buildWebSiteJsonLd, buildPortraitImageObject, buildPersonImages } from '@/lib/seoEngine';
 
 export const siteUrl = 'https://www.dipeshsapkota7.com.np';
 export const personId = `${siteUrl}/#author`;
 export const websiteId = `${siteUrl}/#website`;
 export const imageId = `${siteUrl}/#primary-image`;
 
-export const portraitImage = {
-  '@type': 'ImageObject',
-  '@id': imageId,
-  url: `${siteUrl}/dipesh-sapkota.jpg`,
-  contentUrl: `${siteUrl}/dipesh-sapkota.jpg`,
-  name: 'Portrait of Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal',
-  description: 'Official portrait of Dipesh Sapkota, Computer Engineering student, AI/ML enthusiast, video editor, and motion graphics designer.',
-  caption: 'Official portrait of Dipesh Sapkota',
-  creator: {
-    '@type': 'Person',
-    name: 'Dipesh Sapkota',
-  },
-  creditText: 'Dipesh Sapkota',
-  copyrightNotice: '© 2026 Dipesh Sapkota. All rights reserved.',
-  license: `${siteUrl}/`,
-  width: 627,
-  height: 627,
-  representativeOfPage: true,
-  sameAs: 'https://commons.wikimedia.org/wiki/File:Dipesh_Sapkota.jpg',
-};
+export const portraitImage = buildPortraitImageObject();
 
 export const person = {
   '@type': 'Person',
@@ -37,8 +18,8 @@ export const person = {
   description: 'Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal, exploring Artificial Intelligence, Machine Learning, embedded systems, and visual motion design.',
   disambiguatingDescription: 'Computer Engineering student and AI/ML enthusiast at IOE Thapathali Campus in Nepal; creator of IOE Admission Hub, Sportivo, and Git Visualizer; known online as dszae.',
   url: `${siteUrl}/`,
-  mainEntityOfPage: `${siteUrl}/profile`,
-  image: portraitImage,
+  mainEntityOfPage: `${siteUrl}/about`,
+  image: buildPersonImages(),
   gender: 'https://schema.org/Male',
   jobTitle: ['Computer Engineering Student', 'AI/ML Enthusiast', 'Motion Graphics Designer', 'Video Editor'],
   nationality: {
@@ -224,13 +205,6 @@ export const website = {
     },
     {
       '@type': 'WebPage',
-      '@id': `${siteUrl}/profile`,
-      name: 'Profile',
-      description: 'Verified public profile, credentials, and biographical records of Dipesh Sapkota.',
-      url: `${siteUrl}/profile`,
-    },
-    {
-      '@type': 'WebPage',
       '@id': `${siteUrl}/skills`,
       name: 'Skills',
       description: 'Programming languages, tools, frameworks, and engineering competencies.',
@@ -297,7 +271,7 @@ export const homePageSchema = {
       description: 'Official portfolio of Dipesh Sapkota, a Computer Engineering student and AI/ML enthusiast at IOE Thapathali Campus, Nepal. Explore AI/ML projects, technical engineering pursuits, and creative work.',
       dateCreated: '2025-01-01T00:00:00+05:45',
       mainEntity: person,
-      primaryImageOfPage: portraitImage,
+      primaryImageOfPage: { '@id': imageId },
       isPartOf: { '@id': websiteId },
     },
     {

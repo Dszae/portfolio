@@ -6,13 +6,13 @@ export const metadata = {
     title: 'Resume | Dipesh Sapkota',
     description: 'Experience and education timeline of Dipesh Sapkota.',
     url: 'https://www.dipeshsapkota7.com.np/resume',
-    images: [{ url: '/dipesh-sapkota.jpg', width: 627, height: 627, alt: 'Dipesh Sapkota Resume' }],
+    images: [{ url: '/dipesh-sapkota-portrait-16x9.jpg', width: 1200, height: 675, alt: 'Dipesh Sapkota Resume' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Resume | Dipesh Sapkota',
     description: 'Work experience, education, and engineering curriculum vitae.',
-    images: ['/dipesh-sapkota.jpg'],
+    images: ['/dipesh-sapkota-portrait-16x9.jpg'],
   },
 };
 

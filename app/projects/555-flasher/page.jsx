@@ -15,13 +15,13 @@ export const metadata = {
     title: 'NE555 Astable Multivibrator Hardware Prototype | Dipesh Sapkota',
     description: 'Hardware relaxation oscillator prototype engineered around the NE555 timer IC with RC timing calculations and Proteus transient analysis.',
     url: 'https://www.dipeshsapkota7.com.np/projects/555-flasher',
-    images: [{ url: '/dipesh-sapkota.jpg', alt: 'Hardware project by Dipesh Sapkota' }],
+    images: [{ url: '/dipesh-sapkota-portrait-16x9.jpg', alt: 'Hardware project by Dipesh Sapkota' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Astable Multivibrator LED Flasher Case Study | Dipesh Sapkota',
     description: 'Circuit analysis, RC timing calculations, and breadboard validation by Dipesh Sapkota (dszae).',
-    images: ['/dipesh-sapkota.jpg'],
+    images: ['/dipesh-sapkota-portrait-16x9.jpg'],
   },
 };
 

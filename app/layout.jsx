@@ -20,6 +20,7 @@ import WebMCPInitializer from '@/components/WebMCPInitializer';
 import AnalyticsTracker from '@/components/AnalyticsTracker';
 import { getSiteSettings } from '@/lib/dataService';
 import { withoutEmoji } from '@/lib/uiText';
+import { resolvePortrait } from '@/lib/seoEngine';
 import './globals.css';
 
 export const revalidate = 60;
@@ -32,7 +33,7 @@ export async function generateMetadata() {
   const name = withoutEmoji(profile.name || 'Dipesh Sapkota');
   const rawTitle = withoutEmoji(seo.title || `${name} | Computer Engineering Student & AI/ML Enthusiast`);
   const description = withoutEmoji(seo.description || profile.bio || 'Official portfolio of Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus, exploring AI/ML intelligent systems, embedded hardware, and motion design.');
-  const ogImage = seo.og_image || profile.avatar_url || '/dipesh-sapkota.jpg';
+  const ogImage = resolvePortrait(seo.og_image || profile.avatar_url);
   const twitterHandle = (seo.twitter_handle || '@dszae').replace(/^@?/, '@');
 
   return {
@@ -103,8 +104,8 @@ export async function generateMetadata() {
         {
           url: ogImage.startsWith('http') ? ogImage : `https://www.dipeshsapkota7.com.np${ogImage.startsWith('/') ? ogImage : `/${ogImage}`}`,
           width: 1200,
-          height: 630,
-          alt: `Portrait of ${name}`,
+          height: 675,
+          alt: `${name}, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal`,
         },
       ],
     },

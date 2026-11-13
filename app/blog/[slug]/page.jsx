@@ -162,7 +162,7 @@ export default async function DynamicArticlePage({ params }) {
 <div className="p-5 sm:p-6 rounded-2xl bg-slate-50 dark:bg-[#141824] border border-slate-200 dark:border-slate-800 flex items-center gap-4 mt-12">
               <div className="relative w-14 h-14 rounded-full overflow-hidden shrink-0 border border-emerald-500/30">
                 <Image
-                  src={profile.avatar_url || '/profile.webp'}
+                  src={profile.avatar_url || '/dipesh-sapkota-portrait.jpg'}
                   alt={profile.name || 'Dipesh Sapkota'}
                   fill
                   unoptimized={true}

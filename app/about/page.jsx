@@ -7,10 +7,9 @@ export const revalidate = 60;
 export async function generateMetadata() {
   const siteSettings = await getSiteSettings();
   const profile = siteSettings?.profile || {};
-  const name = profile.name || 'Dipesh Sapkota';
 
   return await generatePageMetadata({
-    title: `About ${name} | Computer Engineering Student & AI/ML Enthusiast`,
+    title: 'About',
     description: profile.bio || `Official biography and academic profile of Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal. Exploring Artificial Intelligence, Machine Learning, embedded circuits, and motion design.`,
     path: '/about',
     type: 'profile',

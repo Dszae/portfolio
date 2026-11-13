@@ -15,13 +15,13 @@ export const metadata = {
     title: 'Automated Analyzer Diagnostics Case Study | Dipesh Sapkota',
     description: 'Electromechanical diagnostics protocol and calibration analysis for clinical automated analyzers.',
     url: 'https://www.dipeshsapkota7.com.np/projects/analyzer-diag',
-    images: [{ url: '/dipesh-sapkota.jpg', alt: 'Biomedical Engineering Instrumentation by Dipesh Sapkota' }],
+    images: [{ url: '/dipesh-sapkota-portrait-16x9.jpg', alt: 'Biomedical Engineering Instrumentation by Dipesh Sapkota' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Automated Analyzer Diagnostics | Dipesh Sapkota',
     description: 'Fluidics verification, pressure transducer tolerances, and calibration by Dipesh Sapkota (dszae).',
-    images: ['/dipesh-sapkota.jpg'],
+    images: ['/dipesh-sapkota-portrait-16x9.jpg'],
   },
 };
 

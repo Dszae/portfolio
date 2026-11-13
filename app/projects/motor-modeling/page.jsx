@@ -15,13 +15,13 @@ export const metadata = {
     title: 'Electrical Machinery Modeling | Dipesh Sapkota',
     description: 'Steady-state mathematical modeling and parameter derivation for 3-phase squirrel cage induction machines and DC motors.',
     url: 'https://www.dipeshsapkota7.com.np/projects/motor-modeling',
-    images: [{ url: '/dipesh-sapkota.jpg', alt: 'Engineering Machinery Modeling by Dipesh Sapkota' }],
+    images: [{ url: '/dipesh-sapkota-portrait-16x9.jpg', alt: 'Engineering Machinery Modeling by Dipesh Sapkota' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Electrical Machinery Modeling | Dipesh Sapkota',
     description: 'Phasor calculus, torque-slip analysis, and parameter derivation by Dipesh Sapkota (dszae).',
-    images: ['/dipesh-sapkota.jpg'],
+    images: ['/dipesh-sapkota-portrait-16x9.jpg'],
   },
 };
 

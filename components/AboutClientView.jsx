@@ -18,7 +18,7 @@ export default function AboutClientView({ siteSettings = {}, jsonLd = null, page
 
   const effectiveBreadcrumbs = breadcrumbItems || [
     { name: 'Home', path: '/' },
-    { name: pageTitle, path: pageTitle.toLowerCase() === 'profile' ? '/profile' : '/about' }
+    { name: pageTitle, path: '/about' }
   ];
 
   return (
@@ -34,7 +34,7 @@ export default function AboutClientView({ siteSettings = {}, jsonLd = null, page
           )}
 
           <FadeUp>
-            <section id={pageTitle.toLowerCase() === 'profile' ? 'profile' : 'about'} className={`pt-36 sm:pt-44 subpage-container pb-28 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
+            <section id="about" className={`pt-36 sm:pt-44 subpage-container pb-28 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
               <div className="max-w-6xl mx-auto w-full">
                 
                 {/* 1. Page Header (Editorial Monograph Style) */}

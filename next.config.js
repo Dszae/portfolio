@@ -75,6 +75,11 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: '/profile',
+        destination: '/about',
+        permanent: true,
+      },
+      {
         source: '/security.txt',
         destination: '/.well-known/security.txt',
         permanent: true,

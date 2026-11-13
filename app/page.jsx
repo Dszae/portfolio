@@ -164,6 +164,7 @@ export default function Home() {
 
               <figure className="hero-portrait-wrap">
                 <InteractivePortrait />
+                <figcaption className="sr-only">Dipesh Sapkota, Computer Engineering student and AI/ML enthusiast at IOE Thapathali Campus, Kathmandu, Nepal</figcaption>
               </figure>
             </div>
           </section>

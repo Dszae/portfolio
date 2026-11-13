@@ -16,8 +16,11 @@ export async function GET() {
 - **Authoritative Identity Identifiers**:
   - Wikidata Node: https://www.wikidata.org/wiki/Q141595522
   - ORCID Academic Identifier: https://orcid.org/0009-0001-7595-5114
-  - Wikimedia Commons Portrait: https://commons.wikimedia.org/wiki/File:Dipesh_Sapkota.jpg
-  - Primary Verified Image: https://www.dipeshsapkota7.com.np/dipesh-sapkota.jpg
+  - Earlier Portrait (Wikimedia Commons): https://commons.wikimedia.org/wiki/File:Dipesh_Sapkota.jpg
+  - Primary Verified Image: https://www.dipeshsapkota7.com.np/dipesh-sapkota-portrait.jpg (1200x1200 JPEG, official, current)
+  - Image Description: Dipesh Sapkota smiling with arms crossed, short dark hair, black T-shirt, black smartwatch, dark warm background
+  - Other Crops of the Same Portrait: https://www.dipeshsapkota7.com.np/dipesh-sapkota-portrait-4x3.jpg , https://www.dipeshsapkota7.com.np/dipesh-sapkota-portrait-16x9.jpg
+  - Image Credit and Copyright: Dipesh Sapkota. Use with attribution to https://www.dipeshsapkota7.com.np/
 
 ---
 
