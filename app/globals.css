@@ -1268,6 +1268,45 @@ html.dark .hero-cv-link:hover {
 }
 
 
+/*
+ * Relight the daylight cut-out for the dark hero: keep exposure close to the original, then add a light
+ * shade from the lower left and a warm key from the upper right, where the page
+ * glow sits. Both layers are clipped to the figure's own silhouette.
+ */
+html:not(.light) .hero-portrait-image {
+  filter: brightness(0.96) contrast(1.04) saturate(0.92);
+}
+
+html:not(.light) .hero-portrait-figure::before,
+html:not(.light) .hero-portrait-figure::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  /* Silhouette, intersected with the same bottom fade the image uses */
+  -webkit-mask-image: url("/dipesh-sapkota-hero.webp"), linear-gradient(to bottom, #000 0%, #000 44%, rgba(0, 0, 0, 0.5) 70%, transparent 95%);
+  mask-image: url("/dipesh-sapkota-hero.webp"), linear-gradient(to bottom, #000 0%, #000 44%, rgba(0, 0, 0, 0.5) 70%, transparent 95%);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+html:not(.light) .hero-portrait-figure::before {
+  background:
+    linear-gradient(100deg, rgba(5, 4, 3, 0.34) 0%, rgba(5, 4, 3, 0.14) 32%, rgba(5, 4, 3, 0) 58%),
+    linear-gradient(to bottom, rgba(5, 4, 3, 0) 55%, rgba(5, 4, 3, 0.35) 100%);
+  mix-blend-mode: multiply;
+}
+
+html:not(.light) .hero-portrait-figure::after {
+  background: radial-gradient(ellipse 75% 60% at 92% 6%, rgba(232, 164, 88, 0.6) 0%, rgba(232, 164, 88, 0.22) 42%, rgba(232, 164, 88, 0) 72%);
+  mix-blend-mode: soft-light;
+}
+
 .skills-preview {
   width: 100%;
   padding: 36px 24px 80px;

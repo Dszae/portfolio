@@ -4,13 +4,13 @@ export default function InteractivePortrait() {
   return (
     <div className="hero-portrait-figure">
       <Image
-        src="/dipesh-sapkota-portrait.webp"
+        src="/dipesh-sapkota-hero.webp"
         id="primary-profile-image"
         title="Dipesh Sapkota"
         itemProp="image"
         alt="Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal"
-        width={540}
-        height={686}
+        width={582}
+        height={799}
         loading="eager"
         priority
         fetchPriority="high"
