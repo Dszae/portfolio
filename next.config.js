@@ -39,53 +39,28 @@ const nextConfig = {
     root: path.resolve(process.cwd()),
   },
   async rewrites() {
-    return {
-      beforeFiles: [
-        {
-          source: '/',
-          has: [{ type: 'host', value: 'admin.dipeshsapkota7.com.np' }],
-          destination: '/admin',
-        },
-        {
-          source: '/login',
-          has: [{ type: 'host', value: 'admin.dipeshsapkota7.com.np' }],
-          destination: '/admin/login',
-        },
-        {
-          source: '/forgot-password',
-          has: [{ type: 'host', value: 'admin.dipeshsapkota7.com.np' }],
-          destination: '/admin/forgot-password',
-        },
-        {
-          source: '/reset-password',
-          has: [{ type: 'host', value: 'admin.dipeshsapkota7.com.np' }],
-          destination: '/admin/reset-password',
-        },
-      ],
-      afterFiles: [
-        {
-          source: '/.well-known/api-catalog',
-          destination: '/api-catalog',
-        },
-        {
-          source: '/.well-known/llms.txt',
-          destination: '/llms',
-        },
-        {
-          source: '/.well-known/agent-card.json',
-          destination: '/agent-card',
-        },
-        {
-          source: '/.well-known/agent-skills/index.json',
-          destination: '/agent-skills/index',
-        },
-        {
-          source: '/.well-known/http-message-signatures-directory',
-          destination: '/http-message-signatures-directory',
-        },
-      ],
-      fallback: [],
-    };
+    return [
+      {
+        source: '/.well-known/api-catalog',
+        destination: '/api-catalog',
+      },
+      {
+        source: '/.well-known/llms.txt',
+        destination: '/llms',
+      },
+      {
+        source: '/.well-known/agent-card.json',
+        destination: '/agent-card',
+      },
+      {
+        source: '/.well-known/agent-skills/index.json',
+        destination: '/agent-skills/index',
+      },
+      {
+        source: '/.well-known/http-message-signatures-directory',
+        destination: '/http-message-signatures-directory',
+      },
+    ];
   },
   async redirects() {
     return [
