@@ -22,8 +22,8 @@
       "zone_name": "dipeshsapkota7.com.np"
     },
     {
-      "pattern": "admin.dipeshsapkota7.com.np/*",
-      "zone_name": "dipeshsapkota7.com.np"
+      "pattern": "admin.dipeshsapkota7.com.np",
+      "custom_domain": true
     }
   ],
   "assets": {
