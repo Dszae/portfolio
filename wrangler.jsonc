@@ -14,12 +14,12 @@
   },
   "routes": [
     {
-      "pattern": "dipeshsapkota7.com.np/*",
-      "zone_name": "dipeshsapkota7.com.np"
+      "pattern": "dipeshsapkota7.com.np",
+      "custom_domain": true
     },
     {
-      "pattern": "www.dipeshsapkota7.com.np/*",
-      "zone_name": "dipeshsapkota7.com.np"
+      "pattern": "www.dipeshsapkota7.com.np",
+      "custom_domain": true
     }
   ],
   "assets": {
