@@ -29,7 +29,7 @@ export default function CertificatesClientView({ certificates, jsonLd }) {
           <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Certificates', path: '/certificates' }]} />
           <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
           />
 
           <FadeUp>

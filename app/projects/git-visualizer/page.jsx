@@ -107,7 +107,7 @@ export default function GitVisualizerProjectPage() {
             { name: 'Git Visualizer', path: '/projects/git-visualizer' },
           ]}
         />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }} />
 
 <div className="mb-6">
           <Link

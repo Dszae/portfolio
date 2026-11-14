@@ -29,7 +29,7 @@ export default function AboutClientView({ siteSettings = {}, jsonLd = null, page
           {jsonLd && (
             <script
               type="application/ld+json"
-              dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
             />
           )}
 

@@ -85,7 +85,7 @@ export default async function DynamicArticlePage({ params }) {
           
           <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
           />
 
           <article className="space-y-8">

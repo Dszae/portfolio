@@ -1,9 +1,26 @@
 import { NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
 import { supabaseAdmin } from '@/lib/supabaseAdmin';
+import { takeAttempt } from '@/lib/loginRateLimit';
+import { clientAddress } from '@/lib/adminRequest';
+
+const MAX_CONTACT_REQUESTS = 5;
+const CONTACT_WINDOW_MS = 10 * 60 * 1000;
 
 export async function POST(request) {
   try {
+    const clientIp = clientAddress(request);
+    const gate = takeAttempt('contact_form', clientIp, MAX_CONTACT_REQUESTS, CONTACT_WINDOW_MS);
+    if (!gate.allowed) {
+      return NextResponse.json(
+        { error: 'Too many messages sent. Please wait before submitting again.' },
+        {
+          status: 429,
+          headers: { 'Retry-After': String(gate.retryAfterSeconds) },
+        }
+      );
+    }
+
     const body = await request.json();
     const { name, email, subject, message, botcheck } = body;
 

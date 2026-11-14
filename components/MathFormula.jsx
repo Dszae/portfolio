@@ -11,7 +11,8 @@ export default function MathFormula({ math, block = false, className = '' }) {
     });
     html = html.replace(/<svg\b(?![^>]*\baria-hidden=)/g, '<svg aria-hidden="true" focusable="false" ');
   } catch (err) {
-    html = `<span>${math}</span>`;
+    const escaped = String(math).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    html = `<span>${escaped}</span>`;
   }
 
   const Component = block ? 'div' : 'span';

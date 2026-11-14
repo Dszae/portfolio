@@ -104,7 +104,7 @@ export default function IoeAdmissionProjectPage() {
             { name: 'IOE Admission Guide', path: '/projects/ioe-admission-guide' },
           ]}
         />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }} />
 
 <div className="mb-6">
           <Link

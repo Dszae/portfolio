@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { isAuthenticated } from '@/lib/adminAuth';
 
 const INDEXNOW_KEY = '40095c3ecb1ec49491b82e6910d8a99b';
 const HOST = 'www.dipeshsapkota7.com.np';
@@ -20,6 +21,15 @@ const CORE_URLS = [
 ];
 
 export async function POST(request) {
+  const isAuth = await isAuthenticated();
+  const authHeader = request.headers.get('authorization');
+  const cronSecret = process.env.CRON_SECRET;
+  const isSecretValid = Boolean(cronSecret && authHeader === `Bearer ${cronSecret}`);
+
+  if (!isAuth && !isSecretValid) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   try {
     const payload = {
       host: HOST,

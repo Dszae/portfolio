@@ -107,7 +107,7 @@ export default function SportivoProjectPage() {
             { name: 'Sportivo', path: '/projects/sportivo' },
           ]}
         />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }} />
 
 <div className="mb-6">
           <Link

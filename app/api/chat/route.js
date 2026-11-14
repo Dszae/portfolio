@@ -74,8 +74,11 @@ export async function GET(request) {
 
 export async function POST(request) {
   
-  const forwardedFor = request.headers.get('x-forwarded-for') || '';
-  const clientIp = forwardedFor.split(',')[0].trim() || request.headers.get('x-real-ip') || '127.0.0.1';
+  const clientIp =
+    request.headers.get('cf-connecting-ip') ||
+    request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+    request.headers.get('x-real-ip') ||
+    '127.0.0.1';
 
   const rateCheck = checkRateLimit(clientIp);
   const rateHeaders = {

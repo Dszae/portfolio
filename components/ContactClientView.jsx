@@ -95,7 +95,7 @@ export default function ContactClientView() {
           <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact' }]} />
           <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageJsonLd) }}
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageJsonLd).replace(/</g, '\\u003c') }}
           />
 
           <FadeUp>

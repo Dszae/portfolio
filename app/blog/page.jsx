@@ -93,7 +93,7 @@ export default async function BlogPage() {
           <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Articles', path: '/blog' }]} />
           <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(articlesPageJsonLd) }}
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(articlesPageJsonLd).replace(/</g, '\\u003c') }}
           />
           
           <h1 className="text-3xl sm:text-4xl font-bold mb-4 tracking-tight text-[#0F172A] dark:text-[#F9FAFB] flex items-center gap-3">
