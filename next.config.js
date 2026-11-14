@@ -90,30 +90,6 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/admin',
-        has: [{ type: 'host', value: 'www.dipeshsapkota7.com.np' }],
-        destination: 'https://admin.dipeshsapkota7.com.np',
-        permanent: false,
-      },
-      {
-        source: '/admin/:path*',
-        has: [{ type: 'host', value: 'www.dipeshsapkota7.com.np' }],
-        destination: 'https://admin.dipeshsapkota7.com.np/admin/:path*',
-        permanent: false,
-      },
-      {
-        source: '/admin',
-        has: [{ type: 'host', value: 'dipeshsapkota7.com.np' }],
-        destination: 'https://admin.dipeshsapkota7.com.np',
-        permanent: false,
-      },
-      {
-        source: '/admin/:path*',
-        has: [{ type: 'host', value: 'dipeshsapkota7.com.np' }],
-        destination: 'https://admin.dipeshsapkota7.com.np/admin/:path*',
-        permanent: false,
-      },
-      {
         source: '/articles',
         destination: '/blog',
         permanent: true,
