@@ -13,7 +13,7 @@ export default function AdminAuthShell({ title, description, children, wide = fa
           <span className="text-sm text-[#85858b]">Admin</span>
         </div>
         <Link
-          href="https://www.dipeshsapkota7.com.np/"
+          href="/"
           className="rounded text-[13px] text-[#a1a1a6] underline-offset-4 transition-colors duration-150 hover:text-[#ededed] hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#34D399]"
         >
           Back to site
