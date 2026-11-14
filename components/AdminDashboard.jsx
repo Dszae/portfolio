@@ -606,7 +606,7 @@ const chartPoints = useMemo(() => {
           </div>
 
           <a
-            href="/"
+            href="https://www.dipeshsapkota7.com.np/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-zinc-300 text-xs font-medium transition-colors border border-zinc-800"
