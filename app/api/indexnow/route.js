@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { isAuthenticated } from '@/lib/adminAuth';
 
+export const dynamic = 'force-dynamic';
+
 const INDEXNOW_KEY = '40095c3ecb1ec49491b82e6910d8a99b';
 const HOST = 'www.dipeshsapkota7.com.np';
 const KEY_LOCATION = `https://${HOST}/${INDEXNOW_KEY}.txt`;
