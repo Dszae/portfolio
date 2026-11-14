@@ -3,6 +3,7 @@ import { revalidatePath } from 'next/cache';
 import { supabaseAdmin } from '@/lib/supabaseAdmin';
 import { takeAttempt } from '@/lib/loginRateLimit';
 import { clientAddress } from '@/lib/adminRequest';
+import { sendAdminMail } from '@/lib/adminMailer';
 
 const MAX_CONTACT_REQUESTS = 5;
 const CONTACT_WINDOW_MS = 10 * 60 * 1000;
@@ -63,11 +64,15 @@ const { data: dbData, error: dbError } = await supabaseAdmin
       console.error('Failed to store contact message in database:', dbError.message);
     }
 
-    const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
-    if (accessKey) {
-      try {
+    try {
+      if (process.env.RESEND_API_KEY && process.env.ADMIN_EMAIL) {
+        await sendAdminMail({
+          subject: `[Portfolio Contact] ${trimmedSubject} - ${trimmedName}`,
+          text: `New contact form submission on dipeshsapkota7.com.np:\n\nName: ${trimmedName}\nEmail: ${trimmedEmail}\nSubject: ${trimmedSubject}\n\nMessage:\n${trimmedMessage}\n\nTime: ${new Date().toISOString()}`
+        });
+      } else if (process.env.WEB3FORMS_ACCESS_KEY) {
         const formData = new FormData();
-        formData.set('access_key', accessKey);
+        formData.set('access_key', process.env.WEB3FORMS_ACCESS_KEY);
         formData.set('name', trimmedName);
         formData.set('email', trimmedEmail);
         formData.set('subject', trimmedSubject);
@@ -78,9 +83,9 @@ const { data: dbData, error: dbError } = await supabaseAdmin
           method: 'POST',
           body: formData
         });
-      } catch (emailErr) {
-        console.error('Web3Forms email delivery error:', emailErr);
       }
+    } catch (emailErr) {
+      console.error('Contact email delivery error:', emailErr);
     }
 
 revalidatePath('/admin');
