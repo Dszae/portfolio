@@ -266,10 +266,10 @@ export default function Home() {
                   Get in touch
                 </Link>
                 <a
-                  href="mailto:dsz.ae18@gmail.com"
+                  href="mailto:contact@dipeshsapkota7.com.np"
                   className="hero-button hero-button-secondary font-mono text-sm"
                 >
-                  dsz.ae18@gmail.com
+                  contact@dipeshsapkota7.com.np
                 </a>
               </div>
             </div>

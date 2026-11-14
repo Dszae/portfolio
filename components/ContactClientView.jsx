@@ -136,7 +136,7 @@ export default function ContactClientView() {
                           </div>
                           <div>
                             <h2 className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-bold">Email</h2>
-                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=dsz.ae18@gmail.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-sm sm:text-base text-[#0F172A] dark:text-[#F9FAFB] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors block">dsz.ae18@gmail.com</a>
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=contact@dipeshsapkota7.com.np" target="_blank" rel="noopener noreferrer" className="font-semibold text-sm sm:text-base text-[#0F172A] dark:text-[#F9FAFB] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors block">contact@dipeshsapkota7.com.np</a>
                           </div>
                         </div>
 

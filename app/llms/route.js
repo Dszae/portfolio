@@ -23,7 +23,7 @@ const content = `# Dipesh Sapkota | Portfolio & Web Applications
 - [Visual Archive & Gallery](https://www.dipeshsapkota7.com.np/gallery): High-resolution photo archive documenting campus life, Yathartha National Tech Exhibition, creative media sessions, and engineering field visits.
 - [Certifications](https://www.dipeshsapkota7.com.np/certificates): Verified certificates from Udemy, Blackmagic Design, and EDUCBA in Graphic Design, Color Correction, After Effects, and Web Development.
 - [Articles & Case Studies](https://www.dipeshsapkota7.com.np/blog): In-depth engineering write-ups documenting Sportivo's streaming architecture, Git DAG visualizer graph internals, and technical articles.
-- [Contact](https://www.dipeshsapkota7.com.np/contact): Direct contact details (Kathmandu, Nepal; phone: +977 9764685307; email: dsz.ae18@gmail.com) and direct inquiry messaging.
+- [Contact](https://www.dipeshsapkota7.com.np/contact): Direct contact details (Kathmandu, Nepal; phone: +977 9764685307; email: contact@dipeshsapkota7.com.np) and direct inquiry messaging.
 
 ## Flagship Projects
 - [Sportivo](https://sportivo.dipeshsapkota7.com.np/): High-performance live sports streaming platform with real-time match schedule scraping and multi-server stream switching.

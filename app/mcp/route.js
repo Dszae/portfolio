@@ -84,7 +84,7 @@ export async function POST(request) {
       const { name } = body.params || {};
       let resultText = "Tool executed successfully.";
       if (name === "get_contact_info") {
-        resultText = "Dipesh Sapkota | Email: dsz.ae18@gmail.com | Location: Kathmandu, Nepal | Website: https://www.dipeshsapkota7.com.np";
+        resultText = "Dipesh Sapkota | Email: contact@dipeshsapkota7.com.np | Location: Kathmandu, Nepal | Website: https://www.dipeshsapkota7.com.np";
       } else if (name === "get_portfolio_summary") {
         resultText = "Dipesh Sapkota is a Computer Engineering student at IOE Thapathali Campus, Programmer, Video Editor, and Graphic Designer.";
       }

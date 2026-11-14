@@ -1134,7 +1134,7 @@ function App() {
                       </div>
                       <div>
                         <h4 className={`font-mono text-[10px] sm:text-xs uppercase font-bold ${theme.muted}`}>Email</h4>
-                        <a href="mailto:dsz.ae18@gmail.com" className="font-bold text-sm sm:text-lg hover:text-blue-500 transition-colors block">dsz.ae18@gmail.com</a>
+                        <a href="mailto:contact@dipeshsapkota7.com.np" className="font-bold text-sm sm:text-lg hover:text-blue-500 transition-colors block">contact@dipeshsapkota7.com.np</a>
                       </div>
                     </div>
                   </div>

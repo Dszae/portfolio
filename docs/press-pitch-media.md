@@ -42,7 +42,7 @@ I would be delighted to share the technical background, user statistics, or arch
 * **Live Demo 1:** https://ioe-admission.dipeshsapkota7.com.np/
 * **Live Demo 2:** https://git-visualizer.dipeshsapkota7.com.np/
 * **Engineering Portfolio:** https://www.dipeshsapkota7.com.np/
-* **Contact:** dsz.ae18@gmail.com / +977 9764685307
+* **Contact:** contact@dipeshsapkota7.com.np / +977 9764685307
 
 Thank you for your time and for supporting tech innovations in Nepal.
 
@@ -70,7 +70,7 @@ IOE Thapathali Campus, Tribhuvan University
 
 * **आइओई पोर्टल:** https://ioe-admission.dipeshsapkota7.com.np/
 * **गिट भिजुअलाइजर:** https://git-visualizer.dipeshsapkota7.com.np/
-* **सम्पर्क:** dsz.ae18@gmail.com / +977 9764685307
+* **सम्पर्क:** contact@dipeshsapkota7.com.np / +977 9764685307
 
 धन्यवाद,  
 दिपेश सापकोटा  

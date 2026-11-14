@@ -32,7 +32,7 @@ In tech journalism across Nepal (*TechPana*, *ICT Frame*, *Living with ICT*), st
 * Direct email pitches were already successfully dispatched to:
   * `news@techpana.com` (TechPana News Desk)
   * `info@ictframe.com` (ICT Frame Editorial Team)
-* **What the Owner Must Do:** Monitor `dsz.ae18@gmail.com` for replies from reporters or editors. If an editor requests screenshots, user metrics, or a short interview, respond promptly with factual engineering details.
+* **What the Owner Must Do:** Monitor `contact@dipeshsapkota7.com.np` for replies from reporters or editors. If an editor requests screenshots, user metrics, or a short interview, respond promptly with factual engineering details.
 * **Once Published:** The resulting news article URL becomes the primary external citation to be added to:
   1. Wikidata `Q141595522` as reference `P854` (reference URL).
   2. Wikipedia draft `Draft:Dipesh Sapkota` inside `<ref>` tags.
