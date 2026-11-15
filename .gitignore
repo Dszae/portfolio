@@ -47,3 +47,8 @@ yarn-error.log*
 # TypeScript output
 *.tsbuildinfo
 next-env.d.ts
+
+# AI agent skills (kept locally / in ~/.claude/skills, not published)
+.agents/skills/
+.claude/skills/
+skills-lock.json
