@@ -111,12 +111,12 @@ export default async function DynamicArticlePage({ params }) {
               )}
             </div>
 
-<h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] leading-snug">
+<h1 className="text-2xl sm:text-4xl font-semibold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] leading-snug">
               {article.title}
             </h1>
 
 {article.excerpt && (
-              <p className="text-base sm:text-lg text-[#334155] dark:text-[#CBD5E1] leading-relaxed border-l-2 border-[#065F46] dark:border-[#34D399] pl-4 italic">
+              <p className="text-base sm:text-lg text-[#334155] dark:text-[#CBD5E1] leading-relaxed border-l-2 border-[#065F46] dark:border-[#34D399] pl-4">
                 {article.excerpt}
               </p>
             )}
@@ -170,7 +170,7 @@ export default async function DynamicArticlePage({ params }) {
                 />
               </div>
               <div className="min-w-0 flex-1">
-                <h3 className="font-bold text-sm text-slate-900 dark:text-white">
+                <h3 className="font-semibold text-sm text-slate-900 dark:text-white">
                   {profile.name || 'Dipesh Sapkota'}
                 </h3>
                 <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-2">

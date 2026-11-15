@@ -104,7 +104,7 @@ export default function ContactClientView() {
                 <div className={`p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl border backdrop-blur-md ${theme.card}`}>
                   <div className="grid lg:grid-cols-2 gap-12">
                     <div>
-                      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-[#0F172A] dark:text-[#F9FAFB] flex items-center gap-3">
+                      <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold mb-4 text-[#0F172A] dark:text-[#F9FAFB] flex items-center gap-3">
                         <span className="text-[#065F46] dark:text-[#34D399]">/</span> Contact
                       </h1>
                       <p className="mb-10 text-base sm:text-lg text-[#1E293B] dark:text-[#A7B0BE]">Open for freelance projects, technical collaborations, and select creative media engagements.</p>
@@ -115,7 +115,7 @@ export default function ContactClientView() {
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                           </div>
                           <div>
-                            <h2 className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-bold">Location</h2>
+                            <h2 className="font-mono text-[11px] sm:text-xs text-[#334155] dark:text-[#94A3B8] font-semibold">Location</h2>
                             <p className="font-semibold text-sm sm:text-base text-[#0F172A] dark:text-[#F9FAFB]">Kathmandu, Nepal</p>
                           </div>
                         </div>
@@ -125,7 +125,7 @@ export default function ContactClientView() {
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
                           </div>
                           <div>
-                            <h2 className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-bold">Phone</h2>
+                            <h2 className="font-mono text-[11px] sm:text-xs text-[#334155] dark:text-[#94A3B8] font-semibold">Phone</h2>
                             <a href="tel:+9779764685307" className="font-semibold text-sm sm:text-base text-[#0F172A] dark:text-[#F9FAFB] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors block">9764685307</a>
                           </div>
                         </div>
@@ -135,7 +135,7 @@ export default function ContactClientView() {
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                           </div>
                           <div>
-                            <h2 className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-bold">Email</h2>
+                            <h2 className="font-mono text-[11px] sm:text-xs text-[#334155] dark:text-[#94A3B8] font-semibold">Email</h2>
                             <a href="https://mail.google.com/mail/?view=cm&fs=1&to=contact@dipeshsapkota7.com.np" target="_blank" rel="noopener noreferrer" className="font-semibold text-sm sm:text-base text-[#0F172A] dark:text-[#F9FAFB] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors block">contact@dipeshsapkota7.com.np</a>
                           </div>
                         </div>
@@ -145,7 +145,7 @@ export default function ContactClientView() {
                             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.031 0C5.398 0 .023 5.375.023 12.008c0 2.115.553 4.181 1.604 6.002L.004 24l6.167-1.617c1.76 1.002 3.774 1.53 5.86 1.53 6.633 0 12.008-5.375 12.008-12.005C24.039 5.375 18.664 0 12.031 0zm.005 21.905c-1.8 0-3.564-.484-5.1-1.396l-.365-.217-3.79 1.002.997-3.69-.238-.38a9.907 9.907 0 01-1.52-5.216c0-5.467 4.453-9.92 9.92-9.92 2.65 0 5.14 1.033 7.012 2.905s2.906 4.362 2.906 7.012c0 5.467-4.453 9.92-9.922 9.92zm5.438-7.433c-.298-.15-1.764-.87-2.037-.97-.273-.1-.472-.15-.672.15-.2.298-.77 1-.945 1.2-.175.2-.349.224-.647.075-.298-.15-1.258-.464-2.396-1.48-1.077-.96-1.804-2.147-2.015-2.51-.21-.362-.022-.558.127-.706.134-.134.298-.349.447-.524.15-.175.2-.298.3-.497.1-.2.05-.373-.025-.523-.075-.15-.672-1.62-.92-2.22-.242-.584-.488-.505-.671-.514-.174-.009-.373-.01-.572-.01-.2 0-.523.075-.796.373-.274.298-1.045 1.02-1.045 2.487s1.07 2.885 1.22 3.085c.15.2 2.106 3.216 5.103 4.51.713.308 1.27.493 1.704.63.716.228 1.368.196 1.883.119.574-.086 1.764-.72 2.013-1.416.248-.696.248-1.293.174-1.416-.075-.124-.274-.2-.572-.349z"/></svg>
                           </div>
                           <div>
-                            <h2 className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-bold">WhatsApp</h2>
+                            <h2 className="font-mono text-[11px] sm:text-xs text-[#334155] dark:text-[#94A3B8] font-semibold">WhatsApp</h2>
                             <a href="https://wa.me/9779764685307" target="_blank" rel="noopener noreferrer" className="font-semibold text-sm sm:text-base text-[#0F172A] dark:text-[#F9FAFB] hover:text-[#065F46] dark:hover:text-[#34D399] transition-colors block">+977 9764685307</a>
                           </div>
                         </div>
@@ -193,7 +193,7 @@ export default function ContactClientView() {
                             placeholder="Your Name"
                             aria-label="Your Name"
                             autoComplete="name"
-                            className={`w-full px-4 py-3 sm:px-6 sm:py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#065F46]/30 dark:focus:ring-[#34D399]/30 transition-all ${theme.input}`}
+                            className={`w-full px-4 py-3 sm:px-6 sm:py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#065F46]/30 dark:focus:ring-[#34D399]/30 transition ${theme.input}`}
                             required
                           />
                         </div>
@@ -206,7 +206,7 @@ export default function ContactClientView() {
                             placeholder="Your Email"
                             aria-label="Your Email"
                             autoComplete="email"
-                            className={`w-full px-4 py-3 sm:px-6 sm:py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#065F46]/30 dark:focus:ring-[#34D399]/30 transition-all ${theme.input}`}
+                            className={`w-full px-4 py-3 sm:px-6 sm:py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#065F46]/30 dark:focus:ring-[#34D399]/30 transition ${theme.input}`}
                             required
                           />
                         </div>
@@ -219,7 +219,7 @@ export default function ContactClientView() {
                           placeholder="Your Message..."
                           aria-label="Your Message"
                           rows="5"
-                          className={`w-full px-4 py-3 sm:px-6 sm:py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#065F46]/30 dark:focus:ring-[#34D399]/30 transition-all resize-none ${theme.input}`}
+                          className={`w-full px-4 py-3 sm:px-6 sm:py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#065F46]/30 dark:focus:ring-[#34D399]/30 transition resize-none ${theme.input}`}
                           required
                         ></textarea>
                       </div>
@@ -227,7 +227,7 @@ export default function ContactClientView() {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="px-6 py-4 sm:px-10 sm:py-4.5 bg-[#065F46] hover:bg-[#044E39] dark:bg-[#34D399] dark:hover:bg-[#6EE7B7] text-white dark:text-[#090B0E] font-semibold rounded-xl disabled:cursor-not-allowed disabled:opacity-60 transition-all w-full shadow-md cursor-pointer hover:-translate-y-0.5"
+                        className="px-6 py-4 sm:px-10 sm:py-4.5 bg-[#065F46] hover:bg-[#044E39] dark:bg-[#34D399] dark:hover:bg-[#6EE7B7] text-white dark:text-[#090B0E] font-semibold rounded-xl disabled:cursor-not-allowed disabled:opacity-60 transition w-full shadow-md cursor-pointer hover:-translate-y-0.5"
                       >
                         {isSubmitting ? "Sending..." : "Send Message"}
                       </button>

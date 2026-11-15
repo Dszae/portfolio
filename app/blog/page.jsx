@@ -96,7 +96,7 @@ export default async function BlogPage() {
             dangerouslySetInnerHTML={{ __html: JSON.stringify(articlesPageJsonLd).replace(/</g, '\\u003c') }}
           />
           
-          <h1 className="text-3xl sm:text-4xl font-bold mb-4 tracking-tight text-[#0F172A] dark:text-[#F9FAFB] flex items-center gap-3">
+          <h1 className="text-3xl sm:text-4xl font-semibold mb-4 tracking-tight text-[#0F172A] dark:text-[#F9FAFB] flex items-center gap-3">
             <span className="text-[#065F46] dark:text-[#34D399]">/</span> Articles &amp; Write-Ups
           </h1>
           <div className="flex flex-wrap items-center justify-between gap-4 mb-10">
@@ -173,13 +173,13 @@ export default async function BlogPage() {
                       <div className="article-expand-inner pt-4 mt-2 border-t border-slate-200/80 dark:border-[#222933] space-y-3">
                         {highlights.length > 0 && (
                           <div>
-                            <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 dark:text-[#94A3B8] font-bold block mb-1.5">
+                            <span className="text-[10px] font-mono text-slate-500 dark:text-[#94A3B8] font-semibold block mb-1.5">
                               Core Technical Highlights
                             </span>
                             <ul className="space-y-1.5 text-xs text-[#334155] dark:text-[#CBD5E1] leading-relaxed">
                               {highlights.map((point, pIdx) => (
                                 <li key={pIdx} className="flex items-start gap-2">
-                                  <span className="text-[#065F46] dark:text-[#34D399] font-bold leading-normal select-none" aria-hidden="true">•</span>
+                                  <span className="text-[#065F46] dark:text-[#34D399] font-semibold leading-normal select-none" aria-hidden="true">•</span>
                                   <span>{point}</span>
                                 </li>
                               ))}

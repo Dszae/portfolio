@@ -36,7 +36,7 @@ export default function GalleryClientView({ gallery, jsonLd }) {
             <section id="gallery" className={`pt-36 sm:pt-40 subpage-container pb-24 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
               <div className="max-w-7xl mx-auto w-full">
                 <div className="mb-10 max-w-3xl">
-                  <h1 className="text-3xl sm:text-4xl font-bold mb-4 flex items-center gap-4 text-[#0F172A] dark:text-[#F9FAFB]">
+                  <h1 className="text-3xl sm:text-4xl font-semibold mb-4 flex items-center gap-4 text-[#0F172A] dark:text-[#F9FAFB]">
                     <span className="text-[#065F46] dark:text-[#34D399]">/</span> Gallery
                   </h1>
                   <p className="text-base sm:text-lg text-[#1E293B] dark:text-[#A7B0BE] leading-relaxed">

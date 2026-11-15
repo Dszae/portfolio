@@ -92,7 +92,7 @@ export default function GalleryGrid({ images }) {
               setSelectedCategory(cat);
               setActiveImageIndex(null);
             }}
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
+            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition ${
               selectedCategory === cat
                 ? 'bg-[#065F46] dark:bg-[#34D399] text-white dark:text-[#090B0E] shadow-sm'
                 : 'border border-[#CBD5E1] dark:border-[#222933] text-[#1E293B] dark:text-[#CBD5E1] hover:bg-[#F1F5F9] dark:hover:bg-[#181D24]'
@@ -107,7 +107,7 @@ export default function GalleryGrid({ images }) {
         {filteredImages.map((item, idx) => (
           <article
             key={item.id}
-            className="group rounded-2xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] overflow-hidden backdrop-blur flex flex-col transition-all duration-300 hover:-translate-y-1 shadow-sm"
+            className="group rounded-2xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] overflow-hidden backdrop-blur flex flex-col transition duration-300 hover:-translate-y-1 shadow-sm"
           >
             <button
               type="button"
@@ -138,7 +138,7 @@ export default function GalleryGrid({ images }) {
             <div className="p-5 flex-1 flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="inline-block px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-[#065F46] dark:text-[#34D399] bg-[#065F46]/10 dark:bg-[#34D399]/15 rounded-full border border-[#065F46]/20 dark:border-[#34D399]/30">
+                  <span className="inline-block px-2.5 py-0.5 text-[11px] font-semibold text-[#065F46] dark:text-[#34D399] bg-[#065F46]/10 dark:bg-[#34D399]/15 rounded-full border border-[#065F46]/20 dark:border-[#34D399]/30">
                     {item.category}
                   </span>
                 </div>
@@ -164,7 +164,7 @@ export default function GalleryGrid({ images }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2, ease: 'easeOut' }}
+            transition={{ duration: 0.16, ease: 'easeOut' }}
             className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/95 backdrop-blur-md p-4 sm:p-6 md:p-10 select-none cursor-pointer"
             onClick={handleClose}
           >
@@ -173,7 +173,7 @@ export default function GalleryGrid({ images }) {
               type="button"
               onClick={handleClose}
               aria-label="Close dialog"
-              className="fixed top-4 right-4 sm:top-6 sm:right-6 z-[120] p-2.5 text-white/80 hover:text-white hover:scale-110 active:scale-95 transition-all cursor-pointer focus:outline-none"
+              className="fixed top-4 right-4 sm:top-6 sm:right-6 z-[120] p-2.5 text-white/80 hover:text-white hover:scale-110 active:scale-95 transition cursor-pointer focus:outline-none"
             >
               <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -186,7 +186,7 @@ export default function GalleryGrid({ images }) {
                 type="button"
                 onClick={(e) => { e.stopPropagation(); handlePrev(e); }}
                 aria-label="Previous image"
-                className="fixed left-2 sm:left-6 top-1/2 -translate-y-1/2 z-[120] p-2.5 sm:p-3 text-white/70 hover:text-white hover:scale-110 active:scale-95 transition-all cursor-pointer focus:outline-none"
+                className="fixed left-2 sm:left-6 top-1/2 -translate-y-1/2 z-[120] p-2.5 sm:p-3 text-white/70 hover:text-white hover:scale-110 active:scale-95 transition cursor-pointer focus:outline-none"
               >
                 <svg className="w-8 h-8 sm:w-10 sm:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -197,9 +197,9 @@ export default function GalleryGrid({ images }) {
             {/* Center Image Container - clicking only here prevents closing */}
             <motion.div
               key={"gallery-card-" + activeImageIndex}
-              initial={{ opacity: 0, scale: 0.96, y: 6 }}
+              initial={{ opacity: 0, scale: 0.9, y: 18 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.96, y: 6 }}
+              exit={{ opacity: 0, scale: 0.94, y: 8, transition: { duration: 0.14, ease: 'easeIn' } }}
               transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
               onClick={(e) => e.stopPropagation()}
               className="relative z-10 rounded-2xl sm:rounded-3xl shadow-2xl max-w-[92vw] sm:max-w-[85vw] lg:max-w-4xl max-h-[72vh] sm:max-h-[76vh] flex items-center justify-center cursor-default overflow-hidden bg-transparent p-0"
@@ -220,7 +220,7 @@ export default function GalleryGrid({ images }) {
                 type="button"
                 onClick={(e) => { e.stopPropagation(); handleNext(e); }}
                 aria-label="Next image"
-                className="fixed right-2 sm:right-6 top-1/2 -translate-y-1/2 z-[120] p-2.5 sm:p-3 text-white/70 hover:text-white hover:scale-110 active:scale-95 transition-all cursor-pointer focus:outline-none"
+                className="fixed right-2 sm:right-6 top-1/2 -translate-y-1/2 z-[120] p-2.5 sm:p-3 text-white/70 hover:text-white hover:scale-110 active:scale-95 transition cursor-pointer focus:outline-none"
               >
                 <svg className="w-8 h-8 sm:w-10 sm:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -230,7 +230,7 @@ export default function GalleryGrid({ images }) {
 
             {/* Bottom Title & Subtitle - pointer-events-none so clicking here closes */}
             <div className="mt-4 sm:mt-5 text-center max-w-2xl px-4 pointer-events-none select-none z-10">
-              <h3 className="text-white text-base sm:text-lg md:text-xl font-bold tracking-tight">
+              <h3 className="text-white text-base sm:text-lg md:text-xl font-semibold tracking-tight">
                 {activeImage.title}
               </h3>
               <p className="mt-1 text-xs sm:text-sm text-slate-400 font-medium">

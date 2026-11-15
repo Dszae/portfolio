@@ -290,7 +290,7 @@ You can ask about his software projects, computer engineering background at **IO
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
           aria-label={isOpen ? 'Close' : 'Ask Assistant'}
-          className="group relative flex items-center justify-center sm:gap-2.5 w-12 h-12 sm:w-auto sm:h-auto sm:px-4 sm:py-2.5 rounded-full bg-white/95 dark:bg-[#0F1216]/95 border border-slate-200/90 dark:border-[#222933] text-slate-800 dark:text-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.5)] hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-lg transition-all duration-200 active:scale-[0.95]"
+          className="group relative flex items-center justify-center sm:gap-2.5 w-12 h-12 sm:w-auto sm:h-auto sm:px-4 sm:py-2.5 rounded-full bg-white/95 dark:bg-[#0F1216]/95 border border-slate-200/90 dark:border-[#222933] text-slate-800 dark:text-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.5)] hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-lg transition duration-200 active:scale-[0.95]"
         >
           
           <span className="hidden sm:inline-flex relative h-2 w-2 shrink-0">
@@ -441,7 +441,7 @@ You can ask about his software projects, computer engineering background at **IO
 
 {messages.length <= 2 && !isStreaming && (
             <div className="px-4 py-2.5 border-t border-slate-200/80 dark:border-[#222933] bg-slate-50/60 dark:bg-[#090B0E]/60">
-              <span className="text-[10px] font-mono text-slate-700 dark:text-slate-400 uppercase tracking-wider block mb-1.5 font-semibold">
+              <span className="text-[10px] font-mono text-slate-700 dark:text-slate-400 block mb-1.5 font-semibold">
                 Suggested exploration
               </span>
               <div className="flex flex-wrap gap-1.5 max-h-24 overflow-y-auto">
@@ -474,7 +474,7 @@ You can ask about his software projects, computer engineering background at **IO
                 onChange={(e) => setInput(withoutEmoji(e.target.value))}
                 placeholder="Ask about Dipesh's projects, skills, education..."
                 disabled={isStreaming}
-                className="flex-1 px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#14181F] border border-slate-300 dark:border-[#222933] text-slate-950 dark:text-slate-100 placeholder:text-slate-500 dark:placeholder:text-slate-400 text-xs focus:outline-none focus:ring-2 focus:ring-[#065F46]/20 dark:focus:ring-[#34D399]/20 focus:border-[#065F46] dark:focus:border-[#34D399] transition-all font-medium"
+                className="flex-1 px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#14181F] border border-slate-300 dark:border-[#222933] text-slate-950 dark:text-slate-100 placeholder:text-slate-500 dark:placeholder:text-slate-400 text-xs focus:outline-none focus:ring-2 focus:ring-[#065F46]/20 dark:focus:ring-[#34D399]/20 focus:border-[#065F46] dark:focus:border-[#34D399] transition font-medium"
               />
 
               {isStreaming ? (

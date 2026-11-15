@@ -36,7 +36,7 @@ export default function CertificatesClientView({ certificates, jsonLd }) {
             <section id="certificates" className={`pt-36 sm:pt-40 subpage-container pb-24 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
               <div className="max-w-7xl mx-auto w-full">
                 <div className="mb-10 max-w-[750px]">
-                  <h1 className="text-3xl sm:text-4xl lg:text-[40px] font-bold mb-4 flex items-center gap-3.5 text-[#0F172A] dark:text-[#F9FAFB] tracking-tight">
+                  <h1 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold mb-4 flex items-center gap-3.5 text-[#0F172A] dark:text-[#F9FAFB] tracking-tight">
                     <span className="text-[#065F46] dark:text-[#34D399]">/</span> Certificates
                   </h1>
                   <p className="text-[17px] sm:text-[18px] leading-[1.7] text-[#334155] dark:text-[#A7B0BE]">
@@ -49,7 +49,7 @@ export default function CertificatesClientView({ certificates, jsonLd }) {
                       type="button"
                       aria-label={`Open certificate: ${cert.title}`}
                       key={cert.id} 
-                      className="group p-3.5 sm:p-4 rounded-2xl border border-slate-200/80 dark:border-white/10 bg-white/70 dark:bg-[#11151C]/70 backdrop-blur-md shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md cursor-pointer text-left flex flex-col"
+                      className="group p-3.5 sm:p-4 rounded-2xl border border-slate-200/80 dark:border-white/10 bg-white/70 dark:bg-[#11151C]/70 backdrop-blur-md shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md cursor-pointer text-left flex flex-col"
                       onClick={() => setSelectedImage({
                         src: cert.img,
                         title: cert.title,

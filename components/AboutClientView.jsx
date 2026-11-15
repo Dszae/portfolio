@@ -39,12 +39,12 @@ export default function AboutClientView({ siteSettings = {}, jsonLd = null, page
                 
                 {/* 1. Page Header (Editorial Monograph Style) */}
                 <header className="mb-16 sm:mb-24">
-                  <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-[#065F46] dark:text-[#34D399] font-bold mb-4">
+                  <div className="flex items-center gap-3 font-mono text-xs text-[#065F46] dark:text-[#34D399] font-semibold mb-4">
                     <span>01</span>
                     <span className="w-8 h-[1px] bg-current opacity-60"></span>
                     <span>Identity & Profile</span>
                   </div>
-                  <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] leading-[1.1]">
+                  <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] leading-[1.1]">
                     Dipesh Sapkota
                   </h1>
                   <p className="mt-4 text-lg sm:text-xl font-mono font-medium text-[#1E293B] dark:text-[#CBD5E1]">
@@ -64,27 +64,27 @@ export default function AboutClientView({ siteSettings = {}, jsonLd = null, page
                         fill
                         priority
                         sizes="(max-width: 1024px) 100vw, 420px"
-                        className="object-cover object-top filter grayscale contrast-105 group-hover:grayscale-0 group-hover:contrast-100 transition-all duration-700 ease-out"
+                        className="object-cover object-top filter grayscale contrast-105 group-hover:grayscale-0 group-hover:contrast-100 transition-[filter] duration-300 ease-out"
                       />
                     </div>
 
                     {/* Metadata Ledger */}
                     <dl className="grid grid-cols-2 gap-y-4 pt-2 font-mono text-xs">
                       <div>
-                        <dt className="uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-semibold">Location</dt>
-                        <dd className="mt-1 font-bold text-[#0F172A] dark:text-[#F8FAFC]">Kathmandu, Nepal</dd>
+                        <dt className="text-[#334155] dark:text-[#94A3B8] font-semibold">Location</dt>
+                        <dd className="mt-1 font-semibold text-[#0F172A] dark:text-[#F8FAFC]">Kathmandu, Nepal</dd>
                       </div>
                       <div>
-                        <dt className="uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-semibold">Institution</dt>
-                        <dd className="mt-1 font-bold text-[#0F172A] dark:text-[#F8FAFC]">IOE Thapathali</dd>
+                        <dt className="text-[#334155] dark:text-[#94A3B8] font-semibold">Institution</dt>
+                        <dd className="mt-1 font-semibold text-[#0F172A] dark:text-[#F8FAFC]">IOE Thapathali</dd>
                       </div>
                       <div>
-                        <dt className="uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-semibold">Degree</dt>
-                        <dd className="mt-1 font-bold text-[#0F172A] dark:text-[#F8FAFC]">B.E. Computer Eng.</dd>
+                        <dt className="text-[#334155] dark:text-[#94A3B8] font-semibold">Degree</dt>
+                        <dd className="mt-1 font-semibold text-[#0F172A] dark:text-[#F8FAFC]">B.E. Computer Eng.</dd>
                       </div>
                       <div>
-                        <dt className="uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-semibold">Status</dt>
-                        <dd className="mt-1 font-bold text-[#065F46] dark:text-[#34D399]">Available for Projects</dd>
+                        <dt className="text-[#334155] dark:text-[#94A3B8] font-semibold">Status</dt>
+                        <dd className="mt-1 font-semibold text-[#065F46] dark:text-[#34D399]">Available for Projects</dd>
                       </div>
                     </dl>
                   </div>
@@ -92,7 +92,7 @@ export default function AboutClientView({ siteSettings = {}, jsonLd = null, page
                   {/* Right Column: Editorial Prose */}
                   <div className="lg:col-span-7 flex flex-col justify-between">
                     <div>
-                      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] leading-[1.25] mb-8">
+                      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] leading-[1.25] mb-8">
                         {headline}
                       </h2>
                       
@@ -101,15 +101,15 @@ export default function AboutClientView({ siteSettings = {}, jsonLd = null, page
                         <p>{secondaryBio}</p>
                         <p>
                           My engineering workflow prioritizes algorithmic structure, systems reliability, and hands-on simulation. I engineer tools that demystify technical abstractions, including{' '}
-                          <Link href="/projects/git-visualizer" className="text-[#065F46] dark:text-[#34D399] font-bold underline underline-offset-4 hover:opacity-80">
+                          <Link href="/projects/git-visualizer" className="text-[#065F46] dark:text-[#34D399] font-semibold underline underline-offset-4 hover:opacity-80">
                             Git Visualizer
                           </Link>{' '}
                           (an interactive DAG commit simulator),{' '}
-                          <Link href="/projects/sportivo" className="text-[#065F46] dark:text-[#34D399] font-bold underline underline-offset-4 hover:opacity-80">
+                          <Link href="/projects/sportivo" className="text-[#065F46] dark:text-[#34D399] font-semibold underline underline-offset-4 hover:opacity-80">
                             Sportivo
                           </Link>{' '}
                           (a live sports fixture platform), and{' '}
-                          <Link href="/projects/ioe-admission-guide" className="text-[#065F46] dark:text-[#34D399] font-bold underline underline-offset-4 hover:opacity-80">
+                          <Link href="/projects/ioe-admission-guide" className="text-[#065F46] dark:text-[#34D399] font-semibold underline underline-offset-4 hover:opacity-80">
                             IOE Admission Hub
                           </Link>{' '}
                           (an admission analytics tool for TU applicants).
@@ -118,7 +118,7 @@ export default function AboutClientView({ siteSettings = {}, jsonLd = null, page
                     </div>
 
                     <div className="mt-12 pt-8 border-t border-[#CBD5E1] dark:border-[#334155]">
-                      <blockquote className="text-base font-medium text-[#1E293B] dark:text-[#CBD5E1] border-l-2 border-[#065F46] dark:border-[#34D399] pl-4 italic">
+                      <blockquote className="text-base font-medium text-[#1E293B] dark:text-[#CBD5E1] border-l-2 border-[#065F46] dark:border-[#34D399] pl-4">
                         &ldquo;Software architecture is at its best when analytical rigor meets clear visual communication.&rdquo;
                       </blockquote>
                     </div>
@@ -129,37 +129,37 @@ export default function AboutClientView({ siteSettings = {}, jsonLd = null, page
                 <div className="py-16 sm:py-20 border-b border-[#CBD5E1] dark:border-[#334155]">
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12">
                     <div>
-                      <div className="text-4xl sm:text-5xl font-mono font-bold text-[#0F172A] dark:text-[#F8FAFC] tracking-tight">
+                      <div className="text-4xl sm:text-5xl font-mono font-semibold text-[#0F172A] dark:text-[#F8FAFC] tracking-tight">
                         {yearsExp}
                       </div>
-                      <div className="mt-2 font-mono text-xs uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-semibold">
+                      <div className="mt-2 font-mono text-xs text-[#334155] dark:text-[#94A3B8] font-semibold">
                         Years Motion Design
                       </div>
                     </div>
 
                     <div>
-                      <div className="text-4xl sm:text-5xl font-mono font-bold text-[#0F172A] dark:text-[#F8FAFC] tracking-tight">
+                      <div className="text-4xl sm:text-5xl font-mono font-semibold text-[#0F172A] dark:text-[#F8FAFC] tracking-tight">
                         {clientsCount}
                       </div>
-                      <div className="mt-2 font-mono text-xs uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-semibold">
+                      <div className="mt-2 font-mono text-xs text-[#334155] dark:text-[#94A3B8] font-semibold">
                         Global Clients Served
                       </div>
                     </div>
 
                     <div>
-                      <div className="text-4xl sm:text-5xl font-mono font-bold text-[#065F46] dark:text-[#34D399] tracking-tight">
+                      <div className="text-4xl sm:text-5xl font-mono font-semibold text-[#065F46] dark:text-[#34D399] tracking-tight">
                         IOE
                       </div>
-                      <div className="mt-2 font-mono text-xs uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-semibold">
+                      <div className="mt-2 font-mono text-xs text-[#334155] dark:text-[#94A3B8] font-semibold">
                         Thapathali Campus (TU)
                       </div>
                     </div>
 
                     <div>
-                      <div className="text-4xl sm:text-5xl font-mono font-bold text-[#0F172A] dark:text-[#F8FAFC] tracking-tight">
+                      <div className="text-4xl sm:text-5xl font-mono font-semibold text-[#0F172A] dark:text-[#F8FAFC] tracking-tight">
                         2026
                       </div>
-                      <div className="mt-2 font-mono text-xs uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-semibold">
+                      <div className="mt-2 font-mono text-xs text-[#334155] dark:text-[#94A3B8] font-semibold">
                         B.E. Cohort Graduation
                       </div>
                     </div>
@@ -168,7 +168,7 @@ export default function AboutClientView({ siteSettings = {}, jsonLd = null, page
 
                 {/* 4. Structured Ledger / Index Rows (Cardless) */}
                 <div className="py-16 sm:py-20">
-                  <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-[#065F46] dark:text-[#34D399] font-bold mb-12">
+                  <div className="flex items-center gap-3 font-mono text-xs text-[#065F46] dark:text-[#34D399] font-semibold mb-12">
                     <span>02</span>
                     <span className="w-8 h-[1px] bg-current opacity-60"></span>
                     <span>Core Competencies & Record</span>
@@ -178,11 +178,11 @@ export default function AboutClientView({ siteSettings = {}, jsonLd = null, page
                     
                     {/* Row 1: Academic Foundation */}
                     <div className="py-8 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline">
-                      <div className="md:col-span-4 font-mono text-xs uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-bold">
+                      <div className="md:col-span-4 font-mono text-xs text-[#334155] dark:text-[#94A3B8] font-semibold">
                         01 / Formal Education
                       </div>
                       <div className="md:col-span-8">
-                        <h3 className="text-xl font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                        <h3 className="text-xl font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                           Bachelor of Computer Engineering (B.E.)
                         </h3>
                         <p className="mt-1 text-sm font-semibold text-[#1E293B] dark:text-[#CBD5E1]">
@@ -196,11 +196,11 @@ export default function AboutClientView({ siteSettings = {}, jsonLd = null, page
 
                     {/* Row 2: AI & Computing */}
                     <div className="py-8 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline">
-                      <div className="md:col-span-4 font-mono text-xs uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-bold">
+                      <div className="md:col-span-4 font-mono text-xs text-[#334155] dark:text-[#94A3B8] font-semibold">
                         02 / Computing & Intelligence
                       </div>
                       <div className="md:col-span-8">
-                        <h3 className="text-xl font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                        <h3 className="text-xl font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                           Artificial Intelligence & Machine Learning
                         </h3>
                         <p className="mt-1 text-sm font-semibold text-[#1E293B] dark:text-[#CBD5E1]">
@@ -214,11 +214,11 @@ export default function AboutClientView({ siteSettings = {}, jsonLd = null, page
 
                     {/* Row 3: Hardware Simulation */}
                     <div className="py-8 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline">
-                      <div className="md:col-span-4 font-mono text-xs uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-bold">
+                      <div className="md:col-span-4 font-mono text-xs text-[#334155] dark:text-[#94A3B8] font-semibold">
                         03 / Hardware & Simulation
                       </div>
                       <div className="md:col-span-8">
-                        <h3 className="text-xl font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                        <h3 className="text-xl font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                           Circuits, Breadboards & Simulation
                         </h3>
                         <p className="mt-1 text-sm font-semibold text-[#1E293B] dark:text-[#CBD5E1]">
@@ -232,11 +232,11 @@ export default function AboutClientView({ siteSettings = {}, jsonLd = null, page
 
                     {/* Row 4: Motion Design */}
                     <div className="py-8 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline">
-                      <div className="md:col-span-4 font-mono text-xs uppercase tracking-wider text-[#334155] dark:text-[#94A3B8] font-bold">
+                      <div className="md:col-span-4 font-mono text-xs text-[#334155] dark:text-[#94A3B8] font-semibold">
                         04 / Creative Direction
                       </div>
                       <div className="md:col-span-8">
-                        <h3 className="text-xl font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                        <h3 className="text-xl font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                           Motion Graphics & High-Impact Video Editing
                         </h3>
                         <p className="mt-1 text-sm font-semibold text-[#1E293B] dark:text-[#CBD5E1]">

@@ -15,10 +15,10 @@ function MotionReelsGraphic() {
       <div className="flex items-center justify-between text-[11px] pb-2 border-b border-[#222933]">
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-          <span className="font-bold text-red-400">REC · 4K UHD</span>
+          <span className="font-semibold text-red-400">REC · 4K UHD</span>
         </div>
         <div className="text-slate-400 font-medium hidden sm:block">120 FPS · OPTICAL FLOW</div>
-        <div className="text-[#34D399] font-bold">00:01:24:18</div>
+        <div className="text-[#34D399] font-semibold">00:01:24:18</div>
       </div>
 
 <div className="relative my-auto py-3 flex flex-col items-center justify-center">
@@ -125,7 +125,7 @@ export default function ProjectsClientView({ initialProjects = [], jsonLd = null
               <header className="mb-16 sm:mb-20">
                 <div className="border-b border-slate-200 dark:border-[#222933] pb-8">
                   <div>
-                    <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#0F172A] dark:text-[#F9FAFB] flex items-center gap-3">
+                    <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-[#0F172A] dark:text-[#F9FAFB] flex items-center gap-3">
                       <span className="text-[#065F46] dark:text-[#34D399]">/</span>
                       Projects
                     </h1>
@@ -195,7 +195,7 @@ export default function ProjectsClientView({ initialProjects = [], jsonLd = null
                             {project.label || "Featured Project"} &middot; {project.categoryLabel}
                           </div>
 
-                          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0F172A] dark:text-[#F9FAFB] mb-3">
+                          <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-[#0F172A] dark:text-[#F9FAFB] mb-3">
                             <Link
                               href={project.detailUrl || project.liveUrl || '#'}
                               target={project.detailUrl ? undefined : '_blank'}
@@ -228,7 +228,7 @@ export default function ProjectsClientView({ initialProjects = [], jsonLd = null
                             {project.detailUrl ? (
                               <Link
                                 href={project.detailUrl}
-                                className="font-bold text-[#065F46] dark:text-[#34D399] hover:underline flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399] group"
+                                className="font-semibold text-[#065F46] dark:text-[#34D399] hover:underline flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399] group"
                               >
                                 <span>Case Study</span>
                                 <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
@@ -240,7 +240,7 @@ export default function ProjectsClientView({ initialProjects = [], jsonLd = null
                                 href={project.liveUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="font-bold text-[#065F46] dark:text-[#34D399] hover:underline flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399] group"
+                                className="font-semibold text-[#065F46] dark:text-[#34D399] hover:underline flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-[#065F46] dark:focus-visible:outline-[#34D399] group"
                               >
                                 <span>{project.slug === 'sports-reels' || project.slug === 'social-media' ? 'View on Instagram' : 'Live Project'}</span>
                                 <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
@@ -285,7 +285,7 @@ export default function ProjectsClientView({ initialProjects = [], jsonLd = null
               {noteworthyProjects.length > 0 && (
                 <div className="pt-12 border-t border-slate-200 dark:border-[#222933]">
                   <div className="text-center mb-10">
-                    <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F172A] dark:text-[#F9FAFB]">
+                    <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-[#0F172A] dark:text-[#F9FAFB]">
                       Other Noteworthy Engineering Projects
                     </h2>
                     <p className="mt-2 section-eyebrow">
@@ -297,7 +297,7 @@ export default function ProjectsClientView({ initialProjects = [], jsonLd = null
                     {noteworthyProjects.map((project) => (
                       <article
                         key={project.id || project.slug}
-                        className="group flex flex-col justify-between p-6 rounded-2xl bg-white dark:bg-[#0F1216] border border-slate-200 dark:border-[#222933] shadow-sm hover:-translate-y-0.5 transition-all duration-200"
+                        className="group flex flex-col justify-between p-6 rounded-2xl bg-white dark:bg-[#0F1216] border border-slate-200 dark:border-[#222933] shadow-sm hover:-translate-y-0.5 transition duration-200"
                       >
                         <div>
                           <div className="flex items-center justify-between mb-4">

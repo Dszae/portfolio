@@ -119,13 +119,13 @@ export default function RollingAnnouncement({ onVisibilityChange }) {
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
         
         {hasBadgeText ? (
-          <div className="shrink-0 flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-mono text-[10px] font-bold uppercase tracking-wider">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <div className="shrink-0 flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-mono text-[10px] font-semibold">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
             <span>{badgeText}</span>
           </div>
         ) : (
-          <div className="shrink-0 flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-mono text-[10px] font-bold">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <div className="shrink-0 flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-mono text-[10px] font-semibold">
+            <span className="w-2 h-2 rounded-full bg-emerald-400" />
           </div>
         )}
 
@@ -139,7 +139,7 @@ export default function RollingAnnouncement({ onVisibilityChange }) {
                 {feature.link && (
                   <Link 
                     href={feature.link}
-                    className="inline-flex items-center gap-1 font-bold text-emerald-400 hover:text-emerald-300 underline underline-offset-2 ml-1"
+                    className="inline-flex items-center gap-1 font-semibold text-emerald-400 hover:text-emerald-300 underline underline-offset-2 ml-1"
                   >
                     <span>{withoutEmoji(feature.link_text || 'Learn more').trim()}</span>
                   </Link>
@@ -154,7 +154,7 @@ export default function RollingAnnouncement({ onVisibilityChange }) {
           type="button"
           onClick={handleDismiss}
           aria-label="Dismiss banner"
-          className="shrink-0 text-slate-400 hover:text-white p-1 rounded hover:bg-slate-800 transition-colors text-xs font-bold"
+          className="shrink-0 text-slate-400 hover:text-white p-1 rounded hover:bg-slate-800 transition-colors text-xs font-semibold"
         >
           <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
             <path strokeLinecap="round" d="M6 6l12 12M18 6 6 18" />

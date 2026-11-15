@@ -153,7 +153,7 @@ export default function SkillsClientView({ initialSkills = [], initialProjects =
               <div className="max-w-6xl mx-auto w-full">
 
                 <header className="mb-12 sm:mb-16">
-                  <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] leading-tight mb-4 flex items-center gap-3">
+                  <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-semibold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] leading-tight mb-4 flex items-center gap-3">
                     <span className="text-[#065F46] dark:text-[#34D399]">/</span> Skills
                   </h1>
 

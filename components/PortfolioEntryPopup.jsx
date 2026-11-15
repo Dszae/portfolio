@@ -110,7 +110,7 @@ export default function PortfolioEntryPopup() {
       onClick={handleClose}
     >
       <div 
-        className="relative bg-[#0E131F] border border-slate-700/80 rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl transition-all transform scale-100"
+        className="relative bg-[#0E131F] border border-slate-700/80 rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl transition transform scale-100"
         onClick={(e) => e.stopPropagation()}
       >
         
@@ -118,7 +118,7 @@ export default function PortfolioEntryPopup() {
           type="button"
           onClick={handleClose}
           aria-label="Close announcement modal"
-          className="absolute top-3.5 right-3.5 z-20 w-8 h-8 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center backdrop-blur transition-all border border-white/20 active:scale-95"
+          className="absolute top-3.5 right-3.5 z-20 w-8 h-8 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center backdrop-blur transition border border-white/20 active:scale-95"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
         </button>
@@ -138,7 +138,7 @@ export default function PortfolioEntryPopup() {
 
 <div className="p-6 sm:p-7 space-y-3">
           {popup.title && (
-            <h2 id="entry-popup-title" className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-tight">
+            <h2 id="entry-popup-title" className="text-xl sm:text-2xl font-semibold text-white tracking-tight leading-tight">
               {popup.title}
             </h2>
           )}
@@ -161,7 +161,7 @@ export default function PortfolioEntryPopup() {
               <Link
                 href={popup.link_url}
                 onClick={handleClose}
-                className="px-5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs shadow-lg transition-all flex items-center justify-center"
+                className="px-5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-xs shadow-lg transition flex items-center justify-center"
               >
                 <span>{popup.link_text || 'Learn More'}</span>
               </Link>

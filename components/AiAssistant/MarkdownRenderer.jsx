@@ -47,7 +47,7 @@ if (line.trim() === '---' || line.trim() === '***') {
 
 if (line.startsWith('### ')) {
       elements.push(
-        <h4 key={`h4-${i}`} className="font-bold text-sm text-slate-950 dark:text-slate-100 mt-3 mb-1 tracking-tight">
+        <h4 key={`h4-${i}`} className="font-semibold text-sm text-slate-950 dark:text-slate-100 mt-3 mb-1 tracking-tight">
           {renderFormattedText(line.replace('### ', ''))}
         </h4>
       );
@@ -55,7 +55,7 @@ if (line.startsWith('### ')) {
     }
     if (line.startsWith('## ')) {
       elements.push(
-        <h3 key={`h3-${i}`} className="font-bold text-base text-slate-950 dark:text-slate-100 mt-3.5 mb-1.5 tracking-tight">
+        <h3 key={`h3-${i}`} className="font-semibold text-base text-slate-950 dark:text-slate-100 mt-3.5 mb-1.5 tracking-tight">
           {renderFormattedText(line.replace('## ', ''))}
         </h3>
       );
@@ -181,7 +181,7 @@ function renderInlineStyles(str, baseKey) {
     }
     if (tok.startsWith('**') && tok.endsWith('**') && tok.length > 4) {
       return (
-        <strong key={`${baseKey}-${idx}`} className="font-bold text-slate-950 dark:text-white">
+        <strong key={`${baseKey}-${idx}`} className="font-semibold text-slate-950 dark:text-white">
           {tok.slice(2, -2)}
         </strong>
       );

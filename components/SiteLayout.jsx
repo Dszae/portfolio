@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
 import AiAssistant from './AiAssistant/AiAssistant';
 
 function getScrollPosition() {
@@ -78,7 +78,7 @@ function ScrollToTopButton() {
     <button
       onClick={scrollToTop}
       aria-label="Scroll to top of page"
-      className="site-icon-button fixed bottom-[78px] right-5 sm:bottom-[76px] sm:right-6 z-40 shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer rounded-full"
+      className="site-icon-button fixed bottom-[78px] right-5 sm:bottom-[76px] sm:right-6 z-40 shadow-lg transition duration-300 hover:-translate-y-1 cursor-pointer rounded-full"
     >
       <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
         <path strokeLinecap="round" strokeLinejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
@@ -192,7 +192,7 @@ function LightboxModal({ image, onClose }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.2, ease: 'easeOut' }}
+      transition={{ duration: 0.16, ease: 'easeOut' }}
       className="fixed inset-0 z-[100] flex flex-col justify-between bg-black/95 backdrop-blur-md select-none cursor-pointer overflow-hidden p-0"
       onClick={onClose}
       onTouchStart={handleTouchStart}
@@ -219,7 +219,7 @@ function LightboxModal({ image, onClose }) {
             onClick={(e) => { e.stopPropagation(); setIsZoomed((prev) => !prev); }}
             aria-label={isZoomed ? "Zoom out" : "Zoom in"}
             title={isZoomed ? "Zoom out (1x)" : "Zoom in (1.5x)"}
-            className={`w-10 h-10 sm:w-11 sm:h-11 rounded-full backdrop-blur-md border flex items-center justify-center transition-all cursor-pointer shadow-md focus:outline-none ${
+            className={`w-10 h-10 sm:w-11 sm:h-11 rounded-full backdrop-blur-md border flex items-center justify-center transition cursor-pointer shadow-md focus:outline-none ${
               isZoomed 
                 ? 'bg-[#065F46] dark:bg-[#34D399] border-[#065F46] dark:border-[#34D399] text-white dark:text-[#090B0E] ring-2 ring-white/30' 
                 : 'bg-white/10 hover:bg-white/20 border-white/15 text-white/90 hover:text-white active:scale-95'
@@ -240,7 +240,7 @@ function LightboxModal({ image, onClose }) {
             type="button"
             onClick={(e) => { e.stopPropagation(); onClose(); }}
             aria-label="Close modal"
-            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 backdrop-blur-md border border-white/15 text-white/90 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-md focus:outline-none"
+            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 backdrop-blur-md border border-white/15 text-white/90 hover:text-white flex items-center justify-center transition cursor-pointer shadow-md focus:outline-none"
           >
             <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -260,7 +260,7 @@ function LightboxModal({ image, onClose }) {
             type="button"
             onClick={(e) => { e.stopPropagation(); handlePrev(e); }}
             aria-label="Previous"
-            className="absolute left-2 sm:left-4 md:left-6 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/60 hover:bg-black/80 active:scale-90 backdrop-blur-md border border-white/20 text-white/90 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-xl focus:outline-none"
+            className="absolute left-2 sm:left-4 md:left-6 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/60 hover:bg-black/80 active:scale-90 backdrop-blur-md border border-white/20 text-white/90 hover:text-white flex items-center justify-center transition cursor-pointer shadow-xl focus:outline-none"
           >
             <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -271,15 +271,15 @@ function LightboxModal({ image, onClose }) {
         {/* Center Image Container - clicking only here toggles zoom or prevents closing */}
         <motion.div 
           key={"image-card-" + (currentItem?.src || activeIdx)}
-          initial={{ opacity: 0, scale: 0.98 }}
-          animate={{ 
-            opacity: 1, 
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{
+            opacity: 1,
             scale: isZoomed ? 1.5 : 1,
             x: isZoomed ? undefined : 0,
             y: isZoomed ? undefined : 0
           }}
-          exit={{ opacity: 0, scale: 0.98 }}
-          transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+          exit={{ opacity: 0, scale: 0.94, transition: { duration: 0.14, ease: 'easeIn' } }}
+          transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
           drag={isZoomed}
           dragConstraints={{ left: -260, right: 260, top: -180, bottom: 180 }}
           dragElastic={0.12}
@@ -320,7 +320,7 @@ function LightboxModal({ image, onClose }) {
             type="button"
             onClick={(e) => { e.stopPropagation(); handleNext(e); }}
             aria-label="Next"
-            className="absolute right-2 sm:right-4 md:right-6 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/60 hover:bg-black/80 active:scale-90 backdrop-blur-md border border-white/20 text-white/90 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-xl focus:outline-none"
+            className="absolute right-2 sm:right-4 md:right-6 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/60 hover:bg-black/80 active:scale-90 backdrop-blur-md border border-white/20 text-white/90 hover:text-white flex items-center justify-center transition cursor-pointer shadow-xl focus:outline-none"
           >
             <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -337,7 +337,7 @@ function LightboxModal({ image, onClose }) {
         }}
       >
         <div className="max-w-2xl px-3">
-          <h3 className="text-white text-base sm:text-lg md:text-xl font-bold tracking-tight line-clamp-1">
+          <h3 className="text-white text-base sm:text-lg md:text-xl font-semibold tracking-tight line-clamp-1">
             {currentItem?.title || currentItem?.alt || 'Certificate Preview'}
           </h3>
           {(currentItem?.org || currentItem?.subtitle || currentItem?.desc) && (
@@ -488,6 +488,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
   };
 
   return (
+    <MotionConfig reducedMotion="user">
     <div className={`site-shell min-h-screen font-sans relative w-full m-0 p-0 ${theme.bg}`}>
 
       <a
@@ -509,6 +510,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
         aria-label="Main navigation" 
         data-scrolled={isScrolled ? "true" : "false"}
         className={`site-nav ${isScrolled || isMenuOpen ? 'is-scrolled' : ''}`}
+        style={{ viewTransitionName: 'site-header' }}
       >
 
         <div className="site-nav-inner relative z-10">
@@ -618,7 +620,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
         tabIndex={-1} 
         className={`relative z-10 w-full flex flex-col items-center outline-none transition-opacity duration-300 ease-in-out ${isMenuOpen ? 'opacity-10 pointer-events-none select-none' : 'opacity-100'}`}
       >
-        <div key={pathname} className={`w-full flex flex-col items-center ${pathname === '/' ? '' : 'fade-down-to-up'}`}>
+        <div className="w-full flex flex-col items-center">
           {typeof children === 'function' ? children({ theme, isDark }) : children}
         </div>
       </main>
@@ -629,14 +631,14 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 pb-12 border-b border-[#CBD5E1] dark:border-[#222933]">
 
 <div className="flex flex-col items-start text-left">
-              <Link href="/" className="site-wordmark text-lg font-bold mb-3">
+              <Link href="/" className="site-wordmark text-lg font-semibold mb-3">
                 Dipesh Sapkota<span className="site-wordmark-dot">.</span>
               </Link>
               <p className="text-xs sm:text-sm text-[#475569] dark:text-[#A7B0BE] leading-relaxed mb-4">
                 Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal. Focused on Artificial Intelligence, Machine Learning, video editing, and motion graphics design.
               </p>
               <div className="inline-flex items-center gap-2 text-xs font-mono font-medium text-[#065F46] dark:text-[#34D399] bg-[#065F46]/10 dark:bg-[#34D399]/10 px-3 py-1.5 rounded-lg mb-2">
-                <span className="w-2 h-2 rounded-full bg-[#065F46] dark:bg-[#34D399] animate-pulse"></span>
+                <span className="w-2 h-2 rounded-full bg-[#065F46] dark:bg-[#34D399]"></span>
                 <span>Kathmandu, Nepal (UTC+5:45)</span>
               </div>
               <p className="text-[11px] font-mono text-[#64748B] dark:text-[#94A3B8]">
@@ -645,7 +647,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
             </div>
 
 <nav aria-label="Footer primary navigation" className="text-left">
-              <h2 className="font-mono text-xs font-bold uppercase tracking-widest text-[#0F172A] dark:text-[#F8FAFC] mb-4">
+              <h2 className="font-mono text-xs font-semibold text-[#0F172A] dark:text-[#F8FAFC] mb-4">
                 Directory
               </h2>
               <ul className="space-y-2.5">
@@ -669,7 +671,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
             </nav>
 
 <nav aria-label="Footer case studies and projects" className="text-left">
-              <h2 className="font-mono text-xs font-bold uppercase tracking-widest text-[#0F172A] dark:text-[#F8FAFC] mb-4">
+              <h2 className="font-mono text-xs font-semibold text-[#0F172A] dark:text-[#F8FAFC] mb-4">
                 Case Studies
               </h2>
               <ul className="space-y-2.5">
@@ -709,7 +711,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
 
 <div className="text-left flex flex-col justify-start">
               <div>
-                <h2 className="font-mono text-xs font-bold uppercase tracking-widest text-[#0F172A] dark:text-[#F8FAFC] mb-4">
+                <h2 className="font-mono text-xs font-semibold text-[#0F172A] dark:text-[#F8FAFC] mb-4">
                   Verified Profiles
                 </h2>
                 <div className="flex flex-wrap gap-2">
@@ -764,5 +766,6 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
         )}
       </AnimatePresence>
     </div>
+    </MotionConfig>
   );
 }

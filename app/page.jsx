@@ -142,8 +142,8 @@ export default function Home() {
                   </span>
                 </div>
                 <h1 className="hero-title">
-                  Engineering logic.<br />
-                  <span>Creating visual rhythm.</span>
+                  Engineering logic<br />
+                  <span>Creating visual rhythm</span>
                 </h1>
                 <p className="hero-description">
                   Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal. Focused on Artificial Intelligence, Machine Learning, video editing, and motion graphics design.
@@ -204,7 +204,7 @@ export default function Home() {
               <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
                 <div>
                   <p className="section-eyebrow">Selected work from my practice</p>
-                  <h2 id="featured-projects-heading" className="mt-2 text-3xl font-bold tracking-tight text-[#0F172A] dark:text-white">
+                  <h2 id="featured-projects-heading" className="mt-2 text-3xl font-semibold tracking-tight text-[#0F172A] dark:text-white">
                     Featured Engineering Projects
                   </h2>
                   <p className="mt-3 max-w-2xl text-[#475569] dark:text-[#A7B0BE]">
@@ -219,7 +219,7 @@ export default function Home() {
                 {FEATURED_PROJECTS.map((project) => (
                   <article
                     key={project.name}
-                    className="project-card group overflow-hidden rounded-2xl transition hover:-translate-y-1"
+                    className="project-card group overflow-hidden rounded-2xl"
                   >
                     <Image
                       src={project.image}
@@ -252,7 +252,7 @@ export default function Home() {
           <section id="connect" className="px-6 py-20 sm:px-10 lg:px-16 border-t border-slate-200 dark:border-[#222933]">
             <div className="mx-auto max-w-4xl text-center">
               <p className="section-eyebrow">Collaboration &amp; Inquiries</p>
-              <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#0F172A] dark:text-white">
+              <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-[#0F172A] dark:text-white">
                 Let&apos;s build something meaningful.
               </h2>
               <p className="mt-3 text-sm sm:text-base text-[#475569] dark:text-[#A7B0BE] max-w-xl mx-auto leading-relaxed">

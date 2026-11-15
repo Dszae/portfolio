@@ -78,7 +78,7 @@ if (formData.get("botcheck")) {
       
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
         <div>
-          <label className="block text-xs font-mono uppercase tracking-wider mb-2 text-[#1E293B] dark:text-[#A7B0BE] font-medium" htmlFor="contact-name">
+          <label className="block text-xs font-mono mb-2 text-[#1E293B] dark:text-[#A7B0BE] font-medium" htmlFor="contact-name">
             Your Name *
           </label>
           <input
@@ -87,13 +87,13 @@ if (formData.get("botcheck")) {
             name="name"
             placeholder="John Doe"
             autoComplete="name"
-            className="w-full px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] text-[#0F172A] dark:text-[#F9FAFB] placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#065F46] dark:focus:ring-[#34D399] transition-all"
+            className="w-full px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] text-[#0F172A] dark:text-[#F9FAFB] placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#065F46] dark:focus:ring-[#34D399] transition"
             required
           />
         </div>
         
         <div>
-          <label className="block text-xs font-mono uppercase tracking-wider mb-2 text-[#1E293B] dark:text-[#A7B0BE] font-medium" htmlFor="contact-email">
+          <label className="block text-xs font-mono mb-2 text-[#1E293B] dark:text-[#A7B0BE] font-medium" htmlFor="contact-email">
             Your Email *
           </label>
           <input
@@ -102,14 +102,14 @@ if (formData.get("botcheck")) {
             name="email"
             placeholder="john@example.com"
             autoComplete="email"
-            className="w-full px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] text-[#0F172A] dark:text-[#F9FAFB] placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#065F46] dark:focus:ring-[#34D399] transition-all"
+            className="w-full px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] text-[#0F172A] dark:text-[#F9FAFB] placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#065F46] dark:focus:ring-[#34D399] transition"
             required
           />
         </div>
       </div>
 
       <div>
-        <label className="block text-xs font-mono uppercase tracking-wider mb-2 text-[#1E293B] dark:text-[#A7B0BE] font-medium" htmlFor="contact-message">
+        <label className="block text-xs font-mono mb-2 text-[#1E293B] dark:text-[#A7B0BE] font-medium" htmlFor="contact-message">
           Your Message *
         </label>
         <textarea
@@ -117,7 +117,7 @@ if (formData.get("botcheck")) {
           name="message"
           rows={5}
           placeholder="Tell me about your project, idea, or collaboration..."
-          className="w-full px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] text-[#0F172A] dark:text-[#F9FAFB] placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#065F46] dark:focus:ring-[#34D399] transition-all resize-none"
+          className="w-full px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#0F1216] text-[#0F172A] dark:text-[#F9FAFB] placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#065F46] dark:focus:ring-[#34D399] transition resize-none"
           required
         ></textarea>
       </div>
@@ -125,7 +125,7 @@ if (formData.get("botcheck")) {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full py-4 px-8 bg-[#065F46] hover:bg-[#044E39] dark:bg-[#34D399] dark:hover:bg-[#6EE7B7] text-white dark:text-[#090B0E] font-semibold rounded-xl shadow-md transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#065F46] dark:focus:ring-[#34D399]"
+        className="w-full py-4 px-8 bg-[#065F46] hover:bg-[#044E39] dark:bg-[#34D399] dark:hover:bg-[#6EE7B7] text-white dark:text-[#090B0E] font-semibold rounded-xl shadow-md transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#065F46] dark:focus:ring-[#34D399]"
       >
         {isSubmitting ? (
           <>
@@ -144,7 +144,7 @@ if (formData.get("botcheck")) {
         <div
           role="status"
           aria-live="polite"
-          className={`text-center font-mono text-xs sm:text-sm py-3 px-4 rounded-xl border transition-all ${
+          className={`text-center font-mono text-xs sm:text-sm py-3 px-4 rounded-xl border transition ${
             isSuccess
               ? 'bg-[#065F46]/10 dark:bg-[#34D399]/15 border-[#065F46]/30 dark:border-[#34D399]/30 text-[#065F46] dark:text-[#34D399] font-semibold'
               : 'bg-rose-500/10 border-rose-500/30 text-rose-700 dark:text-rose-300 font-semibold'

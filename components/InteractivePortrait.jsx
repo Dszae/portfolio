@@ -1,14 +1,27 @@
 "use client";
 
 import Image from 'next/image';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 export default function InteractivePortrait() {
   const frameRef = useRef(null);
+  // 3D tilt is a vestibular trigger (Tier 1): skip it entirely under reduced motion,
+  // and follow live changes to the OS setting without a reload.
+  const reduceMotionRef = useRef(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const sync = () => {
+      reduceMotionRef.current = mq.matches;
+    };
+    sync();
+    mq.addEventListener('change', sync);
+    return () => mq.removeEventListener('change', sync);
+  }, []);
 
   const handlePointerMove = (event) => {
     const frame = frameRef.current;
-    if (!frame || event.pointerType === 'touch') return;
+    if (!frame || event.pointerType === 'touch' || reduceMotionRef.current) return;
 
     const bounds = frame.getBoundingClientRect();
     const horizontal = (event.clientX - bounds.left) / bounds.width - 0.5;

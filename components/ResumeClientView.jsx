@@ -28,14 +28,14 @@ export default function ResumeClientView({ experiences = [], siteSettings = {}, 
             <section id="resume" className={`pt-36 sm:pt-40 subpage-container pb-24 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
               <div className="max-w-7xl mx-auto w-full">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-8">
-                  <h1 className="text-3xl sm:text-4xl font-bold flex items-center gap-4 text-[#0F172A] dark:text-[#F9FAFB]">
+                  <h1 className="text-3xl sm:text-4xl font-semibold flex items-center gap-4 text-[#0F172A] dark:text-[#F9FAFB]">
                     <span className="text-[#065F46] dark:text-[#34D399]">/</span> Resume
                   </h1>
                   <a
                     href={resumeUrl}
                     download="Dipesh_Sapkota_CV.pdf"
                     aria-label="Download CV (PDF document, 105 KB)"
-                    className="self-start sm:self-auto px-6 py-3 bg-[#065F46] hover:bg-[#044E39] dark:bg-[#34D399] dark:hover:bg-[#6EE7B7] text-white dark:text-[#090B0E] font-semibold rounded-xl transition-all hover:-translate-y-1 flex items-center gap-2 shadow-sm font-sans cursor-pointer"
+                    className="self-start sm:self-auto px-6 py-3 bg-[#065F46] hover:bg-[#044E39] dark:bg-[#34D399] dark:hover:bg-[#6EE7B7] text-white dark:text-[#090B0E] font-semibold rounded-xl transition hover:-translate-y-1 flex items-center gap-2 shadow-sm font-sans cursor-pointer"
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                     <span>Download CV <span className="text-xs font-mono font-normal opacity-85">(PDF)</span></span>
@@ -101,7 +101,7 @@ export default function ResumeClientView({ experiences = [], siteSettings = {}, 
                                 <span className="inline-block px-3 py-1 text-[11px] sm:text-xs font-semibold rounded-md mb-2 bg-[#F1F5F9] dark:bg-[#181D24] text-[#0F172A] dark:text-[#34D399] border border-[#CBD5E1] dark:border-[#222933]">
                                   {exp.start_date ? `${exp.start_date} – ${exp.end_date || 'Present'}` : (exp.year || 'Present')}
                                 </span>
-                                <h3 className="text-lg sm:text-xl font-bold mb-1 text-[#0F172A] dark:text-[#F9FAFB]">{exp.title || exp.role}</h3>
+                                <h3 className="text-lg sm:text-xl font-semibold mb-1 text-[#0F172A] dark:text-[#F9FAFB]">{exp.title || exp.role}</h3>
                                 <p className="text-xs sm:text-sm mb-2 font-medium text-[#065F46] dark:text-[#6EE7B7]">{exp.organization || exp.company}</p>
                                 <p className="text-sm leading-relaxed text-[#1E293B] dark:text-[#A7B0BE]">{exp.description || exp.desc}</p>
                               </div>
@@ -147,7 +147,7 @@ export default function ResumeClientView({ experiences = [], siteSettings = {}, 
                                 <span className="inline-block px-3 py-1 text-[11px] sm:text-xs font-semibold rounded-md mb-2 bg-[#F1F5F9] dark:bg-[#181D24] text-[#0F172A] dark:text-[#34D399] border border-[#CBD5E1] dark:border-[#222933]">
                                   {edu.start_date ? `${edu.start_date} – ${edu.end_date || 'Present'}` : (edu.year || 'Present')}
                                 </span>
-                                <h3 className="text-base sm:text-lg font-bold leading-tight mb-1 text-[#0F172A] dark:text-[#F8FAFC]">{edu.title || edu.degree}</h3>
+                                <h3 className="text-base sm:text-lg font-semibold leading-tight mb-1 text-[#0F172A] dark:text-[#F8FAFC]">{edu.title || edu.degree}</h3>
                                 <p className="text-xs sm:text-sm mb-2 font-medium text-[#065F46] dark:text-[#6EE7B7]">{edu.organization || edu.school}</p>
                                 <p className="text-sm leading-relaxed text-[#1E293B] dark:text-[#A7B0BE]">{edu.description || edu.desc}</p>
                               </div>
