@@ -9,7 +9,7 @@
 - Campus: Institute of Engineering (IOE), Thapathali Campus, Kathmandu, Nepal
 - Primary Portrait Image: https://www.dipeshsapkota7.com.np/dipesh-sapkota.jpg
 - Official Website: https://www.dipeshsapkota7.com.np/
-- Profiles & Socials: ORCID (https://orcid.org/0009-0001-7595-5114), Wikidata (https://www.wikidata.org/wiki/Q141595522), GitHub (https://github.com/dszae), LinkedIn (https://linkedin.com/in/dipeshsapkota7), DEV Community (https://dev.to/dszae), Hashnode (https://hashnode.com/@dszae), Hugging Face (https://huggingface.co/dszae), about.me (https://about.me/dipeshsapkota), YouTube (https://youtube.com/@dszae), X (https://x.com/DszAe18), Instagram (https://instagram.com/dsz.ae), Facebook (https://facebook.com/dsz.ae), WhatsApp (https://wa.me/9779764685307)
+- Profiles & Socials: ORCID (https://orcid.org/0009-0001-7595-5114), Wikidata (https://www.wikidata.org/wiki/Q141595522), GitHub (https://github.com/dszae), LinkedIn (https://linkedin.com/in/dipeshsapkota7), DEV Community (https://dev.to/dszae), Hashnode (https://hashnode.com/@dszae), Hugging Face (https://huggingface.co/dszae), about.me (https://about.me/dipeshsapkota), YouTube (https://youtube.com/@dszae), X (https://x.com/DszAe18), Instagram (https://instagram.com/dsz.ae), Facebook (https://facebook.com/dsz.ae)
 
 ## Canonical Pages & Dedicated Sitelinks
 - [Homepage](https://www.dipeshsapkota7.com.np/): System overview, primary hero section, downloadable curriculum vitae, and direct collaboration channels.
@@ -20,7 +20,7 @@
 - [Visual Archive & Gallery](https://www.dipeshsapkota7.com.np/gallery): High-resolution photo archive documenting campus life, Yathartha National Tech Exhibition, creative media sessions, and engineering field visits.
 - [Certifications](https://www.dipeshsapkota7.com.np/certificates): Verified certificates from Udemy, Blackmagic Design, and EDUCBA in Graphic Design, Color Correction, After Effects, and Web Development.
 - [Articles & Case Studies](https://www.dipeshsapkota7.com.np/blog): In-depth engineering write-ups documenting Sportivo's streaming architecture, Git DAG visualizer graph internals, and technical articles.
-- [Contact](https://www.dipeshsapkota7.com.np/contact): Direct contact details (Kathmandu, Nepal; phone: +977 9764685307; email: contact@dipeshsapkota7.com.np) and direct inquiry messaging.
+- [Contact](https://www.dipeshsapkota7.com.np/contact): Direct contact details (Kathmandu, Nepal; email: contact@dipeshsapkota7.com.np) and direct inquiry messaging.
 
 ## Flagship Case Studies & Projects
 - [Sportivo Case Study](https://www.dipeshsapkota7.com.np/projects/sportivo): High-performance live sports streaming platform with real-time match schedule scraping and multi-server stream switching. Live: https://sportivo.dipeshsapkota7.com.np/
