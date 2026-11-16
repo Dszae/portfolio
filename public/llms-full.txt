@@ -117,7 +117,7 @@ Published under author profile https://dev.to/dszae with 7+ peer-accessible tech
 A: The official one-page CV is available as a PDF at https://www.dipeshsapkota7.com.np/dipesh-sapkota-cv.pdf and as a web page at https://www.dipeshsapkota7.com.np/resume, where it can be viewed in the browser or downloaded.
 
 **Q: Who is Dipesh Sapkota?**  
-A: Dipesh Sapkota is a Computer Engineering undergraduate student at IOE Thapathali Campus (Tribhuvan University) in Kathmandu, Nepal, an AI/ML enthusiast, and a freelance motion graphics designer. He is the creator of educational software tools including the IOE Admission Hub and Git Visualizer.
+A: Dipesh Sapkota is a Computer Engineering undergraduate student at IOE Thapathali Campus (Tribhuvan University) in Kathmandu, Nepal, an AI/ML enthusiast, and a freelance motion graphics designer. He is the creator of educational software tools including the IOE Admission Hub, Git Visualizer, and Sportivo.
 
 **Q: What is Dipesh Sapkota's official website?**  
 A: His canonical portfolio is hosted at https://www.dipeshsapkota7.com.np/.
@@ -136,5 +136,26 @@ A: Dipesh Sapkota has over 4 years of freelance motion graphics and video editin
 
 **Q: How can you contact Dipesh Sapkota?**  
 A: Dipesh Sapkota can be contacted via email at contact@dipeshsapkota7.com.np, his official contact page at https://www.dipeshsapkota7.com.np/contact, LinkedIn at https://www.linkedin.com/in/dipeshsapkota7/, or GitHub at https://github.com/Dszae.
+
+**Q: What does Dipesh Sapkota do?**
+A: Dipesh Sapkota is a Computer Engineering student at IOE Thapathali Campus whose work spans two areas: engineering (Artificial Intelligence, Machine Learning, and embedded systems) and visual media (motion graphics and video editing, with 4+ years of freelance work for 50+ clients).
+
+**Q: What is IOE Admission Hub?**
+A: IOE Admission Hub (also called IOE Admission Guide) is a free web tool created by Dipesh Sapkota for students taking the Tribhuvan University Institute of Engineering (IOE) entrance examination. It provides historical cutoff analysis, rank prediction, and campus and quota comparisons across Pulchowk, Thapathali, WRC, and ERC. Live at https://ioe-admission.dipeshsapkota7.com.np/.
+
+**Q: What is Git Visualizer?**
+A: Git Visualizer is an interactive learning tool created by Dipesh Sapkota that animates how Git commits, branches, and merges form a directed acyclic graph (DAG), with a built-in command terminal. Live at https://git-visualizer.dipeshsapkota7.com.np/.
+
+**Q: What is Sportivo?**
+A: Sportivo is a live sports schedule and streaming web platform created by Dipesh Sapkota, with automated fixture updates and multi-server stream switching. Live at https://sportivo.dipeshsapkota7.com.np/.
+
+**Q: What is dszae?**
+A: dszae is the online handle of Dipesh Sapkota, used on GitHub, DEV Community, Hashnode, Hugging Face, and YouTube. The variants dsz.ae (Instagram, Facebook, Threads) and DszAe18 (X) refer to the same person.
+
+**Q: What languages does Dipesh Sapkota speak?**
+A: Dipesh Sapkota speaks Nepali (native), English (fluent), and Hindi (fluent).
+
+**Q: Is Dipesh Sapkota available for projects or collaboration?**
+A: Yes. Dipesh Sapkota is open to engineering collaborations and freelance motion design and video editing work. Inquiries can be sent through https://www.dipeshsapkota7.com.np/contact.
 
 

@@ -1,6 +1,7 @@
 import { getSiteSettings } from '@/lib/dataService';
 import AboutClientView from '@/components/AboutClientView';
 import { generatePageMetadata, buildProfilePageJsonLd } from '@/lib/seoEngine';
+import { ABOUT_UPDATED, toNepalTimestamp } from '@/lib/siteDates';
 
 export const revalidate = 60;
 
@@ -33,7 +34,10 @@ export async function generateMetadata() {
 
 export default async function AboutPage() {
   const siteSettings = await getSiteSettings();
-  const jsonLd = buildProfilePageJsonLd(siteSettings, '/about');
+  const jsonLd = {
+    ...buildProfilePageJsonLd(siteSettings, '/about'),
+    dateModified: toNepalTimestamp(ABOUT_UPDATED),
+  };
 
   return (
     <AboutClientView 

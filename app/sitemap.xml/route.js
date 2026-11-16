@@ -8,6 +8,7 @@ import {
 } from '@/lib/dataService';
 import { SITE_URL, toAbsoluteUrl, PORTRAIT } from '@/lib/seoEngine';
 import { CV_PDF_PATH, CV_UPDATED } from '@/lib/cv';
+import { HOME_UPDATED, ABOUT_UPDATED } from '@/lib/siteDates';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 3600;
@@ -42,12 +43,14 @@ export async function GET() {
       loc: `${SITE_URL}/`,
       priority: '1.0',
       changefreq: 'daily',
+      lastmod: HOME_UPDATED,
       images: portraitImages,
     },
     {
       loc: `${SITE_URL}/about`,
       priority: '0.95',
       changefreq: 'weekly',
+      lastmod: ABOUT_UPDATED,
       images: portraitImages,
     },
     {

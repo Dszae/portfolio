@@ -133,7 +133,7 @@ export default function IoeAdmissionProjectPage() {
           </h1>
 
           <p className="text-base sm:text-lg lg:text-xl text-[#334155] dark:text-[#CBD5E1] leading-relaxed max-w-3xl mb-8">
-            A comprehensive counseling web portal developed for Tribhuvan University Institute of Engineering applicants, evaluating five consecutive years of cutoff rankings to deliver predictive campus feasibility, quota modeling, and automated choice prioritization.
+            IOE Admission Guide is a counseling web portal for Tribhuvan University Institute of Engineering (IOE) applicants. It evaluates five consecutive years of cutoff rankings to predict campus feasibility, model quota seats, and prioritize college choices automatically.
           </p>
 
 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] shadow-sm mb-8 font-mono text-xs">

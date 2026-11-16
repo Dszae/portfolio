@@ -136,7 +136,7 @@ export default function SportivoProjectPage() {
           </h1>
 
           <p className="text-base sm:text-lg lg:text-xl text-[#334155] dark:text-[#CBD5E1] leading-relaxed max-w-3xl mb-8">
-            I built Sportivo - Live Scores, upcoming fixtures, match discovery, and sports news in one responsive experience. I structured it for fast scanning across football, cricket, and basketball, helping visitors move from a quick match update to deeper fixture information and available streams without unnecessary friction.
+            Sportivo is a live sports platform that brings scores, upcoming fixtures, match discovery, and sports news into one responsive experience. I built it for fast scanning across football, cricket, and basketball, so visitors can move from a quick match update to deeper fixture information and available streams without unnecessary friction.
           </p>
 
 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] shadow-sm mb-8 font-mono text-xs">

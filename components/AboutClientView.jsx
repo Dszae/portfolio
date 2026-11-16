@@ -83,8 +83,20 @@ export default function AboutClientView({ siteSettings = {}, jsonLd = null, page
                         <dd className="mt-1 font-semibold text-[#0F172A] dark:text-[#F8FAFC]">B.E. Computer Eng.</dd>
                       </div>
                       <div>
+                        <dt className="text-[#334155] dark:text-[#94A3B8] font-semibold">Focus</dt>
+                        <dd className="mt-1 font-semibold text-[#0F172A] dark:text-[#F8FAFC]">AI/ML, Embedded Systems</dd>
+                      </div>
+                      <div>
+                        <dt className="text-[#334155] dark:text-[#94A3B8] font-semibold">Creative</dt>
+                        <dd className="mt-1 font-semibold text-[#0F172A] dark:text-[#F8FAFC]">Motion Design, {yearsExp} yrs</dd>
+                      </div>
+                      <div>
                         <dt className="text-[#334155] dark:text-[#94A3B8] font-semibold">Status</dt>
                         <dd className="mt-1 font-semibold text-[#065F46] dark:text-[#34D399]">Available for Projects</dd>
+                      </div>
+                      <div className="col-span-2">
+                        <dt className="text-[#334155] dark:text-[#94A3B8] font-semibold">Known For</dt>
+                        <dd className="mt-1 font-semibold text-[#0F172A] dark:text-[#F8FAFC]">IOE Admission Hub, Sportivo, Git Visualizer</dd>
                       </div>
                     </dl>
                   </div>
@@ -157,10 +169,10 @@ export default function AboutClientView({ siteSettings = {}, jsonLd = null, page
 
                     <div>
                       <div className="text-4xl sm:text-5xl font-mono font-semibold text-[#0F172A] dark:text-[#F8FAFC] tracking-tight">
-                        2026
+                        2025
                       </div>
                       <div className="mt-2 font-mono text-xs text-[#334155] dark:text-[#94A3B8] font-semibold">
-                        B.E. Cohort Graduation
+                        B.E. Batch (Enrolled)
                       </div>
                     </div>
                   </div>

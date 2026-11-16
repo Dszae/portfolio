@@ -1,5 +1,6 @@
 import { buildPersonJsonLd, buildWebSiteJsonLd, buildPortraitImageObject, buildHomePortraitImageObject, buildPersonImages } from '@/lib/seoEngine';
 import { CV_SCHEMA_REF } from '@/lib/cv';
+import { HOME_UPDATED, toNepalTimestamp } from '@/lib/siteDates';
 
 export const siteUrl = 'https://www.dipeshsapkota7.com.np';
 export const personId = `${siteUrl}/#author`;
@@ -273,7 +274,7 @@ export const homePageSchema = {
       name: 'Dipesh Sapkota | Computer Engineering Student & AI/ML Enthusiast',
       description: 'Official portfolio of Dipesh Sapkota, a Computer Engineering student and AI/ML enthusiast at IOE Thapathali Campus, Nepal. Explore AI/ML projects, technical engineering pursuits, and creative work.',
       dateCreated: '2025-01-01T00:00:00+05:45',
-      dateModified: '2026-11-14T00:00:00+05:45',
+      dateModified: toNepalTimestamp(HOME_UPDATED),
       inLanguage: 'en',
       mainEntity: person,
       about: { '@id': personId },

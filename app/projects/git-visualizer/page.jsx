@@ -136,7 +136,7 @@ export default function GitVisualizerProjectPage() {
           </h1>
 
           <p className="text-base sm:text-lg lg:text-xl text-[#334155] dark:text-[#CBD5E1] leading-relaxed max-w-3xl mb-8">
-            An interactive pedagogical developer tool designed to eliminate Git confusion by mapping commits, branch pointers, and HEAD movements on a dynamically computed directed acyclic graph (DAG) rendered in real time on an HTML5 canvas.
+            Git Visualizer is an interactive learning tool that removes Git confusion by mapping commits, branch pointers, and HEAD movements on a directed acyclic graph (DAG), computed and rendered in real time on an HTML5 canvas.
           </p>
 
 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-[#222933] bg-white dark:bg-[#0F1216] shadow-sm mb-8 font-mono text-xs">
