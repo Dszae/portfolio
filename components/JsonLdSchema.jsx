@@ -104,6 +104,7 @@ export const person = {
     'https://hashnode.com/@dszae',
     'https://huggingface.co/dszae',
     'https://about.me/dipeshsapkota',
+    'https://www.crunchbase.com/person/dipesh-sapkota-30b0',
     'https://youtube.com/@dszae',
     'https://x.com/dszae',
     'https://x.com/DszAe18',
