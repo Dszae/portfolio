@@ -1,5 +1,6 @@
 import path from 'path';
 import { initOpenNextCloudflareForDev } from '@opennextjs/cloudflare';
+import { PHASE_DEVELOPMENT_SERVER } from 'next/constants.js';
 
 const contentSecurityPolicy = [
   "default-src 'self'",
@@ -202,6 +203,12 @@ const nextConfig = {
   },
 };
 
-initOpenNextCloudflareForDev();
-
-export default nextConfig;
+export default function config(phase) {
+  // Local Cloudflare bindings are only needed by `next dev`. Running this during
+  // `next build` opens a remote Wrangler session (the AI binding is remote-only),
+  // which fails in CI where no CLOUDFLARE_API_TOKEN is available.
+  if (phase === PHASE_DEVELOPMENT_SERVER) {
+    initOpenNextCloudflareForDev();
+  }
+  return nextConfig;
+}
