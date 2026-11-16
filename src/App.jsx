@@ -40,10 +40,10 @@ const SKILL_CATEGORIES = [
 
 const EXPERIENCE = [
   { 
-    year: "2026 - Present", 
+    year: "2025 - Present", 
     role: "Video Editor & Graphics Designer", 
     company: "Clamphook Academy", 
-    desc: "Producing and editing promotional videos and designing graphic materials for secondary-level and entrance examination crash courses.",
+    desc: "Producing and editing promotional videos and designing graphic materials for NEB +2, IOE and other engineering entrance preparation courses.",
     logo: "/clamphook_.webp" 
   },
   { 
@@ -71,14 +71,14 @@ const EDUCATION = [
     logo: "/thapathali.webp"
   },
   { 
-    year: "2022 - 2024", 
-    degree: "School Leaving Certificate (SLC)", 
+    year: "2024 - 2025", 
+    degree: "Higher Secondary Education (+2)", 
     school: "Shree Janak Model Secondary School", 
     desc: "GPA: 3.88 / 4.00",
     logo: "/janak.webp"
   },
   { 
-    year: "2022", 
+    year: "2023", 
     degree: "Secondary Education Examination (SEE)", 
     school: "Shree Mahendra Adarsha Secondary School", 
     desc: "GPA: 3.88 / 4.00",
@@ -597,7 +597,7 @@ function App() {
               </div>
 
               <div className="mt-8 sm:mt-10 flex flex-wrap gap-4">
-                <a href="/my_cv.pdf" download="Dipesh_Sapkota_CV.pdf" className="px-6 py-3 sm:px-8 sm:py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-500 transition-all hover:-translate-y-1 flex items-center gap-2 shadow-md">
+                <a href="/dipesh-sapkota-cv.pdf" download="Dipesh_Sapkota_CV.pdf" className="px-6 py-3 sm:px-8 sm:py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-500 transition-all hover:-translate-y-1 flex items-center gap-2 shadow-md">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                   Download CV
                 </a>

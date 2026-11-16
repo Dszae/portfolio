@@ -95,6 +95,16 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: '/my_cv.pdf',
+        destination: '/dipesh-sapkota-cv.pdf',
+        permanent: true,
+      },
+      {
+        source: '/cv',
+        destination: '/resume',
+        permanent: true,
+      },
+      {
         source: '/projects/sports-reels',
         destination: 'https://instagram.com/dsz.ae',
         permanent: true,
@@ -164,6 +174,19 @@ const nextConfig = {
             key: 'Cross-Origin-Resource-Policy',
             value: 'cross-origin',
           },
+        ],
+      },
+      {
+        // Mirrors public/_headers (which Cloudflare applies to the static asset in production).
+        source: '/dipesh-sapkota-cv.pdf',
+        headers: [
+          { key: 'Content-Type', value: 'application/pdf' },
+          { key: 'Content-Disposition', value: 'inline; filename="Dipesh_Sapkota_CV.pdf"' },
+          { key: 'X-Robots-Tag', value: 'index, follow' },
+          { key: 'Link', value: '<https://www.dipeshsapkota7.com.np/dipesh-sapkota-cv.pdf>; rel="canonical"' },
+          { key: 'Cache-Control', value: 'public, max-age=3600, must-revalidate' },
+          { key: 'Cross-Origin-Resource-Policy', value: 'cross-origin' },
+          { key: 'Access-Control-Allow-Origin', value: '*' },
         ],
       },
       {

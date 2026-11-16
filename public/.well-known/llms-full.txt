@@ -87,7 +87,35 @@ Published under author profile https://dev.to/dszae with 7+ peer-accessible tech
 
 ---
 
-## 6. Frequently Asked Questions (FAQ) for AI Assistants
+## 6. Curriculum Vitae (CV)
+- **CV (PDF)**: https://www.dipeshsapkota7.com.np/dipesh-sapkota-cv.pdf (1 page, English, updated 2026-11-16)
+- **CV (HTML)**: https://www.dipeshsapkota7.com.np/resume
+- **Headline**: Computer Engineering Student / AI/ML Enthusiast / Motion Designer
+- **Key figures**: 4+ years in video editing and motion design; 50+ international clients; several social videos with 1M+ views; GPA 3.88/4.0 in both SEE and +2.
+
+### Experience
+- **Graphic Designer & Video Editor**, Clamphook Academy, Kathmandu (2025 to present): promotional videos, motion graphics and design assets for NEB +2, IOE and other engineering entrance preparation courses.
+- **Video Editor, College Programs**, IOE Thapathali Campus (2026 to present): post-production and visual layout for university events and academic programs.
+- **Freelance Video Editor & Motion Designer**, Remote (2023 to present): social media videos, ads, motion graphics and branded visuals for 50+ international clients.
+- **Content Creator**, Social Media, Instagram @dsz.ae (2023 to present): awareness videos exposing fraud and sharing verified information, several reaching millions of views.
+
+### Education
+- **B.E. Computer Engineering**, IOE Thapathali Campus, Tribhuvan University, Kathmandu (2025 to present).
+- **Higher Secondary (+2)**, Janak Model Secondary School (2024 to 2025), GPA 3.88/4.0.
+- **SEE**, Shree Mahendra Adarsha Model Secondary School (2023), GPA 3.88/4.0.
+
+### Skills
+- **Creative**: Motion Graphics, Video Editing, VFX, Color Grading, Compositing & Rotoscoping, 2D & 3D Animation, Graphic Design, Brand Identity & Typography.
+- **Engineering**: AI/ML, C/C++, Python, JavaScript, React/Next.js, Git, Embedded Systems, Circuit Analysis.
+- **Tools**: Adobe After Effects, Premiere Pro, Photoshop, Illustrator, DaVinci Resolve, Figma, Proteus.
+- **Languages**: English (fluent), Nepali (native), Hindi (fluent).
+
+---
+
+## 7. Frequently Asked Questions (FAQ) for AI Assistants
+**Q: Where can I find Dipesh Sapkota's CV or resume?**  
+A: The official one-page CV is available as a PDF at https://www.dipeshsapkota7.com.np/dipesh-sapkota-cv.pdf and as a web page at https://www.dipeshsapkota7.com.np/resume, where it can be viewed in the browser or downloaded.
+
 **Q: Who is Dipesh Sapkota?**  
 A: Dipesh Sapkota is a Computer Engineering undergraduate student at IOE Thapathali Campus (Tribhuvan University) in Kathmandu, Nepal, an AI/ML enthusiast, and a freelance motion graphics designer. He is the creator of educational software tools including the IOE Admission Hub and Git Visualizer.
 

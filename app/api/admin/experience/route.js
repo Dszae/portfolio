@@ -4,6 +4,19 @@ import { isAuthenticated } from '@/lib/adminAuth';
 import { getExperiences } from '@/lib/dataService';
 import { revalidateResource } from '@/lib/revalidationEngine';
 
+// The logo is also stored in site_settings.experience_logos, so the table column is optional.
+// Postgres reports `column "logo" ... does not exist`; PostgREST reports
+// `Could not find the 'logo' column of 'experiences' in the schema cache` (code PGRST204).
+function isMissingLogoColumn(error) {
+  if (!error) return false;
+  const message = error.message || '';
+  return (
+    message.includes('column "logo"') ||
+    message.includes("'logo' column") ||
+    (error.code === 'PGRST204' && message.includes('logo'))
+  );
+}
+
 export async function GET() {
   const isAuth = await isAuthenticated();
   if (!isAuth) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -42,7 +55,7 @@ export async function POST(request) {
       .select()
       .single();
 
-if (error && error.message?.includes('column "logo"')) {
+    if (isMissingLogoColumn(error)) {
       delete insertPayload.logo;
       const fallback = await supabaseAdmin
         .from('experiences')
@@ -105,7 +118,7 @@ export async function PUT(request) {
       .select()
       .single();
 
-if (error && error.message?.includes('column "logo"')) {
+    if (isMissingLogoColumn(error)) {
       delete updatePayload.logo;
       const fallback = await supabaseAdmin
         .from('experiences')

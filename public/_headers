@@ -1,2 +1,27 @@
 /_next/static/*
   Cache-Control: public,max-age=31536000,immutable
+
+/*.jpg
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+/*.jpeg
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+/*.png
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+/*.webp
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+/*.avif
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+/*.svg
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+/dipesh-sapkota-cv.pdf
+  Content-Disposition: inline; filename="Dipesh_Sapkota_CV.pdf"
+  X-Robots-Tag: index, follow
+  Link: <https://www.dipeshsapkota7.com.np/dipesh-sapkota-cv.pdf>; rel="canonical"
+  Cache-Control: public, max-age=3600, must-revalidate
+  Cross-Origin-Resource-Policy: cross-origin
+  Access-Control-Allow-Origin: *
+  X-Content-Type-Options: nosniff
+
+/dipesh-sapkota-cv-preview.webp
+  Cross-Origin-Resource-Policy: cross-origin

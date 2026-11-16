@@ -7,15 +7,19 @@
 - Alias / Handle: dszae / dsz.ae / DszAe18
 - Profession: Computer Engineering Student & Freelance Video Editor / Motion Graphics Designer
 - Campus: Institute of Engineering (IOE), Thapathali Campus, Kathmandu, Nepal
-- Primary Portrait Image: https://www.dipeshsapkota7.com.np/dipesh-sapkota.jpg
+- Primary Portrait Image: https://www.dipeshsapkota7.com.np/dipesh-sapkota-portrait.jpg (1200x1200 JPEG, official, current)
+- Portrait Description: Dipesh Sapkota smiling with arms crossed, short dark hair, black T-shirt, black smartwatch, dark warm background
+- Other Portrait Crops: https://www.dipeshsapkota7.com.np/dipesh-sapkota-portrait-4x3.jpg , https://www.dipeshsapkota7.com.np/dipesh-sapkota-portrait-16x9.jpg
+- Home Page Portrait: https://www.dipeshsapkota7.com.np/dipesh-sapkota.jpg (627x627 JPEG; Dipesh Sapkota smiling outdoors in sunglasses and a grey patterned shirt; same photograph as https://commons.wikimedia.org/wiki/File:Dipesh_Sapkota.jpg)
 - Official Website: https://www.dipeshsapkota7.com.np/
+- Curriculum Vitae (PDF, 1 page, updated 2026-11-16): https://www.dipeshsapkota7.com.np/dipesh-sapkota-cv.pdf | HTML version: https://www.dipeshsapkota7.com.np/resume
 - Profiles & Socials: ORCID (https://orcid.org/0009-0001-7595-5114), Wikidata (https://www.wikidata.org/wiki/Q141595522), GitHub (https://github.com/dszae), LinkedIn (https://linkedin.com/in/dipeshsapkota7), DEV Community (https://dev.to/dszae), Hashnode (https://hashnode.com/@dszae), Hugging Face (https://huggingface.co/dszae), about.me (https://about.me/dipeshsapkota), YouTube (https://youtube.com/@dszae), X (https://x.com/DszAe18), Instagram (https://instagram.com/dsz.ae), Facebook (https://facebook.com/dsz.ae)
 
 ## Canonical Pages & Dedicated Sitelinks
 - [Homepage](https://www.dipeshsapkota7.com.np/): System overview, primary hero section, downloadable curriculum vitae, and direct collaboration channels.
 - [About Me](https://www.dipeshsapkota7.com.np/about): Detailed personal biography, academic journey at IOE Thapathali, 4+ years of freelance experience, 50+ clients, and creative design philosophy.
 - [Technical Proficiency & Skills](https://www.dipeshsapkota7.com.np/skills): Core skills in C/C++, Python, React.js, PHP, video editing (Premiere Pro, DaVinci Resolve), motion graphics (After Effects), and engineering hardware (Proteus, circuit analysis).
-- [Resume & Journey](https://www.dipeshsapkota7.com.np/resume): Comprehensive work experience at Clamphook Academy and university programs, academic milestones (IOE Thapathali, Janak Model Secondary, Mahendra Adarsha), and downloadable PDF CV.
+- [Resume & Journey](https://www.dipeshsapkota7.com.np/resume): Comprehensive work experience at Clamphook Academy and university programs, academic milestones (IOE Thapathali, Janak Model Secondary, Mahendra Adarsha), and the CV, viewable in the browser or downloadable as PDF (https://www.dipeshsapkota7.com.np/dipesh-sapkota-cv.pdf).
 - [Projects Archive](https://www.dipeshsapkota7.com.np/projects): Interactive live software and engineering projects, including Sportivo, IOE Admission Guide, Git Visualizer, and embedded circuit systems.
 - [Visual Archive & Gallery](https://www.dipeshsapkota7.com.np/gallery): High-resolution photo archive documenting campus life, Yathartha National Tech Exhibition, creative media sessions, and engineering field visits.
 - [Certifications](https://www.dipeshsapkota7.com.np/certificates): Verified certificates from Udemy, Blackmagic Design, and EDUCBA in Graphic Design, Color Correction, After Effects, and Web Development.
@@ -33,6 +37,7 @@
 
 ## Machine-Readable Resources & Feeds
 - [Comprehensive Entity & AI Knowledge Dossier](https://www.dipeshsapkota7.com.np/llms-full.txt)
+- [Curriculum Vitae (PDF)](https://www.dipeshsapkota7.com.np/dipesh-sapkota-cv.pdf)
 - [XML Sitemap](https://www.dipeshsapkota7.com.np/sitemap.xml)
 - [Robots Policy](https://www.dipeshsapkota7.com.np/robots.txt)
 - [Portfolio Markdown API](https://www.dipeshsapkota7.com.np/api/markdown)

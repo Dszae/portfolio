@@ -6,11 +6,32 @@ import SiteLayout from './SiteLayout';
 import FadeUp from './FadeUp';
 import BreadcrumbJsonLd from './BreadcrumbJsonLd';
 import PagePagination from './PagePagination';
+import { CV_FILENAME, CV_SIZE_LABEL, resolveCvUrl } from '@/lib/cv';
 
-export default function ResumeClientView({ experiences = [], siteSettings = {}, jsonLd }) {
+function DocumentIcon() {
+  return (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 2v5h6M9 13h6M9 17h6M9 9h1" /></svg>
+  );
+}
+
+function ViewIcon() {
+  return (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.06 12.35a1 1 0 0 1 0-.7C3.42 8.36 7.36 5 12 5s8.58 3.36 9.94 6.65a1 1 0 0 1 0 .7C20.58 15.64 16.64 19 12 19s-8.58-3.36-9.94-6.65z" /><circle cx="12" cy="12" r="3" strokeWidth="2" /></svg>
+  );
+}
+
+function DownloadIcon() {
+  return (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+  );
+}
+
+const iconBtn = 'flex items-center justify-center px-3 py-3 transition-colors hover:bg-[#044E39] dark:hover:bg-[#6EE7B7] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white dark:focus-visible:ring-[#090B0E] cursor-pointer';
+
+export default function ResumeClientView({ experiences = [], siteSettings = {}, resumeUrl: resumeUrlProp, jsonLd }) {
   const experienceList = experiences.filter(e => e.type === 'experience');
   const educationList = experiences.filter(e => e.type === 'education');
-  const resumeUrl = siteSettings?.profile?.resume_url || '/my_cv.pdf';
+  const resumeUrl = resumeUrlProp || resolveCvUrl(siteSettings?.profile?.resume_url);
 
   return (
     <SiteLayout>
@@ -27,26 +48,15 @@ export default function ResumeClientView({ experiences = [], siteSettings = {}, 
           <FadeUp>
             <section id="resume" className={`pt-36 sm:pt-40 subpage-container pb-24 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
               <div className="max-w-7xl mx-auto w-full">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-8">
-                  <h1 className="text-3xl sm:text-4xl font-semibold flex items-center gap-4 text-[#0F172A] dark:text-[#F9FAFB]">
-                    <span className="text-[#065F46] dark:text-[#34D399]">/</span> Resume
-                  </h1>
-                  <a
-                    href={resumeUrl}
-                    download="Dipesh_Sapkota_CV.pdf"
-                    aria-label="Download CV (PDF document, 105 KB)"
-                    className="self-start sm:self-auto px-6 py-3 bg-[#065F46] hover:bg-[#044E39] dark:bg-[#34D399] dark:hover:bg-[#6EE7B7] text-white dark:text-[#090B0E] font-semibold rounded-xl transition hover:-translate-y-1 flex items-center gap-2 shadow-sm font-sans cursor-pointer"
-                  >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                    <span>Download CV <span className="text-xs font-mono font-normal opacity-85">(PDF)</span></span>
-                  </a>
-                </div>
+                <h1 className="mb-8 text-3xl sm:text-4xl font-semibold flex items-center gap-4 text-[#0F172A] dark:text-[#F9FAFB]">
+                  <span className="text-[#065F46] dark:text-[#34D399]">/</span> Resume
+                </h1>
 
                 <p className="text-base sm:text-lg text-[#1E293B] dark:text-[#A7B0BE] mb-6 max-w-3xl leading-relaxed">
                   Academic trajectory, technical experience, and creative production history of Dipesh Sapkota. Currently studying Computer Engineering at IOE Thapathali Campus in Kathmandu while developing software tools and leading creative media projects.
                 </p>
 
-                <div className="flex flex-wrap items-center gap-3 mb-14">
+                <div className="flex flex-wrap items-center gap-3 mb-10">
                   <a 
                     href="https://orcid.org/0009-0001-7595-5114" 
                     target="_blank" 
@@ -63,6 +73,39 @@ export default function ResumeClientView({ experiences = [], siteSettings = {}, 
                   <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-mono font-medium border border-[#CBD5E1] dark:border-[#222933] bg-white dark:bg-[#11141A] text-[#475569] dark:text-[#A7B0BE]">
                     <span>Kathmandu, Nepal (UTC+5:45)</span>
                   </span>
+                </div>
+
+                <div
+                  role="group"
+                  aria-label="My CV"
+                  className="mb-14 flex w-fit items-stretch rounded-xl overflow-hidden bg-[#065F46] dark:bg-[#34D399] text-white dark:text-[#090B0E] shadow-sm font-sans"
+                >
+                  <span className="flex items-center gap-2 pl-5 pr-4 py-3 font-semibold">
+                    <DocumentIcon />
+                    My CV
+                  </span>
+                  <span className="w-px my-2.5 bg-white/30 dark:bg-[#090B0E]/20" aria-hidden="true"></span>
+                  <a
+                    href={resumeUrl}
+                    target="_blank"
+                    rel="noopener"
+                    type="application/pdf"
+                    title="View CV"
+                    aria-label="View my CV in the browser (PDF, opens in a new tab)"
+                    className={iconBtn}
+                  >
+                    <ViewIcon />
+                  </a>
+                  <a
+                    href={resumeUrl}
+                    download={CV_FILENAME}
+                    type="application/pdf"
+                    title="Download CV"
+                    aria-label={`Download my CV (PDF, ${CV_SIZE_LABEL})`}
+                    className={`${iconBtn} pr-4`}
+                  >
+                    <DownloadIcon />
+                  </a>
                 </div>
 
                 <div className="grid lg:grid-cols-2 gap-16">

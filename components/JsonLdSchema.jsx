@@ -1,4 +1,5 @@
 import { buildPersonJsonLd, buildWebSiteJsonLd, buildPortraitImageObject, buildHomePortraitImageObject, buildPersonImages } from '@/lib/seoEngine';
+import { CV_SCHEMA_REF } from '@/lib/cv';
 
 export const siteUrl = 'https://www.dipeshsapkota7.com.np';
 export const personId = `${siteUrl}/#author`;
@@ -21,6 +22,7 @@ export const person = {
   disambiguatingDescription: 'Computer Engineering student and AI/ML enthusiast at IOE Thapathali Campus in Nepal; creator of IOE Admission Hub, Sportivo, and Git Visualizer; known online as dszae.',
   url: `${siteUrl}/`,
   mainEntityOfPage: `${siteUrl}/about`,
+  subjectOf: CV_SCHEMA_REF,
   image: buildPersonImages(),
   gender: 'https://schema.org/Male',
   jobTitle: ['Computer Engineering Student', 'AI/ML Enthusiast', 'Motion Graphics Designer', 'Video Editor'],

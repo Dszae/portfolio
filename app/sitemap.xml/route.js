@@ -7,6 +7,7 @@ import {
   getSiteSettings 
 } from '@/lib/dataService';
 import { SITE_URL, toAbsoluteUrl, PORTRAIT } from '@/lib/seoEngine';
+import { CV_PDF_PATH, CV_UPDATED } from '@/lib/cv';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 3600;
@@ -86,6 +87,7 @@ export async function GET() {
       loc: `${SITE_URL}/resume`,
       priority: '0.95',
       changefreq: 'weekly',
+      lastmod: CV_UPDATED,
       images: [
         portraitImages[0],
         ...experiences.filter(e => e.logo).map(e => ({
@@ -93,6 +95,14 @@ export async function GET() {
           title: `${e.organization || e.company} Logo`,
         }))
       ],
+    },
+    {
+      // The PDF itself is indexable (Google, Bing and AI crawlers parse PDF text).
+      loc: `${SITE_URL}${CV_PDF_PATH}`,
+      priority: '0.80',
+      changefreq: 'monthly',
+      lastmod: CV_UPDATED,
+      images: [],
     },
     {
       loc: `${SITE_URL}/gallery`,

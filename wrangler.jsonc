@@ -1,7 +1,8 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "portfolio",
-  "main": ".open-next/worker.js",
+  // Wraps .open-next/worker.js to cache optimized images; see cloudflare/worker.js.
+  "main": "cloudflare/worker.js",
   "compatibility_date": "2026-11-12",
   "compatibility_flags": [
     "nodejs_compat",
