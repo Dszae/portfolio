@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useSyncExternalStore } from 'react';
 import Link from 'next/link';
+import { flushSync } from 'react-dom';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
 import AiAssistant from './AiAssistant/AiAssistant';
@@ -398,29 +399,66 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
     } catch {}
   }, []);
 
-  const toggleTheme = () => {
+  const applyTheme = (nextDark) => {
+    const root = document.documentElement;
+    const themeName = nextDark ? 'dark' : 'light';
+    root.classList.toggle('dark', nextDark);
+    root.classList.toggle('light', !nextDark);
+    root.style.colorScheme = themeName;
+    localStorage.setItem('theme', themeName);
+    document.cookie = `theme=${themeName}; path=/; max-age=31536000; SameSite=Lax`;
+  };
+
+  // Theme switch: the new theme is revealed as a circle that grows out of the
+  // toggle button (View Transitions API). Browsers without the API, and users who
+  // prefer reduced motion, get the short color crossfade instead.
+  const toggleTheme = (event) => {
     try {
       const root = document.documentElement;
-      const isCurrentlyDark = root.classList.contains('dark');
-      const nextDark = !isCurrentlyDark;
-      const themeName = nextDark ? 'dark' : 'light';
+      const nextDark = !root.classList.contains('dark');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      root.classList.add('theme-transitioning');
-      if (nextDark) {
-        root.classList.add('dark');
-        root.classList.remove('light');
-        root.style.colorScheme = 'dark';
-      } else {
-        root.classList.remove('dark');
-        root.classList.add('light');
-        root.style.colorScheme = 'light';
+      if (typeof document.startViewTransition !== 'function' || reduceMotion) {
+        root.classList.add('theme-transitioning');
+        applyTheme(nextDark);
+        setIsDark(nextDark);
+        setTimeout(() => root.classList.remove('theme-transitioning'), 400);
+        return;
       }
-      setIsDark(nextDark);
-      localStorage.setItem('theme', themeName);
-      document.cookie = `theme=${themeName}; path=/; max-age=31536000; SameSite=Lax`;
-      setTimeout(() => {
-        root.classList.remove('theme-transitioning');
-      }, 400);
+
+      const rect = event?.currentTarget?.getBoundingClientRect?.();
+      const x = rect ? rect.left + rect.width / 2 : window.innerWidth - 40;
+      const y = rect ? rect.top + rect.height / 2 : 40;
+      const radius = Math.hypot(
+        Math.max(x, window.innerWidth - x),
+        Math.max(y, window.innerHeight - y)
+      );
+
+      root.classList.add('theme-vt');
+      const transition = document.startViewTransition(() => {
+        flushSync(() => setIsDark(nextDark));
+        applyTheme(nextDark);
+      });
+
+      transition.ready
+        .then(() => {
+          root.animate(
+            {
+              clipPath: [
+                `circle(0px at ${x}px ${y}px)`,
+                `circle(${radius}px at ${x}px ${y}px)`,
+              ],
+            },
+            {
+              duration: 700,
+              easing: 'cubic-bezier(0.65, 0, 0.35, 1)',
+              pseudoElement: '::view-transition-new(root)',
+            }
+          );
+        })
+        .catch(() => {});
+
+      transition.finished.finally(() => root.classList.remove('theme-vt'));
     } catch {}
   };
 
@@ -556,7 +594,7 @@ export default function SiteLayout({ children, selectedImage, setSelectedImage }
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 aria-hidden="true"
-                className={`w-5 h-5 transition-transform duration-300 ${isDark ? 'rotate-0' : 'rotate-180'} group-hover/theme:rotate-45`}
+                className={`theme-toggle-icon w-5 h-5 transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${isDark ? 'rotate-0' : 'rotate-180'} group-hover/theme:rotate-45`}
               >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
