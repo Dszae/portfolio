@@ -146,8 +146,18 @@ export async function GET() {
       };
     });
 
-  // External publications redirect to DEV Community, so the canonical indexable hub is ${SITE_URL}/blog.
-  const allUrls = [...corePages, ...projectPages];
+  // Articles are hosted on this domain; DEV Community and Hashnode copies point their canonical here.
+  const articlePages = articles
+    .filter(a => a.slug && (a.status === 'published' || !a.status))
+    .map(a => ({
+      loc: `${SITE_URL}/blog/${a.slug}`,
+      priority: '0.80',
+      changefreq: 'monthly',
+      lastmod: a.updated_at || a.published_at ? String(a.updated_at || a.published_at).split('T')[0] : undefined,
+      images: a.cover_image ? [{ path: toAbsoluteUrl(a.cover_image), title: a.title || 'Article Cover' }] : [],
+    }));
+
+  const allUrls = [...corePages, ...projectPages, ...articlePages];
 
   const xmlEntries = allUrls.map(({ loc, priority, changefreq, lastmod, images = [], videos = [] }) => {
     const lastmodTag = lastmod ? `<lastmod>${escapeXml(lastmod)}</lastmod>` : '';

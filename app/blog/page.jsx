@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import SiteLayout from '@/components/SiteLayout';
 import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 import PagePagination from '@/components/PagePagination';
@@ -118,7 +119,8 @@ export default async function BlogPage() {
 
           <ul className="space-y-6">
             {publishedArticles.map((art) => {
-              const primaryLink = art.live_url || DEV_ARTICLE_URLS[art.slug] || 'https://dev.to/dszae';
+              const articlePath = `/blog/${art.slug || art.id}`;
+              const devtoLink = art.live_url || DEV_ARTICLE_URLS[art.slug] || 'https://dev.to/dszae';
               const highlights = art.highlights || ARTICLE_HIGHLIGHTS[art.slug] || [];
               const tags = Array.isArray(art.tags) ? art.tags : (art.tags ? [art.tags] : []);
               const publishedDate = art.published_at ? new Date(art.published_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : null;
@@ -141,14 +143,12 @@ export default async function BlogPage() {
                       </span>
                     )}
                   </div>
-                  <a 
-                    href={primaryLink} 
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    href={articlePath}
                     className="card-heading group-hover:text-[#065F46] dark:group-hover:text-[#34D399] transition-colors block mb-2"
                   >
                     {art.title}
-                  </a>
+                  </Link>
 
                   {tags.length > 0 && (
                     <div className="flex flex-wrap items-center gap-2 mb-3">
@@ -189,7 +189,7 @@ export default async function BlogPage() {
 
                         <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-100 dark:border-[#1E2530]">
                           <span className="text-[11px] font-mono text-slate-500 dark:text-[#94A3B8]">
-                            DEV Community Verified Publication
+                            Also published on DEV Community
                           </span>
                           {publishedDate && (
                             <span className="text-[11px] font-mono text-slate-500 dark:text-[#94A3B8]">
@@ -202,13 +202,19 @@ export default async function BlogPage() {
                   </div>
 
                   <div className="flex items-center gap-4 text-xs font-mono mt-4 pt-3 border-t border-slate-100 dark:border-[#1a1f26]">
-                    <a 
-                      href={primaryLink} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
+                    <Link
+                      href={articlePath}
                       className="text-[#065F46] dark:text-[#34D399] font-semibold hover:underline inline-flex items-center gap-1.5"
                     >
-                      <span>Read Full Article on DEV Community</span>
+                      <span>Read Full Article</span>
+                    </Link>
+                    <a
+                      href={devtoLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-slate-500 dark:text-[#94A3B8] hover:text-slate-800 dark:hover:text-white inline-flex items-center gap-1.5"
+                    >
+                      <span>DEV Community</span>
                       <svg className="w-3.5 h-3.5 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                       </svg>
