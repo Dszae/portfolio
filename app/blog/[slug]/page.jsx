@@ -1,12 +1,13 @@
 import React from 'react';
-import { notFound, redirect } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import SiteLayout from '@/components/SiteLayout';
 import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 import PagePagination from '@/components/PagePagination';
-import { getArticleBySlug, getArticles, getSiteSettings, DEV_ARTICLE_URLS } from '@/lib/dataService';
+import { getArticleBySlug, getArticles, getSiteSettings } from '@/lib/dataService';
 import { generatePageMetadata, buildArticleJsonLd } from '@/lib/seoEngine';
+import { getDevToArticle } from '@/lib/devtoArticles';
 
 export const revalidate = 60;
 
@@ -21,6 +22,8 @@ export async function generateMetadata({ params }) {
     };
   }
 
+  const devto = await getDevToArticle(article.live_url);
+
   return await generatePageMetadata({
     title: article.title,
     description: article.excerpt || article.description,
@@ -30,8 +33,8 @@ export async function generateMetadata({ params }) {
     image: article.cover_image || '/sportivo-preview.jpg',
     type: 'article',
     keywords: Array.isArray(article.tags) ? article.tags : (article.tags ? [article.tags] : []),
-    publishedTime: article.published_at,
-    modifiedTime: article.updated_at || article.published_at,
+    publishedTime: devto?.publishedAt || article.published_at,
+    modifiedTime: devto?.editedAt || article.updated_at || devto?.publishedAt || article.published_at,
   });
 }
 
@@ -59,10 +62,12 @@ export default async function DynamicArticlePage({ params }) {
     notFound();
   }
 
-  const targetUrl = article.live_url || DEV_ARTICLE_URLS[article.slug] || DEV_ARTICLE_URLS[resolvedParams.slug];
-  if (targetUrl) {
-    redirect(targetUrl);
+  // Aliases resolve to one canonical URL per article on this domain.
+  if (article.slug && resolvedParams.slug.toLowerCase() !== article.slug.toLowerCase()) {
+    permanentRedirect(`/blog/${article.slug}`);
   }
+
+  const devto = await getDevToArticle(article.live_url);
 
   const profile = siteSettings?.profile || {};
   const jsonLd = buildArticleJsonLd(article, siteSettings);
@@ -101,8 +106,10 @@ export default async function DynamicArticlePage({ params }) {
               <span className="card-category-label">
                 {article.category || 'Technical Write-Up'}
               </span>
-              {article.read_time && (
-                <span className="card-meta font-mono">{article.read_time}</span>
+              {(devto?.readingMinutes || article.read_time) && (
+                <span className="card-meta font-mono">
+                  {devto?.readingMinutes ? `${devto.readingMinutes} min read` : article.read_time}
+                </span>
               )}
               {article.published_at && (
                 <span className="text-slate-500 text-[11px] font-mono">
@@ -134,19 +141,26 @@ export default async function DynamicArticlePage({ params }) {
               </div>
             )}
 
-<div className="prose dark:prose-invert max-w-none text-slate-800 dark:text-slate-200 text-sm sm:text-base leading-relaxed space-y-4 whitespace-pre-line">
-              {article.content || article.description || article.excerpt}
-            </div>
+{devto?.html ? (
+              <div
+                className="article-body"
+                dangerouslySetInnerHTML={{ __html: devto.html }}
+              />
+            ) : (
+              <div className="article-body whitespace-pre-line">
+                <p>{article.content || article.description || article.excerpt}</p>
+              </div>
+            )}
 
-<div className="flex flex-wrap gap-3 pt-6 border-t border-slate-200 dark:border-slate-800">
+<div className="flex flex-wrap items-center gap-3 pt-6 border-t border-slate-200 dark:border-slate-800">
               {article.live_url && (
                 <a
-                  href={article.live_url}
+                  href={devto?.url || article.live_url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 py-2 rounded-xl bg-[#065F46] hover:bg-[#044E39] dark:bg-[#34D399] dark:hover:bg-[#6EE7B7] text-white dark:text-[#090B0E] font-semibold text-xs transition-colors inline-flex items-center gap-1.5"
                 >
-                  <span>Read on DEV Community</span>
+                  <span>{devto?.html ? 'Discuss on DEV Community' : 'Read on DEV Community'}</span>
                 </a>
               )}
               {article.local_url && (
