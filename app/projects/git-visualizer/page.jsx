@@ -5,8 +5,8 @@ import PagePagination from '@/components/PagePagination';
 import HoverVideo from '@/components/HoverVideo';
 
 export const metadata = {
-  title: "Git Visualizer: Interactive Version Control & DAG Case Study",
-  description: "Technical case study of Git Visualizer by Dipesh Sapkota (dszae): interactive HTML5 Canvas engine, directed acyclic graph (DAG) mapping, and visual Git workflows.",
+  title: "Git Visualizer: Interactive Git Graph Tool",
+  description: "Learn Git visually: an interactive HTML5 Canvas tool that maps commits, branches, and merges as a DAG. Case study by Dipesh Sapkota (dszae).",
   keywords: ['Git Visualizer', 'interactive Git', 'Git commit graph', 'Git DAG', 'learn Git', 'Dipesh Sapkota'],
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-video-preview': -1, 'max-image-preview': 'large', 'max-snippet': -1 } },
   alternates: { canonical: '/projects/git-visualizer', languages: { 'en-US': '/projects/git-visualizer' } },

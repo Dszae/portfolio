@@ -1,5 +1,8 @@
 export const metadata = {
-  title: 'Projects',
+  title: {
+    default: 'Projects',
+    template: '%s | Dipesh Sapkota',
+  },
   description: 'Featured software systems and engineering projects by Dipesh Sapkota, including Sportivo (live sports match center), IOE Admission Guide, Git Visualizer, and hardware prototypes.',
   alternates: { canonical: '/projects' },
   openGraph: {

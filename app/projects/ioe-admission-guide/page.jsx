@@ -5,8 +5,8 @@ import PagePagination from '@/components/PagePagination';
 import HoverVideo from '@/components/HoverVideo';
 
 export const metadata = {
-  title: "IOE Admission Guide: Engineering Entrance & Rank Predictor",
-  description: "Technical case study of the IOE Admission Guide by Dipesh Sapkota (dszae): historical rank cutoff modeling, multi-campus counseling algorithms, and automated priority sheets.",
+  title: "IOE Rank Predictor and Admission Guide",
+  description: "Estimate IOE entrance rank outcomes with historical cutoff data, campus counseling, and priority sheet planning for TU engineering admission. By Dipesh Sapkota.",
   keywords: ['IOE Admission Guide', 'IOE rank predictor', 'TU engineering admission', 'IOE cutoff analytics', 'Dipesh Sapkota'],
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-video-preview': -1, 'max-image-preview': 'large', 'max-snippet': -1 } },
   alternates: { canonical: '/projects/ioe-admission-guide', languages: { 'en-US': '/projects/ioe-admission-guide' } },

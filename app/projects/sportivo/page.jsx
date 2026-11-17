@@ -5,8 +5,8 @@ import PagePagination from '@/components/PagePagination';
 import HoverVideo from '@/components/HoverVideo';
 
 export const metadata = {
-  title: "Sportivo - Live Scores, Fixtures & Sports News",
-  description: "Sportivo - Live Scores, upcoming fixtures, match discovery, and sports news into one responsive experience. Built by Dipesh Sapkota, it is designed to help football, cricket, and basketball fans scan updates quickly and move naturally from match information to available streams.",
+  title: "Sportivo: Live Scores, Fixtures and News",
+  description: "Sportivo brings live scores, fixtures, and sports news for football, cricket, and basketball into one fast, responsive app. Built by Dipesh Sapkota.",
   keywords: ['Sportivo', 'live sports scores', 'football fixtures', 'cricket fixtures', 'basketball fixtures', 'Dipesh Sapkota'],
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-video-preview': -1, 'max-image-preview': 'large', 'max-snippet': -1 } },
   alternates: { canonical: '/projects/sportivo', languages: { 'en-US': '/projects/sportivo' } },

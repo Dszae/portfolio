@@ -1905,6 +1905,171 @@ const chartPoints = useMemo(() => {
             </div>
           )}
 
+{activeTab === 'seo' && (() => {
+            const seo = settings.seo || {};
+            const RECOMMENDED_DESCRIPTION = 'Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus, Kathmandu. AI/ML projects, IOE Admission Hub, and 4+ years of motion design work.';
+            const titleVal = seo.title || '';
+            const descVal = seo.description || '';
+            const setSeo = (field, val) => setSettings(prev => ({ ...prev, seo: { ...(prev.seo || {}), [field]: val } }));
+            const counter = (len, max) => (
+              <span className={`font-mono text-[11px] ${len === 0 ? 'text-zinc-500' : len > max ? 'text-rose-400' : 'text-emerald-400'}`}>{len}/{max}</span>
+            );
+            const fields = [
+              { key: 'canonical_url', label: 'Canonical URL', type: 'url', placeholder: 'https://www.dipeshsapkota7.com.np', mono: true },
+              { key: 'og_image', label: 'Social share image', type: 'text', placeholder: '/dipesh-sapkota-portrait-16x9.jpg', mono: true },
+              { key: 'twitter_handle', label: 'X / Twitter handle', type: 'text', placeholder: '@dszae', mono: true },
+              { key: 'keywords', label: 'Keywords (comma separated)', type: 'text', placeholder: 'Dipesh Sapkota, Computer Engineering, AI/ML', mono: false },
+            ];
+            return (
+            <div className="space-y-5 max-w-6xl mx-auto">
+              <div className="pb-3 border-b border-zinc-800">
+                <h1 className="text-lg font-semibold text-white">SEO and health</h1>
+                <p className="text-xs text-zinc-400">Homepage search snippet, crawler files, and system status</p>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                <div className="bg-[#19191b] border border-zinc-800/80 rounded-xl p-5 space-y-4 text-xs">
+                  <h3 className="text-xs font-semibold text-white pb-2 border-b border-zinc-800">Homepage meta tags</h3>
+                  <div>
+                    <div className="flex items-center justify-between mb-1">
+                      <label className="text-zinc-400">Title</label>
+                      {counter(titleVal.length, 60)}
+                    </div>
+                    <input
+                      type="text"
+                      value={titleVal}
+                      onChange={(e) => setSeo('title', e.target.value)}
+                      className="w-full px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-white outline-none"
+                      placeholder="Dipesh Sapkota | Computer Engineering Student & AI/ML Enthusiast"
+                    />
+                  </div>
+                  <div>
+                    <div className="flex items-center justify-between mb-1">
+                      <label className="text-zinc-400">Description</label>
+                      {counter(descVal.length, 160)}
+                    </div>
+                    <textarea
+                      rows={3}
+                      value={descVal}
+                      onChange={(e) => setSeo('description', e.target.value)}
+                      className="w-full px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-white outline-none leading-relaxed resize-none"
+                      placeholder={RECOMMENDED_DESCRIPTION}
+                    />
+                    {descVal !== RECOMMENDED_DESCRIPTION && (
+                      <button
+                        type="button"
+                        onClick={() => setSeo('description', RECOMMENDED_DESCRIPTION)}
+                        className="mt-1.5 text-[11px] text-emerald-400 hover:text-emerald-300"
+                      >
+                        Use recommended description
+                      </button>
+                    )}
+                  </div>
+                  {fields.map(f => (
+                    <div key={f.key}>
+                      <label className="block text-zinc-400 mb-1">{f.label}</label>
+                      <input
+                        type={f.type}
+                        value={seo[f.key] || ''}
+                        onChange={(e) => setSeo(f.key, e.target.value)}
+                        className={`w-full px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-white outline-none ${f.mono ? 'font-mono' : ''}`}
+                        placeholder={f.placeholder}
+                      />
+                    </div>
+                  ))}
+                  <button
+                    onClick={() => saveSettingSection('seo', settings.seo || {})}
+                    className="px-4 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-semibold text-xs"
+                  >
+                    Save SEO settings
+                  </button>
+                </div>
+
+                <div className="space-y-5">
+                  <div className="bg-[#19191b] border border-zinc-800/80 rounded-xl p-5 space-y-3">
+                    <h3 className="text-xs font-semibold text-white pb-2 border-b border-zinc-800">Search result preview</h3>
+                    <div className="p-4 rounded-lg bg-[#202124] border border-zinc-800 font-sans space-y-1">
+                      <div className="flex items-center gap-2">
+                        <span className="w-6 h-6 rounded-full bg-white flex items-center justify-center overflow-hidden">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src="/favicon-48x48.png" alt="" className="w-4 h-4" />
+                        </span>
+                        <div className="leading-tight">
+                          <div className="text-[13px] text-[#DADCE0]">Dipesh Sapkota</div>
+                          <div className="text-[11px] text-[#BDC1C6]">https://www.dipeshsapkota7.com.np</div>
+                        </div>
+                      </div>
+                      <h4 className="text-[17px] text-[#8AB4F8] pt-1 truncate">
+                        {titleVal || 'Dipesh Sapkota | Computer Engineering Student & AI/ML Enthusiast'}
+                      </h4>
+                      <p className="text-[13px] text-[#BDC1C6] line-clamp-2 leading-snug">
+                        {descVal || RECOMMENDED_DESCRIPTION}
+                      </p>
+                    </div>
+                    <p className="text-[11px] text-zinc-500">Approximate rendering. Google may rewrite titles or snippets.</p>
+                  </div>
+
+                  <div className="bg-[#19191b] border border-zinc-800/80 rounded-xl p-5 space-y-3 text-xs">
+                    <div className="flex items-center justify-between pb-2 border-b border-zinc-800">
+                      <h3 className="text-xs font-semibold text-white">System health</h3>
+                      <button
+                        onClick={runHealthCheck}
+                        disabled={systemHealth.checking}
+                        className="px-2.5 py-1 rounded bg-zinc-900 border border-zinc-800 hover:bg-zinc-800 text-zinc-300 font-medium disabled:opacity-50"
+                      >
+                        {systemHealth.checking ? 'Checking' : 'Run check'}
+                      </button>
+                    </div>
+                    <div className="grid grid-cols-3 gap-3">
+                      <div>
+                        <div className="text-zinc-500 mb-0.5">Status</div>
+                        <div className="flex items-center gap-1.5 text-zinc-200 capitalize">
+                          <span className={`w-2 h-2 rounded-full ${
+                            systemHealth.status === 'healthy' ? 'bg-emerald-400' : systemHealth.status === 'unknown' ? 'bg-zinc-500' : systemHealth.status === 'degraded' ? 'bg-amber-400' : 'bg-[#e5484d]'
+                          }`}></span>
+                          {systemHealth.status}
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-zinc-500 mb-0.5">Latency</div>
+                        <div className="text-zinc-200 font-mono">{systemHealth.latency == null ? '-' : `${systemHealth.latency} ms`}</div>
+                      </div>
+                      <div>
+                        <div className="text-zinc-500 mb-0.5">Last checked</div>
+                        <div className="text-zinc-200 font-mono">{systemHealth.lastChecked || '-'}</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-[#19191b] border border-zinc-800/80 rounded-xl p-5 space-y-3 text-xs">
+                    <h3 className="text-xs font-semibold text-white pb-2 border-b border-zinc-800">Crawler files and tools</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {[
+                        ['sitemap.xml', '/sitemap.xml'],
+                        ['robots.txt', '/robots.txt'],
+                        ['llms.txt', '/llms.txt'],
+                        ['llms-full.txt', '/llms-full.txt'],
+                        ['Search Console', 'https://search.google.com/search-console'],
+                        ['Rich Results Test', 'https://search.google.com/test/rich-results?url=https%3A%2F%2Fwww.dipeshsapkota7.com.np%2F'],
+                      ].map(([label, href]) => (
+                        <a
+                          key={href}
+                          href={href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 hover:bg-zinc-800 text-zinc-300 font-medium transition-colors"
+                        >
+                          {label}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            );
+          })()}
+
 {activeTab === 'database' && (
             <div className="space-y-5 max-w-6xl mx-auto">
               <div className="pb-3 border-b border-zinc-800">

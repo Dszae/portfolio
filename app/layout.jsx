@@ -32,7 +32,7 @@ export async function generateMetadata() {
 
   const name = withoutEmoji(profile.name || 'Dipesh Sapkota');
   const rawTitle = withoutEmoji(seo.title || `${name} | Computer Engineering Student & AI/ML Enthusiast`);
-  const description = withoutEmoji(seo.description || profile.bio || 'Official portfolio of Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus, exploring AI/ML intelligent systems, embedded hardware, and motion design.');
+  const description = withoutEmoji(seo.description || profile.bio || 'Dipesh Sapkota, Computer Engineering student at IOE Thapathali Campus, Kathmandu. AI/ML projects, IOE Admission Hub, and 4+ years of motion design work.');
   const ogImage = resolvePortrait(seo.og_image || profile.avatar_url);
   const twitterHandle = (seo.twitter_handle || '@dszae').replace(/^@?/, '@');
 
@@ -96,7 +96,7 @@ export async function generateMetadata() {
     openGraph: {
       type: 'website',
       url: 'https://www.dipeshsapkota7.com.np/',
-      siteName: `${name} Portfolio`,
+      siteName: name,
       locale: 'en_US',
       title: rawTitle,
       description,

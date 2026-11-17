@@ -7,8 +7,8 @@ import PagePagination from '@/components/PagePagination';
 import MathFormula from '@/components/MathFormula';
 
 export const metadata = {
-  title: "Electrical Machinery Modeling: Induction & DC Machine Analysis Case Study",
-  description: "Engineering case study of electrical machinery modeling by Dipesh Sapkota: 3-phase induction machine parameter derivation, locked-rotor analysis, and MATLAB torque-speed simulations.",
+  title: "Induction and DC Motor Modeling Case Study",
+  description: "3-phase induction and DC machine modeling: parameter derivation, locked-rotor analysis, and MATLAB torque-speed simulations. Case study by Dipesh Sapkota.",
   alternates: { canonical: '/projects/motor-modeling' },
   openGraph: {
     type: 'article',
