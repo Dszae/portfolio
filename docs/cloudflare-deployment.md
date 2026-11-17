@@ -24,10 +24,10 @@ Connect the repository as a **Worker** in Workers & Pages, then set:
 | --- | --- |
 | Build command | `npm run build:cloudflare` |
 | Deploy command | `npm run deploy:cloudflare` |
-| Non-production branch deploy command | `npm run upload:cloudflare` |
+| Non-production branch deploy command | `npx wrangler preview` (Cloudflare default) |
 | Root directory | `/` |
 
-Branch builds must use `npm run upload:cloudflare` (`opennextjs-cloudflare upload`). It populates the cache and runs `wrangler versions upload`, which creates a preview version with its own URL and sends it no production traffic. Do not use `npx wrangler preview`: it requires a `previews` block in `wrangler.jsonc` and does not support the Durable Object queue or the `WORKER_SELF_REFERENCE` service binding that the OpenNext cache needs. Do not use `npm run deploy:cloudflare` for branches, since that deploys the branch to production. Preview versions share the production R2, D1, and Durable Object bindings; the incremental cache is keyed by build ID, so previews do not overwrite production cache entries.
+Branch builds run `npx wrangler preview`, which requires the `previews` block in `wrangler.jsonc`. That block reuses the production R2 cache bucket and D1 tag cache, the same sharing that `wrangler versions upload` would give. The incremental cache is keyed by build ID, so previews do not overwrite production cache entries. Worker Previews do not support Durable Objects or service bindings, so background ISR revalidation is unavailable in previews; production is unaffected. Never set the branch deploy command to `npm run deploy:cloudflare`, since that deploys the branch to production.
 
 Do not use the Pages command `wrangler pages deploy dist`. The OpenNext deploy command reads the Worker entry point and assets from `.open-next`, configured in `wrangler.jsonc`.
 
