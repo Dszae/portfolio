@@ -7,8 +7,8 @@ import PagePagination from '@/components/PagePagination';
 import MathFormula from '@/components/MathFormula';
 
 export const metadata = {
-  title: "Astable Multivibrator LED Flasher: Hardware Circuit Case Study",
-  description: "Technical case study of the NE555 Astable Multivibrator LED Flasher by Dipesh Sapkota: RC timing calculations, Proteus ISIS transient simulation, and physical breadboard hardware prototyping.",
+  title: "NE555 Astable LED Flasher Circuit Case Study",
+  description: "NE555 astable multivibrator LED flasher: RC timing calculations, Proteus ISIS simulation, and breadboard prototype. Hardware case study by Dipesh Sapkota.",
   alternates: { canonical: '/projects/555-flasher' },
   openGraph: {
     type: 'article',

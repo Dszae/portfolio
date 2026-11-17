@@ -7,8 +7,8 @@ import PagePagination from '@/components/PagePagination';
 import MathFormula from '@/components/MathFormula';
 
 export const metadata = {
-  title: "Automated Analyzer Diagnostics: Clinical Instrumentation Case Study",
-  description: "Engineering analysis and diagnostic methodology for automated clinical biochemistry and immunoassay analyzers by Dipesh Sapkota: pneumatic fluidics, micro-stepping syringe calibration, and capacitive liquid level sensing.",
+  title: "Automated Analyzer Diagnostics Case Study",
+  description: "Diagnostics and calibration of automated clinical biochemistry analyzers: fluidics, syringe stepper calibration, and liquid level sensing. By Dipesh Sapkota.",
   alternates: { canonical: '/projects/analyzer-diag' },
   openGraph: {
     type: 'article',
