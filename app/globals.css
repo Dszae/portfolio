@@ -2501,6 +2501,29 @@ html.theme-transitioning a {
   }
 }
 
+/* ------------------------------------------------------------------
+   Theme switch (toggleTheme in components/SiteLayout.jsx)
+   The old theme stays still while the new one is revealed by a circle
+   clip-path animated from the toggle button. Only the root snapshot is
+   used, so the header joins the reveal instead of switching instantly,
+   and live transitions are paused so the new snapshot is already settled.
+------------------------------------------------------------------- */
+html.theme-vt::view-transition-old(root),
+html.theme-vt::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+html.theme-vt .site-nav {
+  view-transition-name: none !important;
+}
+
+html.theme-vt *:not(.theme-toggle-icon),
+html.theme-vt *::before,
+html.theme-vt *::after {
+  transition: none !important;
+}
+
 /* Header is the spatial anchor: it never moves during a route change */
 ::view-transition-group(site-header) {
   animation: none;
