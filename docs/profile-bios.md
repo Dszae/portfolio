@@ -53,7 +53,7 @@ For DEV.to, Hashnode, Medium, YouTube channel description, Crunchbase:
 
 ## GitHub profile README
 
-Create the repository `dszae/dszae` with this `README.md`:
+Already live at `Dszae/Dszae` (name, bio, website, and location set; README covers projects and links the portfolio). No change needed. Reference version if it is ever rewritten:
 
 ```markdown
 # Dipesh Sapkota
@@ -62,7 +62,7 @@ Computer Engineering student at IOE Thapathali Campus, Kathmandu, Nepal.
 AI/ML enthusiast exploring intelligent systems, embedded hardware, and motion design.
 
 - Portfolio: https://www.dipeshsapkota7.com.np/
-- LinkedIn: https://www.linkedin.com/in/dszae
+- LinkedIn: https://www.linkedin.com/in/dipeshsapkota7
 - ORCID: https://orcid.org/0009-0001-7595-5114
 
 ## Projects
@@ -87,7 +87,7 @@ Each article should have the author name "Dipesh Sapkota", link to the matching 
 ## Checklist
 
 - [ ] LinkedIn name, headline, About, website, education
-- [ ] GitHub bio and `dszae/dszae` README
+- [x] GitHub bio and `Dszae/Dszae` README (verified 2026-11-17)
 - [ ] YouTube channel name and description
 - [ ] DEV.to and Hashnode bios plus at least one article each
 - [ ] Behance and Dribbble profiles with motion work
