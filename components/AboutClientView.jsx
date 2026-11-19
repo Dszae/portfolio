@@ -7,8 +7,9 @@ import SiteLayout from './SiteLayout';
 import FadeUp from './FadeUp';
 import BreadcrumbJsonLd from './BreadcrumbJsonLd';
 import PagePagination from './PagePagination';
+import ProfileFaq from './ProfileFaq';
 
-export default function AboutClientView({ siteSettings = {}, jsonLd = null, pageTitle = "About", breadcrumbItems = null }) {
+export default function AboutClientView({ siteSettings = {}, jsonLd = null, faqJsonLd = null, pageTitle = "About", breadcrumbItems = null }) {
   const profile = siteSettings.profile || {};
   const headline = profile.headline || "Bridging Analytical Logic and Visual Execution";
   const bio = profile.bio || "I am a Computer Engineering undergraduate student at the Institute of Engineering (IOE), Thapathali Campus in Kathmandu, Nepal. My work spans Artificial Intelligence, Machine Learning algorithms, intelligent systems, and hardware simulations.";
@@ -30,6 +31,12 @@ export default function AboutClientView({ siteSettings = {}, jsonLd = null, page
             <script
               type="application/ld+json"
               dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
+            />
+          )}
+          {faqJsonLd && (
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd).replace(/</g, '\\u003c') }}
             />
           )}
 
@@ -267,9 +274,12 @@ export default function AboutClientView({ siteSettings = {}, jsonLd = null, page
                 <div className="pt-12 border-t border-[#CBD5E1] dark:border-[#334155]">
                   <PagePagination 
                     prev={{ label: 'Home Page', path: '/' }} 
-                    next={{ label: 'Technical Skills', path: '/skills' }} 
+                    next={{ label: 'Technical Skills', path: '/skills' }}
                   />
                 </div>
+
+                {/* 6. Collapsed identity FAQ (mirrors FAQPage JSON-LD) */}
+                <ProfileFaq />
 
               </div>
             </section>

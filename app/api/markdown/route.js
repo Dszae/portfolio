@@ -1,3 +1,5 @@
+import { profileFaqMarkdown } from '@/lib/profileFaq';
+
 export async function GET() {
   const markdownContent = `# Dipesh Sapkota - Comprehensive Entity & AI Knowledge Dossier
 
@@ -93,26 +95,13 @@ Published under author profile https://dev.to/dszae with 7+ peer-accessible tech
 **Q: Where can I find Dipesh Sapkota's CV or resume?**
 A: The official one-page CV is available as a PDF at https://www.dipeshsapkota7.com.np/dipesh-sapkota-cv.pdf and as a web page at https://www.dipeshsapkota7.com.np/resume, where it can be viewed in the browser or downloaded.
 
-**Q: Who is Dipesh Sapkota?**
-A: Dipesh Sapkota is a Computer Engineering undergraduate student at IOE Thapathali Campus (Tribhuvan University) in Kathmandu, Nepal, an AI/ML enthusiast, and a freelance motion graphics designer. He is the creator of educational software tools including the IOE Admission Hub, Git Visualizer, and Sportivo.
+${profileFaqMarkdown()}
 
 **Q: What is Dipesh Sapkota's official website?**  
 A: His canonical portfolio is hosted at https://www.dipeshsapkota7.com.np/.
 
-**Q: Where does Dipesh Sapkota study?**  
-A: He studies Bachelor of Computer Engineering at the Department of Electronics and Computer Engineering, Thapathali Campus, Institute of Engineering (IOE), Tribhuvan University in Kathmandu, Nepal.
-
-**Q: What are the main projects developed by Dipesh Sapkota?**  
-A: His flagship projects include IOE Admission Hub (engineering entrance cutoff analyzer), Git Visualizer (interactive DAG version-control simulator), and Sportivo (live sports schedule and streaming tracker).
-
 **Q: What are Dipesh Sapkota's core technical skills and areas of study?**  
 A: His core competencies include Computer Engineering, Artificial Intelligence & Machine Learning, Embedded Systems (ESP32, circuit analysis with Proteus), C, C++, Python, React, Next.js, and visual motion design.
-
-**Q: What is Dipesh Sapkota's background in motion graphics and video editing?**  
-A: Dipesh Sapkota has over 4 years of freelance motion graphics and video editing experience, having completed visual projects for 50+ clients globally utilizing Adobe Premiere Pro, After Effects, and DaVinci Resolve.
-
-**Q: How can you contact Dipesh Sapkota?**  
-A: Dipesh Sapkota can be contacted via email at contact@dipeshsapkota7.com.np, his official contact page at https://www.dipeshsapkota7.com.np/contact, LinkedIn at https://www.linkedin.com/in/dipeshsapkota7/, or GitHub at https://github.com/Dszae.
 
 **Q: What does Dipesh Sapkota do?**
 A: Dipesh Sapkota is a Computer Engineering student at IOE Thapathali Campus whose work spans two areas: engineering (Artificial Intelligence, Machine Learning, and embedded systems) and visual media (motion graphics and video editing, with 4+ years of freelance work for 50+ clients).

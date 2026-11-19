@@ -1,6 +1,6 @@
 import { getSiteSettings } from '@/lib/dataService';
 import AboutClientView from '@/components/AboutClientView';
-import { generatePageMetadata, buildProfilePageJsonLd } from '@/lib/seoEngine';
+import { generatePageMetadata, buildProfilePageJsonLd, buildProfileFaqJsonLd } from '@/lib/seoEngine';
 import { ABOUT_UPDATED, toNepalTimestamp } from '@/lib/siteDates';
 
 export const revalidate = 60;
@@ -40,9 +40,10 @@ export default async function AboutPage() {
   };
 
   return (
-    <AboutClientView 
-      siteSettings={siteSettings} 
-      jsonLd={jsonLd} 
+    <AboutClientView
+      siteSettings={siteSettings}
+      jsonLd={jsonLd}
+      faqJsonLd={buildProfileFaqJsonLd('/about')}
     />
   );
 }
