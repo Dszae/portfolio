@@ -101,7 +101,7 @@ export const person = {
     'https://linkedin.com/in/dipeshsapkota7',
     'https://np.linkedin.com/in/dipeshsapkota7',
     'https://dev.to/dszae',
-    'https://hashnode.com/@dszae',
+    'https://hashnode.com/@dipeshsapkota7',
     'https://huggingface.co/dszae',
     'https://about.me/dipeshsapkota',
     'https://www.crunchbase.com/person/dipesh-sapkota-30b0',
