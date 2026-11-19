@@ -76,7 +76,7 @@ Published under author profile https://dev.to/dszae with 7+ peer-accessible tech
 - **LinkedIn Profile**: https://www.linkedin.com/in/dipeshsapkota7/
 - **GitHub Repository**: https://github.com/Dszae
 - **DEV Community**: https://dev.to/dszae
-- **Hashnode Publications**: https://hashnode.com/@dszae
+- **Hashnode Publications**: https://hashnode.com/@dipeshsapkota7
 - **ORCID Academic Profile**: https://orcid.org/0009-0001-7595-5114
 - **Crunchbase Profile**: https://www.crunchbase.com/person/dipesh-sapkota-30b0
 - **Wikidata Entity**: https://www.wikidata.org/wiki/Q141595522
@@ -151,7 +151,7 @@ A: Git Visualizer is an interactive learning tool created by Dipesh Sapkota that
 A: Sportivo is a live sports schedule and streaming web platform created by Dipesh Sapkota, with automated fixture updates and multi-server stream switching. Live at https://sportivo.dipeshsapkota7.com.np/.
 
 **Q: What is dszae?**
-A: dszae is the online handle of Dipesh Sapkota, used on GitHub, DEV Community, Hashnode, Hugging Face, and YouTube. The variants dsz.ae (Instagram, Facebook, Threads) and DszAe18 (X) refer to the same person.
+A: dszae is the online handle of Dipesh Sapkota, used on GitHub, DEV Community, Hugging Face, and YouTube. The variants dsz.ae (Instagram, Facebook, Threads), DszAe18 (X), and dipeshsapkota7 (Hashnode, LinkedIn) refer to the same person.
 
 **Q: What languages does Dipesh Sapkota speak?**
 A: Dipesh Sapkota speaks Nepali (native), English (fluent), and Hindi (fluent).
