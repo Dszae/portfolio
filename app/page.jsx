@@ -136,17 +136,12 @@ export default function Home() {
           <section id="home" className="home-hero">
             <div className="home-hero-inner">
               <div className="hero-copy">
-                <div className="mb-3">
-                  <span className="hero-name-badge inline-block text-base sm:text-lg font-semibold text-[#065F46] dark:text-[#34D399]">
-                    Dipesh Sapkota
-                  </span>
-                </div>
                 <h1 className="hero-title">
-                  Engineering logic<br />
-                  <span>Creating visual rhythm</span>
+                  Dipesh Sapkota<br />
+                  <span>Engineering logic, creating visual rhythm</span>
                 </h1>
                 <p className="hero-description">
-                  Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal. Focused on Artificial Intelligence, Machine Learning, video editing, and motion graphics design.
+                  Dipesh Sapkota is a Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal, focused on Artificial Intelligence, Machine Learning, video editing, and motion graphics design — and the creator of IOE Admission Hub, Git Visualizer, and Sportivo.
                 </p>
 
                 <div className="hero-actions">
