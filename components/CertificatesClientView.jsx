@@ -37,7 +37,7 @@ export default function CertificatesClientView({ certificates, jsonLd }) {
               <div className="max-w-7xl mx-auto w-full">
                 <div className="mb-10 max-w-[750px]">
                   <h1 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold mb-4 flex items-center gap-3.5 text-[#0F172A] dark:text-[#F9FAFB] tracking-tight">
-                    <span className="text-[#065F46] dark:text-[#34D399]">/</span> Certificates
+                    <span aria-hidden="true" className="text-[#065F46] dark:text-[#34D399]">/</span> Certificates
                   </h1>
                   <p className="text-[17px] sm:text-[18px] leading-[1.7] text-[#334155] dark:text-[#A7B0BE]">
                     Verified technical certifications, masterclasses, and specialized credentials completed by Dipesh Sapkota across graphic design, motion graphics, DaVinci Resolve color science, and web development technologies.
