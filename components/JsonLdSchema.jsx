@@ -1,4 +1,4 @@
-import { buildPersonJsonLd, buildWebSiteJsonLd, buildPortraitImageObject, buildHomePortraitImageObject, buildPersonImages } from '@/lib/seoEngine';
+import { buildPersonJsonLd, buildWebSiteJsonLd, buildPortraitImageObject, buildHomePortraitImageObject, buildPersonImages, PERSON_SAME_AS } from '@/lib/seoEngine';
 import { CV_SCHEMA_REF } from '@/lib/cv';
 import { HOME_UPDATED, toNepalTimestamp } from '@/lib/siteDates';
 
@@ -91,28 +91,7 @@ export const person = {
     },
   ],
   identifier: 'https://orcid.org/0009-0001-7595-5114',
-  sameAs: [
-    'https://orcid.org/0009-0001-7595-5114',
-    'https://www.wikidata.org/wiki/Q141595522',
-    'https://www.wikidata.org/entity/Q141595522',
-    'https://github.com/Dszae',
-    'https://github.com/dszae',
-    'https://www.linkedin.com/in/dipeshsapkota7',
-    'https://linkedin.com/in/dipeshsapkota7',
-    'https://np.linkedin.com/in/dipeshsapkota7',
-    'https://dev.to/dszae',
-    'https://hashnode.com/@dipeshsapkota7',
-    'https://huggingface.co/dszae',
-    'https://about.me/dipeshsapkota',
-    'https://www.crunchbase.com/person/dipesh-sapkota-30b0',
-    'https://youtube.com/@dszae',
-    'https://x.com/dszae',
-    'https://x.com/DszAe18',
-    'https://twitter.com/dszae',
-    'https://instagram.com/dsz.ae',
-    'https://facebook.com/dsz.ae',
-    'https://www.threads.net/@dsz.ae',
-  ],
+  sameAs: PERSON_SAME_AS,
   knowsAbout: [
     { '@type': 'DefinedTerm', name: 'Computer Engineering', sameAs: 'https://en.wikipedia.org/wiki/Computer_engineering' },
     { '@type': 'DefinedTerm', name: 'Artificial Intelligence', sameAs: 'https://en.wikipedia.org/wiki/Artificial_intelligence' },
