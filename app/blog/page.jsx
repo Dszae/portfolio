@@ -98,7 +98,7 @@ export default async function BlogPage() {
           />
           
           <h1 className="text-3xl sm:text-4xl font-semibold mb-4 tracking-tight text-[#0F172A] dark:text-[#F9FAFB] flex items-center gap-3">
-            <span aria-hidden="true" className="text-[#065F46] dark:text-[#34D399]">/</span> Articles &amp; Write-Ups
+            <span className="text-[#065F46] dark:text-[#34D399]">/</span> Articles &amp; Write-Ups
           </h1>
           <div className="flex flex-wrap items-center justify-between gap-4 mb-10">
             <p className="text-base sm:text-lg text-[#1E293B] dark:text-[#A7B0BE] leading-relaxed max-w-2xl">

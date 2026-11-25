@@ -8,8 +8,8 @@ import { HomePageJsonLd } from '../components/JsonLdSchema';
 
 const SKILLS_PREVIEW = [
   {
-    title: "Programming & Systems",
-    description: "C, C++, Python, React, and Next.js applied to engineering tools and interactive systems.",
+    title: "Software & Web Development",
+    description: "C, C++, Python, React, Next.js, and practical software systems architecture.",
     href: "/skills",
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -89,7 +89,7 @@ const CORE_SECTIONS = [
   },
   {
     title: "Engineering Projects",
-    description: "Sportivo, Git Visualizer, IOE Admission Hub, and hardware and simulation case studies.",
+    description: "Flagship web platforms (Sportivo, Git Visualizer, IOE Admission Guide) and hardware prototypes.",
     href: "/projects",
     cta: "Explore portfolio",
   },
@@ -136,12 +136,17 @@ export default function Home() {
           <section id="home" className="home-hero">
             <div className="home-hero-inner">
               <div className="hero-copy">
+                <div className="mb-3">
+                  <span className="hero-name-badge inline-block text-base sm:text-lg font-semibold text-[#065F46] dark:text-[#34D399]">
+                    Dipesh Sapkota
+                  </span>
+                </div>
                 <h1 className="hero-title">
-                  Dipesh Sapkota<br />
-                  <span>Engineering logic, creating visual rhythm</span>
+                  Engineering logic<br />
+                  <span>Creating visual rhythm</span>
                 </h1>
                 <p className="hero-description">
-                  Dipesh Sapkota is a Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal, focused on Artificial Intelligence, Machine Learning, video editing, and motion graphics design — and the creator of IOE Admission Hub, Git Visualizer, and Sportivo.
+                  Computer Engineering student at IOE Thapathali Campus in Kathmandu, Nepal. Focused on Artificial Intelligence, Machine Learning, video editing, and motion graphics design.
                 </p>
 
                 <div className="hero-actions">
@@ -162,28 +167,6 @@ export default function Home() {
                 <InteractivePortrait />
                 <figcaption id="hero-portrait-caption" className="sr-only">Dipesh Sapkota, Computer Engineering student and AI/ML enthusiast at IOE Thapathali Campus, Kathmandu, Nepal</figcaption>
               </figure>
-            </div>
-          </section>
-
-          <section id="about-summary" className="px-6 py-16 sm:px-10 lg:px-16 border-t border-slate-200 dark:border-[#222933]" aria-labelledby="about-summary-heading">
-            <div className="mx-auto max-w-3xl">
-              <h2 id="about-summary-heading" className="text-2xl sm:text-3xl font-semibold tracking-tight text-[#0F172A] dark:text-white">
-                About Dipesh Sapkota
-              </h2>
-              <div className="mt-5 space-y-4 text-base leading-7 text-[#475569] dark:text-[#A7B0BE]">
-                <p>
-                  I am a Computer Engineering student at IOE Thapathali Campus, Tribhuvan University, in Kathmandu, Nepal, pursuing a B.E. in Computer Engineering. My academic work centers on Artificial Intelligence and Machine Learning: how intelligent systems, algorithms, and models are designed, trained, and evaluated.
-                </p>
-                <p>
-                  Alongside coursework I work on embedded systems and hardware simulation, including circuit analysis, microcontroller projects, a Proteus simulation of a 555 timer flasher, and MATLAB modeling of induction and DC machines. I also built IOE Admission Hub, a rank predictor and campus explorer for IOE applicants, Git Visualizer, an interactive tool for learning version control, and Sportivo, a live sports platform.
-                </p>
-                <p>
-                  Before engineering, I spent more than four years as a motion graphics designer and video editor, delivering work for over 50 clients worldwide. That practice still shapes how I approach engineering problems: clear structure, careful timing, and attention to how people read information.
-                </p>
-              </div>
-              <Link href="/about" className="mt-6 inline-flex font-mono text-sm font-semibold text-[#065F46] hover:underline dark:text-[#34D399]">
-                Read the full biography
-              </Link>
             </div>
           </section>
 
@@ -266,29 +249,6 @@ export default function Home() {
             </div>
           </section>
 
-          <section id="site-directory" className="px-6 py-16 sm:px-10 lg:px-16 border-t border-slate-200 dark:border-[#222933]" aria-labelledby="site-directory-heading">
-            <div className="mx-auto max-w-6xl">
-              <h2 id="site-directory-heading" className="text-2xl sm:text-3xl font-semibold tracking-tight text-[#0F172A] dark:text-white">
-                Explore the Portfolio
-              </h2>
-              <ul className="mt-8 grid grid-cols-1 gap-x-10 gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
-                {CORE_SECTIONS.map((section) => (
-                  <li key={section.href}>
-                    <Link href={section.href} className="group block">
-                      <h3 className="text-base font-semibold text-[#0F172A] group-hover:text-[#065F46] dark:text-white dark:group-hover:text-[#34D399]">
-                        {section.title}
-                      </h3>
-                      <p className="mt-1.5 text-sm leading-6 text-[#475569] dark:text-[#A7B0BE]">{section.description}</p>
-                      <span className="mt-2 inline-flex font-mono text-xs font-semibold text-[#065F46] group-hover:underline dark:text-[#34D399]">
-                        {section.cta}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </section>
-
           <section id="connect" className="px-6 py-20 sm:px-10 lg:px-16 border-t border-slate-200 dark:border-[#222933]">
             <div className="mx-auto max-w-4xl text-center">
               <p className="section-eyebrow">Collaboration &amp; Inquiries</p>
@@ -296,7 +256,7 @@ export default function Home() {
                 Let&apos;s build something meaningful.
               </h2>
               <p className="mt-3 text-sm sm:text-base text-[#475569] dark:text-[#A7B0BE] max-w-xl mx-auto leading-relaxed">
-                Open to engineering projects, AI/ML research collaborations, and motion graphics commissions.
+                Open for software engineering projects, AI/ML research collaborations, and motion graphics commissions.
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
                 <Link

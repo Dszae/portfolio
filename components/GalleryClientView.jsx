@@ -37,7 +37,7 @@ export default function GalleryClientView({ gallery, jsonLd }) {
               <div className="max-w-7xl mx-auto w-full">
                 <div className="mb-10 max-w-3xl">
                   <h1 className="text-3xl sm:text-4xl font-semibold mb-4 flex items-center gap-4 text-[#0F172A] dark:text-[#F9FAFB]">
-                    <span aria-hidden="true" className="text-[#065F46] dark:text-[#34D399]">/</span> Gallery
+                    <span className="text-[#065F46] dark:text-[#34D399]">/</span> Gallery
                   </h1>
                   <p className="text-base sm:text-lg text-[#1E293B] dark:text-[#A7B0BE] leading-relaxed">
                     A visual archive documenting campus moments, student leadership, technical exhibitions like Yathartha, and creative engineering milestones at IOE Thapathali Campus in Kathmandu, Nepal.
