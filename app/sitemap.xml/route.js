@@ -48,20 +48,20 @@ export async function GET() {
     },
     {
       loc: `${SITE_URL}/about`,
-      priority: '0.80',
+      priority: '0.95',
       changefreq: 'weekly',
       lastmod: ABOUT_UPDATED,
       images: portraitImages,
     },
     {
       loc: `${SITE_URL}/skills`,
-      priority: '0.80',
+      priority: '0.95',
       changefreq: 'weekly',
       images: [],
     },
     {
       loc: `${SITE_URL}/projects`,
-      priority: '0.80',
+      priority: '0.95',
       changefreq: 'weekly',
       images: projects.slice(0, 5).map(p => ({
         path: toAbsoluteUrl(p.img),
@@ -70,7 +70,7 @@ export async function GET() {
     },
     {
       loc: `${SITE_URL}/blog`,
-      priority: '0.80',
+      priority: '0.90',
       changefreq: 'weekly',
       images: articles.slice(0, 5).map(a => ({
         path: toAbsoluteUrl(a.cover_image),
@@ -79,7 +79,7 @@ export async function GET() {
     },
     {
       loc: `${SITE_URL}/certificates`,
-      priority: '0.80',
+      priority: '0.90',
       changefreq: 'monthly',
       images: certificates.map(c => ({
         path: toAbsoluteUrl(c.img),
@@ -88,7 +88,7 @@ export async function GET() {
     },
     {
       loc: `${SITE_URL}/resume`,
-      priority: '0.80',
+      priority: '0.95',
       changefreq: 'weekly',
       lastmod: CV_UPDATED,
       images: [
@@ -102,14 +102,14 @@ export async function GET() {
     {
       // The PDF itself is indexable (Google, Bing and AI crawlers parse PDF text).
       loc: `${SITE_URL}${CV_PDF_PATH}`,
-      priority: '0.60',
+      priority: '0.80',
       changefreq: 'monthly',
       lastmod: CV_UPDATED,
       images: [],
     },
     {
       loc: `${SITE_URL}/gallery`,
-      priority: '0.70',
+      priority: '0.85',
       changefreq: 'weekly',
       images: gallery.map(g => ({
         path: toAbsoluteUrl(g.img),
@@ -118,7 +118,7 @@ export async function GET() {
     },
     {
       loc: `${SITE_URL}/contact`,
-      priority: '0.70',
+      priority: '0.85',
       changefreq: 'monthly',
       images: [],
     },
@@ -130,7 +130,7 @@ export async function GET() {
       const isVideoProject = p.slug === 'sports-reels' || (p.category || '').toLowerCase().includes('video') || (p.category_label || '').toLowerCase().includes('video');
       return {
         loc: `${SITE_URL}/projects/${p.slug || p.id}`,
-        priority: p.featured ? '0.70' : '0.60',
+        priority: p.featured ? '0.90' : '0.80',
         changefreq: 'monthly',
         lastmod: p.updated_at || p.created_at
           ? (p.updated_at || p.created_at).split('T')[0]
@@ -151,7 +151,7 @@ export async function GET() {
     .filter(a => a.slug && (a.status === 'published' || !a.status))
     .map(a => ({
       loc: `${SITE_URL}/blog/${a.slug}`,
-      priority: '0.60',
+      priority: '0.80',
       changefreq: 'monthly',
       lastmod: a.updated_at || a.published_at ? String(a.updated_at || a.published_at).split('T')[0] : undefined,
       images: a.cover_image ? [{ path: toAbsoluteUrl(a.cover_image), title: a.title || 'Article Cover' }] : [],
