@@ -49,7 +49,7 @@ export default function ResumeClientView({ experiences = [], siteSettings = {}, 
             <section id="resume" className={`pt-36 sm:pt-40 subpage-container pb-24 px-4 sm:px-8 lg:px-12 w-full ${theme.bg}`}>
               <div className="max-w-7xl mx-auto w-full">
                 <h1 className="mb-8 text-3xl sm:text-4xl font-semibold flex items-center gap-4 text-[#0F172A] dark:text-[#F9FAFB]">
-                  <span aria-hidden="true" className="text-[#065F46] dark:text-[#34D399]">/</span> Resume
+                  <span className="text-[#065F46] dark:text-[#34D399]">/</span> Resume
                 </h1>
 
                 <p className="text-base sm:text-lg text-[#1E293B] dark:text-[#A7B0BE] mb-6 max-w-3xl leading-relaxed">

@@ -154,7 +154,7 @@ export default function SkillsClientView({ initialSkills = [], initialProjects =
 
                 <header className="mb-12 sm:mb-16">
                   <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-semibold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] leading-tight mb-4 flex items-center gap-3">
-                    <span aria-hidden="true" className="text-[#065F46] dark:text-[#34D399]">/</span> Skills
+                    <span className="text-[#065F46] dark:text-[#34D399]">/</span> Skills
                   </h1>
 
                   <p className="max-w-2xl text-base sm:text-lg text-[#1E293B] dark:text-[#A7B0BE] leading-relaxed">
